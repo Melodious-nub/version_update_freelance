@@ -621,12 +621,14 @@ table {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+  appearance: none;
   margin: 0;
 }
 
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .attribute-input {
@@ -1232,12 +1234,14 @@ mat-icon.cancel_outline_new {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+  appearance: none;
   margin: 0;
 }
 
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 input,
@@ -2164,8 +2168,8 @@ mat-expansion-panel.no-padding {
   font-weight: 700;
 }
 
-input[type="radio"] {
   -webkit-appearance: none !important;
+  appearance: none !important;
   outline: 0.1em solid var(--primary-color) !important;
   outline-offset: 0.12em;
   padding: 3px !important;
@@ -2941,9 +2945,7 @@ textarea.ng-invalid.ng-touched {
 .signin-section {
   padding: 30px;
 
-  .logo {
-    // padding: 5%;
-  }
+
 
   .img-slide {
     object-fit: contain;
