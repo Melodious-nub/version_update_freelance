@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputHashing": "all",
+            "outputHashing": "none",
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -46,7 +46,14 @@
               "src/styles/styles.scss",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "moment",
+              "pako",
+              "luxon",
+              "@ckeditor/ckeditor5-build-classic",
+              "crypto-js"
+            ]
           },
           "configurations": {
             "local": {
