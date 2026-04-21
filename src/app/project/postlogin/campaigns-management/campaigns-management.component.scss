@@ -40,15 +40,15 @@
 // Ensure material table header matches vendor-customer look
 ::ng-deep {
   .datatable-container {
-    .mat-table {
+    .mat-mdc-table {
       background: transparent;
     }
 
-    .mat-header-row {
+    .mat-mdc-header-row {
       background-color: #f8f9fa;
     }
 
-    .mat-header-cell {
+    .mat-mdc-header-cell {
       color: #495057;
       font-weight: 600;
       font-size: 13px;
@@ -56,30 +56,30 @@
       border-bottom: 2px solid #dee2e6;
     }
 
-    .mat-row {
+    .mat-mdc-row {
       &:hover {
         background-color: #d7e8f5;
         cursor: pointer;
       }
     }
 
-    .mat-cell {
+    .mat-mdc-cell {
       font-size: 14px;
       color: #212529;
     }
   }
 }
 
-::ng-deep .datatable-container .mat-row:nth-child(odd) {
+::ng-deep .datatable-container .mat-mdc-row:nth-child(odd) {
   background-color: #ffffff;
 }
 
-::ng-deep .datatable-container .mat-row:nth-child(even) {
+::ng-deep .datatable-container .mat-mdc-row:nth-child(even) {
   background-color: #fbfcfe;
 }
 
 /* Ensure campaign table row hover overrides global/data-table styles */
-:host ::ng-deep .datatable-container .mat-row:hover {
+:host ::ng-deep .datatable-container .mat-mdc-row:hover {
   background-color: #d7e8f5 !important;
   cursor: pointer !important;
 }

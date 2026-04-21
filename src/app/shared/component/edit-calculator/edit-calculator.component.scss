@@ -33,11 +33,12 @@
   margin-bottom: 0px;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
 .table-responsive ::ng-deep.mat-form-field-underline {
   display: none;
 }
 
-.table-responsive ::ng-deep.mat-form-field {
+.table-responsive ::ng-deep.mat-mdc-form-field {
   height: 32px;
 }
 
@@ -111,16 +112,18 @@ th.table-primary {
   float: right;
 }
 
-.add-new-attribute .mat-form-field {
+.add-new-attribute .mat-mdc-form-field {
   margin-top: 3px;
   width: 130px;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
 .add-new-attribute ::ng-deep.mat-form-field-flex {
   padding: 1px;
   padding-left: 5px;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
 .add-new-attribute ::ng-deep.mat-form-field-infix {
   padding-bottom: 0px;
 }
@@ -133,11 +136,11 @@ th.table-primary {
   line-height: 0;
 }
 
-::ng-deep .mat-raised-button.mat-primary {
+::ng-deep .mat-mdc-raised-button.mat-primary {
   background: var(--primary-color) !important;
 }
 
-::ng-deep .mat-raised-button.mx-secondary-btn {
+::ng-deep .mat-mdc-raised-button.mx-secondary-btn {
   background: white;
   color: rgba(0, 0, 0, 0.87);
 }

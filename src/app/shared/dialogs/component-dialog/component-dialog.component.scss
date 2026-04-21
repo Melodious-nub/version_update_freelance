@@ -2,7 +2,7 @@
   margin: 0;
   display: flex;
   align-items: center;
-
+  /* TODO(mdc-migration): The following rule targets internal classes of dialog that may no longer apply for the MDC version. */
   mat-dialog-content.component-dialog {
     overflow: hidden;
     padding: 0;

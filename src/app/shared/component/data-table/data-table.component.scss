@@ -33,12 +33,12 @@
   overflow: auto;
   border-radius: 10px;
 
-  .mat-table {
+  .mat-mdc-table {
     // overflow: auto;
     min-width: max-content !important;
   }
 
-  .mat-header-cell {
+  .mat-mdc-header-cell {
     font-size: 14px !important;
     font-weight: 600;
     border-top-right-radius: 10px;
@@ -200,11 +200,11 @@
   text-decoration: underline;
 }
 
-.mat-row:hover {
+.mat-mdc-row:hover {
   background-color: var(--secondary-color);
 }
 
-.mat-cell {
+.mat-mdc-cell {
   padding-left: 1rem;
   padding-right: 1rem;
   white-space: nowrap;

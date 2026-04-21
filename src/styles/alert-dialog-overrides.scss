@@ -1,5 +1,5 @@
 .custom-alert-dialog {
-    .mat-dialog-container {
+    .mat-mdc-dialog-container {
         border-radius: 8px !important;
         padding: 15px !important;
         background: #ffffff !important;
@@ -11,7 +11,7 @@
         font-weight: 700;
     }
 
-    .mat-dialog-actions {
+    .mat-mdc-dialog-actions {
         button {
             min-width: 88px;
             border-radius: 6px;
@@ -19,14 +19,16 @@
     }
 
     /* Cancel button (uses mat-dialog-close attribute) -> blue */
-    .mat-dialog-actions button[mat-dialog-close] {
+    /* TODO(mdc-migration): The following rule targets internal classes of dialog that may no longer apply for the MDC version. */
+    .mat-mdc-dialog-actions button[mat-dialog-close] {
         background-color: #0065f4 !important;
         color: #ffffff !important;
         box-shadow: none !important;
     }
 
     /* Action / Delete button (not mat-dialog-close) -> red */
-    .mat-dialog-actions button:not([mat-dialog-close]) {
+    /* TODO(mdc-migration): The following rule targets internal classes of dialog that may no longer apply for the MDC version. */
+    .mat-mdc-dialog-actions button:not([mat-dialog-close]) {
         background-color: #d32f2f !important;
         color: #ffffff !important;
         box-shadow: none !important;

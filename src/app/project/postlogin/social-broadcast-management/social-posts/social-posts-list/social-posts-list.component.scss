@@ -39,15 +39,15 @@
 
 :host ::ng-deep {
   .datatable-container {
-    .mat-table {
+    .mat-mdc-table {
       background: transparent;
     }
 
-    .mat-header-row {
+    .mat-mdc-header-row {
       background-color: #f8f9fa;
     }
 
-    .mat-header-cell {
+    .mat-mdc-header-cell {
       color: #495057;
       font-weight: 600;
       font-size: 13px;
@@ -55,12 +55,12 @@
       border-bottom: 2px solid #dee2e6;
     }
 
-    .mat-row:hover {
+    .mat-mdc-row:hover {
       background-color: #d7e8f5;
       cursor: pointer;
     }
 
-    .mat-cell {
+    .mat-mdc-cell {
       font-size: 14px;
       color: #212529;
     }

@@ -2,13 +2,13 @@
    
     overflow: auto;
     max-width: 89vw !important;
-    .mat-table {
+    .mat-mdc-table {
         height: calc(100vh - 270px);
         overflow: auto;
         min-width: max-content !important;
     }
 
-    .mat-header-cell {
+    .mat-mdc-header-cell {
         font-size: 12px !important;
         font-weight: 500;
         // color: var(--bs-body-color);
@@ -141,11 +141,11 @@
     text-decoration: underline;
 }
 
-.mat-row:hover {
+.mat-mdc-row:hover {
     background-color: var(--secondary-color);
 }
 
-.mat-cell {
+.mat-mdc-cell {
     padding-left: 1rem;
     padding-right: 1rem;
 }
