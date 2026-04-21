@@ -4,31 +4,18 @@
 
     <div class="attribute-input time-picker-attribute-input">
       <input
+        type="time"
         autocomplete="off"
-        [readonly]="true"
-        [disabled]="disabled || control?.disabled"
-        [ngxTimepicker]="toggleTimepicker"
-        [format]="format"
+        [step]="minutesGap * 60"
         [placeholder]="placeholder || label"
         [value]="value"
+        [disabled]="disabled || control?.disabled"
+        (change)="onTimeSet($event)"
         (blur)="onTouched()"
+        class="native-time-input"
       />
-
-      <ngx-material-timepicker-toggle
-        class="time-picker-toggle"
-        [for]="toggleTimepicker"
-        [disabled]="disabled || control?.disabled">
-      </ngx-material-timepicker-toggle>
     </div>
   </div>
 
   <span class="error" *ngIf="showFieldError()">{{ getFieldErrorDesc() }}</span>
-
-  <ngx-material-timepicker
-    #toggleTimepicker
-    [theme]="darkTheme"
-    [minutesGap]="minutesGap"
-    [enableKeyboardInput]="false"
-    (timeSet)="onTimeSet($event)">
-  </ngx-material-timepicker>
 </div>

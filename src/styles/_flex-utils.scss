@@ -1,0 +1,65 @@
+// Custom Flexbox Utilities to replace @angular/flex-layout
+// This ensures layout parity when migrating to Angular 16+
+
+.flex-row {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.flex-column {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.flex-wrap {
+  flex-wrap: wrap !important;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap !important;
+}
+
+// Alignment
+.justify-start { justify-content: flex-start !important; }
+.justify-center { justify-content: center !important; }
+.justify-end { justify-content: flex-end !important; }
+.justify-space-between { justify-content: space-between !important; }
+.justify-space-around { justify-content: space-around !important; }
+
+.align-start { align-items: flex-start !important; }
+.align-center { align-items: center !important; }
+.align-end { align-items: flex-end !important; }
+.align-stretch { align-items: stretch !important; }
+
+// Gaps
+@for $i from 1 through 50 {
+  .gap-#{$i} {
+    gap: #{$i}px !important;
+  }
+}
+
+// Flex Sizing
+.flex-1 { flex: 1 1 0% !important; }
+.flex-auto { flex: 1 1 auto !important; }
+.flex-none { flex: 0 0 auto !important; }
+
+@for $i from 1 through 100 {
+  .flex-#{$i} {
+    flex: 1 1 #{$i}#{"%"} !important;
+    max-width: #{$i}#{"%"} !important;
+  }
+}
+
+// Responsive (Simple breakpoints based on standard Angular values)
+@media (max-width: 599px) {
+  .flex-row-xs { flex-direction: row !important; }
+  .flex-column-xs { flex-direction: column !important; }
+  .flex-100-xs { flex: 1 1 100% !important; max-width: 100% !important; }
+  .hide-xs { display: none !important; }
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  .flex-row-sm { flex-direction: row !important; }
+  .flex-column-sm { flex-direction: column !important; }
+  .hide-sm { display: none !important; }
+}

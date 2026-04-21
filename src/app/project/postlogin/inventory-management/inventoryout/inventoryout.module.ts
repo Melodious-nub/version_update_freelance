@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MatStepperModule } from '@angular/material/stepper';
 import { ToastrModule } from 'ngx-toastr';
 import { InventoryoutComponent } from './inventoryout.component';
@@ -42,7 +41,6 @@ import { ProductWiseCreateInventoryComponent } from './product-wise-create-inven
     MaterialModule,
     MatStepperModule,
     ToastrModule,
-    NgMultiSelectDropDownModule.forRoot(),
   ],
 })
 export class InventoryoutModule {}

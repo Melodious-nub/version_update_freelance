@@ -7,7 +7,6 @@ import { ProductRoutingModule } from './product-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SocialPostsModule } from 'src/app/project/postlogin/social-broadcast-management/social-posts/social-posts.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ProductListAllComponent } from './product-list-all/product-list-all.component';
@@ -33,7 +32,6 @@ import { ProductionComponent } from './production/production.component';
     MatStepperModule,
     MatPaginatorModule,
     ToastrModule,
-    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [
     DatePipe

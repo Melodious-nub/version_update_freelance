@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductTemplateRoutingModule } from './product-template-routing.module';
 import { ProductTemplateListComponent } from './product-template-list/product-template-list.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { TemplateInfoComponent } from './product-template-list-form/product-templates-steps/template-info/template-info.component';
 import { TemplateProcessComponent } from './product-template-list-form/product-templates-steps/template-process/template-process.component';
 import { TemplateCalculatorComponent } from './product-template-list-form/product-templates-steps/template-calculator/template-calculator.component';
@@ -17,7 +16,6 @@ import { SelectProcessNameComponent } from './product-template-list-form/product
 import { ConfirmationDialogComponent } from './product-template-list-form/product-templates-steps/template-process/components/process/edit-process/components/select-process-name/confirmation-dialog/confirmation-dialog.component';
 import { SelectProductTypeComponent } from './product-template-list-form/product-templates-steps/template-process/components/process/edit-process/components/select-process-name/select-product-type/select-product-type.component';
 import { SelectProductDropdownComponent } from './product-template-list-form/product-templates-steps/template-process/components/process/edit-process/components/select-product-dropdown/select-product-dropdown.component';
-import { OrderModule } from 'ngx-order-pipe';
 import { CreateAttributeGroupModalComponent } from './product-template-list-form/product-templates-steps/components/create-attribute-group-modal/create-attribute-group-modal.component';
 import { CreateToggleFieldModalComponent } from './product-template-list-form/product-templates-steps/components/create-toggle-field-modal/create-toggle-field-modal.component';
 import { CreateDropdownFieldModalComponent } from './product-template-list-form/product-templates-steps/components/create-dropdown-field-modal/create-dropdown-field-modal.component';
@@ -59,12 +57,10 @@ import { A11yModule } from "@angular/cdk/a11y";
   ],
   imports: [
     CommonModule,
-    OrderModule,
     DragDropModule,
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
-    NgMultiSelectDropDownModule.forRoot(),
     ProductTemplateRoutingModule,
     MatTooltipModule,
     A11yModule

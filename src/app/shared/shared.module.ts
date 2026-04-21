@@ -15,10 +15,10 @@ import { ConfirmDialogComponent } from './dialogs/confirm/confirm-dialog.compone
 import { SuccessDialogComponent } from './dialogs/succes/success-dialog.component';
 import { SearchFilterComponent } from './component/search-filter/search-filter.component';
 import { NumberFormatterPipe } from './pipes/number-formatter.pipe';
+import { OrderByPipe } from './pipes/order-by.pipe';
 import { EditCalculatorComponent } from './component/edit-calculator/edit-calculator.component';
 import { SpinnerOverlayComponent } from './component/spinner-overlay/spinner-overlay.component';
 import { TimePickerComponent } from './widgets/time-picker/time-picker.component';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { ComponentDialogComponent } from './dialogs/component-dialog/component-dialog.component';
 import { AlertDialogComponent } from './component/alert-dialog/alert-dialog.component';
 import { HttpService } from '../service/http.service';
@@ -124,14 +124,14 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
         ThreeSceneComponent,
         PricecompareDialogComponent,
         PaymentDialogComponent,
-        ChangePasswordDialogComponent
+        ChangePasswordDialogComponent,
+        OrderByPipe
     ],
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
         MaterialModule,
-        NgxMaterialTimepickerModule,
         NgSelectModule,
         HttpClientJsonpModule,
         GoogleMapsModule,
@@ -195,11 +195,11 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
         DataTableEditableComponent,
         OrderTransactionPackagesComponent,
         ThreeSceneComponent,
-        PricecompareDialogComponent,
         PaymentDialogComponent,
-        ChangePasswordDialogComponent
+        ChangePasswordDialogComponent,
+        OrderByPipe
     ],
-    providers: [HttpService, ApiService, SortFormArrayPipe, SortNamePipe,SortNumberPropertyPipe, ShortNamePipe, NumberFormatterPipe,SortProductPipe],
+    providers: [HttpService, ApiService, SortFormArrayPipe, SortNamePipe,SortNumberPropertyPipe, ShortNamePipe, NumberFormatterPipe,SortProductPipe, OrderByPipe],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class SharedModule { }

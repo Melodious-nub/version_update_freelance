@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MatStepperModule } from '@angular/material/stepper';
 import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from 'src/app/shared/modules/material.module';
@@ -30,7 +29,6 @@ import { PaymentComponent } from './purchaseorder-steps/payment/payment.componen
     MaterialModule,
     MatStepperModule,
     ToastrModule,
-    NgMultiSelectDropDownModule.forRoot(),
   ],
   exports: [
     PurchaseorderComponent,

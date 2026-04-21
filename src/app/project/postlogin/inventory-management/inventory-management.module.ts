@@ -11,7 +11,6 @@ import { InventoryManagementRoutingModule } from './inventory-management-routing
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { ToastrModule } from 'ngx-toastr';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { InventoryManagementComponent } from './inventory-management.component';
 
 @NgModule({

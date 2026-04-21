@@ -1,9 +1,6 @@
 
 import { Component, OnInit, Input, forwardRef, ChangeDetectorRef, AfterContentChecked, OnChanges, SimpleChanges } from '@angular/core';
-
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, UntypedFormControl, ControlContainer } from '@angular/forms';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { CommonService } from 'src/app/service/common.service';
 
 
@@ -16,18 +13,18 @@ import { CommonService } from 'src/app/service/common.service';
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => TimePickerComponent), multi: true },
   ]
 })
-export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterContentChecked {
+export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterContentChecked, OnChanges {
 
   @Input() class = '';
-  @Input() label = "";
-  @Input() leftHint = "";
-  @Input() rightHint = "";
-  @Input() customError = "";
+  @Input() label = '';
+  @Input() leftHint = '';
+  @Input() rightHint = '';
+  @Input() customError = '';
   @Input() formControlName = '';
-  @Input() inputWidth = "100%";
+  @Input() inputWidth = '100%';
   @Input() isRequired: boolean = false;
   @Input() placeholder = '';
-  @Input() format = 24;
+  @Input() format = 24; // kept for API compatibility, native input always uses HH:mm
   @Input() minutesGap = 5;
   @Input() disabled: boolean = false;
 
@@ -37,46 +34,17 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterC
   onTouched: any = () => { };
 
   @Input('value') _value: any;
-  set value(val) {
-    this._value = val;
-  }
-  get value() {
-    return this._value;
-  }
+  set value(val: any) { this._value = val; }
+  get value() { return this._value; }
 
-
-  darkTheme: NgxMaterialTimepickerTheme = {
-    container: {
-      bodyBackgroundColor: '#fff',
-      buttonColor: 'var(--primary-color)'
-    },
-    dial: {
-      dialBackgroundColor: 'var(--primary-color)',
-      dialInactiveColor: 'var(--primary-light)',
-      dialActiveColor: '#fff',
-      dialEditableActiveColor: 'var(--primary-color)',
-      dialEditableBackgroundColor: '#fff'
-    },
-    clockFace: {
-      clockFaceBackgroundColor: '#fff',
-      clockHandColor: 'var(--primary-color)',
-      clockFaceTimeActiveColor: '#fff',
-      clockFaceTimeInactiveColor: 'var(--text-dark)',
-      clockFaceTimeDisabledColor: 'var(--disabled-color)',
-      clockFaceInnerTimeInactiveColor: 'var(--light-text-color)'
-    }
-  };
-
-
-  constructor(private commonService: CommonService, private controlContainer: ControlContainer, private cdr: ChangeDetectorRef) {
-  }
+  constructor(private commonService: CommonService, private controlContainer: ControlContainer, private cdr: ChangeDetectorRef) { }
 
   ngAfterContentChecked() {
     this.cdr.detectChanges();
   }
 
   ngOnInit(): void {
-    if (this.controlContainer.control) {
+    if (this.controlContainer?.control) {
       this.control = this.controlContainer.control.get(this.formControlName) as UntypedFormControl;
       this.syncDisabledToControl();
     }
@@ -92,8 +60,8 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterC
     this.value = obj ?? '';
   }
 
-  onTimeSet(time: any) {
-    const next = time ?? '';
+  onTimeSet(event: Event) {
+    const next = (event.target as HTMLInputElement).value ?? '';
     this.value = next;
     this.onChange(next);
     this.onTouched();
@@ -101,13 +69,10 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterC
       this.control.setValue(next, { emitEvent: false });
     }
   }
-  registerOnChange(fn: Function) {
-    this.onChange = fn;
-  }
 
-  registerOnTouched(fn: Function) {
-    this.onTouched = fn;
-  }
+  registerOnChange(fn: Function) { this.onChange = fn; }
+
+  registerOnTouched(fn: Function) { this.onTouched = fn; }
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = !!isDisabled;
@@ -123,20 +88,12 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterC
     }
   }
 
-
   showFieldError() {
-    if (this.control?.errors) {
-      if (this.control.dirty || this.control.touched) {
-        return true;
-      }
-    }
-    return false;
+    return !!(this.control?.errors && (this.control.dirty || this.control.touched));
   }
 
   getFieldErrorDesc() {
-    if (this.customError.length) {
-      return this.customError;
-    }
+    if (this.customError?.length) return this.customError;
     return this.commonService.getFieldErrorDesc(this.control);
   }
 }

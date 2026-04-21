@@ -5,7 +5,6 @@ import { ProductTagsComponent } from './product-tags.component';
 import { ProductRoutingModule } from './product-tags-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MatStepperModule } from '@angular/material/stepper';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -19,7 +18,6 @@ import { ToastrModule } from 'ngx-toastr';
     SharedModule,
     MatStepperModule,
     ToastrModule,
-    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [
     DatePipe

@@ -11,7 +11,6 @@ import { ContainerManagementRoutingModule } from './container-management-routing
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { ToastrModule } from 'ngx-toastr';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ContainerManagementComponent } from './container-management.component';
 
 @NgModule({
