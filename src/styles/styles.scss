@@ -295,8 +295,7 @@ body {
   letter-spacing: normal;
 }
 
-/* TODO(mdc-migration): The following rule targets internal classes of option that may no longer apply for the MDC version.*/
-.mat-option-text {
+.mat-mdc-option .mdc-list-item__primary-text {
   font-size: 12px !important;
   font-family: Roboto, "Helvetica Neue", sans-serif !important;
 }
@@ -369,8 +368,7 @@ body {
     overflow: auto;
   }
 
-  /* TODO(mdc-migration): The following rule targets internal classes of dialog that may no longer apply for the MDC version.*/
-  mat-dialog-container {
+  .mat-mdc-dialog-container {
     min-width: unset !important;
   }
 
@@ -411,26 +409,24 @@ body {
 
 // 
 
-/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-mat-form-field.mat-mdc-form-field.mat-form-field-appearance-outline>div.mat-form-field-wrapper>div.mat-form-field-flex>div.mat-form-field-infix {
+/* Resolved MDC migration for form-field infix padding */
+mat-form-field.mat-mdc-form-field.mat-form-field-appearance-outline .mat-mdc-form-field-infix {
   padding: 0.4em;
 }
 
-/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-.mat-form-field-appearance-outline .mat-form-field-label {
+/* Resolved MDC migration for form-field labels */
+.mat-mdc-form-field-appearance-outline .mdc-floating-label {
   top: unset;
   margin-top: unset;
 }
 
-/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-.mat-form-field-label-wrapper {
+.mat-mdc-form-field-label-wrapper {
   overflow: unset !important;
 }
 
-/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-.mat-form-field-outline-start,
-.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-end,
-.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-gap {
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__leading,
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__trailing,
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__notch {
   border-width: 1px !important;
   border-color: var(--secondary-light) !important;
 }
