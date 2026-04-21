@@ -1,0 +1,2 @@
+<app-unloading-sheet *ngIf="printService?.data?.type=='unloadingsheet'" [data]="printService.data"></app-unloading-sheet>
+<div id="htmlContentToPrint" [innerHTML]="printService.data"></div>

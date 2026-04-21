@@ -1,0 +1,60 @@
+<div class="invite-plat-details" style="padding: 24px !important">
+  <dadyin-button
+    class="cross"
+    type="icon"
+    [typeval]="'close'"
+    [theme]="'borderless-primary'"
+    (clicked)="close()"
+  ></dadyin-button>
+  <div class="invite-title">
+    <h6>Buddy Details</h6>
+  </div>
+  <div class="order-details-table">
+    <div class="table-responsive table-details">
+      <table id="example" class="table-striped" style="width: 100%">
+        <thead>
+          <tr>
+            <th>Sr#</th>
+            <th style="width: 15%">Buddy Name</th>
+            <th style="width: 20%">Phone Number</th>
+            <th>Email</th>
+            <th>Order Value</th>
+            <th>Paid</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let buddy of buddyDetails">
+            <tr *ngIf="buddyDetails !== null">
+              <td>{{ 1 }}</td>
+              <td>{{ buddy?.businessAccountDetail?.name }}</td>
+              <td>{{ buddy?.businessAccountDetail?.primaryContact?.phone }}</td>
+              <td>{{ buddy?.businessAccountDetail?.primaryContact?.email }}</td>
+              <td class="odr-value">{{ orderValue.attributeValue }}</td>
+              <td class="odr-value">0.00</td>
+              <td>
+                <dadyin-button
+                  [theme]="'borderless-danger'"
+                  type="icon"
+                  [typeval]="'delete_outline'"
+                  (clicked)="deleteBuddy(buddy?.id)"
+                ></dadyin-button>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <div class="no-invite" *ngIf="buddyDetails.length == 0">
+      <label> Please Invite The Buddy</label>
+    </div>
+  </div>
+  <div class="invite">
+    <dadyin-button
+      label="Add Buddy to Order"
+      [theme]="'primary'"
+      (clicked)="inviteBuddy()"
+    ></dadyin-button
+    >&nbsp;
+  </div>
+</div>

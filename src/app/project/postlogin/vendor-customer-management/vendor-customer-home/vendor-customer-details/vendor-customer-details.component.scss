@@ -1,0 +1,75 @@
+.manager-col-width {
+  width: 160px;
+}
+
+.hrs-time-width {
+  width: 60px;
+}
+
+.phone-col-width {
+  width: 214px;
+}
+
+.email-col-width {
+  width: 150px;
+}
+
+.address-col-width {
+  width: 200px;
+}
+
+.action-col-width {
+  width: 110px;
+}
+
+.process-table table thead tr th {
+  color: var(--primary-color);
+  font-weight: 600 !important;
+}
+
+.imgContainer {
+  width: 100% !important;
+  .action_close {
+    position: absolute;
+    right: 0px;
+    top: 35px;
+  }
+}
+
+.album {
+  border: 1px dashed var(--primary-color);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  height: 115px !important;
+  overflow: hidden;
+}
+
+.imgContainer img {
+  width: 100% !important;
+}
+
+#clearButton {
+  height: 25px;
+  width: 25px;
+  line-height: normal;
+  margin-bottom: 5px;
+}
+
+
+.required {
+  color: red;
+  font-size: x-small;
+}
+
+@media screen and (max-width: 768px) {
+  .width-perc-27 {
+    width: 100% !important;
+  }
+
+  .row {
+    row-gap: 5px;
+  }
+}

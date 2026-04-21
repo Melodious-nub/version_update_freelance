@@ -1,0 +1,510 @@
+{
+    "count": 26,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "description": "BodyWidth",
+            "systemUom": {
+                "id": 1,
+                "description": "mm"
+            },
+            "availableUoms": [
+                {
+                    "id": 1,
+                    "description": "mm"
+                },
+                {
+                    "id": 2,
+                    "description": "cm"
+                },
+                {
+                    "id": 3,
+                    "description": "m"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "description": "BodyLength",
+            "systemUom": {
+                "id": 1,
+                "description": "mm"
+            },
+            "availableUoms": [
+                {
+                    "id": 1,
+                    "description": "mm"
+                },
+                {
+                    "id": 2,
+                    "description": "cm"
+                },
+                {
+                    "id": 3,
+                    "description": "m"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "description": "BodySurfaceArea",
+            "systemUom": {
+                "id": 6,
+                "description": "m2"
+            },
+            "availableUoms": [
+                {
+                    "id": 4,
+                    "description": "mm2"
+                },
+                {
+                    "id": 5,
+                    "description": "cm2"
+                },
+                {
+                    "id": 6,
+                    "description": "m2"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "description": "BodyWeight",
+            "systemUom": {
+                "id": 7,
+                "description": "gm"
+            },
+            "availableUoms": [
+                {
+                    "id": 7,
+                    "description": "gm"
+                },
+                {
+                    "id": 8,
+                    "description": "kg"
+                },
+                {
+                    "id": 9,
+                    "description": "mt"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "description": "PatchWidth",
+            "systemUom": {
+                "id": 1,
+                "description": "mm"
+            },
+            "availableUoms": [
+                {
+                    "id": 1,
+                    "description": "mm"
+                },
+                {
+                    "id": 2,
+                    "description": "cm"
+                },
+                {
+                    "id": 3,
+                    "description": "m"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "description": "PatchLength",
+            "systemUom": {
+                "id": 1,
+                "description": "mm"
+            },
+            "availableUoms": [
+                {
+                    "id": 1,
+                    "description": "mm"
+                },
+                {
+                    "id": 2,
+                    "description": "cm"
+                },
+                {
+                    "id": 3,
+                    "description": "m"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "description": "PatchSurfaceArea",
+            "systemUom": {
+                "id": 6,
+                "description": "m2"
+            },
+            "availableUoms": [
+                {
+                    "id": 4,
+                    "description": "mm2"
+                },
+                {
+                    "id": 5,
+                    "description": "cm2"
+                },
+                {
+                    "id": 6,
+                    "description": "m2"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "description": "PatchWeight",
+            "systemUom": {
+                "id": 7,
+                "description": "gm"
+            },
+            "availableUoms": [
+                {
+                    "id": 7,
+                    "description": "gm"
+                },
+                {
+                    "id": 8,
+                    "description": "kg"
+                },
+                {
+                    "id": 9,
+                    "description": "mt"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "description": "ValveWidth",
+            "systemUom": {
+                "id": 1,
+                "description": "mm"
+            },
+            "availableUoms": [
+                {
+                    "id": 1,
+                    "description": "mm"
+                },
+                {
+                    "id": 2,
+                    "description": "cm"
+                },
+                {
+                    "id": 3,
+                    "description": "m"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "description": "ValveLength",
+            "systemUom": {
+                "id": 1,
+                "description": "mm"
+            },
+            "availableUoms": [
+                {
+                    "id": 1,
+                    "description": "mm"
+                },
+                {
+                    "id": 2,
+                    "description": "cm"
+                },
+                {
+                    "id": 3,
+                    "description": "m"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "description": "ValveSurfaceArea",
+            "systemUom": {
+                "id": 6,
+                "description": "m2"
+            },
+            "availableUoms": [
+                {
+                    "id": 4,
+                    "description": "mm2"
+                },
+                {
+                    "id": 5,
+                    "description": "cm2"
+                },
+                {
+                    "id": 6,
+                    "description": "m2"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "description": "ValveWeight",
+            "systemUom": {
+                "id": 7,
+                "description": "gm"
+            },
+            "availableUoms": [
+                {
+                    "id": 7,
+                    "description": "gm"
+                },
+                {
+                    "id": 8,
+                    "description": "kg"
+                },
+                {
+                    "id": 9,
+                    "description": "mt"
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "description": "Width",
+            "systemUom": {
+                "id": 1,
+                "description": "mm"
+            },
+            "availableUoms": [
+                {
+                    "id": 1,
+                    "description": "mm"
+                },
+                {
+                    "id": 2,
+                    "description": "cm"
+                },
+                {
+                    "id": 3,
+                    "description": "m"
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "description": "Length",
+            "systemUom": {
+                "id": 1,
+                "description": "mm"
+            },
+            "availableUoms": [
+                {
+                    "id": 1,
+                    "description": "mm"
+                },
+                {
+                    "id": 2,
+                    "description": "cm"
+                },
+                {
+                    "id": 3,
+                    "description": "m"
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "description": "Weight",
+            "systemUom": {
+                "id": 7,
+                "description": "gm"
+            },
+            "availableUoms": [
+                {
+                    "id": 7,
+                    "description": "gm"
+                },
+                {
+                    "id": 8,
+                    "description": "kg"
+                },
+                {
+                    "id": 9,
+                    "description": "mt"
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "description": "Bottom",
+            "systemUom": {
+                "id": 1,
+                "description": "mm"
+            },
+            "availableUoms": [
+                {
+                    "id": 1,
+                    "description": "mm"
+                },
+                {
+                    "id": 2,
+                    "description": "cm"
+                },
+                {
+                    "id": 3,
+                    "description": "m"
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "description": "Cost",
+            "systemUom": {
+                "id": 13,
+                "description": "USD"
+            },
+            "availableUoms": [
+                {
+                    "id": 13,
+                    "description": "USD"
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "description": "GSM",
+            "systemUom": {
+                "id": 12,
+                "description": "gm/m2"
+            },
+            "availableUoms": [
+                {
+                    "id": 10,
+                    "description": "gm/mm2"
+                },
+                {
+                    "id": 11,
+                    "description": "gm/cm2"
+                },
+                {
+                    "id": 12,
+                    "description": "gm/m2"
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "description": "SurfaceArea",
+            "systemUom": {
+                "id": 6,
+                "description": "m2"
+            },
+            "availableUoms": [
+                {
+                    "id": 4,
+                    "description": "mm2"
+                },
+                {
+                    "id": 5,
+                    "description": "cm2"
+                },
+                {
+                    "id": 6,
+                    "description": "m2"
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "description": "NumberOfProducts",
+            "systemUom": {
+                "id": 14,
+                "description": "count"
+            },
+            "availableUoms": [
+                {
+                    "id": 14,
+                    "description": "count"
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "description": "Thickness",
+            "systemUom": {
+                "id": 16,
+                "description": "micron"
+            },
+            "availableUoms": []
+        },
+        {
+            "id": 22,
+            "description": "Density",
+            "systemUom": {
+                "id": 15,
+                "description": "gm/cm3"
+            },
+            "availableUoms": [
+                {
+                    "id": 15,
+                    "description": "gm/cm3"
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "description": "PercentUsed",
+            "systemUom": {
+                "id": 14,
+                "description": "count"
+            },
+            "availableUoms": [
+                {
+                    "id": 14,
+                    "description": "count"
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "description": "AverageDensity",
+            "systemUom": {
+                "id": 15,
+                "description": "gm/cm3"
+            },
+            "availableUoms": [
+                {
+                    "id": 15,
+                    "description": "gm/cm3"
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "description": "CostAddOn",
+            "systemUom": {
+                "id": 13,
+                "description": "USD"
+            },
+            "availableUoms": [
+                {
+                    "id": 13,
+                    "description": "USD"
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "description": "PercentWaste",
+            "systemUom": {
+                "id": 14,
+                "description": "count"
+            },
+            "availableUoms": [
+                {
+                    "id": 14,
+                    "description": "count"
+                }
+            ]
+        }
+    ]
+}

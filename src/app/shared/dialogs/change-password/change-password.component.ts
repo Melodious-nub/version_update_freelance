@@ -1,0 +1,88 @@
+import { Component, Inject, OnInit } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { SignupService } from 'src/app/project/prelogin/signup.service';
+import { HttpService } from 'src/app/service/http.service';
+import { userApiModules } from '../../constant';
+
+
+@Component({
+  selector: 'app-change-password-dialog',
+  templateUrl: './change-password.component.html',
+  styleUrls: ['./change-password.component.scss']
+})
+export class ChangePasswordDialogComponent implements OnInit {
+  changePasswordForm: UntypedFormGroup;
+  isSubmitting = false;
+  showOldPassword = false;
+  showNewPassword = false;
+  showConfirmPassword = false;
+
+  constructor(
+    public dialogRef: MatDialogRef<ChangePasswordDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private fb: UntypedFormBuilder,
+    private httpService: HttpService,
+    private signupService: SignupService,
+    private toastr: ToastrService
+  ) { }
+
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm(): void {
+    this.changePasswordForm = this.fb.group({
+      oldPassword: [null, Validators.required],
+      newPassword: [null, Validators.required],
+      confirmPassword: [null, Validators.required],
+    });
+  }
+
+  get passwordMismatch(): boolean {
+    const newPassword = this.changePasswordForm?.get('newPassword')?.value;
+    const confirmPassword = this.changePasswordForm?.get('confirmPassword')?.value;
+    return !!newPassword && !!confirmPassword && newPassword !== confirmPassword;
+  }
+
+  get f() {
+    return this.changePasswordForm.controls;
+  }
+
+  close() {
+    this.dialogRef.close();
+  }
+
+  changePassword() {
+    if (this.changePasswordForm.invalid) {
+      this.changePasswordForm.markAllAsTouched();
+      return;
+    }
+
+    if (this.passwordMismatch) {
+      this.toastr.error('New password and confirm password do not match.');
+      return;
+    }
+
+    const payload = {
+      oldPassword: this.signupService.encryptPassword(this.f['oldPassword'].value),
+      newPassword: this.signupService.encryptPassword(this.f['newPassword'].value),
+    };
+
+    this.isSubmitting = true;
+    this.httpService.post(userApiModules.change_password, payload).subscribe({
+      next: () => {
+        this.toastr.success('Password changed successfully.');
+        this.dialogRef.close(true);
+      },
+      error: (err) => {
+        this.toastr.error(err?.error?.message ?? 'Unable to change password.');
+        this.isSubmitting = false;
+      },
+      complete: () => {
+        this.isSubmitting = false;
+      }
+    });
+  }
+}

@@ -1,0 +1,19 @@
+{
+    "count": 3,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "description": "Bags"
+        },
+        {
+            "id": 2,
+            "description": "Boxes"
+        },
+        {
+            "id": 3,
+            "description": "Food Products"
+        }
+    ]
+}

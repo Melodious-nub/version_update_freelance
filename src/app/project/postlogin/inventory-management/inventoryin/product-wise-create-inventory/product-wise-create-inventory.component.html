@@ -1,0 +1,313 @@
+<div class="wizard-bar-container">
+  <div class="wizard-heading width-perc-25">
+    <div class="d-flex">
+      <dadyin-button
+        class="header-icon"
+        [theme]="'borderless-default'"
+        type="icon"
+        [typeval]="'arrow_circle_left'"
+        (clicked)="navigateToList()"
+      >
+      </dadyin-button>
+      <div class="content-title px-2">
+        <label>{{ "Label" }}</label>
+      </div>
+    </div>
+  </div>
+  <div class="width-perc-50">
+    <div class="d-flex">
+      <div class="content-title width-perc-5">
+        <span class="prev-icon">
+          <mat-icon> keyboard_double_arrow_left </mat-icon>
+        </span>
+      </div>
+      <div class="content-title mx-1 width-perc-90">
+        <label style="font-weight: 500er" class="title-text font-size-18">{{
+          productCode
+        }}</label>
+      </div>
+      <div class="content-title width-perc-5">
+        <span class="next-icon">
+          <mat-icon> keyboard_double_arrow_right </mat-icon></span
+        >
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end align-items-center width-perc-25">
+    <dadyin-button (clicked)="confirm()" [theme]="'primary'" label="Save"> </dadyin-button>
+  </div>
+</div>
+<mat-expansion-panel
+  class="panel-no-padding mt-4"
+  expanded="true"
+  #expansionPanel3
+>
+  <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
+    <mat-panel-description>
+      <div class="w-100 title-text">Product Details</div>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <ng-template matExpansionPanelContent>
+    <div class="process-table table-padding">
+      <!-- Material Cost -->
+      <table>
+        <thead>
+          <tr>
+            <th style="padding-left: 20px">SR#</th>
+            <th>PO/BILL</th>
+            <th>ORDERED ON</th>
+            <th>PKGs SKU</th>
+            <th>LOADING DOCK</th>
+            <th>QTY Received</th>
+            <th>QTY ORDERED</th>
+            <th>WT</th>
+            <th>VOL</th>
+            <th colspan="2">ADDED TO INVENTORY INSTRUCTIONS</th>
+            <th>STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container
+            *ngFor="let item of inventoryLotForm.controls; let i = index"
+           
+          >
+            <ng-container
+              *ngFor="let detail of item.get('inventoryDetails').controls"  [formGroup]="detail"
+            >
+              <tr *ngIf="detail.get('productId').value == productId">
+                <td style="padding-left: 21px">{{ i + 1 }}.</td>
+                <td>
+                  <input
+                    disabled
+                    type="text"
+                    [value]="item.get('purchaseOrderTransactionId')?.value"
+                  />
+                </td>
+                <td>
+                  <input
+                    disabled
+                    type="text"
+                    [value]="item.get('orderDate')?.value"
+                  />
+                </td>
+                <td>
+                  <input type="text" disabled  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    disabled
+                    [value]="item.get('dockNumber')?.value"
+                  />
+                </td>
+                <td>
+                  <input
+                    
+                    type="text"
+                    (change)="calculate()"
+                    formControlName="quantityReceived"
+                  />
+                </td>
+                <td>
+                  <input
+                   
+                    type="text"
+                    (change)="calculate()"
+                    formControlName="quantityOrdered"
+                  />
+                </td>
+                <td>
+                  <input
+                    disabled
+                    type="text"
+                    [value]="detail.get('weight')?.value?.attributeValue"
+                  />
+                </td>
+                <td>
+                  <input
+                    disabled
+                    type="text"
+                    [value]="detail.get('volume')?.value?.attributeValue"
+                  />
+                </td>
+                <td colspan="2">
+                  <input
+                  disabled
+                  type="text"
+                  [value]="detail.get('note')?.value"
+                />
+                </td>
+                <td>
+                  <dadyin-button *ngIf="detail.get('status').value=='DRAFT'" (clicked)="detail.get('status').setValue('COMPLETED')" [theme]="'primary'" label="Confirm"></dadyin-button>
+                  <span *ngIf="detail.get('status').value=='COMPLETED'">{{detail.get('status').value}}</span>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+  </ng-template>
+</mat-expansion-panel>
+
+<div class="my-1">
+  <div class="toolbar title-text">Inventory Selection</div>
+
+  <div class="d-flex justify-content-end align-items-center">
+    <div class="process-table table-padding">
+      <table>
+        <thead>
+          <tr>
+            <th>PALLET</th>
+            <th>LOCATION</th>
+            <th>ROW</th>
+            <th>COLUMN</th>
+            <th>SINGLE UNITS</th>
+            <th>BOXES/PALLET</th>
+            <th>PO#/BILL</th>
+            <th>SO#/INVOICE</th>
+            <th>DOCK #</th>
+            <th>HANDLING</th>
+            <th>NOTES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of response?.palletInventories; let i = index">
+            <td>
+              <input [value]="item.palletNumber" disabled type="text" />
+            </td>
+            <td>
+              <input [value]="item.location" disabled type="text" />
+            </td>
+            <td>
+              <input [value]="item.rowNumber" disabled type="text" />
+            </td>
+            <td>
+              <input [value]="item.columnNumber" disabled type="text" />
+            </td>
+            <td>
+              <input [value]="item.singleBoxNumber" disabled type="text" />
+            </td>
+            <td>
+              <input disabled type="text" />
+            </td>
+            <td>
+              <input disabled type="text" />
+            </td>
+            <td>
+              <input disabled type="text" />
+            </td>
+            <td>
+              <input [value]="item.dockNumber" disabled type="text" />
+            </td>
+            <td>
+              <input [value]="item.handlingInstructions" disabled type="text" />
+            </td>
+            <td>
+              <input [value]="item.notes" disabled type="text" />
+            </td>
+          </tr>
+
+          <ng-container *ngFor="let item of inventoryLotForm.controls">
+            <ng-container
+              *ngFor="let detail of item.get('inventoryDetails').controls"
+            >
+              <ng-container
+                *ngFor="let pallet of detail.get('palletInventories').controls"
+                [formGroup]="pallet"
+              >
+                <tr *ngIf="detail.get('productId').value == productId">
+                  <td>
+                    <input [readonly]="detail.get('status').value=='COMPLETED'" formControlName="palletNumber" type="text" />
+                  </td>
+                  <td>
+                    <input [readonly]="detail.get('status').value=='COMPLETED'" formControlName="location" type="text" />
+                  </td>
+                  <td>
+                    <input [readonly]="detail.get('status').value=='COMPLETED'"
+                      (change)="calculate()"
+                      formControlName="rowNumber"
+                      type="number"
+                    />
+                  </td>
+                  <td>
+                    <input [readonly]="detail.get('status').value=='COMPLETED'"
+                      (change)="calculate()"
+                      formControlName="columnNumber"
+                      type="number"
+                    />
+                  </td>
+                  <td>
+                    <input [readonly]="detail.get('status').value=='COMPLETED'"
+                      (change)="calculate()"
+                      formControlName="singleBoxNumber"
+                      type="number"
+                    />
+                  </td>
+                  <td>
+                    <input [readonly]="detail.get('status').value=='COMPLETED'" type="text" formControlName="numberOfItems" />
+                  </td>
+                  <td>
+                    <input 
+                      type="text"
+                      readonly
+                      [value]="item.get('purchaseOrderTransactionId').value"
+                    />
+                  </td>
+                  <td>
+                    <input [readonly]="detail.get('status').value=='COMPLETED'" type="text" />
+                  </td>
+                  <td>
+                    <input [readonly]="detail.get('status').value=='COMPLETED'" formControlName="dockNumber" type="text" />
+                  </td>
+                  <td>
+                    <input [readonly]="detail.get('status').value=='COMPLETED'" formControlName="handlingInstructions" type="text" />
+                  </td>
+                  <td>
+                    <input [readonly]="detail.get('status').value=='COMPLETED'" formControlName="notes" type="text" />
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </tbody>
+        <tfoot></tfoot>
+      </table>
+      <div class="d-flex my-5 justify-content-between">
+        <div></div>
+        <div>
+          <!-- <dadyin-button
+            label="Merge Pallet"
+            [theme]="'default'"
+          ></dadyin-button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br /><br /><br />
+<div class="row">
+  <div class="col-6">
+    <div class="toolbar title-text">Inventory Ledger</div>
+    <data-table
+      [data]="response?.completedOrders"
+      [headers]="inventoryLedgerHeader"
+      [searchTerm]="filterValue"
+      [pageConfig]="pageConfig"
+      [actions]="tabelActions"
+    >
+    </data-table>
+  </div>
+  <div class="col-6">
+    <div class="toolbar title-text">Inventory Arriving</div>
+    <data-table
+      [data]="response?.incomingOrders"
+      [headers]="inventoryArrivingHeader"
+      [searchTerm]="filterValue"
+      [pageConfig]="pageConfig"
+      [actions]="tabelActions"
+    >
+    </data-table>
+  </div>
+</div>

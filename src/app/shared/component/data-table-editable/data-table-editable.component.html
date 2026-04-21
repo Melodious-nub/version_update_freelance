@@ -1,0 +1,96 @@
+<div class="datatable-container-editable">
+  <mat-table
+    [dataSource]="dataSource"
+    matSort
+    (matSortChange)="onSortChange($event)"
+  >
+    <ng-container  *ngFor="let col of headers" [matColumnDef]="col.prop">
+      <mat-header-cell sticky
+        *matHeaderCellDef
+        mat-sort-header
+        [disabled]="!col.sortable"
+        [ngClass]="{ 'custom-header': col.dataType === 'number' }"
+        [ngStyle]="{
+          'min-width': getMinWidth(col),
+          'max-width': getMaxWidth(col)
+        }"
+      >
+        {{ col.name }}
+      </mat-header-cell>
+
+      <mat-cell 
+        *matCellDef="let row; let rowIndex = index"
+         [ngStyle]="{
+          'min-width': getMinWidth(col),
+          'max-width': getMaxWidth(col)
+        }"
+      >
+        <div >
+          <ng-container   *ngIf="col.type === 'text' || !col.type">
+            <input
+              [ngModel]="row[col.prop]"
+              (change)="onEdit($event,row, col.prop)"
+              class="form-control"
+              [attr.data-label]="col.name"
+            />
+          </ng-container>
+
+      
+          <ng-container *ngIf="col.type === 'viewnote'">
+            <i
+              class="material-icon mx-1 mt-2"
+              (click)="
+                onActionArrayClick({ label: 'Note' }, rowIndex, row);
+                $event.stopPropagation()
+              "
+              >description</i
+            >
+          </ng-container>
+          <ng-container *ngIf="col.type === 'updateStatus'">
+            <select
+              class="w-100"
+              (click)="$event.stopPropagation()"
+              name="status"
+            >
+          <option [value]="open">OPEN</option>
+          <option [value]="close">CLOSE</option>
+          </select>
+          </ng-container>
+
+          <ng-container *ngIf="col.type === 'date'">
+            <input
+              type="date"
+              [(ngModel)]="row[col.prop]"
+              (ngModelChange)="onEdit(row, col.prop)"
+              class="form-control"
+              [attr.data-label]="col.name"
+            />
+          </ng-container>
+        </div>
+
+       
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row sticky
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="editRecord(row)"
+    ></mat-row>
+  </mat-table>
+
+  <mat-paginator
+    #paginator
+    [length]="pageConfig?.totalElements"
+    [showTotalPages]="pageConfig?.totalPages"
+    *ngIf="tableData?.length && pageConfig"
+    [pageSizeOptions]="pageConfig.sizeOption ? pageConfig.sizeOption : []"
+    (page)="onPageChange($event)"
+    [pageSize]="pageConfig?.itemPerPage"
+    [showFirstLastButtons]="true"
+  >
+  </mat-paginator>
+</div>
+<div *ngIf="!tableData || tableData.length === 0" class="no-data-found">
+  <span class="mx-p-b-10"> No records found </span>
+</div>

@@ -1,0 +1,7 @@
+<section class="attribute onevendo" [style.height]="height ? height + '!important' : ''">
+    <label *ngIf="label">{{label}}</label>
+    <input  [style.height]="height ? '100%' + '!important' : ''"
+        [style.fontSize]="fontSize ? fontSize + '!important' : ''" type="text" (change)="onChangeInput($event)" [formControl]="control.get('addressLine')" (keydown.enter)="$event.preventDefault()"
+    placeholder="Search Address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+    #autocompleteInput>    
+</section>

@@ -1,0 +1,122 @@
+<div class="row onboarding-section" [formGroup]="businessRegistrationForm">
+    <div class="d-flex justify-content-between">
+        <div>
+            <div class="welcome-text">
+                Welcome to,
+            </div>
+            <img src="assets/img/subscription/dadyin-logo.png" alt="Logo" />
+        </div>
+        <div>
+            <div class="d-flex gap-2">
+                <ng-container formGroupName="primaryContact">
+                <div class="attribute b-none mx-1" formGroupName="phone">
+                    <ng-select appendTo="body" formControlName="countryId" [searchFn]="customSearchFn"
+                        [clearable]="false" class="custom" [items]="countries" labelForId="yesno" bindValue="id"
+                        placeholder="Select">
+                        <ng-template ng-label-tmp let-item="item">
+                            <div>
+                                <img width="10px" height="10px"
+                                    src="{{'../../../../../../assets/img/flags/' + item?.iso3?.toLowerCase() + '.svg'}}" />
+                                {{item?.iso2}} {{(item?.phoneCode)}}
+                            </div>
+                        </ng-template>
+                        <ng-template ng-option-tmp let-item="item" let-index="index">
+                            <div>
+                                <img width="10px" height="10px"
+                                    src="{{'../../../../../../assets/img/flags/' + item?.iso3?.toLowerCase() + '.svg'}}" />
+                                {{item?.iso2}} {{(item?.phoneCode)}}
+                            </div>
+                        </ng-template>
+                    </ng-select>
+                </div>
+            </ng-container>
+                <dadyin-select class="currencySelect" formControlName="currency" [optionArr]="currencyList">
+                </dadyin-select>
+            </div>
+        </div>
+    </div>
+    <div class="form-container">
+        <div class="info-text">Let us know more about your Business,</div>
+        <div class="row">
+            <div class="col-6">
+                <dadyin-input inputType="string" formControlName="name" label="Business Name" [isClearable]="false">
+                </dadyin-input>
+            </div>
+            <div class="col-6">
+                <dadyin-select [emptyOption]="'Select Business Type'" formControlName="businessLines"
+                    [optionArr]="businessTypes" label="Select Business Type" optionLabel="description" optionValue="id">
+                </dadyin-select>
+            </div>
+        </div>
+        <div class="border"></div>
+        <ng-container formGroupName="primaryContact">
+            <div class="row">
+                <div formGroupName="phone" class="col-6 d-flex">
+                    <div class="width-perc-30 attribute b-none mx-1">
+                        <label class="bg-white" for="yesno">Country Code</label>
+                        <ng-select appendTo="body" formControlName="countryId" [searchFn]="customSearchFn"
+                            [clearable]="false" class="custom" [items]="countries" labelForId="yesno" bindValue="id">
+                            <ng-template ng-label-tmp let-item="item">
+                                <div>
+                                    <img width="10px" height="10px"
+                                        src="{{'../../../../../../assets/img/flags/' + item?.iso3?.toLowerCase() + '.svg'}}" />
+                                    {{item?.iso2}} {{(item?.phoneCode)}}
+                                </div>
+                            </ng-template>
+                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                                <div>
+                                    <img width="10px" height="10px"
+                                        src="{{'../../../../../../assets/img/flags/' + item?.iso3?.toLowerCase() + '.svg'}}" />
+                                    {{item?.iso2}} {{(item?.phoneCode)}}
+                                </div>
+                            </ng-template>
+                        </ng-select>
+                        <!-- <span class="required"
+                        *ngIf="businessRegistrationForm.get('primaryContact').get('phone').get('countryId').invalid">Country
+                        Code is required.</span> -->
+                    </div>
+                    <div class="width-perc-70">
+                        <div class="attribute one attr-b">
+                            <label for="">Phone</label>
+                            <div class="attribute-input">
+                                <input type="number" formControlName="number" onKeyPress="if(this.value.length==12) return false;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <dadyin-input inputType="string" formControlName="email" label="Business Email"
+                        [isClearable]="false">
+                    </dadyin-input>
+                </div>
+            </div>
+            <ng-container formGroupName="address">
+                <div class="row mb-4">
+                    <dadyin-map-autocomplete class="col-12" label="Search Address"
+                        (address)="onAddressSelection($event,businessRegistrationForm.get('primaryContact').get('address'))"
+                        [control]="businessRegistrationForm.get('primaryContact').get('address')"></dadyin-map-autocomplete>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <dadyin-input inputType="string" formControlName="addressState" label="State"
+                            [isClearable]="false">
+                        </dadyin-input>
+                    </div>
+                    <div class="col-6">
+                        <dadyin-input inputType="string" formControlName="addressZipCode" label="Zip Code"
+                            [isClearable]="false">
+                        </dadyin-input>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+        <div class="row button-section">
+            <div class="secondary-btn col-6" (click)="updateBusiness('business')">Go to Business Registration</div>
+            <div class="col-6">
+                <dadyin-button [theme]="'primary'" label="Jump to Dashboard" [height]="'50px'" [fontSize]="'18px'"
+                    [width]="'100%'" (clicked)="updateBusiness('dashboard')">
+                </dadyin-button>
+            </div>
+        </div>
+    </div>
+</div>

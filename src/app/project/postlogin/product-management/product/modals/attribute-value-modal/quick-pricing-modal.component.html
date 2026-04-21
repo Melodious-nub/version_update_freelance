@@ -1,0 +1,160 @@
+<div class="dialog-container">
+ <i class="material-icon" mat-dialog-close>close</i>
+
+  <div class="dialog-card-header">
+    <h3>Quick Pricing Calculations</h3>
+  </div>
+  <div [formGroup]="tierPricingDetail">
+    <div formGroupName="quickPricing" class="b-light">
+      <div class="row mx-auto w-100 bg-light py-3">
+        <div class="col-4">
+          <div class="attribute one attr-b">
+            <label for="">Qty Required</label>
+            <div class="attribute-input">
+              <input
+                min="0"
+                formControlName="quantityReceived"
+                type="number"
+                placeholder="Enter your value"
+              />
+              <select
+                formControlName="receivedPriceOption"
+                style="min-width: unset"
+              >
+                <option value="UNIT">UNIT</option>
+                <option value="SKU">SKU</option>
+                <option value="PALLET">PALLET</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="d-flex align-items-center">
+            <div class="attribute one width-perc-50">
+              <label for="">Container Size</label>
+              <div class="attribute-select">
+                <select>
+                  <option value="null">None</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row p-3">
+        <div class="col-4">
+          <div class="attribute one attr-b">
+            <label for="">Estimated Price</label>
+            <div formGroupName="estimatedCost" class="attribute-input">
+              <input
+                formControlName="attributeValue"
+                disabled
+                min="0"
+                type="number"
+                placeholder="Enter your value"
+              />
+              <select
+                formControlName="userConversionUom"
+                style="min-width: unset"
+              >
+                <ng-container
+                  *ngFor="let item of uomService?.availableCostUoms"
+                >
+                  <option [value]="item.description">
+                    {{ item?.description }}
+                  </option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="attribute one attr-b">
+            <label for="">Estimated Weight</label>
+            <div formGroupName="estimatedWeight" class="attribute-input">
+              <input
+                formControlName="attributeValue"
+                disabled
+                min="0"
+                type="number"
+                placeholder="Enter your value"
+              />
+              <select
+                formControlName="userConversionUom"
+                style="min-width: unset"
+              >
+                <ng-container
+                  *ngFor="let item of uomService?.availableWeightUoms"
+                >
+                  <option [value]="item.description">
+                    {{ item?.description }}
+                  </option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="attribute one attr-b">
+            <label for="">Estimated Volume</label>
+            <div formGroupName="estimatedVolume" class="attribute-input">
+              <input
+                formControlName="attributeValue"
+                disabled
+                min="0"
+                type="number"
+                placeholder="Enter your value"
+              />
+              <select
+                formControlName="userConversionUom"
+                style="min-width: unset"
+              >
+                <ng-container
+                  *ngFor="let item of uomService?.availableWeightUoms"
+                >
+                  <option [value]="item.description">
+                    {{ item?.description }}
+                  </option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="attribute one attr-b">
+            <label for="">QOH</label>
+            <div class="attribute-input">
+              <input
+                formControlName="quantityOnHand"
+                min="0"
+                type="number"
+                placeholder="Enter your value"
+              />
+              <select
+                formControlName="onHandPriceOption"
+                style="min-width: unset"
+              >
+                <option value="UNIT">UNIT</option>
+                <option value="SKU">SKU</option>
+                <option value="PALLET">PALLET</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <div class="d-flex align-items-center justify-content-center">
+    <dadyin-button
+      [typeval]="'save'"
+      [type]="'icon'"
+      [theme]="'primary'"
+      [tooltip]="'Save'"
+      (clicked)="save()"
+    >
+    </dadyin-button>
+  </div>
+</div>

@@ -1,0 +1,120 @@
+<div class="row">
+  <div class="col-4">
+    <div class="d-flex align-items-center">
+      <input
+        [formControl]="searchControl"
+        [matAutocomplete]="auto"
+        type="text"
+        class="b-all w-100"
+        placeholder="Type here to add"
+      />
+      <dadyin-button
+        [isDisabled]="!searchControl.value"
+        (clicked)="addNew(searchControl?.value)"
+        [theme]="'borderless-primary'"
+        type="icon"
+        [typeval]="'add_circle_outline'"
+      >
+      </dadyin-button>
+      <mat-autocomplete
+        (optionSelected)="addSelectedItem($event.option.value)"
+        autoActiveFirstOption
+        #auto="matAutocomplete"
+      >
+        <ng-container *ngFor="let item of additionalCostList">
+          <mat-option *ngIf="!isAdditionalCostExist(item)" [value]="item">
+            {{ item?.description }}
+          </mat-option>
+        </ng-container>
+      </mat-autocomplete>
+    </div>
+  </div>
+  <div class="col-8"></div>
+</div>
+<div>
+  <div class="row py-2" style="row-gap: 10px">
+    <div
+      class="col-4"
+      [formGroup]="additionalCost"
+      *ngFor="let additionalCost of additionalCosts.controls; let i = index"
+    >
+      <div class="b-light b-round p-2">
+        <div class="d-flex align-items-center h-30 p-1">
+          <div class="title-text col-11">
+            {{ additionalCost.get("description").value }}
+          </div>
+          <div class="col-1 text-right">
+            <dadyin-button
+              [theme]="'borderless-danger'"
+              type="icon"
+              [typeval]="'delete_outline'"
+              (clicked)="removeAdditionalcost(i)"
+            >
+            </dadyin-button>
+          </div>
+        </div>
+
+        <div
+          class="d-flex align-items-center h-30 my-1 p-1"
+          *ngIf="
+            additionalCost.get('additionalCostValues').controls?.length == 0
+          "
+        >
+          <div class="col-11 d-flex align-items-center"></div>
+          <div class="col-1 d-flex align-items-center justify-content-end">
+            <dadyin-button
+              [theme]="'borderless-danger'"
+              type="icon"
+              [typeval]="'delete_outline'"
+            >
+            </dadyin-button>
+            <i class="mat-icon" (click)="addAcValue(i)">add_circle_outline</i>
+          </div>
+        </div>
+        <div
+          class="d-flex align-items-center h-30 my-1 p-1"
+          [formGroup]="acvalue"
+          *ngFor="
+            let acvalue of additionalCost.get('additionalCostValues').controls;
+            let j = index
+          "
+        >
+          <div class="col-10 d-flex align-items-center" style="column-gap: 5px">
+            <input
+              type="text"
+              placeholder="Enter Description"
+              formControlName="description"
+              class="b-all w-100"
+            />
+            <input
+              type="number"
+              placeholder="Enter Attribute Value"
+              formControlName="attributeValue"
+              class="b-all w-100"
+            />
+            <select formControlName="userConversionUom" class="b-all b-round w-100">
+              <option disabled selected [value]="null">Select Uom</option>
+              <ng-container
+                *ngFor="let item of uomService?.availableAllMetricUOM"
+              >
+                <option [value]="item.description">
+                  {{ item.description }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+          <div class="col-2 d-flex align-items-center justify-content-end">
+            <dadyin-button
+              [theme]="'borderless-danger'"
+              type="icon"
+              [typeval]="'delete_outline'"
+              (clicked)="removeAcValue(i, j)"
+            >
+            </dadyin-button>
+            <i class="mat-icon" (click)="addAcValue(i)">add_circle_outline</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

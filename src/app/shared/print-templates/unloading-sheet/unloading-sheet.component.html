@@ -1,0 +1,375 @@
+<div class="h-70 panel-header  bg-primary-light  justify-content-center title-text font-size-16">
+  Unloading Sheet
+</div>
+
+<div class="b-light my-2">
+  <div class="toolbar  justify-content-center title-text">
+    Container Details
+  </div>
+  <div class="input-order p-3">
+    <div class="inp">
+      <div class="attribute one">
+        <label for="">Container #</label>
+        <div class="attribute-input" >
+          <input readonly [(ngModel)]="data.containerForm.containerNumber" type="text" />
+        </div>
+      </div>
+    </div>
+    <div class="inp">
+      <div class="attribute one">
+        <label for="">Local Container #</label>
+        <div class="attribute-input" >
+          <input readonly [(ngModel)]="data.containerForm.localContainerNumber" type="text" />
+        </div>
+      </div>
+    </div>
+    <div class="inp">
+      <div class="attribute one">
+        <label for="">Loading Dock #</label>
+        <div class="attribute-input" >
+          <input readonly [(ngModel)]="data.containerForm" type="text" />
+        </div>
+      </div>
+    </div>
+    <div class="inp">
+      <div class="attribute one">
+        <label for="">Unloading Manager</label>
+        <div class="attribute-input" >
+          <input readonly [(ngModel)]="unloadingManager" type="text" />
+        </div>
+      </div>
+    </div>
+    <div class="inp">
+      <div class="attribute one">
+        <label for="">Unloading Date</label>
+        <div class="attribute-input" >
+          <input readonly [(ngModel)]="data.containerForm" type="text" />
+        </div>
+      </div>
+    </div>
+    <div class="inp">
+      <div class="attribute one">
+        <label for="">Note</label>
+        <div class="attribute-input" >
+          <input readonly [(ngModel)]="data.containerForm" type="text" />
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+<div class="b-light my-2">
+  <div class="toolbar  justify-content-center title-text">
+    Unloading Sheet
+  </div>
+  <div class="process-table table-padding pb-5 last-child">
+
+    <table>
+      <thead>
+        <tr class="bg-light">
+          <th style="padding-left:20px;">SR#</th>
+          <th>PALLET</th>
+          <th>PO#</th>
+          <th>LOCATION</th>
+          <th>ROW</th>
+          <th>COLUMN</th>
+          <th>SINGLE/UNITS</th>
+          <th>BOXES/PALLET</th>
+          <th>NOTE</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <ng-container *ngFor="let containerOrder of data?.containerForm?.containerOrders;let i=index;">
+          <ng-container *ngFor="let containerProduct of containerOrder?.containerProducts;let j=index;">
+          <tr>
+            <td style="padding-left:21px;"> {{i+1}}. </td>
+            <td>
+              <div>DT-123 {{containerProduct?.productId}}</div>
+            </td>
+            <td colspan="7" class="bg-light">
+              <div class="bg-light">1/6 Beige Thank you bags</div>
+            </td>
+          </tr>
+          <tr  *ngFor="let pallet of containerProduct.orderPalletInformations;let k=index;">
+            <td style="padding-left:21px;"> </td>
+            <td>
+              <div>{{pallet?.palletNumber}}</div>
+            </td>
+            <td>
+              <div>{{containerOrder?.purchaseOrderDetail?.transactionId}}</div>
+            </td>
+            <td>
+              <div>{{pallet?.location}}</div>
+            </td>
+            <td>
+              <div>{{pallet?.location}}</div>
+            </td>
+            <td>
+              <div>{{pallet?.rowNumber}}</div>
+            </td>
+            <td>
+              <div>{{pallet?.columnNumber}}</div>
+            </td>
+            <td>
+              <div>{{pallet?.singleBoxNumber}}</div>
+            </td>
+            <td>
+              <div>{{pallet?.note}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-left:21px;"> </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+            <td >
+              <div style="text-align:right;"> <b>SKUS </b></div>
+            </td>
+            <td>
+              <div class="bg-light"> <b>345</b></div>
+            </td>
+            <td>
+
+            </td>
+          </tr>
+        </ng-container>
+        </ng-container>
+        <tr></tr>
+        <tr>
+          <td style="padding-left:21px;"> </td>
+          <td colspan="2" class="bg-light">
+            <div> <b> TOTAL PALLETS </b></div>
+          </td>
+          <td colspan="2" class="bg-light">
+            <div> <b> 22 PALLETS </b></div>
+          </td>
+          <td colspan="2" class="bg-light">
+            <div style="text-align:right;"> <b>TOTAL SKUS  </b></div>
+          </td>
+          <td colspan="2" class="bg-light">
+            <div> <b> 1300 </b></div>
+          </td>
+        </tr>
+        <tr></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="my-2 h-70 panel-header  bg-primary-light  justify-content-center title-text font-size-16">
+  Unloading Instructions
+</div>
+<div class=" my-2 b-light">
+  <div class="toolbar  justify-content-center title-text">
+    Container Details
+  </div>
+  <div class="input-order p-3">
+    <div class="inp">
+      <div class="attribute one">
+        <label for="">Container #</label>
+        <div class="attribute-input" >
+          <input readonly [(ngModel)]="data.containerForm.containerNumber" type="text" />
+        </div>
+      </div>
+    </div>
+    <div class="inp">
+      <div class="attribute one">
+        <label for="">Local Container #</label>
+        <div class="attribute-input" >
+          <input readonly [(ngModel)]="data.containerForm.localContainerNumber" type="text" />
+        </div>
+      </div>
+    </div>
+    <div class="inp">
+      <div class="attribute one">
+        <label for="">Loading Dock #</label>
+        <div class="attribute-input" >
+          <input readonly [(ngModel)]="data.containerForm" type="text" />
+        </div>
+      </div>
+    </div>
+    <div class="inp">
+      <div class="attribute one">
+        <label for="">Unloading Manager</label>
+        <div class="attribute-input" >
+          <input readonly [(ngModel)]="unloadingManager" type="text" />
+        </div>
+      </div>
+    </div>
+    <div class="inp">
+      <div class="attribute one">
+        <label for="">Unloading Date</label>
+        <div class="attribute-input" >
+          <input readonly [(ngModel)]="data.containerForm" type="text" />
+        </div>
+      </div>
+    </div>
+    <div class="inp">
+      <div class="attribute one">
+        <label for="">Note</label>
+        <div class="attribute-input" >
+          <input readonly [(ngModel)]="data.containerForm" type="text" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=" my-2 b-light">
+  <div class="toolbar  justify-content-center title-text">
+    Material Required for Unloading
+  </div>
+  <div class="process-table table-padding last-child">
+
+    <table>
+      <thead>
+        <tr class="bg-light">
+          <th style="padding-left:20px;">SR#</th>
+          <th>MATERIAL</th>
+          <th>QTY NEEDED</th>
+          <th>QOH</th>
+          <th>QTY USED</th>
+          <th>NOTE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let unloadingMaterialExpense of  data?.containerForm?.containerExpense?.unloadingMaterialExpenses;let i=index;">
+          <td style="padding-left:21px;"> {{i + 1}}.</td>
+          <td>
+            <div>{{unloadingMaterialExpense?.productId}}</div>
+          </td>
+          <td>
+            <div>{{unloadingMaterialExpense?.quantity}}</div>
+          </td>
+          <td>
+            <div>{{unloadingMaterialExpense?.productId}}</div>
+          </td>
+          <td>
+            <div>{{unloadingMaterialExpense?.quantityUsed}}</div>
+          </td>
+          <td>
+            <div>{{unloadingMaterialExpense?.note}}</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<div class=" my-2 b-light instruct">
+  <div class="toolbar  justify-content-center title-text">
+    Unloading Instructions ( Read out to Labor)
+    <span style="position:absolute;right:5%;"> English </span>
+  </div>
+  <table class="alternate-row instruct-table">
+    <tr>
+      <td>1.</td>
+      <td>ALL same Boxes must be on one pallet, You can not mix boxes in one Pallet without manager approval.</td>
+    </tr>
+    <tr>
+      <td>2.</td>
+      <td>All Row must have same quantity of boxes all time .</td>
+    </tr>
+    <tr>
+      <td>3.</td>
+      <td> You must wrap from Bottom which can cover pallet</td>
+    </tr>
+    <tr>
+      <td>4.</td>
+      <td> You must put Pallet labels while wrapping </td>
+    </tr>
+    <tr>
+      <td>5.</td>
+      <td> Inform about the damages to product to the manager </td>
+    </tr>
+  </table>
+</div>
+
+<ng-container *ngFor="let containerOrder of data?.containerForm?.containerOrders;let i=index;">
+  <ng-container *ngFor="let containerProduct of containerOrder?.containerProducts;let j=index;">
+    <ng-container *ngFor="let pallet of containerProduct?.orderPalletInformations;let k=index;">
+      <div class=" my-2  pallet-label p-5" >
+        <div class="row font-size-35">
+          <div class="col-10">
+           {{pallet?.palletNumber}}
+          </div>
+          <div class="col-2">
+            03
+          </div>
+        </div>
+        <div class="row font-size-40">
+          <div class="col-6">
+            Product Code
+          </div>
+          <div class="col-6">
+            {{containerProduct?.productId}}
+          </div>
+        </div>
+        <div class="row font-size-40">
+          <div class="col-6">
+            SKU/PALLET
+          </div>
+          <div class="col-6">
+            Missing
+          </div>
+        </div>
+        <div class="row font-size-25">
+          <div class="col-6">
+            RXC/SINGLE UNIT
+          </div>
+          <div class="col-6">
+            <!-- {{pallet?.rowNumber}} * {{pallet?.columnNumber}} / {{pallet?.singleBoxNumber}} -->
+          </div>
+        </div>
+        <div class="row font-size-25">
+          <div class="col-6">
+            WEIGHT
+          </div>
+          <div class="col-6">
+            {{containerProduct?.weight?.attributeValue}} {{containerProduct?.weight?.userConversionUom}}
+          </div>
+        </div>
+        <div class="row font-size-25">
+          <div class="col-6">
+            DIMENSIONS
+          </div>
+          <div class="col-6">
+            48*40*2.5
+          </div>
+        </div>
+        <div class="row font-size-25">
+          <div class="col-6">
+            VOLUME
+          </div>
+          <div class="col-6">
+            {{containerProduct?.volume?.attributeValue}} {{containerProduct?.volume?.userConversionUom}}
+          </div>
+        </div>
+        <div class="row font-size-25">
+          <div class="col-6">
+            UPC CODE
+          </div>
+          <div class="col-6">
+            1.2 CBM
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</ng-container>

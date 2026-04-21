@@ -1,0 +1,36 @@
+.dialog-container {
+  min-width: 400px;
+  max-width: 500px;
+}
+
+.payment-content {
+  padding: 20px 0;
+}
+
+.payment-amount {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-danger);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #6c757d;
+}
+
+.close-button:hover {
+  color: #495057;
+}
+
+.cancel-btn {
+  background-color: var(--primary-light);
+  color: #495057;
+  border: 1px solid #dee2e6;
+  padding: 8px 24px;
+  border-radius: 4px;
+}
+
+

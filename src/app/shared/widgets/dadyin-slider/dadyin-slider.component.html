@@ -1,0 +1,36 @@
+<div class="d-flex p-1" style="position: relative;" width="100%">
+  <div class="close-button">
+    <i class="material-icon" (click)="close()" >close_outline</i>
+  </div>
+  <div style="width: 150px; height: 650px; overflow: auto">
+    <div class="d-flex flex-column">
+      <div
+        style="height: 150px"
+        class="cursor"
+        (click)="selectImage(i)"
+        [ngClass]="{ 'b-primary-all': i == this.data.index }"
+        *ngFor="let url of data?.images; let i = index"
+      >
+        <img
+          width="100%"
+          height="100%"
+          [src]="imgUrl + url"
+          style="object-fit: contain"
+        />
+      </div>
+    </div>
+  </div>
+  <div>
+    <img
+      [src]="imgUrl + data?.images[this.data.index]"
+      width="100%"
+      style="
+        object-fit: contain;
+        height: 100%;
+        max-width: 500px;
+        height: 650px;
+        overflow: auto;
+      "
+    />
+  </div>
+</div>

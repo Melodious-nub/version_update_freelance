@@ -1,0 +1,127 @@
+<div class="{{ class }}">
+  <div class="attribute one attr-b">
+    <!-- Label with conditional display and styling -->
+    <label
+      *ngIf="label"
+      [style.fontSize]="fontSize ? fontSize + '!important' : ''"
+      [style.backgroundColor]="labelBackground"
+      [class.required]="validationRequired"
+    >
+      {{ label }}
+    </label>
+
+    <!-- Regular input (text, number, password, etc.) -->
+    <div *ngIf="showRegularInput()" class="attribute-input">
+      <input
+        [style.height]="height ? height + '!important' : ''"
+        [style.fontSize]="fontSize ? fontSize + '!important' : ''"
+        autocomplete="off"
+        [readonly]="isDisabled"
+        [type]="getInputType()"
+        [disabled]="isDisabled || control?.disabled"
+        (input)="writeValue($event)"
+        (blur)="onBlurEvent($event)"
+        (click)="onClickedEvent($event)"
+        [value]="value"
+        [name]="formControlName"
+        [placeholder]="label"
+        [formControl]="control"
+        [ngClass]="{
+          'b-red':
+            (control?.invalid && (control?.touched || control?.dirty)) ||
+            isErrorClass,
+          'uppercase-text': convertUpperCase
+        }"
+      />
+
+      <!-- Password toggle icon -->
+      <!-- <i
+        *ngIf="inputType === 'password' && value"
+        class="btn-password-toggle material-icons"
+        (click)="togglePasswordVisibility()"
+      >
+        {{ pwToggle ? "visibility_off" : "visibility" }}
+      </i> -->
+
+      <!-- Clear icon -->
+      <i
+        *ngIf="isClearable && value && !isDisabled && !control?.disabled"
+        class="fa fa-close btn-clear"
+        (click)="clearValue()"
+      >
+      </i>
+
+      <!-- Custom icon -->
+      <i
+        *ngIf="customIcon"
+        class="{{ customIcon }}"
+        (click)="onClickedEvent($event)"
+      >
+      </i>
+    </div>
+
+    <!-- Textarea input -->
+    <div *ngIf="inputType === 'textarea'" class="attribute-input">
+      <textarea
+        [readonly]="isDisabled"
+        autocomplete="off"
+        class="input"
+        [name]="formControlName"
+        [rows]="rows"
+        [disabled]="isDisabled || control?.disabled"
+        (input)="writeValue($event)"
+        (blur)="onBlurEvent($event)"
+        [placeholder]="label"
+        [value]="value"
+        [formControl]="control"
+        [ngClass]="{
+          'b-red': control?.invalid && (control?.touched || control?.dirty)
+        }"
+      ></textarea>
+
+      <i
+        *ngIf="isClearable && value && !isDisabled && !control?.disabled"
+        class="fa fa-close btn-clear"
+        (click)="clearValue()"
+      >
+      </i>
+    </div>
+
+    <!-- Date input -->
+    <div *ngIf="inputType === 'date'" class="attribute-input">
+      <input
+        [readonly]="isDisabled"
+        autocomplete="off"
+        #dateinp
+        [ngStyle]="{ color: dateinp.value ? 'black' : '#9bb5cf' }"
+        [disabled]="isDisabled || control?.disabled"
+        type="date"
+        class="input"
+        [name]="formControlName"
+        (input)="writeValue($event)"
+        (blur)="onBlurEvent($event)"
+        [placeholder]="label"
+        [value]="value"
+        [formControl]="control"
+        [min]="minDate"
+      />
+    </div>
+
+    <!-- Datetime input -->
+    <div *ngIf="inputType === 'datetime-local'" class="attribute-input">
+      <input
+        [readonly]="isDisabled"
+        autocomplete="off"
+        [disabled]="isDisabled || control?.disabled"
+        type="datetime-local"
+        class="input"
+        [name]="formControlName"
+        (input)="writeValue($event)"
+        (blur)="onBlurEvent($event)"
+        [placeholder]="label"
+        [value]="value"
+        [formControl]="control"
+      />
+    </div>
+  </div>
+</div>

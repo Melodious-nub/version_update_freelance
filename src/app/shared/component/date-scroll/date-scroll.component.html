@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-between w-100">
+  <button class="prev" (click)="prev()"> 
+    <span class="arrow">
+      <mat-icon>
+        keyboard_double_arrow_left
+      </mat-icon>
+    </span>
+  </button>
+  <div role="button" class="card date-card text-center mx-2 py-1" (click)="onDateSelect(item.date)"
+    [ngClass]="{'active': isDateSelected(item.date)}" *ngFor="let item of this.getNext10Dates()">
+    {{item.day}} <br>{{item.dateStr}}
+  </div>
+  <button class="next" (click)="next()"> <span class="arrow">
+    <mat-icon>
+      keyboard_double_arrow_right
+    </mat-icon>
+  </span></button>
+</div>

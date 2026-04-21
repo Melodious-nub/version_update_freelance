@@ -1,0 +1,46 @@
+<div>
+  <div class="hdr" style="text-align: center; color: var(--primary-color);">
+    <label>Address Details</label>
+    <dadyin-button type='icon' [typeval]="'close'" class="iconCen" (click)="close()"
+      [theme]="'borderless-primary'">
+    </dadyin-button>
+  </div>
+  <div class="row p-2">
+    <div class="col-10">
+      <div class="attribute one attr-b w-100">
+        <label for="">Map Link</label>
+        <div class="attribute-input w-100">
+          <input disabled type="text" [formControl]="data.mapLinkControl" />
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <dadyin-button class="copylink" type='icon' [typeval]="'content_copy'"
+      [theme]="'borderless-primary'" (clicked)="copyLink(data?.mapLinkControl?.value)">
+    </dadyin-button>
+    </div>
+   
+  </div>
+  <div class="row p-2">
+    <div class="col-12">
+      <div class="attribute one attr-b w-100">
+        <label for="">Search Location </label>
+        <div class="attribute-input w-100">
+         <dadyin-map-autocomplete style="width:100%" (address)="onAddressSelection($event)" [control]="searchControl" ></dadyin-map-autocomplete>
+        </div>
+      </div>
+    </div>
+   
+   
+  </div>
+  <!-- <div *ngIf="apiLoaded | async"> -->
+  <div>
+    <google-map [center]="center" width="100%" height="500px" (mapClick)="onMapClick($event)">
+      <map-marker  [position]="markerPosition" [options]="markerOptions"  (mapDragend)="onDragEnd($event,'mapDragend')">
+      </map-marker>
+    </google-map>
+  </div>
+
+  <button style="display: none;" id="btn"></button>
+
+</div>

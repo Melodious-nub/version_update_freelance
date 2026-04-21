@@ -1,0 +1,26 @@
+<div class="dialog-container text-center p-4" style="overflow: hidden">
+  <h3 mat-dialog-title class="my-2" *ngIf="data && data?.title; else elseBlock">
+    {{data?.title}}
+  </h3>
+  <ng-template #elseBlock>
+    <h3 mat-dialog-title class="my-2">Are you sure want to proceed?</h3>
+  </ng-template>
+
+  <div mat-dialog-actions class="justify-content-center">
+    <button
+      mat-raised-button
+      class="confirm-btn bg-primary text-white"
+      [mat-dialog-close]="1"
+    >
+      {{okayButtonText}}
+    </button>
+    <button
+      mat-raised-button
+      class="btn-danger"
+      (click)="cancel()"
+      tabindex="-1"
+    >
+      Close
+    </button>
+  </div>
+</div>

@@ -1,0 +1,676 @@
+<div class="app-content">
+  <form>
+    <mat-expansion-panel class="panel-no-padding" expanded="true">
+      <mat-expansion-panel-header>
+        <mat-panel-description>
+          <div class="title-text text-left w-100">Warehouse Addresses</div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="process-table">
+        <table id="example">
+          <thead>
+            <tr>
+              <th style="padding-left: 20px">SR #</th>
+              <th>LOCATION</th>
+              <th>MANAGER</th>
+
+              <th style="width: 300px">PHONE NUMBER</th>
+              <th>EMAIL ID</th>
+              <th style="width: 80px !important" matTooltip="Loading Docks">
+                <dadyin-button
+                  type="image"
+                  [typeval]="'assets/img/icons/Dock.svg'"
+                  [theme]="'borderless-default'"
+                >
+                </dadyin-button>
+              </th>
+              <th style="width: 80px !important" matTooltip="Fork Lift">
+                <dadyin-button
+                  type="image"
+                  [typeval]="'assets/img/icons/Fork.svg'"
+                  [theme]="'borderless-default'"
+                >
+                </dadyin-button>
+              </th>
+              <th style="width: 80px !important" matTooltip="Pallet Jack">
+                <dadyin-button
+                  type="image"
+                  [typeval]="'assets/img/icons/Jack.svg'"
+                  [theme]="'borderless-default'"
+                >
+                </dadyin-button>
+              </th>
+              <th>MAP LINK</th>
+              <th>NOTE</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="wareHouseDetails.controls?.length == 0">
+              <td></td>
+              <td></td>
+              <td style="width: 300px"></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <dadyin-button
+                  (clicked)="addWareHouseItem()"
+                  [theme]="'borderless-primary'"
+                  type="icon"
+                  [typeval]="'add_circle_outline'"
+                >
+                </dadyin-button>
+              </td>
+            </tr>
+            <tr
+              [formGroup]="wareHouse"
+              *ngFor="let wareHouse of wareHouseDetails.controls; let i = index"
+              [attr.data-index]="i"
+            >
+              <ng-container>
+                <td style="text-align: -webkit-center">{{ i + 1 }}</td>
+                <td>
+                  <input
+                    type="text"
+                    formControlName="location"
+                    [ngClass]="{
+                      'b-red':
+                        wareHouse.get('location').invalid &&
+                        wareHouse.get('location').touched
+                    }"
+                    class="bg-transparent"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    formControlName="managerName"
+                    [ngClass]="{
+                      'b-red':
+                        wareHouse.get('managerName').invalid &&
+                        wareHouse.get('managerName').touched
+                    }"
+                    class="bg-transparent"
+                  />
+                </td>
+
+                <td
+                  style="width: 300px"
+                  class="countrycode-column"
+                  formGroupName="phone"
+                >
+                  <ng-select
+                    [searchFn]="customSearchFn"
+                    [clearable]="false"
+                    appendTo="body"
+                    formControlName="countryId"
+                    [searchFn]="customSearchFn"
+                    [clearable]="false"
+                    class="custom-table"
+                    [items]="countries"
+                    labelForId="yesno"
+                    bindValue="id"
+                  >
+                    <ng-template ng-label-tmp let-item="item">
+                      <section>
+                        <img
+                          width="10px"
+                          height="10px"
+                          src="{{
+                            '../../../../../../assets/img/flags/' +
+                              item?.iso3?.toLowerCase() +
+                              '.svg'
+                          }}"
+                        />
+                        {{ item?.iso2 }} {{ item?.phoneCode }}
+                      </section>
+                    </ng-template>
+                    <ng-template
+                      ng-option-tmp
+                      let-item="item"
+                      let-index="index"
+                    >
+                      <section>
+                        <img
+                          width="10px"
+                          height="10px"
+                          src="{{
+                            '../../../../../../assets/img/flags/' +
+                              item?.iso3?.toLowerCase() +
+                              '.svg'
+                          }}"
+                        />
+                        {{ item?.iso2 }} {{ item?.phoneCode }}
+                      </section>
+                    </ng-template>
+                  </ng-select>
+                  <input
+                    type="text"
+                    formControlName="number"
+                    onKeyPress="if(this.value.length==12) return false;"
+                    [ngClass]="{
+                      'b-red':
+                        wareHouse.get('phone').get('number').invalid &&
+                        wareHouse.get('phone').get('number').touched
+                    }"
+                    class="bg-transparent"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    formControlName="email"
+                    [ngClass]="{
+                      'b-red':
+                        wareHouse.get('email').invalid &&
+                        wareHouse.get('email').touched
+                    }"
+                    class="bg-transparent"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    formControlName="numberOfLoadingDocks"
+                    [ngClass]="{
+                      'b-red':
+                        wareHouse.get('numberOfLoadingDocks').invalid &&
+                        wareHouse.get('numberOfLoadingDocks').touched
+                    }"
+                    class="bg-transparent"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    formControlName="numberOfForkLifts"
+                    [ngClass]="{
+                      'b-red':
+                        wareHouse.get('numberOfForkLifts').invalid &&
+                        wareHouse.get('numberOfForkLifts').touched
+                    }"
+                    class="bg-transparent"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    formControlName="numberOfPalletJacks"
+                    [ngClass]="{
+                      'b-red':
+                        wareHouse.get('numberOfPalletJacks').invalid &&
+                        wareHouse.get('numberOfPalletJacks').touched
+                    }"
+                    class="bg-transparent"
+                  />
+                </td>
+                <td style="display: inline-flex">
+                  <input
+                    type="text"
+                    formControlName="googleMapLink"
+                    [ngClass]="{
+                      'b-red':
+                        wareHouse.get('googleMapLink').invalid &&
+                        wareHouse.get('googleMapLink').touched
+                    }"
+                    class="bg-transparent"
+                  />
+                  <dadyin-button
+                    class="copylink"
+                    type="image"
+                    [typeval]="'assets/img/icons/Copylink.svg'"
+                    [theme]="'borderless-primary'"
+                    (clicked)="copyLink(wareHouse.get('googleMapLink'))"
+                  >
+                  </dadyin-button>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    formControlName="note"
+                    [ngClass]="{
+                      'b-red':
+                        wareHouse.get('note').invalid &&
+                        wareHouse.get('note').touched
+                    }"
+                    class="bg-transparent"
+                  />
+                </td>
+                <td class="actions">
+                  <dadyin-button
+                    (clicked)="deleteWarehouseItem(i)"
+                    [theme]="'borderless-danger'"
+                    type="icon"
+                    [typeval]="'delete_outline'"
+                  >
+                  </dadyin-button>
+                  <ng-container
+                    *ngIf="wareHouseDetails.controls?.length == i + 1"
+                  >
+                    <dadyin-button
+                      (clicked)="addWareHouseItem()"
+                      [theme]="'borderless-primary'"
+                      type="icon"
+                      [typeval]="'add_circle_outline'"
+                    >
+                    </dadyin-button>
+                  </ng-container>
+                </td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-expansion-panel>
+  </form>
+
+  <mat-expansion-panel
+    *ngIf="!isCustomer"
+    class="panel-no-padding"
+    expanded="true"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-description>
+        <div>Sales Representative</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="process-table">
+      <table id="example">
+        <thead>
+          <tr>
+            <th style="padding-left: 20px">SR #</th>
+            <th>TITLE</th>
+            <th>NAME</th>
+            <th style="width: 300px">PHONE NUMBER</th>
+            <th>EMAIL ID</th>
+            <th>NOTE</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="contactDetails.controls?.length == 0">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="width: 300px"></td>
+            <td></td>
+            <td></td>
+            <td>
+              <ng-container>
+                <dadyin-button
+                  (clicked)="addContactLineItem()"
+                  [theme]="'borderless-primary'"
+                  type="icon"
+                  [typeval]="'add_circle_outline'"
+                >
+                </dadyin-button>
+              </ng-container>
+            </td>
+          </tr>
+          <tr
+            [formGroup]="contactForm"
+            *ngFor="let contactForm of contactDetails.controls; let i = index"
+          >
+            <td style="padding-left: 20px">{{ i + 1 }}</td>
+            <td>
+              <input
+                type="text"
+                formControlName="title"
+                [ngClass]="{
+                  'b-red':
+                    contactForm.get('title').invalid &&
+                    contactForm.get('title').touched
+                }"
+                class="bg-transparent"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                formControlName="name"
+                [ngClass]="{
+                  'b-red':
+                    contactForm.get('name').invalid &&
+                    contactForm.get('name').touched
+                }"
+                class="bg-transparent"
+              />
+            </td>
+
+            <td
+              style="width: 300px"
+              class="countrycode-column"
+              formGroupName="phone"
+            >
+              <ng-select
+                [searchFn]="customSearchFn"
+                [clearable]="false"
+                appendTo="body"
+                formControlName="countryId"
+                [searchFn]="customSearchFn"
+                class="custom-table"
+                [items]="countries"
+                labelForId="yesno"
+                bindValue="id"
+              >
+                <ng-template ng-label-tmp let-item="item">
+                  <section>
+                    <img
+                      width="10px"
+                      height="10px"
+                      src="{{
+                        '../../../../../../assets/img/flags/' +
+                          item?.iso3?.toLowerCase() +
+                          '.svg'
+                      }}"
+                    />
+                    {{ item?.iso2 }} {{ item?.phoneCode }}
+                  </section>
+                </ng-template>
+                <ng-template ng-option-tmp let-item="item" let-index="index">
+                  <section>
+                    <img
+                      width="10px"
+                      height="10px"
+                      src="{{
+                        '../../../../../../assets/img/flags/' +
+                          item?.iso3?.toLowerCase() +
+                          '.svg'
+                      }}"
+                    />
+                    {{ item?.iso2 }} {{ item?.phoneCode }}
+                  </section>
+                </ng-template>
+              </ng-select>
+
+              <input
+                type="text"
+                formControlName="number"
+                onKeyPress="if(this.value.length==12) return false;"
+                [ngClass]="{
+                  'b-red':
+                    contactForm.get('phone').get('number').invalid &&
+                    contactForm.get('phone').get('number').touched
+                }"
+                class="bg-transparent w-100"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                formControlName="email"
+                [ngClass]="{
+                  'b-red':
+                    contactForm.get('email').invalid &&
+                    contactForm.get('email').touched
+                }"
+                class="bg-transparent"
+              />
+            </td>
+            <td>
+              <input
+                type="tel"
+                formControlName="note"
+                [ngClass]="{
+                  'b-red':
+                    contactForm.get('note').invalid &&
+                    contactForm.get('note').touched
+                }"
+                class="bg-transparent"
+              />
+            </td>
+            <td class="actions">
+              <dadyin-button
+                (clicked)="deleteContactLineItem(i)"
+                [theme]="'borderless-danger'"
+                type="icon"
+                [typeval]="'delete_outline'"
+              >
+              </dadyin-button>
+              <ng-container *ngIf="contactDetails.controls?.length == i + 1">
+                <dadyin-button
+                  (clicked)="addContactLineItem()"
+                  [theme]="'borderless-primary'"
+                  type="icon"
+                  [typeval]="'add_circle_outline'"
+                >
+                </dadyin-button>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    *ngIf="isCustomer"
+    class="panel-no-padding"
+    expanded="true"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-description>
+        <div class="title-text w-100 text-left">Purchase Department & Pricing</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="process-table">
+      <table id="example">
+        <thead>
+          <tr>
+            <th style="padding-left: 20px">SR #</th>
+            <th>CATEGORY</th>
+            <th>PURCHASER NAME</th>
+            <th style="width: 300px">PHONE NUMBER</th>
+            <th>EMAIL ID</th>
+            <th>BUYING CAPACITY</th>
+            <th>DISCOUNT</th>
+            <th>QUOTATION (CUSTOMER CATEGORY)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="purchaseDepartmentPricings.controls?.length == 0">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="width: 300px"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <ng-container>
+                <dadyin-button
+                  (clicked)="addPurchasePricingItem()"
+                  [theme]="'borderless-primary'"
+                  type="icon"
+                  [typeval]="'add_circle_outline'"
+                >
+                </dadyin-button>
+              </ng-container>
+            </td>
+          </tr>
+          <tr
+            [formGroup]="purchasePricingForm"
+            *ngFor="
+              let purchasePricingForm of purchaseDepartmentPricings.controls;
+              let i = index
+            "
+          >
+            <td style="padding-left: 20px">{{ i + 1 }}</td>
+            <td>
+              <input
+                type="text"
+                formControlName="productCategoryId"
+                [ngClass]="{
+                  'b-red':
+                    purchasePricingForm.get('productCategoryId').invalid &&
+                    purchasePricingForm.get('productCategoryId').touched
+                }"
+                class="bg-transparent"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                formControlName="purchaserName"
+                [ngClass]="{
+                  'b-red':
+                    purchasePricingForm.get('purchaserName').invalid &&
+                    purchasePricingForm.get('purchaserName').touched
+                }"
+                class="bg-transparent"
+              />
+            </td>
+
+            <td
+              style="width: 300px"
+              class="countrycode-column"
+              formGroupName="phone"
+            >
+              <ng-select
+                appendTo="body"
+                formControlName="countryId"
+                [searchFn]="customSearchFn"
+                [clearable]="false"
+                class="custom-table"
+                [items]="countries"
+                labelForId="yesno"
+                bindValue="id"
+              >
+                <ng-template ng-label-tmp let-item="item">
+                  <section>
+                    <img
+                      width="10px"
+                      height="10px"
+                      src="{{
+                        '../../../../../../assets/img/flags/' +
+                          item?.iso3?.toLowerCase() +
+                          '.svg'
+                      }}"
+                    />
+                    {{ item?.iso2 }} {{ item?.phoneCode }}
+                  </section>
+                </ng-template>
+                <ng-template ng-option-tmp let-item="item" let-index="index">
+                  <section>
+                    <img
+                      width="10px"
+                      height="10px"
+                      src="{{
+                        '../../../../../../assets/img/flags/' +
+                          item?.iso3?.toLowerCase() +
+                          '.svg'
+                      }}"
+                    />
+                    {{ item?.iso2 }} {{ item?.phoneCode }}
+                  </section>
+                </ng-template>
+              </ng-select>
+              <input
+                type="text"
+                formControlName="number"
+                onKeyPress="if(this.value.length==12) return false;"
+                [ngClass]="{
+                  'b-red':
+                    purchasePricingForm.get('phone').get('number').invalid &&
+                    purchasePricingForm.get('phone').get('number').touched
+                }"
+                class="bg-transparent w-100"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                formControlName="email"
+                [ngClass]="{
+                  'b-red':
+                    purchasePricingForm.get('email').invalid &&
+                    purchasePricingForm.get('email').touched
+                }"
+                class="bg-transparent"
+              />
+            </td>
+            <td>
+              <select
+                class="bg-white w-100"
+                style="z-index: 99"
+                formControlName="buyingCapacityType"
+                id="buyingCapacityType"
+              >
+                <ng-container
+                  *ngFor="
+                    let item of [
+                      'UNIT',
+                      'SKU',
+                      'PALLET',
+                      'CONTAINER',
+                      'TRUCK',
+                      'RETAIL'
+                    ]
+                  "
+                >
+                  <option [value]="item">{{ item }}</option>
+                </ng-container>
+              </select>
+            </td>
+
+            <td>
+              <input
+                type="tel"
+                formControlName="discountPercent"
+                [ngClass]="{
+                  'b-red':
+                    purchasePricingForm.get('discountPercent').invalid &&
+                    purchasePricingForm.get('discountPercent').touched
+                }"
+                class="bg-transparent"
+              />
+            </td>
+            <td>
+              <input
+                type="tel"
+                formControlName="quotationProductCategoryId"
+                [ngClass]="{
+                  'b-red':
+                    purchasePricingForm.get('quotationProductCategoryId')
+                      .invalid &&
+                    purchasePricingForm.get('quotationProductCategoryId')
+                      .touched
+                }"
+                class="bg-transparent"
+              />
+            </td>
+            <td class="actions">
+              <dadyin-button
+                (clicked)="deletePurchasePricingItem(i)"
+                [theme]="'borderless-danger'"
+                type="icon"
+                [typeval]="'delete_outline'"
+              >
+              </dadyin-button>
+              <ng-container
+                *ngIf="purchaseDepartmentPricings.controls?.length == i + 1"
+              >
+                <dadyin-button
+                  (clicked)="addPurchasePricingItem()"
+                  [theme]="'borderless-primary'"
+                  type="icon"
+                  [typeval]="'add_circle_outline'"
+                >
+                </dadyin-button>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-expansion-panel>
+</div>

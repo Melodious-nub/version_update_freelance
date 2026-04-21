@@ -1,0 +1,26 @@
+.grid-panel {
+  grid-template-columns: 20% 65% 15%;
+  display:grid;
+}
+.process-table{
+  table thead tr{
+    background-color: var(--secondary-light);
+  }
+}
+.hw20{
+  height: 20px;
+    width: 20px;
+}
+.cnvrsn-frm{
+  position: relative;
+  .delete-btn{
+    position: absolute;
+    top: 13px;
+    right: -40px;
+  }
+  .add-btn{
+    position: absolute;
+    top: 13px;
+    right: -75px;
+  }
+}

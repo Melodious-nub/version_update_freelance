@@ -1,0 +1,62 @@
+.dialog-container {
+  position: relative;
+  min-width: 800px;
+  padding: 10px;
+
+  .dialog-card-header {
+    margin-top: 0px;
+    width: 100%;
+    height: fit-content;
+    background: var(--secondary-light);
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    position: relative;
+    padding: 5px 10px;
+
+    h3 {
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .close-dialog {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10px;
+      cursor: pointer;
+    }
+  }
+
+  .card-body {
+    text-align: center;
+    padding: 0;
+    margin-top: 2px;
+
+    table {
+      width: 100%;
+
+      thead {
+        tr {
+          th {
+            text-align: left;
+            background: var(--primary-light);
+            border-radius: 2px;
+            padding: 5px 10px;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          td {
+            text-align: left;
+            background: transparent;
+            border-radius: 5px;
+            padding: 5px 10px;
+            border: 1px solid var(--secondary-light);
+          }
+        }
+      }
+    }
+  }
+}

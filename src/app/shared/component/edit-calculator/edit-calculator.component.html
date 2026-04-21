@@ -1,0 +1,439 @@
+<ng-container
+  *ngIf="
+    (processCalculatorForm && calculatorMeta?.value) ||
+      (processCalculatorForm && processCalculatorForm.get('description').value);
+    else notValidCalculator
+  "
+>
+  <!-- <h4 class="calculator-title">Edit Calculator Formulas</h4> -->
+  <form name="form" [formGroup]="processCalculatorForm">
+    <div>
+      <mat-form-field class="calculator-name">
+        <mat-label>Calculator Name</mat-label>
+        <input
+          type="text"
+          matInput
+          readonly
+          name="description"
+          formControlName="description"
+        />
+      </mat-form-field>
+    </div>
+    <ng-container *ngIf="processCalculatorProduct?.controls?.length">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tbody>
+            <tr class="table-primary">
+              <!-- <th scope="col" class="col-checkbox"></th> -->
+              <td scope="col" class="col-product">
+                <span class="product-name">SUB-PRODUCT</span>
+                <span class="add-new-attribute">
+                  <mat-form-field appearance="fill" class="selection-field">
+                    <mat-label>Add Attribute</mat-label>
+                    <mat-select
+                      (click)="addSubProductAttribute()"
+                      (selectionChange)="
+                        onSubProductAttributeSelected($event?.value)
+                      "
+                    >
+                      <mat-option disabled> Select Attribute </mat-option>
+                      <mat-option
+                        *ngFor="let attribute of allAttributesForSubProduct"
+                        [value]="attribute"
+                      >
+                        {{ attribute?.description }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </span>
+              </td>
+              <ng-container
+                *ngFor="
+                  let processCalculatorProductAttribute of processCalculatorProductAttributes;
+                  let index = index
+                "
+              >
+                <th scope="col" class="col-product-attribute">
+                  {{ processCalculatorProductAttribute?.description }}
+                  <ng-container
+                    *ngIf="
+                      processCalculatorProductAttribute?.id !== COST_ID &&
+                      processCalculatorProductAttribute?.id !== DENSITY_ID
+                    "
+                  >
+                    <dadyin-button
+                      [theme]="'borderless-danger'"
+                      type="icon"
+                      [typeval]="'delete_outline'"
+                      (clicked)="
+                        removeProcessCalculatorProductAttributes(index)
+                      "
+                    >
+                    </dadyin-button>
+                  </ng-container>
+                </th>
+              </ng-container>
+            </tr>
+            <ng-container
+              *ngFor="
+                let processCalculatorProductControl of processCalculatorProduct?.controls
+              "
+            >
+              <ng-container [formGroup]="processCalculatorProductControl">
+                <tr>
+                  <!-- <th scope="row">
+                                        <mat-icon class="mat-search-item-icon" color="primary">check_box</mat-icon>
+                                    </th> -->
+                  <td class="product-description">
+                    {{
+                      getProductName(
+                        processCalculatorProductControl?.value?.product
+                      )
+                    }}
+                  </td>
+                  <ng-container
+                    *ngFor="
+                      let processCalculatorProductAttribute of processCalculatorProductAttributes
+                    "
+                  >
+                    <ng-container
+                      *ngFor="
+                        let processCalculatorProductItem of getProcessCalculatorProductItem(
+                          processCalculatorProductControl
+                        )?.controls
+                      "
+                    >
+                      <ng-container [formGroup]="processCalculatorProductItem">
+                        <ng-container
+                          *ngIf="
+                            processCalculatorProductAttribute?.id ===
+                            processCalculatorProductItem?.value?.attribute?.id
+                          "
+                        >
+                          <td>
+                            <mat-form-field class="formula-field">
+                              <input
+                                type="text"
+                                matInput
+                                name="attributeValueExpression"
+                                formControlName="attributeValueExpression"
+                              />
+                            </mat-form-field>
+                          </td>
+                        </ng-container>
+                      </ng-container>
+                    </ng-container>
+                    <ng-container
+                      *ngIf="
+                        !hasAttributeAsAnInputForSubProduct(
+                          getProcessCalculatorProductItem(
+                            processCalculatorProductControl
+                          ),
+                          processCalculatorProductAttribute
+                        )
+                      "
+                    >
+                      <td>Formula Not Applicable!</td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </ng-container>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="processCalculatorConversionType?.controls?.length">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tbody>
+            <tr class="table-primary">
+              <td scope="col" class="col-product">
+                <span class="product-name"> CONVERSION TYPE </span>
+                <span class="add-new-attribute">
+                  <mat-form-field appearance="fill" class="selection-field">
+                    <mat-label>Add Attribute</mat-label>
+                    <mat-select
+                      (click)="addConversionTypeAttribute()"
+                      (selectionChange)="
+                        onConversionTypeAttributeSelected($event?.value)
+                      "
+                    >
+                      <mat-option disabled> Select Attribute </mat-option>
+                      <mat-option
+                        *ngFor="let attribute of allAttributesForConversionType"
+                        [value]="attribute"
+                      >
+                        {{ attribute?.description }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </span>
+              </td>
+              <ng-container
+                *ngFor="
+                  let processCalculatorConversionTypeAttribute of processCalculatorConversionTypeAttributes;
+                  let index = index
+                "
+              >
+                <th scope="col" class="col-product-attribute">
+                  {{ processCalculatorConversionTypeAttribute?.description }}
+                  <ng-container
+                    *ngIf="
+                      processCalculatorConversionTypeAttribute?.id !==
+                        COST_ID &&
+                      processCalculatorConversionTypeAttribute?.id !==
+                        DENSITY_ID
+                    "
+                  >
+                    <dadyin-button
+                      [theme]="'borderless-danger'"
+                      type="icon"
+                      [typeval]="'delete_outline'"
+                      (clicked)="
+                        removeProcessCalculatorConversionTypeAttributes(index)
+                      "
+                    >
+                    </dadyin-button>
+                  </ng-container>
+                </th>
+              </ng-container>
+            </tr>
+            <ng-container
+              *ngFor="
+                let processCalculatorConversionTypeControl of processCalculatorConversionType?.controls
+              "
+            >
+              <ng-container
+                [formGroup]="processCalculatorConversionTypeControl"
+              >
+                <tr>
+                  <!-- <th scope="row">
+                                        <mat-icon class="mat-search-item-icon" color="primary">check_box</mat-icon>
+                                    </th> -->
+                  <td class="conversion-description">
+                    {{
+                      getConversionTypeName(
+                        processCalculatorConversionTypeControl?.value
+                          ?.conversionType
+                      )
+                    }}
+                  </td>
+                  <ng-container
+                    *ngFor="
+                      let processCalculatorConversionTypeAttribute of processCalculatorConversionTypeAttributes
+                    "
+                  >
+                    <ng-container
+                      *ngFor="
+                        let processCalculatorConversionTypeItem of getProcessCalculatorConversionTypeItem(
+                          processCalculatorConversionTypeControl
+                        )?.controls
+                      "
+                    >
+                      <ng-container
+                        [formGroup]="processCalculatorConversionTypeItem"
+                      >
+                        <ng-container
+                          *ngIf="
+                            processCalculatorConversionTypeAttribute?.id ===
+                            processCalculatorConversionTypeItem?.value
+                              ?.attribute?.id
+                          "
+                        >
+                          <td>
+                            <mat-form-field class="formula-field">
+                              <input
+                                type="text"
+                                matInput
+                                name="attributeValueExpression"
+                                formControlName="attributeValueExpression"
+                              />
+                            </mat-form-field>
+                          </td>
+                        </ng-container>
+                      </ng-container>
+                    </ng-container>
+                    <ng-container
+                      *ngIf="
+                        !hasAttributeAsAnInputForConversionType(
+                          getProcessCalculatorConversionTypeItem(
+                            processCalculatorConversionTypeControl
+                          ),
+                          processCalculatorConversionTypeAttribute
+                        )
+                      "
+                    >
+                      <td>Formula Not Applicable!</td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </ng-container>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+    <div class="calculator-header">
+      <div style="display: none">
+        <span class="calculator-sub-header"> PRODUCT </span>
+
+        <span class="add-new-attribute-as-row">
+          <ng-container *ngIf="!isBeingAddedNewAttributeValueAttribute">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="addAttributeValueAttribute()"
+            >
+              Add Attribute
+            </button>
+          </ng-container>
+          <ng-container
+            *ngIf="
+              isBeingAddedNewAttributeValueAttribute &&
+              isLoadingAllAttributesForAttributeValue
+            "
+          >
+            Loading...
+          </ng-container>
+          <ng-container
+            *ngIf="
+              isBeingAddedNewAttributeValueAttribute &&
+              !isLoadingAllAttributesForAttributeValue
+            "
+          >
+            <mat-form-field class="selection-field">
+              <mat-select
+                (selectionChange)="
+                  onAttributeValueAttributeSelected($event?.value)
+                "
+              >
+                <mat-option disabled> Select Attribute </mat-option>
+                <mat-option
+                  *ngFor="let attribute of allAttributesForAttributeValue"
+                  [value]="attribute"
+                >
+                  {{ attribute?.description }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            &nbsp;
+            <button
+              mat-raised-button
+              class="cancel"
+              (click)="cancelAddAttributeValueAttribute()"
+            >
+              Cancel
+            </button>
+          </ng-container>
+        </span>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tbody>
+            <tr class="table-primary">
+              <td scope="col" class="col-product">
+                <span class="product-name"> FINAL PRODUCT </span>
+                <span class="add-new-attribute add-new-attribute-as-row">
+                  <mat-form-field appearance="fill" class="selection-field">
+                    <mat-label>Add Attribute</mat-label>
+                    <mat-select
+                      (click)="addAttributeValueAttribute()"
+                      (selectionChange)="
+                        onAttributeValueAttributeSelected($event?.value)
+                      "
+                    >
+                      <mat-option disabled> Select Attribute </mat-option>
+                      <mat-option
+                        *ngFor="let attribute of allAttributesForAttributeValue"
+                        [value]="attribute"
+                      >
+                        {{ attribute?.description }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <tbody>
+          <ng-container
+            *ngFor="
+              let processCalculatorAttributeValue of processCalculatorAttributeValues?.controls;
+              let index = index
+            "
+          >
+            <ng-container [formGroup]="processCalculatorAttributeValue">
+              <tr>
+                <th scope="row" class="table-primary main-product-attributes">
+                  {{
+                    processCalculatorAttributeValue?.value?.attribute
+                      ?.description
+                  }}
+                  <ng-container
+                    *ngIf="
+                      isDeletable(
+                        processCalculatorAttributeValue?.value?.attribute?.id
+                      )
+                    "
+                  >
+                    <dadyin-button
+                      [theme]="'borderless-danger'"
+                      type="icon"
+                      [typeval]="'delete_outline'"
+                      (clicked)="removeProcessCalculatorAttributeValue(index)"
+                    >
+                    </dadyin-button>
+                  </ng-container>
+                </th>
+                <td>
+                  <mat-form-field class="formula-field">
+                    <input
+                      type="text"
+                      matInput
+                      name="attributeValueExpression"
+                      formControlName="attributeValueExpression"
+                    />
+                  </mat-form-field>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-container>
+          <!-- <tr>
+                        <td colspan="2">                            
+                        </td>
+                    </tr> -->
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="calculator-action"
+      gdColumns="10% 10%"
+      gdGap="1rem"
+      gdRows
+      gdAlignRows="end"
+    >
+      <button
+        mat-raised-button
+        class="mx-secondary-btn"
+        (click)="resetCancel()"
+      >
+        Cancel
+      </button>
+      <button mat-raised-button color="primary" (click)="save()">
+        Save Calculator
+      </button>
+    </div>
+  </form>
+</ng-container>
+<ng-template #notValidCalculator>
+  <p>Default Calculator not set yet, go back and add atleast one Sub Product</p>
+  <button mat-raised-button color="primary" (click)="cancel()">Go Back</button>
+</ng-template>

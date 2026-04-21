@@ -1,0 +1,281 @@
+<div class="p-3">
+  <div class="bg-light text-left p-3 row mx-auto" style="border-radius: 10px;">
+    <div class="col-md-4">
+      <div class="text-primary mb-3 font-size-22">
+        <b> Price Comparison Result </b>
+      </div>
+
+      <div class="text-muted font-size-18 mb-2">
+        Based on the invoice you have uploaded we are showing this results
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        class="d-flex flex-column align-items-center w-100 justify-content-center mb-3"
+      >
+        <div
+          style="width: max-content;"
+          class="bg-white text-primary p-2 b-light font-size-16"
+        >
+          <b>
+            {{ data.purchaseOrder?.productPackages?.length }}
+            out of {{ data.orderPDFExtractedData?.length }} Products Match
+          </b>
+        </div>
+        <!-- <div
+          style="
+            width: max-content;
+            color: #129512;
+            background-color: rgb(173 255 217) !important;
+          "
+          class="bg-success p-2"
+        >
+          Slash your costs by $2504 when you order with us.
+        </div> -->
+      </div>
+    </div>
+
+    <div class="col-md-4 text-right">
+      <dadyin-button
+        type="icon"
+        typeval="close"
+        [theme]="'borderless-primary'"
+        (clicked)="close()"
+      >
+      </dadyin-button>
+    </div>
+  </div>
+  <div class="b-round b-light my-2 p-2" style="border-radius: 10px;overflow-y:auto;max-height:55vh">
+    <div class="row">
+      <div class="col-md-6 col-12">
+        <div
+          class="bg-secondary p-2 text-center font-size-14 text-primary"
+          style="border-radius: 10px"
+        >
+          <b> YOUR DOCUMENTS </b>
+        </div>
+        <div class="process-table table-padding my-2" >
+          <table >
+            <thead class="bg-light b-light text-primary">
+              <tr>
+                <th class="width-100">PRODUCT CODE</th>
+                <th>PRODUCT DESCRIPTION</th>
+                <th class="width-80">QTY/SKU</th>
+                <th class="width-80">
+                  PRICE/SKU ({{
+                    data.orderPDFExtractedData[0]?.costPerPackage
+                      ?.userConversionUom
+                  }})
+                </th>
+                <th class="width-100">
+                  TOTAL({{
+                    data.orderPDFExtractedData[0]?.totalCost?.userConversionUom
+                  }})
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                [ngClass]="{
+                  'b-all-red':
+                    k + 1 > data.purchaseOrder?.productPackages?.length
+                }"
+                *ngFor="
+                  let product of data.orderPDFExtractedData;
+                  let k = index
+                "
+              >
+                <td>
+                  <div>
+                    {{ product.productCode }}
+                  </div>
+                </td>
+                <td>
+                  <div>{{ product.productDescription }}</div>
+                </td>
+                <td>
+                  <div>
+                    {{ product.quantity }}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{ product.costPerPackage.attributeValue }}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{ product.totalCost?.attributeValue }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-12">
+        <div
+          class="bg-secondary p-2 text-center font-size-14 text-primary"
+          style="border-radius: 10px"
+        >
+          <b> OUR PRICING </b>
+        </div>
+        <div class="process-table table-padding my-2">
+          <table>
+            <thead class="bg-light b-light text-primary">
+              <tr>
+                <th class="width-30"></th>
+                <th class="width-100">PRODUCT CODE</th>
+                <th>PRODUCT DESCRIPTION</th>
+                <th class="width-80">QTY/SKU</th>
+                <th class="width-80">
+                  PRICE/SKU ({{
+                    data.purchaseOrder?.productPackages[0]?.cost
+                      ?.userConversionUom
+                  }})
+                </th>
+                <th class="width-100">
+                  TOTAL({{
+                    data.purchaseOrder?.productPackages[0]?.totalCost
+                      ?.userConversionUom
+                  }})
+                </th>
+                <th class="width-60">ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let product of data.purchaseOrder?.productPackages;
+                  let j = index
+                "
+              >
+                <td>
+                  <i
+                    container="body"
+                    placement="top"
+                    [ngbTooltip]="tooltipinfo"
+                    class="material-icon"
+                    >image</i
+                  >
+                </td>
+                <ng-template #tooltipinfo>
+                  <section
+                    *ngIf="
+                      product.productDetails?.productImageFileNames?.length > 0
+                    "
+                  >
+                    <img
+                      [src]="
+                        imgUrl +
+                        product.productDetails?.productImageFileNames[0]
+                      "
+                      width="200"
+                      height="200"
+                    />
+                  </section>
+                  <section>
+                    {{ product?.productDetails.productCode }}
+                  </section>
+                </ng-template>
+                <td>
+                  <div>
+                    {{ product?.productDetails.productCode }}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{ product?.productDetails.description }}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{ product?.skuQuantities }}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{ product?.cost?.attributeValue }}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{ product?.totalCost?.attributeValue }}
+                  </div>
+                </td>
+                <td>
+                  <dadyin-button
+                    [theme]="'borderless-danger'"
+                    type="icon"
+                    [typeval]="'delete_outline'"
+                    (clicked)="removeProductPackage(j)"
+                  >
+                  </dadyin-button>
+                </td>
+              </tr>
+              <ng-container
+                *ngFor="let item of getNotFoundedLength(); let j = index"
+              >
+                <tr>
+                  <td></td>
+                  <td colspan="5">
+                    <ng-container>
+                      <input
+                        #inp
+                        class="w-100"
+                        (input)="getProductsList($event)"
+                        placeholder="Search for Product Code/Description"
+                        [matAutocomplete]="description"
+                      />
+                      <mat-autocomplete
+                        (optionSelected)="onChange($event.option.value, inp, j)"
+                        autoActiveFirstOption
+                        #description="matAutocomplete"
+                      >
+                        <mat-option
+                          [value]="item"
+                          *ngFor="let item of productsList"
+                        >
+                          {{ item.productCode }} ({{ item.description }})
+                        </mat-option>
+                      </mat-autocomplete>
+                    </ng-container>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <div
+      style="border-radius: 10px"
+      class="text-primary font-size-14 b-light bg-light p-2 my-3"
+      style="width: max-content"
+    >
+      <b> Matched Products will be added to your Quick checkout cart.Unmatched
+          Products can be searched in catalog.
+      </b>
+    </div>
+  </div>
+  <div
+    *ngIf="!data?.landing"
+    class="d-flex align-items-center justify-content-center my-2"
+  >
+    <dadyin-button
+      label="Search Not Found Products"
+      [theme]="'secondary'"
+    ></dadyin-button
+    >&nbsp;
+    <dadyin-button
+      (clicked)="proceed()"
+      label="Proceed"
+      [theme]="'primary'"
+    ></dadyin-button
+    >&nbsp;
+  </div>
+</div>

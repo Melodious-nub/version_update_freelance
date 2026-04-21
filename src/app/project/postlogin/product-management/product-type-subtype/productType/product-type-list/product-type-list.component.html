@@ -1,0 +1,46 @@
+<mat-tab-group class="mat-steps" [selectedIndex]="currentMainIndex" (selectedIndexChange)="changeMainTab($event)">
+    <mat-tab  *ngFor="let link of mainTab">
+        <ng-template mat-tab-label>
+            <span (click)="resetQueryParams()" [matBadge]="link.badge" [matBadgeHidden]="link.badge === 0"
+                [matBadgeOverlap]=false>{{link.title}}</span>
+        </ng-template>
+        <ng-template matTabContent>
+            <ng-container *ngIf="currentMainIndex == 0">
+                <ng-container>
+                    <div class="header-wrapper mt-2">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="filters">
+                                    <search-filter (inputChange)="onInput($event)"
+                                        [placeholder]="'Search based on Product Type/ SubType/ Product name& code'"></search-filter>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-end align-items-center align-items-center">
+                                <div class="action-btns">
+                                    <dadyin-button [theme]="'primary'" label="Add Type" (clicked)="navigateToAddType()">
+                                    </dadyin-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-wrapper mt-2">
+                        <data-table [data]="ProductTypeList" [headers]="headers" (editData)="editRecord($event)"
+                            [pageConfig]="pageConfig"  (sortChange)="sort($event)" (pageChange)="pageChange($event)" [userShow]="true"
+                            [actions]="tabelActions" (actionClick)="onActionClick($event)">
+                        </data-table>
+                    </div>
+                </ng-container>
+
+            </ng-container>
+            <ng-container *ngIf="currentMainIndex == 1">
+                <app-subtype-list></app-subtype-list>
+            </ng-container>
+            <ng-container *ngIf="currentMainIndex == 2">
+
+            </ng-container>
+            <ng-container *ngIf="currentMainIndex == 3">
+
+            </ng-container>
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>

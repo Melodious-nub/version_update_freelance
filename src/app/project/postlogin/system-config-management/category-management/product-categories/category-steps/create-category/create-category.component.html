@@ -1,0 +1,125 @@
+<div class="app-container  ">
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button
+        (clicked)="
+          navigate('/home/system-config/category-management?currentStepIndex=0')
+        "
+        class="header-icon"
+        [theme]="'borderless-default'"
+        type="icon"
+        [typeval]="'arrow_circle_left'"
+      >
+      </dadyin-button>
+      <div class="content-title">
+        <label>Product category</label>
+      </div>
+      <div class="content-info"></div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+      <dadyin-button
+        [theme]="'primary'"
+        label="Save"
+        (clicked)="saveCategory()"
+      >
+      </dadyin-button>
+    </div>
+  </div>
+
+  <div>
+    <div class="app-content">
+      <form [formGroup]="productCategoryForm">
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header>
+            <mat-panel-description>
+              <div class="w-100 title-text">Add New Product category</div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row p-0">
+            <div class="col-12 col-md-3 my-2">
+              <dadyin-searchable-select
+                label="Select  Category"
+                class="w-100"
+                placeholder="Select  Category"
+                [control]="id"
+                [fullItems]="apiService.productCategoriesList"
+                bindValue="id"
+                bindLabel="description"
+              ></dadyin-searchable-select>
+            </div>
+            <div class="col-12 col-md-3 my-2">
+              <dadyin-searchable-select
+                class="w-100"
+                label="Select  Buying Capacity"
+                placeholder="Select Buying Capacity"
+                [control]="buyingCapacityType"
+                [fullItems]="buyingCapacitiesList"
+                bindValue="value"
+                bindLabel="name"
+              ></dadyin-searchable-select>
+            </div>
+            <div class="col-12 col-md-6 my-2">
+              <dadyin-searchable-select
+                class="w-100"
+                [multiple]="true"
+                label="Select Industry Types"
+                placeholder="Select Industry Types"
+                [control]="categoryIndustryTypes"
+                [fullItems]="apiService.allIndustryTypes"
+                bindValue="id"
+                bindLabel="description"
+              ></dadyin-searchable-select>
+            </div>
+            <!-- <div class="col-12 col-md-3 my-2">
+              <dadyin-searchable-select class="w-100" placeholder="Select Industry Types"
+              [control]="categoryIndustryTypes" [fullItems]="apiService.allIndustryTypes" bindValue="id"
+              bindLabel="description"></dadyin-searchable-select>
+        
+            </div> -->
+
+            <div class="col-12 col-md-3 my-2 mt-4">
+              <dadyin-search-select-new
+                [highlightItems]="highlightProductTypeIds"
+                (itemClick)="onClickProductType($event)"
+                label="Product Types"
+                bindValue="id"
+                [typeahead]="false"
+                [fullItems]="apiService.productTypes"
+                [selectedItems]="categoryProductTypes"
+                (change)="onProductTypeChange($event)"
+              ></dadyin-search-select-new>
+            </div>
+            <div class="col-12 col-md-9 mt-4">
+              <dadyin-search-select-new
+                [optionTag]="'productTypeDescription'"
+                [highlightItems]="highlightProductSubTypeIds"
+                label="Product Sub Types"
+                bindValue="id"
+                bindLabel="description"
+                [typeahead]="false"
+                [fullItems]="filteredSubTypes"
+                [selectedItems]="productSubTypeIds"
+                (change)="onProductSubTypeChange($event)"
+              ></dadyin-search-select-new>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </form>
+    </div>
+  </div>
+
+  <div class="content-wrapper my-3" >
+    <data-table
+      [height]="'65vh'"
+      [data]="productsList"
+      [headers]="headers"
+      [pageConfig]="pageConfig"
+      (sortChange)="sort($event)"
+      (pageChange)="pageChange($event)"
+      [actions]="tabelActions"
+      (actionClick)="onActionClick($event)"
+    >
+    </data-table>
+  </div>
+</div>

@@ -1,0 +1,1152 @@
+<div [formGroup]="orderForm" class="app-container  "
+  [ngStyle]="{'width': viewType=='flyer' ? 'unset' : '' }">
+  <div style="overflow-x: auto; text-wrap: nowrap"
+    class="height-40 d-flex align-items-center justify-content-between b-light bg-primary top-header b-round"
+    *ngIf="viewType=='flyer'">
+    <div class="d-flex align-items-center">
+      <div *ngIf="selectedVendorDetail?.businessLogo || isDefaultVendor()">
+        <img [src]="getVendorLogo()" alt="Brand Logo" height="50px" width="100px"
+          class="headerlogo" />
+      </div>
+      <div class="title-text vendor-name text-white mx-2">
+        {{selectedVendorDetail?.name}}
+      </div>
+    </div>
+    <div class="d-flex align-items-center">
+      <div  matTooltip="For any query,click here" class="wa-button px-1">
+        <a [href]="getVendorWhatsAppUrl('query')"
+          target="_blank">
+          <img class="whatsapp" width="25px" src="../../../assets/img/icons/whatsapp.svg" alt="" /></a>
+      </div>
+      <div class="text-white signup">
+        <a [href]="getVendorWhatsAppUrl('demo')"
+          target="_blank" class="text-decoration-none text-white"> Book a Demo </a>
+      </div>
+      <div routerLink="/signup" class="text-white signup font-size-14">
+        Sign up
+      </div>
+      <div class="signin">
+        <button routerLink="/signin" class="bg-white b-round b-light btn-borderless-white" label="Sign in">
+          Sign in
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="viewType=='normal'" class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button routerLink="/home/quick-checkout" [theme]="'borderless-primary'" type="icon"
+        [typeval]="'arrow_circle_left'">
+      </dadyin-button>
+      <div style="width: max-content" class="content-title">
+        <label>Quick Checkout</label>
+      </div>
+      <div class="content-info">
+        <div style="width: max-content" *ngIf="orderForm?.value?.transactionId">
+          | <b>{{orderForm?.value?.transactionId}}</b>
+        </div>
+        <span style="width: max-content" *ngIf="orderForm?.value?.audit?.createdDate">
+          ( {{ orderForm?.value?.audit?.createdDate | date:'medium' }} )
+        </span>
+      </div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+      <div style="width: max-content" class="status"
+        matTooltip="{{orderForm?.value.audit?.lastModifiedDate | date :'short'}}">
+        STATUS : {{orderForm?.value?.status}}
+      </div>
+      <dadyin-button *ngIf="this.orderId && orderForm?.value.status=='DRAFT'" type="image"
+        [typeval]="'assets/img/icons/Delete Trash.svg'" [theme]="'danger-light'" (clicked)="confirmDeleteOrder()">
+      </dadyin-button>
+      <dadyin-button
+        *ngIf="orderForm?.value.status!='CONFIRMED' && orderForm?.value.status!='PLACED' && orderForm?.value.status!='COMPLETED'"
+        label="Save Draft" (clicked)="saveDraftOrder()" [theme]="'secondary'">
+      </dadyin-button>
+      <dadyin-button *ngIf="orderForm?.value.status!='DRAFT'" label="Close" routerLink="/home/quick-checkout"
+        [theme]="'secondary'">
+      </dadyin-button>
+      <dadyin-button
+        *ngIf="(orderForm?.value.status!='CONFIRMED' &&  orderForm?.value.status!='PLACED' && orderForm?.value.status!='COMPLETED')"
+        [theme]="'primary'" label="Place Order" (clicked)="confirmPlaceOrder()">
+      </dadyin-button>
+    </div>
+  </div>
+
+  <div *ngIf="viewType=='normal'" cdkDrag class="uom-config-section">
+    <button (click)="$event.stopPropagation();uomSetting=!uomSetting" class="btn bg-primary-light title-text">
+      UOM Setting
+    </button>
+    <div (click)="$event.stopPropagation();" class="card uom-card" *ngIf="uomSetting">
+      <div class="prefer-uom-grid align-items-center" *ngIf="componentUoms.controls?.length>0">
+        <div [formGroup]="item" *ngFor="let item of componentUoms.controls;let i=index"
+          class="my-2 attribute one b-none w-100">
+          <div class="attribute-input justify-content-around w-100 title-text">
+            <div class="text-uppercase">
+              {{item.get('attributeName').value}}
+            </div>
+            <select (change)="loadProductsList(productSearchRequest)" formControlName="userConversionUom">
+              <ng-container *ngFor="let uom of uomService.getUoms(item.get('attributeTypeId').value)">
+                <option [value]="uom.description">{{uom?.description}}</option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <dadyin-tab *ngIf="viewType=='normal'"
+    [disabled]="orderForm.value.status!='PLACED' && orderForm.value.status!='CONFIRMED'" (actionClick)="actions($event)"
+    [action]="mainTab" [currentIndex]="currentMainIndex"></dadyin-tab>
+  <ng-container *ngIf="currentMainIndex == 0">
+    <div>
+      <div class="b-dark attr-b attr-top b-round">
+        <div class="d-flex align-items-center b-round toolbar height-40 px-2 font-size-14"
+          style="overflow-x: auto; overflow-y: hidden; white-space: nowrap">
+          <div class="d-flex align-items-center w-100 b-round">
+            <div class="d-flex align-items-center pe-1">
+              <div class="title-text fw-bold">Products In Order</div>
+            </div>
+            <div *ngIf="viewType=='normal'" style="border: solid 1px; height: 25px" class="mx-1"></div>
+            <div *ngIf="viewType=='normal'" class="d-flex"
+              [matTooltip]="(currentBusinessAccountDetail?.businessLines?.includes('RETAILER') ? 'This feature is not available for retailers.' : '')">
+              <dadyin-button (clicked)="toggleType('LOCAL')" [theme]="
+                  importLocalType.value == 'LOCAL'
+                    ? 'primary'
+                    : 'borderless-primary'
+                " type="icon" typeval="location_on">
+              </dadyin-button>
+
+              <dadyin-button (clicked)="toggleType('CONTAINER')" [theme]="
+                  importLocalType.value == 'CONTAINER'
+                    ? 'primary'
+                    : 'borderless-primary'
+                " type="icon" typeval="anchor">
+              </dadyin-button>
+            </div>
+            <div *ngIf="viewType=='normal'" class="mx-2 title-text" style="white-space: nowrap">
+              Select Vendor
+            </div>
+            <div *ngIf="viewType=='normal'" class="d-flex align-items-center font-size-14 width-140">
+              <!-- <select
+                [matTooltipPosition]="'after'"
+                [matTooltip]="(productPackages?.controls?.length>0 ? 'Please remove products from order to change vendor' : '')"
+                (change)="onChangeVendor()"
+                class="bg-light b-primary-all"
+                [formControl]="vendorId"
+              >
+                <option
+                  *ngIf="businessAccountService.vendorList?.length==0"
+                  [matTooltipPosition]="'after'"
+                  [matTooltip]="(productPackages?.controls?.length>0 ? 'Please remove products from order to change vendor' : '')"
+                  [disabled]="productPackages?.controls?.length>0"
+                  [value]="301"
+                >
+                  Dayana Polyplast Inc
+                </option>
+                <ng-container
+                  *ngFor="let vendor of businessAccountService.vendorList;trackBy vendor?.id"
+                >
+                  <option
+                    [matTooltipPosition]="'after'"
+                    [matTooltip]="(productPackages?.controls?.length>0 ? 'Please remove products from order to change vendor' : '')"
+                    [disabled]="productPackages?.controls?.length>0"
+                    [value]="vendor?.relationAccountId"
+                  >
+                    {{vendor?.relationAccountName}}
+                    ({{vendor?.relationAccountId}})
+                  </option>
+                </ng-container>
+              </select> -->
+
+              <dadyin-searchable-select [disabled]="productPackages?.controls?.length>0" [matTooltipPosition]="'after'"
+                [matTooltip]="(productPackages?.controls?.length>0 ? 'Please remove products from order to change vendor' : '')"
+                (changed)="onChangeVendor()" class="w-100" [control]="vendorId" [marginBottom]="false"
+                [fullItems]="businessAccountService.vendorList" bindValue="relationAccountId"
+                bindLabel="relationAccountName"></dadyin-searchable-select>
+            </div>
+            <div *ngIf="!['SKU']?.includes(buyingType?.value) && viewType=='normal'"
+              class="d-flex align-items-center font-size-14">
+              <div class="mx-2 title-text">Incoterm</div>
+              <select class="bg-white b-round width-50" formControlName="incoTermId">
+                <option disabled [value]="null">Select Incoterm</option>
+                <option [disabled]="productPackages?.controls?.length>0"
+                  *ngFor="let incoTerm of containerService.incoTermsList" [value]="incoTerm?.id">
+                  {{incoTerm?.description}}
+                </option>
+              </select>
+            </div>
+            <div *ngIf="['SKU']?.includes(buyingType?.value)" class="d-flex align-items-center font-size-14">
+              <div class="mx-2 title-text">Delivery Type</div>
+              <select
+                [matTooltip]="(productPackages?.controls?.length>0 ? 'Please remove products from order to change delivery type' : '')"
+                [disabled]="!isEditable || productPackages?.controls?.length>0" class="bg-white b-round"
+                formControlName="deliveryPickup">
+                <option [disabled]="!isEditable || productPackages?.controls?.length>0" value="DELIVERY">
+                  DELIVERY
+                </option>
+                <option [disabled]="!isEditable || productPackages?.controls?.length>0" value="PICKUP">
+                  PICKUP
+                </option>
+              </select>
+            </div>
+            <div *ngIf="viewType=='flyer'" class="d-flex align-items-center w-100 justify-content-end">
+              <div class="title-text my-2">
+                <dadyin-button (clicked)="confirmCheckout()" label="Place order" [theme]="'primary'">
+                </dadyin-button>
+              </div>
+            </div>
+
+            <div *ngIf="viewType=='normal'" class="d-flex align-items-center font-size-14">
+              <div class="mx-2 title-text">Buying Type</div>
+
+              <select
+                [matTooltip]="(productPackages?.controls?.length>0 ? 'Please remove products from order to change buying type' : '')"
+                (change)="calculateOrderDetail(orderForm.getRawValue());onChangeBuyingType()"
+                formControlName="buyingType" class="bg-white b-round">
+                <option [value]="null" disabled>Select Buying Type</option>
+                <ng-container *ngIf="importLocalType.value=='LOCAL'">
+                  <option *ngFor="let orderType of  buyingTypeListLocal"
+                    [matTooltip]="(productPackages?.controls?.length>0 ? 'Please remove products from order to change buying type' : '')"
+                    [disabled]="productPackages?.controls?.length>0" [ngValue]="orderType.value">
+                    {{orderType.name}}
+                  </option>
+                </ng-container>
+                <ng-container *ngIf="importLocalType.value=='CONTAINER'">
+                  <option *ngFor="let orderType of  buyingTypeListContainer"
+                    [matTooltip]="(productPackages?.controls?.length>0 ? 'Please remove products from order to change buying type' : '')"
+                    [disabled]="productPackages?.controls?.length>0" [ngValue]="orderType.value">
+                    {{orderType.name}}
+                  </option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white b-light b-round">
+          <div class="d-flex mt-1 px-2 py-2 b-round sub-header">
+            <div [matTooltip]="cartView ? 'Add More Products' : 'View Cart'" class="cartView"
+              [ngClass]="{'bg-secondary':cartView}" (click)="viewCart()">
+              <b>Products</b><br />
+              <dadyin-button theme="borderless-primary" class="mx-1" type="icon"
+                [typeval]="'shopping_cart'"></dadyin-button>
+              <span>{{productPackages?.controls?.length ?? '-'}}</span>
+            </div>
+            <div *ngIf="buyingType?.value=='PALLET'">
+              <b>Pallet</b><br />
+              <span>{{productPackages?.controls?.length}}</span>
+            </div>
+            <div>
+              <b>Weight</b><br />
+              <span style="width: max-content; text-wrap: nowrap">{{orderForm.value.weight?.attributeValue |
+                numberFormatter:3}}
+                {{orderForm.value.weight?.userConversionUom}}</span>
+            </div>
+            <div>
+              <b>Volume</b><br />
+              <span style="width: max-content">{{orderForm.value.volume?.attributeValue | numberFormatter:3}}
+                {{orderForm.value.volume?.userConversionUom}}</span>
+            </div>
+
+            <div style="border: solid 1px; height: 35px"></div>
+            <div class="text-nowrap">
+              <strong>Order Value </strong><br />
+
+              <strong style="width: max-content"
+                *ngIf="!checkIfAnyProductIsSelfProduct()">{{orderForm.value?.cost?.attributeValue | numberFormatter:3}}
+                {{orderForm.value?.cost?.userConversionUom}}</strong>
+              <span *ngIf="checkIfAnyProductIsSelfProduct()"> {{'-'}}</span>
+            </div>
+            <div style="border: solid 1px; height: 35px"></div>
+            <div class="text-nowrap">
+              <b>Delivery Fees</b>
+              <i class="material-icon mx-1 mt-2"
+                matTooltip="Keep your order value above $500 for Free Delivery">info_outline</i>
+              <br />
+              <span>{{orderForm.value?.deliveryCost?.attributeValue |
+                numberFormatter:3}}
+                {{orderForm.value?.deliveryCost?.userConversionUom}}</span>
+            </div>
+            <div style="border: solid 1px; height: 35px"></div>
+            <div class="text-nowrap">
+              <b>Grand Total</b><br />
+
+              <b *ngIf="!checkIfAnyProductIsSelfProduct()">{{orderForm.value?.totalCost?.attributeValue |
+                numberFormatter:3}}
+                {{orderForm.value?.totalCost?.userConversionUom}}</b>
+              <b *ngIf="checkIfAnyProductIsSelfProduct()"> {{'-'}}</b>
+            </div>
+
+            <div class="mt-2 w-100" style="max-width: 350px; min-width: 250px"
+              *ngIf="importLocalType?.value=='LOCAL' && deliveryPickup?.value=='DELIVERY'">
+              <dadyin-map-autocomplete [label]="'Delivery Address'"
+                (address)="onAddressSelection($event,deliveryAddress)"
+                [control]="deliveryAddress"></dadyin-map-autocomplete>
+            </div>
+            <ng-container
+              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+              <div style="border: solid 1px; height: 35px"></div>
+              <div class="mt-2">
+                <dadyin-select class="min-width-75" [emptyOption]="'Select Departure Port'"
+                  formControlName="departurePortId" [optionArr]="containerService.portsList"
+                  label="Nearest Port from Vendor" optionLabel="description" optionValue="id">
+                </dadyin-select>
+              </div>
+              <div class="mt-2">
+                <dadyin-select class="min-width-75" [emptyOption]="'Select Arrival List'"
+                  formControlName="arrivalPortId" [optionArr]="containerService.portsList" label="Port of arrival"
+                  optionLabel="description" optionValue="id">
+                </dadyin-select>
+              </div>
+              <div>
+                <div class="attribute one mt-2">
+                  <label> Req. by Date</label>
+                  <div class="attribute-input">
+                    <input [min]="minRequiredDate" formControlName="requiredByDate" type="date" />
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <div class="mt-1" *ngIf="viewType=='normal'">
+            <div class="process-table b-light quickcheckout-table"
+              [ngStyle]="{'max-height': isEditable ? '200px' : 'unset'}">
+              <table id="example" class="table-striped">
+                <thead>
+                  <tr>
+                    <th class="width-150" style="border-left: solid 1px #f1f5f9 !important">
+                      Product Code
+                    </th>
+
+                    <th class="number-column width-70"
+                      *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                      ODO
+                    </th>
+
+                    <th colspan="2">Product Description</th>
+
+                    <th class="width-100">Units/SKU</th>
+                    <th class="number-column" *ngIf="['PALLET','TRUCK','SKU']?.includes(buyingType?.value)"></th>
+                    <th class="number-column weight">
+                      WT/SKU
+                      <span
+                        *ngIf="productPackages.controls[0]?.value.weight?.userConversionUom">({{productPackages.controls[0]?.value.weight?.userConversionUom}})
+                      </span>
+                    </th>
+
+                    <th class="number-column volume">
+                      VOL/SKU
+                      <span *ngIf="productPackages.controls[0]?.value.volume?.userConversionUom">
+                        ({{productPackages.controls[0]?.value.volume?.userConversionUom}})
+                      </span>
+                    </th>
+
+                    <th
+                      *ngIf="['CONTAINER_40_FT' , 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)"
+                      class="width-140">
+                      Load Type
+                    </th>
+
+                    <th class="number-column">
+                      <b>SKU PRICE
+                        <span *ngIf="productPackages.controls[0]?.value.skuCost?.userConversionUom">
+                          ({{productPackages.controls[0]?.value?.skuCost?.userConversionUom}})
+                        </span>
+                      </b>
+                    </th>
+
+                    <th class="number-column"
+                      *ngIf="['CONTAINER_40_FT' , 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                      MQO
+                    </th>
+
+                    <th class="width-140 text-center">
+                      QTY
+                      <span
+                        *ngIf="['SKU','CONTAINER_40_FT' , 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">SKU</span>
+                      <span *ngIf="['PALLET','TRUCK']?.includes(buyingType?.value)">
+                        SKUS (Pallets)</span>
+                    </th>
+
+                    <th class="number-column">
+                      PRICE
+                      <span *ngIf="productPackages.controls[0]?.value?.totalCost?.userConversionUom">
+                        ({{productPackages.controls[0]?.value?.totalCost?.userConversionUom}})</span>
+                    </th>
+
+                    <th class="text-right">ACTIONS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container [formGroup]="product" *ngFor="let product of productPackages.controls; let i = index">
+                    <tr style="height: 30px">
+                      <td>
+                        <section class="d-flex align-items-center width-150">
+                          <dadyin-button *ngIf="product.value.isCustomized"
+                            (clicked)="viewDetail(product.value,product.value.isCustomized)" type="icon"
+                            [typeval]="isMyProduct(product.value?.productDetails) ? 'attribution' :'workspace_premium'"
+                            [theme]="'borderless-primary'">
+                          </dadyin-button>
+                          <!-- <div
+                            *ngIf="!product.value.isCustomized"
+                            class="width-50"
+                          ></div> -->
+                          <span class="d-flex align-items-center justify-content-center me-1"
+                            [ngClass]="{'self-product':getOwner(product.value?.productDetails?.audit)=='S','third-product':getOwner(product.value?.productDetails?.audit)=='T','master-product':getOwner(product.value?.productDetails?.audit)=='M'}">
+                            {{getOwner(product.value?.productDetails?.audit)}}
+                          </span>
+                          <section container="body" placement="top" [ngbTooltip]="tooltipinfo" style="
+                              width: 100px;
+                              overflow: hidden;
+                              text-overflow: ellipsis;
+                            ">
+                            {{product.value.productDetails?.productCode}}
+                          </section>
+                        </section>
+                        <ng-template #tooltipinfo>
+                          <section *ngIf="product.value.productDetails?.productImageFileNames?.length>0">
+                            <img [src]="imgUrl + product.value.productDetails?.productImageFileNames[0]" width="200"
+                              height="200" />
+                          </section>
+                          <section>
+                            {{product.value.productDetails?.productCode}}
+                          </section>
+                        </ng-template>
+                      </td>
+
+                      <td class="number-column width-70"
+                        *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                        {{product.value.productDetails?.odometer?.attributeValue
+                        | numberFormatter:3}}
+                      </td>
+
+                      <td colspan="2">
+                        {{product.value.productDetails?.description}}
+                      </td>
+
+                      <td class="width-100">
+                        <ng-container *ngIf="!product.value.isCustomized">
+                          {{product.value.productDetails?.numberOfItems}}
+                          {{product?.value.productDetails?.skuPackageContent}}/{{product.value.productDetails?.skuPackageType}}
+                        </ng-container>
+                        <ng-container *ngIf="product?.value?.isCustomized">
+                          <span matTooltip="Packaging will be finalised once the order is confirmed">
+                            1<sup>*</sup>/SKU
+                          </span>
+                        </ng-container>
+                      </td>
+
+                      <td *ngIf="['PALLET','TRUCK','SKU']?.includes(buyingType?.value)"></td>
+
+                      <td class="number-column weight">
+                        <div *ngIf="product.value.isCustomized">
+                          {{product.value?.skuWeight?.attributeValue |
+                          numberFormatter:3}}
+                        </div>
+                        <div *ngIf="!product.value.isCustomized">
+                          {{product.value?.weight?.attributeValue |
+                          numberFormatter:3}}
+                        </div>
+                      </td>
+
+                      <td class="number-column volume">
+                        <div *ngIf="product.value.isCustomized">
+                          {{product.value?.skuVolume?.attributeValue |
+                          numberFormatter:3}}
+                        </div>
+                        <div *ngIf="!product.value.isCustomized">
+                          {{product.value?.volume?.attributeValue |
+                          numberFormatter:3}}
+                        </div>
+                      </td>
+
+                      <td class="width-140"
+                        *ngIf="['CONTAINER_40_FT' , 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                        {{product.value?.loadingType}}
+                      </td>
+
+                      <td class="number-column"
+                        [matTooltip]="(isSelfProduct(product.value?.productDetails) ? 'Please Request Vendor For Pricing' : '')">
+                        {{isSelfProduct(product.value?.productDetails) ? ('-') :
+                        (product.value?.skuCost?.attributeValue |
+                        numberFormatter:3) }}
+                      </td>
+
+                      <td
+                        *ngIf="['CONTAINER_40_FT' , 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                      </td>
+
+                      <td *ngIf="!product.value.isCustomized" class="my-1 d-flex align-items-center mx-1">
+                        <dadyin-button [isDisabled]="!isEditable" [theme]="'borderless-white'" type="icon"
+                          [typeval]="'remove'" (clicked)="updateProductQuantityInOrder(i,-1)"></dadyin-button>
+                        <input name="quantity" [readonly]="!isEditable" (change)="changeQuantityInOrder(i)"
+                          type="number" min="1" class="text-center b-none" formControlName="quantity" />
+                        <dadyin-button [isDisabled]="!isEditable" [theme]="'borderless-white'" type="icon"
+                          [typeval]="'add_circle_outline'" (clicked)="updateProductQuantityInOrder(i,1)">
+                        </dadyin-button>
+                      </td>
+
+                      <td *ngIf="product.value.isCustomized" class="number-column text-center">
+                        <div>{{product.value.skuQuantities}}</div>
+                      </td>
+
+                      <td class="number-column" style="color: darkgreen"
+                        [matTooltip]="(isSelfProduct(product.value?.productDetails) ? 'Please Request Vendor For Pricing' : '')">
+                        {{isSelfProduct(product.value?.productDetails) ? ('-') :
+                        (product.value?.totalCost?.attributeValue |
+                        numberFormatter:3) }}
+                      </td>
+
+                      <td class="d-flex justify-content-end align-items-center w-100">
+                        <dadyin-button *ngIf="isEditable" type="icon" [typeval]="'delete_outline'"
+                          [theme]="'borderless-danger'" (clicked)="deleteProductFromOrder(product.value)">
+                        </dadyin-button>
+
+                        <dadyin-button matTooltip="No Pallet Available"
+                          *ngIf="(['PALLET']?.includes(buyingType?.value) && !product.value?.isPalletAvailable)"
+                          type="icon" [typeval]="'warning'" [theme]="'borderless-danger'">
+                        </dadyin-button>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+                <ng-container *ngIf="productPackages.controls?.length==0">
+                  <tr>
+                    <td></td>
+
+                    <td colspan="8" class="text-center font-size-14">
+                      <b>Products cart is empty.</b>
+                    </td>
+
+                    <td></td>
+                  </tr>
+                </ng-container>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- bottom sections -->
+
+      <ng-container *ngIf="isEditable">
+        <div style="margin-bottom:50px;" class="b-dark b-round">
+          <div class="d-flex align-items-center bg-white b-round overflow-auto px-2">
+            <div *ngIf="viewType=='normal'" class="d-flex align-items-center b-round">
+              <dadyin-button [isDisabled]="this.productSearchRequest.pageIndex==0" type="icon"
+                [typeval]="'navigate_before'" [theme]="'borderless-primary'"
+                (clicked)="changePage('prev')"></dadyin-button>&nbsp;
+              <div class="bg-light b-round b-light width-90 text-center">
+                <span *ngIf="this.productsListDetails?.numberOfElements>0">
+                  {{1 +
+                  ((productsListDetails?.number)*(productsListDetails?.size))}}
+                  - {{productsListDetails?.numberOfElements+
+                  ((productsListDetails?.number)*(productsListDetails?.size))}}
+                  of {{productsListDetails?.totalElements}}
+                </span>
+                <span *ngIf="this.productsListDetails?.numberOfElements==0">
+                  No Products
+                </span>
+              </div>
+              <dadyin-button type="icon"
+                [isDisabled]="this.productSearchRequest.pageIndex==productsListDetails?.totalPages-1"
+                [typeval]="'navigate_next'" (clicked)="changePage('next')"
+                [theme]="'borderless-primary'"></dadyin-button>&nbsp;
+            </div>
+            <div *ngIf="viewType=='normal'" class="d-flex align-items-center mx-1" style="margin-left: -7px !important">
+              <dadyin-button *ngIf="!toggle" matTooltip="Switch to grid view" theme="borderless-primary" class="mx-1"
+                (clicked)="toggleView()" type="icon" [typeval]="'image'"></dadyin-button>
+
+              <dadyin-button *ngIf="toggle" matTooltip="Switch to list view" theme="borderless-primary" class="mx-1"
+                (clicked)="toggleView()" type="icon" [typeval]="'list'"></dadyin-button>
+            </div>
+            <div class="b-light w-100 my-2 b-round d-flex align-items-center">
+              <div class="w-100">
+                <input style="min-width: 150px" #inp class="w-100" [(ngModel)]="productSearchRequest.searchString"
+                  [ngModelOptions]="{standalone: true}" (input)="searchByString($event)"
+                  [placeholder]="'Search based on the product, Product Code, Brand, UPC Code'" />
+              </div>
+              <div>
+                <dadyin-button type="icon" [typeval]="'close'" [theme]="'borderless-primary'"
+                  (clicked)="clearSearch();inp.value=null"></dadyin-button>
+              </div>
+            </div>
+            <div *ngIf="viewType=='normal'">
+              <dadyin-button type="icon" class="mx-1" (clicked)="downloadProducts()" [typeval]="'print'"
+                [theme]="'borderless-primary'">
+              </dadyin-button>
+            </div>
+            <div class="filter-icons d-flex align-items-center justify-content-center">
+              <dadyin-button matTooltip="Filter Customizable Products" *ngIf="!productSearchRequest.isCustomizable"
+                (clicked)="filterCustomizable(true)" type="icon" [typeval]="'workspace_premium'"
+                [theme]="'borderless-primary'">
+              </dadyin-button>
+              <dadyin-button matTooltip="View all Products" *ngIf="productSearchRequest.isCustomizable"
+                (clicked)="filterCustomizable(false)" type="icon" [typeval]="'workspace_premium'"
+                [theme]="'borderless-primary'">
+              </dadyin-button>
+              <dadyin-button *ngIf="!productSearchRequest.isFavourite && viewType=='normal'" type="icon"
+                [typeval]="'favorite_outline'" [theme]="'borderless-primary'" (clicked)="filterFav(true)"
+                matTooltip="View Favourite products"></dadyin-button>
+              <dadyin-button *ngIf="productSearchRequest.isFavourite && viewType=='normal'" type="icon"
+                [typeval]="'favorite'" [theme]="'borderless-primary'" (clicked)="filterFav(false)"
+                matTooltip="View Favourite products"></dadyin-button>
+              <ng-container *ngIf="viewType=='normal'">
+                <div matTooltip="{{ownershipTag=='S' ? 'Exclude Self Products' : 'Include Self Products'}}"
+                  class="self-product mx-1 text-center" [ngClass]="{'b-primary-all':ownershipTag=='S'}"
+                  (click)="filterProductByOwnership('S')">
+                  S
+                </div>
+                <div
+                  matTooltip="{{ownershipTag=='T' ? 'View only Selected Vendor Products' : 'Compare with other vendors'}}"
+                  class="third-product mx-1 text-center" [ngClass]="{'b-primary-all':ownershipTag=='T'}"
+                  (click)="filterProductByOwnership('T')">
+                  T
+                </div>
+                <div matTooltip="{{ownershipTag=='M' ? 'Exclude Master Products' : 'Include Master Products'}}"
+                  class="master-product mx-1 text-center" [ngClass]="{'b-primary-all':ownershipTag=='M'}"
+                  (click)="filterProductByOwnership('M')">
+                  M
+                </div>
+                <!-- <div
+                  *ngIf="viewType=='normal'"
+                  [matTooltip]="'Compare Price with other vendors for the products'"
+                  class="mx-1 text-center mt-1"
+                >
+                  <input
+                    type="checkbox"
+                    [formControl]="compareProducts"
+                    (change)="onChangeCompareproducts()"
+                  />
+                </div> -->
+              </ng-container>
+            </div>
+            <div *ngIf="viewType=='normal'" class="b-round b-light mx-3 px-1 d-flex align-items-center bg-white">
+              <select
+                *ngIf="currentBusinessAccountDetail?.businessLines?.includes('RETAILER') || currentBusinessAccountDetail?.businessLines?.includes('DISTRIBUTOR')"
+                [(ngModel)]="selectedCategoryId" [ngModelOptions]="{standalone: true}" class="bg-light"
+                (change)="onSelectCategory($event)">
+                <option [value]="'none'">None</option>
+                <option [value]="null">All</option>
+                <ng-container *ngFor="let c of categories">
+                  <option class="selt" [value]="c.id">{{c.description}}</option>
+                </ng-container>
+              </select>
+              <div class="d-flex align-items-center">
+                <dadyin-button type="icon" [typeval]="'chevron_left'" [theme]="'borderless-primary'"
+                  (clicked)="scrollLeft()">
+                </dadyin-button>
+
+                <div #widgetsContent style="overflow: hidden; min-width: 350px; max-width: 600px"
+                  class="d-flex align-items-center w-100">
+                  <div class="item-inline"
+                    [ngClass]="(this.productSearchRequest.productTypeIds == null || this.productSearchRequest.productTypeIds?.length<1 ) ? 'activeTab' : ''"
+                    (click)="searchByProductType(null)">
+                    <span> All</span>
+                  </div>
+
+                  <ng-container *ngFor="let type of getFilteredProductTypeListByCategoryId()">
+                    <div style="
+                        width: max-content;
+                        text-wrap: nowrap;
+                        white-space: nowrap;
+                        min-width: fit-content;
+                      " class="item-inline mx-2"
+                      [ngClass]="this.productSearchRequest.productTypeIds.includes(type.id) ? 'activeTab' : ''"
+                      (click)="searchByProductType(type?.id)">
+                      {{type.description | titlecase}}
+                    </div>
+                  </ng-container>
+                </div>
+
+                <dadyin-button type="icon" [typeval]="'chevron_right'" [theme]="'borderless-primary'"
+                  (clicked)="scrollRight()">
+                </dadyin-button>
+              </div>
+              <dadyin-button type="icon" [typeval]="'close'" [theme]="'borderless-primary'"
+                (clicked)="clearProductTypes()"></dadyin-button>
+            </div>
+          </div>
+
+          <div class="maindv" style="overflow: auto">
+            <div class="tab-content pb-3 mb-5" id="pills-tabContent">
+              <!-- table  view start -->
+
+              <ng-container *ngIf="toggle">
+                <div *ngIf="!isExpand">
+                  <div class="process-table b-light">
+                    <form>
+                      <table id="example" class="table-striped">
+                        <thead class="bg-card-header">
+                          <tr>
+                            <th class="width-150" style="border-left: none">
+                              Product Code
+                            </th>
+                            <th class="number-column width-70"
+                              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                              ODO
+                            </th>
+                            <th colspan="2">Product Description</th>
+
+                            <th class="width-100"></th>
+                            <th class="width-100">Units/SKU</th>
+
+                            <th class="number-column" *ngIf="['PALLET','TRUCK','SKU']?.includes(buyingType?.value)">
+                              STOCK (SKUs)
+                            </th>
+                            <th style="width: 300px" colspan="3" class="text-center"
+                              *ngIf="['SKU']?.includes(buyingType?.value)">
+                              SKU PRICE ({{getUomByName('cost')}})
+                            </th>
+                            <th class="number-column weight"
+                              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                              WT/SKU
+                            </th>
+                            <th class="number-column volume"
+                              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                              VOL/SKU
+                            </th>
+                            <th class="width-140"
+                              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                              Load Type
+                            </th>
+                            <th class="number-column"
+                              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                              SKU PRICE ({{getUomByName('cost')}})
+                            </th>
+
+                            <th class="number-column"
+                              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                              MQO
+                            </th>
+                            <th class="number-column" *ngIf="['PALLET']?.includes(buyingType?.value)">
+                              MQO in
+                            </th>
+                            <th class="number-column" *ngIf="['PALLET','TRUCK']?.includes(buyingType?.value)">
+                              SKU/PALLET
+                            </th>
+                            <th class="number-column" *ngIf="['TRUCK']?.includes(buyingType?.value)"></th>
+                            <th class="number-column" *ngIf="['PALLET','TRUCK']?.includes(buyingType?.value)">
+                              SKU PRICE ({{getUomByName('cost')}})
+                            </th>
+                            <th class="width-140">
+                              QTY
+                              <span
+                                *ngIf="['SKU','CONTAINER_40_FT' , 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">SKU</span>
+                              <span *ngIf="['PALLET','TRUCK']?.includes(buyingType?.value)">
+                                SKUS (Pallets)</span>
+                            </th>
+                            <th class="number-column">Total Value</th>
+                            <th class="text-right">Actions</th>
+                          </tr>
+                          <tr>
+                            <th class="width-150"></th>
+                            <th class="number-column width-70"
+                              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                            </th>
+                            <th colspan="2"></th>
+
+                            <th></th>
+                            <th class="width-100"></th>
+                            <th class="number-column" *ngIf="['PALLET','TRUCK','SKU']?.includes(buyingType?.value)">
+                            </th>
+                            <th class="number-column" *ngIf="['SKU']?.includes(buyingType?.value)">
+                              1-5
+                            </th>
+                            <th class="number-column" *ngIf="['SKU']?.includes(buyingType?.value)">
+                              6-20
+                            </th>
+                            <th class="number-column" *ngIf="['SKU']?.includes(buyingType?.value)">
+                              21+
+                            </th>
+                            <th class="number-column weight"
+                              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                              {{getUomByName('weight')}}
+                            </th>
+                            <th class="number-column volume"
+                              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                              {{getUomByName('volume')}}
+                            </th>
+                            <th class="width-140"
+                              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                            </th>
+                            <th class="number-column"
+                              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                              ( {{getUomByName('metricCost')}} )
+                            </th>
+                            <th class="number-column"
+                              *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                            </th>
+
+                            <th class="number-column" *ngIf="['PALLET']?.includes(buyingType?.value)">
+                              Multiples of
+                            </th>
+                            <th class="number-column" *ngIf="['PALLET','TRUCK']?.includes(buyingType?.value)"></th>
+                            <th class="number-column" *ngIf="['TRUCK']?.includes(buyingType?.value)"></th>
+                            <th class="number-column" *ngIf="['PALLET','TRUCK']?.includes(buyingType?.value)"></th>
+                            <th class="width-140"></th>
+                            <th class="number-column"></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody *ngIf="productsList?.length>0">
+                          <ng-container *ngFor="let product of productsList ; let i = index">
+                            <tr *ngIf="isNotAvailableInTopList(product)"
+                              [ngStyle]="{'opacity':hideAddToOrder(product?.productDetails?.audit) ? '0.8' : '1'}"
+                              [ngClass]="{'self-product-row':getOwner(product?.productDetails?.audit)=='S','third-product-row':getOwner(product?.productDetails?.audit)=='T','master-product-row':getOwner(product?.productDetails?.audit)=='M'}">
+                              <td>
+                                <ng-template #customtooltip appendTo="body">
+                                  <div class="row customtooltip">
+                                    <div class="col-12">
+                                      <label class="tooltip-title">
+                                        <b> Owner: </b>
+                                      </label>
+                                      <span>{{product?.productDetails?.auditBusinessAccountName}}</span>
+                                      <ng-container *ngIf="getOwner(product?.productDetails?.audit)=='S'">
+                                        <label> <b> Created Date:
+                                          </b></label><span>{{product?.productDetails?.audit.createdDate
+                                          | date:'MM-dd-yyyy'}}</span>
+                                        <br />
+                                        <label>
+                                          <b>Last Modified Name:
+                                          </b></label><span>{{product?.productDetails?.audit.lastModifiedByName}}</span><br />
+                                        <label>
+                                          <b> Last Modified Date:
+                                          </b></label><span>{{product?.productDetails?.audit.lastModifiedDate
+                                          | date:'MM-dd-yyyy'}}</span>
+                                      </ng-container>
+                                    </div>
+                                  </div>
+                                </ng-template>
+                                <section class="d-flex align-items-center">
+                                  <span [ngbTooltip]="customtooltip" placement="top" container="body"
+                                    class="d-flex align-items-center justify-content-center"
+                                    [ngClass]="{'self-product':getOwner(product?.productDetails?.audit)=='S','third-product':getOwner(product?.productDetails?.audit)=='T','master-product':getOwner(product?.productDetails?.audit)=='M'}">
+                                    {{getOwner(product?.productDetails?.audit)}}
+                                  </span>
+                                  <div placement="top" container="body" [ngbTooltip]="tooltipinfo1" style="
+                                      width: 100px;
+                                      overflow: hidden;
+                                      text-overflow: ellipsis;
+                                    ">
+                                    {{product?.productDetails?.productCode}}
+                                  </div>
+                                </section>
+
+                                <ng-template #tooltipinfo1>
+                                  <section *ngIf="product?.productDetails?.productImageFileNames?.length>0">
+                                    <img [src]="imgUrl + product?.productDetails?.productImageFileNames[0]" width="200"
+                                      height="200" />
+                                  </section>
+                                </ng-template>
+                              </td>
+                              <td class="number-column width-70"
+                                *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                                {{product?.productDetails?.odometer.value}}
+                              </td>
+                              <td colspan="2"
+                                [matTooltip]="hideAddToOrder(product?.productDetails?.audit) ? 'To View this Product, select this vendor from above' : null"
+                                (click)="viewDetail(product,true);"
+                                [ngClass]="{'cursor':!hideAddToOrder(product?.productDetails?.audit)}">
+                                <dadyin-button *ngIf="product?.productDetails?.isCustomizable" type="icon"
+                                  [typeval]="'workspace_premium'" [theme]="'borderless-primary'"
+                                  (clicked)="viewDetail(product,true);"
+                                  [isDisabled]="hideAddToOrder(product?.productDetails?.audit)"
+                                  [matTooltip]="hideAddToOrder(product?.productDetails?.audit) ? 'To add this Product, select this vendor from above' : null">
+                                </dadyin-button>
+
+                                {{product?.productDetails?.description}}
+                              </td>
+
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <mat-icon (click)="openRating(product?.productDetails?.rating,product)"
+                                    class="star-icon-size primary-text">star</mat-icon>
+                                  <span class="font-size-14">
+                                    <b>
+                                      {{getRating(product?.productDetails?.productCode)}}
+                                      /
+                                    </b>
+                                  </span>
+                                  <span class="text-muted mx-1 font-size-14">
+                                    {{200+(i+7)*13}}
+                                  </span>
+                                </div>
+                              </td>
+                              <td class="width-100">
+                                <ng-container *ngIf="!isNoGenericPurchase(product)">
+                                  <ng-container *ngIf="!product?.isCustomized">
+                                    {{product?.productDetails?.numberOfItems}}
+                                    {{product?.productDetails?.skuPackageContent}}/{{product?.productDetails?.skuPackageType}}
+                                  </ng-container>
+
+                                  <ng-container *ngIf="product?.isCustomized">
+                                    <span matTooltip="Packaging will be finalised once the order is confirmed">
+                                      1 <sup>*</sup>
+                                    </span>
+                                  </ng-container>
+                                </ng-container>
+                              </td>
+
+                              <td class="number-column" *ngIf="['PALLET','TRUCK','SKU']?.includes(buyingType?.value)">
+                                <!-- stock -->
+                                {{product?.productDetails?.qoh}}
+                              </td>
+
+                              <ng-container *ngIf="!isNoGenericPurchase(product)">
+                                <td class="number-column" *ngIf="['SKU']?.includes(buyingType?.value)"
+                                  [matTooltip]="(isSelfProduct(product?.productDetails) ? 'Please Request Vendor For Pricing' : '')">
+                                  {{isSelfProduct(product?.productDetails) ?
+                                  ('-') :
+                                  (product?.productDetails?.skuFirstTier?.attributeValue
+                                  | numberFormatter:3) }}
+                                </td>
+                                <td class="number-column" *ngIf="['SKU']?.includes(buyingType?.value)"
+                                  [matTooltip]="(isSelfProduct(product?.productDetails) ? 'Please Request Vendor For Pricing' : '')">
+                                  {{isSelfProduct(product?.productDetails) ?
+                                  ('-') :
+                                  (product?.productDetails?.skuSecondTier?.attributeValue
+                                  | numberFormatter:3) }}
+                                </td>
+                                <td class="number-column" *ngIf="['SKU']?.includes(buyingType?.value) "
+                                  [matTooltip]="(isSelfProduct(product?.productDetails) ? 'Please Request Vendor For Pricing' : '')">
+                                  {{isSelfProduct(product?.productDetails) ?
+                                  ('-') :
+                                  (product?.productDetails?.skuThirdTier?.attributeValue
+                                  | numberFormatter:3) }}
+                                </td>
+                              </ng-container>
+
+                              <ng-container
+                                *ngIf="isNoGenericPurchase(product) && ['SKU']?.includes(buyingType?.value)">
+                                <td class="text-center" colspan="3">
+                                  <a class="cursor" (click)="viewDetail(product,true)">Click to Customize this
+                                    product</a>
+                                </td>
+                              </ng-container>
+
+                              <td class="number-column weight"
+                                *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                                <div>
+                                  {{product?.weight?.attributeValue |
+                                  numberFormatter:3}}
+                                </div>
+                              </td>
+                              <td class="number-column volume"
+                                *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                                <div>
+                                  {{product?.volume?.attributeValue |
+                                  numberFormatter:3}}
+                                </div>
+                              </td>
+                              <td
+                                *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                                <select [(ngModel)]="product.loadingType" [ngModelOptions]="{standalone: true}">
+                                  <ng-container
+                                    *ngFor="let loadingType of [{id:'FLOOR',name:'FLOOR'},{id:'MIXED',name:'MIXED'},{id:'PALLET',name:'PALLET'}]">
+                                    <option [value]="loadingType.id">
+                                      {{loadingType?.name}}
+                                    </option>
+                                  </ng-container>
+                                </select>
+                              </td>
+                              <td class="number-column"
+                                *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)"
+                                [matTooltip]="(isSelfProduct(product?.productDetails) ? 'Please Request Vendor For Pricing' : '')">
+                                {{isSelfProduct(product?.productDetails) ? ('-')
+                                : (product?.skuCost?.attributeValue |
+                                numberFormatter:3) }}
+                              </td>
+                              <td class="number-column"
+                                *ngIf="['CONTAINER_40_FT', 'CONTAINER_20_FT', 'CONTAINER_40_FT_HQ']?.includes(buyingType?.value)">
+                                <!-- mqo -->
+                                {{product?.productDetails?.containerMqo}}
+                              </td>
+                              <td class="number-column" *ngIf="['PALLET']?.includes(buyingType?.value)">
+                                {{product?.productDetails?.palletMqo }}
+                              </td>
+                              <td class="number-column" *ngIf="['PALLET','TRUCK']?.includes(buyingType?.value)">
+                                <ng-container *ngIf="!isNoGenericPurchase(product)">
+                                  {{product?.productDetails?.numberInPallet }}
+                                  {{product?.productDetails?.skuPackageType}}
+                                </ng-container>
+                              </td>
+
+                              <ng-container
+                                *ngIf="isNoGenericPurchase(product) && ['PALLET']?.includes(buyingType?.value)">
+                                <td class="text-center">
+                                  <a class="cursor" (click)="viewDetail(product,true)">Click to Customize this
+                                    product</a>
+                                </td>
+                              </ng-container>
+                              <ng-container *ngIf="!isNoGenericPurchase(product)">
+                                <td class="number-column" *ngIf="['PALLET']?.includes(buyingType?.value)"
+                                  [matTooltip]="(isSelfProduct(product?.productDetails) ? 'Please Request Vendor For Pricing' : '')">
+                                  {{isSelfProduct(product?.productDetails) ?
+                                  ('-') : (product?.skuCost?.attributeValue |
+                                  numberFormatter:3) }}
+                                </td>
+                              </ng-container>
+                              <td class="number-column" *ngIf="['TRUCK']?.includes(buyingType?.value)"></td>
+                              <td class="number-column" *ngIf="['TRUCK']?.includes(buyingType?.value)"
+                                [matTooltip]="(isSelfProduct(product?.productDetails) ? 'Please Request Vendor For Pricing' : '')">
+                                {{isSelfProduct(product?.productDetails) ? ('-')
+                                : (product?.skuCost?.attributeValue |
+                                numberFormatter:3) }}
+                              </td>
+                              <td>
+                                <section class="d-flex w-100 align-items-center b-all bg-white my-1 mx-1 px-1 width-140"
+                                  *ngIf="!isNoGenericPurchase(product)">
+                                  <dadyin-button [theme]="'borderless-white'" type="icon" [typeval]="'remove'"
+                                    (clicked)="minus(i,product.quantity)"
+                                    [isDisabled]="isNoGenericPurchase(product)"></dadyin-button>
+
+                                  <input type="number" min="1" (change)="changeQuantity($event,i)" required
+                                    class="text-center b-none" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="product.quantity" [disabled]="isNoGenericPurchase(product)" />
+                                  <dadyin-button [theme]="'borderless-white'" type="icon"
+                                    [typeval]="'add_circle_outline'" (clicked)="plus(i,product.quantity)"
+                                    [isDisabled]="isNoGenericPurchase(product)">
+                                  </dadyin-button>
+                                </section>
+                                <section class="text-center" *ngIf="isNoGenericPurchase(product)">
+                                  -
+                                </section>
+                              </td>
+                              <td class="number-column"
+                                [matTooltip]="(isSelfProduct(product?.productDetails) ? 'Please Request Vendor For Pricing' : '')">
+                                <ng-container *ngIf="isNoGenericPurchase(product)">
+                                  -
+                                </ng-container>
+                                <ng-container *ngIf="!isNoGenericPurchase(product)">
+                                  {{isSelfProduct(product?.productDetails) ?
+                                  ('-') : (product?.totalCost?.attributeValue |
+                                  numberFormatter:3) }}
+                                </ng-container>
+                              </td>
+                              <td class="d-flex align-items-center w-100 justify-content-end">
+                                <dadyin-button *ngIf="isNoGenericPurchase(product)" type="image"
+                                  [typeval]="'assets/img/common/Add.png'" [theme]="'borderless-primary'"
+                                  (clicked)="viewDetail(product,true)"
+                                  [isDisabled]="hideAddToOrder(product?.productDetails?.audit)"
+                                  [matTooltip]="hideAddToOrder(product?.productDetails?.audit) ? 'To add this Product, select this vendor from above' : null">
+                                </dadyin-button>
+                                <dadyin-button *ngIf="!isNoGenericPurchase(product)" type="image"
+                                  [typeval]="'assets/img/common/Add.png'" [theme]="'borderless-primary'"
+                                  (clicked)="addProductToOrder(product)"
+                                  [isDisabled]="hideAddToOrder(product?.productDetails?.audit)"
+                                  [matTooltip]="hideAddToOrder(product?.productDetails?.audit) ? 'To add this Product, select this vendor from above' : null">
+                                </dadyin-button>
+                                <dadyin-button *ngIf="!product?.productDetails?.isFavourite" type="icon"
+                                  [isDisabled]="hideAddToOrder(product?.productDetails?.audit)"
+                                  [typeval]="'favorite_outline'" [theme]="'borderless-primary'"
+                                  (clicked)="markFavProduct(product)"></dadyin-button>
+                                <dadyin-button [isDisabled]="hideAddToOrder(product?.productDetails?.audit)"
+                                  *ngIf="product?.productDetails?.isFavourite" type="icon" [typeval]="'favorite'"
+                                  [theme]="'borderless-primary'" (clicked)="markFavProduct(product)"></dadyin-button>
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                        <tbody *ngIf="productsList?.length==0">
+                          <tr>
+                            <td colspan="12" class="text-center" align="center">
+                              No Products Found
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
+                  </div>
+                </div>
+              </ng-container>
+
+              <!-- table  view end -->
+
+              <!-- grid  view start -->
+
+              <ng-container *ngIf="!toggle">
+                <div class="px-2 my-1 mb-5" *ngIf="this.authService.isHandset">
+                  <swiper [config]="swiperConfig">
+                    <ng-container *ngFor="let product of productsList; let i = index">
+                      <ng-container *ngIf="(cartView && showHideButtonLabel(product)) || !cartView">
+                        <ng-template swiperSlide *ngIf="isNotAvailableInTopList(product)">
+                          <app-grid-view-product-card [allTierPricingDetails]="allTierPricingDetails"
+                            [rating]="getRating(product?.productDetails?.productCode)" [product]="product" [i]="i"
+                            [buyingType]="buyingType" [ownerValue]="getOwner(product?.productDetails?.audit)"
+                            [showHideButtonLabelValue]="showHideButtonLabel(product)"
+                            [hideAddToOrderValue]="hideAddToOrder(product?.productDetails?.audit)"
+                            [isSelfProductValue]="isSelfProduct(product?.productDetails)"
+                            [isMyProductValue]="isMyProduct(product?.productDetails)"
+                            (deleteProductFromOrderevent)="deleteProductFromOrder(product)"
+                            (viewDetailevent)="viewDetail(product,(product.isCustomized || isNoGenericPurchase(product)))"
+                            (viewCustomisedDetailevent)="viewDetail(product,true)"
+                            (minusevent)="minus(i,product.quantity)" (plusevent)="plus(i,product.quantity)"
+                            (setQuantityevent)="setQuantity($event.quantity,$event.i)"
+                            (changeQuantityevent)="changeQuantity($event.event,i,false)"
+                            (addProductToOrderevent)="addProductToOrder(product)"></app-grid-view-product-card>
+                        </ng-template>
+                      </ng-container>
+                    </ng-container>
+                  </swiper>
+                  <div class="d-flex align-items-center justify-content-center" *ngIf="productsList?.length==0">
+                    No Products Found
+                  </div>
+                </div>
+                <div *ngIf="!this.authService.isHandset" class="p-2 d-flex align-items-center flex-wrap"
+                  style="max-height: 80vh; overflow: auto; row-gap: 5px">
+                  <ng-container *ngFor="let product of productsList ; let i = index">
+                    <ng-container *ngIf="(cartView && showHideButtonLabel(product)) || !cartView">
+                      <ng-container *ngIf="isNotAvailableInTopList(product) ">
+                        <div class="width-perc-25 pe-1">
+                          <app-grid-view-product-card [allTierPricingDetails]="allTierPricingDetails"
+                            [rating]="getRating(product?.productDetails?.productCode)" [product]="product" [i]="i"
+                            [buyingType]="buyingType" [ownerValue]="getOwner(product?.productDetails?.audit)"
+                            [showHideButtonLabelValue]="showHideButtonLabel(product)"
+                            [hideAddToOrderValue]="hideAddToOrder(product?.productDetails?.audit)"
+                            [isSelfProductValue]="isSelfProduct(product?.productDetails)"
+                            [isMyProductValue]="isMyProduct(product?.productDetails)"
+                            (deleteProductFromOrderevent)="deleteProductFromOrder(product)"
+                            (viewDetailevent)="viewDetail(product,(product.isCustomized || isNoGenericPurchase(product)))"
+                            (viewCustomisedDetailevent)="viewDetail(product,true)"
+                            (minusevent)="minus(i,product.quantity)" (plusevent)="plus(i,product.quantity)"
+                            (setQuantityevent)="setQuantity($event.quantity,$event.i)"
+                            (changeQuantityevent)="changeQuantity($event.event,i,false)"
+                            (addProductToOrderevent)="addProductToOrder(product)"></app-grid-view-product-card>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center"
+                  *ngIf="productsList?.length==0 && !this.authService.isHandset">
+                  No Products Found
+                </div>
+              </ng-container>
+
+              <!-- grid  view end -->
+            </div>
+            <div *ngIf="productsListDetails?.totalElements>0" class="pagination-bar">
+              <div class="d-flex align-items-center">
+                <dadyin-button [isDisabled]="this.productSearchRequest.pageIndex==0" label="Previous"
+                  [typeval]="'navigate_before'" [theme]="'primary'"
+                  (clicked)="changePage('prev')"></dadyin-button>&nbsp;
+                <dadyin-button label="Next"
+                  [isDisabled]="this.productSearchRequest.pageIndex==productsListDetails?.totalPages-1"
+                  [typeval]="'navigate_next'" (clicked)="changePage('next')" [theme]="'primary'"></dadyin-button>&nbsp;
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="currentMainIndex == 1">
+    <app-payment [componentUoms]="componentUoms" [purchaseOrderForm]="orderForm"
+      (getOrderById)="getOrderById()"></app-payment>
+  </ng-container>
+</div>

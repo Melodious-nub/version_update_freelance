@@ -1,0 +1,219 @@
+<section>
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button
+        (clicked)="goBack()"
+        class="header-icon"
+        [theme]="'borderless-default'"
+        type="icon"
+        [typeval]="'arrow_circle_left'"
+      >
+      </dadyin-button>
+      <div class="content-title">
+        <label>
+          {{
+            this.productSubTypeForm.value?.description
+              ? this.productSubTypeForm.value?.description
+              : "(Empty Product SubType)"
+          }}</label
+        >
+      </div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+      <dadyin-button
+        (clicked)="confirmDelete()"
+        [theme]="'borderless-danger'"
+        type="icon"
+        [typeval]="'delete_outline'"
+      >
+      </dadyin-button>
+      <dadyin-button [theme]="'default'" label="Back" (clicked)="onClickBack()">
+      </dadyin-button>
+      <dadyin-button
+        [theme]="'primary'"
+        label="Save"
+        (clicked)="onClickSave()"
+      ></dadyin-button>
+    </div>
+  </div>
+  <form [formGroup]="productSubTypeForm">
+    <mat-expansion-panel expanded="true" #expansionPanel1>
+      <mat-expansion-panel-header
+        (click)="expandPanel(expansionPanel1, $event)"
+      >
+        <mat-panel-description>
+          <div class="toolbar p-0 w-100 font-size-12">
+            <div class=" title-text">
+              Add New Product Attribute Set
+            </div>
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="row">
+        <div class="col-6 py-0">
+          <div class="row p-0">
+            <div class="col-6">
+              <dadyin-input
+                inputType="string"
+                formControlName="description"
+                label="Product SubType"
+                [isClearable]="false"
+              >
+              </dadyin-input>
+            </div>
+            <div class="col-6">
+              <div class="attribute one attr-b">
+                <label for="">Product Type </label>
+                <div class="attribute-select">
+                  <select formControlName="productTypeId">
+                    <option disabled [value]="null">Select Product Type</option>
+                    <option
+                      *ngFor="let type of apiService.productTypes"
+                      [ngValue]="type.id"
+                    >
+                      {{ type?.description }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-6">
+                  <div class="attribute one attr-b">
+                    <label for="">HSN(USA)</label>
+                    <div class="attribute-select">
+                      <select formControlName="hsnUsaTypeId">
+                        <option [value]="null">None</option>
+                        <option
+                          *ngFor="let hsn of apiService?.hsnUSAList"
+                          [value]="hsn.id"
+                        >
+                          {{ hsn?.description }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="attribute one attr-b">
+                    <label for="">HSN Code (IND)</label>
+                    <div class="attribute-select">
+                      <select formControlName="hsnIndiaTypeId">
+                        <option [value]="null">None</option>
+                        <option
+                          *ngFor="let hsn of apiService?.hsnIndiaList"
+                          [value]="hsn.id"
+                        >
+                          {{ hsn?.description }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form"></div>
+              <div class="row">
+                <div class="col-6 my-2">
+                  <div class="attribute one attr-b">
+                    <label for="">Expense Percent </label>
+                    <div class="attribute-input">
+                      <input
+                        tabindex="1"
+                        type="text"
+                        formControlName="expensePercent"
+                        placeholder="Enter your value"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 my-2">
+                  <div class="attribute one attr-b">
+                    <label for="">Division Percent </label>
+                    <div class="attribute-input">
+                      <input
+                        tabindex="1"
+                        type="text"
+                        formControlName="divisionPercent"
+                        placeholder="Enter your value"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 mt-2">
+              <dadyin-input
+                inputType="string"
+                label="Export Details"
+                [isClearable]="false"
+                formControlName="exportDescription"
+              >
+              </dadyin-input>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">
+              <div class="attribute one attr-b">
+                <label for="">Select Template</label>
+                <div class="attribute-select">
+                  <select tabindex="5" formControlName="productTemplateId">
+                    <option selected disabled value="">
+                      Select Product Template
+                    </option>
+                    <option
+                      *ngFor="let template of productTemplatesList"
+                      [value]="template.id"
+                    >
+                      {{ template.description }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-6 ">
+                            <dadyin-search-select-new label="Product Category" bindValue="id" [typeahead]="false" [fullItems]="apiService.productCategoriesList"
+                            [selectedItems]="selectedProductCategories" ></dadyin-search-select-new>
+                        </div> -->
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel expanded="true" #expansionPanel2>
+      <mat-expansion-panel-header
+        (click)="expandPanel(expansionPanel2, $event)"
+      >
+        <mat-panel-description>
+          <div class="toolbar p-0 w-100 font-size-12">
+            <div class=" title-text">Additional Cost</div>
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-additional-cost-common [additionalCosts]="additionalCosts">
+      </app-additional-cost-common>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel expanded="true" #expansionPanel3>
+      <mat-expansion-panel-header
+        (click)="expandPanel(expansionPanel3, $event)"
+      >
+        <mat-panel-description>
+          <div class="toolbar p-0 w-100 font-size-12">
+            <div class="title-text">Buying Capacity</div>
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-buying-capacity-common [buyingCapacities]="buyingCapacities">
+      </app-buying-capacity-common>
+    </mat-expansion-panel>
+  </form>
+</section>

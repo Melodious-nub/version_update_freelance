@@ -1,0 +1,108 @@
+<section>
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button (clicked)="goBack()" class="header-icon" [theme]="'borderless-default'" type="icon"
+        [typeval]="'arrow_circle_left'">
+      </dadyin-button>
+      <div class="content-title">
+        <label>{{
+          this.templateForm.value?.templateName
+          ? this.templateForm.value?.templateName
+          : "Create Product Template"
+          }}</label>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="status" [ngClass]="{
+           'status-sent': templateForm?.value?.status == 'SENT',
+           'status-draft': templateForm?.value?.status == 'DRAFT',
+           'status-confirmed': templateForm?.value?.status == 'CONFIRMED',
+            'status-rejected': templateForm?.value?.status == 'REJECTED'
+         }">{{ templateForm?.value?.status }}</div>
+        <span class="font-size-16 over-text mx-2 border-l-light">{{
+          this.templateForm.value?.templateCode
+          ? this.templateForm.value?.templateCode
+          : "(Code is Empty)"
+          }}
+        </span>
+      </div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+
+      <dadyin-button matTooltip="Share" type="image" [theme]="'borderless-primary'"
+        [typeval]="'assets/nicons/share.png'"></dadyin-button>
+      <dadyin-button matTooltip="Delete" (clicked)="confirmDelete()" *ngIf="editMode" [theme]="'borderless-primary'"
+        type="image" [typeval]="'assets/nicons/delete.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Save as Draft" (clicked)="onClickSave(true)" [theme]="'borderless-primary'"
+        *ngIf="templateForm.get('status').value != 'PUBLISHED'" [isDisabled]="!this.apiService.finalSave" type="image"
+        [typeval]="'assets/nicons/save.png'">
+      </dadyin-button>
+      <dadyin-button [isDisabled]="!this.apiService.finalSave"
+        [matTooltip]="templateForm.get('status').value != 'PUBLISHED' ? 'Publish' : 'Publish Changes'"
+        (clicked)="onClickSave(false)" [theme]="'borderless-primary'" type="image"
+        [typeval]="'assets/nicons/place.png'">
+      </dadyin-button>
+    </div>
+  </div>
+
+  <div class="uom-config-section" matTooltip=" {{
+      templateProcesses?.controls?.length > 0
+        ? 'Uom settings can only be changed while creating new template '
+        : ''
+    }}">
+    <button (click)="$event.stopPropagation(); uomSetting = !uomSetting" class="btn bg-primary-light title-text">
+      UOM Setting
+    </button>
+    <div (click)="$event.stopPropagation()" class="card uom-card" *ngIf="uomSetting">
+      <div class="prefer-uom-grid align-items-center" *ngIf="componentUoms.controls?.length > 0">
+        <div [formGroup]="item" *ngFor="let item of componentUoms.controls; let i = index"
+          class="my-2 attribute one b-none w-100">
+          <div class="attribute-input justify-content-around w-100 title-text">
+            <div class="text-uppercase">
+              {{ item.get("attributeName").value }}
+            </div>
+            <select style="min-width: unset" (change)="onGlobalUomChange($event)" formControlName="userConversionUom">
+              <ng-container *ngFor="
+                  let uom of uomService.getUoms(
+                    item.get('attributeTypeId').value
+                  )
+                ">
+                <option [disabled]="templateProcesses?.controls?.length > 0" [value]="uom.description">
+                  {{ uom?.description }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-tab-group (click)="markAsTouched($event)" class="mat-steps" [(selectedIndex)]="currentStepIndex">
+    <mat-tab label="Template Info">
+      <template-info (calculate)="calculateValues($event)" *ngIf="this.currentStepIndex == 0"
+        [templateForm]="templateForm"></template-info>
+    </mat-tab>
+    <mat-tab id="processTab" [disabled]="!isValidTemplateForm()">
+      <ng-template mat-tab-label>
+        <span matTooltip="Please fill all the fields of Product template information to enable"
+          [matTooltipDisabled]="isValidTemplateForm()">Metric Cost Calculator</span>
+      </ng-template>
+      <template-process [componentUoms]="componentUoms" (calculate)="calculateValues($event)"
+        *ngIf="this.currentStepIndex == 1" [templateForm]="templateForm">
+      </template-process>
+    </mat-tab>
+    <mat-tab class="mat-tab-calc" [disabled]="!isValidTemplateForm() || !this.apiService.finalSave">
+      <ng-template mat-tab-label>
+        <span matTooltip="Please fill all the fields of Product template information to enable"
+          [matTooltipDisabled]="isValidTemplateForm()">Product Attribute</span>
+      </ng-template>
+      <div class="container_body">
+        <template-calculator (calculate)="calculateValues($event)" *ngIf="this.currentStepIndex == 2"
+          [templateForm]="templateForm">
+        </template-calculator>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</section>

@@ -1,0 +1,38 @@
+<div class="header-wrapper mt-2">
+  <div class="row">
+    <div class="col-6">
+      <div class="filters">
+        <search-filter (inputChange)="onInput($event)"
+          [placeholder]="'Search based on name & code'"></search-filter>
+      </div>
+    </div>
+    <div class="col-6 d-flex justify-content-end align-items-center align-items-center">
+      <dadyin-button [theme]="'primary'" label="Create Received Po" (clicked)="addReceivedPo()">
+      </dadyin-button>
+    </div>
+  </div>
+</div>
+<div cdkDrag class="uom-config-section" >
+  <button  (click)="uomSetting=!uomSetting" class="btn bg-primary-light title-text"> UOM Setting </button>
+    <div  class="card uom-card" *ngIf="uomSetting">
+      <div class="prefer-uom-grid align-items-center" *ngIf="componentUoms.controls?.length>0">
+        <div [formGroup]="item" *ngFor="let item of componentUoms.controls;let i=index" class="my-2 attribute one b-none w-100">
+          <div class="attribute-input justify-content-around w-100 title-text">
+            <div class="text-uppercase">{{item.get('attributeName').value}}</div>
+            <select  (change)="loadReceivedPosList()" formControlName="userConversionUom">
+              <ng-container *ngFor="let uom of uomService.getUoms(item.get('attributeTypeId').value)">
+                <option  [value]="uom.description">{{uom?.description}}</option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="content-wrapper mt-2">
+  <data-table [data]="receivedPosList" [headers]="headers"  [pageConfig]="pageConfig"
+    (editData)="editRecord($event)" (sortChange)="sort($event)" [actions]="tabelActions"
+    (pageChange)="pageChange($event)" (actionClick)="onActionClick($event)">
+  </data-table>
+</div>
+

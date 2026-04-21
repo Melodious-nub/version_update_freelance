@@ -1,0 +1,104 @@
+.attribute-input select {
+  min-width: unset !important;
+}
+
+.fill-line {
+  border: solid 1px var(--secondary-light);
+  border-radius: 10px;
+  width: 100%;
+  margin-left: 9px;
+  height: 15px;
+  background: white;
+}
+
+.progress-line {
+  height: 13px;
+  border-radius: 10px;
+  background: var(--primary-color);
+  max-width: 100%;
+}
+
+.t-head {
+  background: var(--primary-light) !important;
+  width: 100%;
+  height: 30px;
+  font-size: 12px;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.grid-1 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 60% 30%;
+  align-items: center;
+}
+
+tbody {
+  tr:nth-child(even) {
+    background: var(--primary-light);
+  }
+
+  tr:nth-child(odd) {
+    background: #fff;
+  }
+}
+
+td:nth-child(1) {
+  width: 125px !important;
+}
+th:nth-child(1) {
+  width: 125px !important;
+}
+
+
+
+
+
+.process-table table tbody tr td {
+  padding-left: 7px;
+}
+
+.bg-container-img {
+  background-image: url("../../../../../../../assets/img/container-view.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 95px;
+ 
+}
+.bg-container-view {
+  display: flex;
+  height: 370px;
+  width: 1000px;
+  border: 1px solid #ccc;
+  flex-wrap: wrap;
+}
+
+.square {
+  border: solid rgb(0, 0, 0) 1px;
+}
+
+.grid-threejs {
+  display: grid;
+  grid-template-columns: 20% 2% 78%;
+}
+.sort-icon {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  margin-left: 5px;
+}
+
+th:hover .sort-icon,
+th.sorted .sort-icon { 
+  opacity: 1; /* Show icon when hovered OR when sorting is applied */
+}
+
+.process-table {
+  .mat-icon {
+    font-size: 12px;
+    height: 12px;
+    width: 12px;
+    color:rgb(117, 117, 117);
+  }
+}

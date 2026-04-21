@@ -1,0 +1,56 @@
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "description": "Product Without Process",
+            "businessAccount": 2,
+            "productTemplate": null,
+            "process": null,
+            "productAttributeValues": [
+                {
+                    "id": 1,
+                    "productName": "Process A",
+                    "density": 2.555,
+                    "usd": 62588,
+                    "avgDensity": 555,
+                    "used": 80,
+                    "waste": 50,
+                    "costAddOn": 88,
+                    "attribute": {
+                        "id": 1,
+                        "description": "density",
+                        "systemUom": {
+                            "id": 1,
+                            "description": "mm"
+                        }
+                    },
+                    "attributeValue": "21",
+                    "userConversionUom": "mm",
+                    "isEdit": false
+                },
+                {
+                    "id": 2,
+                    "productName": "Process B",
+                    "density": 2.5551,
+                    "usd": 625881,
+                    "avgDensity": 5551,
+                    "costAddOn": 881,
+                    "attribute": {
+                        "id": 1,
+                        "description": "density",
+                        "systemUom": {
+                            "id": 1,
+                            "description": "mm"
+                        }
+                    },
+                    "attributeValue": "21",
+                    "userConversionUom": "mm",
+                    "isEdit": false
+                }
+            ]
+        }
+    ]
+}

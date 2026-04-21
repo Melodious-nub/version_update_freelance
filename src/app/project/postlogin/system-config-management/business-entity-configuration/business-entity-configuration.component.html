@@ -1,0 +1,833 @@
+<form [formGroup]="configurationForm">
+  <div class="header-light my-2" style="padding: 5px 8px 5px 8px;background-color: var(--secondary-light) !important"
+    *ngIf="!isReadOnly">
+    <div class="b-round my-2 d-flex w-75 bg-card-header">
+      <div class="title-text">
+        <strong class="mr-2" style="white-space: pre;"> Manage Business Entity Configuration </strong>
+        <dadyin-button (clicked)="testCalculatorModal()" tooltip="Test Calculator" [theme]="'borderless-primary'"
+          [typeval]="'assets/nicons/calculator.png'" [type]="'image'" [class]="'w-auto-img'">
+        </dadyin-button>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <dadyin-button (clicked)="saveConfiguration()" [theme]="'borderless-primary'" type="image"
+        [typeval]="'assets/nicons/save.png'">
+      </dadyin-button>
+    </div>
+  </div>
+
+  <!-- Formula Input Area -->
+  <div class="header-light my-2" *ngIf="!isReadOnly">
+    <div class="d-flex align-items-center w-100">
+      <div class="attribute w-100" [ngStyle]="{ opacity: currentControl ? 1 : 0 }">
+        <label *ngIf="currentControl" for="">{{
+          this.getAttributeObjectById(currentControl.parent.value.attributeId)?.description
+          }}</label>
+        <input [ngClass]="{ highlight: currentControl }" class="width-perc-100" [(ngModel)]="formulaValue"
+          [ngModelOptions]="{ standalone: true }" (input)="openFormulaAutoComplete($event)" type="text"
+          placeholder="Formula" />
+      </div>
+
+      <div class="formula-autocomplete b-light" *ngIf="formulaAutoComplete && currentFocusedIndex">
+        <p style="cursor: pointer" (click)="
+                    selectFormulaAttribute(
+                        this.getAttributeObjectById(attribute?.attributeId)?.description
+                    )
+                " *ngFor="
+                    let attribute of getFilteredAutoCompleteAttributes();
+                    let i = index
+                ">
+          {{ this.getAttributeObjectById(attribute?.attributeId)?.description }}
+        </p>
+      </div>
+    </div>
+    <dadyin-button (clicked)="resetFormula()" [theme]="'borderless-primary'" type="icon" [typeval]="'replay'"
+      [class]="'bg-white'">
+    </dadyin-button>
+  </div>
+
+  <div [formGroup]="configurationForm"
+    class="toolbar padding-bar b-round height-40 my-2 d-flex justify-content-between width-perc-100"
+    *ngIf="!isReadOnly">
+    <div class="d-flex align-items-center font-size-14 title-text">
+      <div class="mx-1"><b>Configuration Details</b></div>
+      <div class="attribute-group d-flex align-items-center">
+        <select class="b-round" formControlName="configurationType" (change)="onConfigurationTypeChange()">
+          <option value="" disabled selected>
+            <b> Select Configuration Type </b>
+          </option>
+          <option *ngFor="let type of configurationTypes" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+        <input [ngClass]="{ 'b-red': configurationForm.get('name')?.invalid }" type="text" formControlName="name"
+          placeholder="Configuration Name" class="mx-2" />
+        <div class="d-flex align-items-center">
+          <input type="checkbox" formControlName="isActive" />
+          <div class="mx-2"> Active </div>
+        </div>
+        <div class="d-flex align-items-center">
+          <input type="checkbox" formControlName="isDefault" />
+          <div class="mx-2"> Default </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="options">
+      <dadyin-button class="px-1" label="Add Section" [theme]="'primary'" (clicked)="addSection()">
+      </dadyin-button>
+    </div>
+  </div>
+
+  <mat-accordion multi="true">
+    <mat-expansion-panel class="panel-no-padding b-none bg-none"
+      *ngFor="let section of sections.controls| sortFormArray; let sectionIndex = index"
+      [expanded]="!isSectionCollapsed(sectionIndex)" (opened)="onPanelOpened(sectionIndex)"
+      (closed)="onPanelClosed(sectionIndex)">
+
+
+      <!-- Section Name and Code Inputs -->
+      <div class="d-flex toolbar b-round justify-content-between w-100 mb-2" *ngIf="!isReadOnly">
+        <div class=" w-100 padding-bar b-round d-flex align-items-center">
+          <input type="text" [formControl]="section.get('sectionName')" placeholder="Section Name" class="mx-1" />
+          <input type="text" [formControl]="section.get('sectionCode')" placeholder="Section Code" class="mx-1" />
+        </div>
+        <dadyin-button matTooltip="Delete Section" (clicked)="removeSection(sectionIndex)"
+          [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
+        </dadyin-button>
+      </div>
+
+      <div class="d-flex w-100">
+        <div class="pb-3 w-100">
+          <!-- Section Header Actions -->
+
+          <!-- Section Attributes -->
+          <div class="w-100">
+            <!-- Add Attribute Controls -->
+            <div class="toolbar padding-bar b-round  d-flex justify-content-between width-perc-100"
+              [formGroup]="section">
+              <div class="d-flex align-items-center font-size-14 title-text">
+                <div class="mx-1"><b> {{ section.get('sectionName').value }} Attributes</b></div>
+              </div>
+
+              <div class="options" *ngIf="!isReadOnly">
+                <div class="d-flex align-items-center mx-2">
+                  <input (change)="
+                      checkForAttributePresence(
+                        getSectionAttributes(sectionIndex)?.value,
+                        $event,
+                        sectionIndex
+                      );
+                      setAttributeType(sectionIndex)
+                    " formControlName="attributeName" [matAutocomplete]="auto" type="text"
+                    placeholder="Type new field to add" />
+                  <mat-autocomplete (optionSelected)="setAttributeType(sectionIndex)" autoActiveFirstOption
+                    #auto="matAutocomplete">
+                    <mat-option *ngFor="let attribute of getFilteredAttributes(sectionIndex)"
+                      [value]="attribute.description">
+                      {{ attribute.description }}
+                    </mat-option>
+                  </mat-autocomplete>
+
+                  <select class="b-round mx-2" formControlName="attributeType">
+                    <option value="null" selected>Attribute Type/UOM Type</option>
+                    <option [value]="attributeType.id" *ngFor="let attributeType of this.apiService.allAttributesTypes">
+                      {{ attributeType.description }}
+                    </option>
+                  </select>
+                </div>
+                <div class="field-space px-1">
+                  <select class="b-round" formControlName="colSpace">
+                    <option value="" selected disabled>Field Space</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="75">75</option>
+                    <option value="100">100</option>
+                  </select>
+                </div>
+                <dadyin-button [theme]="'borderless-primary'" (clicked)="addAttribute(sectionIndex)" [isDisabled]="
+                    !this.getAttributeType(sectionIndex).value ||
+                    !this.getAttributeName(sectionIndex).value
+                  " type="image" [typeval]="'assets/nicons/add-white.png'">
+                </dadyin-button>
+                <dadyin-button (clicked)="openAttributeDialog(sectionIndex)" [theme]="'borderless-primary'"
+                  class="bg-white sort-btn" type="icon" [typeval]="'sort'">
+                </dadyin-button>
+                <dadyin-button (clicked)="changeView(sectionIndex)" [theme]="'borderless-primary'" class="bg-white mx-1"
+                  type="icon" [typeval]="'format_list_numbered'">
+                </dadyin-button>
+              </div>
+            </div>
+
+            <!-- Attributes List -->
+            <section style="
+                            overflow-y: auto;
+                            overflow-x: hidden;
+                            max-height: 500px;
+                            margin-bottom: 60px !important;
+                          " *ngIf="getSectionAttributes(sectionIndex).controls?.length > 0">
+              <div class="attribute-groups">
+                <div class="attribute-group">
+                  <div class="d-flex w-100">
+                    <div class="row mx-auto mt-2 b-all bg-white b-round py-3 w-100">
+                      <ng-container *ngIf="!excelView[sectionIndex]">
+                        <ng-container [formGroup]="item" *ngFor="
+                                                    let item of getSectionAttributes(sectionIndex).controls
+                                                      | sortFormArray;
+                                                      let i = index
+                                                  ">
+                          <ng-container *ngIf="
+                          !labelTypeAttributeIds[sectionIndex]?.includes(
+                            item.get('attributeId').value
+                          )
+                        ">
+                            <ng-container *ngIf="
+                                                    !['Toggle', 'Dropdown', 'Label'].includes(
+                                                      getAttributeTypeObjectById(
+                                                        this.getAttributeObjectById(
+                                                          item?.get('attributeId').value
+                                                        )?.attributeTypeId
+                                                      )?.description
+                                                    )
+                                                  ">
+                              <div [ngClass]="{
+                                                      'width-perc-25': item?.get('colSpace').value == 25,
+                                                      'width-perc-50': item?.get('colSpace').value == 50,
+                                                      'width-perc-75': item?.get('colSpace').value == 75,
+                                                      'width-perc-100': item?.get('colSpace').value == 100
+                                                    }" class="my-1">
+                                <div class="attribute one attr-b b-none ">
+                                  <label (mousedown)="preventFocusChange($event)" (click)="
+                                 onClickLabel(
+                                    this.getAttributeObjectById(
+                                      attr?.get('attributeId').value
+                                    )?.description,
+                                    '[Section][' + sectionIndex + '].',
+                                    'Section' + sectionIndex
+                                  )
+                                " for="">
+                                    {{
+                                    this.getAttributeObjectById(
+                                    item?.get("attributeId").value
+                                    )?.description
+                                    }}</label>
+                                  <div class="attribute-input b-light">
+                                    <mat-icon *ngIf="!isReadOnly" (click)="onDragClickAttribute(sectionIndex, i)"
+                                      class="more_vert">more_vert
+                                    </mat-icon>
+                                    <mat-icon *ngIf=" !item?.get('isHidden').value"
+                                      (click)="toggleVisibility(item, true)" class="visibility">visibility
+                                    </mat-icon>
+                                    <mat-icon *ngIf=" item?.get('isHidden').value"
+                                      (click)="toggleVisibility(item, false)" class="visibility_off">visibility_off
+                                    </mat-icon>
+                                    <input [ngClass]="{
+                                                            highlight: currentFocusedIndex == i + 'Section'
+                                                          }" type="text" (focus)="
+                                                           formula(
+                                                            isReadOnly ? item?.get('attributeValue') : item?.get('attributeValueExpression'),
+                                                            sectionIndex,
+                                                            sectionIndex + 'Section' + i
+                                                          )
+                                                        " (input)="
+                                                           formula(
+                                                            isReadOnly ? item?.get('attributeValue') : item?.get('attributeValueExpression'),
+                                                            sectionIndex,
+                                                            sectionIndex + 'Section' + i
+                                                          )
+                                                        "
+                                      [formControlName]="isReadOnly ? 'attributeValue' : 'attributeValueExpression'"
+                                      placeholder="Enter your value" />
+                                    <ng-container *ngIf="
+                                                            getAttributeTypeObjectById(
+                                                              this.getAttributeObjectById(
+                                                                item?.get('attributeId').value
+                                                              )?.attributeTypeId
+                                                            )?.availableUOMs?.length > 0
+                                                          ">
+                                      <select class="bg-light b-round" tabindex="-1" *ngIf="
+                                                              !['Number', 'String'].includes(
+                                                                getAttributeTypeObjectById(
+                                                                  getAttributeObjectById(
+                                                                    item?.get('attributeId').value
+                                                                  )?.attributeTypeId
+                                                                ).description
+                                                              )
+                                                            " formControlName="userConversionUom"
+                                        id="userConversionUom">
+                                        <option [value]="uom.description" *ngFor="
+                                                                let uom of getAttributeTypeObjectById(
+                                                                  this.getAttributeObjectById(
+                                                                    item?.get('attributeId').value
+                                                                  )?.attributeTypeId,
+                                                                  item?.get('userConversionUom')
+                                                                ).availableUOMs
+                                                              ">
+                                          {{ uom?.description }}
+                                        </option>
+                                      </select>
+                                    </ng-container>
+
+                                    <ng-container *ngIf="
+                                                            ['Number', 'String'].includes(
+                                                              getAttributeTypeObjectById(
+                                                                getAttributeObjectById(
+                                                                  item?.get('attributeId').value
+                                                                )?.attributeTypeId
+                                                              ).description
+                                                            )
+                                                          ">
+                                      <div class="uom-label">
+                                        {{ item?.get("userConversionUom").value ?? "" }}
+                                      </div>
+                                    </ng-container>
+                                  </div>
+                                  <dadyin-button matTooltip="Delete" *ngIf="!isReadOnly"
+                                    (clicked)="removeSectionAttribute(sectionIndex, i)" [theme]="'borderless-primary'"
+                                    type="image" [typeval]="'assets/nicons/delete.png'">
+                                  </dadyin-button>
+                                </div>
+                              </div>
+                            </ng-container>
+
+                            <ng-container *ngIf="
+                                                    ['Toggle'].includes(
+                                                      getAttributeTypeObjectById(
+                                                        this.getAttributeObjectById(
+                                                          item?.get('attributeId').value
+                                                        )?.attributeTypeId
+                                                      )?.description
+                                                    )
+                                                  ">
+                              <div [ngClass]="{
+                                                      'width-perc-25': item.get('colSpace').value == 25,
+                                                      'width-perc-50': item.get('colSpace').value == 50,
+                                                      'width-perc-75': item.get('colSpace').value == 75,
+                                                      'width-perc-100': item.get('colSpace').value == 100
+                                                    }" class="my-1">
+                                <div class="attribute tabular-sheet d-flex attr-b">
+                                  <div class="attribute-input b-light">
+                                    <mat-icon *ngIf="!isReadOnly" (click)="onDragClickAttribute(sectionIndex, i)"
+                                      class="more_vert">more_vert
+                                    </mat-icon>
+                                    <mat-icon *ngIf=" !item?.get('isHidden').value"
+                                      (click)="toggleVisibility(item, true)" class="visibility">visibility
+                                    </mat-icon>
+                                    <mat-icon *ngIf=" item?.get('isHidden').value"
+                                      (click)="toggleVisibility(item, false)" class="visibility_off">visibility_off
+                                    </mat-icon>
+                                    <input type="text" [value]="
+                                                            this.getAttributeObjectById(
+                                                              item?.get('attributeId').value
+                                                            )?.description
+                                                          " readonly />
+                                    <div class="toggle" style="border-radius: 5px;">
+                                      <button [ngClass]="{
+                                                              active:
+                                                                getArray(
+                                                                  item.get('attributeValueExpression').value
+                                                                )[0]?.selected == true
+                                                            }">
+                                        {{
+                                        getArray(
+                                        item.get("attributeValueExpression").value
+                                        )[0]?.choice
+                                        }}
+                                      </button>
+                                      <button [ngClass]="{
+                                                              active:
+                                                                getArray(
+                                                                  item.get('attributeValueExpression').value
+                                                                )[1]?.selected == true
+                                                            }">
+                                        {{
+                                        getArray(
+                                        item.get("attributeValueExpression").value
+                                        )[1]?.choice
+                                        }}
+                                      </button>
+
+                                    </div>
+                                  </div>
+
+                                  <dadyin-button matTooltip="Delete" *ngIf="!isReadOnly"
+                                    (clicked)="removeSectionAttribute(sectionIndex, i)" [theme]="'borderless-primary'"
+                                    type="image" [typeval]="'assets/nicons/delete.png'">
+                                  </dadyin-button>
+                                </div>
+                              </div>
+                            </ng-container>
+                            <ng-container *ngIf="
+                                                    ['Dropdown'].includes(
+                                                      getAttributeTypeObjectById(
+                                                        this.getAttributeObjectById(
+                                                          item?.get('attributeId').value
+                                                        )?.attributeTypeId
+                                                      )?.description
+                                                    )
+                                                  ">
+                              <div [ngClass]="{
+                                                      'width-perc-25': item.get('colSpace').value == 25,
+                                                      'width-perc-50': item.get('colSpace').value == 50,
+                                                      'width-perc-75': item.get('colSpace').value == 75,
+                                                      'width-perc-100': item.get('colSpace').value == 100
+                                                    }" class="my-1">
+                                <div class="attribute one attr-b b-none">
+                                  <label (mousedown)="preventFocusChange($event)" (click)="
+                                   onClickLabel(
+                                    this.getAttributeObjectById(
+                                      attr?.get('attributeId').value
+                                    )?.description,
+                                    '[Section][' + sectionIndex + '].',
+                                    'Section' + sectionIndex
+                                  )
+                                " for="">
+                                    {{
+                                    this.getAttributeObjectById(
+                                    item?.get("attributeId").value
+                                    )?.description
+                                    }}</label>
+                                  <div class="attribute-input b-light">
+                                    <mat-icon (click)="editDropdownAttribute(item)" class="preview">edit
+                                    </mat-icon>
+                                    <mat-icon *ngIf="!isReadOnly" (click)="onDragClickAttribute(sectionIndex, i)"
+                                      class="more_vert">more_vert
+                                    </mat-icon>
+                                    <mat-icon *ngIf=" !item?.get('isHidden').value"
+                                      (click)="toggleVisibility(item, true)" class="visibility">visibility
+                                    </mat-icon>
+                                    <mat-icon *ngIf=" item?.get('isHidden').value"
+                                      (click)="toggleVisibility(item, false)" class="visibility_off">visibility_off
+                                    </mat-icon>
+                                    <select class="bg-white" style="width: 100% !important;">
+                                      <option *ngFor="
+                                                              let opt of getArray(
+                                                                item.get('attributeValueExpression').value
+                                                              );
+                                                              trackBy: trackByFn
+                                                            " [value]="opt?.choice">
+                                        {{ opt?.choice }}
+                                      </option>
+                                    </select>
+                                  </div>
+
+                                  <dadyin-button matTooltip="Delete" *ngIf="!isReadOnly"
+                                    (clicked)="removeSectionAttribute(sectionIndex, i)" [theme]="'borderless-primary'"
+                                    type="image" [typeval]="'assets/nicons/delete.png'">
+                                  </dadyin-button>
+                                </div>
+
+                              </div>
+                            </ng-container>
+                            <ng-container *ngIf="
+                                                    ['Label'].includes(
+                                                      getAttributeTypeObjectById(
+                                                        this.getAttributeObjectById(
+                                                          item?.get('attributeId').value
+                                                        )?.attributeTypeId
+                                                      )?.description
+                                                    )
+                                                  ">
+                              <div class="d-flex align-items-top">
+                                <div class="attribute width-perc-100 row b-all mx-auto min-h-label p-0 attr-b relative">
+                                  <label class="labeltype-attribute label"
+                                    style="position: absolute;top: -10px;left: 10px;     width: auto;">
+                                    {{
+                                    this.getAttributeObjectById(
+                                    item?.get("attributeId").value
+                                    )?.description
+                                    }}
+                                  </label>
+
+                                  <ng-container [formGroup]="attr" *ngFor="
+                                  let attr of filterAttributeForLabel(
+                                    getSectionAttributes(sectionIndex),
+                                    sectionIndex
+                                  ) | sortFormArray;
+                                  let j = index">
+                                    <ng-container *ngIf="
+                                  getArrayIds(
+                                    item.get('attributeValueExpression').value
+                                  ).includes(attr.get('attributeId').value)
+                                ">
+                                      <ng-container *ngIf="
+                                    !['Toggle', 'Dropdown', 'Label'].includes(
+                                      getAttributeTypeObjectById(
+                                        this.getAttributeObjectById(
+                                          attr?.get('attributeId').value
+                                        )?.attributeTypeId
+                                      )?.description
+                                    )
+                                  ">
+                                        <div [ngClass]="{
+                                      'width-perc-25':
+                                        attr?.get('colSpace').value == 25,
+                                      'width-perc-50':
+                                        attr?.get('colSpace').value == 50,
+                                      'width-perc-75':
+                                        attr?.get('colSpace').value == 75,
+                                      'width-perc-100':
+                                        attr?.get('colSpace').value == 100
+                                    }" class="mt-3">
+                                          <div class="attribute one attr-b b-none">
+                                            <label (mousedown)="preventFocusChange($event)" (click)="
+                                           onClickLabel(
+                                            this.getAttributeObjectById(
+                                              attr?.get('attributeId').value
+                                            )?.description,
+                                            '[Section][' + sectionIndex + '].',
+                                            'Section' + sectionIndex
+                                          )
+                                        " for="">
+                                              {{
+                                              this.getAttributeObjectById(
+                                              attr?.get("attributeId").value
+                                              )?.description
+                                              }}</label>
+                                            <div class="attribute-input b-light">
+                                              <input type="text"
+                                                [formControlName]="isReadOnly ? 'attributeValue' : 'attributeValueExpression'"
+                                                placeholder="Enter your value" [ngClass]="{
+                                            highlight:
+                                              currentFocusedIndex ==
+                                              sectionIndex + 'Section' + i
+                                          }" (focus)="
+                                             formula(
+                                              isReadOnly ? attr?.get('attributeValue') : attr?.get('attributeValueExpression'),
+                                              sectionIndex,
+                                              sectionIndex + 'Section' + i
+                                            )
+                                          " (input)="
+                                             formula(
+                                              isReadOnly ? attr?.get('attributeValue') : attr?.get('attributeValueExpression'),
+                                              sectionIndex,
+                                              sectionIndex + 'Section' + i
+                                            )
+                                          " />
+                                              <ng-container *ngIf="
+                                            getAttributeTypeObjectById(
+                                              this.getAttributeObjectById(
+                                                attr?.get('attributeId').value
+                                              )?.attributeTypeId
+                                            )?.availableUOMs?.length > 0
+                                          ">
+                                                <select tabindex="-1" *ngIf="
+                                              !['Number', 'String'].includes(
+                                                getAttributeTypeObjectById(
+                                                  getAttributeObjectById(
+                                                    attr?.get('attributeId').value
+                                                  )?.attributeTypeId
+                                                ).description
+                                              )
+                                            " formControlName="userConversionUom" id="userConversionUom">
+                                                  <option [value]="uom.description" *ngFor="
+                                                let uom of getAttributeTypeObjectById(
+                                                  this.getAttributeObjectById(
+                                                    attr?.get('attributeId').value
+                                                  )?.attributeTypeId,
+                                                  attr?.get('userConversionUom')
+                                                ).availableUOMs
+                                              ">
+                                                    {{ uom?.description }}
+                                                  </option>
+                                                </select>
+                                              </ng-container>
+
+                                              <ng-container *ngIf="
+                                            ['Number', 'String'].includes(
+                                              getAttributeTypeObjectById(
+                                                getAttributeObjectById(
+                                                  attr?.get('attributeId').value
+                                                )?.attributeTypeId
+                                              ).description
+                                            )
+                                          ">
+                                                <div class="uom-label bg-light"
+                                                  style="background-color: var(--secondary-light) !important;">
+                                                  {{
+                                                  attr?.get("userConversionUom")
+                                                  .value ?? ""
+                                                  }}
+                                                </div>
+                                              </ng-container>
+                                            </div>
+                                            <!--  <i
+                                        class="cancel_outline_new material-icon"
+                                        (click)="
+                                          onDragRemoveAttribute(sectionIndex, i, attr)
+                                        "
+                                      >
+                                        cancel_outline
+                                      </i> -->
+                                            <dadyin-button matTooltip="Delete"
+                                              (clicked)="onDragRemoveAttribute(sectionIndex, i, attr)"
+                                              [theme]="'borderless-primary'" type="image"
+                                              [typeval]="'assets/nicons/delete.png'">
+                                            </dadyin-button>
+                                          </div>
+                                        </div>
+                                      </ng-container>
+
+                                      <ng-container *ngIf="
+                                    ['Toggle'].includes(
+                                      getAttributeTypeObjectById(
+                                        this.getAttributeObjectById(
+                                          attr?.get('attributeId').value
+                                        )?.attributeTypeId
+                                      )?.description
+                                    )
+                                  ">
+                                        <div [ngClass]="{
+                                      'width-perc-25':
+                                        attr?.get('colSpace').value == 25,
+                                      'width-perc-50':
+                                        attr?.get('colSpace').value == 50,
+                                      'width-perc-75':
+                                        attr?.get('colSpace').value == 75,
+                                      'width-perc-100':
+                                        attr?.get('colSpace').value == 100
+                                    }" class="mt-3">
+                                          <div class="attribute tabular-sheet d-flex attr-b">
+                                            <div class="attribute-input b-light">
+                                              <input type="text" [value]="
+                                            this.getAttributeObjectById(
+                                              attr?.get('attributeId').value
+                                            )?.description
+                                          " readonly />
+                                              <div class="toggle" style="border-radius: 5px;">
+                                                <button [ngClass]="{
+                                              active:
+                                                getArray(
+                                                  attr.get(
+                                                    'attributeValueExpression'
+                                                  ).value
+                                                )[0]?.selected == true
+                                            }">
+                                                  {{
+                                                  getArray(
+                                                  attr.get(
+                                                  "attributeValueExpression"
+                                                  ).value
+                                                  )[0]?.choice
+                                                  }}
+                                                </button>
+                                                <button [ngClass]="{
+                                              active:
+                                                getArray(
+                                                  attr.get(
+                                                    'attributeValueExpression'
+                                                  ).value
+                                                )[1]?.selected == true
+                                            }">
+                                                  {{
+                                                  getArray(
+                                                  attr.get(
+                                                  "attributeValueExpression"
+                                                  ).value
+                                                  )[1]?.choice
+                                                  }}
+                                                </button>
+                                                <!-- <button >Sheet</button> -->
+                                              </div>
+                                            </div>
+                                            <!--   <i
+                                        (click)="
+                                          onDragRemoveAttribute(sectionIndex, i, attr)
+                                        "
+                                        class="cancel_outline_new material-icon"
+                                      >
+                                        cancel_outline
+                                      </i> -->
+                                            <dadyin-button matTooltip="Delete"
+                                              (clicked)="onDragRemoveAttribute(sectionIndex, i, attr)"
+                                              [theme]="'borderless-primary'" type="image"
+                                              [typeval]="'assets/nicons/delete.png'">
+                                            </dadyin-button>
+                                          </div>
+                                        </div>
+                                      </ng-container>
+
+                                      <ng-container *ngIf="
+                                    ['Dropdown'].includes(
+                                      getAttributeTypeObjectById(
+                                        this.getAttributeObjectById(
+                                          attr?.get('attributeId').value
+                                        )?.attributeTypeId
+                                      )?.description
+                                    )
+                                  ">
+                                        <div [ngClass]="{
+                                      'width-perc-25':
+                                        attr?.get('colSpace').value == 25,
+                                      'width-perc-50':
+                                        attr?.get('colSpace').value == 50,
+                                      'width-perc-75':
+                                        attr?.get('colSpace').value == 75,
+                                      'width-perc-100':
+                                        attr?.get('colSpace').value == 100
+                                    }" class="mt-3">
+                                          <div class="attribute one attr-b b-none">
+                                            <label (mousedown)="preventFocusChange($event)" (click)="
+                                           onClickLabel(
+                                            this.getAttributeObjectById(
+                                              attr?.get('attributeId').value
+                                            )?.description,
+                                            '[Section][' + sectionIndex + '].',
+                                            'Section' + sectionIndex
+                                          )
+                                        " for="">
+                                              {{
+                                              this.getAttributeObjectById(
+                                              attr?.get("attributeId").value
+                                              )?.description
+                                              }}</label>
+                                            <div class="attribute-input b-light">
+                                              <select class="width-perc-100 bg-white">
+                                                <option *ngFor="
+                                              let opt of getArray(
+                                                attr.get(
+                                                  'attributeValueExpression'
+                                                ).value
+                                              )
+                                            " [value]="opt?.choice">
+                                                  {{ opt?.choice }}
+                                                </option>
+                                              </select>
+                                            </div>
+                                            <!--   <i
+                                        class="cancel_outline_new material-icon"
+                                        (click)="
+                                          onDragRemoveAttribute(sectionIndex, i, attr)
+                                        "
+                                      >
+                                        cancel_outline
+                                      </i> -->
+                                            <dadyin-button matTooltip="Delete"
+                                              (clicked)="onDragRemoveAttribute(sectionIndex, i, attr)"
+                                              [theme]="'borderless-primary'" type="image"
+                                              [typeval]="'assets/nicons/delete.png'">
+                                            </dadyin-button>
+                                          </div>
+                                        </div>
+                                      </ng-container>
+                                    </ng-container>
+                                  </ng-container>
+                                </div>
+
+
+                                <dadyin-button class="mt-2" matTooltip="Delete" *ngIf="!isReadOnly"
+                                  (clicked)="removeSectionAttribute(sectionIndex, i)" [theme]="'borderless-primary'"
+                                  type="image" [typeval]="'assets/nicons/delete.png'">
+                                </dadyin-button>
+                              </div>
+
+                            </ng-container>
+                          </ng-container>
+                        </ng-container>
+                      </ng-container>
+
+                      <!-- Excel View -->
+                      <ng-container *ngIf="excelView[sectionIndex]">
+                        <table cdkDropList (cdkDropListDropped)="
+                            drop($event, getSectionAttributes(sectionIndex).controls)
+                          " class="process-table">
+                          <thead>
+                            <tr class="b-light">
+                              <th style="width: 150px;" class="text-center">Enabled for List View</th>
+                              <th style="width: 200px;">Attribute Name</th>
+                              <th style="width: 70%;" class="text-center">Value Expression</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <ng-container [formGroup]="item" *ngFor="
+                                let item of getSectionAttributes(sectionIndex).controls
+                                  | sortFormArray;
+                                let i = index
+                              ">
+                              <ng-container *ngIf="
+                                  !labelTypeAttributeIds[sectionIndex].includes(
+                                    item.get('attributeId').value
+                                  )
+                                ">
+                                <ng-container *ngIf="
+                                    !['Toggle', 'Dropdown', 'Label'].includes(
+                                      getAttributeTypeObjectById(
+                                        this.getAttributeObjectById(
+                                          item?.get('attributeId').value
+                                        )?.attributeTypeId
+                                      )?.description
+                                    )
+                                  ">
+                                  <tr cdkDrag class="b-light">
+                                    <ng-container *ngIf="
+                                        !labelTypeAttributeIds[sectionIndex].includes(
+                                          item.get('attributeId').value
+                                        )
+                                      ">
+                                      <td style="text-align: center;">
+                                        <input type="checkbox" formControlName="enabledForListView" />
+                                      </td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <i class="mr-2 material-icon">drag_indicator</i>
+                                          <div (mousedown)="preventFocusChange($event)" class="cursor" (click)="
+                                              onClickLabel(
+                                                this.getAttributeObjectById(
+                                                  item?.get('attributeId').value
+                                                )?.description,
+                                                '[Section][' + sectionIndex + '].',
+                                                'Section' + sectionIndex
+                                              )
+                                            ">
+                                            <b>
+                                              {{
+                                              this.getAttributeObjectById(
+                                              item?.get("attributeId").value
+                                              )?.description
+                                              }}
+                                            </b>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <input class="b-light w-100" type="text"
+                                          [formControlName]="isReadOnly ? 'attributeValue' : 'attributeValueExpression'"
+                                          placeholder="Enter your value" [ngClass]="{
+                                            highlight:
+                                              currentFocusedIndex == sectionIndex + 'Section' + i
+                                          }" (focus)="
+                                             formula(
+                                              isReadOnly ? item?.get('attributeValue') : item?.get('attributeValueExpression'),
+                                              sectionIndex,
+                                              sectionIndex + 'Section' + i
+                                            )
+                                          " (input)="
+                                             formula(
+                                              isReadOnly ? item?.get('attributeValue') : item?.get('attributeValueExpression'),
+                                              sectionIndex,
+                                              sectionIndex + 'Section' + i
+                                            )
+                                          " />
+                                      </td>
+
+                                    </ng-container>
+                                  </tr>
+                                </ng-container>
+                              </ng-container>
+                            </ng-container>
+                          </tbody>
+                        </table>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</form>

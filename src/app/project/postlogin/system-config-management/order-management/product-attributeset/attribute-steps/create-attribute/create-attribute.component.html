@@ -1,0 +1,262 @@
+<div class="app-container  ">
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button (clicked)="navigate('/home/system-config/order-management?currentStepIndex=0')" class="header-icon"
+        [theme]="'default'" type='icon' [typeval]="'arrow_circle_left'">
+      </dadyin-button>
+      <div class="content-title">
+        <label>Product Attribute Set</label>
+      </div>
+      <div class="content-info">
+
+      </div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+
+      <dadyin-button [theme]="'primary'" label="Save" (clicked)="saveProductAttributes()">
+      </dadyin-button>
+
+    </div>
+  </div>
+
+
+  <div>
+    <div class="app-content">
+      <form [formGroup]="attributeConfigForm">
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header>
+            <mat-panel-description>
+              <div class="w-100 title-text">Add New Product Attribute Set</div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row p-0 ">
+            <div class="col-4">
+              <div class="attribute attribute-input attr-b">
+                <label for="">Name attribute set</label>
+                <input type="text" class="w-100"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122 || event.charCode ==32 "
+                  inputType="string" formControlName="description" placeholder="Name attribute set">
+              </div>
+            </div>
+            <div class="col-4">
+              <ng-select class="custom" [closeOnSelect]="true" [hideSelected]="true" appendTo="body" [multiple]="true"
+                [items]="allTransactionCategories" [formControl]="transactionCategory"
+                placeholder="Select Transaction Category" bindValue="id" bindLabel="description" [clearable]="false">
+                <ng-template ng-header-tmp>
+                  <div class="d-flex align-items-center">
+                    <input (change)="onOption($event)" type="checkbox">
+                    <div class="mx-2"> Select All </div>
+                  </div>
+                </ng-template>
+              </ng-select>
+
+            </div>
+            <div class="col-4">
+              <ng-select class="custom" (add)="onChangeProductType($event)" [closeOnSelect]="true" [hideSelected]="true"
+                appendTo="body" [multiple]="true" [items]="apiService.productTypes" formControlName="productTypeId"
+                placeholder="Select Product Type" bindValue="id" bindLabel="description" [clearable]="false">
+              </ng-select>
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header>
+            <mat-panel-description>
+              <div class=" w-100 title-text">
+                Selection Area
+              </div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="d-flex title-text my-2">
+            <div class="mx-2"> <b> Select Desired Product attribute to this Set </b> </div>
+          </div>
+
+
+          <div class="row p-0 my-3 ">
+
+
+            <div class="col-6">
+
+              <div class="d-flex align-items-center justify-content-between flex-wrap">
+                <div class="d-flex align-items-center  width-perc-20 my-2" *ngFor="let item of attributes">
+                  <div>
+                    <input [checked]="isChecked(item)" type="checkbox" (change)="onCheckboxAttributeClick(item)">
+                  </div>
+                  <div class=" mx-2 mb-1">
+                    {{this.getAttributeObjectDescriptionById(item)}}
+
+                    <span *ngIf="item.userConversionUom=='extended' && this.expressionArray(item)?.length>0">
+                      ( <span *ngFor="let it of this.expressionArray(item)">
+                        {{this.getAttributeObjectDescriptionById(it)}},</span>
+                      )
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-6 b-all">
+              <div class="row">
+
+                <div class="col-4">
+                  <div class="d-flex align-items-center my-2">
+
+                    <div class=" title-text  mb-1">
+                      PRODUCT SECTION
+                    </div>
+
+                  </div>
+                  <div class=" my-2">
+
+                    <div class="d-flex align-items-center my-4">
+                      <div>
+                        <input type="checkbox" [checked]="isCheckedProductSection('PRODUCT_CODE')"
+                          (change)="onProductSectionCheckboxClick('PRODUCT_CODE')">
+                      </div>
+                      <div class=" mx-2 mb-1">
+                        PRODUCT CODE
+                      </div>
+
+                    </div>
+
+                    <div>
+                      <div class=" title-text  mb-1">
+                        LIST VIEW
+                      </div>
+                      <div class="d-flex align-items-center my-4">
+                        <div>
+                          <input type="radio" [checked]="isCheckedProductSection('PRODUCT_DESCRIPTION')"
+                            value="PRODUCT_DESCRIPTION" [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="listViewAttribute">
+                        </div>
+                        <div class=" mx-2 mb-1">
+                          PRODUCT DESCRIPTION
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-center my-4">
+                        <div>
+                          <input type="radio" [checked]="isCheckedProductSection('PURCHASE_DESCRIPTION')"
+                            value="PURCHASE_DESCRIPTION" [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="listViewAttribute">
+                        </div>
+                        <div class=" mx-2 mb-1">
+                          PURCHASE DESCRIPTION
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-center my-4">
+                        <div>
+                          <input type="radio" [checked]="isCheckedProductSection('EXPORT_DESCRIPTION')"
+                            value="EXPORT_DESCRIPTION" [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="listViewAttribute">
+                        </div>
+                        <div class=" mx-2 mb-1">
+                          EXPORT DESCRIPTION
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="d-flex align-items-center my-2">
+
+                    <div class=" title-text mb-1">
+                      PRICE SECTION
+                    </div>
+
+                  </div>
+                  <div class=" my-2">
+                    <div class="d-flex align-items-center  my-4">
+                      <div>
+                        <input type="checkbox" [checked]="isCheckedPriceSection('UNIT')"
+                          (change)="onPriceSectionCheckboxClick('UNIT')">
+                      </div>
+                      <div class=" mx-2 mb-1">
+                        UNIT
+                      </div>
+
+                    </div>
+                    <div class="d-flex align-items-center  my-4">
+                      <div>
+                        <input type="checkbox" [checked]="isCheckedPriceSection('SKU')"
+                          (change)="onPriceSectionCheckboxClick('SKU')">
+                      </div>
+                      <div class=" mx-2 mb-1">
+                        SKU
+                      </div>
+
+                    </div>
+                    <div class="d-flex align-items-center  my-4">
+                      <div>
+                        <input type="checkbox" [checked]="isCheckedPriceSection('PALLET')"
+                          (change)="onPriceSectionCheckboxClick('PALLET')">
+                      </div>
+                      <div class=" mx-2 mb-1">
+                        PALLET
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="col-4">
+                  <div class="d-flex align-items-center my-2">
+                    <!-- <div>
+                      <input type="checkbox" (change)="onInfoSectionCheckboxClick('INFOSECTION')">
+                    </div> -->
+                    <div class="title-text mb-1">
+                      INFO SECTION
+                    </div>
+
+                  </div>
+                  <div class="  my-2">
+                    <div class="d-flex align-items-center  my-4">
+                      <div>
+                        <input type="checkbox" [checked]="isCheckedInfoSection('WEIGHT')" (change)="onInfoSectionCheckboxClick('WEIGHT',$event)">
+                      </div>
+                      <div class=" mx-2 mb-1">
+                        WT
+                      </div>
+
+                    </div>
+                    <div class="d-flex align-items-center  my-4">
+                      <div>
+                        <input type="checkbox" [checked]="isCheckedInfoSection('VOLUME')" (change)="onInfoSectionCheckboxClick('CBM',$event)">
+                      </div>
+                      <div class=" mx-2 mb-1">
+                        CBM
+                      </div>
+
+                    </div>
+                    <div class="d-flex align-items-center  my-4">
+                      <div>
+                        <input type="checkbox" [checked]="isCheckedInfoSection('METRICCOST')" (change)="onInfoSectionCheckboxClick('USD/MT',$event)">
+                      </div>
+                      <div class=" mx-2 mb-1">
+                        USD/MT
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+
+            </div>
+
+
+          </div>
+        </mat-expansion-panel>
+
+      </form>
+    </div>
+  </div>
+
+
+
+</div>

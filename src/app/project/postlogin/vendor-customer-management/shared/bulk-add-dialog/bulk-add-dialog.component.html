@@ -1,0 +1,91 @@
+<div class="leads-bulk-add-dialog">
+  <div class="bg-light d-flex justify-content-between align-items-center text-center w-100 title-text p-3">
+    <div class="d-flex align-items-center">
+      <mat-icon (click)="onBack()" style="cursor: pointer">arrow_back</mat-icon>
+      <div class="title-text ms-3">Bulk Add Business</div>
+    </div>
+  </div>
+
+  <div class="p-3">
+    <div class="bg-light b-light b-round mb-2 p-3">
+      <div class="d-flex align-items-center justify-content-center">
+        <input #fileInput type="file" accept=".xlsx,.csv,.xls" class="d-none" (change)="onFileSelected($event)" />
+        <div class="text-center">
+          <dadyin-button (clicked)="fileInput.click()" [theme]="'borderless-primary'" type="image"
+            [typeval]="'assets/nicons/Upload.png'">
+          </dadyin-button>
+          <br />
+          <p class="upload-text mb-0 text-center text-muted">
+            Upload an Excel file to add multiple businesses at once
+          </p>
+          <p *ngIf="extractLoading" class="mb-0 mt-1 text-primary small">Reading file...</p>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <!-- show uploaded files here -->
+        <div class="d-flex align-items-center">
+          <div *ngIf="selectedFiles.length > 0" class="me-2 fw-bold">Uploaded files:</div>
+          <div *ngFor="let file of selectedFiles">
+            <div class="badge bg-primary">{{ file.name }}</div>
+            <dadyin-button [theme]="'borderless-danger'" type="image" [typeval]="'assets/nicons/delete.png'"
+              (clicked)="removeFile(file)">
+            </dadyin-button>
+          </div>
+        </div>
+
+        <dadyin-button class="b-all b-round px-2 bg-light" [theme]="'borderless-primary'" label="Get Excel template"
+          type="image" [typeval]="'assets/nicons/download.png'" (clicked)="downloadSample()">
+        </dadyin-button>
+      </div>
+    </div>
+
+    <mat-expansion-panel class="panel-no-padding" [expanded]="businessListExpanded"
+      (opened)="businessListExpanded = true" (closed)="businessListExpanded = false">
+      <mat-expansion-panel-header>
+        <mat-panel-description>
+          <div class="w-100 title-text text-left fw-bold">Business List</div>
+          <span *ngIf="extractedRows.length" class="mx-3 text-right w-100 text-muted small">({{ extractedRows.length }}
+            row(s))</span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-expansion-panel-content>
+        <div class="process-table overflow-auto">
+          <table id="example">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Business Name</th>
+                <th>Business Type</th>
+                <th>Industry/Retail Type</th>
+                <th>Phone Number</th>
+                <th>Business Email ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of extractedRows">
+                <td class="ps-2">{{ row.rowNumber }}</td>
+                <td>{{ row.businessName || '—' }}</td>
+                <td>{{ row.businessType || '—' }}</td>
+                <td>{{ row.industryType || '—' }}</td>
+                <td>{{ formatPhone(row) }}</td>
+                <td>{{ row.businessEmail || '—' }}</td>
+              </tr>
+              <tr *ngIf="!extractLoading && extractedRows.length === 0">
+                <td colspan="6" class="text-center text-muted py-3">Upload an Excel file to see extracted rows here.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-expansion-panel-content>
+    </mat-expansion-panel>
+
+    <div class="d-flex justify-content-end gap-2 mt-3">
+      <dadyin-button [theme]="'borderless-secondary'" label="Cancel" (clicked)="onBack()">
+      </dadyin-button>
+      <dadyin-button [theme]="'primary'" label="Save"
+        [disabled]="saveLoading || !selectedFile || extractedRows.length === 0" (clicked)="onSave()">
+      </dadyin-button>
+    </div>
+  </div>
+</div>

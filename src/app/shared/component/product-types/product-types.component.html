@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header">
+    <div class="card-header-description">
+      {{ pageTitle }} {{ "(" + types.length + ")" }}
+    </div>
+    <div class="card-header-action">
+      {{ "(" + this.selected_types.length + "/" + types.length + ")" }}
+    </div>
+  </div>
+  <div class="card-body">
+    <ul class="types">
+      <ng-container *ngIf="this.types.length == 0; else noDataFound">
+        <div class="data-not-found">
+          <p>{{ pageTitle }} Not Found!</p>
+        </div>
+      </ng-container>
+      <ng-template #noDataFound>
+        <ng-container *ngFor="let type of types; let i = index">
+          <li
+            [ngClass]="this.selected_types.includes(type) ? 'active' : ''"
+            (click)="selectedTypes(type)"
+          >
+            <span>{{ type }}</span>
+          </li>
+        </ng-container>
+      </ng-template>
+    </ul>
+  </div>
+</div>

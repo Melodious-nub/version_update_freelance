@@ -1,0 +1,21 @@
+.content-title {
+  background-color: var(--primary-light);
+  padding: 3px;
+  margin-left:3px;
+  margin-right:3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.table-footer-row{
+  background: var(--secondary-light) !important;
+}
+
+
+.table-icon {
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin-left: 2px;
+  padding: 2px;
+}

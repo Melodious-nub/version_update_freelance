@@ -1,0 +1,198 @@
+<div class="container">
+    <div class="filter-container">
+        <div class="filter-btn d-flex align-items-center primary-text">
+            <div class="btn  d-flex p-0" (click)="$event.stopPropagation();openFilter=!openFilter">
+                <mat-icon>filter_alt<span *ngIf="filterCount>0"
+                        class="translate-middle badge rounded-pill bg-danger primary-text"
+                        id="filterBadge">{{filterCount}}</span></mat-icon>
+            </div>
+            <div (click)="clearFilter()" style="text-wrap: nowrap;cursor: pointer;" class="mx-1" *ngIf="filterCount>0">
+                Clear All</div>
+        </div>
+
+        <div class="filter-card" appendTo="body" *ngIf="openFilter">
+            <div>
+                <div class="filter-card-header my-2">
+                    <h3 class="primary-text  m-0">Filters</h3>
+                    <dadyin-button [theme]="'primary'" label="Apply" (clicked)="apply()"></dadyin-button>
+                </div>
+                <div class="filter-card-form" (click)="$event.stopPropagation();">
+                    <div [formGroup]="filterForm">
+                        <div class="d-flex align-items-center ">
+                            <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 ">
+                                <input type="checkbox" id="favourite" name="favourite" formControlName="isFavourite">
+                                <label class="mx-1" for="favourite">Favourite</label>
+                            </div>
+
+                            <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 ">
+                                <input type="checkbox" id="Packaging" formControlName="isPackagingMaterial">
+                                <label class="mx-1" for="Packaging">Packaging Material</label>
+                            </div>
+
+                            <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 ">
+                                <input type="checkbox" id="Raw" formControlName="isRawMaterial">
+                                <label class="mx-1" for="Raw">Raw Material</label>
+                            </div>
+
+                            <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 ">
+                                <input type="checkbox" id="Saleable" formControlName="isSaleable">
+                                <label class="mx-1" for="Saleable">Saleable</label>
+                            </div>
+
+                            <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 ">
+                                <input type="checkbox" id="Supplies" formControlName="isSupplies">
+                                <label class="mx-1" for="Supplies">Supplies</label>
+                            </div>
+
+
+                            <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 ">
+                                <input type="checkbox" id="Quick" formControlName="isQuickCheckoutEligible">
+                                <label class="mx-1" for="Quick">Quick Checkout Eligible</label>
+                            </div>
+
+                            <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 ">
+                                <input type="checkbox" id="DELETED" formControlName="DELETED">
+                                <label class="mx-1" for="DELETED">DELETED</label>
+                            </div>
+                        </div>
+
+
+                        <mat-accordion>
+                            <mat-expansion-panel class="my-1">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title class="primary-text">
+                                        Created By
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        <input type="text" class="w-100" (input)="searchByCreated()"
+                                            formControlName="createdSearchString"
+                                            (keydown.Space)="$event.stopPropagation()" placeholder="Search User"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <ng-container formArrayName="createdByFormArray">
+                                    <div class="w-100">
+                                        <table class="table-filter">
+                                            <thead class="bg-light primary-text">
+                                                <th>First name</th>
+                                                <th>Last name</th>
+                                                <th>Display name </th>
+                                                <th>Email</th>
+                                                <th>Select</th>
+                                            </thead>
+                                            <tbody class="bg-white">
+                                                <tr *ngFor="let obj of createdByFormArray.controls; index as i">
+                                                    <td>{{createdByArray[i]["firstName"]}}</td>
+                                                    <td>{{createdByArray[i]["lastName"]}}</td>
+                                                    <td>{{createdByArray[i]["displayName"]}}</td>
+                                                    <td>{{createdByArray[i]["email"]}}</td>
+                                                    <td> <mat-checkbox class="m-1" [formControlName]="i"
+                                                            color="primary"></mat-checkbox></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </ng-container>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel class="my-1">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title class="primary-text" style="padding-right: 16px;">
+                                        By Type
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        <input type="text" class="w-100" (input)="searchByTypeNotifier.next()"
+                                            formControlName="typeSearchString"
+                                            (keydown.Space)="$event.stopPropagation()" placeholder="Search Type"
+                                            aria-label="Type" aria-describedby="basic-addon2">
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <ng-container formArrayName="byTypeFormArray">
+                                    <section *ngFor="let obj of byTypeFormArray.controls; index as i">
+                                        <mat-checkbox class="m-1" [formControlName]="i"
+                                            color="primary">{{byTypeArray[i]["description"]}}</mat-checkbox>
+                                    </section>
+                                </ng-container>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel class="my-1">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title class="primary-text">
+                                        By Subtype
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        <input type="text" class="w-100" (input)="searchBySubtypeNotifier.next()"
+                                            formControlName="subtypeSearchString"
+                                            (keydown.Space)="$event.stopPropagation()" placeholder="Search Subtype"
+                                            aria-label="Subtype" aria-describedby="basic-addon2">
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <ng-container formArrayName="bySubtypeFormArray">
+                                    <section *ngFor="let obj of bySubtypeFormArray.controls; index as i">
+                                        <mat-checkbox class="m-1" [formControlName]="i"
+                                            color="primary">{{bySubtypeArray[i]["description"]}}</mat-checkbox>
+                                    </section>
+                                </ng-container>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel class="my-1">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title class="primary-text">
+                                        By Category
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        <input type="text" class="w-100" (input)="searchByProductCategoryNotifier.next()"
+                                            formControlName="categorySearchString"
+                                            (keydown.Space)="$event.stopPropagation()" placeholder="Search Category"
+                                            aria-label="Category" aria-describedby="basic-addon2">
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <ng-container formArrayName="byProductCategoryFormArray">
+                                    <section *ngFor="let obj of byProductCategoryFormArray.controls; index as i">
+                                        <mat-checkbox class="m-1" [formControlName]="i"
+                                            color="primary">{{byProductCategoryArray[i]["description"]}}</mat-checkbox>
+                                    </section>
+                                </ng-container>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="attribute attribute-input" style="width: 100%;">
+                                    <label>Minimum Cost</label>
+                                    <input class="w-100" type="number" formControlName="costMin" min="0">
+                                    <small *ngIf="filterForm.get('costMin').invalid" class="text-danger">Invalid Minimum
+                                        Cost</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="attribute attribute-input" style="width: 100%;">
+                                    <label>Maximum Cost</label>
+                                    <input type="number" formControlName="costMax" min="0">
+                                    <small class="text-danger" *ngIf="filterForm.get('costMax').invalid">Invalid Minimum
+                                        Cost</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-1" id="filterDate">
+                                <div class="d-flex align-items-center mt-2 ">
+                                    <div class="attribute attribute-input" style="width: 100%;">
+                                        <label>Start Date</label>
+                                        <input type="date" formControlName="dateMin">
+
+                                    </div>
+
+                                    <div class="attribute attribute-input mx-1" style="width: 100%;">
+                                        <label>End Date</label>
+                                        <input type="date" formControlName="dateMax">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-card-footer">
+
+                    <dadyin-button [theme]="'primary'" label="Apply" (clicked)="apply()"></dadyin-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

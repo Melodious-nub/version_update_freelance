@@ -1,0 +1,83 @@
+.social-callback-root {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
+}
+
+.callback-card {
+  width: 420px;
+  max-width: calc(100% - 32px);
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(21, 56, 120, 0.08);
+  padding: 28px;
+  text-align: center;
+  border: 1px solid rgba(13, 96, 199, 0.06);
+}
+
+.icon-wrap {
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 14px auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(13,96,199,0.06), rgba(13,96,199,0.02));
+}
+
+.status-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.provider-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.provider-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(9,30,66,0.06);
+  padding: 6px;
+}
+
+.provider-text {
+  text-align: left;
+}
+
+.provider-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0d60c7;
+}
+
+.provider-sub {
+  font-size: 0.85rem;
+  color: #6b7380;
+}
+
+.status-text {
+  margin-top: 12px;
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.status-text.success { color: #1e8449; }
+.status-text.failure { color: #c0392b; }
+
+.message {
+  margin-top: 10px;
+  color: #5f6b78;
+  font-size: 0.95rem;
+}

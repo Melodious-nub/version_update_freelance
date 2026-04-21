@@ -1,0 +1,206 @@
+<!-- Shared layout for both Note and Reminder -->
+<div class="px-2 py-4 b-light bg-light d-flex align-items-center justify-content-between">
+  <div class="d-flex w-100 title-text">
+    <div class="me-2">
+      <mat-icon class="text-muted" (click)="close()">arrow_back</mat-icon>
+    </div>
+    <div>
+      <div class="font-size-12">Notes & Reminders</div>
+      <div class="font-size-16 fw-bold">{{ data.relationAccountDetail?.relationAccountName}}</div>
+    </div>
+    <div class="b-all mx-2"></div>
+    <div>
+      <div class="font-size-12 text-muted">Assigned to</div>
+      <b>{{ data.relationAccountDetail?.assignedSalesId}}</b>
+    </div>
+  </div>
+  <div class="d-flex align-items-center" *ngIf="isNoteMode">
+    <dadyin-button class="w-100" [theme]="'primary'" [label]="'Onboard Business'"></dadyin-button>
+    <div>
+      <i matTooltip="Suggest Email" class="material-icon mx-1" (click)="suggestEmail()">mail</i>
+    </div>
+  </div>
+</div>
+<div class="p-2">
+  <mat-expansion-panel class="panel-no-padding" expanded="true" [hideToggle]="true" [disabled]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-description>
+        <div class="w-100 title-text">{{ isReminderMode ? 'Create Reminder' : 'Create Note' }}</div>
+        <mat-icon>expand_less</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-expansion-panel-content>
+      <!-- Note: create form -->
+      <div class="row p-2" *ngIf="isNoteMode" [formGroup]="noteForm">
+        <div class="col-6">
+          <div class="attribute b-none">
+            <label for="">Note</label>
+            <textarea style="min-height: 28px !important" rows="4" class="b-light w-100" type="text"
+              formControlName="message"></textarea>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-12 mb-2">
+              <div style="width: max-content;" class="bg-light b-round p-2 d-flex align-items-center">
+                <i matTooltip="Upload note" class="material-icon mx-1" (click)="noteImage.click()">image</i>
+                Upload Image
+                <input type="file" #noteImage accept="image/*" (change)="uploadNote($event)" style="display: none" />
+              </div>
+            </div>
+            <div class="col-8 my-2">
+              <div class="attribute b-none">
+                <label for="">Status</label>
+                <select class="b-light w-100" formControlName="relationStatusId">
+                  <option *ngFor="let item of apiService.allRelationStatuses" [value]="item.id">
+                    {{ item.description }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4 my-2 d-flex align-items-end">
+              <dadyin-button [theme]="'primary'" (clicked)="addNote()" [label]="'Create'"></dadyin-button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Reminder: create form (same row layout, different fields) -->
+      <div class="row p-2" *ngIf="isReminderMode" [formGroup]="reminderForm">
+        <div class="col-6">
+          <div class="attribute b-none">
+            <label for="">Details</label>
+            <textarea style="min-height: 28px !important" rows="4" class="b-light w-100" type="text"
+              formControlName="reminderDetails"></textarea>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-8">
+              <div class="attribute b-none">
+                <label for="">Reminder date and time</label>
+                <input type="datetime-local" class="b-light w-100" [min]="minDateTime" formControlName="reminderTime">
+              </div>
+            </div>
+            <div class="col-4 d-flex align-items-end">
+              <dadyin-button [theme]="'primary'" (clicked)="addReminder()" [label]="'Create'"></dadyin-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel-content>
+  </mat-expansion-panel>
+
+  <hr />
+  <!-- All Notes table -->
+  <mat-expansion-panel class="panel-no-padding" expanded="true" [hideToggle]="true" [disabled]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-description>
+        <div class="w-100 title-text">All Notes</div>
+        <mat-icon>expand_less</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-expansion-panel-content>
+      <div class="table-responsive process-table" style="max-height: 400px; overflow: auto">
+        <table class="table-striped" style="width: 100%">
+          <thead>
+            <tr>
+              <th class="width-100">Created On</th>
+              <th> Details</th>
+              <th class="width-100">Status</th>
+              <th class="width-100">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let item of this.data.notes?.controls || []; let i = index" [formGroup]="item">
+              <tr>
+
+                <td>
+                  <section class="ps-2">{{ item.get("audit").value?.lastModifiedDate | date : "dMMMyy h:mm a" }}</section>
+                </td>
+                <td>
+                  <div class="d-flex b-none justify-content-between align-items-center">
+                    <div class="b-none">
+                      <i *ngIf="item.get('fileName').value" matTooltip="View uploaded Image" class="material-icon mx-1"
+                        (click)="viewImage(item.get('fileName').value)">image</i>
+                      <ng-container *ngIf="!item.expanded">
+                        <section style="overflow: hidden !important; " class="w-100">
+                          {{ item.get("message").value | slice : 0 : 100 }}
+                        </section>
+                        <span class="text-primary" (click)="item.expanded = !item.expanded">...</span>
+                      </ng-container>
+                    </div>
+                    <dadyin-button (clicked)="item.expanded = !item.expanded" class="text-primary"
+                      [theme]="'borderless-primary'" [type]="'icon'"
+                      [typeval]="item.expanded ? 'expand_less' : 'expand_more'">
+                    </dadyin-button>
+                  </div>
+                </td>
+                <td>
+                  <section class="ps-2">{{ getStatusName(item.get("relationStatusId").value) }}</section>
+                </td>
+                <td>
+                  <dadyin-button [theme]="'borderless-danger'" type="image" [typeval]="'assets/img/icons/delete.png'"
+                    (clicked)="deleteNote(i)">delete</dadyin-button>
+                </td>
+              </tr>
+              <tr *ngIf="item.expanded">
+
+                <td class="width-100"></td>
+                <td class="ps-2">
+                  <div class="note" [innerHTML]="this.formatText(item.get('message').value)"></div>
+                </td>
+                <td class="width-100"></td>
+                <td class="width-100"></td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </mat-expansion-panel-content>
+  </mat-expansion-panel>
+
+  <!-- All Reminders table -->
+  <mat-expansion-panel class="panel-no-padding my-2" expanded="true" [hideToggle]="true" [disabled]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-description>
+        <div class="w-100 title-text">All Reminders</div>
+        <mat-icon>expand_less</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-expansion-panel-content>
+      <div class="table-responsive process-table" style="max-height: 400px; overflow: auto">
+        <table class="table-striped" style="width: 100%">
+          <thead>
+            <tr>
+              <th class="width-100">Created On</th>
+              <th >Details</th>
+              <th>Time</th>
+              <th class="width-100">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of data?.reminders || []; let i = index">
+
+              <td>
+                <section class="ps-2">{{ item?.audit?.lastModifiedDate | date : "dMMMyy h:mm a" : "UTC" }}</section>
+              </td>
+              <td>
+                <section class="ps-2" style="overflow: hidden !important; height: 28px !important;" class="w-100">
+                  {{ item?.reminderDetails }}
+                </section>
+              </td>
+              <td>
+                <section>{{ item?.reminderTime | date : "dMMMyy h:mm a" : "UTC" }}</section>
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-expansion-panel-content>
+  </mat-expansion-panel>
+
+  <div class="text-center my-2">
+    <dadyin-button label="Close" (clicked)="close()" [theme]="'primary'"></dadyin-button>&nbsp;
+  </div>
+</div>

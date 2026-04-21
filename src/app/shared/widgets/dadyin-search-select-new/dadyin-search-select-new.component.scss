@@ -1,0 +1,112 @@
+.ng-select.search-select {
+
+    .ng-value,
+    .ng-clear-wrapper {
+        display: none !important;
+    }
+
+    .ng-select-container {
+        min-height: unset !important;
+    }
+
+    .ng-input,
+    .ng-value-container {
+        padding: 0 !important;
+    }
+
+    input {
+        height: unset !important;
+    }
+}
+
+.ng-select.search-select {
+    border: 0px;
+    min-height: 30px;
+    height: 30px;
+}
+
+
+.ng-select.search-select .ng-select-container {
+    height: 32px !important;
+    border: 1px solid var(--primary-light) !important;
+    overflow: inherit;
+    min-height: 30px;
+    font-size: 12px;
+    border-radius: 0px;
+    z-index: 998 !important;
+
+    input {
+        padding: unset !important;
+
+    }
+}
+
+
+.ng-select.search-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    font-size: 12px;
+    padding: 5px;
+}
+
+.ng-select.search-select .ng-select-container .ng-value-container .ng-input {
+    top: unset !important;
+}
+
+.selected {
+    border: 1px solid var(--primary-light);
+    border-radius: 5px !important;
+    width: 100%;
+    background-color: var(--select);
+    overflow: auto !important;
+    overflow-x: hidden !important;
+    min-height: 125px;
+}
+
+.value {
+    // padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 12px;
+    display: flex;
+}
+
+.selection-area-custom {
+    // max-height: 93px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    column-gap: 3px;
+    row-gap: 5px;
+    padding: 3px;
+    margin-top: 5px;
+}
+
+
+.selected.p-2 {
+    background: none;
+    padding: 0px !important;
+}
+
+.selected.p-2 .inner-box {
+    border-bottom: 1px solid #d9e9fb;
+}
+
+.label-search {
+    color: var(--light-text-color);
+    z-index: 1000;
+    position: absolute;
+    top: -8px;
+    left: 0px;
+    background: #fff;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+mat-icon.cross {
+    width: 0px !important;
+    color: red;
+    font-size: 15px;
+    margin-top: -6px;
+    margin-left: 0px;
+}

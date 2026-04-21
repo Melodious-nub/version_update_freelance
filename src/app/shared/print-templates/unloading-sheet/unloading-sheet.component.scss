@@ -1,0 +1,65 @@
+table.alternate-row {
+  tr:nth-child(even) {
+    background: #FFF;
+  }
+
+  tr:nth-child(odd) {
+    background: var(--primary-light);
+  }
+}
+
+.h-70 {
+  height:70px;
+}
+
+.instruct {
+  page-break-before: always;
+  page-break-after: always;
+}
+
+
+.instruct-table {
+  td:first-child {
+    width:50px;
+    padding-left:20px;
+  }
+  td {
+    height:40px;
+  }
+
+  th {
+    height:40px;
+  }
+}
+
+.pallet-label {
+  page-break-before: always;
+  page-break-after: always;
+  font-weight:700;
+  .row {
+    padding-top:40px;
+    padding-bottom:40px;
+    border:solid 2px black;
+  }
+}
+
+// .last-child {
+//   td:last-child {
+//     width:425px !important;
+//   }
+//   th:last-child {
+//    width:425px !important;
+//   }
+  
+// }
+
+
+.input-order {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  .inp {
+    margin: 0.5rem;
+    // width: 13%;
+  }
+}

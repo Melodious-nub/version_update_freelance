@@ -1,0 +1,7 @@
+<div class="slider"  width="100%">
+    <div class="slides" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+        <ng-content ></ng-content>
+    </div>
+    <button class="nav prev" *ngIf="cardLength>1" (click)="prev()">&#10094;</button>
+    <button class="nav next" *ngIf="cardLength>1" (click)="next()">&#10095;</button>
+  </div>

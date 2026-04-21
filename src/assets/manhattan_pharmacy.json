@@ -1,0 +1,4636 @@
+[
+  {
+    "relationAccountName": "1020RX",
+    "addressLine": "155 E 55th St STE 207",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 800-710-2079"
+  },
+  {
+    "relationAccountName": "133rd Street Pharmacy Inc",
+    "addressLine": "1473 Amsterdam Ave # 1",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-491-4911"
+  },
+  {
+    "relationAccountName": "137 Mott Pharmacy",
+    "addressLine": "137 Mott St FRNT A",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 646-669-8220"
+  },
+  {
+    "relationAccountName": "139 Center Pharmacy",
+    "addressLine": "139 Centre St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 646-838-6388"
+  },
+  {
+    "relationAccountName": "139 Pharmacy",
+    "addressLine": "3415 Broadway # 1",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-283-5549"
+  },
+  {
+    "relationAccountName": "145th St Pharmacy",
+    "addressLine": "300 W 145th St",
+    "City": "New York",
+    "StateZip": "NY 10039",
+    "Phone": "+1 212-281-3480"
+  },
+  {
+    "relationAccountName": "153 Hester Pharmacy",
+    "addressLine": "153 Hester St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-625-1399"
+  },
+  {
+    "relationAccountName": "173 Pharmacy",
+    "addressLine": "572 W 173rd St",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 646-692-4646"
+  },
+  {
+    "relationAccountName": "18 Pharmacy Inc",
+    "addressLine": "89 Bowery",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-571-0027"
+  },
+  {
+    "relationAccountName": "181pharmacy",
+    "addressLine": "565 W 181st St",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-543-2616"
+  },
+  {
+    "relationAccountName": "2000 Ninos Pharmacy Inc",
+    "addressLine": "3859 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-491-2910"
+  },
+  {
+    "relationAccountName": "26 PHARMACY",
+    "addressLine": "26 E Broadway 1 FL",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-925-3838"
+  },
+  {
+    "relationAccountName": "278 Pharmacy",
+    "addressLine": "27 E Broadway",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-227-7666"
+  },
+  {
+    "relationAccountName": "340BAssured Inc",
+    "addressLine": "90 Broad St #402",
+    "City": "New York",
+    "StateZip": "NY 10004",
+    "Phone": "+1 212-249-8202"
+  },
+  {
+    "relationAccountName": "66 Pharmacy Inc",
+    "addressLine": "66 E Broadway",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 (646) 484-6683"
+  },
+  {
+    "relationAccountName": "678 Pharmacy Inc",
+    "addressLine": "82 Elizabeth St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-966-6606"
+  },
+  {
+    "relationAccountName": "79th Street Pharmacy",
+    "addressLine": "215 W 79th St",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 646-370-5978"
+  },
+  {
+    "relationAccountName": "7th Avenue Pharmacy",
+    "addressLine": "2454 Adam Clayton Powell Jr Blvd",
+    "City": "New York",
+    "StateZip": "NY 10030",
+    "Phone": "+1 212-862-0505"
+  },
+  {
+    "relationAccountName": "8th Avenue Pharmacy",
+    "addressLine": "2854 Frederick Douglass Blvd",
+    "City": "New York",
+    "StateZip": "NY 10039",
+    "Phone": "+1 212-234-3900"
+  },
+  {
+    "relationAccountName": "90th Street Pharmacy",
+    "addressLine": "1262 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10128",
+    "Phone": "+1 212-289-9168"
+  },
+  {
+    "relationAccountName": "92 Pharmacy",
+    "addressLine": "1938 2nd Ave #100",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-426-6484"
+  },
+  {
+    "relationAccountName": "A M Pharmacy II Inc",
+    "addressLine": "223 Grand St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-226-8832"
+  },
+  {
+    "relationAccountName": "Abacus Pharmacy",
+    "addressLine": "168 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-477-6400"
+  },
+  {
+    "relationAccountName": "ABC DRUGS",
+    "addressLine": "2095 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10037",
+    "Phone": "+1 212-491-2501"
+  },
+  {
+    "relationAccountName": "ABC Pharmacy",
+    "addressLine": "10 Bowery",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-267-8882"
+  },
+  {
+    "relationAccountName": "ABC Pharmacy",
+    "addressLine": "53 Elizabeth St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-966-7588"
+  },
+  {
+    "relationAccountName": "ABC Pharmacy",
+    "addressLine": "139 Centre St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-965-8889"
+  },
+  {
+    "relationAccountName": "ABC Pharmacy V Corporation",
+    "addressLine": "17 E Broadway",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-965-8882"
+  },
+  {
+    "relationAccountName": "Abraham Harooni, PH",
+    "addressLine": "55 W 39th St",
+    "City": "New York",
+    "StateZip": "NY 10018",
+    "Phone": "+1 212-398-9999"
+  },
+  {
+    "relationAccountName": "A-Class Pharmacy",
+    "addressLine": "85N Elizabeth St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-431-0333"
+  },
+  {
+    "relationAccountName": "Advantage Communication",
+    "addressLine": "132 W 36th St. #401",
+    "City": "New York",
+    "StateZip": "NY 10018",
+    "Phone": "+1 212-329-8000"
+  },
+  {
+    "relationAccountName": "AHF Pharmacy - Manhattan",
+    "addressLine": "352 7th Ave #1206",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 212-284-0060"
+  },
+  {
+    "relationAccountName": "ahma Rx",
+    "addressLine": "2381 Frederick Douglass Blvd",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-749-6626"
+  },
+  {
+    "relationAccountName": "Ajanta Pharmacy Inc",
+    "addressLine": "2718 Frederick Douglass Blvd",
+    "City": "New York",
+    "StateZip": "NY 10030",
+    "Phone": "+1 212-283-6228"
+  },
+  {
+    "relationAccountName": "Alan Levine",
+    "addressLine": "1619 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10128",
+    "Phone": "+1 212-534-6000"
+  },
+  {
+    "relationAccountName": "Albea",
+    "addressLine": "595 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 646-957-8343"
+  },
+  {
+    "relationAccountName": "Albert Kusi",
+    "addressLine": "222 E 34th St",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-532-2354"
+  },
+  {
+    "relationAccountName": "Alex Kronis",
+    "addressLine": "4188 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-781-5396"
+  },
+  {
+    "relationAccountName": "Alexandra Ng",
+    "addressLine": "95 Bowery",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-219-0449"
+  },
+  {
+    "relationAccountName": "Alisons Pharmacy",
+    "addressLine": "12 Bowery A",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-227-7065"
+  },
+  {
+    "relationAccountName": "All Health Pharmacy",
+    "addressLine": "118 Mott St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-431-4398"
+  },
+  {
+    "relationAccountName": "Allen Street Pharmacy",
+    "addressLine": "2 Allen St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-966-8287"
+  },
+  {
+    "relationAccountName": "AllWin Rx",
+    "addressLine": "1732 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 973-444-5080"
+  },
+  {
+    "relationAccountName": "Almog Sagi",
+    "addressLine": "1631 York Ave",
+    "City": "New York",
+    "StateZip": "NY 10028",
+    "Phone": "+1 212-737-8800"
+  },
+  {
+    "relationAccountName": "Alrite Pharmacy",
+    "addressLine": "161 Hester St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-965-8868"
+  },
+  {
+    "relationAccountName": "Alto Pharmacy",
+    "addressLine": "100 Park Ave FRNT E",
+    "City": "New York",
+    "StateZip": "NY 10017",
+    "Phone": "+1 800-874-5881"
+  },
+  {
+    "relationAccountName": "Amar Pharmacy Inc",
+    "addressLine": "4446 Broadway # 1",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-567-6151"
+  },
+  {
+    "relationAccountName": "American Healthcare Recoveries",
+    "addressLine": "55 Broad St",
+    "City": "New York",
+    "StateZip": "NY 10004",
+    "Phone": "+1 212-425-1630"
+  },
+  {
+    "relationAccountName": "Amsterdam Pharmacy",
+    "addressLine": "1743 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-234-7959"
+  },
+  {
+    "relationAccountName": "Analytica International Inc",
+    "addressLine": "24 W 40th St #8",
+    "City": "New York",
+    "StateZip": "NY 10018",
+    "Phone": "+1 212-686-4100"
+  },
+  {
+    "relationAccountName": "Anantbhai Patel",
+    "addressLine": "4480 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-567-3384"
+  },
+  {
+    "relationAccountName": "Andy Pharmacy",
+    "addressLine": "3750 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-368-5511"
+  },
+  {
+    "relationAccountName": "Andy Pharmacy II",
+    "addressLine": "1341 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-795-3033"
+  },
+  {
+    "relationAccountName": "Annie Karim",
+    "addressLine": "206 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10009-3720",
+    "Phone": "+1 212-253-8686"
+  },
+  {
+    "relationAccountName": "Ansonia Pharmacy",
+    "addressLine": "446 6th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-477-0762"
+  },
+  {
+    "relationAccountName": "Anthony Petillo",
+    "addressLine": "931 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10065-5771",
+    "Phone": "+1 212-794-7200"
+  },
+  {
+    "relationAccountName": "AOM Infusion",
+    "addressLine": "36 W 37th St #500",
+    "City": "New York",
+    "StateZip": "NY 10018",
+    "Phone": "+1 800-556-4246"
+  },
+  {
+    "relationAccountName": "Apicha Community Health Center",
+    "addressLine": "400 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 844-370-6202"
+  },
+  {
+    "relationAccountName": "Apollo Pharmacy LLC",
+    "addressLine": "2255 Adam Clayton Powell Jr Blvd",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 917-477-3472"
+  },
+  {
+    "relationAccountName": "Apotheco Pharmacy Manhattan",
+    "addressLine": "462 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-889-0022"
+  },
+  {
+    "relationAccountName": "Apple Tree Pharmaceuticals",
+    "addressLine": "821 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-673-3217"
+  },
+  {
+    "relationAccountName": "Apthorp Pharmacy",
+    "addressLine": "2191 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 212-877-3480"
+  },
+  {
+    "relationAccountName": "Arcely Pharmacy",
+    "addressLine": "1603 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-923-2412"
+  },
+  {
+    "relationAccountName": "Arcot K. Thiyagarajan, BS",
+    "addressLine": "1 Gustave L. Levy Pl",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-241-1989"
+  },
+  {
+    "relationAccountName": "Arrow Pharmacy",
+    "addressLine": "883 9th Ave",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 212-245-8469"
+  },
+  {
+    "relationAccountName": "Arumugam Jayakumar, BPharm",
+    "addressLine": "1479 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-923-4190"
+  },
+  {
+    "relationAccountName": "Asbell Pharmacy",
+    "addressLine": "1600 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-927-5994"
+  },
+  {
+    "relationAccountName": "Atlantic Pharmacy",
+    "addressLine": "1560 Duncan Avenue",
+    "City": "New York",
+    "StateZip": "NY 10007",
+    "Phone": "+1 831-200-4219"
+  },
+  {
+    "relationAccountName": "Atlas Pharmacy",
+    "addressLine": "2542 Adam Clayton Powell Jr Blvd",
+    "City": "New York",
+    "StateZip": "NY 10039",
+    "Phone": "+1 646 922-7750"
+  },
+  {
+    "relationAccountName": "Avalon Chemists",
+    "addressLine": "7 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-260-3131"
+  },
+  {
+    "relationAccountName": "Avanir Pharmaceuticals",
+    "addressLine": "133 Beekman St",
+    "City": "New York",
+    "StateZip": "NY 10038",
+    "Phone": "+1 212-227-9260"
+  },
+  {
+    "relationAccountName": "Aventine Rx",
+    "addressLine": "1875 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 877-484-9640"
+  },
+  {
+    "relationAccountName": "Avenue C Pharmacy",
+    "addressLine": "178 Loisaida Ave",
+    "City": "New York",
+    "StateZip": "NY 10009",
+    "Phone": "+1 212-228-0764"
+  },
+  {
+    "relationAccountName": "Avita Pharmacy 1069",
+    "addressLine": "307 W 38th St Suite 05-013",
+    "City": "New York",
+    "StateZip": "NY 10018",
+    "Phone": "+1 212-380-1840"
+  },
+  {
+    "relationAccountName": "Avni Varia",
+    "addressLine": "568 W 125th St",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-865-3894"
+  },
+  {
+    "relationAccountName": "B J's Pharmacy",
+    "addressLine": "80 E 116th St",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-348-7788"
+  },
+  {
+    "relationAccountName": "Bac Ai Pharmacy",
+    "addressLine": "216 Canal St A",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-513-1344"
+  },
+  {
+    "relationAccountName": "Bankim Sheth",
+    "addressLine": "1103 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10075",
+    "Phone": "+1 212-879-0910"
+  },
+  {
+    "relationAccountName": "Battery Park Pharmacy",
+    "addressLine": "327 S End Ave",
+    "City": "New York",
+    "StateZip": "NY 10280",
+    "Phone": "+1 212-912-0555"
+  },
+  {
+    "relationAccountName": "Battery Park Veterinary Hospital",
+    "addressLine": "21 S End Ave Ground Floor",
+    "City": "New York",
+    "StateZip": "NY 10280",
+    "Phone": "+1 212-786-4444"
+  },
+  {
+    "relationAccountName": "Bayard Pharmacy",
+    "addressLine": "62 Bayard St # 2",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-219-8116"
+  },
+  {
+    "relationAccountName": "Bazhena Fidman",
+    "addressLine": "75 Christopher St",
+    "City": "New York",
+    "StateZip": "NY 10014",
+    "Phone": "+1 212-627-2662"
+  },
+  {
+    "relationAccountName": "Beauty Hoang, Pharmacy",
+    "addressLine": "1275 York Ave",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-639-2752"
+  },
+  {
+    "relationAccountName": "Benjamin Cruz",
+    "addressLine": "622 W 168th St, PRESBYTERIAN HOSPITAL (PHARMACY)",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-342-8555"
+  },
+  {
+    "relationAccountName": "Bershad Oleg",
+    "addressLine": "771 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10036",
+    "Phone": "+1 212-974-6013"
+  },
+  {
+    "relationAccountName": "Best Care Pharmacy",
+    "addressLine": "12 Bowery",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-334-0086"
+  },
+  {
+    "relationAccountName": "Best Pet Rx",
+    "addressLine": "207 E 94th St",
+    "City": "New York",
+    "StateZip": "NY 10128",
+    "Phone": "+1 800-390-2779"
+  },
+  {
+    "relationAccountName": "Better Health Rx Pharmacy",
+    "addressLine": "503 W 125th St",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-222-8600"
+  },
+  {
+    "relationAccountName": "Bhogilal Patel",
+    "addressLine": "1381 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-928-7263"
+  },
+  {
+    "relationAccountName": "Bio Care Pharmacy",
+    "addressLine": "222 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-255-3100"
+  },
+  {
+    "relationAccountName": "Biotrend Corporation",
+    "addressLine": "150 W 56th St",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 212-258-2246"
+  },
+  {
+    "relationAccountName": "Blink Health",
+    "addressLine": "1407 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10018",
+    "Phone": "+1 844-265-6444"
+  },
+  {
+    "relationAccountName": "Bliss Pharmacy",
+    "addressLine": "1590 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-427-4382"
+  },
+  {
+    "relationAccountName": "Bliss Specialty Pharmacy Inc",
+    "addressLine": "972 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-666-4800"
+  },
+  {
+    "relationAccountName": "Block Drug Store",
+    "addressLine": "101 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-473-1587"
+  },
+  {
+    "relationAccountName": "Block Drug Stores",
+    "addressLine": "Corner 9th, 129 Avenue D",
+    "City": "New York",
+    "StateZip": "NY 10009",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "Blockchain Pharmacy",
+    "addressLine": "2139 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-348-5049"
+  },
+  {
+    "relationAccountName": "Blue Pond Rx Inc Pharmacy",
+    "addressLine": "115 W 128th St",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 646-930-2939"
+  },
+  {
+    "relationAccountName": "Boh Laskin",
+    "addressLine": "1675 3rd Ave #327",
+    "City": "New York",
+    "StateZip": "NY 10128",
+    "Phone": "+1 212-348-7400"
+  },
+  {
+    "relationAccountName": "Bowen Pharmacy",
+    "addressLine": "826 10th Ave",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 212-956-9111"
+  },
+  {
+    "relationAccountName": "Broadway Apothecary",
+    "addressLine": "779 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-961-6681"
+  },
+  {
+    "relationAccountName": "Broadway Chemists",
+    "addressLine": "2350 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 212-877-0888"
+  },
+  {
+    "relationAccountName": "Broadway Family Pharmacy",
+    "addressLine": "510 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 212-724-1950"
+  },
+  {
+    "relationAccountName": "Broadway Pharmacy",
+    "addressLine": "3621 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-926-9800"
+  },
+  {
+    "relationAccountName": "Broadway Pharmacy & Surgical",
+    "addressLine": "4329 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-740-8500"
+  },
+  {
+    "relationAccountName": "Broadway pharmacy III inc",
+    "addressLine": "629 W 185th St",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-927-0999"
+  },
+  {
+    "relationAccountName": "Brothers Apothecary Pharmacy",
+    "addressLine": "2350 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 212-877-0999"
+  },
+  {
+    "relationAccountName": "Bukham pharmacie plaza",
+    "addressLine": "2256 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-758-7777"
+  },
+  {
+    "relationAccountName": "Buy Rite Pharmacy V",
+    "addressLine": "139 Centre St #104",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-343-1919"
+  },
+  {
+    "relationAccountName": "Buy-Rite Pharmacy",
+    "addressLine": "11 Chatham Square",
+    "City": "New York",
+    "StateZip": "NY 10038",
+    "Phone": "+1 212-925-7698"
+  },
+  {
+    "relationAccountName": "C & R Timmermann Apothecaries Inc",
+    "addressLine": "799 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-838-5580"
+  },
+  {
+    "relationAccountName": "C.O. Bigelow Chemists",
+    "addressLine": "414 6th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-533-2700"
+  },
+  {
+    "relationAccountName": "Caligor Pharmacy",
+    "addressLine": "1226 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10028",
+    "Phone": "+1 212-369-6000"
+  },
+  {
+    "relationAccountName": "Callen-Lorde Community Pharmacy",
+    "addressLine": "356 W 18th St",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-271-7260"
+  },
+  {
+    "relationAccountName": "Canal Pharmacy",
+    "addressLine": "196 Canal St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-608-1668"
+  },
+  {
+    "relationAccountName": "Canalberry Pharmacy",
+    "addressLine": "82 Mulberry St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-619-6190"
+  },
+  {
+    "relationAccountName": "Capsule",
+    "addressLine": "122 W 146th St",
+    "City": "New York",
+    "StateZip": "NY 10039",
+    "Phone": "+1 212-675-3900"
+  },
+  {
+    "relationAccountName": "Care Pharmacy & Surgicals",
+    "addressLine": "565 Lenox Ave",
+    "City": "New York",
+    "StateZip": "NY 10037",
+    "Phone": "+1 212-281-2345"
+  },
+  {
+    "relationAccountName": "Carehart Pharmacy",
+    "addressLine": "41 7th Ave S",
+    "City": "New York",
+    "StateZip": "NY 10014",
+    "Phone": "+1 212-321-1010"
+  },
+  {
+    "relationAccountName": "CareMeds Pharmacy",
+    "addressLine": "4520 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 917-388-3129"
+  },
+  {
+    "relationAccountName": "Caribe Pharmacy",
+    "addressLine": "146 Nagle Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-304-0649"
+  },
+  {
+    "relationAccountName": "Carnegie Hill Pharmacy",
+    "addressLine": "1331 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10128",
+    "Phone": "+1 212-534-1300"
+  },
+  {
+    "relationAccountName": "Carol Pharmacy",
+    "addressLine": "4230 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 917-965-2277"
+  },
+  {
+    "relationAccountName": "Catherine Street Pharmacy",
+    "addressLine": "58 E Broadway",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 917-472-7328"
+  },
+  {
+    "relationAccountName": "Cedra Pharmacy",
+    "addressLine": "1207 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-758-1199"
+  },
+  {
+    "relationAccountName": "Cedra Pharmacy",
+    "addressLine": "2268 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 212-877-5000"
+  },
+  {
+    "relationAccountName": "Center Pharmacy",
+    "addressLine": "1290 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-222-7922"
+  },
+  {
+    "relationAccountName": "Centrum Specialty Pharmacy",
+    "addressLine": "2182 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 917-388-3858"
+  },
+  {
+    "relationAccountName": "Century Pharmacy",
+    "addressLine": "225 Madison St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-227-5227"
+  },
+  {
+    "relationAccountName": "Century Pharmacy",
+    "addressLine": "159 E Broadway",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-227-7262"
+  },
+  {
+    "relationAccountName": "Cha Soon D",
+    "addressLine": "3181 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-662-0220"
+  },
+  {
+    "relationAccountName": "Charles Giannini",
+    "addressLine": "1350 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10018",
+    "Phone": "+1 212-695-6346"
+  },
+  {
+    "relationAccountName": "Charlie Pharmacy",
+    "addressLine": "2034 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 646-596-7028"
+  },
+  {
+    "relationAccountName": "Chateau Drug & Homecare",
+    "addressLine": "181 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10023",
+    "Phone": "+1 212-877-6390"
+  },
+  {
+    "relationAccountName": "Chelsea Royal Care Pharmacy",
+    "addressLine": "154 9th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-255-8000"
+  },
+  {
+    "relationAccountName": "Cherry's Pharmacy",
+    "addressLine": "207 E 66th St",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-717-7797"
+  },
+  {
+    "relationAccountName": "Chike A. Igboechi, PHD",
+    "addressLine": "1901 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-423-7397"
+  },
+  {
+    "relationAccountName": "Choi & Tam Inc",
+    "addressLine": "9 Elizabeth St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-966-9239"
+  },
+  {
+    "relationAccountName": "Choi Dongsook",
+    "addressLine": "741 Columbus Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-316-0436"
+  },
+  {
+    "relationAccountName": "CHOICE Pharmacy",
+    "addressLine": "212 W 91st St",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 804-767-8676"
+  },
+  {
+    "relationAccountName": "Christina A. Chiang, OD",
+    "addressLine": "33 E 23rd St",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-685-2047"
+  },
+  {
+    "relationAccountName": "Christine M. Chao, BA",
+    "addressLine": "216 Canal St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-513-1344"
+  },
+  {
+    "relationAccountName": "Christopher A. Bassolino Pharmacy Corp.",
+    "addressLine": "1262 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10128",
+    "Phone": "+1 212-289-9168"
+  },
+  {
+    "relationAccountName": "Cibao Pharmacy",
+    "addressLine": "1303 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-543-1900"
+  },
+  {
+    "relationAccountName": "City Drug & Surgical",
+    "addressLine": "2039 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-781-1011"
+  },
+  {
+    "relationAccountName": "City Drug & Surgical",
+    "addressLine": "719 W 181st St",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-781-0707"
+  },
+  {
+    "relationAccountName": "CityDrug & Surgical",
+    "addressLine": "1-7 Audubon Ave",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-543-1554"
+  },
+  {
+    "relationAccountName": "Claremont Pharmacy",
+    "addressLine": "3181 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-662-0220"
+  },
+  {
+    "relationAccountName": "Clean Care Pharmacy",
+    "addressLine": "604 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 347-559-0871"
+  },
+  {
+    "relationAccountName": "Columbia Drugs",
+    "addressLine": "55 Columbia St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-533-8120"
+  },
+  {
+    "relationAccountName": "Columbia Pharmacy",
+    "addressLine": "3921 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-928-6342"
+  },
+  {
+    "relationAccountName": "Columbus Circle Apothecary NYC",
+    "addressLine": "333 W 57th St",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 212-672-0533"
+  },
+  {
+    "relationAccountName": "COMFORT CARE PHARMACY INC",
+    "addressLine": "1990 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-410-4200"
+  },
+  {
+    "relationAccountName": "Community Pharmacy",
+    "addressLine": "205 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-691-9050"
+  },
+  {
+    "relationAccountName": "Community Pharmacy",
+    "addressLine": "29 W 116th St",
+    "City": "New York",
+    "StateZip": "NY 10026",
+    "Phone": "+1 212-519-8346"
+  },
+  {
+    "relationAccountName": "Confucius Pharmacy",
+    "addressLine": "7 Bowery",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-227-0922"
+  },
+  {
+    "relationAccountName": "Corby Chemists Pharmacy",
+    "addressLine": "988 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 212-755-6632"
+  },
+  {
+    "relationAccountName": "Corner Chemists Pharmacy LLC",
+    "addressLine": "24 Catherine St",
+    "City": "New York",
+    "StateZip": "NY 10038",
+    "Phone": "+1 646-869-8881"
+  },
+  {
+    "relationAccountName": "Costco Pharmacy",
+    "addressLine": "517 E 117th St",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-896-5882"
+  },
+  {
+    "relationAccountName": "Cove",
+    "addressLine": "29 W 30th St 4th floor",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 877-456-2683"
+  },
+  {
+    "relationAccountName": "COVID-19 Drive-Thru Testing at Walgreens",
+    "addressLine": "298 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10009",
+    "Phone": "+1 800-925-4733"
+  },
+  {
+    "relationAccountName": "COVID-19 Drive-Thru Testing at Walgreens",
+    "addressLine": "465 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 800-925-4733"
+  },
+  {
+    "relationAccountName": "COVID-19 Drive-Thru Testing at Walgreens",
+    "addressLine": "949 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 800-925-4733"
+  },
+  {
+    "relationAccountName": "Curewell Drugs",
+    "addressLine": "4157 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-568-1020"
+  },
+  {
+    "relationAccountName": "Daily Support Pharmacy, Inc.",
+    "addressLine": "23 Division St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 646-649-2603"
+  },
+  {
+    "relationAccountName": "Daliza Pharmacy",
+    "addressLine": "3481 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-281-9410"
+  },
+  {
+    "relationAccountName": "Danny Mei",
+    "addressLine": "750 6th Ave",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 646-336-8388"
+  },
+  {
+    "relationAccountName": "Danny's Pharmacy II",
+    "addressLine": "110 West End Ave",
+    "City": "New York",
+    "StateZip": "NY 10023",
+    "Phone": "+1 212-362-0000"
+  },
+  {
+    "relationAccountName": "Dara Meltzer",
+    "addressLine": "356 W 18th St",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-271-7260"
+  },
+  {
+    "relationAccountName": "David's Pharmacy",
+    "addressLine": "205 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-477-7788"
+  },
+  {
+    "relationAccountName": "DDB Rx",
+    "addressLine": "485 Lexington Ave #301",
+    "City": "New York",
+    "StateZip": "NY 10017",
+    "Phone": "+1 212-845-8098"
+  },
+  {
+    "relationAccountName": "Detronet.com Pharmacy Services",
+    "addressLine": "2632 Adam Clayton Powell Jr Blvd",
+    "City": "New York",
+    "StateZip": "NY 10039",
+    "Phone": "+1 917-409-3219"
+  },
+  {
+    "relationAccountName": "Diana Ang",
+    "addressLine": "1223 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10065-7402",
+    "Phone": "+1 212-752-7703"
+  },
+  {
+    "relationAccountName": "Dichter Pharmacy & Soda Shop",
+    "addressLine": "4953 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-569-1230"
+  },
+  {
+    "relationAccountName": "Diplomat Chemists",
+    "addressLine": "800 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10017",
+    "Phone": "+1 347-566-2888"
+  },
+  {
+    "relationAccountName": "Grove Apothecary",
+    "addressLine": "302 W 12th St",
+    "City": "New York",
+    "StateZip": "NY 10014",
+    "Phone": "+1 212-929-7527"
+  },
+  {
+    "relationAccountName": "Dondapati Rajyalakshm",
+    "addressLine": "4188 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-781-5396"
+  },
+  {
+    "relationAccountName": "Downtown Pharmacy",
+    "addressLine": "165 William St",
+    "City": "New York",
+    "StateZip": "NY 10038",
+    "Phone": "+1 212-233-0333"
+  },
+  {
+    "relationAccountName": "Dr. Ciar\u00e1n O. Grant",
+    "addressLine": "415 W 57th St",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 914-714-0336"
+  },
+  {
+    "relationAccountName": "Dreamland Care Pharmacy",
+    "addressLine": "W 120th St",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 661-375-7219"
+  },
+  {
+    "relationAccountName": "Drug Loft Pharmacy",
+    "addressLine": "1408 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-996-9499"
+  },
+  {
+    "relationAccountName": "Drug Mart",
+    "addressLine": "1631 York Ave",
+    "City": "New York",
+    "StateZip": "NY 10028",
+    "Phone": "+1 212-737-8800"
+  },
+  {
+    "relationAccountName": "Drug Mart II",
+    "addressLine": "4873 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-569-4400"
+  },
+  {
+    "relationAccountName": "Drug Shoppe Pharmacy",
+    "addressLine": "2074 Frederick Douglass Blvd",
+    "City": "New York",
+    "StateZip": "NY 10026",
+    "Phone": "+1 212-222-3652"
+  },
+  {
+    "relationAccountName": "Drug Stop Pharmacy",
+    "addressLine": "2062 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-410-0509"
+  },
+  {
+    "relationAccountName": "Drug Store",
+    "addressLine": "977 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "DRUG WORx",
+    "addressLine": "4197 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-795-7455"
+  },
+  {
+    "relationAccountName": "Dyckman Pharmacy",
+    "addressLine": "199 Dyckman St",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-567-1331"
+  },
+  {
+    "relationAccountName": "E Care Pharmacy",
+    "addressLine": "48 Mott St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-962-3388"
+  },
+  {
+    "relationAccountName": "E Z Care Pharmacy LLC",
+    "addressLine": "87 Elizabeth St #1",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-343-8899"
+  },
+  {
+    "relationAccountName": "East Broadway Pharmacy",
+    "addressLine": "98 E Broadway",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-431-6688"
+  },
+  {
+    "relationAccountName": "East End Pharmacy",
+    "addressLine": "210 E 116th St A",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-831-1730"
+  },
+  {
+    "relationAccountName": "East Harlem Pharmacy",
+    "addressLine": "2371 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-987-3600"
+  },
+  {
+    "relationAccountName": "East Harlem Pharmacy",
+    "addressLine": "2095 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10037",
+    "Phone": "+1 212-491-2501"
+  },
+  {
+    "relationAccountName": "East Village Prescription Center",
+    "addressLine": "41 Avenue A",
+    "City": "New York",
+    "StateZip": "NY 10009",
+    "Phone": "+1 212-260-4878"
+  },
+  {
+    "relationAccountName": "Easy Scripts Pharmacy",
+    "addressLine": "3 W 137th St",
+    "City": "New York",
+    "StateZip": "NY 10037",
+    "Phone": "+1 917- 965-2763"
+  },
+  {
+    "relationAccountName": "Ecogreen Pharmacy",
+    "addressLine": "256W W 116th St",
+    "City": "New York",
+    "StateZip": "NY 10026",
+    "Phone": "+1 646-559-1280"
+  },
+  {
+    "relationAccountName": "Ecogreen Pharmacy",
+    "addressLine": "1600 Madison Ave 256W 116th",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-369-3084"
+  },
+  {
+    "relationAccountName": "Eileen Pollack",
+    "addressLine": "30 Vandam St #5a",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-255-2112"
+  },
+  {
+    "relationAccountName": "Eisler Chemists",
+    "addressLine": "1142 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10075",
+    "Phone": "+1 212-744-4144"
+  },
+  {
+    "relationAccountName": "Eisner Arthur J",
+    "addressLine": "27 Malcolm X Blvd",
+    "City": "New York",
+    "StateZip": "NY 10026",
+    "Phone": "+1 212-678-9722"
+  },
+  {
+    "relationAccountName": "Elinick Pharmacy Inc",
+    "addressLine": "52 Sherman Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-567-5130"
+  },
+  {
+    "relationAccountName": "Elizabeth Sanders",
+    "addressLine": "331 E 23rd St",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-683-0148"
+  },
+  {
+    "relationAccountName": "Elm Drugs",
+    "addressLine": "56 7th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-255-6100"
+  },
+  {
+    "relationAccountName": "Elm Wellness",
+    "addressLine": "56 7th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-255-6300"
+  },
+  {
+    "relationAccountName": "Embassy Pharmacy",
+    "addressLine": "1842 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-690-1331"
+  },
+  {
+    "relationAccountName": "ENEXIA SPECIALTY",
+    "addressLine": "200 E 125th St",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-995-9400"
+  },
+  {
+    "relationAccountName": "Equal Care Pharmacy",
+    "addressLine": "753 E 5th St",
+    "City": "New York",
+    "StateZip": "NY 10009",
+    "Phone": "+1 212-228-6137"
+  },
+  {
+    "relationAccountName": "Erins Pharmacy",
+    "addressLine": "360 E 4th St",
+    "City": "New York",
+    "StateZip": "NY 10009",
+    "Phone": "+1 212-677-7335"
+  },
+  {
+    "relationAccountName": "eRxCity",
+    "addressLine": "185 Canal St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-625-8339"
+  },
+  {
+    "relationAccountName": "ESCO PHARMACY",
+    "addressLine": "687 9th Ave",
+    "City": "New York",
+    "StateZip": "NY 10036",
+    "Phone": "+1 212-246-8169"
+  },
+  {
+    "relationAccountName": "eScript360 Pharmacy",
+    "addressLine": "1299 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10021",
+    "Phone": "+1 212-535-1700"
+  },
+  {
+    "relationAccountName": "Esquire Pharmacy",
+    "addressLine": "277 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-228-2260"
+  },
+  {
+    "relationAccountName": "Eugene H. Winter, DPM",
+    "addressLine": "609 Columbus Ave",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 212-724-4270"
+  },
+  {
+    "relationAccountName": "Eveready Drugs Ltd",
+    "addressLine": "1229 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10021",
+    "Phone": "+1 212-249-1050"
+  },
+  {
+    "relationAccountName": "Evolve Health + Wellness",
+    "addressLine": "36 Rivington St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-945-7300"
+  },
+  {
+    "relationAccountName": "Fady Heikal",
+    "addressLine": "686 Main St",
+    "City": "New York",
+    "StateZip": "NY 10044",
+    "Phone": "+1 212-644-4125"
+  },
+  {
+    "relationAccountName": "Fairview Pharmacy",
+    "addressLine": "4480 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-567-3384"
+  },
+  {
+    "relationAccountName": "Faith Pharmacy",
+    "addressLine": "743 E 9th St",
+    "City": "New York",
+    "StateZip": "NY 10009",
+    "Phone": "+1 212-387-8800"
+  },
+  {
+    "relationAccountName": "Faith Pharmacy",
+    "addressLine": "326 W 48th St",
+    "City": "New York",
+    "StateZip": "NY 10036",
+    "Phone": "+1 646-609-3396"
+  },
+  {
+    "relationAccountName": "Family Care Pharmacy",
+    "addressLine": "2518 Adam Clayton Powell Jr Blvd",
+    "City": "New York",
+    "StateZip": "NY 10039",
+    "Phone": "+1 212-939-9594"
+  },
+  {
+    "relationAccountName": "Family Choice Pharmacy",
+    "addressLine": "13 Elizabeth St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-925-6088"
+  },
+  {
+    "relationAccountName": "Family Pharmacy & Surgical Inc.",
+    "addressLine": "379 W 125th St",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-222-1300"
+  },
+  {
+    "relationAccountName": "Family Plus Pharmacy",
+    "addressLine": "102 Mott St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-732-3388"
+  },
+  {
+    "relationAccountName": "Fancy Pharmacy",
+    "addressLine": "132 Allen St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-529-4532"
+  },
+  {
+    "relationAccountName": "Farmacia Central",
+    "addressLine": "102 Nagle Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-942-5050"
+  },
+  {
+    "relationAccountName": "Farmacia San Rafael",
+    "addressLine": "1479 St Nicholas Ave # 184",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-923-4190"
+  },
+  {
+    "relationAccountName": "Fein's Ethical Pharmacy Corporation",
+    "addressLine": "3586 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-862-3315"
+  },
+  {
+    "relationAccountName": "FierceBiotech Drug Development Forum",
+    "addressLine": "494 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 866-207-6528"
+  },
+  {
+    "relationAccountName": "First Pharmaceutical Corporation",
+    "addressLine": "53 Elizabeth St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-966-7588"
+  },
+  {
+    "relationAccountName": "Foodtown Pharmacy",
+    "addressLine": "686 Main St",
+    "City": "New York",
+    "StateZip": "NY 10044",
+    "Phone": "+1 212-644-4125"
+  },
+  {
+    "relationAccountName": "139 Center Pharmacy",
+    "addressLine": "139 Centre St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 646-838-6388"
+  },
+  {
+    "relationAccountName": "Forever Health Pharmacy",
+    "addressLine": "2 E Broadway",
+    "City": "New York",
+    "StateZip": "NY 10038",
+    "Phone": "+1 212-966-7887"
+  },
+  {
+    "relationAccountName": "Forum Pharmacy",
+    "addressLine": "165 W 127th St #2",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-222-7766"
+  },
+  {
+    "relationAccountName": "Frank Kazlausky",
+    "addressLine": "460 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 212-244-4026"
+  },
+  {
+    "relationAccountName": "Frank Strafaci",
+    "addressLine": "100 W 57th St",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 212-956-0464"
+  },
+  {
+    "relationAccountName": "Frederick Community Pharmacy",
+    "addressLine": "2450 Frederick Douglass Blvd",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-690-5202"
+  },
+  {
+    "relationAccountName": "Friendly Pharmacy",
+    "addressLine": "1654 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-568-4000"
+  },
+  {
+    "relationAccountName": "Fulton Care Pharmacy",
+    "addressLine": "98 E Broadway",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-431-6688"
+  },
+  {
+    "relationAccountName": "Fusion Apothecary",
+    "addressLine": "7620 5th Ave",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 929-722-0625"
+  },
+  {
+    "relationAccountName": "Fuzhou Pharmacy",
+    "addressLine": "96 E Broadway",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-693-8866"
+  },
+  {
+    "relationAccountName": "Gaga Pharmacy",
+    "addressLine": "115 Mott St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 718-699-6666"
+  },
+  {
+    "relationAccountName": "Gallery Drug",
+    "addressLine": "131 E 60th St",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 212-838-6765"
+  },
+  {
+    "relationAccountName": "GARY B HALPERN, RPH",
+    "addressLine": "1226 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10028",
+    "Phone": "+1 212-369-6000"
+  },
+  {
+    "relationAccountName": "Genepharm Inc",
+    "addressLine": "590 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 212-521-4366"
+  },
+  {
+    "relationAccountName": "Generation Pharmacy",
+    "addressLine": "33 Oliver St",
+    "City": "New York",
+    "StateZip": "NY 10038",
+    "Phone": "+1 212-227-9129"
+  },
+  {
+    "relationAccountName": "Generic Medications",
+    "addressLine": "426 W 46th St",
+    "City": "New York",
+    "StateZip": "NY 10036",
+    "Phone": "+1 206-666-5651"
+  },
+  {
+    "relationAccountName": "Gentle Care Pharmacy Llc",
+    "addressLine": "13A Market St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 917-409-5784"
+  },
+  {
+    "relationAccountName": "German Edward",
+    "addressLine": "126 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-807-8798"
+  },
+  {
+    "relationAccountName": "Gloria H. Chung, OD",
+    "addressLine": "1901 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-423-6612"
+  },
+  {
+    "relationAccountName": "Goldberger's Pharmacy",
+    "addressLine": "1200 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-734-6998"
+  },
+  {
+    "relationAccountName": "Golden Star Pharmacy",
+    "addressLine": "1-3 Eldridge St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-343-8800"
+  },
+  {
+    "relationAccountName": "Gonzalez Daniel",
+    "addressLine": "2864 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-663-8870"
+  },
+  {
+    "relationAccountName": "Good Health Family Pharmacy",
+    "addressLine": "449 W 125th St",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-665-6007"
+  },
+  {
+    "relationAccountName": "Gotham Pharmacy Inc",
+    "addressLine": "2258 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-289-7800"
+  },
+  {
+    "relationAccountName": "Grand Health Pharmacy",
+    "addressLine": "349 Grand St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-228-0068"
+  },
+  {
+    "relationAccountName": "Grand Street Pharmaceutical LLC",
+    "addressLine": "215 Grand St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-625-9505"
+  },
+  {
+    "relationAccountName": "Gregory Jackson",
+    "addressLine": "526 W 30th St",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 646-968-4689"
+  },
+  {
+    "relationAccountName": "Gristedes",
+    "addressLine": "315 S End Ave",
+    "City": "New York",
+    "StateZip": "NY 10280",
+    "Phone": "+1 212-233-7797"
+  },
+  {
+    "relationAccountName": "Gristede's",
+    "addressLine": "686 Main St #0021",
+    "City": "New York",
+    "StateZip": "NY 10044",
+    "Phone": "+1 212-371-2680"
+  },
+  {
+    "relationAccountName": "Gristedes Pharmacy",
+    "addressLine": "225 9th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-229-3896"
+  },
+  {
+    "relationAccountName": "Grove Apothecary",
+    "addressLine": "302 W 12th St",
+    "City": "New York",
+    "StateZip": "NY 10014",
+    "Phone": "+1 212-929-7527"
+  },
+  {
+    "relationAccountName": "GS Office",
+    "addressLine": "420 5th Ave",
+    "City": "New York",
+    "StateZip": "NY 10018",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "H & C Chemists",
+    "addressLine": "1299 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10021",
+    "Phone": "+1 212-535-1700"
+  },
+  {
+    "relationAccountName": "Hagh Prescription",
+    "addressLine": "369 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-777-6865"
+  },
+  {
+    "relationAccountName": "Half Price Prescriptions Card",
+    "addressLine": "217 Centre St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 877-309-9098"
+  },
+  {
+    "relationAccountName": "Halpern Pharmacy",
+    "addressLine": "331 E 23rd St",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-683-0148"
+  },
+  {
+    "relationAccountName": "Hamilton Pharmacy Inc",
+    "addressLine": "3293 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-281-0488"
+  },
+  {
+    "relationAccountName": "Hamilton Prescriptions Inc",
+    "addressLine": "5 Hamilton Pl",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-281-7121"
+  },
+  {
+    "relationAccountName": "Haresh Shah",
+    "addressLine": "102 Nagle Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-942-5050"
+  },
+  {
+    "relationAccountName": "Harlem Care Pharmacy",
+    "addressLine": "165 W 127th St",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-666-3600"
+  },
+  {
+    "relationAccountName": "Harlem Community Pharmacy",
+    "addressLine": "67 W 137th St",
+    "City": "New York",
+    "StateZip": "NY 10037",
+    "Phone": "+1 212-926-7500"
+  },
+  {
+    "relationAccountName": "Harlem Corner Pharmacy Inc",
+    "addressLine": "2240 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-360-1757"
+  },
+  {
+    "relationAccountName": "Harlem Health Center Pharmacy",
+    "addressLine": "133 Morningside Ave",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-923-2525"
+  },
+  {
+    "relationAccountName": "Harlem Hospital Pharmacy",
+    "addressLine": "46 W 137th St",
+    "City": "New York",
+    "StateZip": "NY 10037",
+    "Phone": "+1 212-939-8070"
+  },
+  {
+    "relationAccountName": "Harlem pharmacy",
+    "addressLine": "67 W 137th St",
+    "City": "New York",
+    "StateZip": "NY 10037",
+    "Phone": "+1 212-926-7500"
+  },
+  {
+    "relationAccountName": "Harlem Pharmacy & Surgicals",
+    "addressLine": "531 Malcolm X Blvd",
+    "City": "New York",
+    "StateZip": "NY 10037",
+    "Phone": "+1 212-368-7900"
+  },
+  {
+    "relationAccountName": "Harlem Rx",
+    "addressLine": "102 W 116th St",
+    "City": "New York",
+    "StateZip": "NY 10026",
+    "Phone": "+1 212-666-8100"
+  },
+  {
+    "relationAccountName": "Harmony Pharmacy",
+    "addressLine": "128 Mott St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-226-2881"
+  },
+  {
+    "relationAccountName": "Harper Sean",
+    "addressLine": "560 1st Ave. # R607",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-263-5072"
+  },
+  {
+    "relationAccountName": "DUANE READE",
+    "addressLine": "194 E 2nd St",
+    "City": "New York",
+    "StateZip": "NY 10009",
+    "Phone": "+1 212-375-9000"
+  },
+  {
+    "relationAccountName": "Harry Sgantzos",
+    "addressLine": "250 W 57th St",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 212-265-2101"
+  },
+  {
+    "relationAccountName": "Hartley Pharmacy",
+    "addressLine": "1219 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-749-8480"
+  },
+  {
+    "relationAccountName": "Harvard",
+    "addressLine": "2116 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-410-6470"
+  },
+  {
+    "relationAccountName": "Harvey Schoenfeld, BS",
+    "addressLine": "1849 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10128",
+    "Phone": "+1 212-828-8664"
+  },
+  {
+    "relationAccountName": "Hasmukh G. Shah, BS",
+    "addressLine": "1576 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-795-1795"
+  },
+  {
+    "relationAccountName": "Healarian Pharmacy",
+    "addressLine": "1658 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10128",
+    "Phone": "+1 212-317-0828"
+  },
+  {
+    "relationAccountName": "Health Care Pharmacy",
+    "addressLine": "1825 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-369-5555"
+  },
+  {
+    "relationAccountName": "Health City Pharmacy",
+    "addressLine": "10 Bowery",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-267-8882"
+  },
+  {
+    "relationAccountName": "Health Mart Pharmacy",
+    "addressLine": "327 S End Ave",
+    "City": "New York",
+    "StateZip": "NY 10280",
+    "Phone": "+1 212-912-0555"
+  },
+  {
+    "relationAccountName": "Health Rite Pharmacy",
+    "addressLine": "1988 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-781-8888"
+  },
+  {
+    "relationAccountName": "Health Wise Pharmacy",
+    "addressLine": "1494 York Ave",
+    "City": "New York",
+    "StateZip": "NY 10075",
+    "Phone": "+1 212-472-5600"
+  },
+  {
+    "relationAccountName": "Healthpharmacy",
+    "addressLine": "240 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 213-262-1100"
+  },
+  {
+    "relationAccountName": "HealthSource Pharmacy & Health Food Store",
+    "addressLine": "120 E 34th St",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-481-6600"
+  },
+  {
+    "relationAccountName": "HealthSource Pharmacy & Health Food Store",
+    "addressLine": "1296 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-794-8700"
+  },
+  {
+    "relationAccountName": "HealthSource Pharmacy & Surgical",
+    "addressLine": "1000 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 212-310-0111"
+  },
+  {
+    "relationAccountName": "Healthworld RX",
+    "addressLine": "2310 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 646-861-0888"
+  },
+  {
+    "relationAccountName": "Healthy Harlem RX Pharmacy",
+    "addressLine": "1875 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-601-2661"
+  },
+  {
+    "relationAccountName": "Healthy Heights Pharmacy Inc.",
+    "addressLine": "1370 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-928-1999"
+  },
+  {
+    "relationAccountName": "Healthy Pharmacy",
+    "addressLine": "108A Bowery",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-966-8682"
+  },
+  {
+    "relationAccountName": "Heidi Pharmacy",
+    "addressLine": "522 W 181st St",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-740-3737"
+  },
+  {
+    "relationAccountName": "Heights Chemists Rx Pharmacy",
+    "addressLine": "1388 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-927-1170"
+  },
+  {
+    "relationAccountName": "Helga Milman",
+    "addressLine": "1226 Lexington Ave,Caligor Pharmacy",
+    "City": "New York",
+    "StateZip": "NY 10028",
+    "Phone": "+1 212-369-6000"
+  },
+  {
+    "relationAccountName": "Hello Hippo",
+    "addressLine": "One World Trade Center, #5600",
+    "City": "New York",
+    "StateZip": "NY 10007",
+    "Phone": "+1 877-387-8042"
+  },
+  {
+    "relationAccountName": "Heritage Pharmacy & Surgical Supplies",
+    "addressLine": "2258 Adam Clayton Powell Jr Blvd",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-694-8050"
+  },
+  {
+    "relationAccountName": "HILDA PHARMACY LLC",
+    "addressLine": "3363 A, Broadway",
+    "City": "New York",
+    "StateZip": "NY 10031-7403",
+    "Phone": "+1 212-518-3010"
+  },
+  {
+    "relationAccountName": "Hilltop Pharmacy",
+    "addressLine": "593 Fort Washington Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-568-5511"
+  },
+  {
+    "relationAccountName": "Hiral Oza",
+    "addressLine": "20 Astor Pl",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-375-0734"
+  },
+  {
+    "relationAccountName": "Hong Yee Pharmacy Inc.",
+    "addressLine": "227 Grand St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 917-388-2329"
+  },
+  {
+    "relationAccountName": "Hospitalityrxcard",
+    "addressLine": "712 5th Ave",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 866-978-1106"
+  },
+  {
+    "relationAccountName": "Howard Goldman",
+    "addressLine": "506 W 207th St",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-304-0101"
+  },
+  {
+    "relationAccountName": "Hung Dong",
+    "addressLine": "138 Mott St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-219-0750"
+  },
+  {
+    "relationAccountName": "I & S Pharmacy",
+    "addressLine": "1994 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-427-7123"
+  },
+  {
+    "relationAccountName": "Ibogrow International",
+    "addressLine": "1045 6th Ave",
+    "City": "New York",
+    "StateZip": "NY 10018",
+    "Phone": "+1 347-343-1791"
+  },
+  {
+    "relationAccountName": "Imdad Ansari",
+    "addressLine": "522 W 181st St",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-740-3737"
+  },
+  {
+    "relationAccountName": "Immune Pharmaceuticals",
+    "addressLine": "430 E 29th St",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 646-561-8010"
+  },
+  {
+    "relationAccountName": "International Pharmacy",
+    "addressLine": "345 E 80th St",
+    "City": "New York",
+    "StateZip": "NY 10075",
+    "Phone": "+1 917-621-6739"
+  },
+  {
+    "relationAccountName": "Inwood Pharmacy",
+    "addressLine": "4915 Broadway # 1",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-304-4646"
+  },
+  {
+    "relationAccountName": "Isabel Reineke",
+    "addressLine": "3750 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-368-5511"
+  },
+  {
+    "relationAccountName": "Isham Broadway Pharmacy",
+    "addressLine": "4996 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-567-3137"
+  },
+  {
+    "relationAccountName": "Ivan Pharmacy",
+    "addressLine": "691 Columbus Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-222-4400"
+  },
+  {
+    "relationAccountName": "Jaar Naturalhealthproducts",
+    "addressLine": "w 10033 1347 san Nicolas av 1347 San",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 917-262-0243"
+  },
+  {
+    "relationAccountName": "Jacobo Kubiliun, PH",
+    "addressLine": "401 1ST AVE",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-689-7125"
+  },
+  {
+    "relationAccountName": "Jayanti Patel",
+    "addressLine": "1381 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-928-7263"
+  },
+  {
+    "relationAccountName": "Jennifer Liu",
+    "addressLine": "81 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-366-4085"
+  },
+  {
+    "relationAccountName": "Jignesh Patel",
+    "addressLine": "3921 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-928-6342"
+  },
+  {
+    "relationAccountName": "G N Drug Inc",
+    "addressLine": "1620 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-923-3524"
+  },
+  {
+    "relationAccountName": "JMC Pharmacy",
+    "addressLine": "3875 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-795-4909"
+  },
+  {
+    "relationAccountName": "Joanne Ng, S",
+    "addressLine": "100 Delancey St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-253-0270"
+  },
+  {
+    "relationAccountName": "Jodie Hanrahan",
+    "addressLine": "1 Whitehall St",
+    "City": "New York",
+    "StateZip": "NY 10005",
+    "Phone": "+1 212-509-9020"
+  },
+  {
+    "relationAccountName": "John J. Fazio, Crna",
+    "addressLine": "246 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-243-4987"
+  },
+  {
+    "relationAccountName": "John Mei",
+    "addressLine": "527 Grand St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-388-0888"
+  },
+  {
+    "relationAccountName": "Gallery Drug",
+    "addressLine": "131 E 60th St",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 212-838-6765"
+  },
+  {
+    "relationAccountName": "Johnsonrx Discounts",
+    "addressLine": "600 3rd Ave Fl 2",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 888-746-2480"
+  },
+  {
+    "relationAccountName": "Jorge Pharmacy",
+    "addressLine": "101 Sherman Ave # 9",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-567-2753"
+  },
+  {
+    "relationAccountName": "Jose Pharmacy",
+    "addressLine": "506 W 207th St",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-304-0101"
+  },
+  {
+    "relationAccountName": "Joseph Dolce",
+    "addressLine": "1091 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10075",
+    "Phone": "+1 212-794-7100"
+  },
+  {
+    "relationAccountName": "Joseph Pharmacy",
+    "addressLine": "216 W 72nd St",
+    "City": "New York",
+    "StateZip": "NY 10023",
+    "Phone": "+1 212-875-1718"
+  },
+  {
+    "relationAccountName": "Ka Pak",
+    "addressLine": "726 Broadway, 4TH FLOOR",
+    "City": "New York",
+    "StateZip": "NY 10003-9502",
+    "Phone": "+1 212-443-1050"
+  },
+  {
+    "relationAccountName": "Kade Pharmazeutische Fabrik",
+    "addressLine": "Alliance Theological Seminary - Manhattan Campus, 17 Battery Pl # 1306",
+    "City": "New York",
+    "StateZip": "NY 10004",
+    "Phone": "+1 212-425-2425"
+  },
+  {
+    "relationAccountName": "Kamwo Herbal Pharmacy",
+    "addressLine": "211 Grand St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-966-6370"
+  },
+  {
+    "relationAccountName": "Karnaby Drugs Farmacia",
+    "addressLine": "3859 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-928-7700"
+  },
+  {
+    "relationAccountName": "Kayshanie D. Narain, R",
+    "addressLine": "1025 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-750-4100"
+  },
+  {
+    "relationAccountName": "Kellner Curtis J",
+    "addressLine": "525 E 68th St",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-746-0736"
+  },
+  {
+    "relationAccountName": "Kim Sung H",
+    "addressLine": "506 Malcolm X Blvd",
+    "City": "New York",
+    "StateZip": "NY 10037",
+    "Phone": "+1 718-939-8070"
+  },
+  {
+    "relationAccountName": "Kit Pharma",
+    "addressLine": "170 Amsterdam Ave #3M",
+    "City": "New York",
+    "StateZip": "NY 10023",
+    "Phone": "+1 844-243-1241"
+  },
+  {
+    "relationAccountName": "Kron Pharma",
+    "addressLine": "1795 Riverside Dr",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 646-853-5950"
+  },
+  {
+    "relationAccountName": "L C Pharmacy",
+    "addressLine": "75 E Broadway",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "La Altagracia Pharmacy",
+    "addressLine": "1544 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-795-5004"
+  },
+  {
+    "relationAccountName": "La Fe Pharmacy",
+    "addressLine": "4220 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-321-0083"
+  },
+  {
+    "relationAccountName": "La Fe Pharmacy",
+    "addressLine": "1395 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-321-0083"
+  },
+  {
+    "relationAccountName": "LamiTag",
+    "addressLine": "50 E 52nd St",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 248-785-8545"
+  },
+  {
+    "relationAccountName": "Lana Li",
+    "addressLine": "1901 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-423-6474"
+  },
+  {
+    "relationAccountName": "Lauren Adia",
+    "addressLine": "455 W 37th St",
+    "City": "New York",
+    "StateZip": "NY 10018",
+    "Phone": "+1 212-643-6090"
+  },
+  {
+    "relationAccountName": "LDC Pharmacy Corporation",
+    "addressLine": "1901 Madison Ave # 1",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-534-6267"
+  },
+  {
+    "relationAccountName": "Leader Drug Store",
+    "addressLine": "235 E 22nd St",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-684-8300"
+  },
+  {
+    "relationAccountName": "Lenda Pharmacy",
+    "addressLine": "3397 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-368-3130"
+  },
+  {
+    "relationAccountName": "Lenox Drug Corp",
+    "addressLine": "523 Malcolm X Blvd",
+    "City": "New York",
+    "StateZip": "NY 10037",
+    "Phone": "+1 212-281-7408"
+  },
+  {
+    "relationAccountName": "Lenox Pharmacy",
+    "addressLine": "27 Malcolm X Blvd",
+    "City": "New York",
+    "StateZip": "NY 10026",
+    "Phone": "+1 212-678-9722"
+  },
+  {
+    "relationAccountName": "Lenox Terrace Drug",
+    "addressLine": "20 W 135th St",
+    "City": "New York",
+    "StateZip": "NY 10037",
+    "Phone": "+1 212-234-2050"
+  },
+  {
+    "relationAccountName": "Leon Rumsky",
+    "addressLine": "306 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 212-255-9111"
+  },
+  {
+    "relationAccountName": "Leora Kurtz",
+    "addressLine": "593 Fort Washington Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-568-5511"
+  },
+  {
+    "relationAccountName": "Lerin Drug",
+    "addressLine": "501 W 113th St",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-749-2677"
+  },
+  {
+    "relationAccountName": "Levitt Pharmacy",
+    "addressLine": "407 Grand St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-475-5760"
+  },
+  {
+    "relationAccountName": "Lexington Ave Pharmacy ",
+    "addressLine": "2021 Lexington Avenue #3 123 RD ST",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-426-5555"
+  },
+  {
+    "relationAccountName": "Ley Hung Corporation",
+    "addressLine": "133 Walker St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-431-5636"
+  },
+  {
+    "relationAccountName": "Lia E. Cherry, BS",
+    "addressLine": "33 Irving Pl",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-677-3989"
+  },
+  {
+    "relationAccountName": "LIBRARY OF CHEMISTS",
+    "addressLine": "1401 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10075",
+    "Phone": "+1 212-288-6300"
+  },
+  {
+    "relationAccountName": "Life Pharmacy",
+    "addressLine": "471 Malcolm X Blvd",
+    "City": "New York",
+    "StateZip": "NY 10030",
+    "Phone": "+1 212-694-5700"
+  },
+  {
+    "relationAccountName": "Lifecycle Pharma Inc",
+    "addressLine": "100 Park Ave",
+    "City": "New York",
+    "StateZip": "NY 10017",
+    "Phone": "+1 646-200-8500"
+  },
+  {
+    "relationAccountName": "LifeRx",
+    "addressLine": "305 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 516-754-8721"
+  },
+  {
+    "relationAccountName": "Linda S. Li, BS",
+    "addressLine": "1 Penn Plaza",
+    "City": "New York",
+    "StateZip": "NY 10119 ",
+    "Phone": "+1 212-268-3999"
+  },
+  {
+    "relationAccountName": "Lisa Ligammari",
+    "addressLine": "2260 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 212-724-1950"
+  },
+  {
+    "relationAccountName": "Lobna Omar",
+    "addressLine": "1299 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-772-0104"
+  },
+  {
+    "relationAccountName": "Loisaida Drug & Surgicals",
+    "addressLine": "273 E 3rd St",
+    "City": "New York",
+    "StateZip": "NY 10009",
+    "Phone": "+1 212-254-7307"
+  },
+  {
+    "relationAccountName": "Lynn T. Tran, Mpas",
+    "addressLine": "100 E 77th St",
+    "City": "New York",
+    "StateZip": "NY 10075",
+    "Phone": "+1 212-434-2000"
+  },
+  {
+    "relationAccountName": "Madison Apothecary",
+    "addressLine": "1114 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10028",
+    "Phone": "+1 212-249-1069"
+  },
+  {
+    "relationAccountName": "Madison Rx Pharmacy Inc.",
+    "addressLine": "203 Madison St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 646-918-7225"
+  },
+  {
+    "relationAccountName": "Madison Specialty Pharmacy, Inc.",
+    "addressLine": "1663 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 646-609-6500"
+  },
+  {
+    "relationAccountName": "Magnolia Pharmacy",
+    "addressLine": "2032 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-369-6075"
+  },
+  {
+    "relationAccountName": "Majid Mohammad, Registered",
+    "addressLine": "1982 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-831-1000"
+  },
+  {
+    "relationAccountName": "Malcolm Pharmacy",
+    "addressLine": "160 Malcolm X Blvd",
+    "City": "New York",
+    "StateZip": "NY 10026",
+    "Phone": "+1 212-722-1550"
+  },
+  {
+    "relationAccountName": "Manhattan Apothecary by Apotheco Pharmacy",
+    "addressLine": "147 W 35th St",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 212-302-0600"
+  },
+  {
+    "relationAccountName": "Manhattan Chinatown Pharmacy",
+    "addressLine": "156 Canal St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-233-2833"
+  },
+  {
+    "relationAccountName": "Manhattan Specialty Pharmacy",
+    "addressLine": "807 W 181st St",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-727-0800"
+  },
+  {
+    "relationAccountName": "Mannings Pharmacy",
+    "addressLine": "13-17 Elizabeth St APT 118",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-941-6480"
+  },
+  {
+    "relationAccountName": "Mannings Surgical Supplies Corporate Office",
+    "addressLine": "17 State St Suite 1801",
+    "City": "New York",
+    "StateZip": "NY 10004",
+    "Phone": "+1 212-966-4420"
+  },
+  {
+    "relationAccountName": "Manuel Mendez",
+    "addressLine": "4229 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-781-6314"
+  },
+  {
+    "relationAccountName": "Marcia Pharmacy",
+    "addressLine": "217 E 106th St",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-534-1939"
+  },
+  {
+    "relationAccountName": "Marin Pharmacy",
+    "addressLine": "1570 St Nicholas Ave #4",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-795-1795"
+  },
+  {
+    "relationAccountName": "Mary Spathas",
+    "addressLine": "534 Hudson St",
+    "City": "New York",
+    "StateZip": "NY 10014",
+    "Phone": "+1 646-486-1048"
+  },
+  {
+    "relationAccountName": "Medicine Plus Pharmacy",
+    "addressLine": "517 A W 181st St",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-705-8717"
+  },
+  {
+    "relationAccountName": "Medics Pharmacy",
+    "addressLine": "1740 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10128",
+    "Phone": "+1 212-540-4200"
+  },
+  {
+    "relationAccountName": "Medilane Drugs",
+    "addressLine": "227 Avenue B",
+    "City": "New York",
+    "StateZip": "NY 10009",
+    "Phone": "+1 212-505-1788"
+  },
+  {
+    "relationAccountName": "Medilane Pharmacy",
+    "addressLine": "204 Clinton St # 1",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-571-2888"
+  },
+  {
+    "relationAccountName": "Meds Pharmacy",
+    "addressLine": "1104 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 212-371-6000"
+  },
+  {
+    "relationAccountName": "Melbran Pharmacy",
+    "addressLine": "605 W 168th St",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-568-1300"
+  },
+  {
+    "relationAccountName": "Metro Drugs",
+    "addressLine": "931 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-794-7200"
+  },
+  {
+    "relationAccountName": "Metropharm Inc",
+    "addressLine": "123 Walker St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-219-1096"
+  },
+  {
+    "relationAccountName": "Metropolitan Drugs",
+    "addressLine": "1873 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-423-1110"
+  },
+  {
+    "relationAccountName": "METRORX",
+    "addressLine": "300 E 102nd St",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-831-1222"
+  },
+  {
+    "relationAccountName": "Michael Powers, BS",
+    "addressLine": "866 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 212-610-0112"
+  },
+  {
+    "relationAccountName": "Midtown East Pharmacy & Surgical",
+    "addressLine": "161 Madison Ave # 2",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-213-2444"
+  },
+  {
+    "relationAccountName": "Midtown Medicine",
+    "addressLine": "163 E 36th St",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 917-819-0908"
+  },
+  {
+    "relationAccountName": "Midwest Pharmacy",
+    "addressLine": "791 9th Ave",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 212-581-0888"
+  },
+  {
+    "relationAccountName": "MilleniaRxPharmacy",
+    "addressLine": "469 W 125th St",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 646-767-9131"
+  },
+  {
+    "relationAccountName": "Minh Pharmacy Inc",
+    "addressLine": "207 Grand St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-343-1252"
+  },
+  {
+    "relationAccountName": "Mishkin's Drug Store",
+    "addressLine": "1714 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-926-2801"
+  },
+  {
+    "relationAccountName": "MISTR",
+    "addressLine": "661 9th Ave",
+    "City": "New York",
+    "StateZip": "NY 10036",
+    "Phone": "+1 747-999-6249"
+  },
+  {
+    "relationAccountName": "Miu Sung Ma",
+    "addressLine": "13-17 Elizabeth St #118",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-941-6480"
+  },
+  {
+    "relationAccountName": "Mixlab",
+    "addressLine": "336 W 37th St Suite 850",
+    "City": "New York",
+    "StateZip": "NY 10018",
+    "Phone": "+1 888-901-4480"
+  },
+  {
+    "relationAccountName": "Modanafil",
+    "addressLine": "257 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10007",
+    "Phone": "+1 646-639-7246"
+  },
+  {
+    "relationAccountName": "Monica Holloway",
+    "addressLine": "47 E 19th St",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-925-7744"
+  },
+  {
+    "relationAccountName": "MOTT ST Pharmacy",
+    "addressLine": "11 Mott St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-732-3888"
+  },
+  {
+    "relationAccountName": "Mount Sinai Pharmacy on Madison",
+    "addressLine": "1407 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-659-6702"
+  },
+  {
+    "relationAccountName": "Muhammad A. Javed, MPharm",
+    "addressLine": "1654 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-568-4000"
+  },
+  {
+    "relationAccountName": "Mulberry Pharmacy Inc",
+    "addressLine": "87 Mulberry St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-693-6688"
+  },
+  {
+    "relationAccountName": "My Pharmacy Inc",
+    "addressLine": "523 Malcolm X Blvd",
+    "City": "New York",
+    "StateZip": "NY 10030",
+    "Phone": "+1 212-281-7408"
+  },
+  {
+    "relationAccountName": "CVS Pharmacy",
+    "addressLine": "158 Bleecker St",
+    "City": "New York",
+    "StateZip": "NY 10012",
+    "Phone": "+1 212-982-3133"
+  },
+  {
+    "relationAccountName": "Naeim Alchami-Ousman",
+    "addressLine": "2108 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-987-1372"
+  },
+  {
+    "relationAccountName": "Nagalingam Sivasankaran",
+    "addressLine": "199 Dyckman St",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-567-1331"
+  },
+  {
+    "relationAccountName": "Nagle Pharmacy",
+    "addressLine": "210 Nagle Ave",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-942-0202"
+  },
+  {
+    "relationAccountName": "Nagwa Sorial",
+    "addressLine": "75 Christopher St",
+    "City": "New York",
+    "StateZip": "NY 10014",
+    "Phone": "+1 212-627-2662"
+  },
+  {
+    "relationAccountName": "Natalie Gomez",
+    "addressLine": "130 Dyckman St",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-304-4739"
+  },
+  {
+    "relationAccountName": "Natural Essentials & Wellness",
+    "addressLine": "280 W 118th St",
+    "City": "New York",
+    "StateZip": "NY 10026",
+    "Phone": "+1 212-222-0437"
+  },
+  {
+    "relationAccountName": "Natures Cure Pharmacy",
+    "addressLine": "324 E 34th St",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-545-9393"
+  },
+  {
+    "relationAccountName": "Nelson Evans",
+    "addressLine": "24 E 14th St",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-989-3632"
+  },
+  {
+    "relationAccountName": "Nenita C. Taddeo, S",
+    "addressLine": "873 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 917-534-1351"
+  },
+  {
+    "relationAccountName": "New Amsterdam Drug Mart Inc",
+    "addressLine": "698 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-865-9700"
+  },
+  {
+    "relationAccountName": "New Drug Loft",
+    "addressLine": "1410 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10021",
+    "Phone": "+1 212-879-0910"
+  },
+  {
+    "relationAccountName": "New London Pharmacy",
+    "addressLine": "246 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-243-4987"
+  },
+  {
+    "relationAccountName": "New York City Pharmacy",
+    "addressLine": "206 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10009",
+    "Phone": "+1 212-253-8686"
+  },
+  {
+    "relationAccountName": "New York Rx",
+    "addressLine": "875 3rd Ave # 105M",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "Newgen Pharmacy",
+    "addressLine": "18 Mott St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-349-1857"
+  },
+  {
+    "relationAccountName": "Nine Zero Nine Columbus Rx",
+    "addressLine": "909 Columbus Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 646-386-7821"
+  },
+  {
+    "relationAccountName": "Norwood Pharmacy",
+    "addressLine": "2490 Frederick Douglass Blvd",
+    "City": "New York",
+    "StateZip": "NY 10030",
+    "Phone": "+1 212-234-6611"
+  },
+  {
+    "relationAccountName": "Novan Drugstore",
+    "addressLine": "9 Pennsylvania Plaza",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 415-988-9072"
+  },
+  {
+    "relationAccountName": "Novita Pharmaceuticals",
+    "addressLine": "1161 York Avenue Apt #8c",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-727-3779"
+  },
+  {
+    "relationAccountName": "NPSN card",
+    "addressLine": "217 Centre St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 877-890-8077"
+  },
+  {
+    "relationAccountName": "NuCare Pharmacy & Surgical",
+    "addressLine": "1789 1st Ave. #6901",
+    "City": "New York",
+    "StateZip": "NY 10128",
+    "Phone": "+1 212-426-9300"
+  },
+  {
+    "relationAccountName": "Nutri Pharma Inc",
+    "addressLine": "426 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-983-8291"
+  },
+  {
+    "relationAccountName": "NYC DISCOUNT PHARMACY INC",
+    "addressLine": "1058 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 212-832-7200"
+  },
+  {
+    "relationAccountName": "NYPres Pharmacy",
+    "addressLine": "1083 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 646-918-6640"
+  },
+  {
+    "relationAccountName": "NYU Pharmacy",
+    "addressLine": "530 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-263-7319"
+  },
+  {
+    "relationAccountName": "Olga Abdurakhmanova, RPH",
+    "addressLine": "1636 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-369-0700"
+  },
+  {
+    "relationAccountName": "Omega Pharmacy",
+    "addressLine": "1439 Amsterdam Ave # 1",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-234-4666"
+  },
+  {
+    "relationAccountName": "Online Health Pharmacy",
+    "addressLine": "1569 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10028",
+    "Phone": "+1 323-761-3854"
+  },
+  {
+    "relationAccountName": "Orlando Cuevas, RPH",
+    "addressLine": "1009 Columbus Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-662-6630"
+  },
+  {
+    "relationAccountName": "Oval Pharmacy",
+    "addressLine": "11 Edward M Morgan Pl",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-234-1800"
+  },
+  {
+    "relationAccountName": "P Drugs",
+    "addressLine": "2345 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 212-877-0888"
+  },
+  {
+    "relationAccountName": "Palace Pharmacy Inc",
+    "addressLine": "543 Malcolm X Blvd",
+    "City": "New York",
+    "StateZip": "NY 10037",
+    "Phone": "+1 212-283-2136"
+  },
+  {
+    "relationAccountName": "Pancare Pharmacy",
+    "addressLine": "40 Elizabeth St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-941-6366"
+  },
+  {
+    "relationAccountName": "Pancare Pharmacy Inc",
+    "addressLine": "22 Bowery",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-240-2312"
+  },
+  {
+    "relationAccountName": "Park West Pharmacy",
+    "addressLine": "461 Columbus Ave",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 212-721-3883"
+  },
+  {
+    "relationAccountName": "Pasteur Pharmacy Inc",
+    "addressLine": "53 E 34th St",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-683-3838"
+  },
+  {
+    "relationAccountName": "Pasteur Pharmacy/Newton-Timmermann Pharmacy",
+    "addressLine": "806 Lexington Ave # 1",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-838-2500"
+  },
+  {
+    "relationAccountName": "PATCHY",
+    "addressLine": "225 E 45th St",
+    "City": "New York",
+    "StateZip": "NY 10017",
+    "Phone": "+1 718-200-1120"
+  },
+  {
+    "relationAccountName": "Paul Lieberman, BS",
+    "addressLine": "306 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 212-255-9111"
+  },
+  {
+    "relationAccountName": "Paula Nardeo-Pasini",
+    "addressLine": "282 8th Ave",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 212-727-3854"
+  },
+  {
+    "relationAccountName": "Pay Less Pharmacy",
+    "addressLine": "567 W 207th St",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-544-0020"
+  },
+  {
+    "relationAccountName": "Peach Tree Pharmacy",
+    "addressLine": "2492 Adam Clayton Powell Jr Blvd",
+    "City": "New York",
+    "StateZip": "NY 10030",
+    "Phone": "+1 646-755-8262"
+  },
+  {
+    "relationAccountName": "People Choice Pharmacy",
+    "addressLine": "527 Grand St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-388-0888"
+  },
+  {
+    "relationAccountName": "Peoples Pharmacy",
+    "addressLine": "65 Mott St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-285-0977"
+  },
+  {
+    "relationAccountName": "PETNET Solutions - New York City",
+    "addressLine": "660 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 646-501-8745"
+  },
+  {
+    "relationAccountName": "Healthworld RX",
+    "addressLine": "2310 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 646-861-0888"
+  },
+  {
+    "relationAccountName": "Pharmacy Channel",
+    "addressLine": "299 Broadway STE 902",
+    "City": "New York",
+    "StateZip": "NY 10007",
+    "Phone": "+1 (212) 346-9546"
+  },
+  {
+    "relationAccountName": "Pharmacy Design",
+    "addressLine": "1483 York Ave # 20602",
+    "City": "New York",
+    "StateZip": "NY 10021",
+    "Phone": "+1 212-463-8200"
+  },
+  {
+    "relationAccountName": "ahma Rx",
+    "addressLine": "2381 Frederick Douglass Blvd",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 (212) 749-6626"
+  },
+  {
+    "relationAccountName": "Pharmacy RX",
+    "addressLine": "791 6th Ave",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "Pharmacy Rx",
+    "addressLine": "695 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "Pharmacy RX",
+    "addressLine": null,
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "90th Street Pharmacy",
+    "addressLine": "1262 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10128",
+    "Phone": "+1 212-289-9168"
+  },
+  {
+    "relationAccountName": "Pharmacy Rx",
+    "addressLine": "Water St",
+    "City": "New York",
+    "StateZip": "NY 10268",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "Pharmacy within",
+    "addressLine": null,
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "Philip Assad Girgis",
+    "addressLine": "546-558 W 207th St",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-942-1883"
+  },
+  {
+    "relationAccountName": "Philip Jampol",
+    "addressLine": "1327 York Ave",
+    "City": "New York",
+    "StateZip": "NY 10021",
+    "Phone": "+1 212-737-6240"
+  },
+  {
+    "relationAccountName": "Phillip Flanagan",
+    "addressLine": "17 John St",
+    "City": "New York",
+    "StateZip": "NY 10038",
+    "Phone": "+1 212-619-7181"
+  },
+  {
+    "relationAccountName": "PJC Associate Inc",
+    "addressLine": "30 Broad St",
+    "City": "New York",
+    "StateZip": "NY 10004",
+    "Phone": "+1 212-514-7884"
+  },
+  {
+    "relationAccountName": "Power Mart Drugs",
+    "addressLine": "2 W 46th St",
+    "City": "New York",
+    "StateZip": "NY 10036",
+    "Phone": "+1 212-944-7440"
+  },
+  {
+    "relationAccountName": "Preferred Pharmacy",
+    "addressLine": "3 E 115th St",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-722-0000"
+  },
+  {
+    "relationAccountName": "Prescriptions 4 Less",
+    "addressLine": "217 Centre St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 866-978-2661"
+  },
+  {
+    "relationAccountName": "Prescriptions 4 Less",
+    "addressLine": "712 5th Ave",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 866-978-2661"
+  },
+  {
+    "relationAccountName": "Prevail Pharmacy Inc",
+    "addressLine": "850 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 917-409-3891"
+  },
+  {
+    "relationAccountName": "Pro Aid Pharmacy",
+    "addressLine": "728 W 181st St Store 5",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 646-791-2400"
+  },
+  {
+    "relationAccountName": "ProHealth Pharmacy",
+    "addressLine": "385 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-684-8300"
+  },
+  {
+    "relationAccountName": "ProMeds Pharmacy",
+    "addressLine": "4068 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-540-4068"
+  },
+  {
+    "relationAccountName": "Prospect Gardens",
+    "addressLine": "535 7th Ave",
+    "City": "New York",
+    "StateZip": "NY 10018",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "PureHeal+",
+    "addressLine": "1202 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10028",
+    "Phone": "+1 888-980-7227"
+  },
+  {
+    "relationAccountName": "Quick Rx Specialty Pharmacy",
+    "addressLine": "909 Columbus Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-222-6388"
+  },
+  {
+    "relationAccountName": "Quick Rx Specialty Pharmacy",
+    "addressLine": "2355 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-426-7151"
+  },
+  {
+    "relationAccountName": "QuickRX",
+    "addressLine": "90 Broad St #402",
+    "City": "New York",
+    "StateZip": "NY 10004",
+    "Phone": "+1 212-249-8202"
+  },
+  {
+    "relationAccountName": "Quisqueya Pharmacy",
+    "addressLine": "174 Audubon Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-795-1604"
+  },
+  {
+    "relationAccountName": "Rachel Parikh",
+    "addressLine": "353 W 57th St",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 212-315-0178"
+  },
+  {
+    "relationAccountName": "Amar Pharmacy Inc",
+    "addressLine": "4446 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-567-6151"
+  },
+  {
+    "relationAccountName": "Ramasamy Sadasivam",
+    "addressLine": "199 Dyckman St",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-567-1331"
+  },
+  {
+    "relationAccountName": "Randall Novak",
+    "addressLine": "892 9th Ave",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 212-445-0932"
+  },
+  {
+    "relationAccountName": "Rangel Pharmacy",
+    "addressLine": "159-12 Harlem River Dr",
+    "City": "New York",
+    "StateZip": "NY 10039",
+    "Phone": "+1 212-283-7200"
+  },
+  {
+    "relationAccountName": "St Jesus Pharmacy",
+    "addressLine": "4180 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-923-5733"
+  },
+  {
+    "relationAccountName": "Caribe Pharmacy",
+    "addressLine": "146 Nagle Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-304-0649"
+  },
+  {
+    "relationAccountName": "Ravi C. Desai, BS",
+    "addressLine": "1265 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-781-4214"
+  },
+  {
+    "relationAccountName": "Raysol Drugs",
+    "addressLine": "1870 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-348-2117"
+  },
+  {
+    "relationAccountName": "Razi Pharmacy NYC",
+    "addressLine": "3820 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 646-777-2608"
+  },
+  {
+    "relationAccountName": "Red Ribbon Pharmacy Inc",
+    "addressLine": "2484 Adam Clayton Powell Jr Blvd",
+    "City": "New York",
+    "StateZip": "NY 10030",
+    "Phone": "+1 646-901-4699"
+  },
+  {
+    "relationAccountName": "Redwood Apothecary",
+    "addressLine": "1280 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-928-8082"
+  },
+  {
+    "relationAccountName": "Retail Pharmacy",
+    "addressLine": "39a Henry St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "Richard B. Phillips, MS",
+    "addressLine": "300 E 39th St",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-599-7492"
+  },
+  {
+    "relationAccountName": "Rightway",
+    "addressLine": "2 Gansevoort St 7th FL, STE 01",
+    "City": "New York",
+    "StateZip": "NY 10014",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "Rim Alashkar, PH",
+    "addressLine": null,
+    "City": "New York",
+    "StateZip": "NY 10011",
+    "Phone": "+1 212-243-0129"
+  },
+  {
+    "relationAccountName": "Rite Health Pharmacy",
+    "addressLine": "3885 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 646-861-2533"
+  },
+  {
+    "relationAccountName": "Rite Hope Pharmacy Inc",
+    "addressLine": "1793A Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-348-3341"
+  },
+  {
+    "relationAccountName": "Rite Way Drugs",
+    "addressLine": "369 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-777-6864"
+  },
+  {
+    "relationAccountName": "River Park Pharmacy",
+    "addressLine": "1804 Cedar Ave",
+    "City": "Bronx",
+    "StateZip": "NY 10453",
+    "Phone": "+1 347-726-6969"
+  },
+  {
+    "relationAccountName": "Riverside Pharmacy",
+    "addressLine": "2920 Frederick Douglass Blvd #1",
+    "City": "New York",
+    "StateZip": "NY 10039",
+    "Phone": "+1 212-491-5500"
+  },
+  {
+    "relationAccountName": "Riverton Pharmacy Inc",
+    "addressLine": "2085 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-283-8300"
+  },
+  {
+    "relationAccountName": "Robert Berman",
+    "addressLine": "5 Hudson St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-791-3100"
+  },
+  {
+    "relationAccountName": "Robert T. Owens, DC",
+    "addressLine": "522 W 181st St",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-740-3737"
+  },
+  {
+    "relationAccountName": "Rockefeller Outpatient Pavilion Pharmacy",
+    "addressLine": "160 E 53rd St",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 646-888-0731"
+  },
+  {
+    "relationAccountName": "RocketStar",
+    "addressLine": "138 Mulberry St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 845-573-8798"
+  },
+  {
+    "relationAccountName": "Ror Madison Pharmacy",
+    "addressLine": "1636 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-369-0700"
+  },
+  {
+    "relationAccountName": "Rosa Pharmacy 2",
+    "addressLine": "2182 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 917-388-3858"
+  },
+  {
+    "relationAccountName": "Roskina Irina",
+    "addressLine": "275 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-677-4677"
+  },
+  {
+    "relationAccountName": "Rosy Pharmacy (Rosalise Pharmacy Corp.)",
+    "addressLine": "3355 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-690-6502"
+  },
+  {
+    "relationAccountName": "Rowena Chu, RN",
+    "addressLine": "455 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-447-2209"
+  },
+  {
+    "relationAccountName": "Royal Care Pharmacy",
+    "addressLine": "127 E 110th St",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-996-0055"
+  },
+  {
+    "relationAccountName": "Royal Pharmacy",
+    "addressLine": "212 W 91st St",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 201-654-3571"
+  },
+  {
+    "relationAccountName": "Royal Pharmacy",
+    "addressLine": "5030 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-567-9800"
+  },
+  {
+    "relationAccountName": "Rubinder K. Mhajan, Bscpharm",
+    "addressLine": "875 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 800-511-5144"
+  },
+  {
+    "relationAccountName": "Rx Center",
+    "addressLine": "2325 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-289-8839"
+  },
+  {
+    "relationAccountName": "Rx Compassion",
+    "addressLine": "302 E 30th St",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-826-3300"
+  },
+  {
+    "relationAccountName": "Rx Exclusive",
+    "addressLine": "1229 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10021",
+    "Phone": "+1 212-249-1050"
+  },
+  {
+    "relationAccountName": "Rx Farmacia Pharmacy",
+    "addressLine": "3845 10th Ave,",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "Rx.Health",
+    "addressLine": "368 9th Ave",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 646-969-9939"
+  },
+  {
+    "relationAccountName": "RxGenericPharmacy",
+    "addressLine": "119 W 25 St",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 315-825-4043"
+  },
+  {
+    "relationAccountName": "Safe Heart Pharmacy",
+    "addressLine": "1400 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-568-5454"
+  },
+  {
+    "relationAccountName": "Saima Unk",
+    "addressLine": "2575 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-678-8556"
+  },
+  {
+    "relationAccountName": "Saint Maria Pharmacy",
+    "addressLine": "1328 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-568-1383"
+  },
+  {
+    "relationAccountName": "Salvatore Pagano",
+    "addressLine": "4785 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-304-9582"
+  },
+  {
+    "relationAccountName": "San Agustin Pharmacy",
+    "addressLine": "4157 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-568-1020"
+  },
+  {
+    "relationAccountName": "San Juan Pharmacy",
+    "addressLine": "960 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-222-4650"
+  },
+  {
+    "relationAccountName": "San Judas Tadeo",
+    "addressLine": "520 W 207th St",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-567-1350"
+  },
+  {
+    "relationAccountName": "San Nicholas Pharmacy",
+    "addressLine": "1265 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-781-4214"
+  },
+  {
+    "relationAccountName": "San Pedro Pharmacy",
+    "addressLine": "1381 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-928-7263"
+  },
+  {
+    "relationAccountName": "Jorge Pharmacy",
+    "addressLine": "101 Sherman Ave",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-567-2753"
+  },
+  {
+    "relationAccountName": "Santa Barbara Drugs Inc",
+    "addressLine": "120 Audubon Ave",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-795-4080"
+  },
+  {
+    "relationAccountName": "Santa Isabel Pharmacy",
+    "addressLine": "145 Sherman Ave",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-567-1444"
+  },
+  {
+    "relationAccountName": "Santa Teresa Pharmacy",
+    "addressLine": "3849 10th Ave,",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-304-4541"
+  },
+  {
+    "relationAccountName": "Satyanarayana Nekkanti, R",
+    "addressLine": "4996 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-567-3137"
+  },
+  {
+    "relationAccountName": "SB Pharmacy",
+    "addressLine": "27-29 E 124th St",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-534-2849"
+  },
+  {
+    "relationAccountName": "Scripta Insights",
+    "addressLine": "40 Grove St",
+    "City": "New York",
+    "StateZip": "NY 10014",
+    "Phone": "+1 866-572-7478"
+  },
+  {
+    "relationAccountName": "Second Ave Pharmacy Inc",
+    "addressLine": "249 E 115th St",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-876-8300"
+  },
+  {
+    "relationAccountName": "Sejal I. Patel, BS",
+    "addressLine": "721 9th Ave",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 212-246-0168"
+  },
+  {
+    "relationAccountName": "Seven Hills Drugs Inc",
+    "addressLine": "165 W 127th St",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 212-666-3600"
+  },
+  {
+    "relationAccountName": "Shahram Haghnazari",
+    "addressLine": "369 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-777-6864"
+  },
+  {
+    "relationAccountName": "Shaji Mathew",
+    "addressLine": "540 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10024",
+    "Phone": "+1 212-712-2821"
+  },
+  {
+    "relationAccountName": "Sherman Pharmacy",
+    "addressLine": "232-A Sherman Ave",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-567-1115"
+  },
+  {
+    "relationAccountName": "181 PHARMACY",
+    "addressLine": "565 W 181st St",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-543-2616"
+  },
+  {
+    "relationAccountName": "Shivon Patel",
+    "addressLine": "2833 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-663-3135"
+  },
+  {
+    "relationAccountName": "Shoeology Inc",
+    "addressLine": "421 7th Ave #1000",
+    "City": "New York",
+    "StateZip": "NY 10001",
+    "Phone": "+1 845-729-7978"
+  },
+  {
+    "relationAccountName": "Simona Peker, MSA",
+    "addressLine": null,
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-686-7500"
+  },
+  {
+    "relationAccountName": "Smart Aid Pharmacy",
+    "addressLine": "708 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-234-4299"
+  },
+  {
+    "relationAccountName": "SmartRx Specialty Pharmacy",
+    "addressLine": "1706 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 718-742-7622"
+  },
+  {
+    "relationAccountName": "Srinivasa R. Edavalapati, MPHARM",
+    "addressLine": "4329 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-740-8500"
+  },
+  {
+    "relationAccountName": "SRSR",
+    "addressLine": "4329 Broadway # 4",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-740-8500"
+  },
+  {
+    "relationAccountName": "St Anthony Pharmacy",
+    "addressLine": "3860 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-923-6111"
+  },
+  {
+    "relationAccountName": "St Jesus Pharmacy",
+    "addressLine": "4180 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-923-5733"
+  },
+  {
+    "relationAccountName": "Steven B. Levy, BS",
+    "addressLine": "1365 York Ave",
+    "City": "New York",
+    "StateZip": "NY 10021",
+    "Phone": "+1 917-676-8096"
+  },
+  {
+    "relationAccountName": "Storecom Corner Drug",
+    "addressLine": "475 Park Ave S",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-779-7979"
+  },
+  {
+    "relationAccountName": "Strides Pharmacy",
+    "addressLine": "1791 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 917-388-2629"
+  },
+  {
+    "relationAccountName": "Su W. Chang, BS",
+    "addressLine": "1082 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10022",
+    "Phone": "+1 212-223-1130"
+  },
+  {
+    "relationAccountName": "Sugar Hill Pharmacy",
+    "addressLine": "752 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-281-8300"
+  },
+  {
+    "relationAccountName": "Susan Eng, Lac",
+    "addressLine": "1275 York Ave",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-639-7896"
+  },
+  {
+    "relationAccountName": "Susan Pagel, NP",
+    "addressLine": "1111 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-523-4000"
+  },
+  {
+    "relationAccountName": "Taino Pharmacy",
+    "addressLine": "2403 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-289-2000"
+  },
+  {
+    "relationAccountName": "Taino Towers Pharmacy",
+    "addressLine": "2253 3rd Ave #3",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-426-6200"
+  },
+  {
+    "relationAccountName": "Tali Zelkin",
+    "addressLine": "370 Lexington Ave",
+    "City": "New York",
+    "StateZip": "NY 10017",
+    "Phone": "+1 212-286-8400"
+  },
+  {
+    "relationAccountName": "The Heights Community Pharmacy Inc",
+    "addressLine": "120 Audubon Ave",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-795-4080"
+  },
+  {
+    "relationAccountName": "The Modern Chemist - LES",
+    "addressLine": "181 E Houston St",
+    "City": "Manhattan",
+    "StateZip": "NY 10002",
+    "Phone": "+1 917-472-7450"
+  },
+  {
+    "relationAccountName": "The Mount Sinai Hospital Pharmacy Association",
+    "addressLine": "One Gustave L. Levy Pl",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-241-7720"
+  },
+  {
+    "relationAccountName": "Theresa Pharmacy",
+    "addressLine": "3901 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-923-7617"
+  },
+  {
+    "relationAccountName": "Theresa Pharmacy",
+    "addressLine": "66 Nagle Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-304-3949"
+  },
+  {
+    "relationAccountName": "Third Ave Apothecary",
+    "addressLine": "1025A 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-230-1700"
+  },
+  {
+    "relationAccountName": "Third Avenue Pharmacy Inc",
+    "addressLine": "2240 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-837-2692"
+  },
+  {
+    "relationAccountName": "Thomas Drugs",
+    "addressLine": "171 Columbus Ave # 1",
+    "City": "New York",
+    "StateZip": "NY 10023",
+    "Phone": "+1 212-877-7340"
+  },
+  {
+    "relationAccountName": "Thompson Chemists",
+    "addressLine": "132 Thompson St",
+    "City": "New York",
+    "StateZip": "NY 10012",
+    "Phone": "+1 212-598-9790"
+  },
+  {
+    "relationAccountName": "Thriftway Pharmacy",
+    "addressLine": "646 10th Ave",
+    "City": "New York",
+    "StateZip": "NY 10036",
+    "Phone": "+1 212-956-1100"
+  },
+  {
+    "relationAccountName": "Ton Ren Herb Supply",
+    "addressLine": "84 Elizabeth St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-431-7805"
+  },
+  {
+    "relationAccountName": "Total Health & Beauty Pharmacy",
+    "addressLine": "4873 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-942-8785"
+  },
+  {
+    "relationAccountName": "Total Rx Savings",
+    "addressLine": "40 W 25 St",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 877-786-8257"
+  },
+  {
+    "relationAccountName": "Tower Drugs",
+    "addressLine": "2272 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-369-6500"
+  },
+  {
+    "relationAccountName": "Town Drug",
+    "addressLine": "501 W 113th St",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-749-2677"
+  },
+  {
+    "relationAccountName": "Town Drug & Surgical",
+    "addressLine": "1009 Columbus Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-662-6630"
+  },
+  {
+    "relationAccountName": "Town Drug Inc",
+    "addressLine": "4764 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10034",
+    "Phone": "+1 212-304-9582"
+  },
+  {
+    "relationAccountName": "trendzoneltd.co.ke",
+    "addressLine": "19 1/2 Pitt St",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "Tribeca Apothecary",
+    "addressLine": "138 W Broadway",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-971-1380"
+  },
+  {
+    "relationAccountName": "Trust Pharmacy",
+    "addressLine": "105 5th Ave",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-800-2034"
+  },
+  {
+    "relationAccountName": "Tu Quynh Pharmacy",
+    "addressLine": "230 Grand St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-219-8998"
+  },
+  {
+    "relationAccountName": "Tung T. Tong, Doctor",
+    "addressLine": null,
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-219-8998"
+  },
+  {
+    "relationAccountName": "Turtle Bay Chemists",
+    "addressLine": "901 2nd Ave #1",
+    "City": "New York",
+    "StateZip": "NY 10017",
+    "Phone": "+1 212-752-5151"
+  },
+  {
+    "relationAccountName": "Twins Pharmacy 2",
+    "addressLine": "4073-4075 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-927-3100"
+  },
+  {
+    "relationAccountName": "Twins Pharmacy Corporation",
+    "addressLine": "1538 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-927-5570"
+  },
+  {
+    "relationAccountName": "Tyka PHarmacy",
+    "addressLine": "173 Canal St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-343-1517"
+  },
+  {
+    "relationAccountName": "Ultracare Pharmacy Inc.",
+    "addressLine": "35 E Broadway",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-941-0888"
+  },
+  {
+    "relationAccountName": "UniScript Card",
+    "addressLine": "217 Centre St #2210",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 888-419-1637"
+  },
+  {
+    "relationAccountName": "United Health Pharmacy",
+    "addressLine": "4 Elizabeth St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-766-3773"
+  },
+  {
+    "relationAccountName": "University Specialty pharmacy",
+    "addressLine": "2338 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 917-464-5252"
+  },
+  {
+    "relationAccountName": "Uno Pharmacy",
+    "addressLine": "1544A St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-795-5004"
+  },
+  {
+    "relationAccountName": "Upper East Apothecary",
+    "addressLine": "1401 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10075",
+    "Phone": "+1 212-260-4900"
+  },
+  {
+    "relationAccountName": "Upper Eastside Chemists INC",
+    "addressLine": "855 Lexington Ave # 1",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-734-5678"
+  },
+  {
+    "relationAccountName": "Upper Madison Drugs",
+    "addressLine": "1590 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-427-4382"
+  },
+  {
+    "relationAccountName": "Upper Manhattan Pharmacy",
+    "addressLine": "1728 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-694-6666"
+  },
+  {
+    "relationAccountName": "Up-Pharm",
+    "addressLine": "1721 Angus Road",
+    "City": "New York",
+    "StateZip": "NY 10005",
+    "Phone": "+1 800-344-9823"
+  },
+  {
+    "relationAccountName": "Uptown Care Pharmacy",
+    "addressLine": "2254 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-221-8355"
+  },
+  {
+    "relationAccountName": "Uptown Chemist",
+    "addressLine": "4025 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-923-6000"
+  },
+  {
+    "relationAccountName": "Valentina's Pharmacy",
+    "addressLine": "14 W 125th St",
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": "+1 646-449-0133"
+  },
+  {
+    "relationAccountName": "Valley Drugs",
+    "addressLine": "801 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-678-0084"
+  },
+  {
+    "relationAccountName": "Value Drugs",
+    "addressLine": "30 Rockefeller Plaza Concourse Level",
+    "City": "New York",
+    "StateZip": "NY 10020",
+    "Phone": "+1 212-757-9335"
+  },
+  {
+    "relationAccountName": "Value Price Pharmacy",
+    "addressLine": "1475 2nd Ave #1",
+    "City": "New York",
+    "StateZip": "NY 10075",
+    "Phone": "+1 212-535-4710"
+  },
+  {
+    "relationAccountName": "Vanessa Pharmacy & Bty Supplies",
+    "addressLine": "170 Dyckman St",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-567-2434"
+  },
+  {
+    "relationAccountName": "SECOND AVENUE PHARMACY",
+    "addressLine": "249 E 115th St",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-876-8300"
+  },
+  {
+    "relationAccountName": "Venus Pharmacy and Beauty Supply",
+    "addressLine": "972 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-666-4800"
+  },
+  {
+    "relationAccountName": "VIDA PHARMACY",
+    "addressLine": "1620 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-923-3524"
+  },
+  {
+    "relationAccountName": "Viktoria Makina",
+    "addressLine": "196 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-598-0339"
+  },
+  {
+    "relationAccountName": "Viktoriya Zaslavskaya",
+    "addressLine": "305 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10007",
+    "Phone": "+1 212-227-6168"
+  },
+  {
+    "relationAccountName": "Village Apothecary",
+    "addressLine": "407 Bleecker St",
+    "City": "New York",
+    "StateZip": "NY 10014",
+    "Phone": "+1 212-807-7566"
+  },
+  {
+    "relationAccountName": "Villy KX Pharmacy Inc",
+    "addressLine": "183 Hester St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-226-8971"
+  },
+  {
+    "relationAccountName": "VIM DRUGS",
+    "addressLine": "3835 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-927-0220"
+  },
+  {
+    "relationAccountName": "Vim Pharmacy",
+    "addressLine": "39 Sherman Ave",
+    "City": "New York",
+    "StateZip": "NY 10040",
+    "Phone": "+1 212-567-5533"
+  },
+  {
+    "relationAccountName": "Virginia Rusch",
+    "addressLine": "750 6th Ave",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 646-336-8388"
+  },
+  {
+    "relationAccountName": "Vitahealth Apothecary",
+    "addressLine": "1235 1st Ave.",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-628-1110"
+  },
+  {
+    "relationAccountName": "Vitahealth Apothecary",
+    "addressLine": "1609 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10028",
+    "Phone": "+1 212-772-1110"
+  },
+  {
+    "relationAccountName": "Viva Pharmacy Inc",
+    "addressLine": "1494 St Nicholas Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-923-0077"
+  },
+  {
+    "relationAccountName": "Vivienne Wah Chan-Teng",
+    "addressLine": "111 Mott St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-226-8988"
+  },
+  {
+    "relationAccountName": "Vivo Health Pharmacy",
+    "addressLine": "100 E 77th St",
+    "City": "New York",
+    "StateZip": "NY 10075",
+    "Phone": "+1 212-434-4980"
+  },
+  {
+    "relationAccountName": "VLV Med Pharmacy Inc.",
+    "addressLine": "4085 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-923-7530"
+  },
+  {
+    "relationAccountName": "VS PHARMACY Corp",
+    "addressLine": "2301 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10035",
+    "Phone": "+1 212-722-8300"
+  },
+  {
+    "relationAccountName": "W 142 Street Pharmacy",
+    "addressLine": "3471 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10031",
+    "Phone": "+1 212-234-8400"
+  },
+  {
+    "relationAccountName": "Wah Hee Lei, BS",
+    "addressLine": null,
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": "+1 212-925-7698"
+  },
+  {
+    "relationAccountName": "Hilltop Pharmacy",
+    "addressLine": "593 Fort Washington Ave",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-568-5511"
+  },
+  {
+    "relationAccountName": "Washington Heights pharmacy & Surgical supplies inc.",
+    "addressLine": "4197 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-795-7455"
+  },
+  {
+    "relationAccountName": "Weill Cornell Medicine Belfer Mass Vaccination Location",
+    "addressLine": "413 E 69th St",
+    "City": "New York",
+    "StateZip": "NY 10021",
+    "Phone": "+1 212-746-5454"
+  },
+  {
+    "relationAccountName": "Well Green Pharmacy + UPS Access Point",
+    "addressLine": "1969 Amsterdam Ave",
+    "City": "New York",
+    "StateZip": "NY 10032",
+    "Phone": "+1 212-491-7700"
+  },
+  {
+    "relationAccountName": "Wellcare Pharmacy",
+    "addressLine": null,
+    "City": "New York",
+    "StateZip": "NY 10027",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "Wellness Pharmacy | Ava Kirellous Ltd",
+    "addressLine": "144 W 72nd St",
+    "City": "New York",
+    "StateZip": "NY 10023",
+    "Phone": "+1 212-439-4718"
+  },
+  {
+    "relationAccountName": "Wen Qiao Li, PhD",
+    "addressLine": "158 Bleecker St",
+    "City": "New York",
+    "StateZip": "NY 10012",
+    "Phone": "+1 212-982-3133"
+  },
+  {
+    "relationAccountName": "Wen Qiao Li, PhD",
+    "addressLine": "1275 York Ave",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-639-8464"
+  },
+  {
+    "relationAccountName": "Wendy Li",
+    "addressLine": "1275 York Ave",
+    "City": "New York",
+    "StateZip": "NY 10065",
+    "Phone": "+1 212-639-8464"
+  },
+  {
+    "relationAccountName": "West 14 Apothecary ( Also Known as West 14 Street Prescription Center)",
+    "addressLine": "312 W 14th St",
+    "City": "New York",
+    "StateZip": "NY 10014",
+    "Phone": "+1 212-727-7979"
+  },
+  {
+    "relationAccountName": "West Side Pharmacy",
+    "addressLine": "255 Columbus Ave",
+    "City": "New York",
+    "StateZip": "NY 10023",
+    "Phone": "+1 212-362-9170"
+  },
+  {
+    "relationAccountName": "Whitney Chemists",
+    "addressLine": "50 University Pl # 1",
+    "City": "New York",
+    "StateZip": "NY 10003",
+    "Phone": "+1 212-473-4166"
+  },
+  {
+    "relationAccountName": "William Lee",
+    "addressLine": "338 E 23rd St",
+    "City": "New York",
+    "StateZip": "NY 10010",
+    "Phone": "+1 212-505-1555"
+  },
+  {
+    "relationAccountName": "William Nhan",
+    "addressLine": "1622 3rd Ave",
+    "City": "New York",
+    "StateZip": "NY 10128",
+    "Phone": "+1 212-876-7016"
+  },
+  {
+    "relationAccountName": "William Rasmovicz",
+    "addressLine": "2522 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10025",
+    "Phone": "+1 212-663-1580"
+  },
+  {
+    "relationAccountName": "Willner Chemists",
+    "addressLine": "100 Park Ave",
+    "City": "New York",
+    "StateZip": "NY 10017",
+    "Phone": "+1 800-633-1106"
+  },
+  {
+    "relationAccountName": "Windsor Pharmacy",
+    "addressLine": "1419 6th Ave",
+    "City": "New York",
+    "StateZip": "NY 10019",
+    "Phone": "+1 212-247-1538"
+  },
+  {
+    "relationAccountName": "Wing Fat Company Inc",
+    "addressLine": "158 Hester St",
+    "City": "New York",
+    "StateZip": "NY 10013",
+    "Phone": null
+  },
+  {
+    "relationAccountName": "Wing On Pharmacy",
+    "addressLine": "18 E Broadway",
+    "City": "New York",
+    "StateZip": "NY 10002",
+    "Phone": "+1 212-219-2717"
+  },
+  {
+    "relationAccountName": "Xpress Lane Pharmacy",
+    "addressLine": "99 Nassau St #111",
+    "City": "New York",
+    "StateZip": "NY 10038",
+    "Phone": "+1 212-962-4900"
+  },
+  {
+    "relationAccountName": "St Jesus Pharmacy",
+    "addressLine": "4180 Broadway",
+    "City": "New York",
+    "StateZip": "NY 10033",
+    "Phone": "+1 212-923-5733"
+  },
+  {
+    "relationAccountName": "Your Health Pharm Inc",
+    "addressLine": "80 E 116th St",
+    "City": "New York",
+    "StateZip": "NY 10029",
+    "Phone": "+1 212-348-4944"
+  },
+  {
+    "relationAccountName": "ZITOMER",
+    "addressLine": "969 Madison Ave",
+    "City": "New York",
+    "StateZip": "NY 10021",
+    "Phone": "+1 212-737-5560"
+  },
+  {
+    "relationAccountName": "Zorina Novik",
+    "addressLine": "585 2nd Ave",
+    "City": "New York",
+    "StateZip": "NY 10016",
+    "Phone": "+1 212-685-0784"
+  },
+  {
+    "relationAccountName": "International Pharmacy",
+    "addressLine": "345 E 80th St",
+    "City": "New York",
+    "StateZip": "NY 10075",
+    "Phone": "+1 917-621-6739"
+  }
+]

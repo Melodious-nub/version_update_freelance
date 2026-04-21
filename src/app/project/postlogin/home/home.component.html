@@ -1,0 +1,431 @@
+<div class="app-container  ">
+  <div
+    class="d-flex justify-content-between align-items-center flex-wrap py-2 bg-light"
+  >
+    <div class="cust d-flex">
+      <div
+        (click)="navigateUrl(item.path); $event.stopPropagation()"
+        *ngFor="let item of topList"
+        class="card b-light width-perc-10 p-2 cursor"
+      >
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <b> {{ item.label }}</b>
+          </div>
+          <!-- <div class="bg-warning primary-text p-1 rounded-circle">
+            0
+          </div> -->
+        </div>
+        <div class="d-flex align-items-center mt-3">
+          <img
+            width="24px"
+            height="24px"
+            src="../../../../assets/nicons/{{ item.icon }} selected.png"
+            alt=""
+          />
+          <div *ngIf="homeStats" class="mx-2 title-text font-size-18">
+            <b> {{ homeStats[item.countKey] }} </b>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex my-2 justify-content-end">
+      <div class="card b-light p-2">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <img
+              src="{{ imgUrl + currentBusinessAccount?.businessLogo }}"
+              width="40px"
+              height="40px"
+              class="rounded-img"
+              alt=""
+            />
+          </div>
+          <div class="mx-2">
+            <div
+              style="max-width: 90px; text-overflow: ellipsis"
+              class="title-text font-size-14"
+            >
+              <b>{{ currentBusinessAccount?.name }}</b>
+            </div>
+            <!-- <div class="text-muted">Manager</div> -->
+            <div class="text-muted">
+              {{ currentBusinessAccount?.primaryContact?.address?.addressCity }}
+            </div>
+          </div>
+          <div class="text-center d-flex p-2 b-light b-round">
+            <div class="title-text">
+              <i class="material-icon font-size-25">person</i>
+            </div>
+            <div class="title-text mx-auto font-size-18">
+              {{ currentBusinessAccount?.employees?.length }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div *ngIf="!currentBusinessAccount?.businessLines?.includes('RETAILER')" class="row mx-auto mt-5">
+
+    <div class="col-7">
+      <div class="card b-light">
+
+        <div class=" d-flex justify-content-between  align-items-center p-1">
+          <div class="cust d-flex align-items-center ">
+            <div class="title-text"> <b> Report Zone</b></div>
+            <div class="Pills p-1 px-2 title-text  b-light">Today</div>
+            <div class="Pills p-1 px-2 title-text  b-light">Yesterday</div>
+            <div class="Pills p-1 px-2 title-text  b-light">Last Week</div>
+            <div class="Pills p-1 px-2 title-text  b-light bg-secondary">This Week</div>
+            <div class="Pills p-1 px-2 title-text  b-light">Last Month</div>
+            <div class="Pills p-1 px-2 title-text  b-light">This Month</div>
+            <div class="Pills p-1 px-2 title-text  b-light">Last Year</div>
+            <div class="Pills p-1 px-2 title-text  b-light">This Year</div>
+          </div>
+          <div class="Pills p-1 px-2 title-text  b-light">
+            <i class="material-icon">calendar_month</i>
+          </div>
+        </div>
+
+        <div class="cust d-flex  align-items-center p-1 ">
+          <div class=" b-light primary-text">
+            <div class="p-2">
+              <small>Inventory Value</small>
+              <h3> <b> $57,000.00 </b></h3>
+              <div>
+                <span class="price-text">Products </span> <b>10</b> &nbsp;&nbsp; <span class="price-text">SKUs </span>
+                <b>251</b>
+              </div>
+            </div>
+
+
+            <div class="bg-light px-1 text-center">
+              <span class="price-text">40% </span> <b>Last Week</b> &nbsp;
+            </div>
+          </div>
+          <div class=" b-light primary-text">
+            <div class="p-2">
+              <small>Sales</small>
+              <h3> <b> $57,000.00 </b></h3>
+              <div>
+                <span class="price-text">Products </span> <b>10</b> &nbsp;&nbsp; <span class="price-text">SKUs </span>
+                <b>251</b>
+              </div>
+            </div>
+
+
+            <div class="bg-light px-1 text-center">
+              <span class="price-text">40% </span> <b>Last Week</b> &nbsp;
+            </div>
+          </div>
+          <div class=" b-light primary-text">
+            <div class="p-2">
+              <small>Purchase</small>
+              <h3> <b> $57,000.00 </b></h3>
+              <div>
+                <span class="price-text">Products </span> <b>10</b> &nbsp;&nbsp; <span class="price-text">SKUs </span>
+                <b>251</b>
+              </div>
+            </div>
+
+
+            <div class="bg-light px-1 text-center">
+              <span class="price-text">40% </span> <b>Last Week</b> &nbsp;
+            </div>
+          </div>
+          <div class=" b-light primary-text">
+            <div class="p-2">
+              <small>Money In</small>
+              <h3> <b> $57,000.00 </b></h3>
+              <div>
+                <span class="price-text">Products </span> <b>10</b> &nbsp;&nbsp; <span class="price-text">SKUs </span>
+                <b>251</b>
+              </div>
+            </div>
+
+
+            <div class="bg-light px-1 text-center">
+              <span class="price-text">40% </span> <b>Last Week</b> &nbsp;
+            </div>
+          </div>
+          <div class=" b-light primary-text">
+            <div class="p-2">
+              <small>Money out</small>
+              <h3> <b> $57,000.00 </b></h3>
+              <div>
+                <span class="price-text">Products </span> <b>10</b> &nbsp;&nbsp; <span class="price-text">SKUs </span>
+                <b>251</b>
+              </div>
+            </div>
+
+
+            <div class="bg-light px-1 text-center">
+              <span class="price-text">40% </span> <b>Last Week</b> &nbsp;
+            </div>
+          </div>
+          <div class=" b-light primary-text">
+            <div class="p-2">
+              <small>P & L</small>
+              <h3> <b> $57,000.00 </b></h3>
+              <div>
+                <span class="price-text">Products </span> <b>10</b> &nbsp;&nbsp; <span class="price-text">SKUs </span>
+                <b>251</b>
+              </div>
+            </div>
+
+
+            <div class="bg-light px-1 text-center">
+              <span class="price-text">40% </span> <b>Last Week</b> &nbsp;
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="card b-light">
+        <div class="title-text"><b>Sales Stat</b></div>
+      </div>
+    </div>
+    <div class="col-5 ">
+      <div class="card b-light p-1">
+        <div class="d-flex justify-content-between align-items-center p-1">
+          <div class="cust d-flex align-items-center">
+            <div class="title-text"> <b> Performance</b></div>
+            <div class="Pills p-1 px-2 title-text  b-light bg-secondary">Top Sales Manager</div>
+            <div class="Pills p-1 px-2 title-text  b-light">Top Sales rep.</div>
+          </div>
+
+          <div class="Pills p-1 px-2 title-text  b-light">
+            <select class="bg-none">
+              <option>Today</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="d-flex justify-content-between align-items-center p-1">
+          <div class=" p-1 px-2 title-text  b-light w-100">
+            <input class="w-100" placeholder="Search">
+          </div>
+        </div>
+
+        <div>
+          <table class="w-100 my-2">
+            <thead class="bg-light title-text">
+              <th></th>
+              <th>Points</th>
+              <th>Order Value</th>
+              <th>Point Rate</th>
+              <th>Level/Rep</th>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>
+                  <div class="width-100 d-flex align-items-center">
+                    <div>
+                      <img src="https://picsum.photos/30" width="50px" class="rounded-img" alt="">
+                    </div>
+                    <div class="mx-2">
+                      <div class="title-text font-size-14"> <b>LISA MATHEW </b> </div>
+                    </div>
+                  </div>
+
+                </td>
+                <td>
+                  <div class="Pills p-1 px-2 title-text  b-light bg-secondary">
+                    234
+                  </div>
+                </td>
+                <td>
+                  <div class="Pills p-1 px-2 title-text  b-light">
+                    23180
+                  </div>
+                </td>
+                <td>
+                  <div class="Pills p-1 px-2 title-text  b-light">
+                    214
+                  </div>
+                </td>
+                <td>
+                  <div class="Pills p-1 px-2 title-text  b-light">
+                    L10/R12
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+
+      </div>
+    </div>
+  </div> -->
+  <div class="row mx-auto mt-2">
+    <div class="card b-light">
+      <div class="d-flex">
+        <div
+          class="d-flex align-items-center justify-content-between bg-secondary p-1 m-1"
+          style="width: 185px"
+        >
+          <div class="d-flex align-items-center">
+            <div class="bg-light">
+              <i class="material-icon"> group </i>
+            </div>
+            <div
+              class="mx-1 title-text d-flex align-items-center cursor"
+              routerLink="/home/customer/list"
+            >
+              <b> Customers</b>
+            </div>
+          </div>
+
+          <div class="mx-2 title-text">
+            | &nbsp;&nbsp; <b> {{ homeStats?.Customers }}</b>
+          </div>
+        </div>
+
+        <div class="d-flex">
+          <div>
+            <select
+              (change)="getCustomerStats()"
+              [(ngModel)]="customerStatisticsTime"
+              class="b-round b-light mt-1 width-100"
+            >
+            <ng-container *ngFor="let option of customerStatisticsTimeOptions">
+              <option [value]="option.value">{{ option.label }}</option>
+            </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="cust d-flex my-2">
+        <div
+          (click)="onClickCard(item, 'view'); $event.stopPropagation()"
+          [ngClass]="{ Inactive: !item?.isActive }"
+          *ngFor="let item of customerList"
+          class="card b-light width-perc-10 p-2 cursor"
+        >
+          <div class="d-flex align-items-center justify-content-between">
+            <div>
+              <b> {{ item.label }}</b>
+            </div>
+            <div
+              *ngIf="
+                customerStats &&
+                getCountByCustomer(item.key)?.NewOrders?.length > 0
+              "
+              class="bg-warning primary-text p-1 rounded-circle"
+            >
+              {{ getCountByCustomer(item.key)?.NewOrders }}
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <div *ngIf="customerStats" class="mx-2 title-text font-size-18">
+              {{ getCountByCustomer(item.key)?.TotalOrders }}
+            </div>
+
+            <div class="d-flex">
+              <!-- <div class="bg-secondary d-flex p-1 mx-1">
+              <i  class="material-icon">
+                visibility
+              </i>
+            </div> -->
+              <div class="bg-secondary d-flex p-1">
+                <i
+                  (click)="onClickCard(item, 'add'); $event.stopPropagation()"
+                  class="material-icon text-primary"
+                >
+                  add
+                </i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto mt-2">
+    <div class="card b-light">
+      <div class="d-flex">
+        <div
+          class="d-flex align-items-center justify-content-between bg-secondary p-1 m-1"
+          style="width: 185px"
+        >
+          <div class="d-flex align-items-center">
+            <div class="bg-light">
+              <i class="material-icon"> group </i>
+            </div>
+            <div
+              class="mx-2 title-text d-flex align-items-center cursor"
+              routerLink="/home/vendor/list"
+            >
+              <b> Vendors</b>
+            </div>
+          </div>
+          <div class="mx-1 title-text">
+            | &nbsp;&nbsp; <b> {{ homeStats?.Vendors }}</b>
+          </div>
+        </div>
+        <div class="d-flex">
+          <div>
+            <select
+              (change)="getVendorStats()"
+              [(ngModel)]="vendorStatisticsTime"
+              class="b-round b-light mt-1 width-100"
+            >
+            <ng-container *ngFor="let option of customerStatisticsTimeOptions">
+              <option [value]="option.value">{{ option.label }}</option>
+            </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="cust d-flex my-2">
+        <div
+          (click)="onClickCard(item, 'view'); $event.stopPropagation()"
+          [ngClass]="{ Inactive: !item?.isActive }"
+          *ngFor="let item of vendorList"
+          class="card b-light width-perc-10 p-2 cursor"
+        >
+          <div class="d-flex align-items-center justify-content-between">
+            <div>
+              <b> {{ item.label }}</b>
+            </div>
+            <div
+              *ngIf="
+                vendorStats && getCountByVendor(item.key)?.NewOrders?.length > 0
+              "
+              class="bg-warning primary-text p-1 rounded-circle"
+            >
+              {{ getCountByVendor(item.key)?.NewOrders }}
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <div *ngIf="vendorStats" class="mx-2 title-text font-size-18">
+              <b>{{ getCountByVendor(item.key)?.TotalOrders }} </b>
+            </div>
+            <div class="d-flex">
+              <!-- <div class="bg-secondary d-flex p-1 mx-1">
+                <i (click)="onClickCard(item,'view')" class="material-icon">
+                  visibility
+                </i>
+              </div> -->
+              <div class="bg-secondary d-flex p-1">
+                <i
+                  (click)="onClickCard(item, 'add'); $event.stopPropagation()"
+                  class="material-icon text-primary"
+                >
+                  add
+                </i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

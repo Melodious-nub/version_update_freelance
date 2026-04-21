@@ -1,0 +1,44 @@
+<div [ngClass]="{ 'app-container': !single }">
+  <mat-tab-group class="mat-steps"
+    [(selectedIndex)]="currentStepIndex"
+    (selectedTabChange)="onTabChange($event)"
+  >
+    <mat-tab *ngFor="let link of tabs">
+      <ng-template mat-tab-label>
+        <span
+          [matBadge]="link.badge"
+          [matBadgeHidden]="link.badge === 0"
+          [matBadgeOverlap]="false"
+          >{{ link.title }}</span
+        >
+      </ng-template>
+      <ng-template matTabContent>
+        <app-received-rfq-list
+          [customerId]="customerId"
+          [single]="single"
+          [role]="'customer'"
+          *ngIf="link.index == 0"
+        ></app-received-rfq-list>
+        <app-quotation-list
+          [customerId]="customerId"
+          [single]="single"
+          [role]="'customer'"
+          *ngIf="link.index == 1"
+        ></app-quotation-list>
+        <app-receivedPo-list
+          [customerId]="customerId"
+          [single]="single"
+          [role]="'customer'"
+          *ngIf="link.index == 2"
+        ></app-receivedPo-list>
+
+         <app-invoice-list
+          [customerId]="customerId"
+          [single]="single"
+          [role]="'customer'"
+          *ngIf="link.index == 3"
+        ></app-invoice-list>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>

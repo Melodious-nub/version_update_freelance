@@ -1,0 +1,91 @@
+<div class="row signin-section payment-section">
+    <div class="d-flex justify-content-between">
+        <div>
+            <img src="assets/img/subscription/dadyin-logo.png" alt="Logo" />
+        </div>
+        <div *ngIf="showBackButton">
+            <span class="material-symbols-outlined cancel-icon cursor-pointer"
+                (click)="navigateToBusinessRegistration()">
+                cancel
+            </span>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between mt-4">
+        <div class="pricing">
+            <img src="assets/img/subscription/arrow-leftcircle.png" alt="Logo" class="cursor-pointer"
+                *ngIf="showBackButton" (click)="navigateToBusinessRegistration()" />
+            <div>
+                <div class="pricing-text">Pricing</div>
+                <div class="helping-text">Choose the plan that works for you</div>
+            </div>
+        </div>
+        <div class="attribute tabular-sheet">
+            <div class="attribute-input">
+                <div class="toggle">
+                    <ng-container *ngFor="let calendar of calenderList">
+                        <button (click)="getCalendarList(calendar)" [ngClass]="{active: calendar?.isChecked}">
+                            {{calendar?.name}}
+                        </button>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex gap-4 mt-4 setup-cost-logo">
+        <div class="w-50">
+            <img src="assets/img/subscription/setup-cost.png" class="w-100" alt="Setup Cost">
+        </div>
+        <div class="total-payable w-50 d-flex justify-content-between">
+            <div>
+                <div class="total-payable-text">Total Payable</div>
+                <div class="mt-1"><span class="payment-amount">${{getCostWithComma(selectedCalendar?.value === 'Year' ?
+                        selectedPayment.yearCost : selectedPayment.monthCost) }}</span> <span
+                        class="material-symbols-outlined info-icon">info</span></div>
+            </div>
+            <div>
+                <dadyin-button [theme]="'primary'" label="{{selectedPayment?.buttonText}}" [height]="'50px'"
+                    [width]="'251px'" [fontSize]="'18px'" (clicked)="navigateToPayment(true)">
+                </dadyin-button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3" *ngFor="let paymentInfo of paymentInfoList">
+            <div class="payment-container"
+                [ngClass]="{'selected-payment': paymentInfo.isChecked, 'popular': paymentInfo.isMostPopular}"
+                (click)="choosePayment(paymentInfo)">
+                <span class="popular-text" *ngIf="paymentInfo.isMostPopular">Most Popular</span>
+                <div class="d-flex justify-content-between">
+                    <img src="{{paymentInfo.logo}}">
+                    <img
+                        src="{{paymentInfo.isChecked ? 'assets/img/subscription/checkmark.png' : 'assets/img/subscription/ellipse.png'}}">
+                </div>
+                <div class="cost-info">
+                    <span class="cost">{{selectedCalendar?.value === 'Year' ? paymentInfo.yearCostText :
+                        paymentInfo.monthCostText}}</span>
+                    <span class="subtext">/{{selectedCalendar?.value}}</span>
+                </div>
+                <div class="mb-3">
+                    <span class="setup-cost">{{paymentInfo.setupCost}} Setup Cost</span>
+                    <span class="setup-text">{{paymentInfo.setupText}}</span>
+                </div>
+                <div class="info-text">{{paymentInfo.info}}</div>
+                <div class="payment-button" (click)="navigateToPayment(paymentInfo.isChecked)"
+                    *ngIf="!paymentInfo.isChecked">
+                    {{paymentInfo.buttonText}}</div>
+                <div class="border" *ngIf="paymentInfo.isChecked">
+                    <dadyin-button [theme]="'primary'" label="{{paymentInfo?.buttonText}}" [height]="'50px'"
+                        [width]="'251px'" [fontSize]="'18px'" (clicked)="navigateToPayment(true)">
+                    </dadyin-button>
+                </div>
+                <div class="key-title">{{paymentInfo.keyFeatureTitle}}</div>
+                <div class="d-flex flex-column gap-2">
+                    <div class="d-flex gap-2" *ngFor="let keyList of paymentInfo.keyFeatureList">
+                        <img src="assets/img/subscription/tick.png" class="image-tick"> <span
+                            class="key-list">{{keyList}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

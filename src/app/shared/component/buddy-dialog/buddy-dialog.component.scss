@@ -1,0 +1,109 @@
+.invite-plat-details {
+    width: 900px;
+
+    .invite-title {
+        background-color: var(--border-color);
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 0;
+
+        h6 {
+            margin-bottom: 0;
+            font-weight: 500
+;            font-size: 14px;
+            line-height: 20px;
+            color: white;
+        }
+    }
+
+    .invite {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .cross {
+        float: right;
+        position: relative;
+        bottom: 15px;
+        left: 24px;
+
+        ::ng-deep button img {
+            width: 30px
+        }
+    }
+
+    .no-invite {
+        display: flex;
+        justify-content: center;
+        font-weight: 500;
+        margin-top: 10px;
+        color: var(--primary-color);
+    }
+
+    .odr-value {
+        color: #179474 !important;
+    }
+
+    .order-details-table {
+        .table-details {
+            thead {
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 36px;
+                align-items: center;
+                text-align: center;
+                text-transform: uppercase;
+                background-color: var(--primary-light);
+                padding: 5px 10px;
+                border-bottom: 1px var(--secondary-light) !important;
+                border-color: inherit !important;
+                border-style: initial !important;
+                border-width: 0 !important;
+
+                tr {
+                    border-bottom: 1px solid var(--secondary-light) !important;
+
+                    border-color: inherit !important;
+                    border-style: initial !important;
+
+                    th {
+                        padding: 0 10px;
+                        color: var(--primary-color);
+                    }
+                }
+            }
+
+            tbody {
+
+                tr {
+                    &:nth-of-type(even) {
+                        border-color: transparent;
+                        background-color: var(--primary-light);
+                        --bs-table-accent-bg: var(--primary-light);
+                    }
+
+                    &:nth-of-type(odd) {
+                        border-color: transparent;
+                        background-color: transparent;
+                        --bs-table-accent-bg: transparent;
+                    }
+
+                    td {
+                        padding: 0 10px;
+                        text-align: center;
+                        padding: 6px 10px;
+                        text-align: center;
+                        font-weight: 400;
+                        font-size: 12px;
+                        line-height: 18px;
+                        color: #444;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}

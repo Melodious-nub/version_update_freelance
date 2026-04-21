@@ -1,0 +1,151 @@
+<section>
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button
+        (clicked)="navigateToHome()"
+        class="header-icon"
+        [theme]="'borderless-default'"
+        type="icon"
+        [typeval]="'arrow_circle_left'"
+      >
+      </dadyin-button>
+      <div class="content-title">
+        <label>Purchase manager</label>
+      </div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+      <dadyin-button
+        [theme]="'borderless-danger'"
+        type="icon"
+        [typeval]="'delete_outline'"
+      >
+      </dadyin-button>
+      <dadyin-button [theme]="'primary'" label="Save" (clicked)="onClickSave()">
+      </dadyin-button>
+    </div>
+  </div>
+</section>
+
+<form [formGroup]="userForm">
+  <mat-expansion-panel expanded="true" #expansionPanel1>
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel1, $event)">
+      <mat-panel-description>
+        <div class=" w-100 title-text">Add new User Role</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div class="row p-0">
+        <div class="col-4">
+          <dadyin-input
+            inputType="string"
+            formControlName="roleName"
+            label="Define New User Role"
+            [isClearable]="false"
+          >
+          </dadyin-input>
+        </div>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+  <br />
+  <mat-expansion-panel
+    class="panel-no-padding"
+    expanded="true"
+    #expansionPanel2
+  >
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel2, $event)">
+      <mat-panel-description>
+        <div class=" w-100 title-text">Access Control Selection</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div class="b-light px-3 my-2">
+        <div class="d-flex primary-text my-2">
+          <div>Select desired modules for access</div>
+          <div class="d-flex align-items-center mx-4">
+            <div>
+              <input type="checkbox" />
+            </div>
+            <div class="mx-2 mb-1">Select All</div>
+          </div>
+        </div>
+
+        <!-- order management  -->
+        <div
+          *ngFor="let item of AccessModules"
+          class="d-flex justify-content-between align-items-center flex-wrap my-2"
+        >
+          <div class="d-flex align-items-center width-perc-25 my-2">
+            <div class="mx-2 mb-1">
+              {{ item }}
+            </div>
+          </div>
+          <div class="d-flex align-items-center width-perc-25 my-2">
+            <div>
+              <input type="checkbox" />
+            </div>
+            <div class="mx-2 mb-1">Create Access</div>
+          </div>
+          <div class="d-flex align-items-center width-perc-25 my-2">
+            <div>
+              <input type="checkbox" />
+            </div>
+            <div class="mx-2 mb-1">Edit Access</div>
+          </div>
+          <div class="d-flex align-items-center width-perc-25 my-2">
+            <div>
+              <input type="checkbox" />
+            </div>
+            <div class="mx-2 mb-1">Delete Access</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="b-light px-3 my-2">
+        <div class="d-flex primary-text my-3">
+          <div>System Configuration</div>
+          <div class="d-flex align-items-center mx-4">
+            <div>
+              <input type="checkbox" />
+            </div>
+            <div class="mx-2 mb-1">Select All</div>
+          </div>
+        </div>
+
+        <!-- order management  -->
+        <div
+          *ngFor="let item of SystemAccessModules"
+          class="d-flex justify-content-between align-items-center flex-wrap my-2"
+        >
+          <div class="d-flex align-items-center width-perc-25 my-2">
+            <div class="mx-2 mb-1">
+              {{ item }}
+            </div>
+          </div>
+          <div class="d-flex align-items-center width-perc-25 my-2">
+            <div>
+              <input type="checkbox" />
+            </div>
+            <div class="mx-2 mb-1">Create Access</div>
+          </div>
+          <div class="d-flex align-items-center width-perc-25 my-2">
+            <div>
+              <input type="checkbox" />
+            </div>
+            <div class="mx-2 mb-1">Edit Access</div>
+          </div>
+          <div class="d-flex align-items-center width-perc-25 my-2">
+            <div>
+              <input type="checkbox" />
+            </div>
+            <div class="mx-2 mb-1">Delete Access</div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+  <br />
+</form>

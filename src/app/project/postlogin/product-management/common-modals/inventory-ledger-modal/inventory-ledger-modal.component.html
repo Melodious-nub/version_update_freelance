@@ -1,0 +1,74 @@
+<div class="dialog-container">
+  <i class="material-icon" style="position: absolute;right: 5px;" mat-dialog-close>close</i>
+  <div>
+    <div class="d-flex align-items-center justify-content-center bg-card-header  b-round p-1 my-1">
+      <b class="text-black text-center w-100">Inventory Ledger</b>
+    </div>
+    <div class="my-2">
+      <table style="width: 100%;table-layout: fixed">
+        <thead style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          class="bg-light b-round font-size-12">
+          <tr>
+            <th class="text-center">Date</th>
+            <th class="text-center">Product Code</th>
+            <th class="text-nowrap text-center" style="min-width:350px;">Before Qty</th>
+            <th class="text-center">After Qty </th>
+            <th class="text-center">
+              Qty Ordered
+            </th>
+            <th class="text-center">
+              Qty Received
+            </th>
+            <th class="text-center">
+              Notes
+            </th>
+            <th class="text-center">
+              Status
+            </th>
+          </tr>
+        </thead>
+        <tbody class="font-size-12">
+          <tr *ngFor="let item of inventoryLedgerData">
+            <td class="px-1 text-center">{{ item.audit?.createdDate | date:'MM/dd/yyyy' }}</td>
+            <td class="px-1   text-center " style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              {{ item.productCode }}
+            </td>
+            <!-- <td class="px-1 text-center">
+              <span class="b-round" [ngClass]="item.inventoryDirection == 'IN' ? 'price-text' : 'danger-text'"> {{
+                item.inventoryDirection=='IN' ? '+' : '-' }} </span> {{ item.newQuantityAdded }}
+            </td> -->
+
+            <td class="px-1 text-center">
+              {{ item.beforeQuantity }}
+            </td>
+            <td class="px-1 text-center">
+              {{ item.afterQuantity }}
+            </td>
+            <td class="px-1 text-center">
+              {{ item.quantityOrdered }}
+            </td>
+            <td class="px-1 text-center">
+              {{ item.quantityReceived }}
+            </td>
+            <td class="px-1 text-center">
+              {{ item.note }}
+            </td>
+            <td class="px-1 text-center">
+              {{ item.status }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <mat-paginator *ngIf="inventoryLedgerData?.length && totalElements > 0" [length]="totalElements"
+      [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="pageSizeOptions" [showFirstLastButtons]="true"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+
+    <div *ngIf="!inventoryLedgerData || inventoryLedgerData.length === 0" class="no-data-found">
+      <span class="mx-p-b-10">No records found</span>
+    </div>
+
+  </div>
+</div>

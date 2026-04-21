@@ -1,0 +1,209 @@
+<div class="p-2">
+  <div class="toolbar b-round-top px-2 d-flex justify-content-between align-items-center">
+    <div class="text-center title-text">{{ title }}</div>
+    <i class="material-icon text-light" mat-dialog-close>close</i>
+  </div>
+
+  <div class="mar-top-15 mx-3">
+    <form [formGroup]="productForm">
+      <div class="modal-card">
+        <div class="toolbar px-2   d-flex justify-content-between align-items-center">
+          <div class="title-text">Product / Raw Material Details</div>
+          <!-- <div class="options w-100 d-flex justify-content-end align-items-center">
+            <div class="attribute one h-30">
+              <div class="attribute-input h-30">
+                <input placeholder="Type new field to add" type="text" class="h-30" />
+                <select class="h-30" style="min-width: unset">
+                  <option value="null">Type of field</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <select id="pAttribute" class="width-perc-100 b-round h-30 mx-1 text-dark">
+                <option value="" selected>Field Space</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="75">75</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+            <div>
+              <dadyin-button type="image" [theme]="'borderless-primary'" [typeval]="'assets/nicons/add-white.png'">
+              </dadyin-button>
+            </div>
+          </div> -->
+        </div>
+        <div class="modal-content-section">
+          <div class="row mt-3"> <!-- Added top spacing -->
+            <div class="col-md-7 col-12">
+              <!-- Product Code, UPC, EAN row -->
+              <div class="row mb-3"> <!-- Added spacing below -->
+                <div class="col-md-8 col-12 mb-3 mb-md-0">
+                  <div class="attribute one attr-b-24">
+                    <label for="">Product Code</label>
+                    <div class="attribute-input" formGroupName="productMeta">
+                      <input type="text" formControlName="productCode" />
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-md-2 col-12 mb-3 mb-md-0">
+                  <div class="attribute one attr-b-24">
+                    <label for="">UPC Code</label>
+                    <div class="attribute-input">
+                      <input type="text" formControlName="upcCode" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2 col-12">
+                  <div class="attribute one attr-b-24">
+                    <label for="">EAN Code</label>
+                    <div class="attribute-input">
+                      <input type="text" formControlName="eanCode" />
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+              <!-- Product/Raw Material Name -->
+              <div class="row mb-3">
+                <div class="col-12">
+                  <div class="attribute one attr-b-24">
+                    <label for="">Product /Raw Material Name</label>
+                    <div class="attribute-input" formGroupName="productMeta">
+                      <input type="text" formControlName="description" />
+                      <!-- <img src="assets/nicons/ai.png" class="ai-img" alt=""> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Product Type & Sub Type -->
+              <!-- <div class="row mb-3">
+                <div class="col-md-6 col-12 mb-3 mb-md-0">
+                  <div class="attribute one attr-b-24">
+                    <label for="">Product Type</label>
+                    <div class="attribute-select">
+                      <select>
+                        <option [value]="null">None</option>
+                        <option>first option</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-12">
+                  <div class="attribute one attr-b-24">
+                    <label for="">Product Sub Type</label>
+                    <div class="attribute-select">
+                      <select>
+                        <option [value]="null">None</option>
+                        <option>first option</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <!-- Density & Melting Index -->
+              <!-- <div class="row mb-3">
+                <div class="col-md-6 col-12 mb-3 mb-md-0">
+                  <div class="attribute one attr-b-24">
+                    <label for="">Density</label>
+                    <div class="attribute-input">
+                      <input min="0" type="number" placeholder="Enter your value" />
+                      <select style="min-width: unset">
+                        <option value="UNIT">UNIT</option>
+                        <option value="BOX">BOX</option>
+                        <option value="BUNDLE">BUNDLE</option>
+                        <option value="PALLET">PALLET</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-12">
+                  <div class="attribute one attr-b-24">
+                    <label for="">Melting Index</label>
+                    <div class="attribute-input">
+                      <input min="0" type="number" placeholder="Enter your value" />
+                      <select style="min-width: unset">
+                        <option value="UNIT">UNIT</option>
+                        <option value="BOX">BOX</option>
+                        <option value="BUNDLE">BUNDLE</option>
+                        <option value="PALLET">PALLET</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+            </div>
+            <!-- Images Section -->
+            <!-- <div class="col-md-5 col-12 p-0  d-flex flex-column align-items-stretch">
+              <div  class="example-list mb-3 b-round" (cdkDropListDropped)="onDrop($event)" cdkDropList>
+                <div
+                  class="image-box-sm w-50 mx-2 b-round b-light d-flex flex-column align-items-center justify-content-center primary-text mb-3">
+                  <div for="">Material Image</div>
+                  <input type="file" multiple="true" style="display: none !important" #fileinp
+                    accept=".jpg, .jpeg, .png" />
+                  <div (click)="fileinp.click()" class="text-center cursor">
+                    <mat-icon class="upload primary-text">upload</mat-icon>
+                    <div class="mx-4 text-light fs-12">Upload Image</div>
+                  </div>
+                  <div class="text-right w-100">
+                    <img src="assets/nicons/ai.png" class="ai-img" alt="">
+                  </div>
+                </div>
+                <ng-container *ngFor="let img of [0,1]; let j = index;">
+                    <div cdkDrag class="image-box-sm mx-2 b-light mb-2"
+                      [ngStyle]="j === 0 ? { border: '2px solid green' } : {}">
+                      <img [matTooltip]="j === 0 ? 'This will be Featured image' : ''" height="100%" width="100%"
+                        [src]="null" alt="" (click)="openImageSlider(images?.controls, j)" />
+                      <div class="cross-box-sm">
+                        <dadyin-button type="image" (click)="removeImage(j)" [theme]="'borderless-primary'"
+                          [typeval]="'assets/nicons/delete.png'"></dadyin-button>
+                      </div>
+                      <mat-icon (click)="hideImage(true, j)" class="hide-image-sm text-primary" *ngIf="true">visibility
+                      </mat-icon>
+                      <mat-icon (click)="hideImage(false, j)" class="hide-image-sm" *ngIf="false">visibility_off
+                      </mat-icon>
+                    </div>
+                  </ng-container> 
+              </div>
+            </div> -->
+
+            <!-- <div class="col-md-12 col-12 row">
+              <div class="col-md-4 col-12 pe-0">
+                <div class="attribute one attr-b">
+                  <label for="">Net Cost</label>
+                  <div class="attribute-input">
+                    <input min="0" type="number" placeholder="Enter your value" />
+                    <img src="assets/nicons/ai.png" style="right: 70px;" class="ai-img" alt="">
+                    <select style="min-width: unset">
+                      <option value="UNIT">UNIT</option>
+                      <option value="BOX">BOX</option>
+                      <option value="BUNDLE">BUNDLE</option>
+                      <option value="PALLET">PALLET</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 col-12 ps-3">
+                <div class="attribute one attr-b-24">
+                  <label for="">Price Source (Net Cost)</label>
+                  <div class="attribute-input">
+                    <input type="text" />
+                  </div>
+                </div>
+              </div>
+
+            </div> -->
+
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="mar-top-10 mb-3 text-center">
+    <dadyin-button label="Cancel" [class]="'btn-terrtiary'" [theme]="'secondary'"
+      (clicked)="cancel()"></dadyin-button>&nbsp;
+    <dadyin-button (clicked)="save()" [label]="'Add to Raw Material'" [theme]="'primary'"
+      [tooltip]="'Add to Raw Material'" [disabled]="!productForm.valid">
+    </dadyin-button>
+  </div>
+</div>

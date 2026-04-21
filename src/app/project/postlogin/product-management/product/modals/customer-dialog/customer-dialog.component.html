@@ -1,0 +1,26 @@
+<div class="dialog-container p-2">
+  <div class="d-flex align-items-center justify-content-end">
+      <i class="material-icon" mat-dialog-close>close</i>
+  </div>
+
+  <div >
+    <dadyin-searchable-select
+      class="w-100"
+      placeholder="Select Customer"
+      [control]="selectForm.get('customerId')"
+      [fullItems]="businessAccountService.customerList"
+      bindValue="relationAccountId"
+      bindLabel="relationAccountName"
+    ></dadyin-searchable-select>  
+  </div>
+
+  <br />
+  <div class="d-flex align-items-center justify-content-center">
+    <dadyin-button
+      [theme]="'secondary'"
+      label="Copy for Customer"
+      (clicked)="onActionClick(true)"
+    >
+    </dadyin-button>
+  </div>
+</div>

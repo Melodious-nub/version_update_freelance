@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+  }
+  .custom th td {
+    padding: 8px;
+    text-align: left;
+  }
+  .custom tr td {
+    padding: 8px;
+    text-align: left;
+  }
+  .s1 {
+    color: #5d6974;
+    font-size: 8.5pt;
+  }
+  p {
+    color: #4b4b4b;
+    font-size: 8.5pt;
+    margin: 0pt;
+  }
+
+  table,
+  tbody {
+    vertical-align: top;
+    overflow: visible;
+  }
+
+  .w-100{
+    width: 100%;
+  }
+  .margin-25{
+    margin:25px;
+  }
+  .heading{
+    /*color: #313131;*/
+    color:orange;
+    font-size: 15pt;
+    text-indent: 0pt;
+    line-height: 17pt;
+    text-align: left;
+    font-weight: bold;
+  }
+  .sub-heading{
+    color: #5d6974;
+    font-size: 8.5pt;
+    padding-top: 5pt;
+    text-indent: 0pt;
+    line-height: 10pt;
+    text-align: left;
+  }
+  .sales-row{
+    padding-left: 2pt;
+    color: #748089;
+    font-size: 8pt;
+    text-indent: 0pt;
+    text-align: left;
+  }
+  .quaotation-table{
+    border-collapse: collapse; margin-left: 5.51033pt;width: 100%; margin-top: 2rem; margin-bottom: 3rem;
+  }
+  .goods-table{
+    width: 100%;
+    margin-top: 1rem;
+    border: 1px solid #cbcbcb;
+    border-collapse: collapse;
+    thead{
+      background-color: #D1DCF9; color: rgb(46, 46, 46);
+      th{
+        text-align: left;padding: 3px;
+        text-align: left;padding: 3px;
+        text-align: left;padding: 3px;
+      }
+    }
+    .product-name{
+      color: #5d6974;
+      font-size: 8pt;
+      padding-top: 0pt;
+      padding-left: 10pt;
+      text-indent: 0pt;
+      line-height: 122%;
+      text-align: left;
+    }
+  }
+  .green-cl{
+    color: #08a14b
+  }
+  .d-flex{
+    display: flex;
+  }
+  .justify-between{
+    justify-content: space-between;
+  }
+  .mt-5{
+    margin-top: 5px;
+  }
+  .font-primary{
+    color: #5d6974;
+    font-size: 8.5pt;
+    text-indent: 0pt;
+    line-height: 9pt;
+    text-align: left;
+  }
+  .font-secondary{
+    color: #313131;
+    font-size: 15pt;
+    text-indent: 0pt;
+    line-height: 18pt;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .third-cl{
+    color: #08a14b;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .four-cl{
+    text-indent: 0pt;
+    color: #366bf4;
+    font-size: 8.5pt;
+    text-align: left;
+    padding: 10px;
+  }

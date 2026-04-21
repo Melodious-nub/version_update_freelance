@@ -1,0 +1,99 @@
+<ng-container *ngIf="containerData?.products?.length == 0">
+  <div class="d-flex flex-column b-light text-center p-1">
+    <small class="text-primary">Please add products in container</small>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="containerData?.products?.length > 0">
+  <div class="d-flex flex-column b-light text-center p-1">
+    <small *ngIf="containerData?.products?.length > 0" class="text-primary"
+      >Drag products to rearrange them in sequence.</small
+    >
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+      <div
+        class="mx-1 my-2 rectangle d-flex align-items-center justify-content-between"
+        *ngFor="let item of containerData?.products"
+        cdkDrag
+      >
+        <div class="w-100">
+          <div
+            class="w-100 d-flex justify-content-between me-1 font-size-12 text-start"
+          >
+            <div>
+              <i class="mr-2 material-icon">drag_indicator</i>
+              <b container="body" placement="top" [ngbTooltip]="info">{{
+                item.id
+              }}</b>
+            </div>
+
+            <div class="mx-1">
+              <b> ODO: </b>
+              {{ item.odometer }}
+            </div>
+          </div>
+          <ng-template #info>
+            <section>
+              <img [src]="imgUrl + item.img" width="200" height="200" />
+            </section>
+            <section>
+              {{ item.description }}
+            </section>
+            <div
+            class="b-light my-2"
+            style="
+              height: 35px;
+              width: 100%;
+              align-self: baseline;
+            "
+            [ngStyle]="{ 'background-color': item.color }"
+          ></div>
+          </ng-template>
+          <div class="font-size-12 w-100 text-start">
+            <i class="mr-2 material-icon" style="opacity: 0">drag_indicator</i>
+            <b>Wt:</b> {{ item.weight | numberFormatter : 3 }}
+            {{ item.weightUom }} | <b> Vol: </b>
+            {{ item.volume | numberFormatter : 3 }} {{ item.volumeUom }}
+          </div>
+        </div>
+
+        <div
+          class="b-light"
+          style="
+            height: 35px;
+            width: 25px;
+            background-color: rgb(229, 255, 176);
+            align-self: baseline;
+          "
+          [ngStyle]="{ 'background-color': item.color }"
+        ></div>
+      </div>
+    </div>
+
+    <hr />
+
+    <small *ngIf="excludedProducts?.length > 0" class="text-danger"
+      >Excluded Products due to size constraint</small
+    >
+    <div
+      class="mx-2 my-2 rectangle d-flex align-items-center justify-content-between"
+      *ngFor="let item of excludedProducts"
+    >
+      <div class="mx-2">
+        <b>{{ item.id }}</b>
+      </div>
+      <div
+        style="height: 10px; width: 40px"
+        [ngStyle]="{ 'background-color': item.color }"
+      ></div>
+    </div>
+
+    <!-- <button
+      (click)="viewStackingVideo()"
+      class="btn mt-2 btn-sm bg-primary text-white btn-primary mx-2 my-1"
+    >
+      Visualise
+    </button> -->
+  </div>
+</ng-container>
+
+<div class="visualization-container"></div>

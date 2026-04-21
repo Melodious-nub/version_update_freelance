@@ -1,0 +1,22 @@
+<label for="" class="common">{{label}}</label>
+<div class="selected" [style.height]="height">
+    <div class="row" style="margin-right: 12px;">
+        <div class="col-4 comm" *ngFor="let value of options">
+            <div class="row around">
+                <div class="col-11">
+                    <label *ngIf="value.label">{{value.label}}</label>
+                    <label class="text-ellipsis" [matTooltip]="value.description" [matTooltipPosition]="'above'"
+                        *ngIf="value.description">{{value.description}}</label>
+                    <label *ngIf="value.description == null">Null</label>
+                </div>
+                <div class="col-1" style=" display: contents;">
+                    <mat-icon (click)=" remove(value)">cancel_outline
+                    </mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="wdiv" *ngIf="singleValue">
+            <span>{{singleValue}}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,147 @@
+<div class="mx-2">
+  <div class="filter-container">
+    <div class="filter-btn d-flex align-items-center primary-text">
+      <div
+        class="btn d-flex p-0"
+        (click)="$event.stopPropagation(); openFilter = !openFilter"
+      >
+        <mat-icon class="primary-text"
+          >filter_alt<span
+            *ngIf="leadfilterCount > 0"
+            class="translate-middle badge rounded-pill bg-danger primary-text"
+            id="filterBadge"
+            >{{ leadfilterCount }}</span
+          ></mat-icon
+        >
+      </div>
+      <div
+        (click)="clearFilter()"
+        style="text-wrap: nowrap; cursor: pointer"
+        class="mx-1"
+        *ngIf="leadfilterCount > 0"
+      >
+        Clear All
+      </div>
+    </div>
+
+    <div class="filter-card p-2" appendTo="body" *ngIf="openFilter">
+      <div>
+        <div class="filter-card-header my-2">
+          <h3 class="primary-text m-0">Filters</h3>
+        </div>
+        <div class="filter-card-form" (click)="$event.stopPropagation()">
+          <div [formGroup]="filterForm">
+            <div class="attribute attribute-input w-100 my-3">
+              <label>Search by Name</label>
+              <input
+                type="text"
+                formControlName="relationAccountName"
+                min="0"
+              />
+            </div>
+            <div class="attribute attribute-input w-100 my-3">
+              <label>Search by Address</label>
+              <input type="text" formControlName="addressLine" min="0" />
+            </div>
+            <div class="attribute attribute-input w-100 my-3">
+              <label>Search by City</label>
+              <input type="text" formControlName="addressCity" min="0" />
+            </div>
+            <div class="attribute attribute-input w-100 my-3">
+              <label>Zipcode</label>
+              <input type="text" formControlName="addressZipCode" min="0" />
+            </div>
+            <div class="attribute attribute-input w-100 my-3">
+              <label>Search by Contact</label>
+              <input type="text" formControlName="phone" min="0" />
+            </div>
+            <div class="attribute attribute-input w-100 my-3">
+              <label for="">Search by status</label>
+              <select
+                class="b-light w-100"
+                formControlName="relationStatusId"
+                (click)="$event.stopPropagation()"
+              >
+                <option
+                  *ngFor="let item of apiService.allRelationStatuses"
+                  [value]="item.id"
+                >
+                  {{ item.description }}
+                </option>
+              </select>
+            </div>
+            <div class="attribute attribute-input w-100 my-3">
+              <label>Search by Sales Rep</label>
+              <div class="attribute b-none">
+                <label class="primary-text bg-white" for="yesno"
+                  >Sales Rep</label
+                >
+                <ng-select
+                  (click)="$event.stopPropagation()"
+                 
+                  formControlName="assignedSalesId"
+                  [multiple]="true"
+                  [searchable]="true"
+                  [clearable]="false"
+                  class="custom custom-multiple-table"
+                  [placeholder]="'Select Sales Rep'"
+                  [items]="businessAccountService.salesRepList"
+                  labelForId="yesno"
+                  bindValue="id"
+                  bindLabel="firstName"
+                >
+                  <ng-template ng-multi-label-tmp let-items="items">
+                    <ng-container *ngIf="items.length == 1">
+                      <div
+                        *ngFor="let item of items | slice : 0 : 1"
+                        class="ng-value"
+                      >
+                        <span class="ng-value-label">
+                          {{ item.firstName }}</span
+                        >
+                      </div>
+                    </ng-container>
+
+                    <div *ngIf="items.length > 1" class="ng-value">
+                      <span class="ng-value-label">{{ items.length }}</span>
+                    </div>
+                  </ng-template>
+                  <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                    <span
+                      (click)="$event.stopPropagation()"
+                      class="ng-value-label"
+                    >
+                      {{ item.firstName }}</span
+                    >
+                    <span
+                      class="ng-value-icon right"
+                      (click)="clear(item); $event.stopPropagation()"
+                      aria-hidden="true"
+                      >×</span
+                    >
+                  </ng-template>
+                  <ng-template ng-option-tmp let-item="item">
+                    <span
+                      [matTooltip]="item.email"
+                      class="ng-value-label"
+                    >
+                      {{ item.firstName }}
+                    </span>
+                  </ng-template>
+                </ng-select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter-card-footer my-2">
+          <dadyin-button
+            (click)="$event.stopPropagation()"
+            [theme]="'primary'"
+            label="Apply"
+            (clicked)="apply()"
+          ></dadyin-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,196 @@
+button {
+  text-wrap: nowrap;
+  margin: 0 1px;
+  width: max-content;
+  min-width: 90px;
+  align-content: center;
+  flex-wrap: wrap;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  height: 30px;
+  font-size: 14px;
+  border-radius: 6px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  & img {
+    width: 30px !important;
+    height: 30px !important;
+    object-fit: contain !important;
+  }
+
+  &.w-auto-img img {
+    width: auto !important;
+    height: auto !important;
+    padding-right: 3px;
+  }
+
+  &.full {
+    width: 100%;
+  }
+
+  &.small {
+    width: 36px;
+  }
+
+  &.medium {
+    height: 30px;
+  }
+
+  &.btn-default {
+    border: 1px solid var(--primary-color) !important;
+    color: var(--primary-color);
+    background-color: transparent;
+  }
+
+  &.btn-icon {
+    min-width: fit-content !important;
+    // padding: 5px 5px;
+    margin: 0 1px !important;
+    font-size: 14px;
+    line-height: 11px;
+    font-weight: 400;
+    text-align: center;
+    max-height: 30px;
+    border: solid 2px var(--secondary-light) !important;
+    border-radius: 6px !important;
+    ;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+  }
+
+  &.btn-image {
+    min-width: fit-content !important;
+    // padding: 5px 5px;
+    border-radius: 2px;
+    margin: 0 1px !important;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    // border: solid 2px var(--secondary-light) ;
+    border-radius: 6px !important;
+    ;
+  }
+
+  &.btn-borderless-warning {
+    border: none;
+    background-color: transparent;
+    color: var(--warning-color);
+    padding: 0;
+  }
+
+  &.btn-borderless-primary {
+    border: none !important;
+    // background-color: white;
+    color: var(--primary-color);
+    padding: 0;
+  }
+
+  &.btn-borderless-danger {
+    border: none;
+    background-color: white;
+    color: var(--text-danger);
+    padding: 0;
+  }
+
+  &.btn-borderless-default {
+    // border: 1px solid var(--primary-light) !important;
+    background-color: transparent;
+    color: var(--text-dark);
+    padding: 0;
+  }
+
+  &.btn-borderless-white {
+    border: 1px solid var(--primary-light);
+    background-color: white;
+    color: var(--primary-color);
+    padding: 0;
+  }
+
+  &.btn-primary {
+    border: solid 1px var(--primary-color);
+    color: white;
+    background: var(--primary-color);
+    border-radius: 6px !important;
+
+    .material-icons {
+      color: white !important;
+    }
+  }
+
+  &.btn-default:disabled {
+    pointer-events: none;
+    pointer-events: none;
+    opacity: 0.65;
+  }
+
+  &.btn-primary:disabled {
+    pointer-events: none;
+    opacity: 0.65;
+  }
+
+  &.btn-primary:hover {
+    color: white !important;
+    background-color: var(--primary-color) !important;
+  }
+
+  &.btn-secondary:hover {
+    color: white !important;
+    background-color: var(--primary-color) !important;
+  }
+
+  &.btn-secondary:disabled {
+    pointer-events: none;
+    opacity: 0.65;
+  }
+
+  &.btn-danger:disabled {
+    pointer-events: none;
+    opacity: 0.65;
+  }
+
+  &.btn-borderless-primary:disabled {
+    pointer-events: none;
+    opacity: 0.65;
+  }
+
+  &.btn-borderless-danger:disabled {
+    pointer-events: none;
+    opacity: 0.65;
+  }
+
+  &.btn-danger-light:disabled {
+    pointer-events: none;
+    opacity: 0.65;
+  }
+
+  &.btn-secondary {
+    background-color: white;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+  }
+
+  &.btn-danger {
+    color: var(--text-danger);
+    background-color: white;
+    border: 1px solid var(--text-danger);
+  }
+
+  &.btn-danger-light {
+    background: var(--danger-light);
+    border-color: var(--danger-color);
+    color: var(--danger-color);
+  }
+
+  &.btn-base {
+    color: var(--primary-color);
+    background-color: var(--warning-color);
+    border: 1px solid var(--warning-color);
+  }
+}

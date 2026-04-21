@@ -1,0 +1,737 @@
+<div class="app-content">
+  <form [formGroup]="vendorForm">
+    <mat-expansion-panel expanded="true">
+      <mat-expansion-panel-header>
+        <mat-panel-description>
+          <div class="w-100 title-text text-left">{{ getLabel() }} Details</div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="row p-0">
+        <div class="col-md-10 col-12">
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <div formGroupName="relationAccountDetail">
+                <div class="attribute one attr-b d-flex align-items-center" id="nameInput">
+                  <label class="bg-white" for="yesno">{{ getLabel() }} Name</label>
+                  <input formControlName="name" (input)="getBusinessAccounts($event, 'name')" [matAutocomplete]="auto1"
+                    type="text" class="w-100" placeholder="Type here to add" />
+                  <button mat-icon-button id="clearButton" matTooltip="Clear" *ngIf="isEnabled">
+                    <mat-icon class="text-danger fs-6" (click)="clear()">close</mat-icon>
+                  </button>
+                </div>
+                <mat-autocomplete (optionSelected)="selectBusinessAccount($event.option.value)" autoActiveFirstOption
+                  #auto1="matAutocomplete">
+                  <mat-option *ngFor="let item of businessAccountList" [value]="item">
+                    {{ item?.name }} {{ item?.relationAccountDetail?.name }}
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </div>
+            <div class="col-12 col-md-4" formGroupName="relationAccountDetail">
+              <dadyin-input inputType="string" formControlName="businessCode" label="Business Code"
+                [isClearable]="false">
+              </dadyin-input>
+            </div>
+
+
+            <div class="col-12 col-md-4">
+              <dadyin-select label="Primary Business Offering" formControlName="primaryBusinessOffering" [items]="[]"
+                optionLabel="name" optionValue="id"></dadyin-select>
+            </div>
+
+            <div class="col-12 col-md-4" formGroupName="relationAccountDetail">
+              <div formGroupName="primaryContact">
+                <div class="attribute one attr-b">
+                  <label class="bg-white" for="yesno">Email</label>
+                  <input formControlName="email" (input)="
+                      getBusinessAccounts($event, 'primaryContact.email')
+                    " [matAutocomplete]="auto2" type="text" class="width-perc-100" placeholder="Type here to add" />
+                </div>
+                <mat-autocomplete (optionSelected)="selectBusinessAccount($event.option.value)" autoActiveFirstOption
+                  #auto2="matAutocomplete">
+                  <mat-option *ngFor="let item of businessAccountList" [value]="item">
+                    {{ item?.name }} ({{ item?.primaryContact?.email }})
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4 d-flex" formGroupName="relationAccountDetail">
+              <ng-container formGroupName="primaryContact">
+                <div class="attribute b-none width-perc-30" formGroupName="phone">
+                  <label class="bg-white" for="yesno">Country Code</label>
+                  <ng-select appendTo="body" formControlName="countryId" [searchFn]="customSearchFn" [clearable]="false"
+                    class="custom" [items]="countries" labelForId="yesno" bindValue="id">
+                    <ng-template ng-label-tmp let-item="item">
+                      <div>
+                        <img width="10px" height="10px" src="{{
+                            '../../../../../../assets/img/flags/' +
+                              item?.iso3?.toLowerCase() +
+                              '.svg'
+                          }}" />
+                        {{ item?.iso2 }} {{ item?.phoneCode }}
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                      <div>
+                        <img width="10px" height="10px" src="{{
+                            '../../../../../../assets/img/flags/' +
+                              item?.iso3?.toLowerCase() +
+                              '.svg'
+                          }}" />
+                        {{ item?.iso2 }} {{ item?.phoneCode }}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                  <span class="required" *ngIf="
+                      vendorForm
+                        .get('relationAccountDetail')
+                        .get('primaryContact')
+                        .get('phone')
+                        .get('countryId').invalid
+                    ">Country Code is required.</span>
+                </div>
+                <div class="pl-1 width-perc-70" formGroupName="phone">
+                  <div class="attribute one attr-b">
+                    <label class="bg-white" for="yesno">Phone</label>
+                    <input onKeyPress="if(this.value.length==12) return false;" formControlName="number" (input)="
+                        getBusinessAccounts(
+                          $event,
+                          'primaryContact.phone.number'
+                        )
+                      " [matAutocomplete]="auto" type="text" class="width-perc-100" placeholder="Type here to add" />
+                  </div>
+                  <mat-autocomplete (optionSelected)="
+                      selectBusinessAccount($event.option.value)
+                    " autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let item of businessAccountList" [value]="item">
+                      {{ item?.name }} {{ item?.primaryContact?.phone?.number }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </div>
+              </ng-container>
+            </div>
+
+            <div class="col-12 col-md-4 d-flex align-items-center">
+              <div class="attribute one attr-b width-perc-90">
+                <label for="businessLine">{{
+                  isCustomer ? "Relation Type" : "Business Type"
+                  }}</label>
+                <div class="attribute-input w-100">
+                  <select class="bg-white w-100" style="z-index: 99;width: 100% !important;"
+                    formControlName="businessLine" id="businessLine">
+                    <ng-container *ngFor="
+                        let item of [
+                          'MANUFACTURER',
+                          'IMPORTER',
+                          'EXPORTER',
+                          'RETAILER',
+                          'DISTRIBUTOR',
+                          'IMPORT_RESELLER'
+                        ]
+                      ">
+                      <option [value]="item">{{ item }}</option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+              <div class="attr-b mx-1 d-flex">
+                <div [ngClass]="{ 'b-primary-all': isImportExport.value == false }" class="map b-light cursor bg-light">
+                  <mat-icon (click)="toggleType(false)"> location_on </mat-icon>
+                </div>
+                <div [ngClass]="{ 'b-primary-all': isImportExport.value == true }"
+                  class="mx-1 map b-light cursor bg-light">
+                  <mat-icon (click)="toggleType(true)"> anchor </mat-icon>
+                </div>
+              </div>
+            </div>
+
+            <ng-container formGroupName="relationAccountDetail">
+
+              <div class="col-12 col-md-4 d-flex" formGroupName="primaryContact">
+                <ng-container formGroupName="landline">
+                  <div class="width-perc-30 attribute b-none">
+                    <label class="bg-white" for="yesno">Country Code</label>
+                    <ng-select appendTo="body" formControlName="countryId" [searchFn]="customSearchFn"
+                      [clearable]="false" class="custom" [items]="countries" labelForId="yesno" bindValue="id">
+                      <ng-template ng-label-tmp let-item="item">
+                        <div>
+                          <img width="10px" height="10px" src="{{
+                              '../../../../../../assets/img/flags/' +
+                                item?.iso3?.toLowerCase() +
+                                '.svg'
+                            }}" />
+                          {{ item?.iso2 }} {{ item?.phoneCode }}
+                        </div>
+                      </ng-template>
+                      <ng-template ng-option-tmp let-item="item" let-index="index">
+                        <div>
+                          <img width="10px" height="10px" src="{{
+                              '../../../../../../assets/img/flags/' +
+                                item?.iso3?.toLowerCase() +
+                                '.svg'
+                            }}" />
+                          {{ item?.iso2 }} {{ item?.phoneCode }}
+                        </div>
+                      </ng-template>
+                    </ng-select>
+                    <span class="required" *ngIf="
+                        vendorForm
+                          .get('relationAccountDetail')
+                          .get('primaryContact')
+                          .get('landline')
+                          .get('countryId').invalid
+                      ">Country Code is required.</span>
+                  </div>
+                  <div class="width-perc-70 pl-1">
+                    <div class="attribute one attr-b">
+                      <label for="">Landline</label>
+                      <div class="attribute-input">
+                        <input onKeyPress="if(this.value.length==12) return false;" type="text"
+                          formControlName="number" />
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+              <div class="col-12 col-md-4 d-flex" formGroupName="primaryContact">
+                <ng-container formGroupName="fax">
+                  <div class="width-perc-30 attribute b-none">
+                    <label class="bg-white" for="yesno">Country Code</label>
+                    <ng-select appendTo="body" formControlName="countryId" [searchFn]="customSearchFn"
+                      [clearable]="false" class="custom" [items]="countries" labelForId="yesno" bindValue="id">
+                      <ng-template ng-label-tmp let-item="item">
+                        <div>
+                          <img width="10px" height="10px" src="{{
+                              '../../../../../../assets/img/flags/' +
+                                item?.iso3?.toLowerCase() +
+                                '.svg'
+                            }}" />
+                          {{ item?.iso2 }} {{ item?.phoneCode }}
+                        </div>
+                      </ng-template>
+                      <ng-template ng-option-tmp let-item="item" let-index="index">
+                        <div>
+                          <img width="10px" height="10px" src="{{
+                              '../../../../../../assets/img/flags/' +
+                                item?.iso3?.toLowerCase() +
+                                '.svg'
+                            }}" />
+                          {{ item?.iso2 }} {{ item?.phoneCode }}
+                        </div>
+                      </ng-template>
+                    </ng-select>
+                    <span class="required" *ngIf="
+                        vendorForm
+                          .get('relationAccountDetail')
+                          .get('primaryContact')
+                          .get('fax')
+                          .get('countryId').invalid
+                      ">Country Code is required.</span>
+                  </div>
+
+                  <div class="width-perc-70 pl-1">
+                    <dadyin-input onKeyPress="if(this.value.length==12) return false;" inputType="string"
+                      formControlName="number" label="Fax" placeholder="Fax" [isClearable]="false">
+                    </dadyin-input>
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
+
+            <div class="col-12 col-md-4">
+              <div *ngIf="
+              ['MANUFACTURER', 'IMPORTER', 'EXPORTER'].includes(
+                businessLine.value
+              )
+            ">
+                <dadyin-select formControlName="portId" label="Nearest Port" optionLabel="description" optionValue="id"
+                  [emptyOption]="'Nearest Port'" [optionArr]="this.containerService.portsList">
+                </dadyin-select>
+              </div>
+
+            </div>
+
+
+
+
+            <div class="col-12 col-md-6" formGroupName="relationAccountDetail">
+
+              <dadyin-map-autocomplete [label]="'Search Address'" (address)="
+                  onAddressSelection(
+                    $event,
+                    vendorForm
+                      .get('relationAccountDetail')
+                      .get('primaryContact')
+                      .get('address'),
+                    true
+                  )
+                " [control]="
+                  vendorForm
+                    .get('relationAccountDetail')
+                    .get('primaryContact')
+                    .get('address')
+                "></dadyin-map-autocomplete>
+            </div>
+
+            <ng-container formGroupName="relationAccountDetail">
+              <ng-container formGroupName="primaryContact">
+                <ng-container formGroupName="address">
+                  <ng-container>
+                    <div class="col-md-2">
+                      <div class="attribute one attr-b">
+                        <label class="bg-white" for="yesno">Country</label>
+                        <input disabled formControlName="addressCountry" class="w-100" type="text" />
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <div class="attribute one attr-b">
+                        <label class="bg-white" for="yesno">State</label>
+                        <input disabled formControlName="addressState" class="w-100" type="text" />
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <div class="attribute one attr-b">
+                        <label class="bg-white" for="yesno">Zipcode</label>
+                        <input disabled formControlName="addressZipCode" type="text" class="w-100" />
+                      </div>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+
+            <ng-container formGroupName="relationAccountDetail">
+              <div class="col-2" *ngIf="addressCountry.value!='India' || addressCountry.value!='US'">
+                <dadyin-input inputType="string" formControlName="taxId" label="Tax Id" [isClearable]="false">
+                </dadyin-input>
+              </div>
+              <div class="col-2" *ngIf="addressCountry.value=='India'">
+                <dadyin-input inputType="string" formControlName="gst" label="GST" [isClearable]="false">
+                </dadyin-input>
+              </div>
+              <div class="col-2" *ngIf="addressCountry.value=='India'">
+                <dadyin-input inputType="string" formControlName="panCard" label="Pan Card" [isClearable]="false">
+                </dadyin-input>
+              </div>
+              <div class="col-2" *ngIf="addressCountry.value=='United States'">
+                <dadyin-input inputType="string" formControlName="einNumber" label="EIN Number" [isClearable]="false">
+                </dadyin-input>
+              </div>
+              <div class="col-2" *ngIf="addressCountry.value=='United States'">
+                <dadyin-input inputType="string" formControlName="ssnNumber" label="SSN Number" [isClearable]="false">
+                </dadyin-input>
+              </div>
+              <div class="col-2" *ngIf="addressCountry.value=='United States'">
+                <dadyin-input inputType="string" formControlName="itinNumber" label="ITIN Number" [isClearable]="false">
+                </dadyin-input>
+              </div>
+
+            </ng-container>
+          </div>
+        </div>
+        <div class="col-md-2 col-12 px-1">
+          <div class="album b-all">
+            <div class="imgContainer">
+              <div *ngIf="!logoImage.value" style="cursor: pointer" class="d-flex w-100 p-1 justify-content-center">
+                <input (change)="imageselected($event)" type="file" style="display: none !important" #fileinp
+                  accept=".jpg, .jpeg, .png" />
+                <div (click)="fileinp.click()" class="width-perc-60">
+                  <img src="../../../../../assets/img/business_logo.png" width="100%" height="" alt="" />
+                </div>
+              </div>
+              <div *ngIf="logoImage.value" class="d-flex p-1 justify-content-center w-100" style="cursor: pointer">
+                <i (click)="removeImage()" class="material-icon action_close" mat-dialog-close>close</i>
+                <img [src]="imgUrl + logoImage.value" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel expanded="true">
+      <mat-expansion-panel-header>
+        <mat-panel-description>
+          <div class="w-100 title-text text-left">{{ getLabel() }} Relation</div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="row gap-2 p-0">
+        <div class="col-md-12 col-12">
+          <div class="row">
+            <div class="col-12 col-md-2">
+              <div class="attribute one attr-b">
+                <label for="">{{ getLabel() }} Code
+                  <mat-icon style="font-size: 12px; z-index: 99; height: 12px">info</mat-icon>
+                </label>
+                <div class="attribute-input">
+                  <input style="background: none" formControlName="code" type="text" placeholder="Enter your value" />
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-2">
+              <div class="attribute b-none">
+                <label class="bg-white" for="yesno">Sales Rep</label>
+                <ng-select appendTo="body" formControlName="employeeIds" [multiple]="true" [searchable]="true"
+                  [clearable]="false" class="custom custom-multiple-table" [placeholder]="'Select Sales Rep'"
+                  [items]="businessAccountService.salesRepList" labelForId="yesno" bindValue="id"
+                  bindLabel="firstName">
+                  <ng-template ng-multi-label-tmp let-items="items">
+                    <ng-container *ngIf="items.length == 1">
+                      <div *ngFor="let item of items | slice : 0 : 1" class="ng-value">
+                        <span class="ng-value-label"> {{ item.firstName }}</span>
+                      </div>
+                    </ng-container>
+
+                    <div *ngIf="items.length > 1" class="ng-value">
+                      <span class="ng-value-label">{{ items.length }}</span>
+                    </div>
+                  </ng-template>
+                  <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                    <span class="ng-value-label"> {{ item.firstName }}</span>
+                    <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                  </ng-template>
+                </ng-select>
+              </div>
+            </div>
+            <div class="col-12 col-md-2">
+              <div class="attribute one attr-b">
+                <label>Buying Type</label>
+                <div>
+                  <select class="w-100" formControlName="buyingType">
+                    <ng-container *ngFor="let buyingType of buyingTypeList">
+                      <option [value]="buyingType.value">
+                        {{ buyingType.name }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-2">
+              <dadyin-input inputType="number" formControlName="discountPercentage" label="Discount Percentage"
+                [isClearable]="false"></dadyin-input>
+            </div>
+            <div class="col-12 col-md-2">
+              <ng-container *ngIf="isCustomer">
+                <div class="attribute tabular-sheet mx-1 attr-b">
+                  <div class="attribute-input bg-white">
+                    <div class="toggle width-perc-100">
+                      <button class="width-perc-50" (click)="
+                          vendorForm.get('isLivePricingOn').setValue(true)
+                        " [ngClass]="{
+                          active: vendorForm.get('isLivePricingOn').value
+                        }">
+                        Live Pricing
+                      </button>
+                      <button class="width-perc-50" (click)="
+                          vendorForm.get('isLivePricingOn').setValue(false)
+                        " [ngClass]="{
+                          active: !vendorForm.get('isLivePricingOn').value
+                        }">
+                        Fixed Price
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="!isCustomer">
+                <dadyin-select formControlName="fulfillmentLimitInDays" optionLabel="label" optionValue="value"
+                  label="Time Limit for Fullfilment" [emptyOption]="'Time Limit for Fullfilment'"
+                  [optionArr]="timeLimit">
+                </dadyin-select>
+              </ng-container>
+            </div>
+            <div class="col-12 col-md-2">
+
+              <div class="attribute one attr-b">
+                <label>Custom Products</label>
+                <div class="attribute-input">
+                  <input type="text" [value]="'Custom Products'" class="w-100">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-2">
+              <div class="attribute tabular-sheet mx-1 attr-b">
+                <label>Template Sharing</label>
+                <div class="attribute-input bg-white">
+                  <div class="toggle width-perc-100">
+                    <button class="width-perc-50" class="active">
+                      Yes
+                    </button>
+                    <button class="width-perc-50">
+                      No
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-2 col-12">
+              <div>
+                <dadyin-select [emptyOption]="'Select Payment Term'" formControlName="paymentTermId"
+                  [optionArr]="containerService.paymentTermsList" label="Payment Terms" optionLabel="description"
+                  optionValue="id">
+                </dadyin-select>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-12">
+              <div class="attribute one attr-b">
+                <label>Net Credit Limit</label>
+                <div class="attribute-input">
+                  <input type="text" class="w-100" placeholder="Net Credit Limit">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-2">
+              <div matTooltip="Usual Incoterm for this vendor" *ngIf="!isCustomer">
+                <dadyin-select formControlName="incoTermId" optionLabel="description" optionValue="id"
+                  label="Select Incoterm" [emptyOption]="'Select Incoterm'"
+                  [optionArr]="containerService.incoTermsList">
+                </dadyin-select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <hr>
+      <div class="row gap-2 p-0">
+
+        <div class="col-12 col-md-2">
+
+          <div class="attribute tabular-sheet mx-1 attr-b">
+            <label>Is Product Partner ?</label>
+            <div class="attribute-input bg-white">
+              <div class="toggle width-perc-100">
+                <button class="width-perc-50" class="active">
+                  Yes
+                </button>
+                <button class="width-perc-50">
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3">
+          <div class="attribute tabular-sheet mx-1 attr-b">
+            <div class="attribute-input bg-white">
+              <div class="toggle width-perc-100">
+                <button class="width-perc-50" class="active">
+                  Show Live Inventory
+                </button>
+                <button class="width-perc-50">
+                  Show greater than
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row p-0 mt-2">
+        <ng-container *ngIf="
+            ['MANUFACTURER', 'IMPORTER', 'EXPORTER'].includes(
+              businessLine.value
+            )
+          ">
+          <div class="col-12 col-md-6">
+            <dadyin-search-select-new [typeahead]="false" bindValue="id" label="Select Industry Type"
+              [fullItems]="apiService.allIndustryTypes" [selectedItems]="industryTypeIds"></dadyin-search-select-new>
+          </div>
+          <div class="col-12 col-md-6">
+            <dadyin-search-select-new [typeahead]="false" bindValue="id" label="Select Industry Sub Type"
+              [fullItems]="industrySubTypes" [selectedItems]="industrySubTypeIds"></dadyin-search-select-new>
+          </div>
+          <div class="col-12 col-md-6">
+
+            <dadyin-search-select-new [typeahead]="false" bindValue="id" label="Select Product Types"
+              [fullItems]="apiService.productTypes" [selectedItems]="productTypesIds"></dadyin-search-select-new>
+
+          </div>
+        </ng-container>
+        <div class="col-12 col-md-6" *ngIf="['RETAILER', 'DISTRIBUTOR'].includes(businessLine.value)">
+          <dadyin-search-select-new [typeahead]="false" label="Select Retail Categories"
+            [fullItems]="apiService.productCategoriesList" bindValue="id"
+            [selectedItems]="productCategoryIds"></dadyin-search-select-new>
+        </div>
+        <div class="col-12 col-md-6 ">
+          <dadyin-search-select-new tagType="description" [addTag]="true" label="Select Keywords"
+            [fullItems]="keywordsList" [selectedItems]="keywords"
+            (search)="handleSelectKeyWordClick($event)"></dadyin-search-select-new>
+        </div>
+      </div>
+      <div class="d-flex align-items-center bg-light my-2">
+        <dadyin-button style="margin-left: 20px" type="icon" [typeval]="'info_outline'" [theme]="'borderless-primary'">
+        </dadyin-button>
+        <label>{{ getLabel() }} will be prospect till you place first order with
+          him.</label>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="my-2"  expanded="true">
+      <mat-expansion-panel-header>
+        <mat-panel-description>
+          <div class="text-left w-100 title-text ">
+            Notes and reminders
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="d-flex justify-content-start align-items-center">
+        <div class="me-2 fw-bold">
+          Create Note / Reminder
+        </div>
+        <dadyin-button type="icon" [typeval]="'arrow_forward'" [theme]="'borderless-primary'"
+          (clicked)="openNoteDialog()" [label]="'View all'"></dadyin-button>
+      </div>
+
+
+
+
+    </mat-expansion-panel>
+
+
+    <app-business-entity-configuration [isReadOnly]="true" [configurationType]="getConfigurationType()">
+    </app-business-entity-configuration>
+
+    <div class="business-basic-details mt-2 mb-5">
+      <mat-expansion-panel class="panel-no-padding" expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-description>
+            <div class=" w-100 title-text text-left">
+              Business Addresses (Branches)
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="process-table overflow-auto">
+          <table id="example">
+            <thead>
+              <tr>
+                <th style="padding-left: 20px">SR #</th>
+                <th class="manager-col-width">LABEL</th>
+                <th class="manager-col-width">MANAGER</th>
+                <th class="phone-col-width">PHONE NUMBER</th>
+                <th class="email-col-width">EMAIL ID</th>
+                <th class="address-col-width">ADDRESS</th>
+                <th class="width-100">COUNTRY</th>
+                <th class="width-100">STATE</th>
+                <th class="width-100">TOWN/CITY</th>
+                <th class="width-100">ZIP CODE</th>
+                <th class="action-col-width">ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="businessAddress.controls?.length == 0">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <dadyin-button (clicked)="addBranchLineItem()" [theme]="'borderless-primary'" type="icon"
+                    [typeval]="'add_circle_outline'">
+                  </dadyin-button>
+                </td>
+              </tr>
+              <tr [formGroup]="business" *ngFor="let business of businessAddress.controls; let i = index">
+                <ng-container>
+                  <td style="padding-left: 20px">{{ i + 1 }}.</td>
+                  <td>
+                    <input type="text" formControlName="name" class="bg-transparent" />
+                  </td>
+                  <td>
+                    <input type="text" formControlName="managerName" class="bg-transparent" />
+                  </td>
+                  <td formGroupName="phone" class="countrycode-column">
+                    <ng-select appendTo="body" formControlName="countryId" [searchFn]="customSearchFn"
+                      [clearable]="false" class="custom" [items]="countries" labelForId="yesno" bindValue="id">
+                      <ng-template ng-label-tmp let-item="item">
+                        <div>
+                          <img width="10px" height="10px" src="{{
+                              '../../../../../../assets/img/flags/' +
+                                item?.iso3?.toLowerCase() +
+                                '.svg'
+                            }}" />
+                          {{ item?.iso2 }} {{ item?.phoneCode }}
+                        </div>
+                      </ng-template>
+                      <ng-template ng-option-tmp let-item="item" let-index="index">
+                        <div>
+                          <img width="10px" height="10px" src="{{
+                              '../../../../../../assets/img/flags/' +
+                                item?.iso3?.toLowerCase() +
+                                '.svg'
+                            }}" />
+                          {{ item?.iso2 }} {{ item?.phoneCode }}
+                        </div>
+                      </ng-template>
+                    </ng-select>
+                    <span class="required" *ngIf="
+                        businessAddress.controls[i]
+                          .get('phone')
+                          .get('countryId').invalid
+                      ">*</span>
+                    <input type="number" formControlName="number" onKeyPress="if(this.value.length==12) return false;"
+                      class="w-100 bg-transparent" />
+                  </td>
+                  <td>
+                    <input type="text" formControlName="email" class="bg-transparent" />
+                  </td>
+                  <td>
+                    <dadyin-map-autocomplete [placeholder]="'Search Address'" (address)="
+                        onAddressSelection(
+                          $event,
+                          address,
+                          false
+                        )
+                      " [control]="address"></dadyin-map-autocomplete>
+                  </td>
+                  <td>
+                    <input type="text" [formControl]="
+                    addressCountry
+                      " disabled class="bg-transparent" />
+                  </td>
+                  <td>
+                    <input type="text" [formControl]="
+                    addressState
+                      " disabled class="bg-transparent" />
+                  </td>
+                  <td>
+                    <input type="text" [formControl]="addressCity" disabled class="bg-transparent" />
+                  </td>
+                  <td>
+                    <input type="text" [formControl]="
+                    addressZipCode
+                      " disabled class="bg-transparent" />
+                  </td>
+                  <td class="actions">
+                    <dadyin-button (clicked)="deleteBranchLineItem(i)" [theme]="'borderless-danger'" type="icon"
+                      [typeval]="'delete_outline'">
+                    </dadyin-button>
+                    <ng-container *ngIf="businessAddress.controls?.length == i + 1">
+                      <dadyin-button (clicked)="addBranchLineItem()" [theme]="'borderless-primary'" type="icon"
+                        [typeval]="'add_circle_outline'">
+                      </dadyin-button>
+                    </ng-container>
+                  </td>
+                </ng-container>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </form>
+</div>

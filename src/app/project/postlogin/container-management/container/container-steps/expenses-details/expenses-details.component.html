@@ -1,0 +1,629 @@
+<form [formGroup]="containerForm">
+  <mat-expansion-panel expanded="true" #expansionPanel1>
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel1, $event)">
+      <mat-panel-description>
+        <div class=" w-100 title-text">Order Details</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div>
+        <div class="input-order">
+          <div class="inp">
+            <div class="attribute one">
+              <label for="">Total Orders</label>
+              <div class="attribute-input">
+                <input
+                  disabled
+                  formControlName="totalOrders"
+                  type="text"
+                  placeholder="Enter your value"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="inp">
+            <div class="attribute one">
+              <label for="">Total SKUs</label>
+              <div class="attribute-input">
+                <input
+                  disabled
+                  formControlName="totalSKUs"
+                  type="text"
+                  placeholder="Enter your value"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="inp">
+            <div>
+              <div class="attribute one">
+                <label for="">Total Weight</label>
+                <div class="attribute-input" formGroupName="weight">
+                  <input
+                    disabled
+                    min="0"
+                    formControlName="attributeValue"
+                    type="number"
+                    placeholder="Enter your value"
+                  />
+                  <select
+                    disabled
+                    formControlName="userConversionUom"
+                    id="NetWtUnit"
+                  >
+                    <ng-container
+                      *ngFor="let item of uomService?.availableNetWeightUoms"
+                    >
+                      <option [value]="item.description">
+                        {{ item?.description }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="inp">
+            <div>
+              <div class="attribute one">
+                <label for="">Total Volume</label>
+                <div class="attribute-input" formGroupName="volume">
+                  <input
+                    disabled
+                    min="0"
+                    formControlName="attributeValue"
+                    type="number"
+                    placeholder="Enter your value"
+                  />
+                  <select
+                    disabled
+                    formControlName="userConversionUom"
+                    id="NetWtUnit"
+                  >
+                    <ng-container
+                      *ngFor="let item of uomService?.availableNormalVolumeUoms"
+                    >
+                      <option [value]="item.description">
+                        {{ item?.description }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="inp">
+            <dadyin-input
+              inputType="text"
+              isDisabled="true"
+              formControlName="totalUnits"
+              label="Total Units"
+            >
+            </dadyin-input>
+          </div>
+          <!-- <div class="inp">
+            <dadyin-select
+              [optionArr]="[{id:'PALLET',name:'PALLET'},{id:'FLOOR',name:'FLOOR'},{id:'MIXED',name:'MIXED'}]"
+              label="Loading Type" formControlName="loadingType" optionLabel="name" optionValue="id"
+              [emptyOption]="'Select Loading Type'">
+            </dadyin-select>
+          </div> -->
+          <div class="inp">
+            <div *ngIf="!isExport" formGroupName="importCost">
+              <dadyin-input
+                inputType="text"
+                isDisabled="true"
+                formControlName="attributeValue"
+                label="Total Order Value"
+              >
+              </dadyin-input>
+            </div>
+            <div *ngIf="isExport" formGroupName="exportCost">
+              <dadyin-input
+                inputType="text"
+                isDisabled="true"
+                formControlName="attributeValue"
+                label="Total Order Value"
+              >
+              </dadyin-input>
+            </div>
+          </div>
+          <div class="inp">
+            <div *ngIf="!isExport" formGroupName="importCost">
+              <dadyin-input
+                inputType="text"
+                isDisabled="true"
+                formControlName="attributeValue"
+                label="Total Cost"
+              >
+              </dadyin-input>
+            </div>
+            <div *ngIf="isExport" formGroupName="exportCost">
+              <dadyin-input
+                inputType="text"
+                isDisabled="true"
+                formControlName="attributeValue"
+                label="Total Cost"
+              >
+              </dadyin-input>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    class="panel-no-padding mt-4"
+    expanded="true"
+    #expansionPanel2
+  >
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel2, $event)">
+      <mat-panel-description>
+        <div class=" w-100 title-text">Expense Details</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div class="process-table">
+        <!-- Material Cost -->
+        <table>
+          <thead>
+            <tr>
+              <th style="padding-left: 20px">SR#</th>
+              <th>EXPENSE TYPE</th>
+              <th>SERVICE PROVIDER</th>
+              <th>
+                EXPENSE AMOUNT ({{
+                  isExport
+                    ? getUomByName("exportCost")
+                    : getUomByName("importCost")
+                }})
+              </th>
+              <th>INVOICE</th>
+              <th>CHECK #</th>
+              <th>PAYMENT STATUS</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="getFilteredMiscellaneousExpenses()?.length == 0">
+              <td style="padding-left: 20px"></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <dadyin-button
+                  (clicked)="addInmiscellaneousExpensesExpense()"
+                  [theme]="'borderless-primary'"
+                  type="icon"
+                  [typeval]="'add_circle_outline'"
+                ></dadyin-button>
+              </td>
+            </tr>
+            <ng-container
+              *ngFor="
+                let miscellaneousExpense of miscellaneousExpenses.controls;
+                let i = index
+              "
+              [formGroup]="miscellaneousExpense"
+            >
+              <tr
+                *ngIf="
+                  miscellaneousExpense.get('addedByBusinessAccountId').value ==
+                  this.currentBusinessAccount?.id
+                "
+              >
+                <td style="padding-left: 20px">
+                  {{
+                    getFilteredMiscellaneousExpenses()?.length -
+                      (miscellaneousExpenses.controls?.length - i) +
+                      1
+                  }}.
+                </td>
+                <td>
+                  <div
+                    *ngIf="
+                      getExpenseTypeCategory(
+                        miscellaneousExpense.get('containerExpenseTypeId').value
+                      )
+                    "
+                  >
+                    {{
+                      getExpenseTypeName(
+                        miscellaneousExpense.get("containerExpenseTypeId").value
+                      )
+                    }}
+                  </div>
+                  <select
+                    (change)="
+                      miscellaneousExpense.get('amountPayableTo')?.reset()
+                    "
+                    *ngIf="
+                      !getExpenseTypeCategory(
+                        miscellaneousExpense.get('containerExpenseTypeId').value
+                      )
+                    "
+                    formControlName="containerExpenseTypeId"
+                  >
+                    <option value="null" disabled selected>
+                      Select Expense Type
+                    </option>
+                    <ng-container
+                      *ngFor="
+                        let type of filterExpenseTypes(
+                          containerService.expenseTypes,
+                          i
+                        )
+                      "
+                    >
+                      <option
+                        [value]="type.id"
+                        [disabled]="
+                          miscellaneousExpense.get('fromContacts').value
+                        "
+                      >
+                        {{ type.description }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [ngClass]="{
+                      'bg-grey':
+                        !miscellaneousExpense.get('containerExpenseTypeId')
+                          .value ||
+                        miscellaneousExpense.get('fromContacts').value
+                    }"
+                    [readonly]="
+                      !miscellaneousExpense.get('containerExpenseTypeId')
+                        .value || miscellaneousExpense.get('fromContacts').value
+                    "
+                    formControlName="amountPayableTo"
+                    (change)="
+                      onSelectServiceProvider(
+                        $event.target.value,
+                        miscellaneousExpense
+                      )
+                    "
+                    [matAutocomplete]="auto"
+                    class="example-input"
+                  />
+                  <mat-autocomplete
+                    autoActiveFirstOption
+                    #auto="matAutocomplete"
+                  >
+                    <mat-option
+                      (click)="
+                        onSelectServiceProvider(
+                          type.amountPayableTo,
+                          miscellaneousExpense
+                        )
+                      "
+                      *ngFor="
+                        let type of filterLabourList(
+                          containerService.labourList,
+                          miscellaneousExpense.get('containerExpenseTypeId')
+                            .value
+                        )
+                      "
+                      [value]="type.amountPayableTo"
+                    >
+                      {{ type.amountPayableTo }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </td>
+                <td formGroupName="cost">
+                  <input
+                    (change)="calculate.emit()"
+                    [ngClass]="{
+                      'bg-grey': miscellaneousExpense.get('fromContacts').value
+                    }"
+                    [readonly]="miscellaneousExpense.get('fromContacts').value"
+                    formControlName="attributeValue"
+                    type="number"
+                    min="0"
+                  />
+                </td>
+                <td>
+                  <input formControlName="invoiceNumber" type="text" />
+                </td>
+                <td>
+                  <input formControlName="checkNumber" type="text" />
+                </td>
+
+                <td>
+                  <select (change)="calculate.emit()" formControlName="status">
+                    <option
+                      [disabled]="
+                        miscellaneousExpense.get('fromContacts').value
+                      "
+                      value="PAID"
+                    >
+                      PAID
+                    </option>
+                    <option
+                      [disabled]="
+                        miscellaneousExpense.get('fromContacts').value
+                      "
+                      value="UNPAID"
+                    >
+                      UNPAID
+                    </option>
+                  </select>
+                </td>
+                <td>
+                  <dadyin-button
+                    *ngIf="
+                      !getExpenseTypeCategory(
+                        miscellaneousExpense.get('containerExpenseTypeId').value
+                      )
+                    "
+                    (clicked)="removeInmiscellaneousExpensesExpense(i)"
+                    [theme]="'borderless-danger'"
+                    type="icon"
+                    [typeval]="'delete_outline'"
+                  >
+                  </dadyin-button>
+                  <dadyin-button
+                    *ngIf="miscellaneousExpenses.controls?.length == i + 1"
+                    (clicked)="addInmiscellaneousExpensesExpense()"
+                    [theme]="'borderless-primary'"
+                    type="icon"
+                    [typeval]="'add_circle_outline'"
+                  >
+                  </dadyin-button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    class="panel-no-padding mt-4"
+    expanded="true"
+    #expansionPanel3
+  >
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
+      <mat-panel-description>
+        <div class=" w-100 title-text">Product/Po Wise Expenses</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div style="padding-left: 20px" class="row align-items-center py-2">
+        <div class="attribute tabular-sheet col-2">
+          <div class="attribute-input bg-white">
+            <div class="toggle width-perc-100">
+              <button
+                (click)="expenseView = 'Product'"
+                class="width-perc-50"
+                [ngClass]="{ active: expenseView == 'Product' }"
+              >
+                Product Wise
+              </button>
+              <button
+                (click)="expenseView = 'Order'"
+                class="width-perc-50"
+                [ngClass]="{ active: expenseView == 'Order' }"
+              >
+                Order Wise
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-1"></div>
+        <div
+          formGroupName="containerExpense"
+          class="col-5 d-flex align-items-center"
+        >
+          <div class="primary-text width-perc-70">
+            <strong>
+              Expenses Value considered for cost calculation based on
+            </strong>
+          </div>
+          <div class="attribute one width-perc-30">
+            <div class="attribute-select">
+              <select
+                (change)="calculateValues()"
+                formControlName="expenseCalculatorType"
+              >
+                <option value="AVERAGE">AVERAGE</option>
+                <option value="MAXIMUM">MAXIMUM</option>
+                <option value="LOWEST">LOWEST</option>
+                <option value="PER_SKU">PER SKU</option>
+                <option value="BY_PERCENT">BY PERCENTAGE</option>
+                <option value="BY_WEIGHT">BY WEIGHT</option>
+                <option value="BY_VOLUME">BY VOLUME</option>
+                <option value="BY_CONTAINER">BY CONTAINER</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3 d-flex align-items-center">
+          <div class="primary-text width-perc-60">
+            <strong> Single Product in Container </strong>
+          </div>
+          <div class="attribute one width-perc-30">
+            <label for="">Container Size</label>
+            <div class="attribute-select">
+              <select>
+                <option
+                  *ngFor="let item of containerService.containerTypesList"
+                  [value]="item.id"
+                >
+                  {{ item.description }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        *ngIf="expenseView === 'Product'"
+        class="process-table table-td-pad alternate-row"
+      >
+        <table>
+          <thead>
+            <tr>
+              <th style="padding-left: 20px" class="b-light"></th>
+              <th class="b-light"></th>
+              <th class="b-light"></th>
+              <th colspan="5" class="b-light text-center">
+                CALCULATED PER SKU EXPENSES FOR CONTAINER
+              </th>
+              <th colspan="2" class="b-light text-center">
+                CONSIDERED PER SKU EXPENSES
+              </th>
+              <th class="b-light"></th>
+            </tr>
+            <tr>
+              <th style="padding-left: 20px" class="b-light">SR#</th>
+              <th class="b-light">PRODUCT</th>
+              <th class="b-light">PURCHASE ORDER</th>
+              <th class="bg-white b-light">PER %</th>
+              <th class="bg-white b-light">PER KG</th>
+              <th class="bg-white b-light">PER CBM</th>
+              <th class="bg-white b-light">PER SKU</th>
+              <th class="bg-white b-light">EXP/ SKU (40FT ONLY)</th>
+              <th class="bg-white b-light">CONSIDERED EXP/ SKU</th>
+              <th class="bg-white b-light">COST/ SKU</th>
+              <th class="b-light">UNITS/ 40FT HQ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container
+              *ngFor="let order of containerOrders?.controls; let i = index"
+            >
+              <tr
+                *ngFor="
+                  let product of getContainerProducts(i).controls;
+                  let j = index
+                "
+              >
+                <td style="padding-left: 20px !important">{{ i + 1 }}.</td>
+                <td>
+                  {{ product.get("productId").value }}
+                </td>
+                <td>
+                  {{ order.get("purchaseOrderId").value }}
+                </td>
+                <td>
+                  {{
+                    product.get("expenseByPercent").get("attributeValue").value
+                  }}
+                </td>
+                <td>
+                  {{
+                    product.get("expenseByWeight").get("attributeValue").value
+                  }}
+                </td>
+                <td>
+                  {{
+                    product.get("expenseByVolume").get("attributeValue").value
+                  }}
+                </td>
+                <td>
+                  {{ product.get("expenseBySKU").get("attributeValue").value }}
+                </td>
+                <td>
+                  {{
+                    product.get("expenseByContainer").get("attributeValue")
+                      .value
+                  }}
+                </td>
+                <td class="bg-light">
+                  {{ product.get("expense").get("attributeValue").value }}
+                </td>
+                <td class="bg-light">missing</td>
+                <td>
+                  {{ product.get("unitsPerContainer").value }}
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        *ngIf="expenseView === 'Order'"
+        class="process-table table-td-pad alternate-row"
+      >
+        <table>
+          <thead>
+            <tr>
+              <th style="padding-left: 20px">SR#</th>
+              <th>PURCHASE ORDER</th>
+              <th>% WISE</th>
+              <th>PER KG</th>
+              <th>PER CBM</th>
+              <th>PER SKU</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container
+              *ngFor="let order of containerOrders?.controls; let i = index"
+            >
+              <tr>
+                <td style="padding-left: 20px !important">{{ i + 1 }}.</td>
+                <td class="d-flex align-items-center">
+                  <div class="width-perc-90">
+                    {{ order.get("purchaseOrderId").value }}
+                  </div>
+                  <div class="bg-light px-1 width-perc-10">
+                    <span
+                      [ngStyle]="{
+                        color:
+                          order
+                            .get('purchaseOrderDetail')
+                            .get('odometer')
+                            .get('odometerType').value == 'Weight'
+                            ? '#03266d'
+                            : '#3E7FFF'
+                      }"
+                    >
+                      {{
+                        order
+                          .get("purchaseOrderDetail")
+                          .get("odometer")
+                          .get("odometerType").value | slice : 0 : 1
+                      }}</span
+                    >{{
+                      order
+                        .get("purchaseOrderDetail")
+                        .get("odometer")
+                        .get("value").value
+                    }}
+                  </div>
+                </td>
+                <td>
+                  {{ order.get("expenseByPercent").value }}
+                </td>
+                <td>
+                  {{ order.get("expenseByWeight").value }}
+                </td>
+                <td>
+                  {{ order.get("expenseByVolume").value }}
+                </td>
+                <td>
+                  {{ order.get("expenseBySKU").value }}
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+</form>

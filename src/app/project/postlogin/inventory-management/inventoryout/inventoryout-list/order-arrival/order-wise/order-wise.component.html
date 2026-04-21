@@ -1,0 +1,24 @@
+
+  
+  <div class="my-2">
+    <app-date-scroll *ngIf="selectedDate" [initialDate]="selectedDate" (dateSelected)="onDateChange($event)"></app-date-scroll>
+  </div>
+  
+  <div class="content-wrapper mt-2">
+    <data-table [data]="list" [headers]="orderWiseHeader"
+      [searchTerm]="filterValue" [pageConfig]="pageConfig" (editData)="editRecord($event)" (sortChange)="sort($event)"
+      [actions]="tabelActions" (pageChange)="pageChange($event)" (actionClick)="onActionClick($event)">
+    </data-table>
+  </div>
+  
+  <div class="content-wrapper mt-2">
+    <div class="toolbar">
+      <div class="title-text ">
+        Recently Added to inventory
+      </div>
+    </div>
+    <data-table [data]="recentlyAddedList" [headers]="orderWiseHeader"
+      [searchTerm]="filterValue" [pageConfig]="pageConfig" (editData)="editRecord($event)" (sortChange)="sort($event)"
+      [actions]="tabelActions" (pageChange)="pageChange($event)" (actionClick)="onActionClick($event)">
+    </data-table>
+  </div>

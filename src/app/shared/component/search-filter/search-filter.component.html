@@ -1,0 +1,41 @@
+<div class="w-100">
+  <div
+    class="d-flex b-round b-light justify-content-between align-items-center"
+    style="min-width: 100px"
+  >
+    <div class="d-flex w-100 align-items-center">
+      <input
+        #searchInput
+        [formControl]="searchControl"
+        class="py-0 w-100"
+        (input)="onInput($event.target.value)"
+        [placeholder]="placeholder"
+      />
+      <div
+        *ngIf="searchInput.value"
+        (click)="clearSearchValue(searchInput)"
+        class="mx-cursor"
+      >
+        <mat-icon class="input-clear-icon mt-2">clear</mat-icon>
+      </div>
+    </div>
+
+    <div
+      (click)="onInput(searchInput.value)"
+      class="mx-cursor-pointer d-flex px-2 align-items-center"
+    >
+      <mat-icon style="width: 20px; height: 20px" class="input-clear-icon"
+        >search</mat-icon
+      >
+    </div>
+  </div>
+  <button
+    class="mx-search-filter-icons"
+    *ngIf="advSearchConfig"
+    (click)="toggleFilter()"
+    mat-icon-button
+    [class.active-btn]="filterToggle"
+  >
+    <mat-icon>filter_list</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,65 @@
+<div class="app-container  ">
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button (clicked)="navigate('/home/system-config/order-management?currentStepIndex=1')" class="header-icon" [theme]="'default'" type='icon'
+        [typeval]="'arrow_circle_left'">
+      </dadyin-button>
+      <div class="content-title">
+        <label>New Notes</label>
+      </div>
+      <div class="content-info">
+
+      </div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+
+      <dadyin-button [theme]="'primary'" label="Save" (clicked)="saveNotes()">
+      </dadyin-button>
+
+    </div>
+  </div>
+
+
+  <div>
+    <div class="app-content">
+      <form [formGroup]="noteForm">
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header>
+            <mat-panel-description>
+              <div class="w-100 title-text">Add New Note</div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row p-0 py-3 ">
+            <div class="col-4">
+              <dadyin-input inputType="string" formControlName="note_title" label="Add note title" [isClearable]=false>
+              </dadyin-input>
+
+              <ng-select class="custom" [closeOnSelect]="true" [hideSelected]="true" appendTo="body" 
+                [items]="allTransactionCategories" [formControl]="transaction_categories" [multiple]="true"
+                placeholder="Select Transaction Category" bindValue="id" bindLabel="description" [clearable]="false">
+                <ng-template ng-header-tmp>
+                  <div class="d-flex align-items-center">
+                    <input (change)="onOption($event)" type="checkbox">
+                    <div class="mx-2"> Select All </div>
+                  </div>
+                </ng-template>
+              </ng-select>
+            </div>
+            <div class="col-8">
+              <dadyin-input rows="30" inputType="textarea" formControlName="description" label="Note description"
+                [isClearable]=false>
+              </dadyin-input>
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+
+
+      </form>
+    </div>
+  </div>
+
+
+
+</div>

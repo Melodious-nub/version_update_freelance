@@ -1,0 +1,107 @@
+<div class="payment-section">
+    <div class="row">
+        <div class="col-5">
+            <div class="d-flex align-items-center gap-2 mb-4 cursor-pointer back-btn" (click)="goBack()">
+                <span class="material-symbols-outlined">
+                    arrow_back
+                </span>
+                <span>Back to Pricing</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="subscribe-text">Subscribe to</div>
+                    <div><img src="{{selectedPaymentData?.logo}}"></div>
+                </div>
+                <div><span class="price">{{selectedPaymentData?.priceText}}.00</span> <span
+                        class="price-sub-text">/{{selectedPaymentData?.type}}</span></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-start paid-users">
+                <div>
+                    <div class="d-flex gap-2 align-items-center"><span class="paid-user-text">DadyIn Setup Fees</span>
+                    </div>
+                    <div class="billed-text">One time onboarding fees-no recurring costs</div>
+                </div>
+                <div class="paid-amount">+ ${{setupCostAmount | number:'1.2-2'}}</div>
+            </div>
+            <div class="border"></div>
+            <div>
+                <div class="plan-text">Plan</div>
+                <div class="plan-subscribe-text">Dadyin Elite</div>
+            </div>
+            <div class="mt-4">
+                <div class="billing-text">Billing</div>
+                <div class="plan-subscribe-text">Monthly</div>
+                <div class="price-sub-text">Billed monthly on 28th of each month</div>
+            </div>
+            <div class="border"></div>
+            <div class="d-flex gap-4 align-items-center">
+                <div class="d-flex b-round b-light justify-content-between align-items-center coupen-container">
+                    <div class="d-flex w-100 align-items-center">
+                        <input class="py-0 w-100 code-input" placeholder="Code" [(ngModel)]="promoCode" />
+                    </div>
+
+                    <div class="mx-cursor-pointer d-flex px-2 align-items-center apply-btn">
+                        <div (click)="applyCoupen()" *ngIf="!isCoupenApplied || (isCoupenApplied && !isPromoSuccess)">
+                            Apply</div>
+                        <div (click)="removeCoupen()" *ngIf="isCoupenApplied && isPromoSuccess">Remove</div>
+                    </div>
+                </div>
+                <div class="promo-text" *ngIf="isCoupenApplied && isPromoSuccess">
+                    <div>Congrats! Promo Code applied</div>
+                    <div>You just saved ${{discountAmount | number:'1.2-2'}}</div>
+                </div>
+            </div>
+            <div class="border"></div>
+            <div *ngIf="isCoupenApplied && isPromoSuccess">
+                <div class="d-flex justify-content-between align-items-start total-due mt-4">
+                    <div>
+                        <div class="item-total">Item Total</div>
+                    </div>
+                    <div class="price-cost">
+                        <span *ngIf="isCoupenApplied && isPromoSuccess">
+                            ${{selectedPaymentData?.priceCost | number:'1.2-2'}}
+                        </span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-start total-due mt-3">
+                    <div>
+                        <div class="discount-text">Discount applied</div>
+                    </div>
+                    <div class="discount-amount">-${{discountAmount | number:'1.2-2'}}</div>
+                </div>
+            </div>
+            <div class="border" *ngIf="isCoupenApplied && isPromoSuccess"></div>
+            <div class="d-flex justify-content-between align-items-start total-due mt-3">
+                <div>
+                    <div class="due-text">Total due today</div>
+                    <div class="price-sub-text">You'll be charged
+                        {{selectedPaymentData?.priceText}}.00 (USD)
+                        {{selectedPaymentData?.type === 'Year' ? 'yearly' : 'monthly'}}
+                        until you cancel the
+                        subscription.</div>
+                </div>
+                <div class="cost-text">${{finalPayment | number:'1.2-2'}}</div>
+            </div>
+        </div>
+        <div class="col-7 payment-container">
+            <div style="overflow: auto;" class="p-2 b-round">
+                <form id="payment-form">
+                    <div id="link-authentication-element">
+                        <!--Stripe.js injects the Link Authentication Element-->
+                    </div>
+                    <div id="payment-element">
+                        <!--Stripe.js injects the Payment Element-->
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center">
+                        <button class="btn subscribe-btn" (click)="handleSubmit($event)" id="submit">
+                            <div class="spinner hidden" id="spinner"></div>
+                            <span id="button-text">Subscribe</span>
+                        </button>
+                    </div>
+
+                    <div id="payment-message" style="color: red" class="hidden"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

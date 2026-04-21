@@ -1,0 +1,23 @@
+<div class="dialog-container">
+  <div class="dialog-card-header">
+    <h3> Select Product Type</h3>
+  </div>
+
+  <div class="card-body">
+    <div class="process-input-output">
+      <div class="input">
+        <select id="type" [formControl]="subProductType" >
+          <option disabled selected> Select Product Type</option>
+          <ng-container *ngFor="let p of apiService.productTypes">
+            <option [value]="p.id">{{ p.description }}</option>
+          </ng-container>
+        </select>
+      </div>
+     </div>
+    </div>
+    </div>
+
+    <div class="dialog-buttons">
+      <button class="secondry" mat-button mat-dialog-close>Cancel</button>
+      <button class="primary" mat-button (click)="onClose()" cdkFocusInitial>Save</button>
+    </div>

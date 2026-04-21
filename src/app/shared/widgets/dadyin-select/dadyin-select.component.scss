@@ -1,0 +1,39 @@
+::ng-deep tk-select-check-all .mat-checkbox-layout,
+::ng-deep tk-select-check-all .mat-checkbox-label {
+    width: 100% !important;
+}
+
+.span {
+    font-size: x-small;
+    float: right;
+}
+
+.selected-activity {
+    background-color: #a8a8ff !important;
+}
+
+.submitted-activity-label {
+    position: relative;
+    padding: 0 10px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        background-color: #a8a8ff;
+        border-radius: 50%;
+        left: 0;
+        top: 3px;
+    }
+}
+
+.error {
+    color: red;
+    font-size: x-small;
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    bottom: 26px;
+}
+

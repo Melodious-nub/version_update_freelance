@@ -1,0 +1,19 @@
+<div class="{{class}}">
+    <mat-form-field appearance="outline">
+        <mat-label>{{label }}</mat-label>
+        <input matInput *ngIf="control" [formControl]="control" [matDatepickerFilter]="myFilter"
+            (dateInput)="writeValue($event)" (dateChange)="writeValue($event)" [matDatepicker]="dp"
+            [autocomplete]="'Off'" [min]="hasMinDate ? minDate : null" [max]="hasMaxDate ? maxDate : null"
+            [attr.required]="isRequired">
+        <mat-hint align="start">(DD/MM/YYYY)</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp>
+            <mat-datepicker-actions *ngIf="showActionBtn">
+                <button mat-button matDatepickerCancel>{{cancelBtn}}</button>
+                <button mat-raised-button color="primary" matDatepickerApply
+                    (click)="actionBtnClicked()">{{actionBtn}}</button>
+            </mat-datepicker-actions>
+        </mat-datepicker>
+        <mat-error *ngIf="showFieldError()">{{getFieldErrorDesc()}}</mat-error>
+    </mat-form-field>
+</div>

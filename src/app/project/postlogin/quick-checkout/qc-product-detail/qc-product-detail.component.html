@@ -1,0 +1,696 @@
+<div>
+  <div
+    class="d-flex flex-wrap justify-content-start text-center bg-light fw-bold px-2 b-all"
+  >
+    <div class="d-flex align-items-center">
+      <dadyin-button
+        (clicked)="closeDialog()"
+        [theme]="'borderless-primary'"
+        type="icon"
+        [typeval]="'arrow_back_ios'"
+      >
+      </dadyin-button>
+    </div>
+    <div class="text-start mx-2">
+      <div>
+        <b> {{ data.productData.value.productDetails.productCode }}</b>
+      </div>
+      <small>{{ data.productData.value.productDetails.description }}</small>
+    </div>
+  </div>
+
+  <div class="row my-2 mx-auto">
+    <div class="col-12 col-md-4">
+      <mat-expansion-panel
+        expanded="true"
+        #expansionPanel1
+        class="my-1 panel-no-padding b-dark"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title style="padding-right: 16px">
+            Product Details
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="bg-white b-light p-2">
+          <div class="bg-light" style="height: 300px; position: relative">
+            <section *ngIf="productDetail?.productImageFileNames">
+              <swiper navigation="true" pagination="true" slidesPerView="1">
+                <ng-container
+                  *ngFor="
+                    let file of productDetail?.productImageFileNames;
+                    let i = index
+                  "
+                >
+                  <ng-template swiperSlide>
+                    <img
+                      style="cursor: zoom-in; object-fit: contain"
+                      (click)="
+                        openImageSlider(productDetail?.productImageFileNames, i)
+                      "
+                      height="300px"
+                      width="100%"
+                      [src]="imgUrl + file"
+                      alt=""
+                    />
+                  </ng-template>
+                </ng-container>
+              </swiper>
+            </section>
+          </div>
+          <div class="bg-light"></div>
+        </div>
+        <div class="bg-white b-light p-2">
+          <div
+            class="d-flex align-items-center justify-content-between bg-white"
+          >
+            <div class="fw-bold font-size-14 primary-text">
+              {{ data.productData.value.productDetails.productCode }}
+            </div>
+            <div class="d-flex align-items-center">
+              <div>
+                <mat-icon class="star-icon-size primary-text mt-1"
+                  >star</mat-icon
+                >
+              </div>
+
+              <div class="mx-2 text-center">
+                <b class="text-primary font-size-14">{{ data.rating }} / </b>
+                <small class="text-muted font-size-14">
+                  {{ 200 + (data.rating * 10 + 7) * 13 }}</small
+                >
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-start">
+            <div
+              *ngIf="!customisationOption"
+              class="text-muted mt-2 font-size-14 fw-bold mx-1"
+            >
+              <span>
+                {{ data.productData.value.productDetails?.numberOfItems }}
+                {{ this.productDetail?.unitName }}/{{
+                  this.productDetail?.skuPackageType
+                }}
+              </span>
+            </div>
+            <div
+              class="text-muted mt-2 font-size-14  mx-1"
+              *ngIf="this.productDetail?.numberInPallet > 0"
+            >
+              ( {{ this.productDetail?.numberInPallet }}
+              {{ this.productDetail?.skuPackageType }}/PALLET )
+            </div>
+          </div>
+        </div>
+        <div class="bg-white b-light p-2">
+          <b class="primary-text font-size-16 my-4">Product details</b>
+          <div class="font-size-14 my-2">
+            {{ data.productData.value.productDetails.description }}
+          </div>
+
+          <b class="primary-text font-size-16 my-4">Product Attributes</b>
+          <div class="font-size-14 product-attribute-section">
+            <div
+              class="my-2"
+              *ngFor="let productattribute of productDetail?.productAttributes"
+            >
+              <div
+                *ngIf="
+                  ![
+                    'Net Cost',
+                    'Cost',
+                    'Total Cost',
+                    'Size',
+                    'Calculated Cost',
+                    'Metric Cost',
+                    'Gross Cost'
+                  ]?.includes(
+                    this.getAttributeObjectById(productattribute?.attributeId)
+                      ?.description
+                  ) &&
+                  productattribute?.isHidden != true &&
+                  productattribute?.attributeValue
+                "
+                class="d-flex align-items-center"
+              >
+                <div style="width: 200px">
+                  <b
+                    >{{
+                      this.getAttributeObjectById(productattribute?.attributeId)
+                        ?.description
+                    }}
+                    :
+                  </b>
+                </div>
+                <div
+                  *ngIf="
+                    !['number', 'string', 'extended'].includes(
+                      productattribute.userConversionUom
+                    )
+                  "
+                >
+                  {{ productattribute?.attributeValue | numberFormatter : 3 }}
+                  &nbsp;
+                  <span> {{ productattribute?.userConversionUom }} </span>
+                </div>
+                <div
+                  *ngIf="
+                    ['number'].includes(productattribute.userConversionUom)
+                  "
+                >
+                  {{ productattribute?.attributeValue | numberFormatter : 3 }}
+                </div>
+                <div
+                  *ngIf="
+                    ['string', 'extended'].includes(
+                      productattribute.userConversionUom
+                    )
+                  "
+                >
+                  {{ productattribute?.attributeValue }}
+                </div>
+                <div
+                  *ngIf="
+                    ['Dropdown', 'Toggle'].includes(
+                      getAttributeTypeObjectById(
+                        this.getAttributeObjectById(
+                          productattribute?.attributeId
+                        )?.attributeTypeId
+                      )?.description
+                    )
+                  "
+                >
+                  <ng-container
+                    *ngFor="
+                      let it of getArray(
+                        this.getAttributeObjectById(
+                          productattribute?.attributeId
+                        )?.attributeValueExpression
+                      )
+                    "
+                  >
+                    <span *ngIf="it.selected"> {{ it.choice }} </span>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </div>
+
+    <div class="col-12 col-md-8">
+      <div>
+        <mat-expansion-panel
+          expanded="true"
+          #expansionPanel2
+          *ngIf="customisationOption && !data.isMyProduct"
+          class="my-1 panel-no-padding b-dark"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title style="padding-right: 16px">
+              Customization options
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="b-light p-2">
+            <div class="row mb-3">
+              <div class="col-12 col-md-6" *ngIf="getAttributeControlById(45)">
+                <div class="attribute one attr-b">
+                  <label>
+                    {{ this.getAttributeObjectById(45)?.description }}</label
+                  >
+                  <div class="attribute-input">
+                    <select
+                      [formControl]="
+                        getAttributeControlById(45).get('attributeValue')
+                      "
+                      class="width-perc-100 bg-white"
+                    >
+                      <option
+                        *ngFor="
+                          let opt of getArray(
+                            getAttributeById(45)?.attributeValueExpression
+                          );
+                          let i = index;
+                          trackBy: trackByFn
+                        "
+                        [value]="opt?.choice"
+                      >
+                        {{ opt?.choice }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6" *ngIf="getAttributeControlById(47)">
+                <div class="attribute one attr-b">
+                  <label>
+                    {{ this.getAttributeObjectById(47)?.description }}</label
+                  >
+                  <div class="attribute-input">
+                    <select
+                      [formControl]="
+                        getAttributeControlById(47).get('attributeValue')
+                      "
+                      class="width-perc-100 bg-white"
+                    >
+                      <option
+                        *ngFor="
+                          let opt of getArray(
+                            getAttributeById(47)?.attributeValueExpression
+                          );
+                          let i = index;
+                          trackBy: trackByFn
+                        "
+                        [value]="opt?.choice"
+                      >
+                        {{ opt?.choice }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-left font-size-16 mb-4">
+              <b class="text-primary"> Upload main content </b>
+              <i
+                class="material-icon mx-1 mt-2"
+                matTooltip="Customisation Info"
+                (mouseenter)="openCustomizeGuideline()"
+                >info_outline</i
+              >
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-md-6" *ngIf="getAttributeControlById(48)">
+                <div class="attribute one attr-b">
+                  <label>
+                    {{ this.getAttributeObjectById(48)?.description }}</label
+                  >
+                  <div class="attribute-input">
+                    <select
+                      [formControl]="
+                        getAttributeControlById(48).get('attributeValue')
+                      "
+                      class="width-perc-100 bg-white"
+                    >
+                      <option
+                        *ngFor="
+                          let opt of getArray(
+                            getAttributeById(48)?.attributeValueExpression
+                          );
+                          let i = index;
+                          trackBy: trackByFn
+                        "
+                        [value]="opt?.choice"
+                      >
+                        {{ opt?.choice }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6" *ngIf="getAttributeControlById(49)">
+                <div class="attribute tabular-sheet">
+                  <div class="toggle">
+                    <button
+                      (click)="toggleAttribute(getAttributeById(49), 0)"
+                      [ngClass]="{
+                        active:
+                          getArray(
+                            getAttributeById(49)?.attributeValueExpression
+                          )[0]?.selected == true
+                      }"
+                      class="w-100"
+                    >
+                      {{
+                        getArray(
+                          getAttributeById(49)?.attributeValueExpression
+                        )[0]?.choice
+                      }}
+                    </button>
+                    <button
+                      class="w-100"
+                      (click)="toggleAttribute(getAttributeById(49), 1)"
+                      [ngClass]="{
+                        active:
+                          getArray(
+                            getAttributeById(49)?.attributeValueExpression
+                          )[1]?.selected == true
+                      }"
+                    >
+                      {{
+                        getArray(
+                          getAttributeById(49)?.attributeValueExpression
+                        )[1]?.choice
+                      }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6" *ngIf="getAttributeControlById(50)">
+                <input
+                  (change)="imageselected($event)"
+                  type="file"
+                  multiple="false"
+                  style="display: none !important"
+                  #fileinp
+                  accept=".jpg, .jpeg, .png"
+                />
+                <div class="file-box b-round b-all" (click)="fileinp.click()">
+                  <i class="material-icon">upload</i>
+                  <div>Upload logo</div>
+                </div>
+                <div
+                  class="mb-2"
+                  style="width: 20%"
+                  *ngIf="
+                    getAttributeControlById(50).get('attributeValue').value
+                  "
+                >
+                  <img
+                    height="80px"
+                    width="80px"
+                    [src]="
+                      imgUrl +
+                      getAttributeControlById(50).get('attributeValue').value
+                    "
+                    alt=""
+                  />
+                </div>
+
+                <dadyin-button
+                  (clicked)="fileinp.click()"
+                  class="w-100"
+                  label="Upload Logo"
+                  [theme]="'secondary'"
+                >
+                </dadyin-button>
+              </div>
+              <div
+                class="col-12 col-md-6 py-2 mt-2"
+                *ngIf="getAttributeControlById(51)"
+              >
+                <div class="attribute one attr-b">
+                  <label>Type content you want to print </label>
+                  <div class="attribute-input">
+                    <textarea
+                      [formControl]="
+                        getAttributeControlById(51).get('attributeValue')
+                      "
+                    >
+                    </textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel
+          expanded="true"
+          #expansionPanel3
+          class="my-1 panel-no-padding b-dark"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title style="padding-right: 16px">
+              Pricing Options
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div
+            *ngIf="!customisationOption"
+            class="process-table my-1 b-light"
+            style="overflow: auto"
+          >
+            <table style="min-width: max-content">
+              <thead>
+                <tr class="bg-primary-light">
+                  <th class="text-center">
+                    {{ this.productDetail?.skuPackageType }} Qty's
+                  </th>
+                  <th class="text-primary text-center">
+                    {{ this.productDetail?.skuPackageType }} Price
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container
+                  *ngFor="
+                    let tierPricing of productDetail?.tierPricingDetail
+                      ?.tierPricingQuickCheckout
+                      | sortNumberProperty : 'minimumQuantity'
+                  "
+                >
+                  <tr>
+                    <td
+                      (click)="onClickQuantity(tierPricing.minimumQuantity)"
+                      class="b-light py-1 primary-text text-center"
+                      *ngIf="
+                        !['TRUCK', 'CONTAINER']?.includes(tierPricing?.skuType)
+                      "
+                    >
+                      <ng-container *ngIf="tierPricing.minimumQuantity">
+                        {{ tierPricing.minimumQuantity }} -
+                        {{ tierPricing.maximumQuantity }}
+                      </ng-container>
+                      {{ tierPricing?.skuType }}
+                    </td>
+
+                    <td
+                      class="text-center b-light"
+                      *ngIf="
+                        !['TRUCK', 'CONTAINER']?.includes(tierPricing?.skuType)
+                      "
+                      [matTooltip]="
+                        data.isSelfProduct
+                          ? 'Please Request Vendor For Pricing'
+                          : ''
+                      "
+                    >
+                      {{
+                        data.isSelfProduct
+                          ? "-"
+                          : (tierPricing?.tierCost?.attributeValue
+                            | numberFormatter : 3)
+                      }}
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+
+          <div *ngIf="customisationOption" class="process-table m-1 b-light">
+            <table style="table-layout: unset">
+              <thead>
+                <tr>
+                  <th class="bg-primary-light text-center">SKU Qty</th>
+                  <th class="text-center bg-primary-light" colspan="3">
+                    SKU Price
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="bg-light primary-text text-center">
+                    Order Delivery
+                  </td>
+                  <ng-container
+                    *ngFor="
+                      let deliveryPricing of productDetail?.tierPricingDetail
+                        ?.tierPricingCustomization[0]?.deliveryPricing;
+                      let i = index
+                    "
+                  >
+                    <td class="b-light bg-light">
+                      <div
+                        class="b-none px-1 text-center"
+                        (click)="
+                          onClickNumberOfDays(deliveryPricing?.numberOfDays)
+                        "
+                        [ngClass]="{
+                          'active-price':
+                            deliveryPricing?.numberOfDays ==
+                            orderDelivery?.value
+                        }"
+                      >
+                        {{
+                          purchaseOrderService.daysFreightMap[
+                            deliveryPricing?.numberOfDays
+                          ]
+                        }}
+                        ({{ deliveryPricing?.numberOfDays }} days)
+                      </div>
+                    </td>
+                  </ng-container>
+                </tr>
+                <tr
+                  *ngFor="
+                    let tierPricing of productDetail?.tierPricingDetail
+                      ?.tierPricingCustomization
+                      | sortNumberProperty : 'minimumQuantity'
+                  "
+                >
+                  <td class="bg-light px-2 py-1 b-light text-center">
+                    <div
+                      class="b-none text-center"
+                      (click)="onClickQuantity(tierPricing.minimumQuantity)"
+                      [ngClass]="{
+                        'active-price':
+                          tierPricing?.minimumQuantity ==
+                          data.productData.value.skuQuantities
+                      }"
+                    >
+                      {{ tierPricing.minimumQuantity }}
+                    </div>
+                  </td>
+                  <ng-container
+                    *ngFor="
+                      let deliveryPricing of productDetail?.tierPricingDetail
+                        ?.tierPricingCustomization[0]?.deliveryPricing;
+                      let i = index
+                    "
+                  >
+                    <td
+                      class="width-100 text-center b-light"
+                      [matTooltip]="
+                        data.isSelfProduct
+                          ? 'Please Request Vendor For Pricing'
+                          : ''
+                      "
+                    >
+                      <div
+                        class="b-none px-1 text-center"
+                        (click)="
+                          onClickNumberOfDays(
+                            deliveryPricing?.numberOfDays,
+                            tierPricing.minimumQuantity
+                          )
+                        "
+                        [ngClass]="{
+                          'active-price':
+                            tierPricing?.minimumQuantity ==
+                              data.productData.value.skuQuantities &&
+                            deliveryPricing?.numberOfDays ==
+                              orderDelivery?.value
+                        }"
+                      >
+                        {{
+                          data.isSelfProduct
+                            ? "-"
+                            : (tierPricing?.deliveryPricing[i]?.deliveryCost
+                                ?.attributeValue | numberFormatter : 3)
+                        }}
+                      </div>
+                    </td>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </mat-expansion-panel>
+      </div>
+
+      <div>
+        <div class="p-2 process-table custom">
+          <table style="font-weight: 800">
+            <thead style="background: none">
+              <tr>
+                <!-- <th></th> -->
+                <th style="text-wrap: nowrap">
+                  Qty Required
+                  {{
+                    customisationOption
+                      ? "SKU"
+                      : this.productDetail?.skuPackageType
+                  }}
+                </th>
+                <th>Grand Total</th>
+              </tr>
+            </thead>
+            <tbody class="text-primary">
+              <tr>
+                <td>
+                  <section class="d-flex align-items-center">
+                    <dadyin-button
+                      [theme]="'borderless-white'"
+                      type="icon"
+                      [typeval]="'remove'"
+                      (clicked)="minus()"
+                    ></dadyin-button>
+                    <input
+                      [formControl]="skuQuantities"
+                      (change)="changeQuantity($event)"
+                      type="number"
+                      min="1"
+                      class="text-center w-100 bg-light b-light"
+                    />
+                    <dadyin-button
+                      [theme]="'borderless-white'"
+                      type="icon"
+                      [typeval]="'add_circle_outline'"
+                      (clicked)="plus()"
+                    ></dadyin-button>
+                  </section>
+                </td>
+
+                <td>
+                  <div class="b-none text-center price-text">
+                    {{
+                      this.data.productData.value.totalCost.userConversionUom
+                    }}
+                    {{
+                      this.data.productData.value.totalCost.attributeValue
+                        | numberFormatter : 3
+                    }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div
+          class="p-2 px-3 d-flex align-items-center justify-content-between"
+        >
+          <div class="d-flex justify-content-center align-items-center w-100">
+            <div class="w-50 mx-1">
+              <dadyin-button
+                class="w-100"
+                (clicked)="addProductToOrder()"
+                [isDisabled]="data?.hideAddToOrder"
+                [matTooltip]="
+                  data?.hideAddToOrder
+                    ? 'To add this Product, select this vendor from above'
+                    : null
+                "
+                [label]="
+                  isNotAvailableInTopList ? 'Add to Order' : 'Update Order'
+                "
+                [theme]="'primary'"
+              >
+              </dadyin-button>
+            </div>
+            <div
+              style="text-wrap: nowrap"
+              class="w-100"
+              *ngIf="
+                productDetail?.isCustomizable &&
+                !productDetail?.isNoGenericPurchase
+              "
+            >
+              <dadyin-button
+                (clicked)="toggleCustomisation()"
+                class="w-100"
+                [label]="customisationOption ? 'Generic' : 'Customisation'"
+                [theme]="'secondary'"
+              >
+              </dadyin-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="header-wrapper mt-2">
+    <div class="row">
+        <div class="col-6">
+            <div class="filters">
+                <!-- <button><img src="assets/img/icons/Filter.svg" alt="" /></button> -->
+                <search-filter (inputChange)="onInput($event)"
+                    [placeholder]="'Search based on Product Type/ SubType/ Product name& code'"></search-filter>
+            </div>
+        </div>
+        <div class="col-6 d-flex justify-content-end align-items-center align-items-center">
+            <div class="action-btns">
+                <dadyin-button [theme]="'primary'" label="Add SubType" (clicked)="navigateToAddSubType()">
+                </dadyin-button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-wrapper mt-2">
+    <data-table [data]="SubTypeDetailsList" [headers]="headers" (editData)="editRecord($event)"
+        [pageConfig]="pageConfig" (sortChange)="sort($event)"  (pageChange)="pageChange($event)" [actions]="tabelActions"
+        (actionClick)="onActionClick($event)" >
+    </data-table>
+</div>

@@ -1,0 +1,141 @@
+<form>
+  <mat-expansion-panel
+    class="panel-no-padding mt-4"
+    expanded="true"
+    #expansionPanel3
+  >
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
+      <mat-panel-description>
+        <div class=" title-text w-100">Document Details</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div class="process-table table-padding">
+        <!-- Material Cost -->
+        <table>
+          <thead>
+            <tr>
+              <th style="padding-left: 20px">SR#</th>
+              <th>DATE</th>
+              <th>DOCUMENT #</th>
+              <th>DOCUMENT NAME</th>
+              <th>PROVIDED BY</th>
+              <th>NOTE IF ANY</th>
+              <th></th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="getFilteredDocuments()?.length == 0">
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>
+                <dadyin-button
+                  (clicked)="addDocument()"
+                  [theme]="'borderless-primary'"
+                  type="icon"
+                  [typeval]="'add_circle_outline'"
+                ></dadyin-button>
+              </th>
+            </tr>
+            <ng-container
+              [formGroup]="document"
+              *ngFor="let document of documents?.controls; let i = index"
+            >
+              <tr
+                *ngIf="
+                  document.get('addedByBusinessAccountId').value ==
+                  this.currentBusinessAccount?.id
+                "
+              >
+                <td style="padding-left: 20px">{{ i + 1 }}.</td>
+                <td>
+                  <input type="text" formControlName="date" />
+                </td>
+                <td>
+                  <input
+                  onKeyPress="if(this.value.length==12) return false;"
+                    type="text"
+                    formControlName="number"
+                  />
+                </td>
+                <td>
+                  <input type="text" formControlName="name" />
+                </td>
+
+                <td>
+                  <input type="text" formControlName="providedBy" />
+                </td>
+                <td class="d-flex">
+                  <input type="text" formControlName="note" />
+                  <div
+                    (click)="fileinp.click()"
+                    class="b-light bg-light d-flex justify-content-center align-items-center width-perc-15"
+                  >
+                    <dadyin-button
+                      [theme]="'borderless-primary'"
+                      type="icon"
+                      typeval="file_upload"
+                      type="icon"
+                    >
+                      upload_outline
+                    </dadyin-button>
+                  </div>
+                  <div
+                    *ngIf="document.get('fileName').value"
+                    (click)="openFile(document)"
+                    class="b-light bg-light d-flex justify-content-center align-items-center width-perc-15"
+                  >
+                    <mat-icon
+                      style="width: 18px; height: unset"
+                      class="primary-text font-size-18"
+                      >visibility</mat-icon
+                    >
+                  </div>
+                  <input
+                    (change)="uploadDocument($event, i)"
+                    type="file"
+                    style="display: none !important"
+                    #fileinp
+                    accept="*"
+                  />
+                </td>
+                <td>
+                  <div
+                    *ngIf="document.get('fileName').value"
+                    style="text-overflow: ellipsis; white-space: nowrap"
+                    class="title-text font-size-10"
+                  >
+                    {{ file?.name }}
+                  </div>
+                </td>
+                <td>
+                  <dadyin-button
+                    *ngIf="documents?.controls.length == i + 1"
+                    (clicked)="addDocument()"
+                    [theme]="'borderless-primary'"
+                    type="icon"
+                    [typeval]="'add_circle_outline'"
+                  ></dadyin-button>
+                  <dadyin-button
+                    (clicked)="removeDocument(i)"
+                    [theme]="'borderless-danger'"
+                    type="icon"
+                    [typeval]="'delete_outline'"
+                  >
+                  </dadyin-button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+</form>

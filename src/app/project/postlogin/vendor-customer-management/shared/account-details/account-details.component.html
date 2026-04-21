@@ -1,0 +1,105 @@
+<div class="app-content" [formGroup]="vendorForm">
+    <form formGroupName="account" >
+        <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+                <mat-panel-description>
+                    <p>Account Manager</p>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="row p-0 ">
+                <div class="col-3">
+                    <dadyin-input inputType="string" formControlName="managerFname" label="Manager First Name"
+                        [isClearable]=false
+                        [isErrorClass]="vendorForm.get('account').get('managerFname').invalid && vendorForm.get('account').get('managerFname').touched">
+                    </dadyin-input>
+                </div>
+                <div class="col-3">
+                    <dadyin-input inputType="string" formControlName="managerLname" label="Manager Last Name"
+                        [isClearable]=false
+                        [isErrorClass]="vendorForm.get('account').get('managerLname').invalid && vendorForm.get('account').get('managerLname').touched">
+                    </dadyin-input>
+                </div>
+                <div class="col-3">
+                    <dadyin-input inputType="Number" formControlName="phoneNumber" label="Phone Number"
+                        [isClearable]=false
+                        [isErrorClass]="vendorForm.get('account').get('phoneNumber').invalid && vendorForm.get('account').get('phoneNumber').touched">
+                    </dadyin-input>
+                </div>
+                <div class="col-3">
+                    <dadyin-input inputType="string" formControlName="email" label="Email" [isClearable]=false
+                    [isErrorClass]="vendorForm.get('account').get('email').invalid && vendorForm.get('account').get('email').touched">
+                    </dadyin-input>
+                </div>
+            </div>
+            <div class="row p-0 ">
+                <div class="col-3">
+                    <dadyin-select class="input-field" [optionArr]="" label="Net Term" optionLabel="name"
+                        optionValue="id" [emptyOption]="'Select Country'"
+                         formControlName="netTermId"
+                         [isErrorClass]="vendorForm.get('account').get('netTermId').invalid && vendorForm.get('account').get('netTermId').touched">
+                    </dadyin-select>
+                </div>
+                <div class="col-3">
+                    <dadyin-input inputType="string" formControlName="netTermLimit" label="Net Term Limit"
+                        [isClearable]=false
+                        [isErrorClass]="vendorForm.get('account').get('netTermLimit').invalid && vendorForm.get('account').get('netTermLimit').touched">
+                    </dadyin-input>
+                </div>
+            </div>
+            <div class="row p-0  ">
+                <div class="col-9">
+                </div>
+                <div class="col-3">
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <!-- <dadyin-input style="width: 78%;" inputType="string" formControlName="addNew"
+                            placeholder="Type new field to add" [isClearable]=false>
+                        </dadyin-input>
+                        <dadyin-button label="Add" [theme]="'secondary'"></dadyin-button> -->
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+                <mat-panel-description>
+                    <p>Account Details</p>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="row p-0 ">
+                <div class="col-3">
+                    <dadyin-input inputType="string" formControlName="ach" label="ACH" [isClearable]=false
+                    [isErrorClass]="vendorForm.get('account').get('ach').invalid && vendorForm.get('account').get('ach').touched">
+                    </dadyin-input>
+                </div>
+                <div class="col-3">
+                    <dadyin-input inputType="string" formControlName="routingNumber" label="Routing Number"
+                        [isClearable]=false
+                        [isErrorClass]="vendorForm.get('account').get('routingNumber').invalid && vendorForm.get('account').get('routingNumber').touched">
+                    </dadyin-input>
+                </div>
+                <div class="col-6">
+                    <dadyin-input inputType="string" formControlName="wireInstructions" label="Wire Instructions"
+                        [isClearable]=false
+                        [isErrorClass]="vendorForm.get('account').get('wireInstructions').invalid && vendorForm.get('account').get('wireInstructions').touched">
+                    </dadyin-input>
+                </div>
+            </div>
+            <div class="row p-0  ">
+                <div class="col-9">
+                </div>
+                <div class="col-3">
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <!-- <dadyin-input style="width: 78%;" inputType="string" formControlName="addNew"
+                            placeholder="Type new field to add" [isClearable]=false>
+                        </dadyin-input>
+                        <dadyin-button label="Add" [theme]="'secondary'"
+                            (click)="addNewField(saveForm.value)"></dadyin-button> -->
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </form>
+</div>

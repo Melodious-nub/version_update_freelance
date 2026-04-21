@@ -1,0 +1,38 @@
+<div class="header-wrapper mt-2">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="filters">
+        <search-filter
+          [placeholder]="
+            'Search based on Product Type/ SubType/ Product name & code'
+          "
+        ></search-filter>
+      </div>
+    </div>
+    <div class="col-md-5 prefer-uom-grid align-items-center">
+      <div class="attribute tabular-sheet col-3 mx-1" style="width: inherit">
+        <div class="attribute-input bg-white">
+          <div class="toggle width-perc-100">
+            <button
+              (click)="changeView('productWise')"
+              class="width-perc-50"
+              [ngClass]="{ active: poView == 'productWise' }"
+            >
+              Product Wise
+            </button>
+            <button
+              (click)="changeView('orderWise')"
+              class="width-perc-50"
+              [ngClass]="{ active: poView == 'orderWise' }"
+            >
+              Order Wise
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1 d-flex justify-content-end align-items-center align-items-center"></div>
+  </div>
+</div>
+<app-product-wise *ngIf="poView == 'productWise'"></app-product-wise>
+<app-order-wise *ngIf="poView == 'orderWise'"></app-order-wise>

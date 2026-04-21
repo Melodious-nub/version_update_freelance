@@ -1,0 +1,7298 @@
+[
+  {
+    "srNo": 1,
+    "relationAccountName": "Uche Oboh",
+    "addressLine": "2094 Pitkin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-240-0540"
+  },
+  {
+    "srNo": 2,
+    "relationAccountName": "Pharmacy Board Review",
+    "addressLine": "75 Dekalb Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-488-1626"
+  },
+  {
+    "srNo": 3,
+    "relationAccountName": "Gem Pharmacy",
+    "addressLine": "10 Brighton 11th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-676-4006"
+  },
+  {
+    "srNo": 4,
+    "relationAccountName": "Drugs Care Pharmacy",
+    "addressLine": "1001 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-856-2976"
+  },
+  {
+    "srNo": 5,
+    "relationAccountName": "B&M Family Pharmacy",
+    "addressLine": "1001 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-859-0007"
+  },
+  {
+    "srNo": 6,
+    "relationAccountName": "Gristedes Pharmacy",
+    "addressLine": "101 Clark St # 1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-834-9003"
+  },
+  {
+    "srNo": 7,
+    "relationAccountName": "Punjab Pharmacy",
+    "addressLine": "1018 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-434-4000"
+  },
+  {
+    "srNo": 8,
+    "relationAccountName": "Jenny Tang",
+    "addressLine": "10204 Flatlands Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-257-1099"
+  },
+  {
+    "srNo": 9,
+    "relationAccountName": "Live Good Pharmacy",
+    "addressLine": "1025 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 718-221-9300"
+  },
+  {
+    "srNo": 10,
+    "relationAccountName": "Belmont Pharmacy",
+    "addressLine": "102A Belmont Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-485-3300"
+  },
+  {
+    "srNo": 11,
+    "relationAccountName": "Option Care Health",
+    "addressLine": "1035 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-961-1634"
+  },
+  {
+    "srNo": 12,
+    "relationAccountName": "City Chemist",
+    "addressLine": "104 Jay St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-246-4100"
+  },
+  {
+    "srNo": 13,
+    "relationAccountName": "Pharmacy At The Wave Inc.",
+    "addressLine": "104 West End Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-891-4300"
+  },
+  {
+    "srNo": 14,
+    "relationAccountName": "Mohammad Samara",
+    "addressLine": "1040 St Johns Pl",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-953-7150"
+  },
+  {
+    "srNo": 15,
+    "relationAccountName": "Dr J Pharmacy",
+    "addressLine": "10410 Flatlands Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 917-893-8452"
+  },
+  {
+    "srNo": 16,
+    "relationAccountName": "David Brodt Sons",
+    "addressLine": "1042 38th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-436-1010"
+  },
+  {
+    "srNo": 17,
+    "relationAccountName": "Right Care Pharmacy INC",
+    "addressLine": "1043 Liberty Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 347-627-9114"
+  },
+  {
+    "srNo": 18,
+    "relationAccountName": "Quick Rx Specialty Pharmacy",
+    "addressLine": "1047 Surf Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-819-5249"
+  },
+  {
+    "srNo": 19,
+    "relationAccountName": "Brighton Care Pharmacy",
+    "addressLine": "1055 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 917-933-9220"
+  },
+  {
+    "srNo": 20,
+    "relationAccountName": "Foster Maaz Pharmacy",
+    "addressLine": "1056 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-421-5533"
+  },
+  {
+    "srNo": 21,
+    "relationAccountName": "Subhan Pharmacy",
+    "addressLine": "1067 Coney Island Ave SUITE 3",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 347-533-4737"
+  },
+  {
+    "srNo": 22,
+    "relationAccountName": "Rose Pharmacy Inc",
+    "addressLine": "1074 Liberty Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-235-3383"
+  },
+  {
+    "srNo": 23,
+    "relationAccountName": "ShopRite Pharmacy of Avenue I",
+    "addressLine": "1080 McDonald Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-252-8535"
+  },
+  {
+    "srNo": 24,
+    "relationAccountName": "Svetlana Genin, R",
+    "addressLine": "1080 McDonald Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-252-8535"
+  },
+  {
+    "srNo": 25,
+    "relationAccountName": "Pharmacy Express",
+    "addressLine": "1081 Rutland Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-493-4199"
+  },
+  {
+    "srNo": 26,
+    "relationAccountName": "Iqra Pharmacy & Surgicals",
+    "addressLine": "1094 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 347-305-3100"
+  },
+  {
+    "srNo": 27,
+    "relationAccountName": "Sky Pharmacy",
+    "addressLine": "1100 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-434-4744"
+  },
+  {
+    "srNo": 28,
+    "relationAccountName": "All American Druggist Inc",
+    "addressLine": "1101 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-891-2801"
+  },
+  {
+    "srNo": 29,
+    "relationAccountName": "Family Pharmacy",
+    "addressLine": "1101 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-703-2440"
+  },
+  {
+    "srNo": 30,
+    "relationAccountName": "Go Pharmacy",
+    "addressLine": "1104 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-701-6228"
+  },
+  {
+    "srNo": 31,
+    "relationAccountName": "Pill Box Rx",
+    "addressLine": "11042 Flatlands Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-928-7277"
+  },
+  {
+    "srNo": 32,
+    "relationAccountName": "Kingston Pharmacy",
+    "addressLine": "1106 St Johns Pl",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-221-4805"
+  },
+  {
+    "srNo": 33,
+    "relationAccountName": "Amiable Pharmacy",
+    "addressLine": "1108 Liberty Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-827-7528"
+  },
+  {
+    "srNo": 34,
+    "relationAccountName": "The Medicine Shoppe",
+    "addressLine": "1109 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-434-4649"
+  },
+  {
+    "srNo": 35,
+    "relationAccountName": "Gold Street Pharmacy",
+    "addressLine": "111 Gold St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-855-1990"
+  },
+  {
+    "srNo": 36,
+    "relationAccountName": "Starrett City Pharmacy",
+    "addressLine": "1110 Granville Payne Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-257-8777"
+  },
+  {
+    "srNo": 37,
+    "relationAccountName": "Inna Kucherina",
+    "addressLine": "1110 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-375-5700"
+  },
+  {
+    "srNo": 38,
+    "relationAccountName": "Kehinde Akinbo",
+    "addressLine": "11110 Flatlands Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-649-2522"
+  },
+  {
+    "srNo": 39,
+    "relationAccountName": "P.A.B. Pharmacy",
+    "addressLine": "1115 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 718-649-1111"
+  },
+  {
+    "srNo": 40,
+    "relationAccountName": "Nick's Pharmacy",
+    "addressLine": "111A Gold St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-855-1990"
+  },
+  {
+    "srNo": 41,
+    "relationAccountName": "Brooklyn Center Pharmacy",
+    "addressLine": "112 Dekalb Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-250-0060"
+  },
+  {
+    "srNo": 42,
+    "relationAccountName": "Genoa Healthcare",
+    "addressLine": "1125 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 718-473-3592"
+  },
+  {
+    "srNo": 43,
+    "relationAccountName": "Prime Care Pharmacy",
+    "addressLine": "1126 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 718-953-7300"
+  },
+  {
+    "srNo": 44,
+    "relationAccountName": "Mishkin Pharmacy",
+    "addressLine": "1127 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11221",
+    "Phone": "+1 718-452-3261"
+  },
+  {
+    "srNo": 45,
+    "relationAccountName": "Sea Breeze Pharmacy & Medical Supply Inc",
+    "addressLine": "1129 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-646-0660"
+  },
+  {
+    "srNo": 46,
+    "relationAccountName": "Lincoln Place Pharmacy",
+    "addressLine": "1135 Eastern Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-756-1717"
+  },
+  {
+    "srNo": 47,
+    "relationAccountName": "Better Health Pharmacy",
+    "addressLine": "1147 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 718-622-4743"
+  },
+  {
+    "srNo": 48,
+    "relationAccountName": "Nostrand Ave Pharmacy",
+    "addressLine": "1148 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 516-240-2844"
+  },
+  {
+    "srNo": 49,
+    "relationAccountName": "Shimon's Pharmacy",
+    "addressLine": "115 Lee Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-384-0234"
+  },
+  {
+    "srNo": 50,
+    "relationAccountName": "Kashmir Drug Mart",
+    "addressLine": "1166 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-859-6100"
+  },
+  {
+    "srNo": 51,
+    "relationAccountName": "R P",
+    "addressLine": "1173 50th St #301",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-686-0031"
+  },
+  {
+    "srNo": 52,
+    "relationAccountName": "Careway Pharmacy",
+    "addressLine": "1174 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-483-8743"
+  },
+  {
+    "srNo": 53,
+    "relationAccountName": "Irving Pharmacy",
+    "addressLine": "118 Wyckoff Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-484-8510"
+  },
+  {
+    "srNo": 54,
+    "relationAccountName": "Gateway Center Pharmacy",
+    "addressLine": "1184 Elton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11239",
+    "Phone": "+1 347-587-1771"
+  },
+  {
+    "srNo": 55,
+    "relationAccountName": "Fulton 1st Pharmacy",
+    "addressLine": "1185 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-484-9100"
+  },
+  {
+    "srNo": 56,
+    "relationAccountName": "Image Pharmacy",
+    "addressLine": "119 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-686-7343"
+  },
+  {
+    "srNo": 57,
+    "relationAccountName": "MBG Pharmacy",
+    "addressLine": "119 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-686-7343"
+  },
+  {
+    "srNo": 58,
+    "relationAccountName": "Health One Pharmacy",
+    "addressLine": "119 Pennsylvania Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-495-9015"
+  },
+  {
+    "srNo": 59,
+    "relationAccountName": "Prestige Care Pharmacy",
+    "addressLine": "1190 Gravesend Neck Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-676-6691"
+  },
+  {
+    "srNo": 60,
+    "relationAccountName": "Right Care Pharmacy",
+    "addressLine": "12 Neptune Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-975-4535"
+  },
+  {
+    "srNo": 61,
+    "relationAccountName": "Neergaard Pharmacy",
+    "addressLine": "120 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-857-1600"
+  },
+  {
+    "srNo": 62,
+    "relationAccountName": "Samira Sabra",
+    "addressLine": "120 Court St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-643-2146"
+  },
+  {
+    "srNo": 63,
+    "relationAccountName": "Ram Drugs Inc.",
+    "addressLine": "120 Richards St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11231",
+    "Phone": "+1 718-852-0269"
+  },
+  {
+    "srNo": 64,
+    "relationAccountName": "SOS Pharmacy & Natural Health Store",
+    "addressLine": "1201 Avenue Z",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 917-933-4000"
+  },
+  {
+    "srNo": 65,
+    "relationAccountName": "Five Star Pharmacy",
+    "addressLine": "1202 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-398-9000"
+  },
+  {
+    "srNo": 66,
+    "relationAccountName": "J Drugs",
+    "addressLine": "1205 Avenue J",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-258-6686"
+  },
+  {
+    "srNo": 67,
+    "relationAccountName": "J Medical Supplies",
+    "addressLine": "1205 Avenue J",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-258-0099"
+  },
+  {
+    "srNo": 68,
+    "relationAccountName": "Traditional Pharmacy Inc",
+    "addressLine": "1206 Avenue M",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-787-2300"
+  },
+  {
+    "srNo": 69,
+    "relationAccountName": "ASZ Drug Corporation",
+    "addressLine": "121 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-996-9299"
+  },
+  {
+    "srNo": 70,
+    "relationAccountName": "The Brooklyn Hospital Center - Outpatient Pharmacy",
+    "addressLine": "121 Dekalb Ave 1st Floor",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-250-7900"
+  },
+  {
+    "srNo": 71,
+    "relationAccountName": "Central Pharmacy",
+    "addressLine": "121 Kent Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11249",
+    "Phone": "+1 929-397-0331"
+  },
+  {
+    "srNo": 72,
+    "relationAccountName": "St Jude Specialty Pharmacy",
+    "addressLine": "121 St Nicholas Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-381-5116"
+  },
+  {
+    "srNo": 73,
+    "relationAccountName": "PX Panacea Pharmacy",
+    "addressLine": "1211 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-382-9616"
+  },
+  {
+    "srNo": 74,
+    "relationAccountName": "Victory Pharmacy",
+    "addressLine": "1211 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-382-9616"
+  },
+  {
+    "srNo": 75,
+    "relationAccountName": "Argyle Pharmacy",
+    "addressLine": "1211 Foster Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-421-0099"
+  },
+  {
+    "srNo": 76,
+    "relationAccountName": "Rockway Drug Inc",
+    "addressLine": "1214 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-462-6527"
+  },
+  {
+    "srNo": 77,
+    "relationAccountName": "RockwayRX",
+    "addressLine": "1214 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-360-0777"
+  },
+  {
+    "srNo": 78,
+    "relationAccountName": "kings rx pharmacy",
+    "addressLine": "1214 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-975-0781"
+  },
+  {
+    "srNo": 79,
+    "relationAccountName": "Lima Pharmacy Inc.",
+    "addressLine": "1214 Liberty Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 347-295-1544"
+  },
+  {
+    "srNo": 80,
+    "relationAccountName": "A & G Pharmacy",
+    "addressLine": "1216 Neptune Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-996-2277"
+  },
+  {
+    "srNo": 81,
+    "relationAccountName": "Flatbush BH Pharmacy",
+    "addressLine": "1218 Flatbush Ave Main Level",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-400-6000"
+  },
+  {
+    "srNo": 82,
+    "relationAccountName": "Tablet RX Pharmacy",
+    "addressLine": "122 Bay Ridge Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 347-497-5585"
+  },
+  {
+    "srNo": 83,
+    "relationAccountName": "1 Stop Pharmacy",
+    "addressLine": "1220 Avenue P",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-336-2244"
+  },
+  {
+    "srNo": 84,
+    "relationAccountName": "R X Inc ABC",
+    "addressLine": "1220 Avenue P",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 347-922-7745"
+  },
+  {
+    "srNo": 85,
+    "relationAccountName": "Simply Care Pharmacy",
+    "addressLine": "1222 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 716-666-2554"
+  },
+  {
+    "srNo": 86,
+    "relationAccountName": "Four Seasons Pharmacy",
+    "addressLine": "1222 E 96th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 347-973-7883"
+  },
+  {
+    "srNo": 87,
+    "relationAccountName": "Wyckoff Drugs",
+    "addressLine": "1226 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11221",
+    "Phone": "+1 718-443-1331"
+  },
+  {
+    "srNo": 88,
+    "relationAccountName": "All RX Pharmacy II",
+    "addressLine": "1231 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-375-7800"
+  },
+  {
+    "srNo": 89,
+    "relationAccountName": "Health Plus Pharmacy",
+    "addressLine": "1231 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 929-601-1231"
+  },
+  {
+    "srNo": 90,
+    "relationAccountName": "Health Wise Pharmacy",
+    "addressLine": "1233 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 718-284-8413"
+  },
+  {
+    "srNo": 91,
+    "relationAccountName": "Brighton 11th Pharmacy INC.",
+    "addressLine": "124 Brighton 11th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-934-0022"
+  },
+  {
+    "srNo": 92,
+    "relationAccountName": "Al Medina Pharmacy",
+    "addressLine": "1242 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-941-2669"
+  },
+  {
+    "srNo": 93,
+    "relationAccountName": "Fu Sing Supermarket",
+    "addressLine": "1247 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 917-268-7000"
+  },
+  {
+    "srNo": 94,
+    "relationAccountName": "Hosam Arafat",
+    "addressLine": "1249 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 718-282-6614"
+  },
+  {
+    "srNo": 95,
+    "relationAccountName": "US Pharmacy",
+    "addressLine": "1259 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-484-1500"
+  },
+  {
+    "srNo": 96,
+    "relationAccountName": "James Leung",
+    "addressLine": "1260 60th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-853-8645"
+  },
+  {
+    "srNo": 97,
+    "relationAccountName": "Parkside Chemists",
+    "addressLine": "1274 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-462-1111"
+  },
+  {
+    "srNo": 98,
+    "relationAccountName": "Brookdale Rx",
+    "addressLine": "1275 Linden Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-240-8200"
+  },
+  {
+    "srNo": 99,
+    "relationAccountName": "Natasha Fougere, BS",
+    "addressLine": "1275 Linden Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-240-8200"
+  },
+  {
+    "srNo": 100,
+    "relationAccountName": "Aptechka Rx Inc",
+    "addressLine": "128 Ditmas Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-431-8232"
+  },
+  {
+    "srNo": 101,
+    "relationAccountName": "Ocean Specialty Rx",
+    "addressLine": "128 Ditmas Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-431-8232"
+  },
+  {
+    "srNo": 102,
+    "relationAccountName": "Green Life Pharmacy",
+    "addressLine": "1287 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": null
+  },
+  {
+    "srNo": 103,
+    "relationAccountName": "City Chemist",
+    "addressLine": "129 Montague St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-237-2489"
+  },
+  {
+    "srNo": 104,
+    "relationAccountName": "NZ Pharmacy",
+    "addressLine": "1296 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-676-1497"
+  },
+  {
+    "srNo": 105,
+    "relationAccountName": "Parm Rx Express",
+    "addressLine": "1311 Gravesend Neck Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-627-7070"
+  },
+  {
+    "srNo": 106,
+    "relationAccountName": "Medicine Plaza Pharmacy",
+    "addressLine": "1312 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-627-0800"
+  },
+  {
+    "srNo": 107,
+    "relationAccountName": "AVE J Royal Care Pharmacy | DMV EYE TEST",
+    "addressLine": "1315 Avenue J",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-676-2666"
+  },
+  {
+    "srNo": 108,
+    "relationAccountName": "smart care pharmacy",
+    "addressLine": "1324 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 347-374-5117"
+  },
+  {
+    "srNo": 109,
+    "relationAccountName": "Monicas Pharmacy /Avenue Z pahrmacy",
+    "addressLine": "1324 Sheepshead Bay Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-332-7733"
+  },
+  {
+    "srNo": 110,
+    "relationAccountName": "Island Express Pharma",
+    "addressLine": "1335 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 347-533-4606"
+  },
+  {
+    "srNo": 111,
+    "relationAccountName": "Chemplus Pharmacy",
+    "addressLine": "1336 Utica Ave Fl # 2",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-935-1033"
+  },
+  {
+    "srNo": 112,
+    "relationAccountName": "Life Care Pharmacy",
+    "addressLine": "1337 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-564-2358"
+  },
+  {
+    "srNo": 113,
+    "relationAccountName": "CRJ Pharmacy",
+    "addressLine": "1341 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-676-0157"
+  },
+  {
+    "srNo": 114,
+    "relationAccountName": "Cheng Wan Lin",
+    "addressLine": "1366 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11221",
+    "Phone": "+1 718-452-6391"
+  },
+  {
+    "srNo": 115,
+    "relationAccountName": "Sams Drugs",
+    "addressLine": "1367 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11221",
+    "Phone": "+1 718-453-6866"
+  },
+  {
+    "srNo": 116,
+    "relationAccountName": "Linden Pharmacy",
+    "addressLine": "1368 Linden Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-342-3131"
+  },
+  {
+    "srNo": 117,
+    "relationAccountName": "Nehal Patel",
+    "addressLine": "1368 Linden Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-342-3131"
+  },
+  {
+    "srNo": 118,
+    "relationAccountName": "Harrico-Galler Drug Corporation",
+    "addressLine": "1374 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-377-7724"
+  },
+  {
+    "srNo": 119,
+    "relationAccountName": "Good Health Pharmacy",
+    "addressLine": "1379 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-618-7425"
+  },
+  {
+    "srNo": 120,
+    "relationAccountName": "Bell Drugs, Inc.",
+    "addressLine": "138 Graham Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-388-4307"
+  },
+  {
+    "srNo": 121,
+    "relationAccountName": "PureCare Pharmacy",
+    "addressLine": "1380 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-484-9803"
+  },
+  {
+    "srNo": 122,
+    "relationAccountName": "Lindenwood Rx Center",
+    "addressLine": "1380 Loring Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-277-0898"
+  },
+  {
+    "srNo": 123,
+    "relationAccountName": "Mega Aid Pharmacy",
+    "addressLine": "140 58th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 212-920-4500"
+  },
+  {
+    "srNo": 124,
+    "relationAccountName": "Fast & Friendly Pharmacy",
+    "addressLine": "140 Empire Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 718-484-2300"
+  },
+  {
+    "srNo": 125,
+    "relationAccountName": "Family Drugstore",
+    "addressLine": "1402 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-382-7700"
+  },
+  {
+    "srNo": 126,
+    "relationAccountName": "Newkirk Pharmacy",
+    "addressLine": "1402 Newkirk Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-434-0931"
+  },
+  {
+    "srNo": 127,
+    "relationAccountName": "Welcome Pharmacy",
+    "addressLine": "1403 Foster Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-724-1333"
+  },
+  {
+    "srNo": 128,
+    "relationAccountName": "D Rx Green",
+    "addressLine": "1404 Avenue Z",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": null
+  },
+  {
+    "srNo": 129,
+    "relationAccountName": "Phillip Truong",
+    "addressLine": "1404 Rockaway Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-257-2916"
+  },
+  {
+    "srNo": 130,
+    "relationAccountName": "David's Pharmacy",
+    "addressLine": "1408 Avenue J",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-677-8500"
+  },
+  {
+    "srNo": 131,
+    "relationAccountName": "Naomi Silberstein",
+    "addressLine": "1409 Avenue J",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230-3701",
+    "Phone": "+1 718-677-7290"
+  },
+  {
+    "srNo": 132,
+    "relationAccountName": "Axium Speciality Rx Inc.",
+    "addressLine": "1412 Mermaid Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 (718) 393-5590"
+  },
+  {
+    "srNo": 133,
+    "relationAccountName": "Kings Highway Pharmacy & Medical Supply Inc",
+    "addressLine": "1416 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-375-5757"
+  },
+  {
+    "srNo": 134,
+    "relationAccountName": "Prime Health Pharmacy |DMV EYE TESTING",
+    "addressLine": "1417 Bedford Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-676-4405"
+  },
+  {
+    "srNo": 135,
+    "relationAccountName": "Lee Lam",
+    "addressLine": "1419 Newkirk Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-940-1794"
+  },
+  {
+    "srNo": 136,
+    "relationAccountName": "Express Drug",
+    "addressLine": "1420 Avenue J",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-677-5800"
+  },
+  {
+    "srNo": 137,
+    "relationAccountName": "Health Star Pharmacy",
+    "addressLine": "1422 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-645-1227"
+  },
+  {
+    "srNo": 138,
+    "relationAccountName": "Royal Pharmacy Consultants",
+    "addressLine": "1449 37th St STE 508",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-564-6535"
+  },
+  {
+    "srNo": 139,
+    "relationAccountName": "Myrtle Drugs",
+    "addressLine": "1454 Myrtle Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-453-6200"
+  },
+  {
+    "srNo": 140,
+    "relationAccountName": "Quick Rx Specialty Pharmacy",
+    "addressLine": "1456 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-221-4860"
+  },
+  {
+    "srNo": 141,
+    "relationAccountName": "Rite Choice Pharmacy",
+    "addressLine": "1484 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-773-3700"
+  },
+  {
+    "srNo": 142,
+    "relationAccountName": "Shalom's Pharmacy, Inc.",
+    "addressLine": "1490 Coney Island Ave Between Avenue K",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-253-4900"
+  },
+  {
+    "srNo": 143,
+    "relationAccountName": "Fine Care Pharmacy",
+    "addressLine": "1490 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-421-8161"
+  },
+  {
+    "srNo": 144,
+    "relationAccountName": "UrgentRX Pharmacy",
+    "addressLine": "1494 Ocean Ave P1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-570-3360"
+  },
+  {
+    "srNo": 145,
+    "relationAccountName": "Fayyaz Rasheed, PHD",
+    "addressLine": "15 MacDougal St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-773-4988"
+  },
+  {
+    "srNo": 146,
+    "relationAccountName": "Rio Drugs",
+    "addressLine": "15 MacDougal St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-773-4988"
+  },
+  {
+    "srNo": 147,
+    "relationAccountName": "Rainford Pamela I",
+    "addressLine": "150 55th St # 1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-630-7000"
+  },
+  {
+    "srNo": 148,
+    "relationAccountName": "Naturally Healthy",
+    "addressLine": "150 Wyckoff Ave #1L",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-599-7527"
+  },
+  {
+    "srNo": 149,
+    "relationAccountName": "Liberty Chemists",
+    "addressLine": "1501 Newkirk Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-676-5995"
+  },
+  {
+    "srNo": 150,
+    "relationAccountName": "Friscia Pharmacy",
+    "addressLine": "1505 Mermaid Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-373-9600"
+  },
+  {
+    "srNo": 151,
+    "relationAccountName": "U15 Pharmacy",
+    "addressLine": "1506 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-336-5883"
+  },
+  {
+    "srNo": 152,
+    "relationAccountName": "Sai Apteka Pharmacy",
+    "addressLine": "151 Nassau Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11222",
+    "Phone": "+1 718-349-8989"
+  },
+  {
+    "srNo": 153,
+    "relationAccountName": "Bravo Pharmacy",
+    "addressLine": "1519 Avenue J",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-252-5575"
+  },
+  {
+    "srNo": 154,
+    "relationAccountName": "Montague Apothecary",
+    "addressLine": "152 Montague St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-400-2001"
+  },
+  {
+    "srNo": 155,
+    "relationAccountName": "Green Forest Market",
+    "addressLine": "1520 Avenue M",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 929-333-9669"
+  },
+  {
+    "srNo": 156,
+    "relationAccountName": "Pathmark",
+    "addressLine": "1525 Albany Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-859-4600"
+  },
+  {
+    "srNo": 157,
+    "relationAccountName": "Balanced Formula",
+    "addressLine": "1526 Cortelyou Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-576-1343"
+  },
+  {
+    "srNo": 158,
+    "relationAccountName": "Greenfield Pharmacy",
+    "addressLine": "1526 Cortelyou Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-282-7660"
+  },
+  {
+    "srNo": 159,
+    "relationAccountName": "Jabir H. Husain, BPharm",
+    "addressLine": "1526 Cortelyou Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-282-7660"
+  },
+  {
+    "srNo": 160,
+    "relationAccountName": "Broadway Pharmacy",
+    "addressLine": "1538 Pitkin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-495-1122"
+  },
+  {
+    "srNo": 161,
+    "relationAccountName": "Fulton Drugs",
+    "addressLine": "1548 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-735-3784"
+  },
+  {
+    "srNo": 162,
+    "relationAccountName": "SALAAM PHARMACY INC",
+    "addressLine": "155 Crystal St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-484-8157"
+  },
+  {
+    "srNo": 163,
+    "relationAccountName": "Maya Pharmacy",
+    "addressLine": "155 Watkins St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-566-6292"
+  },
+  {
+    "srNo": 164,
+    "relationAccountName": "Mr Medical",
+    "addressLine": "1551 Bergen St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 855-901-1010"
+  },
+  {
+    "srNo": 165,
+    "relationAccountName": "Sandra L. Chin-Wan, BSc",
+    "addressLine": "1559 W 2nd St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-627-0053"
+  },
+  {
+    "srNo": 166,
+    "relationAccountName": "Caton Chemists",
+    "addressLine": "1563 Ralph Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-853-1110"
+  },
+  {
+    "srNo": 167,
+    "relationAccountName": "Teps Pharmacy",
+    "addressLine": "1563 Ralph Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-676-0697"
+  },
+  {
+    "srNo": 168,
+    "relationAccountName": "The Modern Chemist",
+    "addressLine": "1572 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-258-4200"
+  },
+  {
+    "srNo": 169,
+    "relationAccountName": "QwikMeds",
+    "addressLine": "159 Ralph Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-443-0500"
+  },
+  {
+    "srNo": 170,
+    "relationAccountName": "Tablet Pharmacy (Park Drugs Inc)",
+    "addressLine": "1590 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 347-987-3380"
+  },
+  {
+    "srNo": 171,
+    "relationAccountName": "Park Place Pharmacy",
+    "addressLine": "160 Park Pl",
+    "City": "Brooklyn",
+    "StateZip": "NY 11217",
+    "Phone": "+1 718-857-4000"
+  },
+  {
+    "srNo": 172,
+    "relationAccountName": "Lerds Pharmacy",
+    "addressLine": "1601 Gravesend Neck Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-332-5330"
+  },
+  {
+    "srNo": 173,
+    "relationAccountName": "Renata Gligich",
+    "addressLine": "1601 Gravesend Neck Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-332-5330"
+  },
+  {
+    "srNo": 174,
+    "relationAccountName": "Nature's Emporium",
+    "addressLine": "1601 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-375-7877"
+  },
+  {
+    "srNo": 175,
+    "relationAccountName": "Pitkin Pharmacy and Food Mart",
+    "addressLine": "1601 Pitkin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-484-8730"
+  },
+  {
+    "srNo": 176,
+    "relationAccountName": "Good Neighbor Pharmacy",
+    "addressLine": "1604 Avenue M",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-375-8900"
+  },
+  {
+    "srNo": 177,
+    "relationAccountName": "S.V.R.H. Pharmacy",
+    "addressLine": "161 Smith St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-596-1688"
+  },
+  {
+    "srNo": 178,
+    "relationAccountName": "Quick Success Pharmacy",
+    "addressLine": "1610 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-376-7600"
+  },
+  {
+    "srNo": 179,
+    "relationAccountName": "Fine Care Pharmacy",
+    "addressLine": "1611 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-942-4842"
+  },
+  {
+    "srNo": 180,
+    "relationAccountName": "Nature's Apothecary",
+    "addressLine": "1612 East 16th Street",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-375-7877"
+  },
+  {
+    "srNo": 181,
+    "relationAccountName": "Thriftway Pharmacy",
+    "addressLine": "1621 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-282-4600"
+  },
+  {
+    "srNo": 182,
+    "relationAccountName": "Sunshine Pharmacy",
+    "addressLine": "1622 Voorhies Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 347-462-9779"
+  },
+  {
+    "srNo": 183,
+    "relationAccountName": "Genoa Healthcare",
+    "addressLine": "1623 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 347-410-7686"
+  },
+  {
+    "srNo": 184,
+    "relationAccountName": "Prime Infusions",
+    "addressLine": "1624 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-443-4000"
+  },
+  {
+    "srNo": 185,
+    "relationAccountName": "Michael's Pharmacy",
+    "addressLine": "163 Linden Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-284-2199"
+  },
+  {
+    "srNo": 186,
+    "relationAccountName": "Bina Drugs",
+    "addressLine": "1630 Pitkin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-342-0965"
+  },
+  {
+    "srNo": 187,
+    "relationAccountName": "Park Chemists Pharmacy",
+    "addressLine": "164 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11217",
+    "Phone": "+1 718-393-5555"
+  },
+  {
+    "srNo": 188,
+    "relationAccountName": "Maxi Care Pharmacy",
+    "addressLine": "1645 Bedford Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 718-774-0600"
+  },
+  {
+    "srNo": 189,
+    "relationAccountName": "Downtown Pharmacy",
+    "addressLine": "165 William St",
+    "City": "New York",
+    "StateZip": "NY 10038",
+    "Phone": "+1 212-233-0333"
+  },
+  {
+    "srNo": 190,
+    "relationAccountName": "Gericare Pharmaceuticals",
+    "addressLine": "1650 63rd St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-234-8800"
+  },
+  {
+    "srNo": 191,
+    "relationAccountName": "Elm Pharmacy",
+    "addressLine": "1651 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-336-8300"
+  },
+  {
+    "srNo": 192,
+    "relationAccountName": "Bay Pharmacy",
+    "addressLine": "1653 Sheepshead Bay Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-934-3838"
+  },
+  {
+    "srNo": 193,
+    "relationAccountName": "Steven Weiss",
+    "addressLine": "166 Division Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-599-2771"
+  },
+  {
+    "srNo": 194,
+    "relationAccountName": "Corner Pharmacy",
+    "addressLine": "166 Division Ave # A",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-599-2771"
+  },
+  {
+    "srNo": 195,
+    "relationAccountName": "Olympe Pharmacy Inc",
+    "addressLine": "1665 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-484-7070"
+  },
+  {
+    "srNo": 196,
+    "relationAccountName": "Wonder Pharmacy Corporation",
+    "addressLine": "1665 Ralph Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-209-3636"
+  },
+  {
+    "srNo": 197,
+    "relationAccountName": "Marino Pharmacy",
+    "addressLine": "167 Wyckoff Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-497-3104"
+  },
+  {
+    "srNo": 198,
+    "relationAccountName": "PITKIN EXPRESS CARE PHARMACY INC",
+    "addressLine": "1672 Pitkin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 347-627-4778"
+  },
+  {
+    "srNo": 199,
+    "relationAccountName": "Brooklyn Pharmacy",
+    "addressLine": "1675 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 347-462-4662"
+  },
+  {
+    "srNo": 200,
+    "relationAccountName": "I & J Pharmacy",
+    "addressLine": "1677 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 347-702-8178"
+  },
+  {
+    "srNo": 201,
+    "relationAccountName": "Dolinsky's Family Drug Store",
+    "addressLine": "1678 Bath Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-256-8423"
+  },
+  {
+    "srNo": 202,
+    "relationAccountName": "South 2nd Pharmacy",
+    "addressLine": "168 Havemeyer St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-599-5991"
+  },
+  {
+    "srNo": 203,
+    "relationAccountName": "OHANA PHARMACY INC",
+    "addressLine": "1690 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-232-0900"
+  },
+  {
+    "srNo": 204,
+    "relationAccountName": "Pharmacia Popular Inc",
+    "addressLine": "17 Marcus Garvey Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-218-9346"
+  },
+  {
+    "srNo": 205,
+    "relationAccountName": "Family Care Pharmacy",
+    "addressLine": "170 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-946-0101"
+  },
+  {
+    "srNo": 206,
+    "relationAccountName": "Marcy Pharmacy",
+    "addressLine": "170 Throop Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-384-5917"
+  },
+  {
+    "srNo": 207,
+    "relationAccountName": "Atlantic Pharmacy",
+    "addressLine": "1706 Atlantic Ave # B",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-484-2260"
+  },
+  {
+    "srNo": 208,
+    "relationAccountName": "Clear Pharmacy",
+    "addressLine": "1707 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-975-7680"
+  },
+  {
+    "srNo": 209,
+    "relationAccountName": "ANTELIS PHARMACY",
+    "addressLine": "1709 Avenue M",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-339-4483"
+  },
+  {
+    "srNo": 210,
+    "relationAccountName": "Stop & Shop Pharmacy",
+    "addressLine": "1710 Ave Y",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-648-6971"
+  },
+  {
+    "srNo": 211,
+    "relationAccountName": "Sims Pharmacy & Surgical",
+    "addressLine": "1711 Pitkin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-346-7200"
+  },
+  {
+    "srNo": 212,
+    "relationAccountName": "Be Well Medical Supply",
+    "addressLine": "1712-A East 16th Street",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-787-1501"
+  },
+  {
+    "srNo": 213,
+    "relationAccountName": "AMA Pharmacy",
+    "addressLine": "1717 E 12th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 347-240-7864"
+  },
+  {
+    "srNo": 214,
+    "relationAccountName": "Thriftcare Pharmacy",
+    "addressLine": "1717 Foster Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-724-1717"
+  },
+  {
+    "srNo": 215,
+    "relationAccountName": "Aleksey Zatsepilo, Pharmacist",
+    "addressLine": "1717 Foster Avenue",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-724-1717"
+  },
+  {
+    "srNo": 216,
+    "relationAccountName": "All Peoples Pharmacy",
+    "addressLine": "1718 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-998-8688"
+  },
+  {
+    "srNo": 217,
+    "relationAccountName": "Vida Pharmacy | DMV EYE TEST | OTC | LOTTO | Notary Public",
+    "addressLine": "172 Bushwick Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 347-725-4953"
+  },
+  {
+    "srNo": 218,
+    "relationAccountName": "Staywell Pharmacy Inc",
+    "addressLine": "172 Watkins St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-498-7800"
+  },
+  {
+    "srNo": 219,
+    "relationAccountName": "Li Run Hong 松柏年藥材行",
+    "addressLine": "1720 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-998-9359"
+  },
+  {
+    "srNo": 220,
+    "relationAccountName": "Live Well Pharmacy",
+    "addressLine": "1722 Utica Ave Ste 2",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-968-1600"
+  },
+  {
+    "srNo": 221,
+    "relationAccountName": "Balaji Pharmacy",
+    "addressLine": "1726 Mermaid Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-996-9000"
+  },
+  {
+    "srNo": 222,
+    "relationAccountName": "Gena Care Pharmacy",
+    "addressLine": "173 Chauncey St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-484-7166"
+  },
+  {
+    "srNo": 223,
+    "relationAccountName": "Lg Drugs Inc",
+    "addressLine": "173 Chauncey St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-484-7166"
+  },
+  {
+    "srNo": 224,
+    "relationAccountName": "Dekalb Drugs Inc",
+    "addressLine": "173 Marcus Garvey Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11221",
+    "Phone": "+1 718-249-0670"
+  },
+  {
+    "srNo": 225,
+    "relationAccountName": "G M Pharmacy Inc",
+    "addressLine": "174 Avenue O",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-256-7757"
+  },
+  {
+    "srNo": 226,
+    "relationAccountName": "Family Pharmacy",
+    "addressLine": "1757 Bath Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-331-8877"
+  },
+  {
+    "srNo": 227,
+    "relationAccountName": "Jack Eaton",
+    "addressLine": "176 Lee Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-855-3070"
+  },
+  {
+    "srNo": 228,
+    "relationAccountName": "S Bros Pharmacy",
+    "addressLine": "176 Lee Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-855-3070"
+  },
+  {
+    "srNo": 229,
+    "relationAccountName": "Preferred Pharmacy",
+    "addressLine": "1771 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-872-7717"
+  },
+  {
+    "srNo": 230,
+    "relationAccountName": "EVERHEALTH PHARMACY",
+    "addressLine": "1773 61st St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 929-433-2338"
+  },
+  {
+    "srNo": 231,
+    "relationAccountName": "King Rx Pharmacy",
+    "addressLine": "1779 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 347-221-1464"
+  },
+  {
+    "srNo": 232,
+    "relationAccountName": "Albany Pharmacy",
+    "addressLine": "178 Albany Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-756-6061"
+  },
+  {
+    "srNo": 233,
+    "relationAccountName": "Pace Medical Supply, LLC",
+    "addressLine": "1782 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-484-8315"
+  },
+  {
+    "srNo": 234,
+    "relationAccountName": "Bello's Pharmacy",
+    "addressLine": "179 St Nicholas Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-456-1795"
+  },
+  {
+    "srNo": 235,
+    "relationAccountName": "Downtown RX Pharmacy",
+    "addressLine": "180 Atlantic Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 347-599-1008"
+  },
+  {
+    "srNo": 236,
+    "relationAccountName": "Hopewell Pharmacy & Surgicals, Inc.",
+    "addressLine": "181 MacDougal St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-974-9611"
+  },
+  {
+    "srNo": 237,
+    "relationAccountName": "Church Ave Pharmacy & Vaccination Center",
+    "addressLine": "1810 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-941-2200"
+  },
+  {
+    "srNo": 238,
+    "relationAccountName": "Tricare Pharmacy",
+    "addressLine": "1811 Kings Hwy # 1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-382-9999"
+  },
+  {
+    "srNo": 239,
+    "relationAccountName": "Homecrest V&I Pharmacy",
+    "addressLine": "1826 Gravesend Neck Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-872-6655"
+  },
+  {
+    "srNo": 240,
+    "relationAccountName": "Island Pharmacy",
+    "addressLine": "1841 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-336-2800"
+  },
+  {
+    "srNo": 241,
+    "relationAccountName": "Anthony Eugenio",
+    "addressLine": "1847 Rockaway Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236-5307",
+    "Phone": "+1 718-251-0426"
+  },
+  {
+    "srNo": 242,
+    "relationAccountName": "Regal Remedies Pharmacy",
+    "addressLine": "1853 Cropsey Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-265-4646"
+  },
+  {
+    "srNo": 243,
+    "relationAccountName": "Flatbush Rx Pharmacy",
+    "addressLine": "1855 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-677-4067"
+  },
+  {
+    "srNo": 244,
+    "relationAccountName": "Top Kare Pharmacy INC",
+    "addressLine": "1863 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 347-492-7831"
+  },
+  {
+    "srNo": 245,
+    "relationAccountName": "Gagliardotoo Salvatore",
+    "addressLine": "189 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-369-6100"
+  },
+  {
+    "srNo": 246,
+    "relationAccountName": "Pure Essentials",
+    "addressLine": "189 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-369-4500"
+  },
+  {
+    "srNo": 247,
+    "relationAccountName": "The Modern Chemist - PARK SLOPE",
+    "addressLine": "189 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-369-6100"
+  },
+  {
+    "srNo": 248,
+    "relationAccountName": "Rossi Pharmacy",
+    "addressLine": "1891 Eastern Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-346-2506"
+  },
+  {
+    "srNo": 249,
+    "relationAccountName": "Utica Express Pharmacy",
+    "addressLine": "190 Utica Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-484-1704"
+  },
+  {
+    "srNo": 250,
+    "relationAccountName": "M & M Pharmacy",
+    "addressLine": "1901 Avenue M",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-377-1680"
+  },
+  {
+    "srNo": 251,
+    "relationAccountName": "Nathan's Pharmacy",
+    "addressLine": "1901 Bath Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-975-4441"
+  },
+  {
+    "srNo": 252,
+    "relationAccountName": "Rx Choice Pharmacy",
+    "addressLine": "1908 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-368-1190"
+  },
+  {
+    "srNo": 253,
+    "relationAccountName": "The Modern Chemist - GOWANUS",
+    "addressLine": "191 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11217",
+    "Phone": "+1 347-599-0174"
+  },
+  {
+    "srNo": 254,
+    "relationAccountName": "Vanderveer Pharmacy",
+    "addressLine": "1913 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-282-2956"
+  },
+  {
+    "srNo": 255,
+    "relationAccountName": "Medway Pharmacy Inc",
+    "addressLine": "1914 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-513-6777"
+  },
+  {
+    "srNo": 256,
+    "relationAccountName": "Nottingham Pharmacy",
+    "addressLine": "1914 Avenue M",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-375-2400"
+  },
+  {
+    "srNo": 257,
+    "relationAccountName": "Thriftway Pharmacy Old Family Pharmacy Inc.",
+    "addressLine": "1917 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-339-3500"
+  },
+  {
+    "srNo": 258,
+    "relationAccountName": "Rx One Pharmacy",
+    "addressLine": "1918 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 646-490-4920"
+  },
+  {
+    "srNo": 259,
+    "relationAccountName": "DialMedical",
+    "addressLine": "1919A Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 844-291-6161"
+  },
+  {
+    "srNo": 260,
+    "relationAccountName": "Pharmacy 4 U",
+    "addressLine": "1919A Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-676-9770"
+  },
+  {
+    "srNo": 261,
+    "relationAccountName": "Aaa Pharmacy & Medical Supply Inc",
+    "addressLine": "1926 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-339-9393"
+  },
+  {
+    "srNo": 262,
+    "relationAccountName": "Ocean Pharmacy",
+    "addressLine": "1929 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-998-9595"
+  },
+  {
+    "srNo": 263,
+    "relationAccountName": "Yaroslav Sirochinsky",
+    "addressLine": "1929 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-998-9595"
+  },
+  {
+    "srNo": 264,
+    "relationAccountName": "CAIRO RX PHARMACY",
+    "addressLine": "1932 Bath Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-749-9219"
+  },
+  {
+    "srNo": 265,
+    "relationAccountName": "GS Pharmacy",
+    "addressLine": "1932 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-421-4068"
+  },
+  {
+    "srNo": 266,
+    "relationAccountName": "Susana X. Jiang, RPh",
+    "addressLine": "1932 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-421-4068"
+  },
+  {
+    "srNo": 267,
+    "relationAccountName": "Health Mart Pharmacy",
+    "addressLine": "194 56th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-387-8288"
+  },
+  {
+    "srNo": 268,
+    "relationAccountName": "Liberty Medical Orthopedic Supplies",
+    "addressLine": "194 Cypress Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-484-4000"
+  },
+  {
+    "srNo": 269,
+    "relationAccountName": "Boreum Drugs",
+    "addressLine": "194 Union Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-387-8288"
+  },
+  {
+    "srNo": 270,
+    "relationAccountName": "ABC Drugs",
+    "addressLine": "1942 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-234-2500"
+  },
+  {
+    "srNo": 271,
+    "relationAccountName": "NILE EXPRESS PHARMACY",
+    "addressLine": "1950 Bath Ave #4723",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-928-7720"
+  },
+  {
+    "srNo": 272,
+    "relationAccountName": "Berkeley Pharmacy",
+    "addressLine": "1951 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-338-3434"
+  },
+  {
+    "srNo": 273,
+    "relationAccountName": "Best Price",
+    "addressLine": "1973 Bay Ridge Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-259-9699"
+  },
+  {
+    "srNo": 274,
+    "relationAccountName": "Morits Marina",
+    "addressLine": "2002 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-769-2015"
+  },
+  {
+    "srNo": 275,
+    "relationAccountName": "B T Pharmacy",
+    "addressLine": "2002 Cropsey Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-373-4800"
+  },
+  {
+    "srNo": 276,
+    "relationAccountName": "LCK Pharmacy Inc",
+    "addressLine": "2006 Bay Ridge Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 929-552-7088"
+  },
+  {
+    "srNo": 277,
+    "relationAccountName": "R X Express Pharmacy",
+    "addressLine": "2009 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-676-9666"
+  },
+  {
+    "srNo": 278,
+    "relationAccountName": "Genoa Healthcare",
+    "addressLine": "2020 Coney Island Ave Suite P",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 347-673-0279"
+  },
+  {
+    "srNo": 279,
+    "relationAccountName": "Canal Street Pharmacy",
+    "addressLine": "2029 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 212-748-4900"
+  },
+  {
+    "srNo": 280,
+    "relationAccountName": "Marhaba Pharmacy",
+    "addressLine": "2029 Bath Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-872-5600"
+  },
+  {
+    "srNo": 281,
+    "relationAccountName": "Eisenberg Pharmacy",
+    "addressLine": "203 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-743-1200"
+  },
+  {
+    "srNo": 282,
+    "relationAccountName": "RL Health Pharmacy",
+    "addressLine": "2034 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-333-0410"
+  },
+  {
+    "srNo": 283,
+    "relationAccountName": "86ST RX",
+    "addressLine": "2041 86th St Unit A2",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-360-5680"
+  },
+  {
+    "srNo": 284,
+    "relationAccountName": "86 Pharmacy Inc.",
+    "addressLine": "2042 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-266-1268"
+  },
+  {
+    "srNo": 285,
+    "relationAccountName": "Borbas Pharmacy & Medical Supply",
+    "addressLine": "2046 Bath Ave 2nd floor",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-677-9066"
+  },
+  {
+    "srNo": 286,
+    "relationAccountName": "Organic Planet Pharmacy",
+    "addressLine": "205 N 9th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 347-799-2213"
+  },
+  {
+    "srNo": 287,
+    "relationAccountName": "Oak Park Pharmacy",
+    "addressLine": "205 Prospect Park W",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-768-6300"
+  },
+  {
+    "srNo": 288,
+    "relationAccountName": "Prime Care Drugs & Surgicals",
+    "addressLine": "2066 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-513-6644"
+  },
+  {
+    "srNo": 289,
+    "relationAccountName": "Paras Drugs",
+    "addressLine": "2070 Bath Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-372-8795"
+  },
+  {
+    "srNo": 290,
+    "relationAccountName": "BKNY PHARMACY INC.",
+    "addressLine": "2081 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-975-3901"
+  },
+  {
+    "srNo": 291,
+    "relationAccountName": "Shlomo Pharmacy",
+    "addressLine": "2092 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-998-4100"
+  },
+  {
+    "srNo": 292,
+    "relationAccountName": "Almark Pharmacy",
+    "addressLine": "2094 Linden Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 347-770-8633"
+  },
+  {
+    "srNo": 293,
+    "relationAccountName": "Mark Khaskelzon, BS",
+    "addressLine": "210 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-373-4100"
+  },
+  {
+    "srNo": 294,
+    "relationAccountName": "Westside Pharmacy",
+    "addressLine": "210 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-373-4100"
+  },
+  {
+    "srNo": 295,
+    "relationAccountName": "Sam Pharmacy",
+    "addressLine": "210 Parkside Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-513-6657"
+  },
+  {
+    "srNo": 296,
+    "relationAccountName": "AVE X PHARMACY",
+    "addressLine": "2108 Avenue X",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-814-7844"
+  },
+  {
+    "srNo": 297,
+    "relationAccountName": "Link Pharmacy",
+    "addressLine": "2108 Bath Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-921-1858"
+  },
+  {
+    "srNo": 298,
+    "relationAccountName": "Bath Ave Pharmacy",
+    "addressLine": "2109 Bath Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 347-673-5314"
+  },
+  {
+    "srNo": 299,
+    "relationAccountName": "Mermaid Pharmacy Inc",
+    "addressLine": "2109 Mermaid Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-946-1084"
+  },
+  {
+    "srNo": 300,
+    "relationAccountName": "Junction Pharmacy",
+    "addressLine": "2109 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-421-3600"
+  },
+  {
+    "srNo": 301,
+    "relationAccountName": "Apni Pharmacy",
+    "addressLine": "211 Neptune Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-975-7885"
+  },
+  {
+    "srNo": 302,
+    "relationAccountName": "Fill Here Pharmacy",
+    "addressLine": "2116 Rockaway Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-968-8600"
+  },
+  {
+    "srNo": 303,
+    "relationAccountName": "Lagrass Pharmacy",
+    "addressLine": "2117 Utica Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-377-9400"
+  },
+  {
+    "srNo": 304,
+    "relationAccountName": "V Pharmacy LLC",
+    "addressLine": "2124 Gravesend Neck Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-368-0009"
+  },
+  {
+    "srNo": 305,
+    "relationAccountName": "Just In Time Pharmacy",
+    "addressLine": "2126 Knapp St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-332-5474"
+  },
+  {
+    "srNo": 306,
+    "relationAccountName": "Flatbush Pharmacy",
+    "addressLine": "2134 Beverley Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-284-0909"
+  },
+  {
+    "srNo": 307,
+    "relationAccountName": "Daniel Bastien",
+    "addressLine": "2141 45 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-434-1211"
+  },
+  {
+    "srNo": 308,
+    "relationAccountName": "Ocean Hill Pharmacy",
+    "addressLine": "215 Rockaway Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-928-7516"
+  },
+  {
+    "srNo": 309,
+    "relationAccountName": "Yafit Pharmacy",
+    "addressLine": "2163 E 7th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-998-8651"
+  },
+  {
+    "srNo": 310,
+    "relationAccountName": "Wellness Pharmacy",
+    "addressLine": "217 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-232-8277"
+  },
+  {
+    "srNo": 311,
+    "relationAccountName": "HealthPro Pharmacy",
+    "addressLine": "217 Schenectady Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-363-3400"
+  },
+  {
+    "srNo": 312,
+    "relationAccountName": "86 Bobo Pharmacy",
+    "addressLine": "2170 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 347-587-6275"
+  },
+  {
+    "srNo": 313,
+    "relationAccountName": "SV Wellness Pharmacy Inc.",
+    "addressLine": "2173C 68th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-975-0530"
+  },
+  {
+    "srNo": 314,
+    "relationAccountName": "Castiel",
+    "addressLine": "21st St & 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11232",
+    "Phone": null
+  },
+  {
+    "srNo": 315,
+    "relationAccountName": "Cacao Bio Technologies Llc",
+    "addressLine": "220 Conover St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11231",
+    "Phone": "+1 718-797-5012"
+  },
+  {
+    "srNo": 316,
+    "relationAccountName": "Sky Sunlight USA Inc",
+    "addressLine": "220 Ingraham St H3",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-808-5551"
+  },
+  {
+    "srNo": 317,
+    "relationAccountName": "Kay's Pharmacy",
+    "addressLine": "2201 Bath Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-372-0797"
+  },
+  {
+    "srNo": 318,
+    "relationAccountName": "RX ON U",
+    "addressLine": "2202 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 631-551-5110"
+  },
+  {
+    "srNo": 319,
+    "relationAccountName": "Gramercy Drugs",
+    "addressLine": "2218 Avenue X",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 212-532-0022"
+  },
+  {
+    "srNo": 320,
+    "relationAccountName": "M B Drugs",
+    "addressLine": "222 15th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-788-0768"
+  },
+  {
+    "srNo": 321,
+    "relationAccountName": "Umamah-Pitkin Pharmacy",
+    "addressLine": "2231 Pitkin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-485-3724"
+  },
+  {
+    "srNo": 322,
+    "relationAccountName": "Health Mart Pitkin Pharmacy",
+    "addressLine": "2232 Pitkin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 347-955-5506"
+  },
+  {
+    "srNo": 323,
+    "relationAccountName": "Topsolute Pharmaceuticals",
+    "addressLine": "224 Granville Payne Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 646-457-4033"
+  },
+  {
+    "srNo": 324,
+    "relationAccountName": "Bay Pharmacy Inc",
+    "addressLine": "2240 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-373-2722"
+  },
+  {
+    "srNo": 325,
+    "relationAccountName": "Royal Pharmacy",
+    "addressLine": "2244 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-941-7722"
+  },
+  {
+    "srNo": 326,
+    "relationAccountName": "Award Pharmacy",
+    "addressLine": "2249 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-331-1310"
+  },
+  {
+    "srNo": 327,
+    "relationAccountName": "Carewell Pharmacy",
+    "addressLine": "2259 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-676-4114"
+  },
+  {
+    "srNo": 328,
+    "relationAccountName": "East NY Pharmacy Inc.",
+    "addressLine": "226 Mother Gaston Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 347-941-0200"
+  },
+  {
+    "srNo": 329,
+    "relationAccountName": "Ballard Pharmacy",
+    "addressLine": "226 Prospect Park W",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-768-1325"
+  },
+  {
+    "srNo": 330,
+    "relationAccountName": "Rap Drugs",
+    "addressLine": "226 Schenectady Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-484-7735"
+  },
+  {
+    "srNo": 331,
+    "relationAccountName": "Ka Wing Group, Inc",
+    "addressLine": "2261b 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-837-3330"
+  },
+  {
+    "srNo": 332,
+    "relationAccountName": "Bensonhurst Aplus Pharmacy Inc",
+    "addressLine": "2263 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-331-1288"
+  },
+  {
+    "srNo": 333,
+    "relationAccountName": "Uhealthy Pharmacy Inc.",
+    "addressLine": "2263 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-331-1288"
+  },
+  {
+    "srNo": 334,
+    "relationAccountName": "Bright Pharmacy & Medical Supply Inc.",
+    "addressLine": "227 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-615-1550"
+  },
+  {
+    "srNo": 335,
+    "relationAccountName": "QualiMeds Pharmacy 恆健西藥房",
+    "addressLine": "2272 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-872-5737"
+  },
+  {
+    "srNo": 336,
+    "relationAccountName": "Pharmacy on U",
+    "addressLine": "2272 McDonald Ave #1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-996-4200"
+  },
+  {
+    "srNo": 337,
+    "relationAccountName": "J & R Pharmacy",
+    "addressLine": "2302 Mermaid Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-266-6286"
+  },
+  {
+    "srNo": 338,
+    "relationAccountName": "RL Health Pharmacy",
+    "addressLine": "2304 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-333-0410"
+  },
+  {
+    "srNo": 339,
+    "relationAccountName": "Irina Bykova, PH",
+    "addressLine": "2304 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-338-0709"
+  },
+  {
+    "srNo": 340,
+    "relationAccountName": "Voorhies Health Pharmacy",
+    "addressLine": "2309 Voorhies Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-975-2872"
+  },
+  {
+    "srNo": 341,
+    "relationAccountName": "Behrens Pharmacy",
+    "addressLine": "231 Dekalb Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11205",
+    "Phone": "+1 718-638-4350"
+  },
+  {
+    "srNo": 342,
+    "relationAccountName": "Alice Rx",
+    "addressLine": "231 S 3rd St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-502-6969"
+  },
+  {
+    "srNo": 343,
+    "relationAccountName": "Marlboro Pharmacy",
+    "addressLine": "2313 Stillwell Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-373-2600"
+  },
+  {
+    "srNo": 344,
+    "relationAccountName": "Quick Care Pharmacy",
+    "addressLine": "2314 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-375-5700"
+  },
+  {
+    "srNo": 345,
+    "relationAccountName": "Neighbor Care Pharmacy",
+    "addressLine": "2315 65th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-336-4772"
+  },
+  {
+    "srNo": 346,
+    "relationAccountName": "Rite Script Rx Inc",
+    "addressLine": "232 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-313-1757"
+  },
+  {
+    "srNo": 347,
+    "relationAccountName": "Centre Care Pharmacy",
+    "addressLine": "2321 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 212-226-0988"
+  },
+  {
+    "srNo": 348,
+    "relationAccountName": "Palomba Sadie",
+    "addressLine": "2324 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-886-6645"
+  },
+  {
+    "srNo": 349,
+    "relationAccountName": "Best Care Pharmacy of New York",
+    "addressLine": "2347 65th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 347-462-9145"
+  },
+  {
+    "srNo": 350,
+    "relationAccountName": "Moms Express Rx",
+    "addressLine": "235 Utica Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 347-295-3303"
+  },
+  {
+    "srNo": 351,
+    "relationAccountName": "Irving Avenue Pharmacy",
+    "addressLine": "235 Wyckoff Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-418-4700"
+  },
+  {
+    "srNo": 352,
+    "relationAccountName": "Main Pharmacy",
+    "addressLine": "2350 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-372-2144"
+  },
+  {
+    "srNo": 353,
+    "relationAccountName": "Vista Pharmacy",
+    "addressLine": "236 Bushwick Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-417-9031"
+  },
+  {
+    "srNo": 354,
+    "relationAccountName": "New Ronson Drug",
+    "addressLine": "237 Utica Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-756-7401"
+  },
+  {
+    "srNo": 355,
+    "relationAccountName": "Coney Island Chemist",
+    "addressLine": "2384 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 347-587-7200"
+  },
+  {
+    "srNo": 356,
+    "relationAccountName": "Health Care Pharmacy",
+    "addressLine": "2402 Mermaid Ave #2210",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-996-9900"
+  },
+  {
+    "srNo": 357,
+    "relationAccountName": "Mart Pharmacy",
+    "addressLine": "242 Bay Ridge Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-333-5777"
+  },
+  {
+    "srNo": 358,
+    "relationAccountName": "668 Pharmacy Inc.",
+    "addressLine": "2439 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-912-6888"
+  },
+  {
+    "srNo": 359,
+    "relationAccountName": "Williamsburg Pharmacy & Surgical Supply, Inc",
+    "addressLine": "244 Roebling St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-387-9772"
+  },
+  {
+    "srNo": 360,
+    "relationAccountName": "Hanna Care Inc",
+    "addressLine": "244 Saratoga Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-922-3333"
+  },
+  {
+    "srNo": 361,
+    "relationAccountName": "Tree Of Life RX & Vitamins",
+    "addressLine": "2472 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-336-0900"
+  },
+  {
+    "srNo": 362,
+    "relationAccountName": "Future Pharmacy Inc",
+    "addressLine": "2480 65th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-376-6563"
+  },
+  {
+    "srNo": 363,
+    "relationAccountName": "Pharmacy Anteka",
+    "addressLine": "2483 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 347-827-6940"
+  },
+  {
+    "srNo": 364,
+    "relationAccountName": "Ng May",
+    "addressLine": "249 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-886-6645"
+  },
+  {
+    "srNo": 365,
+    "relationAccountName": "DNG Pharmacy",
+    "addressLine": "249 Graham Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-384-6630"
+  },
+  {
+    "srNo": 366,
+    "relationAccountName": "Kingsway Pharmacy",
+    "addressLine": "250 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-946-6899"
+  },
+  {
+    "srNo": 367,
+    "relationAccountName": "Rightway Pharmacy",
+    "addressLine": "2511 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-891-7900"
+  },
+  {
+    "srNo": 368,
+    "relationAccountName": "CENTRAL PHARMACY OF BROOKLYN",
+    "addressLine": "252 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-646-2222"
+  },
+  {
+    "srNo": 369,
+    "relationAccountName": "Santa Maria Pharmacy",
+    "addressLine": "255 S 2nd St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-388-0745"
+  },
+  {
+    "srNo": 370,
+    "relationAccountName": "Brookdale Pharmacy",
+    "addressLine": "2568 Linden Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-485-0070"
+  },
+  {
+    "srNo": 371,
+    "relationAccountName": "T N Pharmacy",
+    "addressLine": "2570 E 17th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-646-2100"
+  },
+  {
+    "srNo": 372,
+    "relationAccountName": "Deen Pharmacy",
+    "addressLine": "2582 Pitkin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-210-1468"
+  },
+  {
+    "srNo": 373,
+    "relationAccountName": "Smart Choice Pharmacy",
+    "addressLine": "259 Avenue X",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-339-3400"
+  },
+  {
+    "srNo": 374,
+    "relationAccountName": "Door To Door Pharmacy",
+    "addressLine": "259 Troy Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-484-7400"
+  },
+  {
+    "srNo": 375,
+    "relationAccountName": "Echo Drugs",
+    "addressLine": "260 Broadway # 1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-782-3030"
+  },
+  {
+    "srNo": 376,
+    "relationAccountName": "Medcare Pharmacy",
+    "addressLine": "260 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-513-3322"
+  },
+  {
+    "srNo": 377,
+    "relationAccountName": "Chiming Kwan, MHS",
+    "addressLine": "2601 Ocean Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-616-4081"
+  },
+  {
+    "srNo": 378,
+    "relationAccountName": "Chemplus Pharmacy",
+    "addressLine": "2606 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-282-5504"
+  },
+  {
+    "srNo": 379,
+    "relationAccountName": "Frontline Pharmacy and Surgical",
+    "addressLine": "2610 Atlantic Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-400-9144"
+  },
+  {
+    "srNo": 380,
+    "relationAccountName": "Oxford Pharmacy",
+    "addressLine": "264 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11217",
+    "Phone": "+1 929-298-0369"
+  },
+  {
+    "srNo": 381,
+    "relationAccountName": "Med Pharmacy",
+    "addressLine": "264 Malcolm X Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-452-5530"
+  },
+  {
+    "srNo": 382,
+    "relationAccountName": "FAITH PHARMACY",
+    "addressLine": "2640 Pitkin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-827-2250"
+  },
+  {
+    "srNo": 383,
+    "relationAccountName": "This Way Pharmacy",
+    "addressLine": "2712 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-769-7403"
+  },
+  {
+    "srNo": 384,
+    "relationAccountName": "Coney Island Pharmacy",
+    "addressLine": "2720 Mermaid Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-333-2525"
+  },
+  {
+    "srNo": 385,
+    "relationAccountName": "Pharmacy Brighton",
+    "addressLine": "274 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-648-0002"
+  },
+  {
+    "srNo": 386,
+    "relationAccountName": "Pharmacy Express",
+    "addressLine": "274 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-648-0002"
+  },
+  {
+    "srNo": 387,
+    "relationAccountName": "RedStone Pharmacy",
+    "addressLine": "2749 Pitkin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 347-915-0952"
+  },
+  {
+    "srNo": 388,
+    "relationAccountName": "A & F Pharmacy",
+    "addressLine": "2754 Pitkin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-277-7707"
+  },
+  {
+    "srNo": 389,
+    "relationAccountName": "Marine Pharmacy Inc",
+    "addressLine": "2758 Gerritsen Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-332-7155"
+  },
+  {
+    "srNo": 390,
+    "relationAccountName": "Gates & Garvey Pharmacy",
+    "addressLine": "276 Marcus Garvey Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11221",
+    "Phone": "+1 718-443-8787"
+  },
+  {
+    "srNo": 391,
+    "relationAccountName": "U Pass Pharmacy",
+    "addressLine": "2769 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-676-1560"
+  },
+  {
+    "srNo": 392,
+    "relationAccountName": "Brighton RX Inc",
+    "addressLine": "277 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-332-8428"
+  },
+  {
+    "srNo": 393,
+    "relationAccountName": "86th Street Community Pharmacy",
+    "addressLine": "2789 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-266-2137"
+  },
+  {
+    "srNo": 394,
+    "relationAccountName": "Ocean A&R Pharmacy",
+    "addressLine": "2806 Ocean Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 347-462-9550"
+  },
+  {
+    "srNo": 395,
+    "relationAccountName": "Planet Rx Pharmacy",
+    "addressLine": "2813 Cropsey Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-975-7525"
+  },
+  {
+    "srNo": 396,
+    "relationAccountName": "Fulton Pharmacy",
+    "addressLine": "2818 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-235-6394"
+  },
+  {
+    "srNo": 397,
+    "relationAccountName": "Modern Remedies Pharmacy (Formerly Family Pharmacy )",
+    "addressLine": "2823 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-252-2818"
+  },
+  {
+    "srNo": 398,
+    "relationAccountName": "eve pharmacy",
+    "addressLine": "2836 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-743-8585"
+  },
+  {
+    "srNo": 399,
+    "relationAccountName": "Utica Pharmacy",
+    "addressLine": "285 Utica Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-953-7351"
+  },
+  {
+    "srNo": 400,
+    "relationAccountName": "Luna Park Pharmacy",
+    "addressLine": "2875 W 8th St #2",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-946-5444"
+  },
+  {
+    "srNo": 401,
+    "relationAccountName": "Greentree Pharmacy",
+    "addressLine": "291 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-768-2700"
+  },
+  {
+    "srNo": 402,
+    "relationAccountName": "Ahmed M. Negm, RP",
+    "addressLine": "291 Knickerbocker Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-456-5475"
+  },
+  {
+    "srNo": 403,
+    "relationAccountName": "Saab Pharmacy",
+    "addressLine": "291 Neptune Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-332-5577"
+  },
+  {
+    "srNo": 404,
+    "relationAccountName": "Galaxy medical supply",
+    "addressLine": "291 Pennsylvania Ave suite d",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-708-7258"
+  },
+  {
+    "srNo": 405,
+    "relationAccountName": "community care pharmacy",
+    "addressLine": "2913 Surf Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-372-5300"
+  },
+  {
+    "srNo": 406,
+    "relationAccountName": "New Age Pharmacy",
+    "addressLine": "2918 Avenue J",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-253-1700"
+  },
+  {
+    "srNo": 407,
+    "relationAccountName": "R Family Pharmacy",
+    "addressLine": "2934 Avenue R",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-758-4800"
+  },
+  {
+    "srNo": 408,
+    "relationAccountName": "Lyubov Erenburg, DR",
+    "addressLine": "2935 W 5th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-266-7630"
+  },
+  {
+    "srNo": 409,
+    "relationAccountName": "Baba Drugs",
+    "addressLine": "295 Ralph Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-484-4500"
+  },
+  {
+    "srNo": 410,
+    "relationAccountName": "Crystal Pharmacy, Inc.",
+    "addressLine": "2950 Avenue X Ste B",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-942-5800"
+  },
+  {
+    "srNo": 411,
+    "relationAccountName": "M G Medical Supply Inc",
+    "addressLine": "2962 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-743-2453"
+  },
+  {
+    "srNo": 412,
+    "relationAccountName": "G & G Pharmacy",
+    "addressLine": "2967 Ocean Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-646-2800"
+  },
+  {
+    "srNo": 413,
+    "relationAccountName": "Elton Pharmacy",
+    "addressLine": "2992 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-827-8943"
+  },
+  {
+    "srNo": 414,
+    "relationAccountName": "Esti's Pharmacy & Surgical",
+    "addressLine": "300 Troy Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-484-4305"
+  },
+  {
+    "srNo": 415,
+    "relationAccountName": "Luba Ilyaich, BS",
+    "addressLine": "3000 Ocean Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-930-5442"
+  },
+  {
+    "srNo": 416,
+    "relationAccountName": "ESTABLISHED DRUGS",
+    "addressLine": "3001 Clarendon Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-941-1013"
+  },
+  {
+    "srNo": 417,
+    "relationAccountName": "Avenue K Drugs",
+    "addressLine": "3002 Avenue K",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-484-9111"
+  },
+  {
+    "srNo": 418,
+    "relationAccountName": "Navar Pharmacy",
+    "addressLine": "3002 Avenue M",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-677-5811"
+  },
+  {
+    "srNo": 419,
+    "relationAccountName": "Val Rx Pharmacy",
+    "addressLine": "3007 Farragut Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-484-7045"
+  },
+  {
+    "srNo": 420,
+    "relationAccountName": "Family Drugstore",
+    "addressLine": "3010 Mermaid Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-373-2300"
+  },
+  {
+    "srNo": 421,
+    "relationAccountName": "Supreme Rx Pharmacy",
+    "addressLine": "3011 Avenue N",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-677-6600"
+  },
+  {
+    "srNo": 422,
+    "relationAccountName": "FDF Pharmacy",
+    "addressLine": "302 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-384-1544"
+  },
+  {
+    "srNo": 423,
+    "relationAccountName": "To Your Health Rx Corporation",
+    "addressLine": "3024 Atlantic Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-277-9160"
+  },
+  {
+    "srNo": 424,
+    "relationAccountName": "U Pharmacy",
+    "addressLine": "3030 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-975-0236"
+  },
+  {
+    "srNo": 425,
+    "relationAccountName": "Nostrand Houses Pharmacy",
+    "addressLine": "3031 Ave V",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-332-0040"
+  },
+  {
+    "srNo": 426,
+    "relationAccountName": "Hoyt Pharmacy",
+    "addressLine": "3038 Atlantic Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-277-9160"
+  },
+  {
+    "srNo": 427,
+    "relationAccountName": "Anaya pharmacy (DBA: Shandar Pharmacy)",
+    "addressLine": "3064 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-618-0540"
+  },
+  {
+    "srNo": 428,
+    "relationAccountName": "International Holistic Pharmacy",
+    "addressLine": "3078 Brighton 6th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-975-3733"
+  },
+  {
+    "srNo": 429,
+    "relationAccountName": "Neptune Pharmacy Inc",
+    "addressLine": "3080 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-332-5263"
+  },
+  {
+    "srNo": 430,
+    "relationAccountName": "Pharmacy",
+    "addressLine": "3090 Ocean Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-368-4291"
+  },
+  {
+    "srNo": 431,
+    "relationAccountName": "Ocean Chemists Pharmacy",
+    "addressLine": "3096 Ocean Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-484-2209"
+  },
+  {
+    "srNo": 432,
+    "relationAccountName": "Woodhull Drugs",
+    "addressLine": "310 Ellery St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-782-9345"
+  },
+  {
+    "srNo": 433,
+    "relationAccountName": "Boardwalk Rx",
+    "addressLine": "3100 Ocean Pkwy Ste 2",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-996-7600"
+  },
+  {
+    "srNo": 434,
+    "relationAccountName": "Quentin Road Pharmacy",
+    "addressLine": "3109 Quentin Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-998-2588"
+  },
+  {
+    "srNo": 435,
+    "relationAccountName": "Sure Drugs",
+    "addressLine": "312 Ralph Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-774-6800"
+  },
+  {
+    "srNo": 436,
+    "relationAccountName": "Norwood Care Pharmacy",
+    "addressLine": "3138 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-827-1000"
+  },
+  {
+    "srNo": 437,
+    "relationAccountName": "Shazia's Pharmacy",
+    "addressLine": "3166 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-872-6090"
+  },
+  {
+    "srNo": 438,
+    "relationAccountName": "Pharmacy Depot",
+    "addressLine": "317 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-646-0001"
+  },
+  {
+    "srNo": 439,
+    "relationAccountName": "Zoomdrugs Pharmacy",
+    "addressLine": "318A Utica Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": null
+  },
+  {
+    "srNo": 440,
+    "relationAccountName": "Light Pharmacy Inc",
+    "addressLine": "319 Avenue X",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-872-7668"
+  },
+  {
+    "srNo": 441,
+    "relationAccountName": "Crown Drugs",
+    "addressLine": "319 Kingston Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-363-7000"
+  },
+  {
+    "srNo": 442,
+    "relationAccountName": "Rite Aid",
+    "addressLine": "320 Smith St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11231",
+    "Phone": "+1 718-403-9371"
+  },
+  {
+    "srNo": 443,
+    "relationAccountName": "Oceanside Pharmacy Inc",
+    "addressLine": "3206 Mermaid Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-996-4949"
+  },
+  {
+    "srNo": 444,
+    "relationAccountName": "Shawn speciality Pharmacy",
+    "addressLine": "321 Wyckoff Ave",
+    "City": "Flushing",
+    "StateZip": "NY 11385",
+    "Phone": "+1 718-417-0200"
+  },
+  {
+    "srNo": 445,
+    "relationAccountName": "Oceana Pharmacy",
+    "addressLine": "3211 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 347-868-6394"
+  },
+  {
+    "srNo": 446,
+    "relationAccountName": "Whitman Pharmacy",
+    "addressLine": "329A Myrtle Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11205",
+    "Phone": "+1 718-938-0816"
+  },
+  {
+    "srNo": 447,
+    "relationAccountName": "Cabinet Health",
+    "addressLine": "33 Nassau Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11222",
+    "Phone": "+1 908-242-6108"
+  },
+  {
+    "srNo": 448,
+    "relationAccountName": "Atlantic Surgical Supply Corporation",
+    "addressLine": "3338 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-236-5354"
+  },
+  {
+    "srNo": 449,
+    "relationAccountName": "Central Avenue Pharmacy",
+    "addressLine": "334 Central Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11221",
+    "Phone": "+1 718-942-5855"
+  },
+  {
+    "srNo": 450,
+    "relationAccountName": "Prix Pharmacy",
+    "addressLine": "3340 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-513-1585"
+  },
+  {
+    "srNo": 451,
+    "relationAccountName": "City Chemist",
+    "addressLine": "335 Graham Ave #3734",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-387-0124"
+  },
+  {
+    "srNo": 452,
+    "relationAccountName": "Mellor's Drug Store",
+    "addressLine": "3350 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-277-5371"
+  },
+  {
+    "srNo": 453,
+    "relationAccountName": "Bay Park Pharmacy",
+    "addressLine": "3355 Neptune Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-372-2700"
+  },
+  {
+    "srNo": 454,
+    "relationAccountName": "Amazon Pharmacy",
+    "addressLine": "34 35th St Suite 201",
+    "City": "Brooklyn",
+    "StateZip": "NY 11232",
+    "Phone": "+1 855-745-5725"
+  },
+  {
+    "srNo": 455,
+    "relationAccountName": "New Trend Pharmacy",
+    "addressLine": "3401 Avenue H",
+    "City": "Brooklyn",
+    "StateZip": "NY 11210",
+    "Phone": "+1 718-859-3000"
+  },
+  {
+    "srNo": 456,
+    "relationAccountName": "J Drugs II",
+    "addressLine": "3402 Avenue N",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-258-5858"
+  },
+  {
+    "srNo": 457,
+    "relationAccountName": "Luigi Mollichelli, BS",
+    "addressLine": "341 9th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-499-3414"
+  },
+  {
+    "srNo": 458,
+    "relationAccountName": "Friends Pharmacy",
+    "addressLine": "342 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-753-4900"
+  },
+  {
+    "srNo": 459,
+    "relationAccountName": "Millennium Pharmacy",
+    "addressLine": "3420 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-348-5000"
+  },
+  {
+    "srNo": 460,
+    "relationAccountName": "New York Ave Pharmacy",
+    "addressLine": "3424 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-856-8048"
+  },
+  {
+    "srNo": 461,
+    "relationAccountName": "Queen Mary Pharmacy",
+    "addressLine": "343 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-282-2000"
+  },
+  {
+    "srNo": 462,
+    "relationAccountName": "An-Noor Pharmacy",
+    "addressLine": "35 101st Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-827-4000"
+  },
+  {
+    "srNo": 463,
+    "relationAccountName": "Saul's Pharmacy",
+    "addressLine": "3514 Mermaid Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-265-9108"
+  },
+  {
+    "srNo": 464,
+    "relationAccountName": "Brooklyn Family Pharmacy",
+    "addressLine": "355 Avenue X",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-975-7757"
+  },
+  {
+    "srNo": 465,
+    "relationAccountName": "Myrtle Drug Care",
+    "addressLine": "355 Myrtle Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11205",
+    "Phone": "+1 718-855-2292"
+  },
+  {
+    "srNo": 466,
+    "relationAccountName": "Sheepshead Bay Pharmacy",
+    "addressLine": "3558 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-676-4966"
+  },
+  {
+    "srNo": 467,
+    "relationAccountName": "Christine's Paradise",
+    "addressLine": "355A Monroe St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11221",
+    "Phone": null
+  },
+  {
+    "srNo": 468,
+    "relationAccountName": "Better Life Medical Supplies",
+    "addressLine": "3564 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-646-6061"
+  },
+  {
+    "srNo": 469,
+    "relationAccountName": "Kings Specialty Pharmacy",
+    "addressLine": "357 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 718-230-3535"
+  },
+  {
+    "srNo": 470,
+    "relationAccountName": "Knickerbocker Chemists Inc.",
+    "addressLine": "360 Knickerbocker Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-483-9102"
+  },
+  {
+    "srNo": 471,
+    "relationAccountName": "This Way Pharmacy",
+    "addressLine": "3601 Quentin Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-339-3110"
+  },
+  {
+    "srNo": 472,
+    "relationAccountName": "Right Choice Pharmacy",
+    "addressLine": "3609 Ave. S",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-676-5522"
+  },
+  {
+    "srNo": 473,
+    "relationAccountName": "Kings Bay Chemists",
+    "addressLine": "3610 Nostrand Ave #5197",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-891-3447"
+  },
+  {
+    "srNo": 474,
+    "relationAccountName": "Life-Touch Pharmacy",
+    "addressLine": "363 Sutter Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 347-529-0500"
+  },
+  {
+    "srNo": 475,
+    "relationAccountName": "Dumont Pharmacy",
+    "addressLine": "364 Junius St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-485-4012"
+  },
+  {
+    "srNo": 476,
+    "relationAccountName": "Family Drugstore",
+    "addressLine": "3692 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 718-769-9600"
+  },
+  {
+    "srNo": 477,
+    "relationAccountName": "ABC Pharmacy",
+    "addressLine": "371 McDonald Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-853-7766"
+  },
+  {
+    "srNo": 478,
+    "relationAccountName": "S & K Pharmacy",
+    "addressLine": "371 Neptune Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-743-1600"
+  },
+  {
+    "srNo": 479,
+    "relationAccountName": "Health Choice Pharmacy",
+    "addressLine": "3735 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-368-9800"
+  },
+  {
+    "srNo": 480,
+    "relationAccountName": "The Lobby Chemists",
+    "addressLine": "374 Stockholm St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-963-7222"
+  },
+  {
+    "srNo": 481,
+    "relationAccountName": "Apple Drugs (Crown Heights Pharmacy)",
+    "addressLine": "376 Kingston Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-467-6700"
+  },
+  {
+    "srNo": 482,
+    "relationAccountName": "Phamco Drugs",
+    "addressLine": "376 Utica Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-778-8750"
+  },
+  {
+    "srNo": 483,
+    "relationAccountName": "Nates Pharmacy",
+    "addressLine": "376 Van Brunt St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11231",
+    "Phone": "+1 718-797-0200"
+  },
+  {
+    "srNo": 484,
+    "relationAccountName": "Care Fast Pharmacy",
+    "addressLine": "3771 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-975-4464"
+  },
+  {
+    "srNo": 485,
+    "relationAccountName": "Batish Drugs Inc",
+    "addressLine": "378 Lafayette Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 718-623-8930"
+  },
+  {
+    "srNo": 486,
+    "relationAccountName": "Fine Care Pharmacy",
+    "addressLine": "380 Knickerbocker Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-676-9976"
+  },
+  {
+    "srNo": 487,
+    "relationAccountName": "Top Care Pharmacy",
+    "addressLine": "380 Ralph Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-975-8555"
+  },
+  {
+    "srNo": 488,
+    "relationAccountName": "Quick Aid Pharmacy",
+    "addressLine": "3814 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-854-7722"
+  },
+  {
+    "srNo": 489,
+    "relationAccountName": "Jolanta Kudelko",
+    "addressLine": "3823 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-743-8933"
+  },
+  {
+    "srNo": 490,
+    "relationAccountName": "Basin Gari",
+    "addressLine": "3828 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-934-8888"
+  },
+  {
+    "srNo": 491,
+    "relationAccountName": "Saldo Drugs",
+    "addressLine": "384 Graham Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-389-8015"
+  },
+  {
+    "srNo": 492,
+    "relationAccountName": "Licenced Medical Care",
+    "addressLine": "3849 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-368-9555"
+  },
+  {
+    "srNo": 493,
+    "relationAccountName": "Pharmacy 7",
+    "addressLine": "388 Neptune Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-709-0192"
+  },
+  {
+    "srNo": 494,
+    "relationAccountName": "Ridgewood Pharmacy",
+    "addressLine": "389 Onderdonk Ave",
+    "City": "Ridgewood",
+    "StateZip": "NY 11385",
+    "Phone": "+1 718-381-3622"
+  },
+  {
+    "srNo": 495,
+    "relationAccountName": "BOCKER PHARMACY & FOOD MART INC",
+    "addressLine": "390 Knickerbocker Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-676-1515"
+  },
+  {
+    "srNo": 496,
+    "relationAccountName": "NOSTRAND HEALTH PHARMACY",
+    "addressLine": "3901 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-559-0887"
+  },
+  {
+    "srNo": 497,
+    "relationAccountName": "39th St Pharmacy",
+    "addressLine": "3902 16th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-552-2323"
+  },
+  {
+    "srNo": 498,
+    "relationAccountName": "AVK RX Pharmacy",
+    "addressLine": "3904 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-484-9810"
+  },
+  {
+    "srNo": 499,
+    "relationAccountName": "S&T Pharmacie",
+    "addressLine": "391 Eastern Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-756-6026"
+  },
+  {
+    "srNo": 500,
+    "relationAccountName": "A-Town Pharmacy",
+    "addressLine": "3919 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11232",
+    "Phone": "+1 718-686-1201"
+  },
+  {
+    "srNo": 501,
+    "relationAccountName": "Health Point Drugs",
+    "addressLine": "392 Myrtle Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11205",
+    "Phone": "+1 718-855-5958"
+  },
+  {
+    "srNo": 502,
+    "relationAccountName": "Phillips Pharmacy",
+    "addressLine": "3921 9th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11232",
+    "Phone": "+1 718-435-7790"
+  },
+  {
+    "srNo": 503,
+    "relationAccountName": "Community Chemists",
+    "addressLine": "394 Avenue P",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-339-8118"
+  },
+  {
+    "srNo": 504,
+    "relationAccountName": "L & A Pharmacy",
+    "addressLine": "395 Avenue X",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-339-3131"
+  },
+  {
+    "srNo": 505,
+    "relationAccountName": "Helen Ong",
+    "addressLine": "395 Court St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11231",
+    "Phone": "+1 718-222-1193"
+  },
+  {
+    "srNo": 506,
+    "relationAccountName": "Sunshine Medical & Surgical Supply",
+    "addressLine": "395 Troy Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-484-4741"
+  },
+  {
+    "srNo": 507,
+    "relationAccountName": "Mayflower Pharmacy",
+    "addressLine": "397 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-645-0999"
+  },
+  {
+    "srNo": 508,
+    "relationAccountName": "Sams Pharmacy",
+    "addressLine": "397 Saratoga Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-676-0697"
+  },
+  {
+    "srNo": 509,
+    "relationAccountName": "Brownsville Pharmacy",
+    "addressLine": "4 Sutter Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-778-0490"
+  },
+  {
+    "srNo": 510,
+    "relationAccountName": "Callen-Lorde Community Pharmacy",
+    "addressLine": "40 Flatbush Avenue Extension Third Floor",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 212-271-7200"
+  },
+  {
+    "srNo": 511,
+    "relationAccountName": "The Modern Chemist - DOMINO",
+    "addressLine": "40 S 3rd St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11249",
+    "Phone": "+1 718-599-4830"
+  },
+  {
+    "srNo": 512,
+    "relationAccountName": "Bangla Pharmacy",
+    "addressLine": "401 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-554-1900"
+  },
+  {
+    "srNo": 513,
+    "relationAccountName": "Levy's Pharmacy",
+    "addressLine": "4021 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-633-4377"
+  },
+  {
+    "srNo": 514,
+    "relationAccountName": "Silver Pharmacy",
+    "addressLine": "4024 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-851-7711"
+  },
+  {
+    "srNo": 515,
+    "relationAccountName": "New Lots Care Pharmacy",
+    "addressLine": "404 New Lots Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-484-0700"
+  },
+  {
+    "srNo": 516,
+    "relationAccountName": "Globe Drug Store",
+    "addressLine": "405 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-745-2233"
+  },
+  {
+    "srNo": 517,
+    "relationAccountName": "M Drugs",
+    "addressLine": "405 Avenue M",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-252-7334"
+  },
+  {
+    "srNo": 518,
+    "relationAccountName": "Slope Drugs & Surgical Supply",
+    "addressLine": "406 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-788-8899"
+  },
+  {
+    "srNo": 519,
+    "relationAccountName": "Excellent Choice Pharmacy Inc.",
+    "addressLine": "409 Rockaway Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": null
+  },
+  {
+    "srNo": 520,
+    "relationAccountName": "Sunshine Pharmacy",
+    "addressLine": "411 Kingston Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 718-773-2020"
+  },
+  {
+    "srNo": 521,
+    "relationAccountName": "5 Star Pharmacy",
+    "addressLine": "4125 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-686-8900"
+  },
+  {
+    "srNo": 522,
+    "relationAccountName": "Flushing Pharmacy",
+    "addressLine": "414 Flushing Ave # 1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11205",
+    "Phone": "+1 718-260-8999"
+  },
+  {
+    "srNo": 523,
+    "relationAccountName": "Oceania Pharmacy",
+    "addressLine": "415 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-769-5777"
+  },
+  {
+    "srNo": 524,
+    "relationAccountName": "Excel Drugs",
+    "addressLine": "42 Thomas S Boyland St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-453-1003"
+  },
+  {
+    "srNo": 525,
+    "relationAccountName": "Joseph Locastro",
+    "addressLine": "420 Clinton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11231-3554",
+    "Phone": "+1 718-855-6171"
+  },
+  {
+    "srNo": 526,
+    "relationAccountName": "Kent Pharmacy",
+    "addressLine": "420 Kent Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11249",
+    "Phone": "+1 718-384-7334"
+  },
+  {
+    "srNo": 527,
+    "relationAccountName": "Kent Pharmacy and Health Market",
+    "addressLine": "420 Kent Ave Floor 1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11249",
+    "Phone": "+1 718-384-7334"
+  },
+  {
+    "srNo": 528,
+    "relationAccountName": "Medrx Inc",
+    "addressLine": "420 Mother Gaston Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-312-1048"
+  },
+  {
+    "srNo": 529,
+    "relationAccountName": "Delta Pharmacy",
+    "addressLine": "4202 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 347-663-3944"
+  },
+  {
+    "srNo": 530,
+    "relationAccountName": "Citi Express Pharmacy and Medical Supplies",
+    "addressLine": "4217 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-355-8800"
+  },
+  {
+    "srNo": 531,
+    "relationAccountName": "City Drugs",
+    "addressLine": "422 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-686-2727"
+  },
+  {
+    "srNo": 532,
+    "relationAccountName": "L & S Pharmacy Inc",
+    "addressLine": "424 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-332-5881"
+  },
+  {
+    "srNo": 533,
+    "relationAccountName": "Neighborhood Pharmacy",
+    "addressLine": "424 Sutter Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-485-6303"
+  },
+  {
+    "srNo": 534,
+    "relationAccountName": "Life Pharmacy",
+    "addressLine": "4301 14th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-438-1421"
+  },
+  {
+    "srNo": 535,
+    "relationAccountName": "Lin's Pharmacy",
+    "addressLine": "4307 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11232",
+    "Phone": "+1 347-221-0914"
+  },
+  {
+    "srNo": 536,
+    "relationAccountName": "Sunrise Health Pharmacy",
+    "addressLine": "4319 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11232",
+    "Phone": "+1 718-686-8889"
+  },
+  {
+    "srNo": 537,
+    "relationAccountName": "Southside Pharmacy",
+    "addressLine": "432 Bedford Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11249",
+    "Phone": "+1 718-782-7200"
+  },
+  {
+    "srNo": 538,
+    "relationAccountName": "Square Deal Pharmacy",
+    "addressLine": "437 Mother Gaston Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-495-1414"
+  },
+  {
+    "srNo": 539,
+    "relationAccountName": "Family Pharmacy",
+    "addressLine": "440 Rockaway Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-342-7368"
+  },
+  {
+    "srNo": 540,
+    "relationAccountName": "VLS Pharmacy",
+    "addressLine": "4402 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-854-1384"
+  },
+  {
+    "srNo": 541,
+    "relationAccountName": "The Medicine Chest LLC",
+    "addressLine": "4407 15th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-633-4246"
+  },
+  {
+    "srNo": 542,
+    "relationAccountName": "Family medical supply",
+    "addressLine": "441 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-734-2857"
+  },
+  {
+    "srNo": 543,
+    "relationAccountName": "Smile Pharmacy(微笑大药房)",
+    "addressLine": "4411 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 929-678-4200"
+  },
+  {
+    "srNo": 544,
+    "relationAccountName": "United Care Pharmacy Corporation",
+    "addressLine": "4424 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-369-2803"
+  },
+  {
+    "srNo": 545,
+    "relationAccountName": "Danish Pharmacy",
+    "addressLine": "443 Dekalb Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11205",
+    "Phone": "+1 718-622-0868"
+  },
+  {
+    "srNo": 546,
+    "relationAccountName": "Millennium Chemist Inc",
+    "addressLine": "445 Columbia St #3",
+    "City": "Brooklyn",
+    "StateZip": "NY 11231",
+    "Phone": "+1 718-923-1600"
+  },
+  {
+    "srNo": 547,
+    "relationAccountName": "Myrtle Pharmacy",
+    "addressLine": "446a Myrtle Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11205",
+    "Phone": "+1 718-237-4444"
+  },
+  {
+    "srNo": 548,
+    "relationAccountName": "Moishe's Pharmacy",
+    "addressLine": "4508 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-686-9999"
+  },
+  {
+    "srNo": 549,
+    "relationAccountName": "Premium Rx",
+    "addressLine": "4510 16th Ave 3rd Floor",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 844-370-6199"
+  },
+  {
+    "srNo": 550,
+    "relationAccountName": "Sunset Park Pharmacy",
+    "addressLine": "4510 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-633-6533"
+  },
+  {
+    "srNo": 551,
+    "relationAccountName": "Hamilton Drugs Corporation",
+    "addressLine": "4514 Fort Hamilton Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-435-8800"
+  },
+  {
+    "srNo": 552,
+    "relationAccountName": "AZE Pharmacy",
+    "addressLine": "4519 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-576-3476"
+  },
+  {
+    "srNo": 553,
+    "relationAccountName": "Neergaard Pharmacy",
+    "addressLine": "454 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-768-0600"
+  },
+  {
+    "srNo": 554,
+    "relationAccountName": "16th Ave Pharmacy LLC",
+    "addressLine": "4605 16th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-686-8000"
+  },
+  {
+    "srNo": 555,
+    "relationAccountName": "Farmacia",
+    "addressLine": "4616 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-972-2780"
+  },
+  {
+    "srNo": 556,
+    "relationAccountName": "Ridge Chemists",
+    "addressLine": "4620 3rd Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-333-5979"
+  },
+  {
+    "srNo": 557,
+    "relationAccountName": "Lane Drugs",
+    "addressLine": "4623 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-435-1118"
+  },
+  {
+    "srNo": 558,
+    "relationAccountName": "Sannidhi Rajashekar",
+    "addressLine": "4623 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-435-1118"
+  },
+  {
+    "srNo": 559,
+    "relationAccountName": "Value Drugs",
+    "addressLine": "4623 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-773-5547"
+  },
+  {
+    "srNo": 560,
+    "relationAccountName": "Full Health Care Pharmacy",
+    "addressLine": "4624 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 347-599-1088"
+  },
+  {
+    "srNo": 561,
+    "relationAccountName": "New Utrecht Pharmacy",
+    "addressLine": "4624 New Utrecht Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-436-9300"
+  },
+  {
+    "srNo": 562,
+    "relationAccountName": "El Azar Pharmacy",
+    "addressLine": "464 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-676-6445"
+  },
+  {
+    "srNo": 563,
+    "relationAccountName": "Pharmacy Building",
+    "addressLine": "470 Hudson Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-488-1234"
+  },
+  {
+    "srNo": 564,
+    "relationAccountName": "A J Family Pharmacy",
+    "addressLine": "4709 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 347-533-7291"
+  },
+  {
+    "srNo": 565,
+    "relationAccountName": "STATE UNIVERSITY OF NEW YORK PHARMACY",
+    "addressLine": "470a Clarkson Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-270-6337"
+  },
+  {
+    "srNo": 566,
+    "relationAccountName": "Fine Care Pharmacy",
+    "addressLine": "4721 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-438-6555"
+  },
+  {
+    "srNo": 567,
+    "relationAccountName": "Grand Buy Pharmacy",
+    "addressLine": "4721 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-853-2845"
+  },
+  {
+    "srNo": 568,
+    "relationAccountName": "JMK Pharmacy",
+    "addressLine": "4723 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-438-6555"
+  },
+  {
+    "srNo": 569,
+    "relationAccountName": "AHF Pharmacy",
+    "addressLine": "475 Atlantic Ave 2nd FL",
+    "City": "Brooklyn",
+    "StateZip": "NY 11217",
+    "Phone": "+1 718-637-2970"
+  },
+  {
+    "srNo": 570,
+    "relationAccountName": "New Lots Pharmacy (Boca)",
+    "addressLine": "475 New Lots Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-272-4566"
+  },
+  {
+    "srNo": 571,
+    "relationAccountName": "Deshbangla Pharmacy",
+    "addressLine": "481 McDonald Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-975-7771"
+  },
+  {
+    "srNo": 572,
+    "relationAccountName": "Fifth Avenue Pharmacy",
+    "addressLine": "4818 5th Ave #1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-439-8585"
+  },
+  {
+    "srNo": 573,
+    "relationAccountName": "888 Pharmacy",
+    "addressLine": "4821 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-871-8833"
+  },
+  {
+    "srNo": 574,
+    "relationAccountName": "Super Health Pharmacy Park Slope",
+    "addressLine": "49 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11217",
+    "Phone": "+1 347-943-8044"
+  },
+  {
+    "srNo": 575,
+    "relationAccountName": "Dear Drugs Inc",
+    "addressLine": "490 Avenue P",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-998-8000"
+  },
+  {
+    "srNo": 576,
+    "relationAccountName": "Gerardo Romero",
+    "addressLine": "4901 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-252-3791"
+  },
+  {
+    "srNo": 577,
+    "relationAccountName": "Good Day Pharmacy LLC",
+    "addressLine": "4908 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-851-8826"
+  },
+  {
+    "srNo": 578,
+    "relationAccountName": "Ross Pharmacy",
+    "addressLine": "4908 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-693-4138"
+  },
+  {
+    "srNo": 579,
+    "relationAccountName": "Advantage Pharmacy",
+    "addressLine": "4910 Fort Hamilton Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-437-4699"
+  },
+  {
+    "srNo": 580,
+    "relationAccountName": "Drug Mart Pharmacy",
+    "addressLine": "4914 New Utrecht Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-633-4900"
+  },
+  {
+    "srNo": 581,
+    "relationAccountName": "Maria Agojo",
+    "addressLine": "4915 Flatlands Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 347-856-5852"
+  },
+  {
+    "srNo": 582,
+    "relationAccountName": "Kings Drug & Surgical",
+    "addressLine": "492 Clarkson Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-363-3300"
+  },
+  {
+    "srNo": 583,
+    "relationAccountName": "La Ruche Pharmacy",
+    "addressLine": "494 Rockaway Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-485-6923"
+  },
+  {
+    "srNo": 584,
+    "relationAccountName": "S & K Warbasse Pharmacy Inc",
+    "addressLine": "499 Neptune Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11224",
+    "Phone": "+1 718-449-5177"
+  },
+  {
+    "srNo": 585,
+    "relationAccountName": "Park Chemists Pharmacy",
+    "addressLine": "500 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-567-5444"
+  },
+  {
+    "srNo": 586,
+    "relationAccountName": "Rxcircle Pharmacy Corporation",
+    "addressLine": "5001 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-686-8280"
+  },
+  {
+    "srNo": 587,
+    "relationAccountName": "4th Avenue Pharmacy",
+    "addressLine": "5002 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-492-1500"
+  },
+  {
+    "srNo": 588,
+    "relationAccountName": "Lieb Pharmacy",
+    "addressLine": "5006 16th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-633-5770"
+  },
+  {
+    "srNo": 589,
+    "relationAccountName": "Ugoson Pharmacy Inc",
+    "addressLine": "5015 Avenue N",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-692-1200"
+  },
+  {
+    "srNo": 590,
+    "relationAccountName": "Boro Pharmacy",
+    "addressLine": "5027 New Utrecht Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-878-7333"
+  },
+  {
+    "srNo": 591,
+    "relationAccountName": "WellPha Pharmacy",
+    "addressLine": "505 Union Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-467-0918"
+  },
+  {
+    "srNo": 592,
+    "relationAccountName": "Ditmas Pharmacy",
+    "addressLine": "509 Ditmas Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-675-0055"
+  },
+  {
+    "srNo": 593,
+    "relationAccountName": "Ditmas Park Pharmacy",
+    "addressLine": "509 Ralph Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11233",
+    "Phone": "+1 718-975-4989"
+  },
+  {
+    "srNo": 594,
+    "relationAccountName": "Pharmore Pharmacy",
+    "addressLine": "510 Ocean Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-282-3600"
+  },
+  {
+    "srNo": 595,
+    "relationAccountName": "Silver Rod Pharmacy",
+    "addressLine": "5105 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-922-3400"
+  },
+  {
+    "srNo": 596,
+    "relationAccountName": "Anteka Rx Inc.",
+    "addressLine": "511 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-332-4002"
+  },
+  {
+    "srNo": 597,
+    "relationAccountName": "Cityline Pharmacy Corporation",
+    "addressLine": "511 Cortelyou Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-940-0310"
+  },
+  {
+    "srNo": 598,
+    "relationAccountName": "Brooklyn Farmacy & Soda Fountain",
+    "addressLine": "513 Henry St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11231",
+    "Phone": "+1 718-522-6260"
+  },
+  {
+    "srNo": 599,
+    "relationAccountName": "Sunset Park Health Council Pharmacy at NYU",
+    "addressLine": "514 49th St 1st Floor",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-431-2693"
+  },
+  {
+    "srNo": 600,
+    "relationAccountName": "Parkaid Pharmacy",
+    "addressLine": "517 Park Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11205",
+    "Phone": "+1 718-875-1505"
+  },
+  {
+    "srNo": 601,
+    "relationAccountName": "Rabinowitz Pharmacy",
+    "addressLine": "518 Brighton Beach Ave #1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-332-3708"
+  },
+  {
+    "srNo": 602,
+    "relationAccountName": "Y&D Care",
+    "addressLine": "519 Flushing Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11205",
+    "Phone": "+1 917-909-0279"
+  },
+  {
+    "srNo": 603,
+    "relationAccountName": "Target",
+    "addressLine": "519 Gateway Dr",
+    "City": "Brooklyn",
+    "StateZip": "NY 11239",
+    "Phone": "+1 718-235-6032"
+  },
+  {
+    "srNo": 604,
+    "relationAccountName": "YMD Pharmacy",
+    "addressLine": "519 Utica Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-221-6814"
+  },
+  {
+    "srNo": 605,
+    "relationAccountName": "Faith Pharmacy",
+    "addressLine": "52 Willoughby St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-643-6300"
+  },
+  {
+    "srNo": 606,
+    "relationAccountName": "MACRORX Pharmacy",
+    "addressLine": "5202 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-633-6337"
+  },
+  {
+    "srNo": 607,
+    "relationAccountName": "13th Ave Pharmacy",
+    "addressLine": "5211 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-871-9777"
+  },
+  {
+    "srNo": 608,
+    "relationAccountName": "Get Well Pharmacy",
+    "addressLine": "5218 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-686-0812"
+  },
+  {
+    "srNo": 609,
+    "relationAccountName": "BBRx Plus Pharmacy",
+    "addressLine": "5223 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-851-0817"
+  },
+  {
+    "srNo": 610,
+    "relationAccountName": "Clarkson Pharmacy",
+    "addressLine": "524 Clarkson Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-774-1656"
+  },
+  {
+    "srNo": 611,
+    "relationAccountName": "Thriftcare Pharmacy",
+    "addressLine": "524 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-230-3009"
+  },
+  {
+    "srNo": 612,
+    "relationAccountName": "ABC PHARMACY INC",
+    "addressLine": "5304 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-437-9888"
+  },
+  {
+    "srNo": 613,
+    "relationAccountName": "Parkway Pharmacy",
+    "addressLine": "531 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-436-5501"
+  },
+  {
+    "srNo": 614,
+    "relationAccountName": "Michael's Pharmacy",
+    "addressLine": "531 E 7th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-921-8777"
+  },
+  {
+    "srNo": 615,
+    "relationAccountName": "Health Max Pharmacy",
+    "addressLine": "5313 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-567-8000"
+  },
+  {
+    "srNo": 616,
+    "relationAccountName": "53 Pharmacy",
+    "addressLine": "5315 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-686-0006"
+  },
+  {
+    "srNo": 617,
+    "relationAccountName": "AbsoluteRX Pharmacy",
+    "addressLine": "5322 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-883-9991"
+  },
+  {
+    "srNo": 618,
+    "relationAccountName": "A5 Pharmacy Inc.",
+    "addressLine": "5323 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-851-8888"
+  },
+  {
+    "srNo": 619,
+    "relationAccountName": "PersonalRX Pharmacy",
+    "addressLine": "5369 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 800-203-6282"
+  },
+  {
+    "srNo": 620,
+    "relationAccountName": "K2 Health Products",
+    "addressLine": "5377 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 888-451-5144"
+  },
+  {
+    "srNo": 621,
+    "relationAccountName": "Welcare Pharmacy & Surgical",
+    "addressLine": "54 Graham Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-599-7200"
+  },
+  {
+    "srNo": 622,
+    "relationAccountName": "ABC PHARMACY INC",
+    "addressLine": "5401 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-686-8830"
+  },
+  {
+    "srNo": 623,
+    "relationAccountName": "Lutheran Pharmacy",
+    "addressLine": "5407 2nd Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-492-9800"
+  },
+  {
+    "srNo": 624,
+    "relationAccountName": "Ideal Pharmacy",
+    "addressLine": "5409 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-439-5900"
+  },
+  {
+    "srNo": 625,
+    "relationAccountName": "Pharmahouserx, LLC",
+    "addressLine": "5411 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-331-3600"
+  },
+  {
+    "srNo": 626,
+    "relationAccountName": "7th Avenue Pharmacy Inc",
+    "addressLine": "5412 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-633-2299"
+  },
+  {
+    "srNo": 627,
+    "relationAccountName": "Time One Pharmacy",
+    "addressLine": "5415 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-686-8988"
+  },
+  {
+    "srNo": 628,
+    "relationAccountName": "Thriftway Pharmacy",
+    "addressLine": "542 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 718-284-9800"
+  },
+  {
+    "srNo": 629,
+    "relationAccountName": "Aegis Pharmacy",
+    "addressLine": "5425 Flatlands Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-444-5425"
+  },
+  {
+    "srNo": 630,
+    "relationAccountName": "SmartHealth Pharmacy",
+    "addressLine": "547 86th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-238-2725"
+  },
+  {
+    "srNo": 631,
+    "relationAccountName": "Medical Arts Chemists & Surgicals",
+    "addressLine": "5504 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-436-6088"
+  },
+  {
+    "srNo": 632,
+    "relationAccountName": "8th Avenue Pharmacy",
+    "addressLine": "5504 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-438-3838"
+  },
+  {
+    "srNo": 633,
+    "relationAccountName": "JCPC Corporation",
+    "addressLine": "5510 8th Ave #1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-851-3888"
+  },
+  {
+    "srNo": 634,
+    "relationAccountName": "Cheung Ajsha",
+    "addressLine": "5517 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-871-8255"
+  },
+  {
+    "srNo": 635,
+    "relationAccountName": "Eve & Mike Pharmacy",
+    "addressLine": "552 St Marks Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 718-230-3321"
+  },
+  {
+    "srNo": 636,
+    "relationAccountName": "American Pharmacy",
+    "addressLine": "5524 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-686-1688"
+  },
+  {
+    "srNo": 637,
+    "relationAccountName": "True Care Pharmacy",
+    "addressLine": "556 Atlantic Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11217",
+    "Phone": "+1 347-889-6055"
+  },
+  {
+    "srNo": 638,
+    "relationAccountName": "United Pharmacy",
+    "addressLine": "556 Grand St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-384-7901"
+  },
+  {
+    "srNo": 639,
+    "relationAccountName": "Dineshchandra M. Patel, BPharm",
+    "addressLine": "557 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-788-0768"
+  },
+  {
+    "srNo": 640,
+    "relationAccountName": "Northside Pharmacy",
+    "addressLine": "559 Driggs Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-387-6566"
+  },
+  {
+    "srNo": 641,
+    "relationAccountName": "Doc's Pharmacy",
+    "addressLine": "559 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-627-1145"
+  },
+  {
+    "srNo": 642,
+    "relationAccountName": "Boro Park Pharmacy",
+    "addressLine": "5600 New Utrecht Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-480-0700"
+  },
+  {
+    "srNo": 643,
+    "relationAccountName": "HealthLine Rx Pharmacy",
+    "addressLine": "5603 2nd Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 929-788-5463"
+  },
+  {
+    "srNo": 644,
+    "relationAccountName": "A Plus Pharmacy",
+    "addressLine": "5605 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-492-3888"
+  },
+  {
+    "srNo": 645,
+    "relationAccountName": "Care First Pharmacy & Surgical",
+    "addressLine": "5612A 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-567-3338"
+  },
+  {
+    "srNo": 646,
+    "relationAccountName": "Healthlink rx inc",
+    "addressLine": "5623 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-633-1685"
+  },
+  {
+    "srNo": 647,
+    "relationAccountName": "JJRx Pharmacy",
+    "addressLine": "5624B 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-717-7456"
+  },
+  {
+    "srNo": 648,
+    "relationAccountName": "Wilson Pharmacy",
+    "addressLine": "566 Wilson Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-290-9423"
+  },
+  {
+    "srNo": 649,
+    "relationAccountName": "Green Pharmacy",
+    "addressLine": "567 Sutter Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-484-9844"
+  },
+  {
+    "srNo": 650,
+    "relationAccountName": "Spencer Drug Ltd",
+    "addressLine": "5702 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-439-3852"
+  },
+  {
+    "srNo": 651,
+    "relationAccountName": "A.M. Pharmacy",
+    "addressLine": "5702 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-238-9828"
+  },
+  {
+    "srNo": 652,
+    "relationAccountName": "Evergreen Surgical Supply Inc",
+    "addressLine": "5703 6th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-439-6038"
+  },
+  {
+    "srNo": 653,
+    "relationAccountName": "Medina Pharmacy",
+    "addressLine": "5721 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-439-3500"
+  },
+  {
+    "srNo": 654,
+    "relationAccountName": "Sunway Pharmacy",
+    "addressLine": "5723 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-439-5000"
+  },
+  {
+    "srNo": 655,
+    "relationAccountName": "Ai Hua",
+    "addressLine": "5724 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-567-8288"
+  },
+  {
+    "srNo": 656,
+    "relationAccountName": "Eliyahu's Pharmacy",
+    "addressLine": "573 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-627-0485"
+  },
+  {
+    "srNo": 657,
+    "relationAccountName": "County Pharmacy",
+    "addressLine": "580 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-783-1143"
+  },
+  {
+    "srNo": 658,
+    "relationAccountName": "59 St Pharmacy",
+    "addressLine": "5816 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-567-0019"
+  },
+  {
+    "srNo": 659,
+    "relationAccountName": "Teresa Pharmacy and Medical Supply",
+    "addressLine": "582 Rockaway Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-342-3446"
+  },
+  {
+    "srNo": 660,
+    "relationAccountName": "Kelly's Pharmacy",
+    "addressLine": "5825 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-439-6360"
+  },
+  {
+    "srNo": 661,
+    "relationAccountName": "Mill Basin Pharmacy",
+    "addressLine": "5829 Avenue T",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-676-6675"
+  },
+  {
+    "srNo": 662,
+    "relationAccountName": "Michael Evelyn, CASAC",
+    "addressLine": "585 Schenectady Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-604-5363"
+  },
+  {
+    "srNo": 663,
+    "relationAccountName": "Beach Haven Pharmacy",
+    "addressLine": "589 Avenue Z",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-648-5999"
+  },
+  {
+    "srNo": 664,
+    "relationAccountName": "Kruticks Pharmacy",
+    "addressLine": "589 Crescent St.",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-277-0573"
+  },
+  {
+    "srNo": 665,
+    "relationAccountName": "COVID-19 Drive-Thru Testing at Walgreens",
+    "addressLine": "589 Prospect Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 800-925-4733"
+  },
+  {
+    "srNo": 666,
+    "relationAccountName": "Brooklyn Pharmacy",
+    "addressLine": "589 Sutter Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-484-8600"
+  },
+  {
+    "srNo": 667,
+    "relationAccountName": "Healthy Family Pharmacy",
+    "addressLine": "5901 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-676-7733"
+  },
+  {
+    "srNo": 668,
+    "relationAccountName": "Global Care Pharmacy",
+    "addressLine": "5905 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-851-8998"
+  },
+  {
+    "srNo": 669,
+    "relationAccountName": "Chemix Pharmacy",
+    "addressLine": "5909 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-444-4000"
+  },
+  {
+    "srNo": 670,
+    "relationAccountName": "First Choice Pharmacy",
+    "addressLine": "5912 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-439-8077"
+  },
+  {
+    "srNo": 671,
+    "relationAccountName": "Dellorusso Nicholas",
+    "addressLine": "5915 Avenue N",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-209-2222"
+  },
+  {
+    "srNo": 672,
+    "relationAccountName": "Austra-Line Pharmacy",
+    "addressLine": "5916 Glenwood Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-531-6000"
+  },
+  {
+    "srNo": 673,
+    "relationAccountName": "Precise Care Pharmacy",
+    "addressLine": "5917 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 347-889-6018"
+  },
+  {
+    "srNo": 674,
+    "relationAccountName": "Brownsville Community Pharmacy",
+    "addressLine": "592 Rockaway Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-345-3399"
+  },
+  {
+    "srNo": 675,
+    "relationAccountName": "MedPack",
+    "addressLine": "5923 Strickland Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 347-506-1000"
+  },
+  {
+    "srNo": 676,
+    "relationAccountName": "Infusion Options Inc",
+    "addressLine": "5924 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-283-7233"
+  },
+  {
+    "srNo": 677,
+    "relationAccountName": "Sutter Rx Pharmacy",
+    "addressLine": "593 Sutter Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 347-295-0208"
+  },
+  {
+    "srNo": 678,
+    "relationAccountName": "Prospect Care Pharmacy",
+    "addressLine": "596 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 347-725-4600"
+  },
+  {
+    "srNo": 679,
+    "relationAccountName": "7 Star Pharmacy",
+    "addressLine": "596 Clarkson Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-484-7213"
+  },
+  {
+    "srNo": 680,
+    "relationAccountName": "Archi Med Pharmacy Inc",
+    "addressLine": "6 Bay 50th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-333-1215"
+  },
+  {
+    "srNo": 681,
+    "relationAccountName": "Sunset Corner Pharmacy",
+    "addressLine": "6002 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 347-889-7200"
+  },
+  {
+    "srNo": 682,
+    "relationAccountName": "A One Pharmacy",
+    "addressLine": "6009 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-438-3999"
+  },
+  {
+    "srNo": 683,
+    "relationAccountName": "Family First Pharmacy & Surgical Supplies",
+    "addressLine": "6010 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-633-8388"
+  },
+  {
+    "srNo": 684,
+    "relationAccountName": "Medcal Pharmacy",
+    "addressLine": "6010 Bay Pkwy Suite 803 (8th floor)",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-331-2200"
+  },
+  {
+    "srNo": 685,
+    "relationAccountName": "BBRx Pharmacy",
+    "addressLine": "6013 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-439-0502"
+  },
+  {
+    "srNo": 686,
+    "relationAccountName": "Kenby Pharmacy",
+    "addressLine": "6024 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-439-4721"
+  },
+  {
+    "srNo": 687,
+    "relationAccountName": "SKS Pharmacy",
+    "addressLine": "611 Livonia Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-385-6000"
+  },
+  {
+    "srNo": 688,
+    "relationAccountName": "New York Drugs & Surgicals",
+    "addressLine": "6112 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-439-4966"
+  },
+  {
+    "srNo": 689,
+    "relationAccountName": "Chester Pharmacy",
+    "addressLine": "614 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 718-826-6117"
+  },
+  {
+    "srNo": 690,
+    "relationAccountName": "Kinetic Pharmacy Inc.",
+    "addressLine": "61st St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-686-7288"
+  },
+  {
+    "srNo": 691,
+    "relationAccountName": "The Modern Chemist - DUMBO",
+    "addressLine": "62 Water St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 347-689-2007"
+  },
+  {
+    "srNo": 692,
+    "relationAccountName": "Scarpa Pharmacy & Surgical",
+    "addressLine": "6216 11th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-745-5499"
+  },
+  {
+    "srNo": 693,
+    "relationAccountName": "Rimco Pharmacy",
+    "addressLine": "623 Wilson Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-919-9131"
+  },
+  {
+    "srNo": 694,
+    "relationAccountName": "Stop & Shop Pharmacy",
+    "addressLine": "625 Atlantic Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11217",
+    "Phone": "+1 718-399-6239"
+  },
+  {
+    "srNo": 695,
+    "relationAccountName": "Livonia Pharmacy",
+    "addressLine": "625A Livonia Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-484-8100"
+  },
+  {
+    "srNo": 696,
+    "relationAccountName": "Alexs Pharmacy",
+    "addressLine": "627 Gravesend Neck Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 347-462-2356"
+  },
+  {
+    "srNo": 697,
+    "relationAccountName": "Stuart Slater Pharmacy",
+    "addressLine": "63 Lee Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-387-2764"
+  },
+  {
+    "srNo": 698,
+    "relationAccountName": "New Primecare",
+    "addressLine": "6301 Mill Ln",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-642-5230"
+  },
+  {
+    "srNo": 699,
+    "relationAccountName": "Fortune Pharmacy",
+    "addressLine": "6305 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-836-6337"
+  },
+  {
+    "srNo": 700,
+    "relationAccountName": "Dragon Medical Supplies Inc",
+    "addressLine": "6315 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-745-5888"
+  },
+  {
+    "srNo": 701,
+    "relationAccountName": "Sunrise Family Pharmacy",
+    "addressLine": "6324 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-567-9100"
+  },
+  {
+    "srNo": 702,
+    "relationAccountName": "DOSE PHARMACY",
+    "addressLine": "633 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 347-725-4999"
+  },
+  {
+    "srNo": 703,
+    "relationAccountName": "WEST SIDE PHARMACY",
+    "addressLine": "635 Meeker Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11222",
+    "Phone": " '+1 718-373-4100"
+  },
+  {
+    "srNo": 704,
+    "relationAccountName": "Compashione Pharmacy",
+    "addressLine": "636 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-363-1095"
+  },
+  {
+    "srNo": 705,
+    "relationAccountName": "Accurate Pharmacy",
+    "addressLine": "639 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11215",
+    "Phone": "+1 718-788-2082"
+  },
+  {
+    "srNo": 706,
+    "relationAccountName": "Mannings 8th Ave Pharmacy",
+    "addressLine": "6402 8th Ave G103",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-238-3850"
+  },
+  {
+    "srNo": 707,
+    "relationAccountName": "Silver Rod Pharmacy",
+    "addressLine": "6404 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-236-5705"
+  },
+  {
+    "srNo": 708,
+    "relationAccountName": "Vital Chemist",
+    "addressLine": "6404 20th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-758-5557"
+  },
+  {
+    "srNo": 709,
+    "relationAccountName": "Malik Mahmood",
+    "addressLine": "6407 Bay Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-234-4211"
+  },
+  {
+    "srNo": 710,
+    "relationAccountName": "Mercy Pharmacy",
+    "addressLine": "6413 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-256-1020"
+  },
+  {
+    "srNo": 711,
+    "relationAccountName": "BayHealth Pharmacy",
+    "addressLine": "6415 Bay Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-234-6500"
+  },
+  {
+    "srNo": 712,
+    "relationAccountName": "Grandbrook Pharmacy",
+    "addressLine": "642 Sutter Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-484-8690"
+  },
+  {
+    "srNo": 713,
+    "relationAccountName": "Simplex Pharmacy",
+    "addressLine": "644 Rogers Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-462-2029"
+  },
+  {
+    "srNo": 714,
+    "relationAccountName": "Jacob Yuval",
+    "addressLine": "650 Amboy St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-240-6931"
+  },
+  {
+    "srNo": 715,
+    "relationAccountName": "Friendly Rx Pharmacy",
+    "addressLine": "651 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-732-3399"
+  },
+  {
+    "srNo": 716,
+    "relationAccountName": "Mill Park Pharmacy, Toys & Gifts",
+    "addressLine": "6602 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11234",
+    "Phone": "+1 718-444-7200"
+  },
+  {
+    "srNo": 717,
+    "relationAccountName": "Blue Point Pharmacy LLC",
+    "addressLine": "6604 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 347-492-7130"
+  },
+  {
+    "srNo": 718,
+    "relationAccountName": "Health Plus Pharmacy Corporation",
+    "addressLine": "6605 Bay Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-232-0810"
+  },
+  {
+    "srNo": 719,
+    "relationAccountName": "Vanderbilt Convenience",
+    "addressLine": "667 Vanderbilt Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 347-529-1616"
+  },
+  {
+    "srNo": 720,
+    "relationAccountName": "Nicky N. Legakis, R",
+    "addressLine": "668 84th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11228",
+    "Phone": "+1 718-745-2215"
+  },
+  {
+    "srNo": 721,
+    "relationAccountName": "Euro Chemist Pharmacy",
+    "addressLine": "669 Manhattan Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11222",
+    "Phone": "+1 718-349-6696"
+  },
+  {
+    "srNo": 722,
+    "relationAccountName": "Hong Kong pharmacy",
+    "addressLine": "6714 Fort Hamilton Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 929-292-2326"
+  },
+  {
+    "srNo": 723,
+    "relationAccountName": "Care Max Pharmacy Inc",
+    "addressLine": "6721 Fort Hamilton Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-833-6700"
+  },
+  {
+    "srNo": 724,
+    "relationAccountName": "Sunrise Pharmacy",
+    "addressLine": "6725 Bay Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-837-0600"
+  },
+  {
+    "srNo": 725,
+    "relationAccountName": "Rite-Care Pharmacy",
+    "addressLine": "677 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11232",
+    "Phone": "+1 718-499-7410"
+  },
+  {
+    "srNo": 726,
+    "relationAccountName": "Sunlight pharmacy",
+    "addressLine": "679 60th St unit b",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-765-4190"
+  },
+  {
+    "srNo": 727,
+    "relationAccountName": "Marben Pharmacy & Surgicals",
+    "addressLine": "679 Stanley Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-649-0200"
+  },
+  {
+    "srNo": 728,
+    "relationAccountName": "Corner Pharmacy Myrtle",
+    "addressLine": "680 Myrtle Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11205",
+    "Phone": "+1 718-599-0811"
+  },
+  {
+    "srNo": 729,
+    "relationAccountName": "Fusion Pharmacy",
+    "addressLine": "6801 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-975-2130"
+  },
+  {
+    "srNo": 730,
+    "relationAccountName": "Glenridge Pharmacy",
+    "addressLine": "6801 Myrtle Ave",
+    "City": "Queens",
+    "StateZip": "NY 11385",
+    "Phone": "+1 718-366-3561"
+  },
+  {
+    "srNo": 731,
+    "relationAccountName": "Pharma RX inc",
+    "addressLine": "6806 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-748-1400"
+  },
+  {
+    "srNo": 732,
+    "relationAccountName": "Robert Keith, MPA",
+    "addressLine": "681 Clarkson Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-221-7434"
+  },
+  {
+    "srNo": 733,
+    "relationAccountName": "Sisto Pharmacy",
+    "addressLine": "682 Grand St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-387-2665"
+  },
+  {
+    "srNo": 734,
+    "relationAccountName": "Alleon Pharmacy",
+    "addressLine": "6823 Fort Hamilton Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-745-0733"
+  },
+  {
+    "srNo": 735,
+    "relationAccountName": "Geo Pharmacy",
+    "addressLine": "685 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-703-1888"
+  },
+  {
+    "srNo": 736,
+    "relationAccountName": "Parkside Express Pharmacy",
+    "addressLine": "685 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 347-529-1843"
+  },
+  {
+    "srNo": 737,
+    "relationAccountName": "Lowens Pharmacy",
+    "addressLine": "6902 3rd Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-238-2444"
+  },
+  {
+    "srNo": 738,
+    "relationAccountName": "Bobo Pharmacy",
+    "addressLine": "6903 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-759-6308"
+  },
+  {
+    "srNo": 739,
+    "relationAccountName": "Bay Ridge Rx Specialty Pharmacy",
+    "addressLine": "6910 3rd Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-680-2229"
+  },
+  {
+    "srNo": 740,
+    "relationAccountName": "Freedom Rx Pharmacy",
+    "addressLine": "6914 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 347-517-4431"
+  },
+  {
+    "srNo": 741,
+    "relationAccountName": "Rx2Go",
+    "addressLine": "6921 8th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11228",
+    "Phone": "+1 646-821-1444"
+  },
+  {
+    "srNo": 742,
+    "relationAccountName": "NILE RIDGE PHARMACY",
+    "addressLine": "6922 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-333-5746"
+  },
+  {
+    "srNo": 743,
+    "relationAccountName": "Ridge Ez Pharmacy",
+    "addressLine": "6923 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-333-5356"
+  },
+  {
+    "srNo": 744,
+    "relationAccountName": "NY MED Pharmacy",
+    "addressLine": "6924 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 347-599-1165"
+  },
+  {
+    "srNo": 745,
+    "relationAccountName": "Rafieh Pharmacy",
+    "addressLine": "70 Lee Ave # 1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-387-0021"
+  },
+  {
+    "srNo": 746,
+    "relationAccountName": "Samantha Lee",
+    "addressLine": "7009 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11228",
+    "Phone": "+1 718-256-1761"
+  },
+  {
+    "srNo": 747,
+    "relationAccountName": "Zuckerman Pharmacy & Surgical",
+    "addressLine": "701 Brighton Beach Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11235",
+    "Phone": "+1 718-743-1800"
+  },
+  {
+    "srNo": 748,
+    "relationAccountName": "Rio Drugs",
+    "addressLine": "701 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-599-1172"
+  },
+  {
+    "srNo": 749,
+    "relationAccountName": "ALL FAMILY PHARMACY INC",
+    "addressLine": "7017 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-232-8668"
+  },
+  {
+    "srNo": 750,
+    "relationAccountName": "Greene Community Pharmacy",
+    "addressLine": "702 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11217",
+    "Phone": "+1 718-834-6368"
+  },
+  {
+    "srNo": 751,
+    "relationAccountName": "Rockaway Rx Inc",
+    "addressLine": "710 Rockaway Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-498-2277"
+  },
+  {
+    "srNo": 752,
+    "relationAccountName": "JRSTAT Pharmacy",
+    "addressLine": "7107 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11228",
+    "Phone": "+1 718-633-2988"
+  },
+  {
+    "srNo": 753,
+    "relationAccountName": "Remedies Pharmacy",
+    "addressLine": "711 Bedford Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-855-0214"
+  },
+  {
+    "srNo": 754,
+    "relationAccountName": "Sky Pharmacy - New York",
+    "addressLine": "7114 Bay Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-621-0204"
+  },
+  {
+    "srNo": 755,
+    "relationAccountName": "Regency Drugs",
+    "addressLine": "7115 3rd Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-238-7488"
+  },
+  {
+    "srNo": 756,
+    "relationAccountName": "Tak Loog Au",
+    "addressLine": "7118 3rd Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-745-2830"
+  },
+  {
+    "srNo": 757,
+    "relationAccountName": "Bay Ridge Rx",
+    "addressLine": "7119 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-745-7119"
+  },
+  {
+    "srNo": 758,
+    "relationAccountName": "M & F Pharmacy",
+    "addressLine": "712 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-467-1000"
+  },
+  {
+    "srNo": 759,
+    "relationAccountName": "Hancock Pharmacy",
+    "addressLine": "715 Knickerbocker Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11221",
+    "Phone": "+1 718-497-7000"
+  },
+  {
+    "srNo": 760,
+    "relationAccountName": "V & A Pharmacy",
+    "addressLine": "72 Manhattan Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-388-8500"
+  },
+  {
+    "srNo": 761,
+    "relationAccountName": "Thriftway Pharmacy",
+    "addressLine": "720 Classon Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 718-399-1800"
+  },
+  {
+    "srNo": 762,
+    "relationAccountName": "Hasan Pharmacy Corporation",
+    "addressLine": "7209 12th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11228",
+    "Phone": "+1 718-774-8702"
+  },
+  {
+    "srNo": 763,
+    "relationAccountName": "St. Marie Pharmacy",
+    "addressLine": "7211 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 347-560-6866"
+  },
+  {
+    "srNo": 764,
+    "relationAccountName": "LINKUS PHARMACY INC",
+    "addressLine": "7213 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-837-8282"
+  },
+  {
+    "srNo": 765,
+    "relationAccountName": "Forever Health Pharmacy II",
+    "addressLine": "7224 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 347-673-8678"
+  },
+  {
+    "srNo": 766,
+    "relationAccountName": "Lincoln Pharmacy",
+    "addressLine": "723 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-284-0083"
+  },
+  {
+    "srNo": 767,
+    "relationAccountName": "Complete Care Pharmacy",
+    "addressLine": "723 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 347-627-3303"
+  },
+  {
+    "srNo": 768,
+    "relationAccountName": "Dahill Pharmacy",
+    "addressLine": "73 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-484-8300"
+  },
+  {
+    "srNo": 769,
+    "relationAccountName": "Emaan Pharmacy INC.",
+    "addressLine": "7309 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-748-5900"
+  },
+  {
+    "srNo": 770,
+    "relationAccountName": "Naz Pharmacy",
+    "addressLine": "731 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-284-4200"
+  },
+  {
+    "srNo": 771,
+    "relationAccountName": "Neugard Pharmacy & Surgical",
+    "addressLine": "7311 3rd Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-748-9300"
+  },
+  {
+    "srNo": 772,
+    "relationAccountName": "Nevins Drugs",
+    "addressLine": "739 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11217",
+    "Phone": "+1 718-422-0100"
+  },
+  {
+    "srNo": 773,
+    "relationAccountName": "New Lots Pharmacy",
+    "addressLine": "739 New Lots Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-649-9535"
+  },
+  {
+    "srNo": 774,
+    "relationAccountName": "Lawrence Pharmacy",
+    "addressLine": "740 New Lots Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-649-0180"
+  },
+  {
+    "srNo": 775,
+    "relationAccountName": "Dyker Care Pharmacy",
+    "addressLine": "7426 15th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11228",
+    "Phone": "+1 718-216-5555"
+  },
+  {
+    "srNo": 776,
+    "relationAccountName": "Mom's Pharmacy",
+    "addressLine": "745 Ralph Ave Suite I",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 347-240-3750"
+  },
+  {
+    "srNo": 777,
+    "relationAccountName": "Aldav Pharmacy",
+    "addressLine": "749 Ocean Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-724-2245"
+  },
+  {
+    "srNo": 778,
+    "relationAccountName": "Long Island University Pharmacy",
+    "addressLine": "75 Dekalb Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 718-488-1234"
+  },
+  {
+    "srNo": 779,
+    "relationAccountName": "Raees Pharmacy",
+    "addressLine": "750 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-856-5998"
+  },
+  {
+    "srNo": 780,
+    "relationAccountName": "TRUE HEALTH PHARMACY INC",
+    "addressLine": "7524 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-748-4300"
+  },
+  {
+    "srNo": 781,
+    "relationAccountName": "Woodhull RX Center",
+    "addressLine": "755 Flushing Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-599-1309"
+  },
+  {
+    "srNo": 782,
+    "relationAccountName": "Pharmacy RX",
+    "addressLine": "756 Myrtle Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": null
+  },
+  {
+    "srNo": 783,
+    "relationAccountName": "Safe Health Pharmacy",
+    "addressLine": "758 61st St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-632-8299"
+  },
+  {
+    "srNo": 784,
+    "relationAccountName": "Thriftcare Pharmacy",
+    "addressLine": "759 Washington Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 718-638-3800"
+  },
+  {
+    "srNo": 785,
+    "relationAccountName": "Katz Drugs",
+    "addressLine": "76 Graham Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-388-4588"
+  },
+  {
+    "srNo": 786,
+    "relationAccountName": "Mmc Pharmacy Inc.-Warehouse",
+    "addressLine": "760 64th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": null
+  },
+  {
+    "srNo": 787,
+    "relationAccountName": "Woodhull Hospital Pharmacy",
+    "addressLine": "760 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-963-8000"
+  },
+  {
+    "srNo": 788,
+    "relationAccountName": "Pollina Pharmacy",
+    "addressLine": "7605 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11228",
+    "Phone": "+1 718-331-4300"
+  },
+  {
+    "srNo": 789,
+    "relationAccountName": "Teba Pharmacy",
+    "addressLine": "7618 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 347-517-4833"
+  },
+  {
+    "srNo": 790,
+    "relationAccountName": "Joanne Lee",
+    "addressLine": "762 59th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-567-3318"
+  },
+  {
+    "srNo": 791,
+    "relationAccountName": "AC Pharmacy Corporation",
+    "addressLine": "762 59th St #1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-567-3318"
+  },
+  {
+    "srNo": 792,
+    "relationAccountName": "Smart Health Pharmacy",
+    "addressLine": "764 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-282-9000"
+  },
+  {
+    "srNo": 793,
+    "relationAccountName": "J2 Pharmacy",
+    "addressLine": "769 61st St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 347-335-0910"
+  },
+  {
+    "srNo": 794,
+    "relationAccountName": "Nu-Edge Pharmacy Inc",
+    "addressLine": "7707 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-748-4082"
+  },
+  {
+    "srNo": 795,
+    "relationAccountName": "Unity Drugs",
+    "addressLine": "772 Grand St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11211",
+    "Phone": "+1 718-486-0344"
+  },
+  {
+    "srNo": 796,
+    "relationAccountName": "Rx Warehouse Pharmacy",
+    "addressLine": "7724 New Utrecht Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-236-1212"
+  },
+  {
+    "srNo": 797,
+    "relationAccountName": "Pure Health Pharmacy",
+    "addressLine": "776 Franklin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 718-484-9189"
+  },
+  {
+    "srNo": 798,
+    "relationAccountName": "Alafiya Pharmacy",
+    "addressLine": "7820 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-333-5703"
+  },
+  {
+    "srNo": 799,
+    "relationAccountName": "Prestige Medical",
+    "addressLine": "787 Rogers Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-443-4800"
+  },
+  {
+    "srNo": 800,
+    "relationAccountName": "Supreme Pharmacy",
+    "addressLine": "791 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-282-2000"
+  },
+  {
+    "srNo": 801,
+    "relationAccountName": "Three-P Drugs",
+    "addressLine": "791 Flushing Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-302-4850"
+  },
+  {
+    "srNo": 802,
+    "relationAccountName": "Kings Court Drugs Inc.",
+    "addressLine": "8 Newkirk Plaza",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-434-6565"
+  },
+  {
+    "srNo": 803,
+    "relationAccountName": "Finocchiaro Marie G",
+    "addressLine": "800 Poly Pl",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-836-6600"
+  },
+  {
+    "srNo": 804,
+    "relationAccountName": "ABO Pharmacy",
+    "addressLine": "8003 Flatlands Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-872-5142"
+  },
+  {
+    "srNo": 805,
+    "relationAccountName": "Farmacon Pharmacy",
+    "addressLine": "8007 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-238-1090"
+  },
+  {
+    "srNo": 806,
+    "relationAccountName": "Hoi in Mui, DPH",
+    "addressLine": "8009 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-233-2668"
+  },
+  {
+    "srNo": 807,
+    "relationAccountName": "Konwaler Drugs",
+    "addressLine": "801 Church Ave Unit A",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-438-2565"
+  },
+  {
+    "srNo": 808,
+    "relationAccountName": "Park Drugs",
+    "addressLine": "801 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 718-953-4548"
+  },
+  {
+    "srNo": 809,
+    "relationAccountName": "Care Rx Pharmacy",
+    "addressLine": "8011 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-331-2668"
+  },
+  {
+    "srNo": 810,
+    "relationAccountName": "Be Well Pharmacy",
+    "addressLine": "8012 20th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-232-2320"
+  },
+  {
+    "srNo": 811,
+    "relationAccountName": "Pure Health Pharmacy",
+    "addressLine": "8014 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-236-2747"
+  },
+  {
+    "srNo": 812,
+    "relationAccountName": "DYKER HEIGHTS PHARMACY",
+    "addressLine": "8016 13th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11228",
+    "Phone": "+1 718-833-4810"
+  },
+  {
+    "srNo": 813,
+    "relationAccountName": "Maurice Pharmacy",
+    "addressLine": "802 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 347-462-2877"
+  },
+  {
+    "srNo": 814,
+    "relationAccountName": "Phamco Drugs",
+    "addressLine": "802 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-604-2585"
+  },
+  {
+    "srNo": 815,
+    "relationAccountName": "Health Rx Pharmacy (Boerum Hill)",
+    "addressLine": "8022 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-643-6975"
+  },
+  {
+    "srNo": 816,
+    "relationAccountName": "I W Pharmacy Inc",
+    "addressLine": "804 54th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-633-2988"
+  },
+  {
+    "srNo": 817,
+    "relationAccountName": "Aid Pharmacy",
+    "addressLine": "807 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-376-3313"
+  },
+  {
+    "srNo": 818,
+    "relationAccountName": "My Unique Pharmacy Inc",
+    "addressLine": "810 55th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 347-295-1185"
+  },
+  {
+    "srNo": 819,
+    "relationAccountName": "Wellness Plus Pharmacy",
+    "addressLine": "810 Flushing Ave #4106",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-443-3900"
+  },
+  {
+    "srNo": 820,
+    "relationAccountName": "Ideal Care Pharmacy",
+    "addressLine": "811 Avenue U",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-382-1990"
+  },
+  {
+    "srNo": 821,
+    "relationAccountName": "Rx World",
+    "addressLine": "8110 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-232-5566"
+  },
+  {
+    "srNo": 822,
+    "relationAccountName": "Americare Pharmacy Corp.",
+    "addressLine": "8114 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 929-373-5577"
+  },
+  {
+    "srNo": 823,
+    "relationAccountName": "Abby Pharmacy",
+    "addressLine": "812 60th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 347-915-1010"
+  },
+  {
+    "srNo": 824,
+    "relationAccountName": "AE3 Pharmacy 美寧大藥房",
+    "addressLine": "818 57th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-972-1852"
+  },
+  {
+    "srNo": 825,
+    "relationAccountName": "Janata Pharmacy",
+    "addressLine": "82 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-618-0523"
+  },
+  {
+    "srNo": 826,
+    "relationAccountName": "Avon Pharmacy & Surgical",
+    "addressLine": "82 Graham Ave # A",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-384-0630"
+  },
+  {
+    "srNo": 827,
+    "relationAccountName": "Ralph Prescriptions pharmacy",
+    "addressLine": "820 Wyckoff Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": "+1 718-456-3156"
+  },
+  {
+    "srNo": 828,
+    "relationAccountName": "One Spot Pharmacy LLC",
+    "addressLine": "8204 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 347-889-7050"
+  },
+  {
+    "srNo": 829,
+    "relationAccountName": "Health Is Wealth",
+    "addressLine": "823 Dean St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 718-230-8161"
+  },
+  {
+    "srNo": 830,
+    "relationAccountName": "Rubin Chemists",
+    "addressLine": "828 Nostrand Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11216",
+    "Phone": "+1 718-493-8833"
+  },
+  {
+    "srNo": 831,
+    "relationAccountName": "Premium Pharmacy",
+    "addressLine": "829 57th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-484-4628"
+  },
+  {
+    "srNo": 832,
+    "relationAccountName": "Frank Derosa",
+    "addressLine": "8318 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-745-2100"
+  },
+  {
+    "srNo": 833,
+    "relationAccountName": "Janus Pharmacy",
+    "addressLine": "833 58th St 1st Floor",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 718-854-7092"
+  },
+  {
+    "srNo": 834,
+    "relationAccountName": "Tez Pharmacy",
+    "addressLine": "834 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-284-0100"
+  },
+  {
+    "srNo": 835,
+    "relationAccountName": "DAILY DOSE PHARMACY",
+    "addressLine": "839 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-908-0200"
+  },
+  {
+    "srNo": 836,
+    "relationAccountName": "Staff Medical Supply Inc",
+    "addressLine": "839 Empire Blvd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11213",
+    "Phone": "+1 718-774-3311"
+  },
+  {
+    "srNo": 837,
+    "relationAccountName": "Careland Pharmacy",
+    "addressLine": "84 Clark St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": "+1 347-987-4315"
+  },
+  {
+    "srNo": 838,
+    "relationAccountName": "Square Pharmacy",
+    "addressLine": "8400 Flatlands Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-269-4000"
+  },
+  {
+    "srNo": 839,
+    "relationAccountName": "Pharmacy",
+    "addressLine": "8405 20th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": null
+  },
+  {
+    "srNo": 840,
+    "relationAccountName": "Advanced Asian Pharmacy",
+    "addressLine": "849 57th St Ste 1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 347-425-0965"
+  },
+  {
+    "srNo": 841,
+    "relationAccountName": "A & V Pharmacy",
+    "addressLine": "8501 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-238-1402"
+  },
+  {
+    "srNo": 842,
+    "relationAccountName": "Bay Parkway Pharmacy",
+    "addressLine": "8506A Bay Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 917-933-9188"
+  },
+  {
+    "srNo": 843,
+    "relationAccountName": "Family Health Pharmacy",
+    "addressLine": "8510 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-837-5777"
+  },
+  {
+    "srNo": 844,
+    "relationAccountName": "Best Care Pharmacy & Surgical",
+    "addressLine": "8510 3rd Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-680-9855"
+  },
+  {
+    "srNo": 845,
+    "relationAccountName": "21st Ave Pharmacy & Medical Supply Inc",
+    "addressLine": "8511 21st Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-449-4949"
+  },
+  {
+    "srNo": 846,
+    "relationAccountName": "Protech Pharmacy Llc",
+    "addressLine": "8512 19th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": null
+  },
+  {
+    "srNo": 847,
+    "relationAccountName": "Health Treasures Pharmacy Inc.",
+    "addressLine": "8512 20th Ave #3253",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-333-0395"
+  },
+  {
+    "srNo": 848,
+    "relationAccountName": "J & L Pharmacy",
+    "addressLine": "8513 Bay 16th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-232-5541"
+  },
+  {
+    "srNo": 849,
+    "relationAccountName": "Bay-Care Pharmacy",
+    "addressLine": "8515 Bay Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-266-6160"
+  },
+  {
+    "srNo": 850,
+    "relationAccountName": "M & I Pharmacy",
+    "addressLine": "853 E New York Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-493-8118"
+  },
+  {
+    "srNo": 851,
+    "relationAccountName": "Prestige Rx|DMV EYE TESTING",
+    "addressLine": "858 Dekalb Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11221",
+    "Phone": "+1 646-517-0370"
+  },
+  {
+    "srNo": 852,
+    "relationAccountName": "Medicine Depot",
+    "addressLine": "86 Manhattan Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-963-3923"
+  },
+  {
+    "srNo": 853,
+    "relationAccountName": "All Natural Care",
+    "addressLine": "86 Quentin Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11223",
+    "Phone": "+1 718-996-3752"
+  },
+  {
+    "srNo": 854,
+    "relationAccountName": "Aikon Pharmacy ",
+    "addressLine": "8605 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-885-4291"
+  },
+  {
+    "srNo": 855,
+    "relationAccountName": "Atta Cares Pharmacy",
+    "addressLine": "860A Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 347-365-6665"
+  },
+  {
+    "srNo": 856,
+    "relationAccountName": "Flatbush Express Pharmacy",
+    "addressLine": "862 Flatbush Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11226",
+    "Phone": "+1 718-282-4777"
+  },
+  {
+    "srNo": 857,
+    "relationAccountName": "Value Med Pharmacy",
+    "addressLine": "87 Avenue O",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": "+1 718-232-7766"
+  },
+  {
+    "srNo": 858,
+    "relationAccountName": "Bay Chemists",
+    "addressLine": "8702 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 347-909-7107"
+  },
+  {
+    "srNo": 859,
+    "relationAccountName": "Ummat Pharmacy",
+    "addressLine": "8719 18th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 347-587-4029"
+  },
+  {
+    "srNo": 860,
+    "relationAccountName": "Canarsie Plaza Pharmacy",
+    "addressLine": "8721 Flatlands Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-257-2344"
+  },
+  {
+    "srNo": 861,
+    "relationAccountName": "Stella's Pharmacy",
+    "addressLine": "8722 Glenwood Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-272-8450"
+  },
+  {
+    "srNo": 862,
+    "relationAccountName": "Kira's Pharmacy",
+    "addressLine": "88 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11214",
+    "Phone": "+1 718-676-4343"
+  },
+  {
+    "srNo": 863,
+    "relationAccountName": "Farmacia Selecta",
+    "addressLine": "88 Seigel St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-387-2426"
+  },
+  {
+    "srNo": 864,
+    "relationAccountName": "Ez rx pharmacy",
+    "addressLine": "8802 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 347-560-6560"
+  },
+  {
+    "srNo": 865,
+    "relationAccountName": "Golden Aid Pharmacy Inc",
+    "addressLine": "882 Utica Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-693-0888"
+  },
+  {
+    "srNo": 866,
+    "relationAccountName": "Remsen Pharmacy",
+    "addressLine": "8823 Avenue L",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-251-4005"
+  },
+  {
+    "srNo": 867,
+    "relationAccountName": "Franklin & Carroll Drugs",
+    "addressLine": "886 Franklin Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11225",
+    "Phone": "+1 718-221-1838"
+  },
+  {
+    "srNo": 868,
+    "relationAccountName": "The Vitamin Shoppe",
+    "addressLine": "8929 Avenue D C1",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-629-2076"
+  },
+  {
+    "srNo": 869,
+    "relationAccountName": "Bay Ridge Plaza Pharmacy",
+    "addressLine": "9006 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-333-5304"
+  },
+  {
+    "srNo": 870,
+    "relationAccountName": "Health Center Pharmacy",
+    "addressLine": "901 Myrtle Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": null
+  },
+  {
+    "srNo": 871,
+    "relationAccountName": "First Care Pharmacy",
+    "addressLine": "902 Foster Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-859-4100"
+  },
+  {
+    "srNo": 872,
+    "relationAccountName": "Now Drugs",
+    "addressLine": "9108 Flatlands Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": null
+  },
+  {
+    "srNo": 873,
+    "relationAccountName": "Crest Pharmacy",
+    "addressLine": "913 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 718-399-8677"
+  },
+  {
+    "srNo": 874,
+    "relationAccountName": "Garden Court Health Supplies",
+    "addressLine": "9131 Bedell Ln",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-257-1800"
+  },
+  {
+    "srNo": 875,
+    "relationAccountName": "New Victory Pharmacy",
+    "addressLine": "9216 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-745-5100"
+  },
+  {
+    "srNo": 876,
+    "relationAccountName": "Star Drugs",
+    "addressLine": "922 Granville Payne Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-649-0499"
+  },
+  {
+    "srNo": 877,
+    "relationAccountName": "Kala Pharmacy",
+    "addressLine": "9311 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-495-3035"
+  },
+  {
+    "srNo": 878,
+    "relationAccountName": "Qasim Pharmacy",
+    "addressLine": "934 Myrtle Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11206",
+    "Phone": "+1 718-919-5075"
+  },
+  {
+    "srNo": 879,
+    "relationAccountName": "Prospect Drugs",
+    "addressLine": "94 Greene Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 718-783-0890"
+  },
+  {
+    "srNo": 880,
+    "relationAccountName": "A To Z Pharmacy",
+    "addressLine": "9407 5th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 347-517-4040"
+  },
+  {
+    "srNo": 881,
+    "relationAccountName": "Omm Pharmacy LLC",
+    "addressLine": "942 Manhattan Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11222",
+    "Phone": "+1 718-500-4928"
+  },
+  {
+    "srNo": 882,
+    "relationAccountName": "Marty's Pharmacy",
+    "addressLine": "9422 Avenue L",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-251-1313"
+  },
+  {
+    "srNo": 883,
+    "relationAccountName": "MMC Pharmacy",
+    "addressLine": "948 48th St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-283-7939"
+  },
+  {
+    "srNo": 884,
+    "relationAccountName": "Humdard Pharmacy",
+    "addressLine": "949 Coney Island Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11230",
+    "Phone": "+1 718-703-1800"
+  },
+  {
+    "srNo": 885,
+    "relationAccountName": "Murawski Pharmacy",
+    "addressLine": "94-98 Nassau Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11222",
+    "Phone": "+1 718-389-7600"
+  },
+  {
+    "srNo": 886,
+    "relationAccountName": "MG Pharmacy",
+    "addressLine": "950 Broadway",
+    "City": "Brooklyn",
+    "StateZip": "NY 11221",
+    "Phone": "+1 347-915-2828"
+  },
+  {
+    "srNo": 887,
+    "relationAccountName": "95th Street Pharmacy",
+    "addressLine": "9502 3rd Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 347-497-5232"
+  },
+  {
+    "srNo": 888,
+    "relationAccountName": "Spectrum Pharmacy",
+    "addressLine": "952 McDonald Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-435-3100"
+  },
+  {
+    "srNo": 889,
+    "relationAccountName": "NuSpecies - Raw, Liquid Supplements",
+    "addressLine": "9522 Seaview Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 845-440-7458"
+  },
+  {
+    "srNo": 890,
+    "relationAccountName": "Knapp Pharmacy",
+    "addressLine": "9525 Church Ave 2nd Floor",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-513-6178"
+  },
+  {
+    "srNo": 891,
+    "relationAccountName": "Fairfield Pharmacy",
+    "addressLine": "953 Granville Payne Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11207",
+    "Phone": "+1 718-395-9400"
+  },
+  {
+    "srNo": 892,
+    "relationAccountName": "Livingword Pharmacy",
+    "addressLine": "957 Utica Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 347-461-9555"
+  },
+  {
+    "srNo": 893,
+    "relationAccountName": "Rutland Pharmacy",
+    "addressLine": "964 Rutland Rd",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 718-774-9613"
+  },
+  {
+    "srNo": 894,
+    "relationAccountName": "Pill RX Pharmacy",
+    "addressLine": "9701 3rd Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-218-3555"
+  },
+  {
+    "srNo": 895,
+    "relationAccountName": "Bocker Pharmacy",
+    "addressLine": "9717 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11212",
+    "Phone": "+1 347-295-3652"
+  },
+  {
+    "srNo": 896,
+    "relationAccountName": "St. Mary Pharmacy",
+    "addressLine": "9720 4th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-921-2525"
+  },
+  {
+    "srNo": 897,
+    "relationAccountName": "Maganti Ajay",
+    "addressLine": "9738 Seaview Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11236",
+    "Phone": "+1 718-886-6645"
+  },
+  {
+    "srNo": 898,
+    "relationAccountName": "Costco Pharmacy",
+    "addressLine": "976 3rd Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11232",
+    "Phone": "+1 718-965-7616"
+  },
+  {
+    "srNo": 899,
+    "relationAccountName": "Fine Care Pharmacy",
+    "addressLine": "981 Fulton St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11238",
+    "Phone": "+1 718-857-3499"
+  },
+  {
+    "srNo": 900,
+    "relationAccountName": "Altru Chemists + Compounding Pharmacy",
+    "addressLine": "987 Manhattan Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11222",
+    "Phone": "+1 718-349-9009"
+  },
+  {
+    "srNo": 901,
+    "relationAccountName": "New Express Pharmacy",
+    "addressLine": "99 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11218",
+    "Phone": "+1 718-438-4300"
+  },
+  {
+    "srNo": 902,
+    "relationAccountName": "Bennetts Pharmacy",
+    "addressLine": "990 Sutter Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11208",
+    "Phone": "+1 718-277-0800"
+  },
+  {
+    "srNo": 903,
+    "relationAccountName": "Narrows Pharmacy",
+    "addressLine": "9920 4th Ave #100",
+    "City": "Brooklyn",
+    "StateZip": "NY 11209",
+    "Phone": "+1 718-238-1445"
+  },
+  {
+    "srNo": 904,
+    "relationAccountName": "EZ Choice Pharmacy",
+    "addressLine": "Bay Ridge Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11204",
+    "Phone": null
+  },
+  {
+    "srNo": 905,
+    "relationAccountName": "Anteka Pharma",
+    "addressLine": "1921 Kings Hwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": null
+  },
+  {
+    "srNo": 906,
+    "relationAccountName": "Global Drugs INC.",
+    "addressLine": "5520 7th Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11220",
+    "Phone": "+1 929-337-6738"
+  },
+  {
+    "srNo": 907,
+    "relationAccountName": "Key Care Pharmacy",
+    "addressLine": "3411 Church Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11203",
+    "Phone": "+1 718-693-1957"
+  },
+  {
+    "srNo": 908,
+    "relationAccountName": "Pharmacy Arx Anteka",
+    "addressLine": "2806 Ocean Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11229",
+    "Phone": "+1 347-462-9550"
+  },
+  {
+    "srNo": 909,
+    "relationAccountName": "Drugland Pharmacy",
+    "addressLine": "5806 Fort Hamilton Pkwy",
+    "City": "Brooklyn",
+    "StateZip": "NY 11219",
+    "Phone": "+1 718-972-1056"
+  },
+  {
+    "srNo": 910,
+    "relationAccountName": "Pharmacy Rx",
+    "addressLine": "Smith St",
+    "City": "Brooklyn",
+    "StateZip": "NY 11201",
+    "Phone": null
+  },
+  {
+    "srNo": 911,
+    "relationAccountName": "Christos Kouretsos, PPH",
+    "addressLine": "SUNY Downstate at Bay Ridge",
+    "City": "Brooklyn",
+    "StateZip": "NY 11228",
+    "Phone": "+1 718-567-1466"
+  },
+  {
+    "srNo": 912,
+    "relationAccountName": "Millers pharmacy",
+    "addressLine": "Wyckoff Ave",
+    "City": "Brooklyn",
+    "StateZip": "NY 11237",
+    "Phone": null
+  }
+]

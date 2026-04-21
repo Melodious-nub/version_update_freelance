@@ -1,0 +1,56 @@
+textarea {
+  resize: none;
+}
+
+.btn-clear,
+.btn-password-toggle {
+  cursor: pointer;
+  font-size: 100%;
+  user-select: none;
+  height: auto;
+  width: auto;
+}
+
+.error {
+  color: red;
+  font-size: x-small;
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+  bottom: 26px;
+}
+
+.mb-0 {
+  .attr-b {
+    margin-bottom: 0 !important;
+  }
+}
+
+.rounded {
+  .attribute {
+    border-radius: 10px !important;
+    .attribute-input input {
+      border-radius: 10px !important;
+    }
+  }
+}
+
+.required:after {
+  content: ' *';
+  color: red;
+}
+
+.uppercase-text {
+  text-transform: uppercase;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 4px;
+}
+
+.b-red {
+  border-color: red !important;
+}
+

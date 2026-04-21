@@ -1,0 +1,85 @@
+.header-wrapper {
+  padding: 0px 0;
+
+  .filters {
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .action-btns {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+}
+
+.content-wrapper {
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.content-title .page-label {
+  font-size: 16px;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.small-btn ::ng-deep button {
+  padding: 6px 10px !important;
+  font-size: 13px !important;
+}
+
+// Make the data-table responsive container horizontally scrollable when content overflows
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+// Ensure material table header matches vendor-customer look
+::ng-deep {
+  .datatable-container {
+    .mat-table {
+      background: transparent;
+    }
+
+    .mat-header-row {
+      background-color: #f8f9fa;
+    }
+
+    .mat-header-cell {
+      color: #495057;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #dee2e6;
+    }
+
+    .mat-row {
+      &:hover {
+        background-color: #d7e8f5;
+        cursor: pointer;
+      }
+    }
+
+    .mat-cell {
+      font-size: 14px;
+      color: #212529;
+    }
+  }
+}
+
+::ng-deep .datatable-container .mat-row:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+::ng-deep .datatable-container .mat-row:nth-child(even) {
+  background-color: #fbfcfe;
+}
+
+/* Ensure campaign table row hover overrides global/data-table styles */
+:host ::ng-deep .datatable-container .mat-row:hover {
+  background-color: #d7e8f5 !important;
+  cursor: pointer !important;
+}

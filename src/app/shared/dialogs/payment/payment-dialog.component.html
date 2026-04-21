@@ -1,0 +1,24 @@
+<div class="dialog-container text-center p-4" style="overflow: hidden">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 mat-dialog-title class="my-2">Redirecting to Payments</h3>
+        <button mat-icon-button (click)="cancel()" class="close-button"
+            style="background: none; border: none; font-size: 20px; cursor: pointer;">
+            ×
+        </button>
+    </div>
+
+    <div class="payment-content mb-4">
+        <p class="mb-3">You are being redirected to make Payment of</p>
+        <div class="payment-amount text-danger font-weight-bold mb-3" style="font-size: 24px;">
+            ${{ paymentAmount | number:'1.2-2' }}
+        </div>
+        <p class="mb-3">to {{ vendorName }}</p>
+    </div>
+
+    <div class="justify-content-center">
+        <dadyin-button [theme]="'secondary'" class="me-3" label="Cancel" (clicked)="cancel()">
+        </dadyin-button>
+        <dadyin-button [theme]="'primary'" label="Continue" (clicked)="continue()">
+        </dadyin-button>
+    </div>
+</div>

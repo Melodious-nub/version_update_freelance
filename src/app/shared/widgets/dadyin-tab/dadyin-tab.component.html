@@ -1,0 +1,17 @@
+<ng-container>
+  <mat-tab-group
+    (selectedIndexChange)="changeMainTab($event)"
+    class="mat-steps tab-common"
+    [(selectedIndex)]="currentIndex"
+  >
+    <mat-tab
+      [disabled]="disabled"
+      *ngFor="let link of action; let index"
+      [label]="link.name"
+    >
+    </mat-tab>
+  </mat-tab-group>
+
+  <!-- <button mat-flat-button (click)="changeMainTab(link, index);"
+        [ngClass]="index.index === currentIndex ? 'isactive':''">{{link.name}}</button> -->
+</ng-container>

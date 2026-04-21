@@ -1,0 +1,114 @@
+.prod-header {
+  border-radius: 5px;
+  padding: 5px 5%;
+  display: grid;
+  grid-template-columns: 50% auto;
+  align-items: center;
+
+  .filters {
+    display: flex;
+    align-items: center;
+    button {
+      margin-right: 10px;
+      background: var(--primary-light);
+      border-radius: 5px;
+      padding: 5px 5px;
+      border: 1px solid #dedede;
+      display: grid;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      color: var(--primary-color);
+      mat-icon {
+        font-size: 1.2rem;
+      }
+    }
+    search-filter {
+      width: 100%;
+    }
+  }
+}
+.product-title {
+  color: var(--primary-color);
+}
+
+.no-product {
+  text-align: center;
+}
+
+.add-product-btn {
+  float: right;
+}
+
+.serach-filter {
+  box-shadow: 3px 3px 8px black;
+  z-index: 1;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  background: white;
+}
+
+button.btn-success {
+  background: var(--primary-color);
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+  padding: 0 20px;
+}
+
+
+.app-inventoryin {
+  margin: 20px;
+  border: 1px solid var(--secondary-light);
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+
+  .tile-inventoryin {
+    display: grid;
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+    height: 120px;
+    line-height: 120px;
+    font-size: large;
+    border: 1px solid var(--secondary-light);
+    background: var(--primary-light);
+    align-content: center;
+
+    .title-span {
+      line-height: 20px;
+      color: var(--text-color);
+
+      span {
+        margin-top: 10px;
+        font-weight: 500
+;        font-size: 14px;
+      }
+    }
+
+    img {
+      filter: brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(6349%) hue-rotate(212deg) brightness(93%) contrast(106%);
+    }
+  }
+
+}
+
+
+.attribute {
+  border:none !important;
+  select {
+    min-width: unset !important;
+  }
+}
+
+
+.prefer-uom-grid {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.attribute-input {
+  div {
+    font-weight: 600 !important;
+  }
+}

@@ -1,0 +1,83 @@
+<div class="row signin-section">
+  <div class="col-md-6 col-12 logo">
+    <div>
+      <img src="assets/img/logo.png" alt="Logo" />
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="col-md-6 col-12">
+    <div style="position: relative">
+      <div class="step-nav">
+        <button
+          *ngFor="let slide of [0, 1, 2, 3]; let i = index"
+          [ngClass]="{ 'bg-primary': activeIndex === i }"
+          (click)="goToSlide(slide)"
+        ></button>
+      </div>
+      <swiper class="swiper-login" #swiperR autoplay [config]="swiperConfig">
+        <ng-template swiperSlide>
+          <div class="tab">For Retailers</div>
+          <div class="tab-content">
+            <h4>
+              Compare, Choose, and Order – Shop Across Vendors, Wholesalers, and
+              Distributors at one place
+            </h4>
+          </div>
+          <img
+            width="100%"
+            class="img-slide"
+            [src]="'assets/img/For Retailer.png'"
+            alt="..."
+          />
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="tab">For Wholesaler/Distributors</div>
+          <div class="tab-content">
+            <h4>
+              Streamline Wholesale Distribution – From Global Imports to Retail
+              Delivery
+            </h4>
+          </div>
+          <img
+            width="100%"
+            class="img-slide"
+            [src]="'assets/img/Distributor.png'"
+            alt="..."
+          />
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="tab">For Importer-Exporter</div>
+          <div class="tab-content">
+            <h4>
+              From Manufacturer to Distribution, All in One Place- Quotes,
+              Orders, Documents, Tracking & Distribution, All Synced
+            </h4>
+          </div>
+          <img
+            width="100%"
+            class="img-slide"
+            [src]="'assets/img/For Importer-Exporter.png'"
+            alt="..."
+          />
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="tab">For Manufacturers</div>
+          <div class="tab-content">
+            <h4>
+              Template-Driven Product Creation – Automate Costing, Enable Live
+              Pricing, and Seamlessly Manage Global Trade.
+            </h4>
+          </div>
+          <img
+            width="100%"
+            class="img-slide"
+            [src]="'assets/img/For Manufacturer.png'"
+            alt="..."
+          />
+        </ng-template>
+      </swiper>
+    </div>
+  </div>
+</div>

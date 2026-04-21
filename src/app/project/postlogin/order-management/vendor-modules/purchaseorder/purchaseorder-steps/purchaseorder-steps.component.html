@@ -1,0 +1,155 @@
+<div class="app-container  ">
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button (clicked)="navigate('/home/order-management/vendor?currentStepIndex=2')"
+        [theme]="'borderless-primary'" type="image" [typeval]="'assets/img/icons/ArrowLeftCircle.png'">
+      </dadyin-button>
+
+      <ng-container *ngIf="purchaseOrderForm.getRawValue()?.id">
+        <div class="font-size-16 text-black fw-bold">
+          <label>{{ requestToName }}</label>
+        </div>
+        <span class="text-dark"> | </span>
+        <div class="status font-size-12">{{ purchaseOrderForm.getRawValue()?.status }}</div>
+      </ng-container>
+      <ng-container *ngIf="!purchaseOrderForm.getRawValue()?.id">
+        <div class="content-title text-light">
+          <label>Create PO</label>
+        </div>
+      </ng-container>
+
+
+      <span class="text-dark" *ngIf="purchaseOrderForm.getRawValue()?.id"> | </span>
+      <div class="content-info text-dark">
+        <div class="d-flex align-items-center" *ngIf="purchaseOrderForm.getRawValue()?.transactionId">
+          <div>
+            <b class="text-black">{{ purchaseOrderForm.getRawValue()?.transactionId }}</b> <br>
+            <span class="font-size-10"> ( {{ purchaseOrderForm.getRawValue()?.audit?.createdDate | date : "medium" }} )
+            </span>
+          </div>
+          <div>
+            <span class="text-dark mx-2"> | </span>
+            <ng-container *ngIf="purchaseOrderForm.getRawValue()?.isQuickCheckout">
+              <b class="bg-warning mx-1 font-size-12 p-1 b-round text-dark">{{ "QC ORDER" }}</b>
+            </ng-container>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+      <!-- <dadyin-button   [theme]="'primary'" type="icon" typeval="receipt">
+      </dadyin-button> -->
+      <!-- <dadyin-button [theme]="'danger-light'" type="icon" [typeval]="'delete_outline'">
+      </dadyin-button> -->
+
+      <!-- <dadyin-button  [theme]="'secondary'" label="Save as Draft">
+      </dadyin-button>
+      <dadyin-button  [typeval]="'save'" [type]="'icon'" [theme]="'primary'"
+        [tooltip]="'Place Order'">
+      </dadyin-button> -->
+      <div class="d-flex  flex-column" *ngIf="purchaseOrderForm.get('paymentStatus').value">
+        <div class=" me-3 font-size-12 text-black" style="line-height: 1.4;">
+          Payment Status :
+        </div>
+        <div class="font-size-10" style="line-height: 1;"
+          [style.color]="(purchaseOrderForm.get('paymentStatus').value || 'Pending') === 'PENDING' ? 'red' : ''">
+          {{
+          purchaseOrderForm.get("paymentStatus").value
+          ? purchaseOrderForm.get("paymentStatus").value
+          : "Pending"
+          }}
+        </div>
+      </div>
+      <dadyin-button matTooltip="Pay" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/pay.png'">
+      </dadyin-button>
+      <div class="mx-2 text-light">|</div>
+      <dadyin-button matTooltip="Share" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/share.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Copy this Transaction" [theme]="'disabled'" type="image"
+        [typeval]="'assets/nicons/copy.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Convert To Invoice" *ngIf=" 
+      purchaseOrderForm.getRawValue().id &&
+      purchaseOrderForm.get('status').value == 'CONFIRMED' &&  purchaseOrderForm.get('paymentStatus').value!='COMPLETED'
+    " (clicked)="convertPoToInvoice()" [theme]="'borderless-default'" type="image"
+        [typeval]="'assets/nicons/refresh.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Download" (clicked)="generatePdf()" [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/download.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Delete" *ngIf="
+      purchaseOrderForm.get('status').value == 'DRAFT' &&
+      purchaseOrderForm.get('id').value
+    " (clicked)="confirmDelete()" [theme]="'borderless-default'" type="image"
+        [typeval]="'assets/img/icons/delete.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Email Transaction (Regular or Tier)" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/mail.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Save this in Draft" *ngIf="
+      !purchaseOrderForm.getRawValue()?.isQuickCheckout &&
+      purchaseOrderForm.getRawValue().status != 'CONFIRMED' &&
+      purchaseOrderForm.getRawValue().status != 'PLACED' &&
+      purchaseOrderForm.getRawValue().status != 'COMPLETED' &&
+      purchaseOrderForm.getRawValue().status != 'REJECTED'
+    " (clicked)="savePo('DRAFT')" [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/save.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Place Order" *ngIf="
+      !purchaseOrderForm.getRawValue()?.isQuickCheckout &&
+      purchaseOrderForm.getRawValue().status != 'CONFIRMED' &&
+      purchaseOrderForm.getRawValue().status != 'PLACED' &&
+      purchaseOrderForm.getRawValue().status != 'COMPLETED' &&
+      purchaseOrderForm.getRawValue().status != 'REJECTED'
+    " (clicked)="savePo('PLACED')" [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/place.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Refresh Updated Purchase order information" *ngIf="purchaseOrderForm.getRawValue().id"
+        (clicked)="savePo('PLACED', true)" [theme]="'borderless-default'" type="image"
+        [typeval]="'assets/nicons/refresh.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Notify" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/notify.png'">
+      </dadyin-button>
+    </div>
+  </div>
+  <div class="uom-config-section">
+    <button (click)="uomSetting = !uomSetting" class="btn bg-primary-light title-text">
+      UOM Setting
+    </button>
+    <div class="card uom-card" *ngIf="uomSetting">
+      <div class="prefer-uom-grid align-items-center" *ngIf="componentUoms.controls?.length > 0">
+        <div [formGroup]="item" *ngFor="let item of componentUoms.controls; let i = index"
+          class="my-2 attribute one b-none w-100">
+          <div class="attribute-input justify-content-around w-100 title-text">
+            <div class="text-uppercase">
+              {{ item.get("attributeName").value }}
+            </div>
+            <select (change)="calculateValues()" formControlName="userConversionUom">
+              <ng-container *ngFor="
+                  let uom of uomService.getUoms(
+                    item.get('attributeTypeId').value
+                  )
+                ">
+                <option [value]="uom.description">
+                  {{ uom?.description }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-tab-group [(selectedIndex)]="currentStepIndex" class="mat-steps">
+    <mat-tab label="Purchase order">
+      <ng-container *ngIf="currentStepIndex == 0">
+        <app-create-order (generatePdf)="generatePdf()" [componentUoms]="componentUoms" (calculate)="calculateValues()"
+          (patchEditData)="patchEditData($event, true)" [purchaseOrderForm]="purchaseOrderForm"></app-create-order>
+      </ng-container>
+    </mat-tab>
+    <mat-tab [disabled]="status.value != 'CONFIRMED'" label="Payment">
+      <ng-container *ngIf="currentStepIndex == 1">
+        <app-payment [componentUoms]="componentUoms" [purchaseOrderForm]="purchaseOrderForm"
+          (getOrderById)="getOrderById()"></app-payment>
+      </ng-container>
+    </mat-tab>
+  </mat-tab-group>
+</div>

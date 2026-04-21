@@ -1,0 +1,55 @@
+#filterBadge {
+    top: -10px;
+    left: 5px;
+    font-size: 0.7rem;
+}
+
+
+.filter-card {
+    width: max-content;
+    background-color: white;
+    padding: 1rem;
+    position: absolute;
+    z-index: 10;
+    border-radius: 10px;
+    border: solid 1px;
+    top: 15%;
+    right: 0;
+    mat-panel-title  {
+        font-size: 12px;
+    }
+  
+}
+
+.filter-cpontainer {
+    position:relative;
+}
+
+.filter-card-header {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-card-footer {
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.filter-card-form {
+    font-size: 14px;
+    .btn-check {
+        font-size: 14px;
+        position: unset;
+    }
+}
+
+.table-filter {
+    td,th{
+        border: solid 1px rgb(209, 207, 207);
+       padding: 4px;
+       height: 30px;
+    }
+
+}

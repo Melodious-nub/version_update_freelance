@@ -1,0 +1,933 @@
+<div class="dialog-container">
+  <i class="material-icon" style="position: absolute;right: 5px;" mat-dialog-close>close</i>
+
+  <ng-container *ngIf="productAttributeValues.controls?.length > 0">
+    <section class="card p-4">
+      <ul class="attribute-groups">
+        <li class="attribute-group">
+          <div class="d-flex w-100">
+            <div class="row w-100">
+              <ng-container [formGroup]="item" *ngFor="
+                  let item of productAttributeValues.controls | sortFormArray;
+                  let i = index;
+                  trackBy: trackByFn
+                ">
+                <ng-container *ngIf="
+                    !labelTypeAttributeIds.includes(
+                      item.get('attributeId').value
+                    )
+                  ">
+                  <ng-container *ngIf="
+                      !['Toggle', 'Dropdown', 'Label'].includes(
+                        getAttributeTypeObjectById(
+                          this.getAttributeObjectById(
+                            item?.get('attributeId').value
+                          )?.attributeTypeId
+                        )?.description
+                      )
+                    ">
+                    <div [ngClass]="{
+                        'width-perc-25': item?.get('colSpace').value == 25,
+                        'width-perc-50': item?.get('colSpace').value == 50,
+                        'width-perc-75': item?.get('colSpace').value == 75,
+                        'width-perc-100': item?.get('colSpace').value == 100
+                      }">
+                      <div class="attribute one attr-b">
+                        <label for="" [ngClass]="{
+                            'c-red': errorKeys?.includes(getDescription(item))
+                          }">
+                          {{
+                          this.getAttributeObjectById(
+                          item?.get("attributeId").value
+                          )?.description
+                          }}</label>
+                        <div class="attribute-input">
+                          <mat-icon *ngIf="!item?.get('isHidden').value" (click)="toggleVisibility(item, true)"
+                            class="public">
+                            public
+                          </mat-icon>
+                          <mat-icon *ngIf="item?.get('isHidden').value" (click)="toggleVisibility(item, false)"
+                            class="public_off">
+                            public_off
+                          </mat-icon>
+                          <input (change)="changeValue(item)" type="text" formControlName="attributeValue"
+                            placeholder="Enter your value" />
+                          <mat-icon *ngIf="item?.get('isUserInput').value" (click)="toggleLock(item, false)"
+                            class="lock">
+                            lock
+                          </mat-icon>
+                          <mat-icon *ngIf="!item?.get('isUserInput').value" (click)="toggleLock(item, true)"
+                            class="lock_open">
+                            lock_open
+                          </mat-icon>
+                          <ng-container *ngIf="
+                              getAttributeTypeObjectById(
+                                this.getAttributeObjectById(
+                                  item?.get('attributeId').value
+                                )?.attributeTypeId
+                              )?.availableUOMs?.length > 0
+                            ">
+                            <select tabindex="-1" *ngIf="
+                                !['Number', 'String'].includes(
+                                  getAttributeTypeObjectById(
+                                    getAttributeObjectById(
+                                      item?.get('attributeId').value
+                                    )?.attributeTypeId
+                                  )?.description
+                                )
+                              " (change)="changeValue()" formControlName="userConversionUom" id="userConversionUom">
+                              <option [value]="uom.description" *ngFor="
+                                  let uom of getAttributeTypeObjectById(
+                                    this.getAttributeObjectById(
+                                      item?.get('attributeId').value
+                                    )?.attributeTypeId,
+                                    item?.get('userConversionUom')
+                                  )?.availableUOMs
+                                ">
+                                {{ uom?.description }}
+                              </option>
+                            </select>
+                          </ng-container>
+
+                          <ng-container *ngIf="
+                              ['Number', 'String'].includes(
+                                getAttributeTypeObjectById(
+                                  getAttributeObjectById(
+                                    item?.get('attributeId').value
+                                  )?.attributeTypeId
+                                )?.description
+                              )
+                            ">
+                            <div class="uom-label">
+                              {{ item?.get("userConversionUom").value ?? "" }}
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="
+                      ['Toggle'].includes(
+                        getAttributeTypeObjectById(
+                          this.getAttributeObjectById(
+                            item?.get('attributeId').value
+                          )?.attributeTypeId
+                        )?.description
+                      )
+                    ">
+                    <div [ngClass]="{
+                        'width-perc-25': item.get('colSpace').value == 25,
+                        'width-perc-50': item.get('colSpace').value == 50,
+                        'width-perc-75': item.get('colSpace').value == 75,
+                        'width-perc-100': item.get('colSpace').value == 100
+                      }">
+                      <div class="attribute tabular-sheet attr-b">
+                        <div class="attribute-input">
+                          <mat-icon *ngIf="!item?.get('isHidden').value" (click)="toggleVisibility(item, true)"
+                            class="public">
+                            public
+                          </mat-icon>
+                          <mat-icon *ngIf="item?.get('isHidden').value" (click)="toggleVisibility(item, false)"
+                            class="public_off">
+                            public_off
+                          </mat-icon>
+                          <input [ngClass]="{
+                              'c-red': errorKeys?.includes(getDescription(item))
+                            }" (change)="changeValue(item)" type="text" [value]="
+                              this.getAttributeObjectById(
+                                item?.get('attributeId').value
+                              )?.description
+                            " readonly />
+                          <mat-icon *ngIf="item?.get('isUserInput').value" (click)="toggleLock(item, false)"
+                            class="lock">
+                            lock
+                          </mat-icon>
+                          <mat-icon *ngIf="!item?.get('isUserInput').value" (click)="toggleLock(item, true)"
+                            class="lock_open">
+                            lock_open
+                          </mat-icon>
+                          <div class="toggle">
+                            <button [ngClass]="{
+                                active:
+                                  getArray(
+                                    item.get('attributeValueExpression').value
+                                  )[0]?.selected == true
+                              }" (click)="toggleAttribute(item, 0)">
+                              {{
+                              getArray(
+                              item.get("attributeValueExpression").value
+                              )[0].choice
+                              }}
+                            </button>
+                            <button [ngClass]="{
+                                active:
+                                  getArray(
+                                    item.get('attributeValueExpression').value
+                                  )[1]?.selected == true
+                              }" (click)="toggleAttribute(item, 1)">
+                              {{
+                              getArray(
+                              item.get("attributeValueExpression").value
+                              )[1].choice
+                              }}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="
+                      ['Dropdown'].includes(
+                        getAttributeTypeObjectById(
+                          this.getAttributeObjectById(
+                            item?.get('attributeId').value
+                          )?.attributeTypeId
+                        )?.description
+                      )
+                    ">
+                    <div [ngClass]="{
+                        'width-perc-25': item.get('colSpace').value == 25,
+                        'width-perc-50': item.get('colSpace').value == 50,
+                        'width-perc-75': item.get('colSpace').value == 75,
+                        'width-perc-100': item.get('colSpace').value == 100
+                      }">
+                      <div class="attribute one attr-b">
+                        <label for="">
+                          {{
+                          this.getAttributeObjectById(
+                          item?.get("attributeId").value
+                          )?.description
+                          }}</label>
+                        <div class="attribute-input">
+                          <mat-icon *ngIf="!item?.get('isHidden').value" (click)="toggleVisibility(item, true)"
+                            class="public">
+                            public
+                          </mat-icon>
+                          <mat-icon *ngIf="item?.get('isHidden').value" (click)="toggleVisibility(item, false)"
+                            class="public_off">
+                            public_off
+                          </mat-icon>
+                          <select (change)="changeValue(item)" formControlName="attributeValue"
+                            class="width-perc-100 bg-white" style="width: 100% !important;">
+                            <option *ngFor="
+                                let opt of getArray(
+                                  item.get('attributeValueExpression').value
+                                )
+                              " [value]="opt.choice">
+                              {{ opt.choice }}
+
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="
+                      ['Label'].includes(
+                        getAttributeTypeObjectById(
+                          this.getAttributeObjectById(
+                            item?.get('attributeId').value
+                          )?.attributeTypeId
+                        )?.description
+                      )
+                    ">
+                    <div class="attribute w-100 b-all  min-h-label b-round p-1  attr-b relative d-flex flex-wrap">
+                      <label class="labeltype-attribute label-attribute"
+                        style="position: absolute;top: -10px;left: 10px;">
+                        {{
+                        this.getAttributeObjectById(
+                        item?.get("attributeId").value
+                        )?.description
+                        }}
+                      </label>
+
+                      <ng-container [formGroup]="attr" *ngFor="
+                          let attr of filterAttributeForLabel(
+                            productAttributeValues
+                          ) | sortFormArray;
+                          let m = index;
+                          trackBy: trackByFn
+                        ">
+                        <ng-container *ngIf="
+                            getArrayIds(
+                              item.get('attributeValueExpression').value
+                            ).includes(attr.get('attributeId').value)
+                          ">
+                          <ng-container *ngIf="
+                              !['Toggle', 'Dropdown', 'Label'].includes(
+                                getAttributeTypeObjectById(
+                                  this.getAttributeObjectById(
+                                    attr?.get('attributeId').value
+                                  )?.attributeTypeId
+                                )?.description
+                              )
+                            ">
+                            <div [ngClass]="{
+                                'width-perc-25':
+                                  attr?.get('colSpace').value == 25,
+                                'width-perc-50':
+                                  attr?.get('colSpace').value == 50,
+                                'width-perc-75':
+                                  attr?.get('colSpace').value == 75,
+                                'width-perc-100':
+                                  attr?.get('colSpace').value == 100
+                              }" class="mt-3">
+                              <div class="attribute one attr-b">
+                                <label [ngClass]="{
+                                    'c-red': errorKeys?.includes(
+                                      getDescription(attr)
+                                    )
+                                  }" for="">
+                                  {{
+                                  this.getAttributeObjectById(
+                                  attr?.get("attributeId").value
+                                  )?.description
+                                  }}</label>
+                                <div class="attribute-input">
+                                  <mat-icon *ngIf="!attr?.get('isHidden').value" (click)="toggleVisibility(attr, true)"
+                                    class="public">public
+                                  </mat-icon>
+                                  <mat-icon *ngIf="attr?.get('isHidden').value" (click)="toggleVisibility(attr, false)"
+                                    class="public_off">
+                                    public_off
+                                  </mat-icon>
+                                  <input type="text" (change)="changeValue(attr)" formControlName="attributeValue"
+                                    placeholder="Enter your value" />
+                                  <mat-icon *ngIf="attr?.get('isUserInput').value" (click)="toggleLock(attr, false)"
+                                    class="lock">
+                                    lock
+                                  </mat-icon>
+                                  <mat-icon *ngIf="!attr?.get('isUserInput').value" (click)="toggleLock(attr, true)"
+                                    class="lock_open">
+                                    lock_open
+                                  </mat-icon>
+                                  <ng-container *ngIf="
+                                      getAttributeTypeObjectById(
+                                        this.getAttributeObjectById(
+                                          attr?.get('attributeId').value
+                                        )?.attributeTypeId
+                                      )?.availableUOMs?.length > 0
+                                    ">
+                                    <select tabindex="-1" *ngIf="
+                                        !['Number', 'String'].includes(
+                                          getAttributeTypeObjectById(
+                                            getAttributeObjectById(
+                                              attr?.get('attributeId').value
+                                            )?.attributeTypeId
+                                          ).description
+                                        )
+                                      " formControlName="userConversionUom" id="userConversionUom">
+                                      <option [value]="uom.description" *ngFor="
+                                          let uom of getAttributeTypeObjectById(
+                                            this.getAttributeObjectById(
+                                              attr?.get('attributeId').value
+                                            )?.attributeTypeId,
+                                            attr?.get('userConversionUom')
+                                          ).availableUOMs
+                                        ">
+                                        {{ uom?.description }}
+                                      </option>
+                                    </select>
+                                  </ng-container>
+
+                                  <ng-container *ngIf="
+                                      ['Number', 'String'].includes(
+                                        getAttributeTypeObjectById(
+                                          getAttributeObjectById(
+                                            attr?.get('attributeId').value
+                                          )?.attributeTypeId
+                                        ).description
+                                      )
+                                    ">
+                                    <div class="uom-label">
+                                      {{
+                                      attr?.get("userConversionUom").value ??
+                                      ""
+                                      }}
+                                    </div>
+                                  </ng-container>
+                                </div>
+                              </div>
+                            </div>
+                          </ng-container>
+
+                          <ng-container *ngIf="
+                              ['Toggle'].includes(
+                                getAttributeTypeObjectById(
+                                  this.getAttributeObjectById(
+                                    attr?.get('attributeId').value
+                                  )?.attributeTypeId
+                                )?.description
+                              )
+                            ">
+                            <div [ngClass]="{
+                                'width-perc-25':
+                                  attr?.get('colSpace').value == 25,
+                                'width-perc-50':
+                                  attr?.get('colSpace').value == 50,
+                                'width-perc-75':
+                                  attr?.get('colSpace').value == 75,
+                                'width-perc-100':
+                                  attr?.get('colSpace').value == 100
+                              }" class="mt-3">
+                              <div class="attribute tabular-sheet attr-b">
+                                <div class="attribute-input">
+                                  <mat-icon *ngIf="!attr?.get('isHidden').value" (click)="toggleVisibility(attr, true)"
+                                    class="public">public
+                                  </mat-icon>
+                                  <mat-icon *ngIf="attr?.get('isHidden').value" (click)="toggleVisibility(attr, false)"
+                                    class="public_off">
+                                    public_off
+                                  </mat-icon>
+                                  <input [ngClass]="{
+                                      'c-red': errorKeys?.includes(
+                                        getDescription(attr)
+                                      )
+                                    }" type="text" [value]="
+                                      this.getAttributeObjectById(
+                                        attr?.get('attributeId').value
+                                      )?.description
+                                    " readonly />
+                                  <mat-icon *ngIf="attr?.get('isUserInput').value" (click)="toggleLock(attr, false)"
+                                    class="lock">
+                                    lock
+                                  </mat-icon>
+                                  <mat-icon *ngIf="!attr?.get('isUserInput').value" (click)="toggleLock(attr, true)"
+                                    class="lock_open">
+                                    lock_open
+                                  </mat-icon>
+                                  <div class="toggle">
+                                    <button (click)="toggleAttribute(attr, 0)" [ngClass]="{
+                                        active:
+                                          getArray(
+                                            attr.get('attributeValueExpression')
+                                              .value
+                                          )[0].selected == true
+                                      }">
+                                      {{
+                                      getArray(
+                                      attr.get("attributeValueExpression")
+                                      .value
+                                      )[0].choice
+                                      }}
+                                    </button>
+                                    <button (click)="toggleAttribute(attr, 1)" [ngClass]="{
+                                        active:
+                                          getArray(
+                                            attr.get('attributeValueExpression')
+                                              .value
+                                          )[1].selected == true
+                                      }">
+                                      {{
+                                      getArray(
+                                      attr.get("attributeValueExpression")
+                                      .value
+                                      )[1].choice
+                                      }}
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </ng-container>
+
+                          <ng-container *ngIf="
+                              ['Dropdown'].includes(
+                                getAttributeTypeObjectById(
+                                  this.getAttributeObjectById(
+                                    attr?.get('attributeId').value
+                                  )?.attributeTypeId
+                                )?.description
+                              )
+                            ">
+                            <div [ngClass]="{
+                                'width-perc-25':
+                                  attr?.get('colSpace').value == 25,
+                                'width-perc-50':
+                                  attr?.get('colSpace').value == 50,
+                                'width-perc-75':
+                                  attr?.get('colSpace').value == 75,
+                                'width-perc-100':
+                                  attr?.get('colSpace').value == 100
+                              }" class="mt-3">
+                              <div class="attribute one">
+                                <label for="">
+                                  {{
+                                  this.getAttributeObjectById(
+                                  attr?.get("attributeId").value
+                                  )?.description
+                                  }}</label>
+                                <div class="attribute-select">
+                                  <select (change)="changeValue(attr)" formControlName="attributeValue"
+                                    class="width-perc-100 bg-white" style="width: 100% !important;">
+                                    <option *ngFor="
+                                        let opt of getArray(
+                                          attr.get('attributeValueExpression')
+                                            .value
+                                        )
+                                      " [value]="opt.choice">
+                                      {{ opt.choice }}
+                                    </option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </ng-container>
+                        </ng-container>
+                      </ng-container>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </ng-container>
+
+  <ng-container *ngFor="let packageForm of packages.controls | sortFormArray; let i = index">
+    <div class="row package-attributes">
+      <ng-container [formGroup]="item" *ngFor="
+          let item of getPackageAttributeValues(i).controls | sortFormArray;
+          let k = index;
+          trackBy: trackByFn
+        ">
+        <ng-container *ngIf="
+            !labelTypeAttributeIds[i].includes(item.get('attributeId').value)
+          ">
+          <ng-container *ngIf="
+              !['Toggle', 'Dropdown', 'Label'].includes(
+                getAttributeTypeObjectById(
+                  this.getAttributeObjectById(item?.get('attributeId').value)
+                    ?.attributeTypeId
+                )?.description
+              )
+            ">
+            <div [ngClass]="{
+                'width-perc-25': item?.get('colSpace').value == 25,
+                'width-perc-50': item?.get('colSpace').value == 50,
+                'width-perc-75': item?.get('colSpace').value == 75,
+                'width-perc-100': item?.get('colSpace').value == 100
+              }">
+              <div class="attribute one attr-b">
+                <label for="" [ngClass]="{
+                    'c-red': errorKeys?.includes(getDescription(item))
+                  }">
+                  {{
+                  this.getAttributeObjectById(item?.get("attributeId").value)
+                  ?.description
+                  }}</label>
+                <div class="attribute-input">
+                  <!-- <mat-icon class="more_vert">more_vert</mat-icon> -->
+                  <input (change)="changeValue(item)" type="text" formControlName="attributeValue"
+                    placeholder="Enter your value" />
+                  <mat-icon *ngIf="item?.get('isUserInput').value" (click)="toggleLock(item, false)" class="lock">
+                    lock
+                  </mat-icon>
+                  <mat-icon *ngIf="!item?.get('isUserInput').value" (click)="toggleLock(item, true)" class="lock_open">
+                    lock_open
+                  </mat-icon>
+                  <ng-container *ngIf="
+                      getAttributeTypeObjectById(
+                        this.getAttributeObjectById(
+                          item?.get('attributeId').value
+                        )?.attributeTypeId
+                      )?.availableUOMs?.length > 0
+                    ">
+                    <select tabindex="-1" *ngIf="
+                        !['Number', 'String'].includes(
+                          getAttributeTypeObjectById(
+                            getAttributeObjectById(
+                              item?.get('attributeId').value
+                            )?.attributeTypeId
+                          ).description
+                        )
+                      " (change)="changeValue()" formControlName="userConversionUom" id="userConversionUom">
+                      <option [value]="uom.description" *ngFor="
+                          let uom of getAttributeTypeObjectById(
+                            this.getAttributeObjectById(
+                              item?.get('attributeId').value
+                            )?.attributeTypeId,
+                            item?.get('userConversionUom')
+                          ).availableUOMs
+                        ">
+                        {{ uom?.description }}
+                      </option>
+                    </select>
+                  </ng-container>
+
+                  <ng-container *ngIf="
+                      ['Number', 'String'].includes(
+                        getAttributeTypeObjectById(
+                          getAttributeObjectById(item?.get('attributeId').value)
+                            ?.attributeTypeId
+                        ).description
+                      )
+                    ">
+                    <div class="uom-label">
+                      {{ item?.get("userConversionUom").value ?? "" }}
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="
+              ['Toggle'].includes(
+                getAttributeTypeObjectById(
+                  this.getAttributeObjectById(item?.get('attributeId').value)
+                    ?.attributeTypeId
+                )?.description
+              )
+            ">
+            <div [ngClass]="{
+                'width-perc-25': item.get('colSpace').value == 25,
+                'width-perc-50': item.get('colSpace').value == 50,
+                'width-perc-75': item.get('colSpace').value == 75,
+                'width-perc-100': item.get('colSpace').value == 100
+              }">
+              <div class="attribute tabular-sheet attr-b">
+                <div class="attribute-input">
+                  <input [ngClass]="{
+                      'c-red': errorKeys?.includes(getDescription(item))
+                    }" (change)="changeValue(item)" type="text" [value]="
+                      this.getAttributeObjectById(
+                        item?.get('attributeId').value
+                      )?.description
+                    " readonly />
+                  <mat-icon *ngIf="item?.get('isUserInput').value" (click)="toggleLock(item, false)" class="lock">
+                    lock
+                  </mat-icon>
+                  <mat-icon *ngIf="!item?.get('isUserInput').value" (click)="toggleLock(item, true)" class="lock_open">
+                    lock_open
+                  </mat-icon>
+                  <div class="toggle">
+                    <button [ngClass]="{
+                        active:
+                          getArray(
+                            item.get('attributeValueExpression').value
+                          )[0]?.selected == true
+                      }" (click)="toggleAttribute(item, 0)">
+                      {{
+                      getArray(item.get("attributeValueExpression").value)[0]
+                      .choice
+                      }}
+                    </button>
+                    <button [ngClass]="{
+                        active:
+                          getArray(
+                            item.get('attributeValueExpression').value
+                          )[1]?.selected == true
+                      }" (click)="toggleAttribute(item, 1)">
+                      {{
+                      getArray(item.get("attributeValueExpression").value)[1]
+                      .choice
+                      }}
+                    </button>
+                    <!-- <button >Sheet</button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="
+              ['Dropdown'].includes(
+                getAttributeTypeObjectById(
+                  this.getAttributeObjectById(item?.get('attributeId').value)
+                    ?.attributeTypeId
+                )?.description
+              )
+            ">
+            <div [ngClass]="{
+                'width-perc-25': item.get('colSpace').value == 25,
+                'width-perc-50': item.get('colSpace').value == 50,
+                'width-perc-75': item.get('colSpace').value == 75,
+                'width-perc-100': item.get('colSpace').value == 100
+              }">
+              <div class="attribute one attr-b">
+                <label for="">
+                  {{
+                  this.getAttributeObjectById(item?.get("attributeId").value)
+                  ?.description
+                  }}</label>
+                <div class="attribute-input">
+                  <select (change)="changeValue(item)" formControlName="attributeValue" class="width-perc-100 bg-white"
+                    style="width: 100% !important;">
+                    <option *ngFor="
+                        let opt of getArray(
+                          item.get('attributeValueExpression').value
+                        )
+                      " [value]="opt.choice">
+                      {{ opt.choice }}
+                    </option>
+                  </select>
+                </div>
+                <i class="cancel_outline_new material-icon" (click)="removePackageAttribute(i, k)">
+                  cancel_outline
+                </i>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="
+              ['Label'].includes(
+                getAttributeTypeObjectById(
+                  this.getAttributeObjectById(item?.get('attributeId').value)
+                    ?.attributeTypeId
+                )?.description
+              )
+            ">
+            <div class="attribute w-100 b-all  min-h-label b-round p-1  attr-b relative d-flex flex-wrap">
+              <label class="labeltype-attribute label" style="position: absolute;top: -10px;left: 10px;">
+                {{
+                this.getAttributeObjectById(item?.get("attributeId").value)
+                ?.description
+                }}
+              </label>
+
+              <ng-container [formGroup]="attr" *ngFor="
+                  let attr of filterAttributeForLabelPackage(
+                    getPackageAttributeValues(i),
+                    i
+                  ) | sortFormArray
+                ">
+                <ng-container *ngIf="
+                    getArrayIds(
+                      item.get('attributeValueExpression').value
+                    ).includes(attr.get('attributeId').value)
+                  ">
+                  <ng-container *ngIf="
+                      !['Toggle', 'Dropdown', 'Label'].includes(
+                        getAttributeTypeObjectById(
+                          this.getAttributeObjectById(
+                            attr?.get('attributeId').value
+                          )?.attributeTypeId
+                        )?.description
+                      )
+                    ">
+                    <div [ngClass]="{
+                        'width-perc-25': attr?.get('colSpace').value == 25,
+                        'width-perc-50': attr?.get('colSpace').value == 50,
+                        'width-perc-75': attr?.get('colSpace').value == 75,
+                        'width-perc-100': attr?.get('colSpace').value == 100
+                      }" class="mt-3">
+                      <div class="attribute one attr-b">
+                        <label for="" [ngClass]="{
+                            'c-red': errorKeys?.includes(getDescription(attr))
+                          }">
+                          {{
+                          this.getAttributeObjectById(
+                          attr?.get("attributeId").value
+                          )?.description
+                          }}</label>
+                        <div class="attribute-input">
+                          <input (change)="changeValue(attr)" type="text" formControlName="attributeValue"
+                            placeholder="Enter your value" />
+                          <mat-icon *ngIf="attr?.get('isUserInput').value" (click)="toggleLock(attr, false)"
+                            class="lock">
+                            lock
+                          </mat-icon>
+                          <mat-icon *ngIf="!attr?.get('isUserInput').value" (click)="toggleLock(attr, true)"
+                            class="lock_open">
+                            lock_open
+                          </mat-icon>
+                          <ng-container *ngIf="
+                              getAttributeTypeObjectById(
+                                this.getAttributeObjectById(
+                                  attr?.get('attributeId').value
+                                )?.attributeTypeId
+                              )?.availableUOMs?.length > 0
+                            ">
+                            <select tabindex="-1" *ngIf="
+                                !['Number', 'String'].includes(
+                                  getAttributeTypeObjectById(
+                                    getAttributeObjectById(
+                                      attr?.get('attributeId').value
+                                    )?.attributeTypeId
+                                  ).description
+                                )
+                              " formControlName="userConversionUom" id="userConversionUom">
+                              <option [value]="uom.description" *ngFor="
+                                  let uom of getAttributeTypeObjectById(
+                                    this.getAttributeObjectById(
+                                      attr?.get('attributeId').value
+                                    )?.attributeTypeId,
+                                    attr?.get('userConversionUom')
+                                  ).availableUOMs
+                                ">
+                                {{ uom?.description }}
+                              </option>
+                            </select>
+                          </ng-container>
+
+                          <ng-container *ngIf="
+                              ['Number', 'String'].includes(
+                                getAttributeTypeObjectById(
+                                  getAttributeObjectById(
+                                    attr?.get('attributeId').value
+                                  )?.attributeTypeId
+                                ).description
+                              )
+                            ">
+                            <div class="uom-label">
+                              {{ attr?.get("userConversionUom").value ?? "" }}
+                            </div>
+                          </ng-container>
+                        </div>
+                        <!-- <mat-icon class="cancel_outline label-icon"
+                        (click)="onDragRemoveAttribute(i1,i,m,attr)">
+                        <img src="assets/img/icons/close.svg" alt="Close" />
+                      </mat-icon> -->
+                      </div>
+                    </div>
+                  </ng-container>
+
+                  <ng-container *ngIf="
+                      ['Toggle'].includes(
+                        getAttributeTypeObjectById(
+                          this.getAttributeObjectById(
+                            attr?.get('attributeId').value
+                          )?.attributeTypeId
+                        )?.description
+                      )
+                    ">
+                    <div [ngClass]="{
+                        'width-perc-25': attr?.get('colSpace').value == 25,
+                        'width-perc-50': attr?.get('colSpace').value == 50,
+                        'width-perc-75': attr?.get('colSpace').value == 75,
+                        'width-perc-100': attr?.get('colSpace').value == 100
+                      }" class="mt-3 b-all">
+                      <div class="attribute tabular-sheet attr-b">
+                        <div class="attribute-input">
+                          <input [ngClass]="{
+                              'c-red': errorKeys?.includes(getDescription(attr))
+                            }" type="text" [value]="
+                              this.getAttributeObjectById(
+                                attr?.get('attributeId').value
+                              )?.description
+                            " readonly />
+                          <mat-icon *ngIf="attr?.get('isUserInput').value" (click)="toggleLock(attr, false)"
+                            class="lock">
+                            lock
+                          </mat-icon>
+                          <mat-icon *ngIf="!attr?.get('isUserInput').value" (click)="toggleLock(attr, true)"
+                            class="lock_open">
+                            lock_open
+                          </mat-icon>
+                          <div class="toggle">
+                            <button (click)="toggleAttribute(attr, 0)" [ngClass]="{
+                                active:
+                                  getArray(
+                                    attr.get('attributeValueExpression').value
+                                  )[0].selected == true
+                              }">
+                              {{
+                              getArray(
+                              attr.get("attributeValueExpression").value
+                              )[0].choice
+                              }}
+                            </button>
+                            <button (click)="toggleAttribute(attr, 0)" [ngClass]="{
+                                active:
+                                  getArray(
+                                    attr.get('attributeValueExpression').value
+                                  )[1].selected == true
+                              }">
+                              {{
+                              getArray(
+                              attr.get("attributeValueExpression").value
+                              )[1].choice
+                              }}
+                            </button>
+                            <!-- <button >Sheet</button> -->
+                          </div>
+                        </div>
+                        <!-- <mat-icon  (click)="onDragRemoveAttribute(i1,i,m,attr)" class="cancel_outline">
+                        <img src="assets/img/icons/close.svg" alt="Close" /></mat-icon> -->
+                      </div>
+                    </div>
+                  </ng-container>
+
+                  <ng-container *ngIf="
+                      ['Dropdown'].includes(
+                        getAttributeTypeObjectById(
+                          this.getAttributeObjectById(
+                            attr?.get('attributeId').value
+                          )?.attributeTypeId
+                        )?.description
+                      )
+                    ">
+                    <div [ngClass]="{
+                        'width-perc-25': attr?.get('colSpace').value == 25,
+                        'width-perc-50': attr?.get('colSpace').value == 50,
+                        'width-perc-75': attr?.get('colSpace').value == 75,
+                        'width-perc-100': attr?.get('colSpace').value == 100
+                      }" class="mt-3">
+                      <div class="attribute one attr-b">
+                        <label for="">
+                          {{
+                          this.getAttributeObjectById(
+                          attr?.get("attributeId").value
+                          )?.description
+                          }}</label>
+                        <div class="attribute-input">
+                          <select (change)="changeValue(attr)" formControlName="attributeValue"
+                            class="width-perc-100 bg-white" style="width: 100% !important;">
+                            <option *ngFor="
+                                let opt of getArray(
+                                  attr.get('attributeValueExpression').value
+                                )
+                              " [value]="opt.choice">
+                              {{ opt.choice }}
+                            </option>
+                          </select>
+                        </div>
+                        <!-- <mat-icon class="cancel_outline"  (click)="onDragRemoveAttribute(i1,i,m,attr)">
+                        <img src="assets/img/icons/close.svg" alt="Close" />
+                      </mat-icon> -->
+                      </div>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-container>
+
+  <div *ngIf="errorKeys?.length > 0" class="dialog-card-header">
+    <h3>Errors in Calculations</h3>
+  </div>
+
+  <ng-container *ngIf="errorKeys?.length > 0">
+    <div>
+      <table class="b-light">
+        <thead>
+          <tr class="bg-card-header title-text font-size-14">
+            <th>Attribute Name</th>
+            <th>Expression</th>
+            <th>Exception</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let key of errorKeys">
+            <td>
+              {{ key }}
+            </td>
+            <td>
+              {{ errors[key]?.expression }}
+            </td>
+            <td>
+              {{ errors[key]?.exception }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+</div>

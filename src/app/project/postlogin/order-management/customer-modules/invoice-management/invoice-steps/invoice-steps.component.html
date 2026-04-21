@@ -1,0 +1,219 @@
+<div class="app-container">
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button
+        (clicked)="
+          navigate('/home/order-management/customer?currentStepIndex=3')
+        "
+        [theme]="'borderless-primary'"
+        type="image"
+        [typeval]="'assets/img/icons/ArrowLeftCircle.png'"
+      >
+      </dadyin-button>
+
+      <ng-container *ngIf="invoiceForm.getRawValue()?.id">
+        <div class="font-size-16 text-black fw-bold">
+          <label>{{ requestToName }}</label>
+        </div>
+        <span class="text-dark"> | </span>
+        <div class="status font-size-12">
+          {{ invoiceForm.getRawValue()?.status }}
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!invoiceForm.getRawValue()?.id">
+        <div class="content-title text-light">
+          <label>Create Invoice</label>
+        </div>
+      </ng-container>
+
+      <span class="text-dark" *ngIf="invoiceForm.getRawValue()?.id"> | </span>
+      <div class="content-info text-dark">
+        <div
+          class="d-flex align-items-center"
+          *ngIf="invoiceForm.getRawValue()?.transactionId"
+        >
+          <div>
+            <b class="text-black">{{
+              invoiceForm.getRawValue()?.transactionId
+            }}</b>
+            <br />
+            <span class="font-size-10">
+              (
+              {{
+                invoiceForm.getRawValue()?.audit?.createdDate | date : "medium"
+              }}
+              )
+            </span>
+          </div>
+          <div>
+            <span class="text-dark mx-2"> | </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+      <div
+        class="d-flex flex-column"
+        *ngIf="invoiceForm.get('paymentStatus').value"
+      >
+        <div class="me-3 font-size-12 text-black" style="line-height: 1.4">
+          Payment Status :
+        </div>
+        <div
+          class="font-size-10"
+          style="line-height: 1"
+          [style.color]="
+            (invoiceForm.get('paymentStatus').value || 'Pending') === 'PENDING'
+              ? 'red'
+              : ''
+          "
+        >
+          {{
+            invoiceForm.get("paymentStatus").value
+              ? invoiceForm.get("paymentStatus").value
+              : "Pending"
+          }}
+        </div>
+      </div>
+ 
+      <div class="mx-2 text-light">|</div>
+      <dadyin-button
+        matTooltip="Share"
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/share.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/refresh.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Copy this Transaction"
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/copy.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Download"
+        [theme]="'borderless-disabled'"
+        type="image"
+        [typeval]="'assets/nicons/download.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Delete"
+        *ngIf="
+          invoiceForm.get('status').value == 'DRAFT' &&
+          invoiceForm.get('id').value
+        "
+        (clicked)="confirmDelete()"
+        [theme]="'borderless-default'"
+        type="image"
+        [typeval]="'assets/img/icons/delete.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Email Transaction (Regular or Tier)"
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/mail.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Save this in Draft"
+        *ngIf="
+          !invoiceForm?.value?.isQuickCheckout &&
+          invoiceForm?.value.status != 'CONFIRMED' &&
+          invoiceForm?.value.status != 'PLACED' &&
+          invoiceForm?.value.status != 'COMPLETED' &&
+          invoiceForm?.value.status != 'REJECTED'
+        "
+        (clicked)="saveInvoice(true)"
+        [theme]="'borderless-default'"
+        type="image"
+        [typeval]="'assets/nicons/save.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Place Order"
+        *ngIf="
+          !invoiceForm?.value?.isQuickCheckout &&
+          invoiceForm?.value.status != 'CONFIRMED' &&
+          invoiceForm?.value.status != 'PLACED' &&
+          invoiceForm?.value.status != 'COMPLETED' &&
+          invoiceForm?.value.status != 'REJECTED'
+        "
+        (clicked)="saveInvoice(false)"
+        [theme]="'borderless-default'"
+        type="image"
+        [typeval]="'assets/nicons/place.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Notify"
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/notify.png'"
+      >
+      </dadyin-button>
+    </div>
+  </div>
+
+  <div cdkDrag class="uom-config-section">
+    <button
+      (click)="uomSetting = !uomSetting"
+      class="btn bg-primary-light title-text"
+    >
+      UOM Setting
+    </button>
+    <div class="card uom-card" *ngIf="uomSetting">
+      <div
+        class="prefer-uom-grid align-items-center"
+        *ngIf="componentUoms.controls?.length > 0"
+      >
+        <div
+          [formGroup]="item"
+          *ngFor="let item of componentUoms.controls; let i = index"
+          class="my-2 attribute one b-none w-100"
+        >
+          <div class="attribute-input justify-content-around w-100 title-text">
+            <div class="text-uppercase">
+              {{ item.get("attributeName").value }}
+            </div>
+            <select
+              (change)="calculateValues()"
+              formControlName="userConversionUom"
+            >
+              <ng-container
+                *ngFor="
+                  let uom of uomService.getUoms(
+                    item.get('attributeTypeId').value
+                  )
+                "
+              >
+                <option [value]="uom.description">
+                  {{ uom?.description }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-tab-group class="mat-steps">
+    <mat-tab label="Create Invoice">
+      <app-create-invoice
+        [componentUoms]="componentUoms"
+        (calculate)="calculateValues()"
+        (patchEditData)="patchEditData($event, true)"
+        [invoiceForm]="invoiceForm"
+      ></app-create-invoice>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,0 +1,3 @@
+export const METRIC_TONNE_CALCULATOR_ID = 1;
+export const PACKAGE_CALCULATOR_ID = 2;
+export const DEFAULT_CALCULATOR_ID = 3;

@@ -1,0 +1,72 @@
+<div class="{{ class }}" *ngIf="!isMultiSelect">
+  <div class="attribute one attr-b">
+    <label
+      [style.fontSize]="fontSize ? fontSize + '!important' : ''"
+      [class.required]="validationRequired"
+      [class]="labelBackground"
+      for=""
+      >{{ label }}</label
+    >
+    <div class="attribute-select">
+      <select
+       style="   background: white;"
+        (change)="onSelectOption($event)"
+        [ngClass]="{ 'b-red': isErrorClass }"
+        [ngStyle]="{ color: control?.value ? 'black' : '#9bb5cf' }"
+        #select
+        (change)="selectionChange($event.target.value)"
+        [(value)]="_value"
+        [name]="formControlName"
+        [formControl]="control"
+        [style.height]="height ? height + '!important' : ''"
+        [style.fontSize]="fontSize ? fontSize + '!important' : ''"
+      >
+        <option selected disabled value="null">Select</option>
+        <option
+          style="color: black"
+          *ngFor="let option of optionArr"
+          [disabled]="option.disabled || isDisabled"
+          [value]="option[optionValue]"
+          [ngClass]="option.className"
+        >
+          {{ option[optionLabel] }}
+          <span *ngIf="showUser" class="span">{{ option.audit }}</span>
+        </option>
+      </select>
+    </div>
+  </div>
+  <span class="error" *ngIf="!isErrorClass">{{ getFieldErrorDesc() }}</span>
+</div>
+<div class="{{ class }}" *ngIf="isMultiSelect">
+  <div class="attribute one attr-b">
+    <label
+      [style.fontSize]="fontSize ? fontSize + '!important' : ''"
+      [class]="labelBackground"
+      for=""
+      >{{ label }}</label
+    >
+    <div class="attribute-select" style="padding-top: 3px">
+      <select
+        [style.height]="height ? height + '!important' : ''"
+        [style.fontSize]="fontSize ? fontSize + '!important' : ''"
+        #select
+        multiple
+        (change)="selectionChange($event.target.value)"
+        [(value)]="_value"
+        [name]="formControlName"
+        [formControl]="control"
+      >
+        <option
+          [
+          *ngFor="let option of optionArr"
+          [disabled]="option.disabled || isDisabled"
+          [value]="option[optionValue]"
+          [ngClass]="option.className"
+        >
+          {{ option[optionLabel] }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <span class="error">{{ getFieldErrorDesc() }}</span>
+</div>

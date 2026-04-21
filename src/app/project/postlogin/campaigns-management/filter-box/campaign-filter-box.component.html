@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="filter-container">
+    <div class="filter-btn d-flex align-items-center primary-text">
+      <div class="btn d-flex p-0" (click)="$event.stopPropagation(); openFilter = !openFilter">
+        <mat-icon>
+          filter_alt
+          <span
+            *ngIf="filterCount > 0"
+            class="translate-middle badge rounded-pill bg-danger primary-text"
+            id="filterBadge"
+            >{{ filterCount }}</span
+          >
+        </mat-icon>
+      </div>
+      <div
+        (click)="clearFilter(); $event.stopPropagation()"
+        style="text-wrap: nowrap; cursor: pointer"
+        class="mx-1"
+        *ngIf="filterCount > 0"
+      >
+        Clear All
+      </div>
+    </div>
+
+    <div class="filter-card" *ngIf="openFilter" (click)="$event.stopPropagation()">
+      <div class="filter-card-header my-2">
+        <h3 class="primary-text m-0">Filters</h3>
+        <dadyin-button [theme]="'primary'" label="Apply" (clicked)="apply()"></dadyin-button>
+      </div>
+
+      <div class="filter-card-form" [formGroup]="filterForm">
+            <div class="filter-section" *ngIf="mode === 'status'">
+              <h4 class="filter-section-title">Status</h4>
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 my-1">
+                  <input type="checkbox" id="statusDraft" formControlName="statusDraft" />
+                  <label class="mx-1" for="statusDraft">Draft</label>
+                </div>
+                <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 my-1">
+                  <input type="checkbox" id="statusRunning" formControlName="statusRunning" />
+                  <label class="mx-1" for="statusRunning">Running</label>
+                </div>
+                <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 my-1">
+                  <input type="checkbox" id="statusCompleted" formControlName="statusCompleted" />
+                  <label class="mx-1" for="statusCompleted">Completed</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="filter-section" *ngIf="mode === 'interval'">
+              <h4 class="filter-section-title">Interval Type</h4>
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 my-1">
+                  <input type="checkbox" id="intervalDaily" formControlName="intervalDaily" />
+                  <label class="mx-1" for="intervalDaily">Daily</label>
+                </div>
+                <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 my-1">
+                  <input type="checkbox" id="intervalWeekly" formControlName="intervalWeekly" />
+                  <label class="mx-1" for="intervalWeekly">Weekly</label>
+                </div>
+                <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 my-1">
+                  <input type="checkbox" id="intervalMonthly" formControlName="intervalMonthly" />
+                  <label class="mx-1" for="intervalMonthly">Monthly</label>
+                </div>
+                <div class="d-flex align-items-center b-all rounded-pill mx-1 p-2 my-1">
+                  <input type="checkbox" id="intervalYearly" formControlName="intervalYearly" />
+                  <label class="mx-1" for="intervalYearly">Yearly</label>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>

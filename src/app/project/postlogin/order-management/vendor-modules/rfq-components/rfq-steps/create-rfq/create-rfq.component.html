@@ -1,0 +1,156 @@
+<form [formGroup]="rfqForm">
+  <mat-expansion-panel expanded="true" #expansionPanel1>
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel1, $event)">
+      <mat-panel-description>
+        <div class="w-100 title-text">RFQ Details</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div class="row">
+        <div class="col-12 col-md-9">
+          <div class="row">
+            <div class="col-12 col-md-4 map-grid" formGroupName="requestTo">
+              <dadyin-searchable-select label="Select Vendor" class="w-100" placeholder="Select Vendor"
+                [control]="vendorId" (changed)="onChangeVendor()" [fullItems]="businessAccountService.vendorList"
+                bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
+              <dadyin-button (clicked)="openMap(2)" (click)="$event.stopPropagation()" [theme]="'borderless-primary'"
+                type="image" [typeval]="'assets/img/icons/address.png'">
+              </dadyin-button>
+
+              <div *ngIf="map2" class="tooltip-white b-light shadow-sm">
+                {{ requestToAddress }}
+              </div>
+            </div>
+            <div class="col-12 col-md-2" *ngIf="importLocalType.value == 'CONTAINER'">
+              <dadyin-select [optionArr]="containerService.incoTermsList" label="Inco terms"
+                formControlName="incoTermId" optionLabel="description" optionValue="id">
+              </dadyin-select>
+            </div>
+            <div class="col-12 col-md-2" *ngIf="importLocalType.value == 'LOCAL'">
+              <dadyin-select [optionArr]="[
+                  { id: 'DELIVERY', description: 'DELIVERY' },
+                  { id: 'PICKUP', description: 'PICKUP' }
+                ]" label="Delivery Type" formControlName="deliveryPickup" optionLabel="description" optionValue="id">
+              </dadyin-select>
+            </div>
+            <div class="col-12 col-md-1 px-0 d-flex">
+              <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'LOCAL'
+              ? 'assets/img/icons/location-on.png'
+              : 'assets/img/icons/location-off.png'">
+              </dadyin-button>
+              <dadyin-button (clicked)="toggleType('CONTAINER')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'CONTAINER'
+              ? 'assets/img/icons/anchor_on.png'
+              : 'assets/img/icons/anchor_off.png'">
+              </dadyin-button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-2">
+              <dadyin-input inputType="date" formControlName="requiredByDate" label="Required Date">
+              </dadyin-input>
+            </div>
+
+            <div class="col-12 col-md-2">
+              <dadyin-select [optionArr]="containerService.employeesList" label="Purchase manager"
+                formControlName="purchaseManagerId" optionLabel="firstName" optionValue="id">
+              </dadyin-select>
+            </div>
+
+            <div class="col-12 col-md-2">
+              <dadyin-select [optionArr]="buyingTypeList" label="Buying Type" formControlName="buyingType"
+                optionLabel="name" optionValue="value">
+              </dadyin-select>
+            </div>
+
+            <div class="col-12 col-md-2 ps-0" *ngIf="importLocalType.value != 'LOCAL'">
+              <dadyin-select [optionArr]="containerService.portsList" label="Port of Departure"
+                formControlName="departurePortId" optionLabel="description" optionValue="id">
+              </dadyin-select>
+            </div>
+
+            <!-- <div
+              class="col-12 col-md-2"
+              *ngIf="importLocalType.value != 'LOCAL'"
+            >
+              <dadyin-select
+                [optionArr]="[
+                  { id: 'PALLET', name: 'PALLET' },
+                  { id: 'FLOOR', name: 'FLOOR' },
+                  { id: 'MIXED', name: 'MIXED' }
+                ]"
+                label="Loading Type"
+                formControlName="loadingTypeId"
+                optionLabel="name"
+                optionValue="id"
+                [emptyOption]="'Select Loading Type'"
+              >
+              </dadyin-select>
+            </div> -->
+            <div class="col-12 col-md-2"></div>
+            <div class="col-12 col-md-2"></div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+          <div class="row mx-auto">
+            <div class="col-12 col-md-6">
+              <dadyin-input [isDisabled]="true" inputType="text" formControlName="rfqId" label="RFQ#">
+              </dadyin-input>
+            </div>
+            <div class="col-12 col-md-6">
+              <dadyin-input inputType="date" formControlName="date" label="Date">
+              </dadyin-input>
+            </div>
+          </div>
+          <div class="row mx-auto">
+            <div class="col-12 col-md-6">
+              <dadyin-input inputType="text" label="External Ref No"
+                formControlName="transactionReferenceNumber"></dadyin-input>
+            </div>
+            <div class="col-12 col-md-6"></div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <div class="my-1 d-flex align-items-center justify-content-between" style="column-gap: 5px">
+    <div class="d-flex align-items-center ">
+      <div class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
+        <img src="../../../../../../../../../assets/img/icons/prevorder.png" width="20" height="20" alt="">
+        <div class="text-dark font-size-14 mx-1">Prev. Orders</div>
+      </div>
+      <div (click)="onClickMyFavourite()"
+        class="d-flex mx-2 align-items-center bg-card-header b-secondary b-round p-1 cursor">
+        <img src="../../../../../../../../../assets/img/icons/Fav.png" width="20" height="20" alt="">
+        <div class="text-dark font-size-14 mx-1">My Favourite</div>
+      </div>
+    </div>
+ 
+  </div>
+
+  <mat-expansion-panel class="panel-no-padding" expanded="true" #expansionPanel3>
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
+      <mat-panel-description>
+        <div class="w-100 title-text">Product Details</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <app-order-transaction-packages [type]="'rfq'" [orderFile]="rfqFile" [displayedColumns]="[
+          'pkgs',
+          'qoh',
+          'qtyReq',
+          'prevPurchaseDates',
+          'prevQty',
+          'prevPrice',
+          'prevVendor',
+          'action'
+        ]" [isEditable]="isEditable" [orderForm]="rfqForm" (getProducts)="getProductsList($event)"
+        (calculate)="calculateValues()" (generatePoFromPdf)="generatePoFromPdf($event)" [productsList]="productsList"
+        [productPackages]="productPackages"></app-order-transaction-packages>
+    </ng-template>
+  </mat-expansion-panel>
+</form>

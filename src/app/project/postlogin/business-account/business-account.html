@@ -1,0 +1,174 @@
+<div class="row signin-section">
+  <div class="col-md-6 col-12 logo">
+    <div>
+      <img src="assets/img/logo.png" alt="Logo" />
+    </div>
+    <div class="signin-form">
+      <div class="heading">
+        <div>Company Information</div>
+        <div class="font-size-14 text-secondary mt-3">
+          Grow your Business with all the Power
+        </div>
+      </div>
+
+      <form [formGroup]="businessAccountForm">
+        <div class="row">
+          <div class="col-12">
+            <dadyin-input class="rounded" fontSize="14px" height="50px" inputType="string" formControlName="name"
+              label="Business Name" [isClearable]="false">
+            </dadyin-input>
+          </div>
+          <div class="col-12">
+            <dadyin-select class="rounded" fontSize="14px" height="50px" formControlName="language" label="Language"
+              [emptyOption]="'Select language'"
+              [optionArr]="[{label:'English',value:'English'},{label:'Hindi',value:'Hindi'}]">
+            </dadyin-select>
+          </div>
+          <div class="col-12">
+            <dadyin-select class="rounded" fontSize="14px" height="50px" formControlName="currency" label="Currency"
+              [emptyOption]="'Select Currency'" [optionArr]="currencyList">
+            </dadyin-select>
+          </div>
+          <div class="col-12 mb-2">
+            <dadyin-map-autocomplete class="rounded" fontSize="14px" height="50px"
+              (address)="onAddressSelection($event,businessAccountForm.get('primaryContact').get('address'))"
+              [control]="businessAccountForm.get('primaryContact').get('address')"></dadyin-map-autocomplete>
+          </div>
+          <div class="col-12 py-2" formGroupName="primaryContact">
+            <ng-container formGroupName="address">
+              <div class="row">
+                <div class="col-md-4">
+                  <dadyin-input class="rounded" fontSize="14px" height="50px" inputType="string"
+                    formControlName="addressCountry" label="Country" [isDisabled]="true" [isClearable]="false">
+                  </dadyin-input>
+                </div>
+
+                <div class="col-md-4">
+                  <dadyin-input class="rounded" fontSize="14px" height="50px" inputType="string"
+                    formControlName="addressState" label="State" [isDisabled]="true" [isClearable]="false">
+                  </dadyin-input>
+                </div>
+
+                <div class="col-md-4">
+                  <dadyin-input class="rounded" fontSize="14px" height="50px" inputType="string"
+                    formControlName="addressZipCode" label="Zipcode" [isDisabled]="true" [isClearable]="false">
+                  </dadyin-input>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <div class="col-12">
+            <dadyin-input class="rounded" fontSize="14px" height="50px" inputType="string" formControlName="firstName"
+              label="Owner First Name" [isClearable]="false">
+            </dadyin-input>
+          </div>
+          <div class="col-12">
+            <dadyin-input class="rounded" fontSize="14px" height="50px" inputType="string" formControlName="lastName"
+              label="Owner Last Name" [isClearable]="false">
+            </dadyin-input>
+          </div>
+
+          <div class="col-12" formGroupName="primaryContact">
+            <dadyin-input class="rounded" fontSize="14px" height="50px" inputType="string" formControlName="email"
+              label="Business Email" [isClearable]="false">
+            </dadyin-input>
+          </div>
+          <div class="col-12 d-flex" formGroupName="primaryContact">
+            <ng-container formGroupName="landline">
+              <div class="width-perc-30 attribute b-none mx-1">
+                <label class="bg-white" for="yesno">Country Code</label>
+                <ng-select appendTo="body" formControlName="countryId" [searchFn]="customSearchFn" [clearable]="false"
+                  class="custom country-custom" [items]="countries" labelForId="yesno" bindValue="id">
+                  <ng-template ng-label-tmp let-item="item">
+                    <div>
+                      <img width="10px" height="10px"
+                        src="{{'../../../../../../assets/img/flags/' + item?.iso3?.toLowerCase() + '.svg'}}" />
+                      {{item?.iso2}} {{(item?.phoneCode)}}
+                    </div>
+                  </ng-template>
+                  <ng-template ng-option-tmp let-item="item" let-index="index">
+                    <div>
+                      <img width="10px" height="10px"
+                        src="{{'../../../../../../assets/img/flags/' + item?.iso3?.toLowerCase() + '.svg'}}" />
+                      {{item?.iso2}} {{(item?.phoneCode)}}
+                    </div>
+                  </ng-template>
+                </ng-select>
+                <span class="required"
+                  *ngIf="businessAccountForm.get('primaryContact').get('landline').get('countryId').invalid">Country
+                  Code is required.</span>
+              </div>
+              <div class="width-perc-70">
+                <dadyin-input class="rounded" fontSize="14px" height="50px" inputType="string" formControlName="number"
+                  label="Landline" [isClearable]="false" onKeyPress="if(this.value.length==12) return false;">
+                </dadyin-input>
+              </div>
+            </ng-container>
+          </div>
+
+          <div class="col-12">
+            <dadyin-select fontSize="14px" height="50px" [emptyOption]="'Select Business Type'"
+              formControlName="businessLines" [optionArr]="businessTypes" label="Select Business Type"
+              optionLabel="description" optionValue="id">
+            </dadyin-select>
+          </div>
+        </div>
+      </form>
+
+      <dadyin-button width="100%" height="50px" fontSize="14px" label="Register Business" (clicked)="onSubmit()"
+        [theme]="'primary'">
+      </dadyin-button>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-12">
+    <div style="position: relative">
+      <div class="step-nav">
+        <button *ngFor="let slide of [0, 1, 2, 3]; let i = index" [ngClass]="{ 'bg-primary': activeIndex === i }"
+          (click)="goToSlide(slide)"></button>
+      </div>
+      <swiper class="swiper-login" #swiperR autoplay [config]="swiperConfig">
+        <ng-template swiperSlide>
+          <div class="tab">For Retailers</div>
+          <div class="tab-content">
+            <h4>
+              Compare, Choose, and Order – Shop Across Vendors, Wholesalers, and
+              Distributors at one place
+            </h4>
+          </div>
+          <img width="100%" class="img-slide" [src]="'assets/img/For Retailer.png'" alt="..." />
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="tab">For Wholesaler/Distributors</div>
+          <div class="tab-content">
+            <h4>
+              Streamline Wholesale Distribution – From Global Imports to Retail
+              Delivery
+            </h4>
+          </div>
+          <img width="100%" class="img-slide" [src]="'assets/img/Distributor.png'" alt="..." />
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="tab">For Importer-Exporter</div>
+          <div class="tab-content">
+            <h4>
+              From Manufacturer to Distribution, All in One Place- Quotes,
+              Orders, Documents, Tracking & Distribution, All Synced
+            </h4>
+          </div>
+          <img width="100%" class="img-slide" [src]="'assets/img/For Importer-Exporter.png'" alt="..." />
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="tab">For Manufacturers</div>
+          <div class="tab-content">
+            <h4>
+              Template-Driven Product Creation – Automate Costing, Enable Live
+              Pricing, and Seamlessly Manage Global Trade.
+            </h4>
+          </div>
+          <img width="100%" class="img-slide" [src]="'assets/img/For Manufacturer.png'" alt="..." />
+        </ng-template>
+      </swiper>
+    </div>
+  </div>
+</div>

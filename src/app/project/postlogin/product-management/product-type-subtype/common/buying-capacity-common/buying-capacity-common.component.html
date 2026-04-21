@@ -1,0 +1,87 @@
+<div class="mb-1">
+    <div class="d-flex mb-1">
+        <div class="width-100">
+            &nbsp;
+        </div>
+        <div *ngIf="buyingCapacities?.controls?.length==0">
+            <div class="d-flex justify-content-end align-items-center align-items-center">
+                <i class="mat-icon" (click)="addBc()">add_circle_outline</i>
+            </div>
+        </div>
+        <div style="row-gap:5px;padding-right:3px;width: 135px; margin-right: 5px;" class="d-flex justify-content-between align-items-center"
+            [formGroup]="bc" *ngFor="let bc of buyingCapacities?.controls;let i=index">
+            <div class="title-text">{{bc.value?.buyingCapacityType}} BUYER</div>
+         <!-- <i class="mat-icon" (click)="removeBc(i)">cancel_outline </i> -->
+            <!-- <i class="mat-icon" (click)="addBc()">add_circle_outline</i>  -->
+        </div>
+        <div>
+        </div>
+    </div>
+    <div class="d-flex">
+        <div class="flex-column title-text width-100 d-flex justify-content-between" style="row-gap:5px">
+            <div class="h-30">MARGIN%</div>
+            <div class="h-30">MARKUP%</div>
+            <div class="h-30">ROUND UP</div>
+        </div>
+        <div style="row-gap:5px;padding-right:3px; width: 135px;    margin-right: 5px;"
+            class="flex-column d-flex justify-content-between  align-items-center" [formGroup]="bc"
+            *ngFor="let bc of buyingCapacities.controls;let i =index;">
+            <input type="text" placeholder="Margin Percent" class="b-all"
+                (change)="calculateMarginAndMarkup(i,'margin')" formControlName="marginPercent" />
+            <input type="text" placeholder="Markup Percent" class="b-all"
+                (change)="calculateMarginAndMarkup(i,'markup')" formControlName="markupPercent" />
+            <input type="text" placeholder="Decimal Value" class="b-all" formControlName="decimalValue" />
+        </div>
+        <div>&nbsp;</div>
+    </div>
+</div>
+
+
+
+
+<!-- 
+<div class="mb-1">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col" *ngFor="let type of buyingCapacityTypeArray">{{type}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MARGIN%</td>
+                <ng-container *ngFor="let type of buyingCapacityTypeArray">
+                    <ng-container [formGroup]="bc" *ngFor="let bc of buyingCapacityFormArray.controls;let i =index;">
+                        <td *ngIf="type == bc.value.buyingCapacityType">
+                            <input type="text" placeholder="Margin Percent" class="b-all"
+                                (change)="calculateMarginAndMarkup(i,'margin')" formControlName="marginPercent" />
+                        </td>
+                    </ng-container>
+                </ng-container>
+            </tr>
+            <tr>
+                <td>MARKUP%</td>
+                <ng-container *ngFor="let type of buyingCapacityTypeArray">
+                    <ng-container [formGroup]="bc" *ngFor="let bc of buyingCapacityFormArray.controls;let i =index;">
+                        <td *ngIf="type == bc.value.buyingCapacityType">
+                            <input type="text" placeholder="Margin Percent" class="b-all"
+                                (change)="calculateMarginAndMarkup(i,'markup')" formControlName="markupPercent" />
+                        </td>
+                    </ng-container>
+                </ng-container>
+            </tr>
+            <tr>
+                <td>ROUND UP</td>
+                <ng-container *ngFor="let type of buyingCapacityTypeArray">
+                    <ng-container [formGroup]="bc" *ngFor="let bc of buyingCapacityFormArray.controls;let i =index;">
+                        <td *ngIf="type == bc.value.buyingCapacityType">
+                            <input type="text" placeholder="Margin Percent" class="b-all"
+                                formControlName="decimalValue" />
+                        </td>
+                    </ng-container>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
