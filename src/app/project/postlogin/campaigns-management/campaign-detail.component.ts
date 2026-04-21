@@ -305,11 +305,11 @@ export class CampaignDetailComponent implements OnInit {
 
   private buildProductImageUrl(fileNameOrUrl: any): string {
     const v = fileNameOrUrl == null ? '' : String(fileNameOrUrl).trim();
-    if (!v) return '';
+    if (!v || v.toLowerCase() === 'undefined') return '';
     if (/^https?:\/\//i.test(v)) return v;
     const base = String(this.productImageBaseUrl || '').replace(/\/+$/g, '');
     if (!base) return v;
-    return `${base}/${v.replace(/^\/+/, '')}`;
+    return `${base}/${encodeURI(v.replace(/^\/+/, ''))}`;
   }
 
   private rebuildProductImagesFromCampaignData() {
