@@ -1,16 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input,  OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
 import { OrderManagementService } from '../../../service/order-management.service';
+import { DataTableComponent } from '../../../../../../shared/component/data-table/data-table.component';
+import { NgIf, NgFor } from '@angular/common';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../../../../shared/component/search-filter/search-filter.component';
 
 @Component({
-  selector: 'app-quotation-list',
-  templateUrl: './quotation-list.component.html',
-  styleUrls: ['./quotation-list.component.scss'],
+    selector: 'app-quotation-list',
+    templateUrl: './quotation-list.component.html',
+    styleUrls: ['./quotation-list.component.scss'],
+    standalone: true,
+    imports: [
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        CdkDrag,
+        NgIf,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent,
+    ],
 })
 export class QuotationListComponent implements OnInit {
   @Input() single = false;

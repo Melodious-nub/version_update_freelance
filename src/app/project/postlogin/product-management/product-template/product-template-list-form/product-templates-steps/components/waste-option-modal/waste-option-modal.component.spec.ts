@@ -8,8 +8,8 @@ describe('WasteOptionModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WasteOptionModalComponent ]
-    })
+    imports: [WasteOptionModalComponent]
+})
     .compileComponents();
   });
 

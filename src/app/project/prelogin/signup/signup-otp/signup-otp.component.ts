@@ -3,14 +3,23 @@ import { Router } from '@angular/router';
 import { GenricResponse } from 'src/app/model/common/generic-response';
 import { ToastrService } from 'ngx-toastr';
 import { SignupService } from '../../signup.service';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { AuthService } from 'src/app/service/auth.service';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinInputComponent } from '../../../../shared/widgets/dadyin-input/dadyin-input.component';
 
 @Component({
-  selector: 'app-signup-otp',
-  templateUrl: './signup-otp.component.html',
-  styleUrls: ['./signup-otp.component.scss'],
+    selector: 'app-signup-otp',
+    templateUrl: './signup-otp.component.html',
+    styleUrls: ['./signup-otp.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        DadyinButtonComponent,
+    ],
 })
 export class SignupOTPComponent implements OnInit {
 

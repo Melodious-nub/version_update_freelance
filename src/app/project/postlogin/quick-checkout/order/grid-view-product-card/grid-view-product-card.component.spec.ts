@@ -8,8 +8,8 @@ describe('GridViewProductCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GridViewProductCardComponent ]
-    })
+    imports: [GridViewProductCardComponent]
+})
     .compileComponents();
   });
 

@@ -29,7 +29,7 @@
         <mat-icon>expand_less</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <mat-expansion-panel-content>
+    <div class="expansion-content">
       <!-- Note: create form -->
       <div class="row p-2" *ngIf="isNoteMode" [formGroup]="noteForm">
         <div class="col-6">
@@ -87,7 +87,7 @@
           </div>
         </div>
       </div>
-    </mat-expansion-panel-content>
+    </div>
   </mat-expansion-panel>
 
   <hr />
@@ -99,7 +99,7 @@
         <mat-icon>expand_less</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <mat-expansion-panel-content>
+    <div class="expansion-content">
       <div class="table-responsive process-table" style="max-height: 400px; overflow: auto">
         <table class="table-striped" style="width: 100%">
           <thead>
@@ -156,7 +156,7 @@
           </tbody>
         </table>
       </div>
-    </mat-expansion-panel-content>
+    </div>
   </mat-expansion-panel>
 
   <!-- All Reminders table -->
@@ -167,7 +167,7 @@
         <mat-icon>expand_less</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <mat-expansion-panel-content>
+    <div class="expansion-content">
       <div class="table-responsive process-table" style="max-height: 400px; overflow: auto">
         <table class="table-striped" style="width: 100%">
           <thead>
@@ -197,7 +197,7 @@
           </tbody>
         </table>
       </div>
-    </mat-expansion-panel-content>
+    </div>
   </mat-expansion-panel>
 
   <div class="text-center my-2">

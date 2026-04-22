@@ -7,8 +7,8 @@ describe('SocialBroadcastManagementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SocialBroadcastManagementComponent ]
-    })
+    imports: [SocialBroadcastManagementComponent]
+})
     .compileComponents();
   });
 

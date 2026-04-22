@@ -8,8 +8,8 @@ describe('RfqListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RfqListComponent ]
-    })
+    imports: [RfqListComponent]
+})
     .compileComponents();
   });
 

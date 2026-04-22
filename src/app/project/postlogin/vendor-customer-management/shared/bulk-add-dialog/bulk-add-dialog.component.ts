@@ -3,6 +3,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/service/http.service';
 import { apiModules } from 'src/app/shared/constant';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NgIf, NgFor } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatIconModule } from '@angular/material/icon';
 
 export interface BusinessBulkExtractRow {
   rowNumber: number;
@@ -21,9 +25,17 @@ export interface BusinessBulkExtractResponse {
 }
 
 @Component({
-  selector: 'app-bulk-add-dialog',
-  templateUrl: './bulk-add-dialog.component.html',
-  styleUrls: ['./bulk-add-dialog.component.scss'],
+    selector: 'app-bulk-add-dialog',
+    templateUrl: './bulk-add-dialog.component.html',
+    styleUrls: ['./bulk-add-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        DadyinButtonComponent,
+        NgIf,
+        NgFor,
+        MatExpansionModule,
+    ],
 })
 export class BulkAddDialogComponent implements OnInit {
   businessListExpanded = true;

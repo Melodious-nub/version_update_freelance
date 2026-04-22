@@ -1,16 +1,29 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormArray, FormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
 import { ConfirmationDialogComponent } from './components/process/edit-process/components/select-process-name/confirmation-dialog/confirmation-dialog.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { RawMaterialProcessComponent } from './components/process/raw-material-process/raw-material-process.component';
+import { ProcessComponent } from './components/process/process.component';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'template-process',
-  templateUrl: './template-process.component.html',
-  styleUrls: ['./template-process.component.scss'],
+    selector: 'template-process',
+    templateUrl: './template-process.component.html',
+    styleUrls: ['./template-process.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        ProcessComponent,
+        RawMaterialProcessComponent,
+        MatExpansionModule,
+    ],
 })
 export class TemplateProcessComponent implements OnInit {
   // ************* Variable Declarations *************

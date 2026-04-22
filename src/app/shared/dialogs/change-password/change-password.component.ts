@@ -1,16 +1,22 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { SignupService } from 'src/app/project/prelogin/signup.service';
 import { HttpService } from 'src/app/service/http.service';
 import { userApiModules } from '../../constant';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgClass, NgIf } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
 
 
 @Component({
-  selector: 'app-change-password-dialog',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.scss']
+    selector: 'app-change-password-dialog',
+    templateUrl: './change-password.component.html',
+    styleUrls: ['./change-password.component.scss'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, DadyinButtonComponent, MatIconModule, NgClass, ExtendedModule, NgIf]
 })
 export class ChangePasswordDialogComponent implements OnInit {
   changePasswordForm: UntypedFormGroup;

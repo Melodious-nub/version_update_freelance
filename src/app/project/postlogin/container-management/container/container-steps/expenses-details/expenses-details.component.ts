@@ -1,11 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, Pipe } from '@angular/core';
-import {
-  UntypedFormArray,
-  UntypedFormBuilder,
-  FormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
@@ -14,11 +8,34 @@ import { ToastrService } from 'ngx-toastr';
 import { ContainerManagementService } from '../../../service/container-management.service';
 import { Subject, takeUntil } from 'rxjs';
 import { ContainerFormsService } from '../../../service/container-forms.service';
+import { MatOptionModule } from '@angular/material/core';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinInputComponent } from '../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { NgFor, NgIf, NgClass, NgStyle, SlicePipe } from '@angular/common';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-expenses-details',
-  templateUrl: './expenses-details.component.html',
-  styleUrls: ['./expenses-details.component.scss'],
+    selector: 'app-expenses-details',
+    templateUrl: './expenses-details.component.html',
+    styleUrls: ['./expenses-details.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        NgFor,
+        DadyinInputComponent,
+        NgIf,
+        DadyinButtonComponent,
+        MatAutocompleteModule,
+        NgClass,
+        ExtendedModule,
+        MatOptionModule,
+        NgStyle,
+        SlicePipe,
+    ],
 })
 export class ExpensesDetailsComponent implements OnInit {
   @Input() isExport: any;

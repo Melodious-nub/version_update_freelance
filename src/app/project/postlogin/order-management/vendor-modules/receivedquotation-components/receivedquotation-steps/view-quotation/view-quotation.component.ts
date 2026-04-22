@@ -6,7 +6,7 @@ import {
   EventEmitter,
   HostListener,
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
@@ -16,11 +16,28 @@ import { ContainerManagementService } from 'src/app/project/postlogin/container-
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { OrderFormsService } from '../../../../service/order-forms.service';
 import { ApiService } from 'src/app/service/api.service';
+import { OrderTransactionPackagesComponent } from '../../../../../../../shared/component/order-transaction-packages/order-transaction-packages.component';
+import { DadyinInputComponent } from '../../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { NgIf } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinSelectComponent } from '../../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-view-quotation',
-  templateUrl: './view-quotation.component.html',
-  styleUrls: ['./view-quotation.component.scss'],
+    selector: 'app-view-quotation',
+    templateUrl: './view-quotation.component.html',
+    styleUrls: ['./view-quotation.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        DadyinSelectComponent,
+        DadyinButtonComponent,
+        NgIf,
+        DadyinInputComponent,
+        OrderTransactionPackagesComponent,
+    ],
 })
 export class ViewQuotationComponent implements OnInit {
     public buyingTypeList: any[] = [

@@ -8,8 +8,8 @@ describe('ProcessComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProcessComponent],
-    }).compileComponents();
+    imports: [ProcessComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

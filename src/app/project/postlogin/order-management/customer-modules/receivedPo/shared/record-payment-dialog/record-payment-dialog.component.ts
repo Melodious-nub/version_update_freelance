@@ -1,17 +1,26 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { UntypedFormGroup } from '@angular/forms';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderFormsService } from '../../../../service/order-forms.service';
 import { OrderManagementService } from '../../../../service/order-management.service';
 import { first } from 'rxjs';
 import { payment } from 'src/app/shared/constant';
 import { UomService } from 'src/app/service/uom.service';
+import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-record-payment-dialog',
-  templateUrl: './record-payment-dialog.component.html',
-  styleUrls: ['./record-payment-dialog.component.scss'],
+    selector: 'app-record-payment-dialog',
+    templateUrl: './record-payment-dialog.component.html',
+    styleUrls: ['./record-payment-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgFor,
+        DadyinButtonComponent,
+    ],
 })
 export class RecordPaymentDialog implements OnInit {
   paymentRecordForm: UntypedFormGroup;

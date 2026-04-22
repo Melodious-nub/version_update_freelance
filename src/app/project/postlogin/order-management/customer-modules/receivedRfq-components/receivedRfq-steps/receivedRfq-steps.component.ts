@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormArray, FormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, FormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
@@ -11,11 +11,30 @@ import { OrderManagementService } from '../../../service/order-management.servic
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { ContainerManagementService } from 'src/app/project/postlogin/container-management/service/container-management.service';
 import { FormsService } from 'src/app/service/forms.service';
+import { ViewRfqComponent } from './view-rfq/view-rfq.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-rfq-steps',
-  templateUrl: './receivedRfq-steps.component.html',
-  styleUrls: ['./receivedRfq-steps.component.scss'],
+    selector: 'app-rfq-steps',
+    templateUrl: './receivedRfq-steps.component.html',
+    styleUrls: ['./receivedRfq-steps.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgIf,
+        MatTooltipModule,
+        CdkDrag,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabsModule,
+        ViewRfqComponent,
+        DatePipe,
+    ],
 })
 export class ReceivedRfqStepsComponent implements OnInit {
   // ************* Variable Declarations *************

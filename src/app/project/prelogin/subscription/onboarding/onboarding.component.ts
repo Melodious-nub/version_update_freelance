@@ -1,16 +1,23 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { SubscriptionService } from '../subscription.service';
-import { UntypedFormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BusinessRegistrationFormsService } from 'src/app/project/postlogin/business-account/services/business-registration-forms.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { SignupService } from '../../signup.service';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinMapAutoCompleteComponent } from '../../../../shared/widgets/dadyin-map-autocomplete/dadyin-map-autocomplete.component';
+import { DadyinInputComponent } from '../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { DadyinSelectComponent } from '../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
-  selector: 'app-onboarding',
-  templateUrl: './onboarding.component.html',
-  styleUrls: ['./onboarding.component.scss']
+    selector: 'app-onboarding',
+    templateUrl: './onboarding.component.html',
+    styleUrls: ['./onboarding.component.scss'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NgSelectModule, DadyinSelectComponent, DadyinInputComponent, DadyinMapAutoCompleteComponent, DadyinButtonComponent]
 })
 export class OnboardingComponent implements OnInit {
   countries = [];

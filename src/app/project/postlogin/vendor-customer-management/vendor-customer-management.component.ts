@@ -7,7 +7,7 @@ import { NoteDialogComponent } from './shared/note-dialog/note-dialog.component'
 import { MatDialog } from '@angular/material/dialog';
 import { VendorCustomerService } from './service/vendor-customer.service';
 import { VendorFormsService } from './service/vendor-forms.service';
-import { UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, FormsModule } from '@angular/forms';
 import { sidebarMenu } from 'src/app/shared/menuconstant';
 import { SelectMenuService } from 'src/app/layout/select-menu.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -19,11 +19,36 @@ import { selectSalesRepDialogComponent } from './shared/select-salesrep-dialog/s
 import {  BulkAddDialogComponent } from './shared/bulk-add-dialog/bulk-add-dialog.component';
 import { BusinessEntityConfigurationComponent } from '../system-config-management/business-entity-configuration/business-entity-configuration.component';
 import { SystemConfigService } from '../system-config-management/service/system-config.service';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { LeadFilterBoxComponent } from './shared/lead-filter-box/lead-filter-box.component';
+import { DataTableComponent as DataTableComponent_1 } from '../../../shared/component/data-table/data-table.component';
+import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../shared/component/search-filter/search-filter.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NgIf, NgFor, NgClass, SlicePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-vendor-customer-management',
-  templateUrl: './vendor-customer-management.component.html',
-  styleUrls: ['./vendor-customer-management.component.scss'],
+    selector: 'app-vendor-customer-management',
+    templateUrl: './vendor-customer-management.component.html',
+    styleUrls: ['./vendor-customer-management.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatTabsModule,
+        NgFor,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent_1,
+        LeadFilterBoxComponent,
+        NgSelectModule,
+        FormsModule,
+        MatTooltipModule,
+        NgClass,
+        ExtendedModule,
+        SlicePipe,
+    ],
 })
 export class VendorCustomerManagementComponent implements OnInit {
   @ViewChild(DataTableComponent) dataTable!: DataTableComponent;

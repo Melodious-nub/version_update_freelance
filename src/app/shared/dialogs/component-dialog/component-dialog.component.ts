@@ -8,13 +8,15 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { ReplaySubject } from 'rxjs';
 
 @Component({
-  selector: 'app-component-dialog',
-  templateUrl: './component-dialog.component.html',
-  styleUrls: ['./component-dialog.component.scss'],
+    selector: 'app-component-dialog',
+    templateUrl: './component-dialog.component.html',
+    styleUrls: ['./component-dialog.component.scss'],
+    standalone: true,
+    imports: [MatDialogModule],
 })
 export class ComponentDialogComponent implements OnInit, OnDestroy {
   @ViewChild('target', { read: ViewContainerRef, static: true })

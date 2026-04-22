@@ -48,7 +48,7 @@
             row(s))</span>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <mat-expansion-panel-content>
+      <div class="expansion-content">
         <div class="process-table overflow-auto">
           <table id="example">
             <thead>
@@ -77,14 +77,14 @@
             </tbody>
           </table>
         </div>
-      </mat-expansion-panel-content>
+      </div>
     </mat-expansion-panel>
 
     <div class="d-flex justify-content-end gap-2 mt-3">
       <dadyin-button [theme]="'borderless-secondary'" label="Cancel" (clicked)="onBack()">
       </dadyin-button>
       <dadyin-button [theme]="'primary'" label="Save"
-        [disabled]="saveLoading || !selectedFile || extractedRows.length === 0" (clicked)="onSave()">
+        [isDisabled]="saveLoading || !selectedFile || extractedRows.length === 0" (clicked)="onSave()">
       </dadyin-button>
     </div>
   </div>

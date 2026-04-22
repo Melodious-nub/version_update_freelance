@@ -2,15 +2,30 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryManagementService } from '../../../service/category-management.service';
 import { CategoryManagementFormsService } from '../../../service/category-management-forms.service';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
+import { DataTableComponent } from '../../../../../../../shared/component/data-table/data-table.component';
+import { DadyinSearchSelectNewComponent } from '../../../../../../../shared/widgets/dadyin-search-select-new/dadyin-search-select-new.component';
+import { DadyinSearchableSelectComponent } from '../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-create-category',
-  templateUrl: './create-category.component.html',
-  styleUrls: ['./create-category.component.scss'],
+    selector: 'app-create-category',
+    templateUrl: './create-category.component.html',
+    styleUrls: ['./create-category.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        DadyinSearchableSelectComponent,
+        DadyinSearchSelectNewComponent,
+        DataTableComponent,
+    ],
 })
 export class CreateCategoryComponent implements OnInit {
   public pageConfig = null;

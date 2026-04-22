@@ -12,12 +12,23 @@ import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { QcmobileDialogComponent } from 'src/app/shared/dialogs/qcmobile/qcmobile-dialog.component';
 import { SwiperOptions } from 'swiper';
-import { SwiperComponent } from 'swiper/angular';
+import { SwiperComponent, SwiperModule } from 'swiper/angular';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgFor, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-choose-business-account',
-  templateUrl: './choose-business-account.html',
-  styleUrls: ['./choose-business-account.scss'],
+    selector: 'app-choose-business-account',
+    templateUrl: './choose-business-account.html',
+    styleUrls: ['./choose-business-account.scss'],
+    standalone: true,
+    imports: [
+        NgFor,
+        NgClass,
+        ExtendedModule,
+        DadyinButtonComponent,
+        SwiperModule,
+    ],
 })
 export class ChooseBusinessAccountComponent implements OnInit {
   public imgUrl = environment.imgUrl;

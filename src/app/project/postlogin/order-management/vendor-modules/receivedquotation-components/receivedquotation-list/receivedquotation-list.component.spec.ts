@@ -8,8 +8,8 @@ describe('ReceivedquotationListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReceivedquotationListComponent ]
-    })
+    imports: [ReceivedquotationListComponent]
+})
     .compileComponents();
   });
 

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-active-business',
-  templateUrl: './active-business.component.html',
-  styleUrls: ['./active-business.component.scss']
+    selector: 'app-active-business',
+    templateUrl: './active-business.component.html',
+    styleUrls: ['./active-business.component.scss'],
+    standalone: true,
+    imports: [RouterOutlet]
 })
 export class ActiveBusinessComponent implements OnInit {
 

@@ -22,10 +22,10 @@
               <div class="col-6 d-flex justify-content-end align-items-center">
                 <div class="action-btns">
                   <dadyin-button [theme]="'secondary'" label="Download Template" (clicked)="downloadBulkUploadTemplate()"
-                    [disabled]="downloadTemplateInProgress" style="margin-right: 10px">
+                    [isDisabled]="downloadTemplateInProgress" style="margin-right: 10px">
                   </dadyin-button>
                   <dadyin-button [theme]="'secondary'" label="Bulk Upload" (clicked)="triggerBulkUpload()"
-                    [disabled]="bulkUploadInProgress" style="margin-right: 10px">
+                    [isDisabled]="bulkUploadInProgress" style="margin-right: 10px">
                   </dadyin-button>
                   <input #bulkUploadFileInput type="file" accept=".xlsx"
                     style="display: none" (change)="onBulkUploadFileSelected($event)" />

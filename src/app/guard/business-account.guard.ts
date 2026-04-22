@@ -26,9 +26,7 @@ export class BusinessAccountGuard implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> {
     if (
-      state.url.startsWith(
-        '/home/quick-checkout/order?'
-      )
+      state.url.includes('/quick-checkout/order')
     ) {
       return of(true); // Allow access to 'quick-checkout/order' route
     }

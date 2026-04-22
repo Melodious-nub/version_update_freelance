@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { UntypedFormArray, Validators } from '@angular/forms';
+import { UntypedFormArray, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {
@@ -28,11 +28,46 @@ import { TokenService } from 'src/app/service/token.service';
 import { ContainerManagementService } from '../../container-management/service/container-management.service';
 import { HttpService } from 'src/app/service/http.service';
 import { PaymentInfoList } from 'src/app/project/prelogin/subscription/payment-info-list';
+import { SortFormArrayPipe } from '../../../../shared/pipes/sort-formarray-sortorder.pipe';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DadyinSearchSelectNewComponent } from '../../../../shared/widgets/dadyin-search-select-new/dadyin-search-select-new.component';
+import { DadyinMapAutoCompleteComponent } from '../../../../shared/widgets/dadyin-map-autocomplete/dadyin-map-autocomplete.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { DadyinSelectComponent } from '../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { DadyinInputComponent } from '../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NgIf, NgFor, NgClass, DecimalPipe, DatePipe } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-business-registration',
-  templateUrl: './business-registration.html',
-  styleUrls: ['./business-registration.scss'],
+    selector: 'app-business-registration',
+    templateUrl: './business-registration.html',
+    styleUrls: ['./business-registration.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        MatTabsModule,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        DadyinInputComponent,
+        DadyinSelectComponent,
+        NgSelectModule,
+        DadyinMapAutoCompleteComponent,
+        DadyinSearchSelectNewComponent,
+        NgFor,
+        MatTooltipModule,
+        NgClass,
+        ExtendedModule,
+        MatProgressBarModule,
+        DecimalPipe,
+        DatePipe,
+        SortFormArrayPipe,
+    ],
 })
 export class BusinessRegistrationComponent implements OnInit, OnDestroy {
   // Platform name input fields for Social Profile Tab

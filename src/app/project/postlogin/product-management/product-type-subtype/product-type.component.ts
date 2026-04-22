@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-product-type',
     templateUrl: './product-type.component.html',
-    styleUrls: ['./product-type.component.scss']
+    styleUrls: ['./product-type.component.scss'],
+    standalone: true,
+    imports: [RouterOutlet]
 })
 export class ProductTypeComponent implements OnInit {
 

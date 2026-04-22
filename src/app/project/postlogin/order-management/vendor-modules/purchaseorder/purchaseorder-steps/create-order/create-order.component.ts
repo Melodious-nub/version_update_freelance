@@ -7,7 +7,7 @@ import {
   ChangeDetectorRef,
   HostListener,
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
@@ -22,10 +22,34 @@ import { OrderFormsService } from '../../../../service/order-forms.service';
 import { PrintService } from 'src/app/service/print.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PricecompareDialogComponent } from 'src/app/shared/component/pricecompare-dialog/pricecompare-dialog.component';
+import { OrderTransactionPackagesComponent } from '../../../../../../../shared/component/order-transaction-packages/order-transaction-packages.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { DadyinInputComponent } from '../../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { DadyinSelectComponent } from '../../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { NgIf, NgFor } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinSearchableSelectComponent } from '../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 @Component({
-  selector: 'app-create-order',
-  templateUrl: './create-order.component.html',
-  styleUrls: ['./create-order.component.scss'],
+    selector: 'app-create-order',
+    templateUrl: './create-order.component.html',
+    styleUrls: ['./create-order.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+        NgIf,
+        DadyinSelectComponent,
+        DadyinInputComponent,
+        MatAutocompleteModule,
+        NgFor,
+        MatOptionModule,
+        OrderTransactionPackagesComponent,
+    ],
 })
 export class CreateOrderComponent implements OnInit {
   currentBusinessAccount: any;

@@ -8,8 +8,8 @@ describe('BatchModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BatchModalComponent ]
-    })
+    imports: [BatchModalComponent]
+})
     .compileComponents();
   });
 

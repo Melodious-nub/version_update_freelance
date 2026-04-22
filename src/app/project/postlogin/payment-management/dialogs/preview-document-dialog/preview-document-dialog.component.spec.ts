@@ -8,8 +8,8 @@ describe('PreviewDocumentDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PreviewDocumentDialogComponent ]
-    })
+    imports: [PreviewDocumentDialogComponent]
+})
     .compileComponents();
   });
 

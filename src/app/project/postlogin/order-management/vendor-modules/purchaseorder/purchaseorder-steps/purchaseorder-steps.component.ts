@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
@@ -14,11 +14,30 @@ import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm/confirm-d
 import { MatDialog } from '@angular/material/dialog';
 import { InvoiceManagementService } from '../../../customer-modules/invoice-management/invoice-management.service';
 import { OrderManagementService } from '../../../service/order-management.service';
+import { PaymentComponent } from './payment/payment.component';
+import { CreateOrderComponent } from './create-order/create-order.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-purchaseorder-steps',
-  templateUrl: './purchaseorder-steps.component.html',
-  styleUrls: ['./purchaseorder-steps.component.scss'],
+    selector: 'app-purchaseorder-steps',
+    templateUrl: './purchaseorder-steps.component.html',
+    styleUrls: ['./purchaseorder-steps.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgIf,
+        MatTooltipModule,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabsModule,
+        CreateOrderComponent,
+        PaymentComponent,
+        DatePipe,
+    ],
 })
 export class PurchaseorderStepsComponent implements OnInit {
   // ************* Variable Declarations *************

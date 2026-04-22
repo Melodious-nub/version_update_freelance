@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryoutmanagementService } from '../../../service/inventoryout-management.service';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { DataTableComponent } from '../../../../../../../shared/component/data-table/data-table.component';
+import { DateScrollComponent } from '../../../../../../../shared/component/date-scroll/date-scroll.component';
 
 @Component({
-  selector: 'app-product-wise',
-  templateUrl: './product-wise.component.html',
-  styleUrls: ['./product-wise.component.scss']
+    selector: 'app-product-wise',
+    templateUrl: './product-wise.component.html',
+    styleUrls: ['./product-wise.component.scss'],
+    standalone: true,
+    imports: [DateScrollComponent, DataTableComponent]
 })
 export class ProductWiseComponent implements OnInit {
 

@@ -1,10 +1,31 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InvoiceListComponent } from './invoice-management/invoice-list/invoice-list.component';
+import { ReceivedPoListComponent } from './receivedPo/receivedPo-list/receivedPo-list.component';
+import { QuotationListComponent } from './quotation-components/quotation-list/quotation-list.component';
+import { ReceivedRfqListComponent } from './receivedRfq-components/receivedRfq-list/receivedRfq-list.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-customer-management',
-  templateUrl: './customer-management.component.html',
-  styleUrls: ['./customer-management.component.scss'],
+    selector: 'app-customer-management',
+    templateUrl: './customer-management.component.html',
+    styleUrls: ['./customer-management.component.scss'],
+    standalone: true,
+    imports: [
+        NgClass,
+        ExtendedModule,
+        MatTabsModule,
+        NgFor,
+        MatBadgeModule,
+        NgIf,
+        ReceivedRfqListComponent,
+        QuotationListComponent,
+        ReceivedPoListComponent,
+        InvoiceListComponent,
+    ],
 })
 export class CustomerManagementComponent implements OnInit {
   currentStepIndex = 0;

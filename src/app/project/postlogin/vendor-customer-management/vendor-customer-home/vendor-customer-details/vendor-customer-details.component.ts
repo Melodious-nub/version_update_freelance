@@ -9,25 +9,63 @@ import {
   OnChanges,
   ViewChild,
 } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators, UntypedFormArray } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators, UntypedFormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { ContainerManagementService } from '../../../container-management/service/container-management.service';
 import { BusinessAccountService } from '../../../business-account/business-account.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { NoteDialogComponent } from '../../shared/note-dialog/note-dialog.component';
 import { environment } from 'src/environments/environment';
 import { VendorCustomerService } from '../../service/vendor-customer.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { BusinessEntityConfigurationComponent } from '../../../system-config-management/business-entity-configuration/business-entity-configuration.component';
 import { SystemConfigFormsService } from '../../../system-config-management/service/system-config-forms.service';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinSearchSelectNewComponent } from '../../../../../shared/widgets/dadyin-search-select-new/dadyin-search-select-new.component';
+import { DadyinMapAutoCompleteComponent } from '../../../../../shared/widgets/dadyin-map-autocomplete/dadyin-map-autocomplete.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { DadyinSelectComponent } from '../../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { DadyinInputComponent } from '../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf, NgFor, NgClass, SlicePipe } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-vendor-customer-details',
-  templateUrl: './vendor-customer-details.component.html',
-  styleUrls: ['./vendor-customer-details.component.scss'],
+    selector: 'app-vendor-customer-details',
+    templateUrl: './vendor-customer-details.component.html',
+    styleUrls: ['./vendor-customer-details.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        MatAutocompleteModule,
+        NgIf,
+        MatButtonModule,
+        MatTooltipModule,
+        MatIconModule,
+        NgFor,
+        MatOptionModule,
+        DadyinInputComponent,
+        DadyinSelectComponent,
+        NgSelectModule,
+        NgClass,
+        ExtendedModule,
+        DadyinMapAutoCompleteComponent,
+        MatDialogModule,
+        DadyinSearchSelectNewComponent,
+        DadyinButtonComponent,
+        BusinessEntityConfigurationComponent,
+        SlicePipe,
+    ],
 })
 export class VendorDetailsComponent implements OnInit, OnChanges {
   public imgUrl = environment.imgUrl;

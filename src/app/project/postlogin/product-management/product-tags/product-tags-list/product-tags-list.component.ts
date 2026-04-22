@@ -5,14 +5,34 @@ import { ApiService } from 'src/app/service/api.service';
 import { ProductManagementService } from '../../service/product-management.service';
 import { UomService } from 'src/app/service/uom.service';
 import { FormsService } from 'src/app/service/forms.service';
-import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { BusinessAccountService } from '../../../business-account/business-account.service';
+import { DataTableComponent } from '../../../../../shared/component/data-table/data-table.component';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../../../shared/component/search-filter/search-filter.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { NgFor, NgIf } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-product-tags-list',
-  templateUrl: './product-tags-list.component.html',
-  styleUrls: ['./product-tags-list.component.scss'],
+    selector: 'app-product-tags-list',
+    templateUrl: './product-tags-list.component.html',
+    styleUrls: ['./product-tags-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabsModule,
+        NgFor,
+        MatBadgeModule,
+        NgIf,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent,
+    ],
 })
 export class ProductTagsListComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

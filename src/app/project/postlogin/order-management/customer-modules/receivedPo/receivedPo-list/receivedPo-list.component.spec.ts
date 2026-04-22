@@ -8,8 +8,8 @@ describe('ReceivedPoListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReceivedPoListComponent ]
-    })
+    imports: [ReceivedPoListComponent]
+})
     .compileComponents();
   });
 

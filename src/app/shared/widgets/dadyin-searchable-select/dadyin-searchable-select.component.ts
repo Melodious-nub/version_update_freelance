@@ -1,10 +1,24 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'dadyin-searchable-select',
-  templateUrl: './dadyin-searchable-select.component.html',
-  styleUrls: ['./dadyin-searchable-select.component.scss'],
+    selector: 'dadyin-searchable-select',
+    templateUrl: './dadyin-searchable-select.component.html',
+    styleUrls: ['./dadyin-searchable-select.component.scss'],
+    standalone: true,
+    imports: [
+        NgClass,
+        ExtendedModule,
+        NgSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        MatTooltipModule,
+    ],
 })
 export class DadyinSearchableSelectComponent implements OnInit, OnChanges {
   @Input() class: any;

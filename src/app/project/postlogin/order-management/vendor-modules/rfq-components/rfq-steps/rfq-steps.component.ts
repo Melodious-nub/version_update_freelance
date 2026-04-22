@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
@@ -13,11 +13,30 @@ import { ContainerManagementService } from 'src/app/project/postlogin/container-
 import { FormsService } from 'src/app/service/forms.service';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CreateRfqComponent } from './create-rfq/create-rfq.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-rfq-steps',
-  templateUrl: './rfq-steps.component.html',
-  styleUrls: ['./rfq-steps.component.scss'],
+    selector: 'app-rfq-steps',
+    templateUrl: './rfq-steps.component.html',
+    styleUrls: ['./rfq-steps.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgIf,
+        MatTooltipModule,
+        CdkDrag,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabsModule,
+        CreateRfqComponent,
+        DatePipe,
+    ],
 })
 export class RfqStepsComponent implements OnInit {
   // ************* Variable Declarations *************

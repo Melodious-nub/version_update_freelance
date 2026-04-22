@@ -1,11 +1,15 @@
 
 import { Component, OnInit, Input, forwardRef, Injector, Inject, Optional, ChangeDetectorRef, AfterContentInit, AfterContentChecked, Output, EventEmitter } from '@angular/core';
 
-import { NG_VALUE_ACCESSOR, NgControl, ControlValueAccessor, UntypedFormControl, ControlContainer, AbstractControl } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, NgControl, ControlValueAccessor, UntypedFormControl, ControlContainer, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
 import { CommonService } from 'src/app/service/common.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { NgIf } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 export const MY_FORMATS = {
     parse: {
@@ -27,7 +31,9 @@ export const MY_FORMATS = {
         { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DadyinDatePickerComponent), multi: true },
         { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
         { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
-    ]
+    ],
+    standalone: true,
+    imports: [MatFormFieldModule, NgIf, MatInputModule, FormsModule, MatDatepickerModule, ReactiveFormsModule, MatButtonModule]
 })
 export class DadyinDatePickerComponent implements OnInit, ControlValueAccessor, AfterContentChecked {
 

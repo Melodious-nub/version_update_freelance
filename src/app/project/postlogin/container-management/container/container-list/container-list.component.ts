@@ -1,16 +1,36 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
 import { ContainerManagementService } from '../../service/container-management.service';
+import { DataTableComponent } from '../../../../../shared/component/data-table/data-table.component';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../../../shared/component/search-filter/search-filter.component';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { MatBadgeModule } from '@angular/material/badge';
+import { NgFor, NgIf } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-container-list',
-  templateUrl: './container-list.component.html',
-  styleUrls: ['./container-list.component.scss'],
+    selector: 'app-container-list',
+    templateUrl: './container-list.component.html',
+    styleUrls: ['./container-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabsModule,
+        NgFor,
+        MatBadgeModule,
+        CdkDrag,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent,
+    ],
 })
 export class ContainerListComponent implements OnInit {
   public preferredUoms: any[];

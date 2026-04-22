@@ -8,8 +8,8 @@ describe('TemplateInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TemplateInfoComponent],
-    }).compileComponents();
+    imports: [TemplateInfoComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

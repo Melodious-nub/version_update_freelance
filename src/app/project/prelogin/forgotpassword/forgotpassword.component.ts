@@ -1,14 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { GenricResponse } from 'src/app/model/common/generic-response';
 import { SignupService } from '../signup.service';
+import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyin-input.component';
 
 @Component({
-  selector: 'app-signup-otp',
-  templateUrl: './forgotpassword.component.html',
-  styleUrls: ['./forgotpassword.component.scss'],
+    selector: 'app-signup-otp',
+    templateUrl: './forgotpassword.component.html',
+    styleUrls: ['./forgotpassword.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        DadyinButtonComponent,
+    ],
 })
 export class ForgotPasswordComponent implements OnInit {
   private genericResponse: GenricResponse;

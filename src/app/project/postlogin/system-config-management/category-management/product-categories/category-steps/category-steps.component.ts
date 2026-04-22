@@ -9,11 +9,14 @@ import { BusinessAccountService } from 'src/app/project/postlogin/business-accou
 import { ContainerManagementService } from 'src/app/project/postlogin/container-management/service/container-management.service';
 import { CategoryManagementService } from '../../service/category-management.service';
 import { CategoryManagementFormsService } from '../../service/category-management-forms.service';
+import { CreateCategoryComponent } from './create-category/create-category.component';
 
 @Component({
-  selector: 'app-category-steps',
-  templateUrl: './category-steps.component.html',
-  styleUrls: ['./category-steps.component.scss']
+    selector: 'app-category-steps',
+    templateUrl: './category-steps.component.html',
+    styleUrls: ['./category-steps.component.scss'],
+    standalone: true,
+    imports: [CreateCategoryComponent]
 })
 export class CategoryStepsComponent implements OnInit {
   // ************* Variable Declarations *************

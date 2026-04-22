@@ -1,12 +1,15 @@
-import { NgIf } from '@angular/common';
+import { NgIf, NgFor } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-process-list',
-  templateUrl: './process-list.component.html',
-  styleUrls: ['./process-list.component.scss'],
+    selector: 'app-process-list',
+    templateUrl: './process-list.component.html',
+    styleUrls: ['./process-list.component.scss'],
+    standalone: true,
+    imports: [MatExpansionModule, NgFor],
 })
 export class ProcessListComponent implements OnInit {
   @Input() processData: any;

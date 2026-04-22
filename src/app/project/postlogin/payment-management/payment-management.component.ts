@@ -2,16 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { Router } from '@angular/router';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormsService } from 'src/app/service/forms.service';
 import { PaymentManagementService } from './service/payment-management.service';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { DadyinSearchableSelectComponent } from '../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NgIf, NgFor, NgClass, CurrencyPipe, DatePipe } from '@angular/common';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-payment-management',
-  templateUrl: './payment-management.component.html',
-  styleUrls: ['./payment-management.component.scss'],
+    selector: 'app-payment-management',
+    templateUrl: './payment-management.component.html',
+    styleUrls: ['./payment-management.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        CdkDrag,
+        NgIf,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabsModule,
+        MatExpansionModule,
+        DadyinSearchableSelectComponent,
+        NgClass,
+        ExtendedModule,
+        CurrencyPipe,
+        DatePipe,
+    ],
 })
 export class PaymentManagementComponent implements OnInit {
   currentMainIndex = 0;

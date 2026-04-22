@@ -5,11 +5,20 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { CategoryDialogComponent } from '../dialogs/category-dialog/category-dialog.component';
+import { DataTableComponent } from '../../../../shared/component/data-table/data-table.component';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss'],
+    selector: 'app-category',
+    templateUrl: './category.component.html',
+    styleUrls: ['./category.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabsModule,
+        DadyinButtonComponent,
+        DataTableComponent,
+    ],
 })
 export class CategoryComponent implements OnInit {
   currentBusinessAccount;

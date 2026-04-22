@@ -1,14 +1,30 @@
-import { UntypedFormArray, FormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
+import { NumberFormatterPipe } from '../../../../../shared/pipes/number-formatter.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { NgFor, NgIf } from '@angular/common';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-related-po',
-  templateUrl: './related-po.component.html',
-  styleUrls: ['./related-po.component.scss'],
+    selector: 'app-related-po',
+    templateUrl: './related-po.component.html',
+    styleUrls: ['./related-po.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        NgFor,
+        NgIf,
+        DadyinButtonComponent,
+        MatTooltipModule,
+        NumberFormatterPipe,
+    ],
 })
 export class RelatedPoComponent implements OnInit {
   relatedPoDetails: any;

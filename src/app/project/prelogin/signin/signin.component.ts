@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SignupUser } from 'src/app/model/signup/SignupUser';
 import { AuthService } from 'src/app/service/auth.service';
@@ -11,10 +11,21 @@ import { LOCALSTORAGEKEYS } from 'src/app/shared/constant';
 import { first } from 'rxjs';
 import { SwiperComponent } from 'swiper/angular';
 import { SwiperOptions } from 'swiper';
+import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinCheckBoxComponent } from '../../../shared/widgets/dadyin-checkbox/dadyin-checkbox.component';
+import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyin-input.component';
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss'],
+    selector: 'app-signin',
+    templateUrl: './signin.component.html',
+    styleUrls: ['./signin.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        DadyinCheckBoxComponent,
+        DadyinButtonComponent,
+    ],
 })
 export class SigninComponent implements OnInit {
   @ViewChild('swiperR', { static: false }) swiperR?: SwiperComponent;

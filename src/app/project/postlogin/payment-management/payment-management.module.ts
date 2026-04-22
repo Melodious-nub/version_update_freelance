@@ -14,15 +14,12 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { PaymentListComponent } from './payment-list/payment-list.component';
 
 @NgModule({
-  declarations: [
-    PaymentManagementComponent,
-    CategoryComponent,
-    CategoryDialogComponent,
-    PaymentOptionDialogComponent,
-    PreviewDocumentDialogComponent,
-    PaymentListComponent,
-  ],
-  imports: [CommonModule, SharedModule, PaymentManagementRoutingModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [CommonModule, SharedModule, PaymentManagementRoutingModule, PaymentManagementComponent,
+        CategoryComponent,
+        CategoryDialogComponent,
+        PaymentOptionDialogComponent,
+        PreviewDocumentDialogComponent,
+        PaymentListComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class PaymentManagementModule {}

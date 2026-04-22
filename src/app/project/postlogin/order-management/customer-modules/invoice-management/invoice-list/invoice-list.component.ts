@@ -3,14 +3,30 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { BusinessAccountService } from '../../../../business-account/business-account.service';
 import { OrderManagementService } from '../../../service/order-management.service';
-import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
 import { InvoiceManagementService } from '../invoice-management.service';
+import { DataTableComponent } from '../../../../../../shared/component/data-table/data-table.component';
+import { NgIf, NgFor } from '@angular/common';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../../../../shared/component/search-filter/search-filter.component';
 @Component({
-  selector: 'app-invoice-list',
-  templateUrl: './invoice-list.component.html',
-  styleUrls: ['./invoice-list.component.scss'],
+    selector: 'app-invoice-list',
+    templateUrl: './invoice-list.component.html',
+    styleUrls: ['./invoice-list.component.scss'],
+    standalone: true,
+    imports: [
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        CdkDrag,
+        NgIf,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent,
+    ],
 })
 export class InvoiceListComponent implements OnInit {
   @Input('single') single = false;

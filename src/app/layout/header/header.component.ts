@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { ApiService } from 'src/app/service/api.service';
 import { AuthService } from 'src/app/service/auth.service';
@@ -12,11 +12,35 @@ import { sidebarMenu } from 'src/app/shared/menuconstant';
 import { SelectMenuService } from '../select-menu.service';
 import { environment } from 'src/environments/environment';
 import { ChangePasswordDialogComponent } from 'src/app/shared/dialogs/change-password/change-password.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DadyinButtonComponent } from '../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { SideBarComponent } from '../side-bar/side-bar.component';
+import { NgIf, NgFor, NgClass, CurrencyPipe, DatePipe } from '@angular/common';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @Component({
-  selector: 'header-layout',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+    selector: 'header-layout',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    standalone: true,
+    imports: [
+        MatSidenavModule,
+        NgIf,
+        SideBarComponent,
+        NgFor,
+        ExtendedModule,
+        NgClass,
+        RouterLinkActive,
+        RouterLink,
+        MatBadgeModule,
+        DadyinButtonComponent,
+        MatTooltipModule,
+        RouterOutlet,
+        CurrencyPipe,
+        DatePipe,
+    ],
 })
 export class HeaderComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

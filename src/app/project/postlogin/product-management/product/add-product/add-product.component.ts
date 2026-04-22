@@ -1,14 +1,5 @@
 import { Component, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
-import {
-  AbstractControl,
-  UntypedFormArray,
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  ValidationErrors,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
@@ -24,18 +15,48 @@ import { environment } from 'src/environments/environment';
 import { BusinessAccountService } from '../../../business-account/business-account.service';
 import { CreateDropdownFieldModalComponent } from '../../product-template/product-template-list-form/product-templates-steps/components/create-dropdown-field-modal/create-dropdown-field-modal.component';
 import { DadyinSliderComponent } from 'src/app/shared/widgets/dadyin-slider/dadyin-slider.component';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { take } from 'rxjs';
 import { InventoryLedgerModalComponent } from '../../common-modals/inventory-ledger-modal/inventory-ledger-modal.component';
+import { NumberFormatterPipe } from '../../../../../shared/pipes/number-formatter.pipe';
+import { SortFormArrayPipe as SortFormArrayPipe_1 } from '../../../../../shared/pipes/sort-formarray-sortorder.pipe';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DadyinSearchableSelectComponent } from '../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { DadyinInputComponent } from '../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss'],
+    selector: 'app-add-product',
+    templateUrl: './add-product.component.html',
+    styleUrls: ['./add-product.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        DadyinButtonComponent,
+        NgClass,
+        ExtendedModule,
+        DadyinInputComponent,
+        DadyinSearchableSelectComponent,
+        NgFor,
+        MatTooltipModule,
+        CdkDropList,
+        MatIconModule,
+        NgIf,
+        CdkDrag,
+        NgStyle,
+        MatAutocompleteModule,
+        MatOptionModule,
+        SortFormArrayPipe_1,
+        NumberFormatterPipe,
+    ],
 })
 export class AddProductComponent implements OnInit, OnDestroy {
   allProductsPackagingMaterial: any = [];

@@ -1,13 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable} from 'rxjs';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { DadyinMapAutoCompleteComponent } from '../../widgets/dadyin-map-autocomplete/dadyin-map-autocomplete.component';
+import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-map-dialog',
-  templateUrl: './map-dialog.component.html',
-  styleUrls: ['./map-dialog.component.scss']
+    selector: 'app-map-dialog',
+    templateUrl: './map-dialog.component.html',
+    styleUrls: ['./map-dialog.component.scss'],
+    standalone: true,
+    imports: [DadyinButtonComponent, FormsModule, ReactiveFormsModule, DadyinMapAutoCompleteComponent, GoogleMapsModule]
 })
 export class MapDialogComponent implements OnInit {
   apiLoaded: Observable<boolean>;

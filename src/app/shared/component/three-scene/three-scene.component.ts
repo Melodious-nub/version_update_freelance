@@ -1,4 +1,4 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import * as THREE from 'three';
@@ -6,11 +6,26 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import { environment } from 'src/environments/environment';
+import { NumberFormatterPipe } from '../../pipes/number-formatter.pipe';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgIf, NgFor, NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'app-three-scene',
-  templateUrl: './three-scene.component.html',
-  styleUrls: ['./three-scene.component.scss'],
+    selector: 'app-three-scene',
+    templateUrl: './three-scene.component.html',
+    styleUrls: ['./three-scene.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        CdkDropList,
+        NgFor,
+        CdkDrag,
+        NgbTooltip,
+        NgStyle,
+        ExtendedModule,
+        NumberFormatterPipe,
+    ],
 })
 export class ThreeSceneComponent implements OnInit {
   @Input() containerData: any; // Input to dynamically pass JSON data

@@ -7,11 +7,27 @@ import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
 import { InventoryoutmanagementService } from '../service/inventoryout-management.service';
+import { ContainerInComponent } from './container-in/container-in.component';
+import { AddedToInventoryComponent } from './added-to-inventory/added-to-inventory.component';
+import { OrderArrivalComponent } from './order-arrival/order-arrival.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { NgFor, NgIf } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-inventoryout-list',
-  templateUrl: './inventoryout-list.component.html',
-  styleUrls: ['./inventoryout-list.component.scss'],
+    selector: 'app-inventoryout-list',
+    templateUrl: './inventoryout-list.component.html',
+    styleUrls: ['./inventoryout-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabsModule,
+        NgFor,
+        MatBadgeModule,
+        NgIf,
+        OrderArrivalComponent,
+        AddedToInventoryComponent,
+        ContainerInComponent,
+    ],
 })
 export class InventoryoutListComponent implements OnInit {
 

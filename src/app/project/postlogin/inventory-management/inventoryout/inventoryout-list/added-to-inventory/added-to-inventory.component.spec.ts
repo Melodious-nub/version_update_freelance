@@ -8,8 +8,8 @@ describe('AddedToInventoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddedToInventoryComponent ]
-    })
+    imports: [AddedToInventoryComponent]
+})
     .compileComponents();
   });
 

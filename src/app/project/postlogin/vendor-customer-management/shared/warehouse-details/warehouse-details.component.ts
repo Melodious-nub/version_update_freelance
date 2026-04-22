@@ -1,6 +1,6 @@
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, Validators, UntypedFormArray } from '@angular/forms';
+import { FormControl, FormGroup, Validators, UntypedFormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
@@ -9,11 +9,30 @@ import { ApiService } from 'src/app/service/api.service';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm/confirm-dialog.component';
 import { MapDialogComponent } from 'src/app/shared/dialogs/map-dialog/map-dialog.component';
 import { VendorFormsService } from '../../service/vendor-forms.service';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgIf, NgFor, NgClass } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-warehouse-details',
-  templateUrl: './warehouse-details.component.html',
-  styleUrls: ['./warehouse-details.component.scss'],
+    selector: 'app-warehouse-details',
+    templateUrl: './warehouse-details.component.html',
+    styleUrls: ['./warehouse-details.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        MatExpansionModule,
+        MatTooltipModule,
+        DadyinButtonComponent,
+        NgIf,
+        NgFor,
+        ReactiveFormsModule,
+        NgClass,
+        ExtendedModule,
+        NgSelectModule,
+    ],
 })
 export class WarehouseDetailsComponent implements OnInit {
   @Input('vendorForm') vendorForm: any;

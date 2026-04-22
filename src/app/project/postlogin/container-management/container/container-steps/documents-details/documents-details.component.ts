@@ -1,11 +1,5 @@
 import { Component, Input, OnInit, Pipe,Output,EventEmitter } from '@angular/core';
-import {
-  UntypedFormArray,
-  UntypedFormBuilder,
-  FormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
@@ -15,11 +9,25 @@ import { ContainerManagementService } from '../../../service/container-managemen
 import { Subject, takeUntil } from 'rxjs';
 import { ContainerFormsService } from '../../../service/container-forms.service';
 import { environment } from 'src/environments/environment';
+import { MatIconModule } from '@angular/material/icon';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { NgIf, NgFor } from '@angular/common';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-documents-details',
-  templateUrl: './documents-details.component.html',
-  styleUrls: ['./documents-details.component.scss'],
+    selector: 'app-documents-details',
+    templateUrl: './documents-details.component.html',
+    styleUrls: ['./documents-details.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        MatExpansionModule,
+        NgIf,
+        DadyinButtonComponent,
+        NgFor,
+        ReactiveFormsModule,
+        MatIconModule,
+    ],
 })
 export class DocumentsDetailsComponent implements OnInit {
   imgUrl=environment.imgUrl

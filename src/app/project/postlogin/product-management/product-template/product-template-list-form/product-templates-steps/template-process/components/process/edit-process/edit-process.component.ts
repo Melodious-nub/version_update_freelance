@@ -7,7 +7,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './components/select-process-name/confirmation-dialog/confirmation-dialog.component';
@@ -15,10 +15,27 @@ import { UomService } from 'src/app/service/uom.service';
 import { ToastrService } from 'ngx-toastr';
 import { ProcessWasteModalComponent } from '../../../../components/process-waste-modal/process-waste-modal.component';
 import { ActivatedRoute } from '@angular/router';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { DadyinButtonComponent } from '../../../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinSearchableSelectComponent } from '../../../../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { NgIf, NgFor, NgClass } from '@angular/common';
+import { MatExpansionModule } from '@angular/material/expansion';
 @Component({
-  selector: 'app-edit-process',
-  templateUrl: './edit-process.component.html',
-  styleUrls: ['./edit-process.component.scss'],
+    selector: 'app-edit-process',
+    templateUrl: './edit-process.component.html',
+    styleUrls: ['./edit-process.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        NgIf,
+        NgFor,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+        NgClass,
+        ExtendedModule,
+    ],
 })
 export class EditProcessComponent implements OnInit {
   @Input() process: any;

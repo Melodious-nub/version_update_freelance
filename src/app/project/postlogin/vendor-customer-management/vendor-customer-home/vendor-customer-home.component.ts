@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
 import { VendorFormsService } from '../service/vendor-forms.service';
-import { UntypedFormArray } from '@angular/forms';
+import { UntypedFormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BusinessAccountService } from '../../business-account/business-account.service';
 
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm/confirm-dialog.component';
@@ -12,10 +12,30 @@ import { VendorCustomerService } from '../service/vendor-customer.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { VendorDetailsComponent } from './vendor-customer-details/vendor-customer-details.component';
 import { SystemConfigFormsService } from '../../system-config-management/service/system-config-forms.service';
+import { VendorManagementComponent } from '../../order-management/vendor-modules/vendor-management.component';
+import { CustomerManagementComponent } from '../../order-management/customer-modules/customer-management.component';
+import { WarehouseDetailsComponent } from '../shared/warehouse-details/warehouse-details.component';
+import { DadyinTabComponent } from '../../../../shared/widgets/dadyin-tab/dadyin-tab.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgIf } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
 @Component({
-  selector: 'app-vendor-customer-home',
-  templateUrl: './vendor-customer-home.component.html',
-  styleUrls: ['./vendor-customer-home.component.scss'],
+    selector: 'app-vendor-customer-home',
+    templateUrl: './vendor-customer-home.component.html',
+    styleUrls: ['./vendor-customer-home.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgIf,
+        MatTooltipModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinTabComponent,
+        VendorDetailsComponent,
+        WarehouseDetailsComponent,
+        CustomerManagementComponent,
+        VendorManagementComponent,
+    ],
 })
 export class AddEditVendorComponent implements OnInit {
   public currentMainIndex: number = 0;

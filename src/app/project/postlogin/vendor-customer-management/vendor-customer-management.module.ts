@@ -8,40 +8,33 @@ import { WarehouseDetailsComponent } from './shared/warehouse-details/warehouse-
 import { VendorDetailsComponent } from './vendor-customer-home/vendor-customer-details/vendor-customer-details.component';
 import { AddEditVendorComponent } from './vendor-customer-home/vendor-customer-home.component';
 import { VendorCustomerManagementComponent } from './vendor-customer-management.component';
-import { CustomerManagementModule } from '../order-management/customer-modules/customer-management.module';
-import { VendorManagementModule } from '../order-management/vendor-modules/vendor-management.module';
+
+
 import { EmailDialogComponent } from './shared/email-dialog/email-dialog.component';
 import { LeadFilterBoxComponent } from './shared/lead-filter-box/lead-filter-box.component';
 import { selectSalesRepDialogComponent } from './shared/select-salesrep-dialog/select-salesrep-dialog.component';
 import { BulkAddDialogComponent } from './shared/bulk-add-dialog/bulk-add-dialog.component';
-import { SystemConfigModule } from '../system-config-management/system-config-management.module';
+
 
 @NgModule({
-  declarations: [
-    NoteDialogComponent,
-    EmailDialogComponent,
-    VendorCustomerManagementComponent,
-    AddEditVendorComponent,
-    VendorDetailsComponent,
-    WarehouseDetailsComponent,
-    AccountDetailsComponent,
-    LeadFilterBoxComponent,
-    selectSalesRepDialogComponent,
-    BulkAddDialogComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    VendorManagementRoutingModule,
-    CustomerManagementModule,
-    VendorManagementModule,
-    SystemConfigModule
-    
-  ],
-  exports:[
-    CustomerManagementModule,
-    VendorManagementModule
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+    imports: [
+        CommonModule,
+        SharedModule,
+        VendorManagementRoutingModule,
+
+
+        NoteDialogComponent,
+        EmailDialogComponent,
+        VendorCustomerManagementComponent,
+        AddEditVendorComponent,
+        VendorDetailsComponent,
+        WarehouseDetailsComponent,
+        AccountDetailsComponent,
+        LeadFilterBoxComponent,
+        selectSalesRepDialogComponent,
+        BulkAddDialogComponent
+    ],
+
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class VendorCustomerManagementModule { }

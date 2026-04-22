@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
@@ -22,11 +22,42 @@ import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { QcProductDetailComponent } from 'src/app/project/postlogin/quick-checkout/qc-product-detail/qc-product-detail.component';
 import { PricecompareDialogComponent } from 'src/app/shared/component/pricecompare-dialog/pricecompare-dialog.component';
+import { NumberFormatterPipe } from '../../../../../../../shared/pipes/number-formatter.pipe';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { DadyinSelectComponent } from '../../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinInputComponent } from '../../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { DadyinSearchableSelectComponent } from '../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { NgIf, NgFor, NgClass } from '@angular/common';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-create-order',
-  templateUrl: './create-order.component.html',
-  styleUrls: ['./create-order.component.scss'],
+    selector: 'app-create-order',
+    templateUrl: './create-order.component.html',
+    styleUrls: ['./create-order.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        NgIf,
+        DadyinSearchableSelectComponent,
+        DadyinInputComponent,
+        DadyinButtonComponent,
+        DadyinSelectComponent,
+        NgFor,
+        MatAutocompleteModule,
+        MatOptionModule,
+        NgClass,
+        ExtendedModule,
+        MatTooltipModule,
+        MatIconModule,
+        NumberFormatterPipe,
+    ],
 })
 export class CreateOrderComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

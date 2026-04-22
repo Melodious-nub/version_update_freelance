@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormArray, FormControl, UntypedFormGroup, Validators, FormBuilder, Form } from '@angular/forms';
+import { UntypedFormArray, FormControl, UntypedFormGroup, Validators, FormBuilder, Form, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProductManagementService } from '../../../service/product-management.service';
@@ -7,11 +7,19 @@ import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm/confirm-d
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { ProductTypeFormService } from '../../service/product-type-form.service';
+import { BuyingCapacityCommonComponent } from '../../common/buying-capacity-common/buying-capacity-common.component';
+import { AdditionalCostCommonComponent } from '../../common/additional-cost-common/additional-cost-common.component';
+import { NgFor } from '@angular/common';
+import { DadyinInputComponent } from '../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
     selector: 'app-addedit-subtype',
     templateUrl: './addedit-subtype.component.html',
-    styleUrls: ['./addedit-subtype.component.scss']
+    styleUrls: ['./addedit-subtype.component.scss'],
+    standalone: true,
+    imports: [DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatExpansionModule, DadyinInputComponent, NgFor, AdditionalCostCommonComponent, BuyingCapacityCommonComponent]
 })
 export class AddeditSubtypeComponent implements OnInit {
     public productSubTypeForm: UntypedFormGroup = this.formService.createProductSubTypeForm()

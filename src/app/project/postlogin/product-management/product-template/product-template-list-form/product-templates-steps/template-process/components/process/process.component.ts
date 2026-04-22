@@ -5,11 +5,26 @@ import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
 import { ToastrService } from 'ngx-toastr';
+import { EditProcessComponent } from './edit-process/edit-process.component';
+import { ProcessListComponent } from './process-list/process-list.component';
+import { DadyinButtonComponent } from '../../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgIf, NgClass, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-create-process',
-  templateUrl: './process.component.html',
-  styleUrls: ['./process.component.scss'],
+    selector: 'app-create-process',
+    templateUrl: './process.component.html',
+    styleUrls: ['./process.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        NgClass,
+        ExtendedModule,
+        DadyinButtonComponent,
+        ProcessListComponent,
+        NgFor,
+        EditProcessComponent,
+    ],
 })
 export class ProcessComponent implements OnInit {
   // ************* Variable Declarations *************

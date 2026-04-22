@@ -1,13 +1,19 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { SortFormArrayPipe } from 'src/app/shared/pipes/sort-formarray-sortorder.pipe';
+import { SortFormArrayPipe as SortFormArrayPipe_1 } from '../../../../../../../../shared/pipes/sort-formarray-sortorder.pipe';
+import { MatIconModule } from '@angular/material/icon';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgFor, NgStyle } from '@angular/common';
 @Component({
-  selector: 'app-attribute-value-modal',
-  templateUrl: './attribute-value-modal.component.html',
-  styleUrls: ['./attribute-value-modal.component.scss']
+    selector: 'app-attribute-value-modal',
+    templateUrl: './attribute-value-modal.component.html',
+    styleUrls: ['./attribute-value-modal.component.scss'],
+    standalone: true,
+    imports: [MatDialogModule, CdkDropList, NgFor, NgStyle, ExtendedModule, CdkDrag, MatIconModule, SortFormArrayPipe_1]
 })
 export class AttributeValueModalComponent implements OnInit {
   public attributeValue = []

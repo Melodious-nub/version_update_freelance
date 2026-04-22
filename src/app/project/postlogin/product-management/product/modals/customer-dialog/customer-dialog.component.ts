@@ -1,16 +1,20 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
-import {
-  MatDialogConfig,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinSearchableSelectComponent } from '../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
 
 @Component({
-  selector: 'app-customer-dialog',
-  templateUrl: './customer-dialog.component.html',
-  styleUrls: ['./customer-dialog.component.scss'],
+    selector: 'app-customer-dialog',
+    templateUrl: './customer-dialog.component.html',
+    styleUrls: ['./customer-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        MatDialogModule,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+    ],
 })
 export class CustomerDialogComponent implements OnInit {
  

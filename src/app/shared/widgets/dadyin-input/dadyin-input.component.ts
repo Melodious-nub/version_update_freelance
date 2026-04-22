@@ -9,26 +9,31 @@ import {
   HostListener,
   Optional,
 } from '@angular/core';
-import {
-  NG_VALUE_ACCESSOR,
-  ControlValueAccessor,
-  ControlContainer,
-  UntypedFormControl,
-  AbstractControl,
-} from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, ControlContainer, UntypedFormControl, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonService } from 'src/app/service/common.service';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgIf, NgClass, NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'dadyin-input',
-  templateUrl: './dadyin-input.component.html',
-  styleUrls: ['./dadyin-input.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: DadyinInputComponent,
-      multi: true,
-    },
-  ],
+    selector: 'dadyin-input',
+    templateUrl: './dadyin-input.component.html',
+    styleUrls: ['./dadyin-input.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: DadyinInputComponent,
+            multi: true,
+        },
+    ],
+    standalone: true,
+    imports: [
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        NgClass,
+        ExtendedModule,
+        NgStyle,
+    ],
 })
 export class DadyinInputComponent
   implements OnInit, ControlValueAccessor, AfterContentChecked

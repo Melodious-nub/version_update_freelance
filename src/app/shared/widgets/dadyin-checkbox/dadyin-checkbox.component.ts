@@ -8,20 +8,23 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { CommonService } from 'src/app/service/common.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
-  selector: 'dadyin-checkbox',
-  templateUrl: './dadyin-checkbox.component.html',
-  styleUrls: ['./dadyin-checkbox.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DadyinCheckBoxComponent),
-      multi: true,
-    },
-  ],
+    selector: 'dadyin-checkbox',
+    templateUrl: './dadyin-checkbox.component.html',
+    styleUrls: ['./dadyin-checkbox.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DadyinCheckBoxComponent),
+            multi: true,
+        },
+    ],
+    standalone: true,
+    imports: [MatCheckboxModule, FormsModule],
 })
 export class DadyinCheckBoxComponent implements OnInit, AfterContentChecked {
   @Input() ischecked = false;

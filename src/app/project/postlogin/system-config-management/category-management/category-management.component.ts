@@ -1,11 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CategoryListComponent } from './product-categories/category-list/category-list.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { NgFor, NgIf } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-category-management',
-  templateUrl: './category-management.component.html',
-  styleUrls: ['./category-management.component.scss'],
+    selector: 'app-category-management',
+    templateUrl: './category-management.component.html',
+    styleUrls: ['./category-management.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabsModule,
+        NgFor,
+        MatBadgeModule,
+        NgIf,
+        CategoryListComponent,
+    ],
 })
 export class CategoryManagementComponent implements OnInit {
   public currentMainIndex: number = 0;

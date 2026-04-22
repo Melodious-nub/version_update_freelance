@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
@@ -12,10 +12,34 @@ import { ContainerFormsService } from '../../service/container-forms.service';
 import { ContainerManagementService } from '../../service/container-management.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm/confirm-dialog.component';
+import { DocumentsDetailsComponent } from './documents-details/documents-details.component';
+import { ExpensesDetailsComponent } from './expenses-details/expenses-details.component';
+import { UnloadingDetailsComponent } from './unloading-details/unloading-details.component';
+import { ContainerInfoComponent } from './container-info/container-info.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { NgIf, NgFor } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 @Component({
-  selector: 'app-container-steps',
-  templateUrl: './container-steps.component.html',
-  styleUrls: ['./container-steps.component.scss'],
+    selector: 'app-container-steps',
+    templateUrl: './container-steps.component.html',
+    styleUrls: ['./container-steps.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgIf,
+        CdkDrag,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabsModule,
+        OrderDetailsComponent,
+        ContainerInfoComponent,
+        UnloadingDetailsComponent,
+        ExpensesDetailsComponent,
+        DocumentsDetailsComponent,
+    ],
 })
 export class ContainerStepsComponent implements OnInit {
   // ************* Variable Declarations *************

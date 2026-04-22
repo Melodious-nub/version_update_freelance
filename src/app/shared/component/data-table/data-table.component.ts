@@ -7,19 +7,52 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { ApiService } from 'src/app/service/api.service';
 import { UomService } from 'src/app/service/uom.service';
 import { environment } from 'src/environments/environment';
+import { NumberFormatterPipe } from '../../pipes/number-formatter.pipe';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgFor, NgIf, NgStyle, NgClass, SlicePipe, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'data-table',
-  templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.scss'],
+    selector: 'data-table',
+    templateUrl: './data-table.component.html',
+    styleUrls: ['./data-table.component.scss'],
+    standalone: true,
+    imports: [
+        MatTableModule,
+        MatSortModule,
+        NgFor,
+        NgIf,
+        NgStyle,
+        ExtendedModule,
+        MatCheckboxModule,
+        NgClass,
+        DadyinButtonComponent,
+        MatTooltipModule,
+        NgbTooltip,
+        MatIconModule,
+        MatBadgeModule,
+        FormsModule,
+        NgSelectModule,
+        MatPaginatorModule,
+        SlicePipe,
+        DatePipe,
+        NumberFormatterPipe,
+    ],
 })
 export class DataTableComponent implements OnInit {
   initialSelection = [];

@@ -4,7 +4,7 @@ import {
   Input,
   OnInit
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ProductTemplateService } from 'src/app/project/postlogin/product-management/product-template/service/product-template.service';
@@ -15,11 +15,38 @@ import { CreateToggleFieldModalComponent } from '../../../components/create-togg
 import { UsageFormulasModalComponent } from '../../../components/usage-formulas-modal/usage-formulas-modal.component';
 import { AttributeValueModalComponent } from '../../../components/attribute-value-modal/attribute-value-modal.component';
 import { CalculateErrorModalComponent } from 'src/app/project/postlogin/product-management/common-modals/calculate-error-modal/calculate-error-modal.component';
+import { SortFormArrayPipe } from '../../../../../../../../../shared/pipes/sort-formarray-sortorder.pipe';
+import { CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { DadyinButtonComponent } from '../../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgStyle, NgIf, NgClass, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-package',
-  templateUrl: './package.component.html',
-  styleUrls: ['./package.component.scss'],
+    selector: 'app-package',
+    templateUrl: './package.component.html',
+    styleUrls: ['./package.component.scss'],
+    standalone: true,
+    imports: [
+        NgStyle,
+        ExtendedModule,
+        NgIf,
+        FormsModule,
+        NgClass,
+        NgFor,
+        DadyinButtonComponent,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatOptionModule,
+        MatIconModule,
+        MatTooltipModule,
+        CdkDropList,
+        CdkDrag,
+        SortFormArrayPipe,
+    ],
 })
 export class PackageComponent implements OnInit {
   excelView = [false, false, false, false, false, false, false, false];

@@ -160,7 +160,7 @@
                 </ng-container>
               </select> -->
 
-              <dadyin-searchable-select [disabled]="productPackages?.controls?.length>0" [matTooltipPosition]="'after'"
+              <dadyin-searchable-select [isDisabled]="productPackages?.controls?.length>0" [matTooltipPosition]="'after'"
                 [matTooltip]="(productPackages?.controls?.length>0 ? 'Please remove products from order to change vendor' : '')"
                 (changed)="onChangeVendor()" class="w-100" [control]="vendorId" [marginBottom]="false"
                 [fullItems]="businessAccountService.vendorList" bindValue="relationAccountId"

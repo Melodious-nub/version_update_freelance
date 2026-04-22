@@ -22,13 +22,13 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | boolean {
     if (
-      state.url.startsWith('/home/quick-checkout/order?') &&
+      state.url.includes('/quick-checkout/order') &&
       this.authService.$currentUser.value
     ) {
-      return;
+      return true;
     }
     if (
-      state.url.startsWith('/home/quick-checkout/order?') &&
+      state.url.includes('/quick-checkout/order') &&
       !this.authService.$currentUser.value
     ) {
       return true;

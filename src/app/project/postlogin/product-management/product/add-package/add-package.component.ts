@@ -1,8 +1,8 @@
 import { FormsService } from 'src/app/service/forms.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UomService } from 'src/app/service/uom.service';
 import { ToastrService } from 'ngx-toastr';
 import { SortFormArrayPipe } from 'src/app/shared/pipes/sort-formarray-sortorder.pipe';
@@ -10,14 +10,49 @@ import { MatDialog } from '@angular/material/dialog';
 import { AttributeValueModalComponent } from '../../product-template/product-template-list-form/product-templates-steps/components/attribute-value-modal/attribute-value-modal.component';
 import { takeUntil, Subject } from 'rxjs';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm/confirm-dialog.component';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { DadyinSliderComponent } from 'src/app/shared/widgets/dadyin-slider/dadyin-slider.component';
 import { environment } from 'src/environments/environment';
+import { NumberFormatterPipe } from '../../../../../shared/pipes/number-formatter.pipe';
+import { SortFormArrayPipe as SortFormArrayPipe_1 } from '../../../../../shared/pipes/sort-formarray-sortorder.pipe';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
+import { DadyinSearchableSelectComponent } from '../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { NgIf, NgFor, NgClass, NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'app-add-package',
-  templateUrl: './add-package.component.html',
-  styleUrls: ['./add-package.component.scss'],
+    selector: 'app-add-package',
+    templateUrl: './add-package.component.html',
+    styleUrls: ['./add-package.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        DadyinButtonComponent,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        NgbTooltip,
+        MatTooltipModule,
+        NgClass,
+        ExtendedModule,
+        RouterLink,
+        DadyinSearchableSelectComponent,
+        MatIconModule,
+        CdkDropList,
+        CdkDrag,
+        NgStyle,
+        MatAutocompleteModule,
+        MatOptionModule,
+        SortFormArrayPipe_1,
+        NumberFormatterPipe,
+    ],
 })
 export class AddPackageComponent implements OnInit {
   @Input() productForm: UntypedFormGroup;

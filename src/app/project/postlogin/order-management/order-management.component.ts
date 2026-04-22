@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-order-management',
-  templateUrl: './order-management.component.html',
-  styleUrls: ['./order-management.component.scss']
+    selector: 'app-order-management',
+    templateUrl: './order-management.component.html',
+    styleUrls: ['./order-management.component.scss'],
+    standalone: true,
+    imports: [RouterOutlet]
 })
 export class OrderManagementComponent implements OnInit {
 

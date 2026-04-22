@@ -1,16 +1,29 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderManagementFormsService } from '../../service/order-management-forms.service';
 import { OrderManagementService } from '../../service/order-management.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { DadyinInputComponent } from '../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-create-note',
-  templateUrl: './create-note.component.html',
-  styleUrls: ['./create-note.component.scss'],
+    selector: 'app-create-note',
+    templateUrl: './create-note.component.html',
+    styleUrls: ['./create-note.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        DadyinInputComponent,
+        NgSelectModule,
+    ],
 })
 export class CreateNoteComponent implements OnInit {
 

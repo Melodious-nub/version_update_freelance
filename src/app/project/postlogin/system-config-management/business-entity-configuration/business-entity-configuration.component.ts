@@ -1,12 +1,6 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { Component, HostListener, Inject, Optional, OnInit, Input } from '@angular/core';
-import {
-  UntypedFormArray,
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -18,11 +12,39 @@ import { CreateDropdownFieldModalComponent } from '../../product-management/prod
 import { CreateToggleFieldModalComponent } from '../../product-management/product-template/product-template-list-form/product-templates-steps/components/create-toggle-field-modal/create-toggle-field-modal.component';
 import { ProductTemplateService } from '../../product-management/product-template/service/product-template.service';
 import { AttributeValueModalComponent } from '../../product-management/product-template/product-template-list-form/product-templates-steps/components/attribute-value-modal/attribute-value-modal.component';
+import { SortFormArrayPipe as SortFormArrayPipe_1 } from '../../../../shared/pipes/sort-formarray-sortorder.pipe';
+import { MatIconModule } from '@angular/material/icon';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { NgIf, NgStyle, NgClass, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-business-entity-configuration',
-  templateUrl: './business-entity-configuration.component.html',
-  styleUrls: ['./business-entity-configuration.component.scss'],
+    selector: 'app-business-entity-configuration',
+    templateUrl: './business-entity-configuration.component.html',
+    styleUrls: ['./business-entity-configuration.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        DadyinButtonComponent,
+        NgStyle,
+        ExtendedModule,
+        NgClass,
+        NgFor,
+        MatExpansionModule,
+        MatTooltipModule,
+        MatAutocompleteModule,
+        MatOptionModule,
+        MatIconModule,
+        CdkDropList,
+        CdkDrag,
+        SortFormArrayPipe_1,
+    ],
 })
 export class BusinessEntityConfigurationComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

@@ -5,10 +5,36 @@ import { environment } from 'src/environments/environment';
 import { PurchaseOrderService } from '../../services/purchase-order.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/service/common.service';
+import { SortNumberPropertyPipe } from '../../../../../shared/pipes/sort-number-property.pipe';
+import { NumberFormatterPipe } from '../../../../../shared/pipes/number-formatter.pipe';
+import { FormsModule } from '@angular/forms';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatIconModule } from '@angular/material/icon';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgFor, NgIf, NgClass, DatePipe } from '@angular/common';
+import { SwiperModule } from 'swiper/angular';
 @Component({
-  selector: 'app-grid-view-product-card',
-  templateUrl: './grid-view-product-card.component.html',
-  styleUrls: ['./grid-view-product-card.component.scss'],
+    selector: 'app-grid-view-product-card',
+    templateUrl: './grid-view-product-card.component.html',
+    styleUrls: ['./grid-view-product-card.component.scss'],
+    standalone: true,
+    imports: [
+        SwiperModule,
+        NgFor,
+        MatTooltipModule,
+        NgIf,
+        NgClass,
+        ExtendedModule,
+        NgbTooltip,
+        MatIconModule,
+        DadyinButtonComponent,
+        FormsModule,
+        DatePipe,
+        NumberFormatterPipe,
+        SortNumberPropertyPipe,
+    ],
 })
 export class GridViewProductCardComponent implements OnInit {
   imgUrl = environment.imgUrl;

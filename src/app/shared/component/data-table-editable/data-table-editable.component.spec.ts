@@ -8,8 +8,8 @@ describe('DataTableEditableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DataTableEditableComponent],
-    }).compileComponents();
+    imports: [DataTableEditableComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

@@ -352,7 +352,7 @@
               <span> Competitor Pricing </span>
             </div>
             <div>
-              <dadyin-button *ngIf="productCompetitors?.controls?.length > 0"  [disabled]="isLoadingCompetitorPrices" [widthImage]="'20px'" [heightImage]="'20px'"  tooltip="Fetch Competitor Prices" (clicked)="fetchCompetitorPrices()" [typeval]="'assets/nicons/refresh.png'"  [theme]="'borderless-primary'" type="image"></dadyin-button>
+              <dadyin-button *ngIf="productCompetitors?.controls?.length > 0"  [isDisabled]="isLoadingCompetitorPrices" [widthImage]="'20px'" [heightImage]="'20px'"  tooltip="Fetch Competitor Prices" (clicked)="fetchCompetitorPrices()" [typeval]="'assets/nicons/refresh.png'"  [theme]="'borderless-primary'" type="image"></dadyin-button>
             </div>
           </div>
         </mat-expansion-panel-header>

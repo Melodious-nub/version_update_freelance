@@ -4,11 +4,21 @@ import { VendorFormsService } from '../../service/vendor-forms.service';
 import { VendorCustomerService } from '../../service/vendor-customer.service';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
+import { NgFor } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-email-dialog',
-  templateUrl: './email-dialog.component.html',
-  styleUrls: ['./email-dialog.component.scss'],
+    selector: 'app-email-dialog',
+    templateUrl: './email-dialog.component.html',
+    styleUrls: ['./email-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinButtonComponent,
+        NgFor,
+    ],
 })
 export class EmailDialogComponent implements OnInit {
   emailForm = this.vendorFormService.emailForm();

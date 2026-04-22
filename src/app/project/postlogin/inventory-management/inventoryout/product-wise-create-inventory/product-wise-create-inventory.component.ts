@@ -1,16 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { InventoryoutmanagementService } from '../service/inventoryout-management.service';
-import { UntypedFormArray, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { InventoryAssigningModalComponent } from '../modals/inventory-assigning-modal/inventory-assigning-modal.component';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmationDialogComponent } from '../../../product-management/product-template/product-template-list-form/product-templates-steps/template-process/components/process/edit-process/components/select-process-name/confirmation-dialog/confirmation-dialog.component';
-import { Location } from '@angular/common';
+import { Location, NgFor, NgIf } from '@angular/common';
+import { DataTableComponent } from '../../../../../shared/component/data-table/data-table.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 @Component({
-  selector: 'app-product-wise-create-inventory',
-  templateUrl: './product-wise-create-inventory.component.html',
-  styleUrls: ['./product-wise-create-inventory.component.scss'],
+    selector: 'app-product-wise-create-inventory',
+    templateUrl: './product-wise-create-inventory.component.html',
+    styleUrls: ['./product-wise-create-inventory.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        MatIconModule,
+        MatExpansionModule,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        DataTableComponent,
+    ],
 })
 export class ProductWiseCreateInventoryComponent implements OnInit {
   productId: any;

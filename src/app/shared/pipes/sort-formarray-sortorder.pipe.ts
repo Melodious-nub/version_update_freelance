@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { UntypedFormGroup, FormArray, AbstractControl } from '@angular/forms';
 
 @Pipe({
-  name: 'sortFormArray'
+    name: 'sortFormArray',
+    standalone: true
 })
 export class SortFormArrayPipe implements PipeTransform {
   transform(formArray: any): AbstractControl[] {

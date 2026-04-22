@@ -7,13 +7,7 @@ import {
   AfterViewChecked,
   ChangeDetectorRef,
 } from '@angular/core';
-import {
-  AbstractControl,
-  UntypedFormArray,
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject, Subscription, takeUntil } from 'rxjs';
 import {
@@ -34,11 +28,33 @@ import {
   ProcessProductAttributeValues,
 } from 'src/app/model/common/processes.model';
 import { ConfirmDialogComponent } from '../../dialogs/confirm/confirm-dialog.component';
+import { GridModule } from '@ngbracket/ngx-layout/grid';
+import { MatButtonModule } from '@angular/material/button';
+import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-edit-calculator',
-  templateUrl: './edit-calculator.component.html',
-  styleUrls: ['./edit-calculator.component.scss'],
+    selector: 'app-edit-calculator',
+    templateUrl: './edit-calculator.component.html',
+    styleUrls: ['./edit-calculator.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatOptionModule,
+        NgFor,
+        DadyinButtonComponent,
+        MatButtonModule,
+        GridModule,
+    ],
 })
 export class EditCalculatorComponent implements OnInit {
   private _processCalculatorForm: UntypedFormGroup;

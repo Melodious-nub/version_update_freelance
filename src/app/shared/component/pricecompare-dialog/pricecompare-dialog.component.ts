@@ -14,11 +14,28 @@ import {
 } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { OrderFormsService } from 'src/app/project/postlogin/order-management/service/order-forms.service';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgFor, NgClass, NgIf } from '@angular/common';
+import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-pricecompare-dialog',
-  templateUrl: './pricecompare-dialog.component.html',
-  styleUrls: ['./pricecompare-dialog.component.scss'],
+    selector: 'app-pricecompare-dialog',
+    templateUrl: './pricecompare-dialog.component.html',
+    styleUrls: ['./pricecompare-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgFor,
+        NgClass,
+        ExtendedModule,
+        NgbTooltip,
+        NgIf,
+        MatAutocompleteModule,
+        MatOptionModule,
+    ],
 })
 export class PricecompareDialogComponent implements OnInit {
   public imgUrl = environment.imgUrl;

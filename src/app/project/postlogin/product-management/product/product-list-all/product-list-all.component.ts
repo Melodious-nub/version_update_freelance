@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { UomService } from 'src/app/service/uom.service';
 import { FormsService } from 'src/app/service/forms.service';
-import { UntypedFormArray, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { FilterBoxComponent } from './filter-box/filter-box.component';
 import { ProductService } from '../service/product.service';
@@ -16,11 +16,37 @@ import { AddRawMaterialDialogComponent } from 'src/app/shared/dialogs/add-raw-ma
 import { Subject, Subscription, Observable } from 'rxjs';
 import { switchMap, finalize, map } from 'rxjs/operators';
 import { CommonService } from 'src/app/service/common.service';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { DataTableComponent } from '../../../../../shared/component/data-table/data-table.component';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../../../shared/component/search-filter/search-filter.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { NgFor, NgIf, NgClass, DecimalPipe, DatePipe } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-product-list-all',
-  templateUrl: './product-list-all.component.html',
-  styleUrls: ['./product-list-all.component.scss'],
+    selector: 'app-product-list-all',
+    templateUrl: './product-list-all.component.html',
+    styleUrls: ['./product-list-all.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabsModule,
+        NgFor,
+        MatBadgeModule,
+        NgIf,
+        SearchFilterComponent,
+        FilterBoxComponent,
+        DadyinButtonComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent,
+        NgClass,
+        ExtendedModule,
+        DecimalPipe,
+        DatePipe,
+    ],
 })
 export class ProductListAllComponent implements OnInit, OnDestroy {
   searchControl = new UntypedFormControl('');

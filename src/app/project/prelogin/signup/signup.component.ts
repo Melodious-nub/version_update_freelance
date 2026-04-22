@@ -1,11 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  ValidationErrors,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs';
@@ -13,11 +7,22 @@ import { GenricResponse } from 'src/app/model/common/generic-response';
 import { AuthService } from 'src/app/service/auth.service';
 import { LOCALSTORAGEKEYS } from 'src/app/shared/constant';
 import { SignupService } from '../signup.service';
+import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+    selector: 'app-signup',
+    templateUrl: './signup.component.html',
+    styleUrls: ['./signup.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        DadyinInputComponent,
+        DadyinButtonComponent,
+    ],
 })
 export class SignupComponent implements OnInit {
   public signupGroup: UntypedFormGroup;

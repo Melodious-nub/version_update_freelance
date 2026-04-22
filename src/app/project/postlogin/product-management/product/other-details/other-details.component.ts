@@ -1,4 +1,4 @@
-import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { ToastrService } from 'ngx-toastr';
@@ -6,10 +6,27 @@ import { FormsService } from 'src/app/service/forms.service';
 import { ContainerManagementService } from '../../../container-management/service/container-management.service';
 import { BusinessAccountService } from '../../../business-account/business-account.service';
 import { UomService } from 'src/app/service/uom.service';
+import { DadyinSearchableSelectComponent } from '../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgFor, NgIf, DatePipe } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 @Component({
-  selector: 'app-other-details',
-  templateUrl: './other-details.component.html',
-  styleUrls: ['./other-details.component.scss'],
+    selector: 'app-other-details',
+    templateUrl: './other-details.component.html',
+    styleUrls: ['./other-details.component.scss'],
+    standalone: true,
+    imports: [
+        MatExpansionModule,
+        DadyinButtonComponent,
+        NgFor,
+        MatTooltipModule,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinSearchableSelectComponent,
+        DatePipe,
+    ],
 })
 export class OtherDetailsComponent implements OnInit {
 

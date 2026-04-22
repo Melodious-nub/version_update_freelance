@@ -1,15 +1,29 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
-import { Location } from '@angular/common';
+import { Location, NgIf, NgClass, NgFor, TitleCasePipe, DatePipe } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CampaignsApiService } from './service/campaigns-api.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { SpinnerOverlayComponent } from '../../../shared/component/spinner-overlay/spinner-overlay.component';
 
 @Component({
-  selector: 'app-campaign-history',
-  templateUrl: './campaign-history.component.html',
-  styleUrls: ['./campaign-history.component.scss'],
+    selector: 'app-campaign-history',
+    templateUrl: './campaign-history.component.html',
+    styleUrls: ['./campaign-history.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        SpinnerOverlayComponent,
+        NgClass,
+        ExtendedModule,
+        MatExpansionModule,
+        NgFor,
+        TitleCasePipe,
+        DatePipe,
+    ],
 })
 export class CampaignHistoryComponent implements OnInit, AfterViewInit {
   public campaignName: string = 'Campaign History';

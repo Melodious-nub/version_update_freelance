@@ -1,5 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 
@@ -8,11 +8,32 @@ import { BusinessAccountService } from 'src/app/project/postlogin/business-accou
 import { AuthService } from 'src/app/service/auth.service';
 
 import { TokenService } from 'src/app/service/token.service';
+import { DadyinSelectComponent } from '../../widgets/dadyin-select/dadyin-select.component';
+import { NgIf } from '@angular/common';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { DadyinInputComponent } from '../../widgets/dadyin-input/dadyin-input.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-invite-dialog',
-  templateUrl: './invite-dialog.component.html',
-  styleUrls: ['./invite-dialog.component.scss'],
+    selector: 'app-invite-dialog',
+    templateUrl: './invite-dialog.component.html',
+    styleUrls: ['./invite-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        DadyinButtonComponent,
+        MatTooltipModule,
+        MatExpansionModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        NgSelectModule,
+        NgIf,
+        DadyinSelectComponent,
+    ],
 })
 export class InviteDialogComponent implements OnInit, OnDestroy {
   public submitted = false;

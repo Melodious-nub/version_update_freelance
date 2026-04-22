@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -12,11 +12,30 @@ import { MatDialog } from '@angular/material/dialog';
 import { InvoiceFormsService } from '../invoice-forms.service';
 import { InvoiceManagementService } from '../invoice-management.service';
 import { Subject, takeUntil } from 'rxjs';
+import { CreateInvoiceComponent } from './create-invoice/create-invoice.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-invoice-steps',
-  templateUrl: './invoice-steps.component.html',
-  styleUrls: ['./invoice-steps.component.scss'],
+    selector: 'app-invoice-steps',
+    templateUrl: './invoice-steps.component.html',
+    styleUrls: ['./invoice-steps.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgIf,
+        MatTooltipModule,
+        CdkDrag,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabsModule,
+        CreateInvoiceComponent,
+        DatePipe,
+    ],
 })
 export class InvoiceStepsComponent implements OnInit {
   // ************* Variable Declarations *************

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -13,11 +13,30 @@ import { MatDialog } from '@angular/material/dialog';
 import { BillFormsService } from '../bill-forms.service';
 import { BillManagementService } from '../bill-management.service';
 import { Subject, takeUntil } from 'rxjs';
+import { CreateBillComponent } from './create-bill/create-bill.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-bill-steps',
-  templateUrl: './bill-steps.component.html',
-  styleUrls: ['./bill-steps.component.scss'],
+    selector: 'app-bill-steps',
+    templateUrl: './bill-steps.component.html',
+    styleUrls: ['./bill-steps.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgIf,
+        MatTooltipModule,
+        CdkDrag,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabsModule,
+        CreateBillComponent,
+        DatePipe,
+    ],
 })
 export class BillStepsComponent implements OnInit {
   // ************* Variable Declarations *************

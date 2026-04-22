@@ -17,3 +17,7 @@ export class AppInitService {
     }
 
 }
+
+export function StartupServiceFactory(appInitService: AppInitService) {
+    return () => appInitService.Init();
+}

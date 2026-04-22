@@ -6,7 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
@@ -22,11 +22,25 @@ import { MatDialog } from '@angular/material/dialog';
 import { first } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PaymentService } from 'src/app/service/payment.service';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { NgIf, NgClass, NgFor, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-payment',
-  templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.scss'],
+    selector: 'app-payment',
+    templateUrl: './payment.component.html',
+    styleUrls: ['./payment.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinButtonComponent,
+        NgClass,
+        ExtendedModule,
+        NgFor,
+        DatePipe,
+    ],
 })
 export class PaymentComponent implements OnInit {
   showPayNowButton = false;

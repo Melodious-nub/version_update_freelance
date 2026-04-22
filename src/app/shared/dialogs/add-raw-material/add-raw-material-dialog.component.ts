@@ -1,15 +1,23 @@
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormsService } from 'src/app/service/forms.service';
 import { ApiService } from 'src/app/service/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'add-raw-material',
-  templateUrl: './add-raw-material-dialog.component.html',
-  styleUrls: ['./add-raw-material-dialog.component.scss'],
+    selector: 'add-raw-material',
+    templateUrl: './add-raw-material-dialog.component.html',
+    styleUrls: ['./add-raw-material-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        MatDialogModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinButtonComponent,
+    ],
 })
 export class AddRawMaterialDialogComponent implements OnInit {
   productForm: UntypedFormGroup;

@@ -1,17 +1,26 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormArray, FormGroup } from '@angular/forms';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { UntypedFormArray, FormGroup, FormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { InventoryoutmanagementService } from '../../service/inventoryout-management.service';
+import { DataTableComponent } from '../../../../../../shared/component/data-table/data-table.component';
+import { NgFor } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-inventory-assigning-modal',
-  templateUrl: './inventory-assigning-modal.component.html',
-  styleUrls: ['./inventory-assigning-modal.component.scss'],
+    selector: 'app-inventory-assigning-modal',
+    templateUrl: './inventory-assigning-modal.component.html',
+    styleUrls: ['./inventory-assigning-modal.component.scss'],
+    standalone: true,
+    imports: [
+        MatDialogModule,
+        MatIconModule,
+        DadyinButtonComponent,
+        NgFor,
+        FormsModule,
+        DataTableComponent,
+    ],
 })
 export class InventoryAssigningModalComponent implements OnInit {
   inventoryDetailsData: any;

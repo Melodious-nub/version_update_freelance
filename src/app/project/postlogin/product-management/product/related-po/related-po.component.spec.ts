@@ -8,8 +8,8 @@ describe('RelatedPoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RelatedPoComponent ]
-    })
+    imports: [RelatedPoComponent]
+})
     .compileComponents();
   });
 

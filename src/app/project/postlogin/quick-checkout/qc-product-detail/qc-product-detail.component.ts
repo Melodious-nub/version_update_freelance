@@ -6,7 +6,7 @@ import {
 } from '@angular/material/dialog';
 import { PurchaseOrderService } from '../services/purchase-order.service';
 import { ToastrService } from 'ngx-toastr';
-import { UntypedFormArray, UntypedFormBuilder} from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuickCheckoutFormsService } from '../services/quickcheckout-forms.service';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
@@ -14,11 +14,36 @@ import { environment } from 'src/environments/environment';
 import { DadyinSliderComponent } from 'src/app/shared/widgets/dadyin-slider/dadyin-slider.component';
 import { CustomizeGuidelineDialogComponent } from 'src/app/shared/dialogs/customizeGuideline/customizeGuideline-dialog.component';
 import { CommonService } from 'src/app/service/common.service';
+import { SortNumberPropertyPipe } from '../../../../shared/pipes/sort-number-property.pipe';
+import { NumberFormatterPipe } from '../../../../shared/pipes/number-formatter.pipe';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { SwiperModule } from 'swiper/angular';
+import { NgIf, NgFor, NgClass } from '@angular/common';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-qc-product-detail',
-  templateUrl: './qc-product-detail.component.html',
-  styleUrls: ['./qc-product-detail.component.scss'],
+    selector: 'app-qc-product-detail',
+    templateUrl: './qc-product-detail.component.html',
+    styleUrls: ['./qc-product-detail.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        MatExpansionModule,
+        NgIf,
+        SwiperModule,
+        NgFor,
+        MatIconModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTooltipModule,
+        NgClass,
+        ExtendedModule,
+        NumberFormatterPipe,
+        SortNumberPropertyPipe,
+    ],
 })
 export class QcProductDetailComponent implements OnInit {
   imgUrl = environment.imgUrl;

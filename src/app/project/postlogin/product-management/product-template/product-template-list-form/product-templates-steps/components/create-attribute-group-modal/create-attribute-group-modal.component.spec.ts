@@ -8,8 +8,8 @@ describe('CreateAttributeGroupModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateAttributeGroupModalComponent ]
-    })
+    imports: [CreateAttributeGroupModalComponent]
+})
     .compileComponents();
   });
 

@@ -1,14 +1,22 @@
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'qcmobile-dialog',
-  templateUrl: './qcmobile-dialog.component.html',
-  styleUrls: ['./qcmobile-dialog.component.scss'],
+    selector: 'qcmobile-dialog',
+    templateUrl: './qcmobile-dialog.component.html',
+    styleUrls: ['./qcmobile-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatDialogModule,
+        MatButtonModule,
+    ],
 })
 export class QcmobileDialogComponent {
   constructor(

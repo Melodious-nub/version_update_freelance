@@ -26,7 +26,7 @@
                 <mat-icon>expand_less</mat-icon>
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <mat-expansion-panel-content>
+        <div class="expansion-content">
             <div class="mar-top-15 px-2">
                 <form class="row" [formGroup]="inviteDetailGroup">
                     <div class="col-md-4 col-lg-4 col-12">
@@ -212,7 +212,7 @@
                 <dadyin-button label="Cancel" [theme]="'default'" (clicked)="onCancelCLicked()"></dadyin-button>&nbsp;
                 <dadyin-button label="Invite" [theme]="'primary'" (clicked)="onSubmit()"></dadyin-button>
             </div>
-        </mat-expansion-panel-content>
+        </div>
     </mat-expansion-panel>
 
 

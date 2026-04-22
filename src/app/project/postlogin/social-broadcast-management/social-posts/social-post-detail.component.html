@@ -78,17 +78,17 @@
                                             <div class="col-6">
                                                 <dadyin-input inputType="string" label="Post Name" [isClearable]="false"
                                                     formControlName="postName"
-                                                    [disabled]="isRejected || isPublished || tab !== 'All'"></dadyin-input>
+                                                    [isDisabled]="isRejected || isPublished || tab !== 'All'"></dadyin-input>
                                             </div>
                                             <div class="col-3">
                                                 <dadyin-input inputType="string" label="Post Category"
                                                     [isClearable]="false" formControlName="postCategory"
-                                                    [disabled]="true"></dadyin-input>
+                                                    [isDisabled]="true"></dadyin-input>
                                             </div>
                                             <div [ngClass]="isAutomateCreation ? 'col-2' : 'col-3'">
                                                 <dadyin-input inputType="string" label="Creation Type"
                                                     [isClearable]="false" formControlName="creationType"
-                                                    [disabled]="true"></dadyin-input>
+                                                    [isDisabled]="true"></dadyin-input>
                                             </div>
                                             <div *ngIf="isAutomateCreation" class="col-1 automate-info-icon-col">
                                                 <img src="assets/nicons/info.png" alt="Info" class="automate-info-icon-inline"
@@ -417,7 +417,7 @@
                                                             formControlName="publicationDateTime"
                                                             label="Publication Date" [isClearable]="false"
                                                             [minDate]="minPublicationDate"
-                                                            [disabled]="isRejected || isPublished || (postForm.get('goesLive')?.value === 'now' && !isApproved && !isScheduled && !isDraft)">
+                                                            [isDisabled]="isRejected || isPublished || (postForm.get('goesLive')?.value === 'now' && !isApproved && !isScheduled && !isDraft)">
                                                         </dadyin-input>
                                                     </div>
                                                     <div class="col-3" style="flex-grow: 1;">

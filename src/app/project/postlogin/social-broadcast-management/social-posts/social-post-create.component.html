@@ -412,7 +412,7 @@
                                                                 formControlName="publicationDateTime"
                                                                 label="Publication Date" [isClearable]="false"
                                                                 [minDate]="minPublicationDate"
-                                                                [disabled]="postForm.get('goesLive')?.value === 'now'">
+                                                                [isDisabled]="postForm.get('goesLive')?.value === 'now'">
                                                             </dadyin-input>
                                                         </div>
                                                         <div class="col-3" style="flex-grow: 1;">

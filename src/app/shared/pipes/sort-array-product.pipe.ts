@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'SortProductPipe'
+    name: 'SortProductPipe',
+    standalone: true
 })
 export class SortProductPipe implements PipeTransform {
   private priorityProducts: any[] = [

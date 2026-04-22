@@ -7,7 +7,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UomService } from 'src/app/service/uom.service';
 import { ToastrService } from 'ngx-toastr';
@@ -19,11 +19,30 @@ import { OrderFormsService } from '../../../../service/order-forms.service';
 import { ApiService } from 'src/app/service/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PricecompareDialogComponent } from 'src/app/shared/component/pricecompare-dialog/pricecompare-dialog.component';
+import { OrderTransactionPackagesComponent } from '../../../../../../../shared/component/order-transaction-packages/order-transaction-packages.component';
+import { DadyinInputComponent } from '../../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { DadyinSelectComponent } from '../../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { NgIf } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinSearchableSelectComponent } from '../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-create-rfq',
-  templateUrl: './create-rfq.component.html',
-  styleUrls: ['./create-rfq.component.scss'],
+    selector: 'app-create-rfq',
+    templateUrl: './create-rfq.component.html',
+    styleUrls: ['./create-rfq.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+        NgIf,
+        DadyinSelectComponent,
+        DadyinInputComponent,
+        OrderTransactionPackagesComponent,
+    ],
 })
 export class CreateRfqComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

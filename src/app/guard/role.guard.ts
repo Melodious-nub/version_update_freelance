@@ -27,9 +27,7 @@ export class RoleGuard implements CanActivate, CanActivateChild {
   ): boolean | UrlTree {
     const userRole = this.tokenService.getRoleInBusinessAccountIdToken(); // Get the user's role
     if (
-      state.url.startsWith(
-        '/home/quick-checkout/order?'
-      )
+      state.url.includes('/quick-checkout/order')
     ) {
       return true; // Allow access to 'quick-checkout/order' route
     }

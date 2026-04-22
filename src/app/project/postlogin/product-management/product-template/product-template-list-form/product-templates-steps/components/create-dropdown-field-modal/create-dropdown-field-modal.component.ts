@@ -1,11 +1,15 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { DadyinButtonComponent } from '../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-create-dropdown-field-modal',
-  templateUrl: './create-dropdown-field-modal.component.html',
-  styleUrls: ['./create-dropdown-field-modal.component.scss']
+    selector: 'app-create-dropdown-field-modal',
+    templateUrl: './create-dropdown-field-modal.component.html',
+    styleUrls: ['./create-dropdown-field-modal.component.scss'],
+    standalone: true,
+    imports: [MatDialogModule, FormsModule, NgFor, ReactiveFormsModule, DadyinButtonComponent]
 })
 export class CreateDropdownFieldModalComponent implements OnInit {
 

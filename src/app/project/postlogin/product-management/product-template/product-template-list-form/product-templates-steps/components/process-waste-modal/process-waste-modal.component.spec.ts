@@ -8,8 +8,8 @@ describe('ProcessWasteModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProcessWasteModalComponent ]
-    })
+    imports: [ProcessWasteModalComponent]
+})
     .compileComponents();
   });
 

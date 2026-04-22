@@ -1,15 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PurchaseOrderService } from 'src/app/project/postlogin/quick-checkout/services/purchase-order.service';
-import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormsService } from 'src/app/service/forms.service';
 import { ApiService } from 'src/app/service/api.service';
 import { UomService } from 'src/app/service/uom.service';
+import { DataTableComponent } from '../../../shared/component/data-table/data-table.component';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../shared/component/search-filter/search-filter.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { NgFor, NgIf } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-quick-checkout',
-  templateUrl: './quick-checkout.html',
-  styleUrls: ['./quick-checkout.scss'],
+    selector: 'app-quick-checkout',
+    templateUrl: './quick-checkout.html',
+    styleUrls: ['./quick-checkout.scss'],
+    standalone: true,
+    imports: [
+        MatTabsModule,
+        NgFor,
+        MatBadgeModule,
+        NgIf,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent,
+    ],
 })
 export class QuickCheckoutComponent implements OnInit {
   public preferForm: UntypedFormGroup = this.formService.createPreferUomForm();

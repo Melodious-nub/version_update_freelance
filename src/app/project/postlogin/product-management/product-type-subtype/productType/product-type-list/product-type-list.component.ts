@@ -2,11 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductManagementService } from '../../../service/product-management.service';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
+import { SubtypeListComponent } from '../../subType/subtype-list/subtype-list.component';
+import { DataTableComponent } from '../../../../../../shared/component/data-table/data-table.component';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../../../../shared/component/search-filter/search-filter.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { NgFor, NgIf } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-product-type-list',
-  templateUrl: './product-type-list.component.html',
-  styleUrls: ['./product-type-list.component.scss'],
+    selector: 'app-product-type-list',
+    templateUrl: './product-type-list.component.html',
+    styleUrls: ['./product-type-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabsModule,
+        NgFor,
+        MatBadgeModule,
+        NgIf,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent,
+        SubtypeListComponent,
+    ],
 })
 export class ProductTypeListComponent implements OnInit {
   public ProductTypeList: any;

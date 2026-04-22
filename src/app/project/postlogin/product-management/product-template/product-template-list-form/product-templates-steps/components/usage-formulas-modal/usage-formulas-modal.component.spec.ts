@@ -8,8 +8,8 @@ describe('UsageFormulasModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UsageFormulasModalComponent]
-    })
+    imports: [UsageFormulasModalComponent]
+})
       .compileComponents();
   });
 

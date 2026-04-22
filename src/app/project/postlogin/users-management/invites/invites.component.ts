@@ -2,11 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InviteDialogComponent } from 'src/app/shared/component/invite-dialog/invite-dialog.component';
 import { UsersManagementService } from '../services/users-management.service';
+import { DataTableComponent } from '../../../../shared/component/data-table/data-table.component';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../../shared/component/search-filter/search-filter.component';
+import { NgFor, NgIf } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-invites',
-  templateUrl: './invites.component.html',
-  styleUrls: ['./invites.component.scss'],
+    selector: 'app-invites',
+    templateUrl: './invites.component.html',
+    styleUrls: ['./invites.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabsModule,
+        NgFor,
+        SearchFilterComponent,
+        NgIf,
+        DadyinButtonComponent,
+        DataTableComponent,
+    ],
 })
 export class InvitesComponent implements OnInit {
   currentTabIndex = 0;

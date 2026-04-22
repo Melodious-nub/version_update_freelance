@@ -415,14 +415,11 @@
       <div [ngbTooltip]="customtooltip">
         <span
           class="d-flex align-items-center justify-content-center mx-1"
-          [isDisabled]="hideAddToOrder(product?.productDetails?.audit)"
           [matTooltip]="
             hideAddToOrder(product?.productDetails?.audit)
               ? 'To add this Product, select this vendor from above'
               : null
           "
-          label="View Detail"
-          [theme]="'primary'"
           [ngClass]="{
             'self-product': getOwner(product?.productDetails?.audit) == 'S',
             'third-product': getOwner(product?.productDetails?.audit) == 'T',

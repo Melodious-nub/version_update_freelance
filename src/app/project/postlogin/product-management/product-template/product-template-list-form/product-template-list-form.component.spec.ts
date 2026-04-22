@@ -8,8 +8,8 @@ describe('ProductTemplateListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductTemplateListFormComponent],
-    }).compileComponents();
+    imports: [ProductTemplateListFormComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

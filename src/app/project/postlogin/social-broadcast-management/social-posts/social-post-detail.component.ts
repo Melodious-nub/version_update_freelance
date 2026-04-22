@@ -4,7 +4,7 @@ import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild } from '@an
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { debounceTime, distinctUntilChanged, finalize, switchMap } from 'rxjs/operators';
 import { first, Observable, of } from 'rxjs';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SocialPostsDetailsService } from '../service/social-posts-details.service';
 import { SocialProfilesApiService, SocialProfileConnection } from '../service/social-profiles-api.service';
@@ -14,6 +14,19 @@ import { CommonService } from 'src/app/service/common.service';
 import { environment } from 'src/environments/environment';
 import { formatGeneratedContentToHtml, htmlToSocialText } from 'src/app/helpers/content-utils';
 import { APPCOMMONHELPERS } from 'src/app/helpers/appcommonhelpers';
+import { TimePickerComponent } from '../../../../shared/widgets/time-picker/time-picker.component';
+import { DadyinSelectComponent } from '../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { MatIconModule } from '@angular/material/icon';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { DadyinSearchSelectNewComponent } from '../../../../shared/widgets/dadyin-search-select-new/dadyin-search-select-new.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DadyinInputComponent } from '../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTabsModule } from '@angular/material/tabs';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { SpinnerOverlayComponent } from '../../../../shared/component/spinner-overlay/spinner-overlay.component';
+import { NgIf, NgClass, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet, TitleCasePipe, DatePipe } from '@angular/common';
 
 type ProductImageTile = {
     productId: any;
@@ -27,7 +40,9 @@ type ProductImageTile = {
 @Component({
     selector: 'app-social-post-detail',
     templateUrl: './social-post-detail.component.html',
-    styleUrls: ['./social-post-detail.component.scss']
+    styleUrls: ['./social-post-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, SpinnerOverlayComponent, NgClass, ExtendedModule, DadyinButtonComponent, MatTabsModule, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, FormsModule, ReactiveFormsModule, MatExpansionModule, DadyinInputComponent, MatTooltipModule, DadyinSearchSelectNewComponent, CKEditorModule, MatIconModule, DadyinSelectComponent, TimePickerComponent, NgTemplateOutlet, TitleCasePipe, DatePipe]
 })
 export class SocialPostDetailComponent implements OnInit {
     public Editor = ClassicEditor;

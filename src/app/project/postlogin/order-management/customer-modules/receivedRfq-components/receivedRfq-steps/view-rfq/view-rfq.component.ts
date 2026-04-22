@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UomService } from 'src/app/service/uom.service';
 import { ToastrService } from 'ngx-toastr';
@@ -17,11 +17,28 @@ import { OrderManagementService } from '../../../../service/order-management.ser
 import { OrderFormsService } from '../../../../service/order-forms.service';
 import { ApiService } from 'src/app/service/api.service';
 import { environment } from 'src/environments/environment';
+import { OrderTransactionPackagesComponent } from '../../../../../../../shared/component/order-transaction-packages/order-transaction-packages.component';
+import { DadyinSelectComponent } from '../../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { NgIf } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinInputComponent } from '../../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-view-rfq',
-  templateUrl: './view-rfq.component.html',
-  styleUrls: ['./view-rfq.component.scss'],
+    selector: 'app-view-rfq',
+    templateUrl: './view-rfq.component.html',
+    styleUrls: ['./view-rfq.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        DadyinInputComponent,
+        DadyinButtonComponent,
+        NgIf,
+        DadyinSelectComponent,
+        OrderTransactionPackagesComponent,
+    ],
 })
 export class ViewRfqComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

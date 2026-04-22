@@ -1,14 +1,17 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { UntypedFormArray, FormBuilder } from '@angular/forms';
+import { UntypedFormArray, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { APPCOMMONHELPERS } from 'src/app/helpers/appcommonhelpers';
 import { ProductTypeFormService } from '../../service/product-type-form.service';
 import { ActivatedRoute } from '@angular/router';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
     selector: 'app-buying-capacity-common',
     templateUrl: './buying-capacity-common.component.html',
-    styleUrls: ['./buying-capacity-common.component.scss']
+    styleUrls: ['./buying-capacity-common.component.scss'],
+    standalone: true,
+    imports: [NgIf, NgFor, FormsModule, ReactiveFormsModule]
 })
 export class BuyingCapacityCommonComponent implements OnInit, OnChanges {
 

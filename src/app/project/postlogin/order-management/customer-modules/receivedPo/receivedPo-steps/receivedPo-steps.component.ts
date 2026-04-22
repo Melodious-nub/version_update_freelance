@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
@@ -14,11 +14,32 @@ import { BusinessAccountService } from 'src/app/project/postlogin/business-accou
 import { FormsService } from 'src/app/service/forms.service';
 import { RecordPaymentDialog } from '../shared/record-payment-dialog/record-payment-dialog.component';
 import { environment } from 'src/environments/environment';
+import { CreateOrderComponent } from './create-order/create-order.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-receivedPo-steps',
-  templateUrl: './receivedPo-steps.component.html',
-  styleUrls: ['./receivedPo-steps.component.scss'],
+    selector: 'app-receivedPo-steps',
+    templateUrl: './receivedPo-steps.component.html',
+    styleUrls: ['./receivedPo-steps.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgIf,
+        MatSlideToggleModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgFor,
+        MatTooltipModule,
+        CdkDrag,
+        MatTabsModule,
+        CreateOrderComponent,
+        DatePipe,
+    ],
 })
 export class ReceivedPoStepsComponent implements OnInit {
   // ************* Variable Declarations *************

@@ -1,14 +1,28 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import { UntypedFormArray, UntypedFormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UomService } from 'src/app/service/uom.service';
 import { ProductManagementService } from '../../../service/product-management.service';
 import { ProductTypeFormService } from '../../service/product-type-form.service';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor, NgIf } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @Component({
-  selector: 'app-additional-cost-common',
-  templateUrl: './additional-cost-common.component.html',
-  styleUrls: ['./additional-cost-common.component.scss'],
+    selector: 'app-additional-cost-common',
+    templateUrl: './additional-cost-common.component.html',
+    styleUrls: ['./additional-cost-common.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        DadyinButtonComponent,
+        NgFor,
+        NgIf,
+        MatOptionModule,
+    ],
 })
 export class AdditionalCostCommonComponent implements OnInit {
   @Input() additionalCosts: UntypedFormArray;

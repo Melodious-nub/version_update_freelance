@@ -7,11 +7,15 @@ import { FormsService } from 'src/app/service/forms.service';
 import { UsersManagementService } from '../../../services/users-management.service';
 import { BusinessAccountService } from '../../../../business-account/business-account.service';
 import { ToastrService } from 'ngx-toastr';
+import { DataTableComponent } from '../../../../../../shared/component/data-table/data-table.component';
+import { SearchFilterComponent } from '../../../../../../shared/component/search-filter/search-filter.component';
 
 @Component({
-  selector: 'app-active-business-list',
-  templateUrl: './active-business-list.component.html',
-  styleUrls: ['./active-business-list.component.scss']
+    selector: 'app-active-business-list',
+    templateUrl: './active-business-list.component.html',
+    styleUrls: ['./active-business-list.component.scss'],
+    standalone: true,
+    imports: [SearchFilterComponent, DataTableComponent]
 })
 export class ActiveBusinessListComponent implements OnInit {
   uomSetting = false;

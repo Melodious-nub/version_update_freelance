@@ -373,7 +373,7 @@
                   <td></td>
                   <td>
                     <dadyin-button [theme]="'borderless-primary'" type='image' [typeval]="'assets/nicons/add-white.png'"
-                      (clicked)="addNewProcessProductControl()" [disabled]="processForm?.disabled">
+                      (clicked)="addNewProcessProductControl()" [isDisabled]="processForm?.disabled">
                     </dadyin-button>
                   </td>
                 </tr>
@@ -461,12 +461,12 @@
                     </td>
                     <td class="actions">
                       <dadyin-button (clicked)="removeProcessProduct(i)" [theme]="'borderless-default'" type='image'
-                        [typeval]="'assets/nicons/delete.png'" [disabled]="processForm?.disabled">
+                        [typeval]="'assets/nicons/delete.png'" [isDisabled]="processForm?.disabled">
                       </dadyin-button>
                       <ng-container *ngIf="getprocessProducts.controls?.length == i + 1">
 
                         <dadyin-button (clicked)="addNewProcessProductControl()" [theme]="'borderless-primary'"
-                          type='image' [typeval]="'assets/nicons/add-white.png'" [disabled]="
+                          type='image' [typeval]="'assets/nicons/add-white.png'" [isDisabled]="
                             processForm?.disabled || getprocessProducts?.invalid
                           ">
                         </dadyin-button>
@@ -566,7 +566,7 @@
                   </ng-container>
                 </select>
               </div>
-              <dadyin-button (clicked)="removeConversion(i)" [disabled]="processForm?.disabled"
+              <dadyin-button (clicked)="removeConversion(i)" [isDisabled]="processForm?.disabled"
                 [theme]="'borderless-default'" type='image' [typeval]="'assets/nicons/delete.png'">
               </dadyin-button>
 
