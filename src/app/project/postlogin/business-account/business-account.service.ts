@@ -280,10 +280,16 @@ export class BusinessAccountService {
           return res as any[];
         })
       )
-      .subscribe((res: any) => {
-        this.vendorList = [];
-        this.vendorList = res;
-        this.vendorListLoaded.next(true);
+      .subscribe({
+        next: (res: any) => {
+          this.vendorList = [];
+          this.vendorList = res;
+          this.vendorListLoaded.next(true);
+        },
+        error: (err) => {
+          console.error('Error fetching vendors:', err);
+          this.vendorListLoaded.next(false); // Emit false so component doesn't hang
+        }
       });
   }
 
@@ -315,9 +321,12 @@ export class BusinessAccountService {
           return res as any[];
         })
       )
-      .subscribe((res: any) => {
-        this.vendorList = [];
-        this.vendorList = res?.content;
+      .subscribe({
+        next: (res: any) => {
+          this.vendorList = [];
+          this.vendorList = res?.content;
+        },
+        error: (err) => console.error('Error fetching vendors non-cache:', err)
       });
   }
 
@@ -378,10 +387,13 @@ export class BusinessAccountService {
           return res as any[];
         })
       )
-      .subscribe((res: any) => {
-        this.notesList = [];
-        this.notesList = res;
-        this.notesList.unshift({ id: null, note_title: 'None' });
+      .subscribe({
+        next: (res: any) => {
+          this.notesList = [];
+          this.notesList = res;
+          this.notesList.unshift({ id: null, note_title: 'None' });
+        },
+        error: (err) => console.error('Error fetching notes:', err)
       });
   }
   changeNotificationSeenStatus(id: any) {
@@ -454,14 +466,17 @@ export class BusinessAccountService {
           return res as any[];
         })
       )
-      .subscribe((res: any) => {
-        this.employeesList = res ?? [];
-        this.salesRepList = (res ?? []).filter(
-          (e: any) => e?.roleName === 'CRM'
-        );
-        this.salesRepListForCrmSales = (res ?? []).filter(
-          (e: any) => e?.roleName === 'CRM_SALES'
-        );
+      .subscribe({
+        next: (res: any) => {
+          this.employeesList = res ?? [];
+          this.salesRepList = (res ?? []).filter(
+            (e: any) => e?.roleName === 'CRM'
+          );
+          this.salesRepListForCrmSales = (res ?? []).filter(
+            (e: any) => e?.roleName === 'CRM_SALES'
+          );
+        },
+        error: (err) => console.error('Error fetching employees:', err)
       });
   }
 }

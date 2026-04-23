@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { AuthService } from './service/auth.service';
 import { TokenService } from './service/token.service';
 import { HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from './service/http.service';
 import { PrintTemplatesComponent } from './shared/print-templates/print-templates.component';
-
-// register Swiper custom elements
+import { SpinnerOverlayService } from './service/spinner-overlay.service';
+import { SpinnerOverlayComponent } from './shared/component/spinner-overlay/spinner-overlay.component';
+import { AsyncPipe, NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
-    imports: [RouterOutlet, PrintTemplatesComponent],
+    imports: [RouterOutlet, PrintTemplatesComponent, SpinnerOverlayComponent, NgIf, AsyncPipe],
 })
 export class AppComponent implements OnInit {
   currentRoute: string;
@@ -34,13 +35,17 @@ export class AppComponent implements OnInit {
     private tokenService: TokenService,
     private router: Router,
     public http: HttpClient,
-    private httpService: HttpService
+    private httpService: HttpService,
+    public spinnerOverlayService: SpinnerOverlayService
   ) { }
 
   ngOnInit() {
     this.loadThemeColors();
 
     this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.spinnerOverlayService.reset();
+      }
       if (event instanceof NavigationEnd) {
         this.currentRoute = event.url;
         if (

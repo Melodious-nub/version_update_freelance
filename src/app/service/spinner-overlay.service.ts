@@ -1,43 +1,53 @@
-import { Overlay, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
 import { Injectable } from '@angular/core';
-import { defer, finalize, NEVER, share } from 'rxjs';
-import { SpinnerOverlayComponent } from '../shared/component/spinner-overlay/spinner-overlay.component';
+import { BehaviorSubject, delay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpinnerOverlayService {
-  private overlayRef: OverlayRef = undefined;
+  private activeRequests = 0;
+  private readonly loadingSubject = new BehaviorSubject<boolean>(false);
+  
+  /** Observable representing the current loading state */
+  public readonly isLoading$ = this.loadingSubject.asObservable().pipe(delay(0));
 
-  constructor(private readonly overlay: Overlay) {}
+  constructor() {}
 
-  public readonly spinner$ = defer(() => {
-    this.show();
-    return NEVER.pipe(
-      finalize(() => {
-        this.hide();
-      })
-    );
-  }).pipe(share());
+  /**
+   * Shows the global spinner. Increments the request counter.
+   */
+  public show(): void {
+    this.activeRequests++;
+    if (this.activeRequests === 1) {
+      this.loadingSubject.next(true);
 
-  private show(): void {
-    // Hack avoiding `ExpressionChangedAfterItHasBeenCheckedError` error
-    Promise.resolve(null).then(() => {
-      this.overlayRef = this.overlay.create({
-        positionStrategy: this.overlay
-          .position()
-          .global()
-          .centerHorizontally()
-          .centerVertically(),
-        hasBackdrop: true,
-      });
-      this.overlayRef.attach(new ComponentPortal(SpinnerOverlayComponent));
-    });
+      // Failsafe: if the loader is still showing after 35s, force a reset
+      setTimeout(() => {
+        if (this.loadingSubject.value) {
+          this.reset();
+        }
+      }, 30000);
+    }
   }
 
-  private hide(): void {
-    this.overlayRef.detach();
-    this.overlayRef = undefined;
+  /**
+   * Hides the global spinner. Decrements the request counter.
+   */
+  public hide(): void {
+    if (this.activeRequests > 0) {
+      this.activeRequests--;
+    }
+    
+    if (this.activeRequests === 0) {
+      this.loadingSubject.next(false);
+    }
+  }
+
+  /**
+   * Emergency reset for the spinner state.
+   */
+  public reset(): void {
+    this.activeRequests = 0;
+    this.loadingSubject.next(false);
   }
 }

@@ -1,3 +1,4 @@
+<app-spinner-overlay *ngIf="spinnerOverlayService.isLoading$ | async"></app-spinner-overlay>
 <div class="main-app view-content">
   <router-outlet></router-outlet>
   <div class="d-flex justify-content-between align-items-center footer">

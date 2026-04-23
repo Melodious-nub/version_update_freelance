@@ -1,7 +1,8 @@
-import { enableProdMode, APP_INITIALIZER, ErrorHandler } from '@angular/core';
+import { enableProdMode, APP_INITIALIZER, ErrorHandler, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { OverlayModule } from '@angular/cdk/overlay';
 import { provideRouter, withHashLocation, withPreloading, PreloadAllModules, withRouterConfig } from '@angular/router';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
@@ -56,6 +57,8 @@ bootstrapApplication(AppComponent, {
       positionClass: 'toast-center-center',
       closeButton: true
     }),
+    importProvidersFrom(OverlayModule),
+
 
     // Preserved Interceptors and Initializers
     APPINIT_PROVIDES,

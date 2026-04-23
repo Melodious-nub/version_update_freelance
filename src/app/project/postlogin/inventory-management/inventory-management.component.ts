@@ -2,16 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-container-management',
+    selector: 'app-inventory-management',
     templateUrl: './inventory-management.component.html',
     styleUrls: ['./inventory-management.component.scss'],
     standalone: true
 })
 export class InventoryManagementComponent implements OnInit {
-  centered = false;
-  disabled = false;
-  unbounded = false;
-
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -20,5 +16,4 @@ export class InventoryManagementComponent implements OnInit {
   navigate(link: string): void {
     this.router.navigateByUrl(link);
   }
-
 }
