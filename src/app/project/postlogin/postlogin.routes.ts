@@ -24,44 +24,44 @@ export const POSTLOGIN_ROUTES: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('./home/home.module').then((m) => m.HomeModule),
+          import('./home/home.routes').then((m) => m.HOME_ROUTES),
         canActivate: [RoleGuard],
       },
       {
         path: 'container-management',
         loadChildren: () =>
-          import('./container-management/container-management.module').then(
-            (m) => m.ContainerManagementModule
+          import('./container-management/container-management.routes').then(
+            (m) => m.CONTAINER_MANAGEMENT_ROUTES
           ),
         canActivate: [RoleGuard],
       },
       {
         path: 'users-management',
         loadChildren: () =>
-          import('./users-management/users-management.module').then(
-            (m) => m.UsersManagementModule
+          import('./users-management/users-management.routes').then(
+            (m) => m.USERS_MANAGEMENT_ROUTES
           ),
       },
       {
         path: 'inventory-management',
         loadChildren: () =>
-          import('./inventory-management/inventory-management.module').then(
-            (m) => m.InventoryManagementModule
+          import('./inventory-management/inventory-management.routes').then(
+            (m) => m.INVENTORY_MANAGEMENT_ROUTES
           ),
         canActivate: [RoleGuard],
       },
       {
         path: 'order-management',
         loadChildren: () =>
-          import('./order-management/order-management.module').then(
-            (m) => m.OrderManagementModule
+          import('./order-management/order-management.routes').then(
+            (m) => m.ORDER_MANAGEMENT_ROUTES
           )
       },
       {
         path: 'product-management',
         loadChildren: () =>
-          import('./product-management/product-management.module').then(
-            (m) => m.ProductManagementModule
+          import('./product-management/product-management.routes').then(
+            (m) => m.PRODUCT_MANAGEMENT_ROUTES
           ),
         canActivate: [RoleGuard],
       },
@@ -69,8 +69,8 @@ export const POSTLOGIN_ROUTES: Routes = [
         path: 'system-config',
         loadChildren: () =>
           import(
-            './system-config-management/system-config-management.module'
-          ).then((m) => m.SystemConfigModule),
+            './system-config-management/system-config-management.routes'
+          ).then((m) => m.SYSTEM_CONFIG_MANAGEMENT_ROUTES),
         canActivate: [RoleGuard],
       },
       {
@@ -82,29 +82,29 @@ export const POSTLOGIN_ROUTES: Routes = [
         path: 'lead',
         loadChildren: () =>
           import(
-            './vendor-customer-management/vendor-customer-management.module'
-          ).then((m) => m.VendorCustomerManagementModule),
+            './vendor-customer-management/vendor-customer-management.routes'
+          ).then((m) => m.VENDOR_CUSTOMER_MANAGEMENT_ROUTES),
       },
       {
         path: 'prospect',
         loadChildren: () =>
           import(
-            './vendor-customer-management/vendor-customer-management.module'
-          ).then((m) => m.VendorCustomerManagementModule),
+            './vendor-customer-management/vendor-customer-management.routes'
+          ).then((m) => m.VENDOR_CUSTOMER_MANAGEMENT_ROUTES),
       },
       {
         path: 'customer',
         loadChildren: () =>
           import(
-            './vendor-customer-management/vendor-customer-management.module'
-          ).then((m) => m.VendorCustomerManagementModule),
+            './vendor-customer-management/vendor-customer-management.routes'
+          ).then((m) => m.VENDOR_CUSTOMER_MANAGEMENT_ROUTES),
       },
       {
         path: 'vendor',
         loadChildren: () =>
           import(
-            './vendor-customer-management/vendor-customer-management.module'
-          ).then((m) => m.VendorCustomerManagementModule),
+            './vendor-customer-management/vendor-customer-management.routes'
+          ).then((m) => m.VENDOR_CUSTOMER_MANAGEMENT_ROUTES),
         canActivate: [RoleGuard],
       },
       {
@@ -125,16 +125,16 @@ export const POSTLOGIN_ROUTES: Routes = [
       {
         path: 'payment-management',
         loadChildren: () =>
-          import('./payment-management/payment-management.module').then(
-            (m) => m.PaymentManagementModule
+          import('./payment-management/payment-management.routes').then(
+            (m) => m.PAYMENT_MANAGEMENT_ROUTES
           ),
         canActivate: [RoleGuard],
       },
       {
         path: 'social-broadcast-management',
         loadChildren: () =>
-          import('./social-broadcast-management/social-broadcast-management.module').then(
-            (m) => m.SocialBroadcastManagementModule
+          import('./social-broadcast-management/social-broadcast-management.routes').then(
+            (m) => m.SOCIAL_BROADCAST_MANAGEMENT_ROUTES
           ),
         canActivate: [RoleGuard],
       }

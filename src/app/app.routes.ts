@@ -28,22 +28,22 @@ export const routes: Routes = [
   {
     path: 'subscription',
     loadChildren: () =>
-      import('./project/prelogin/subscription/subscription.module').then(
-        (m) => m.SubscriptionModule
+      import('./project/prelogin/subscription/subscription.routes').then(
+        (m) => m.SUBSCRIPTION_ROUTES
       ),
   },
   {
     path: 'privacy-policy',
     loadChildren: () =>
-      import('./project/prelogin/privacy-policy/privacy-policy.module').then(
-        (m) => m.PrivacyPolicyModule
+      import('./project/prelogin/privacy-policy/privacy-policy.routes').then(
+        (m) => m.PRIVACY_POLICY_ROUTES
       ),
   },
   {
     path: 'terms-of-service',
     loadChildren: () =>
-      import('./project/prelogin/terms-of-service/terms-of-service.module').then(
-        (m) => m.TermsOfServiceModule
+      import('./project/prelogin/terms-of-service/terms-of-service.routes').then(
+        (m) => m.TERMS_OF_SERVICE_ROUTES
       ),
   },
   {

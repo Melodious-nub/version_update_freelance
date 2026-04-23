@@ -9,32 +9,32 @@ export const PRELOGIN_ROUTES: Routes = [
       {
         path: 'signin',
         loadChildren: () =>
-          import('./signin/signin.module').then((m) => m.SigninModule),
+          import('./signin/signin.routes').then((m) => m.SIGNIN_ROUTES),
       },
       {
         path: 'signup',
         loadChildren: () =>
-          import('./signup/signup.module').then((m) => m.SignupModule),
+          import('./signup/signup.routes').then((m) => m.SIGNUP_ROUTES),
       },
       {
         path: 'forgotpassword',
         loadChildren: () =>
-          import('./forgotpassword/forgotpassword.module').then(
-            (m) => m.ForgotPasswordModule
+          import('./forgotpassword/forgotpassword.routes').then(
+            (m) => m.FORGOTPASSWORD_ROUTES
           ),
       },
       {
         path: 'resetpassword',
         loadChildren: () =>
-          import('./resetpassword/resetpassword.module').then(
-            (m) => m.ResetPasswordModule
+          import('./resetpassword/resetpassword.routes').then(
+            (m) => m.RESETPASSWORD_ROUTES
           ),
       },
       {
         path: 'about-us',
         loadChildren: () =>
-          import('./contact-us/contact-us.module').then(
-            (m) => m.ContactusModule
+          import('./contact-us/contact-us.routes').then(
+            (m) => m.CONTACTUS_ROUTES
           ),
       },
     ],
