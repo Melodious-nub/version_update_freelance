@@ -195,7 +195,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
     ChangePasswordDialogComponent,
     OrderByPipe
 ],
-    providers: [HttpService, ApiService, SortFormArrayPipe, SortNamePipe, SortNumberPropertyPipe, ShortNamePipe, NumberFormatterPipe, SortProductPipe, OrderByPipe],
+    providers: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class SharedModule { }

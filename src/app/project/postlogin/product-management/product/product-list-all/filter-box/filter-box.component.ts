@@ -15,7 +15,8 @@ import { MatIcon } from '@angular/material/icon';
     templateUrl: './filter-box.component.html',
     styleUrls: ['./filter-box.component.scss'],
     standalone: true,
-    imports: [MatIcon, NgIf, DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatExpansionPanelDescription, NgFor, MatCheckbox]
+    imports: [MatIcon, NgIf, DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatExpansionPanelDescription, NgFor, MatCheckbox],
+    providers: [DatePipe]
 })
 export class FilterBoxComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

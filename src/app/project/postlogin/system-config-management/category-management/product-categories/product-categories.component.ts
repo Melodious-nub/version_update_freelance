@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-product-categories',
   templateUrl: './product-categories.component.html',
   styleUrls: ['./product-categories.component.scss'],
+  standalone: true
 })
 export class ProductAttributeSetComponent implements OnInit {
   constructor() {}

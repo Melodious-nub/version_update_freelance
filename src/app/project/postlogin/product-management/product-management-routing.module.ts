@@ -10,8 +10,8 @@ const routes: Routes = [
   {
     path: 'product',
     loadChildren: () =>
-      import('./product/product.module').then(
-        (m) => m.ProductModule
+      import('./product/product.routes').then(
+        (m) => m.PRODUCT_ROUTES
       ),
   },
   {
@@ -25,8 +25,8 @@ const routes: Routes = [
     path: 'product-tags',
     loadChildren: () =>
       import(
-        './product-tags/product-tags.module'
-      ).then((m) => m.ProductTagsModule),
+        './product-tags/product-tags.routes'
+      ).then((m) => m.PRODUCT_TAGS_ROUTES),
   },
   {
     path: '',

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-product-attributeset',
   templateUrl: './product-attributeset.component.html',
   styleUrls: ['./product-attributeset.component.scss'],
+  standalone: true
 })
 export class ProductAttributeSetComponent implements OnInit {
   constructor() {}

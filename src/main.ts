@@ -11,7 +11,12 @@ import { provideToastr } from 'ngx-toastr';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 import { AppInitService } from './app/app-init.service';
-import { StartupServiceFactory } from './app/app.module';
+
+// APP INITIALIZATION
+export function StartupServiceFactory(appInitService: AppInitService) {
+  return () => appInitService.Init();
+}
+
 import { GlobalErrorHandler } from './app/core/global-error-handler';
 import { BusinessAccountInterceptor } from './app/interceptors/business-account.interceptor';
 import { AuthInterceptor } from './app/interceptors/auth.interceptor';
