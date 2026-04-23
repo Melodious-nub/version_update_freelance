@@ -6,7 +6,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ToastrModule } from 'ngx-toastr';
 import { ContainerComponent } from './container.component';
-import { MaterialModule } from 'src/app/shared/modules/material.module';
+
 import { ContainerListComponent } from './container-list/container-list.component';
 import { OrderDetailsComponent } from './container-steps/order-details/order-details.component';
 import { ContainerStepsComponent } from './container-steps/container-steps.component';
@@ -18,23 +18,22 @@ import { ExpensesDetailsComponent } from './container-steps/expenses-details/exp
 
 @NgModule({
     imports: [
-        CommonModule,
-        ContainerRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        SharedModule,
-        MaterialModule,
-        MatStepperModule,
-        MatExpansionModule,
-        ToastrModule,
-        ContainerComponent,
-        ContainerListComponent,
-        ContainerStepsComponent,
-        OrderDetailsComponent,
-        ContainerInfoComponent,
-        ExpensesDetailsComponent,
-        DocumentsDetailsComponent,
-        UnloadingDetailsComponent,
-    ],
+    CommonModule,
+    ContainerRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModule,
+    MatStepperModule,
+    MatExpansionModule,
+    ToastrModule,
+    ContainerComponent,
+    ContainerListComponent,
+    ContainerStepsComponent,
+    OrderDetailsComponent,
+    ContainerInfoComponent,
+    ExpensesDetailsComponent,
+    DocumentsDetailsComponent,
+    UnloadingDetailsComponent,
+],
 })
 export class ContainerModule {}

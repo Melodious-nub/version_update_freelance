@@ -4,7 +4,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { ToastrModule } from 'ngx-toastr';
-import { MaterialModule } from 'src/app/shared/modules/material.module';
+
 import { ReceivedPoListComponent } from './receivedPo-list/receivedPo-list.component';
 import { CreateOrderComponent } from './receivedPo-steps/create-order/create-order.component';
 import { ReceivedPoStepsComponent } from './receivedPo-steps/receivedPo-steps.component';
@@ -14,20 +14,19 @@ import { RecordPaymentDialog } from './shared/record-payment-dialog/record-payme
 
 @NgModule({
     imports: [
-        CommonModule,
-        ReceivedPoRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        SharedModule,
-        MaterialModule,
-        MatStepperModule,
-        ToastrModule,
-        ReceivedPoComponent,
-        ReceivedPoListComponent,
-        ReceivedPoStepsComponent,
-        CreateOrderComponent,
-        RecordPaymentDialog,
-    ],
+    CommonModule,
+    ReceivedPoRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModule,
+    MatStepperModule,
+    ToastrModule,
+    ReceivedPoComponent,
+    ReceivedPoListComponent,
+    ReceivedPoStepsComponent,
+    CreateOrderComponent,
+    RecordPaymentDialog,
+],
     exports: [
         ReceivedPoComponent,
         ReceivedPoListComponent,

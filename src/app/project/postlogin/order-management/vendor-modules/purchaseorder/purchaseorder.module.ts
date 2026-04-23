@@ -4,7 +4,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { ToastrModule } from 'ngx-toastr';
-import { MaterialModule } from 'src/app/shared/modules/material.module';
+
 import { PurchaseorderListComponent } from './purchaseorder-list/purchaseorder-list.component';
 import { CreateOrderComponent } from './purchaseorder-steps/create-order/create-order.component';
 import { PurchaseorderStepsComponent } from './purchaseorder-steps/purchaseorder-steps.component';
@@ -14,20 +14,19 @@ import { PaymentComponent } from './purchaseorder-steps/payment/payment.componen
 
 @NgModule({
     imports: [
-        CommonModule,
-        PurchaseorderRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        SharedModule,
-        MaterialModule,
-        MatStepperModule,
-        ToastrModule,
-        PurchaseorderComponent,
-        PurchaseorderListComponent,
-        PurchaseorderStepsComponent,
-        CreateOrderComponent,
-        PaymentComponent,
-    ],
+    CommonModule,
+    PurchaseorderRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModule,
+    MatStepperModule,
+    ToastrModule,
+    PurchaseorderComponent,
+    PurchaseorderListComponent,
+    PurchaseorderStepsComponent,
+    CreateOrderComponent,
+    PaymentComponent,
+],
     exports: [
         PurchaseorderComponent,
         PurchaseorderListComponent,

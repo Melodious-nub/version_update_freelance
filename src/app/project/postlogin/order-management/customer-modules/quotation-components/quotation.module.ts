@@ -9,19 +9,18 @@ import { QuotationListComponent } from './quotation-list/quotation-list.componen
 import { CreateQuotationComponent } from './quotation-steps/create-quotation/create-quotation.component';
 import { QuotationStepsComponent } from './quotation-steps/quotation-steps.component';
 import { QuotationComponent } from './quotation.component';
-import { MaterialModule } from 'src/app/shared/modules/material.module';
+
 
 @NgModule({
     imports: [
-        CommonModule,
-        QuotationRoutingModule,
-        SharedModule,
-        MaterialModule,
-        QuotationListComponent,
-        CreateQuotationComponent,
-        QuotationStepsComponent,
-        QuotationComponent
-    ],
+    CommonModule,
+    QuotationRoutingModule,
+    SharedModule,
+    QuotationListComponent,
+    CreateQuotationComponent,
+    QuotationStepsComponent,
+    QuotationComponent
+],
     exports: [QuotationListComponent,
         CreateQuotationComponent,
         QuotationStepsComponent,

@@ -1,5 +1,5 @@
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MaterialModule } from 'src/app/shared/modules/material.module';
+
 import {
   CUSTOM_ELEMENTS_SCHEMA,
   NgModule,
@@ -14,15 +14,14 @@ import { ReceivedRfqRoutingModule } from './receivedRfq.routing.module';
 
 @NgModule({
     imports: [
-        CommonModule,
-        MaterialModule,
-        SharedModule,
-        ReceivedRfqRoutingModule,
-        ReceivedRfqListComponent,
-        ViewRfqComponent,
-        ReceivedRfqStepsComponent,
-        ReceivedRfqComponent
-    ],
+    CommonModule,
+    SharedModule,
+    ReceivedRfqRoutingModule,
+    ReceivedRfqListComponent,
+    ViewRfqComponent,
+    ReceivedRfqStepsComponent,
+    ReceivedRfqComponent
+],
     exports: [
         ReceivedRfqListComponent,
         ViewRfqComponent,

@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { ToastrModule } from 'ngx-toastr';
 import { InventoryinComponent } from './inventoryin.component';
-import { MaterialModule } from 'src/app/shared/modules/material.module';
+
 import { InventoryinListComponent } from './inventoryin-list/inventoryin-list.component';
 
 import { InventoryinRoutingModule } from './inventoryin-routing.module';
@@ -21,24 +21,23 @@ import { ProductWiseCreateInventoryComponent } from './product-wise-create-inven
 
 @NgModule({
     imports: [
-        CommonModule,
-        InventoryinRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        SharedModule,
-        MaterialModule,
-        MatStepperModule,
-        ToastrModule,
-        InventoryinComponent,
-        InventoryinListComponent,
-        OrderArrivalComponent,
-        AddedToInventoryComponent,
-        ContainerInComponent,
-        OrderWiseCreateInventoryComponent,
-        InventoryAssigningModalComponent,
-        OrderWiseComponent,
-        ProductWiseComponent,
-        ProductWiseCreateInventoryComponent,
-    ],
+    CommonModule,
+    InventoryinRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModule,
+    MatStepperModule,
+    ToastrModule,
+    InventoryinComponent,
+    InventoryinListComponent,
+    OrderArrivalComponent,
+    AddedToInventoryComponent,
+    ContainerInComponent,
+    OrderWiseCreateInventoryComponent,
+    InventoryAssigningModalComponent,
+    OrderWiseComponent,
+    ProductWiseComponent,
+    ProductWiseCreateInventoryComponent,
+],
 })
 export class InventoryinModule {}

@@ -1,5 +1,5 @@
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MaterialModule } from 'src/app/shared/modules/material.module';
+
 import {
   NgModule,
 } from '@angular/core';
@@ -17,19 +17,18 @@ import { BillManagementModule } from '../vendor-modules/bill-management/bill-man
 
 @NgModule({
     imports: [
-        CommonModule,
-        CustomerManagementRoutingModule,
-        MaterialModule,
-        SharedModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MatStepperModule,
-        ReceivedPoModule,
-        ReceivedRfqModule,
-        QuotationModule,
-        InvoiceManagementModule,
-        CustomerManagementComponent
-    ],
+    CommonModule,
+    CustomerManagementRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatStepperModule,
+    ReceivedPoModule,
+    ReceivedRfqModule,
+    QuotationModule,
+    InvoiceManagementModule,
+    CustomerManagementComponent
+],
     exports: [
         CustomerManagementComponent
     ]

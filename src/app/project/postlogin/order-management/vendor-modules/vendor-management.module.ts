@@ -1,5 +1,5 @@
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MaterialModule } from 'src/app/shared/modules/material.module';
+
 import {
   CUSTOM_ELEMENTS_SCHEMA,
   NgModule,
@@ -19,19 +19,18 @@ import { BillManagementModule } from './bill-management/bill-management.module';
 
 @NgModule({
     imports: [
-        CommonModule,
-        VendorManagementRoutingModule,
-        MaterialModule,
-        SharedModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MatStepperModule,
-        PurchaseorderModule,
-        rfqModule,
-        ReceivedQuotationModule,
-        BillManagementModule,
-        VendorManagementComponent,
-    ],
+    CommonModule,
+    VendorManagementRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatStepperModule,
+    PurchaseorderModule,
+    rfqModule,
+    ReceivedQuotationModule,
+    BillManagementModule,
+    VendorManagementComponent,
+],
     exports: [VendorManagementComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

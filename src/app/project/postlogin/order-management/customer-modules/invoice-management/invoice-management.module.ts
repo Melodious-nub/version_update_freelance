@@ -6,18 +6,17 @@ import { CreateInvoiceComponent } from './invoice-steps/create-invoice/create-in
 import { InvoiceManagementComponent } from './invoice-management.component';
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MaterialModule } from 'src/app/shared/modules/material.module';
+
 @NgModule({
     imports: [
-        CommonModule,
-        SharedModule,
-        MaterialModule,
-        InvoiceManagementRoutingModule,
-        InvoiceManagementComponent,
-        InvoiceListComponent,
-        InvoiceStepsComponent,
-        CreateInvoiceComponent,
-    ],
+    CommonModule,
+    SharedModule,
+    InvoiceManagementRoutingModule,
+    InvoiceManagementComponent,
+    InvoiceListComponent,
+    InvoiceStepsComponent,
+    CreateInvoiceComponent,
+],
     exports: [
         InvoiceManagementComponent,
         InvoiceListComponent,

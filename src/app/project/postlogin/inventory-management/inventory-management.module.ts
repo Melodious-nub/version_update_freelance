@@ -1,5 +1,5 @@
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MaterialModule } from 'src/app/shared/modules/material.module';
+
 import {
   CUSTOM_ELEMENTS_SCHEMA,
   NgModule,
@@ -15,12 +15,11 @@ import { InventoryManagementComponent } from './inventory-management.component';
 
 @NgModule({
     imports: [
-        CommonModule,
-        InventoryManagementRoutingModule,
-        MaterialModule,
-        SharedModule,
-        InventoryManagementComponent
-    ],
+    CommonModule,
+    InventoryManagementRoutingModule,
+    SharedModule,
+    InventoryManagementComponent
+],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class InventoryManagementModule {}

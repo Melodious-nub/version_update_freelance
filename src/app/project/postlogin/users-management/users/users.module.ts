@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MaterialModule } from 'src/app/shared/modules/material.module';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -15,18 +15,17 @@ import { AllBusinessModule } from './all-business/all-business.module';
 
 @NgModule({
     imports: [
-        CommonModule,
-        UsersRoutingModule,
-        MaterialModule,
-        SharedModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MatStepperModule,
-        MatTabsModule,
-        ActiveBusinessModule,
-        InactiveBusinessModule,
-        AllBusinessModule,
-        UsersComponent,
-    ]
+    CommonModule,
+    UsersRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatStepperModule,
+    MatTabsModule,
+    ActiveBusinessModule,
+    InactiveBusinessModule,
+    AllBusinessModule,
+    UsersComponent,
+]
 })
 export class UsersModule { }
