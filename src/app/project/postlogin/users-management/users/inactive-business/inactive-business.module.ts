@@ -7,17 +7,15 @@ import { InactiveBusinessListComponent } from './inactive-business-list/inactive
 
 
 @NgModule({
-  declarations: [
-    InactiveBusinessComponent,
-    InactiveBusinessListComponent
-  ],
-  imports: [
-    CommonModule,
-    InactiveBusinessRoutingModule
-  ],
-  exports: [
-    InactiveBusinessComponent,
-    InactiveBusinessListComponent
-  ]
+    imports: [
+        CommonModule,
+        InactiveBusinessRoutingModule,
+        InactiveBusinessComponent,
+        InactiveBusinessListComponent
+    ],
+    exports: [
+        InactiveBusinessComponent,
+        InactiveBusinessListComponent
+    ]
 })
 export class InactiveBusinessModule { }

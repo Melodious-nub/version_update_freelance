@@ -11,20 +11,18 @@ import { SocialPostDetailComponent } from './social-post-detail.component';
 import { SocialPostCreateComponent } from './social-post-create.component';
 
 @NgModule({
-  declarations: [
-    SocialPostsComponent,
-    SocialPostsListComponent,
-    FilterBoxComponent,
-    SocialPostDetailComponent,
-    SocialPostCreateComponent
-  ],
-  imports: [
-    CommonModule,
-    SocialPostsRoutingModule,
-    SharedModule,
-    RouterModule
-  ],
-  exports: [SocialPostsListComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        SocialPostsRoutingModule,
+        SharedModule,
+        RouterModule,
+        SocialPostsComponent,
+        SocialPostsListComponent,
+        FilterBoxComponent,
+        SocialPostDetailComponent,
+        SocialPostCreateComponent
+    ],
+    exports: [SocialPostsListComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class SocialPostsModule { }

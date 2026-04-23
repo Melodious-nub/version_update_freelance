@@ -8,8 +8,8 @@ describe('RawMaterialProcessComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RawMaterialProcessComponent],
-    }).compileComponents();
+    imports: [RawMaterialProcessComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

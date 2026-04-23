@@ -1,10 +1,20 @@
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
-  selector: 'app-payment-dialog',
-  templateUrl: './payment-dialog.component.html',
-  styleUrls: ['./payment-dialog.component.scss'],
+    selector: 'app-payment-dialog',
+    templateUrl: './payment-dialog.component.html',
+    styleUrls: ['./payment-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        MatDialogTitle,
+        MatIconButton,
+        DadyinButtonComponent,
+        DecimalPipe,
+    ],
 })
 export class PaymentDialogComponent {
   paymentAmount: number;

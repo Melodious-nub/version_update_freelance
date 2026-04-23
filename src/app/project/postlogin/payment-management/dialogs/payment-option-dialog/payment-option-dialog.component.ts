@@ -1,7 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogClose } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 export interface DialogData {
   Id: number;
@@ -9,9 +12,11 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-payment-option-dialog',
-  templateUrl: './payment-option-dialog.component.html',
-  styleUrls: ['./payment-option-dialog.component.scss']
+    selector: 'app-payment-option-dialog',
+    templateUrl: './payment-option-dialog.component.html',
+    styleUrls: ['./payment-option-dialog.component.scss'],
+    standalone: true,
+    imports: [NgIf, FormsModule, DadyinButtonComponent, MatDialogClose]
 })
 export class PaymentOptionDialogComponent implements OnInit {
 

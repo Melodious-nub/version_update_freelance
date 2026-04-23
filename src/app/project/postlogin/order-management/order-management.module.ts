@@ -10,14 +10,11 @@ import { OrderManagementRoutingModule } from './order-management-routing.module'
 import { OrderManagementComponent } from './order-management.component';
 
 @NgModule({
-  declarations: [
-    OrderManagementComponent,
-
-  ],
-  imports: [
-    CommonModule,
-    OrderManagementRoutingModule,
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        OrderManagementRoutingModule,
+        OrderManagementComponent,
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class OrderManagementModule {}

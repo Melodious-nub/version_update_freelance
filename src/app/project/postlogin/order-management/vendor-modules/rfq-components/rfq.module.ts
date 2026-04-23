@@ -17,21 +17,19 @@ import { RfqComponent } from './rfq.component';
 
 
 @NgModule({
-  declarations: [
-    CreateRfqComponent,
-    RfqListComponent,
-    RfqStepsComponent,
-    RfqComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatStepperModule,
-    RfqRoutingModule
-  ],
-  exports: [CreateRfqComponent,RfqListComponent,RfqStepsComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        SharedModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatStepperModule,
+        RfqRoutingModule,
+        CreateRfqComponent,
+        RfqListComponent,
+        RfqStepsComponent,
+        RfqComponent
+    ],
+    exports: [CreateRfqComponent, RfqListComponent, RfqStepsComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class rfqModule { }

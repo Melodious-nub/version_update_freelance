@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-invoice-management',
-  templateUrl: './invoice-management.component.html',
-  styleUrls: ['./invoice-management.component.scss'],
+    selector: 'app-invoice-management',
+    templateUrl: './invoice-management.component.html',
+    styleUrls: ['./invoice-management.component.scss'],
+    standalone: true,
+    imports: [RouterOutlet],
 })
 export class InvoiceManagementComponent implements OnInit {
   constructor(public router: Router) {}

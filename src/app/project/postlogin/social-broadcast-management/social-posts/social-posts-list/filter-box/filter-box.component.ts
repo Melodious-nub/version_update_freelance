@@ -1,11 +1,17 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, FormControl } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocialPostItem } from 'src/app/model/social-broadcast/social-post.model';
+import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { NgIf, NgFor } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-filter-box',
-  templateUrl: './filter-box.component.html',
-  styleUrls: ['./filter-box.component.scss']
+    selector: 'app-filter-box',
+    templateUrl: './filter-box.component.html',
+    styleUrls: ['./filter-box.component.scss'],
+    standalone: true,
+    imports: [MatIcon, NgIf, DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, NgFor]
 })
 export class FilterBoxComponent implements OnInit {
   @Input() posts: SocialPostItem[] = [];

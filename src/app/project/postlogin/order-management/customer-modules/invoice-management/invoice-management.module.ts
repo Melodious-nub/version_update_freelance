@@ -8,23 +8,21 @@ import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/shared/modules/material.module';
 @NgModule({
-  declarations: [
-    InvoiceManagementComponent,
-    InvoiceListComponent,
-    InvoiceStepsComponent,
-    CreateInvoiceComponent,
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    MaterialModule,
-    InvoiceManagementRoutingModule,
-  ],
-  exports: [
-    InvoiceManagementComponent,
-    InvoiceListComponent,
-    InvoiceStepsComponent,
-    CreateInvoiceComponent,
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        MaterialModule,
+        InvoiceManagementRoutingModule,
+        InvoiceManagementComponent,
+        InvoiceListComponent,
+        InvoiceStepsComponent,
+        CreateInvoiceComponent,
+    ],
+    exports: [
+        InvoiceManagementComponent,
+        InvoiceListComponent,
+        InvoiceStepsComponent,
+        CreateInvoiceComponent,
+    ],
 })
 export class InvoiceManagementModule {}

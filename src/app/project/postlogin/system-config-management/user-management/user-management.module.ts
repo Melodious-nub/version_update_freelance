@@ -7,17 +7,15 @@ import { UserListingComponent } from './user-listing/user-listing.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
-  declarations: [
-    UsermanagementComponent,
-    UserListingComponent,
-    UserDetailsComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    UsermanagementRoutingModule
-  ],
-  exports:[],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+    imports: [
+        CommonModule,
+        SharedModule,
+        UsermanagementRoutingModule,
+        UsermanagementComponent,
+        UserListingComponent,
+        UserDetailsComponent
+    ],
+    exports: [],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class UsermanagementModule { }

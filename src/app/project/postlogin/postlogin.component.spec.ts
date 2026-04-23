@@ -8,8 +8,8 @@ describe('PostloginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PostloginComponent],
-    }).compileComponents();
+    imports: [PostloginComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

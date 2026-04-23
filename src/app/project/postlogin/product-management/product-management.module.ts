@@ -12,20 +12,18 @@ import { BatchModalComponent } from './common-modals/batch-modal/batch-modal/bat
 
 
 @NgModule({
-  declarations: [
-    ProductTypeListComponent,
-    SubtypeListComponent,
-    ProductTypeComponent,
-    CalculateErrorModalComponent,
-    RawMaterialPriceModalComponent,
-    InventoryLedgerModalComponent,
-    BatchModalComponent
-  ],
-  imports: [
-    CommonModule,
-    ProductManagementRoutingModule,
-    SharedModule
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        ProductManagementRoutingModule,
+        SharedModule,
+        ProductTypeListComponent,
+        SubtypeListComponent,
+        ProductTypeComponent,
+        CalculateErrorModalComponent,
+        RawMaterialPriceModalComponent,
+        InventoryLedgerModalComponent,
+        BatchModalComponent
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class ProductManagementModule { }

@@ -3,11 +3,16 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable, catchError, map, of } from 'rxjs';
+import { MatIcon } from '@angular/material/icon';
+import { NgFor, NgIf } from '@angular/common';
+import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-rate-dialog',
-  templateUrl: './rate-dialog.component.html',
-  styleUrls: ['./rate-dialog.component.scss']
+    selector: 'app-rate-dialog',
+    templateUrl: './rate-dialog.component.html',
+    styleUrls: ['./rate-dialog.component.scss'],
+    standalone: true,
+    imports: [DadyinButtonComponent, NgFor, NgIf, MatIcon]
 })
 export class RateDialogComponent implements OnInit {
  rating:any

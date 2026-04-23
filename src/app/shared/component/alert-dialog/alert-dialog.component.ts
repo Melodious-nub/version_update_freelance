@@ -1,15 +1,22 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import {
-  MatDialogConfig,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { Dialog } from '../../interfaces';
+import { MatButton } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-alert-dialog',
-  templateUrl: './alert-dialog.component.html',
-  styleUrls: ['./alert-dialog.component.scss'],
+    selector: 'app-alert-dialog',
+    templateUrl: './alert-dialog.component.html',
+    styleUrls: ['./alert-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        MatDialogTitle,
+        MatDialogContent,
+        MatDialogActions,
+        NgIf,
+        MatButton,
+        MatDialogClose,
+    ],
 })
 export class AlertDialogComponent implements OnInit {
   public dialogData: Dialog.AlertDialogData = {

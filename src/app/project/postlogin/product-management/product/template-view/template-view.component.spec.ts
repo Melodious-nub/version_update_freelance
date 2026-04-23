@@ -8,8 +8,8 @@ describe('TemplateViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TemplateViewComponent ]
-    })
+    imports: [TemplateViewComponent]
+})
     .compileComponents();
   });
 

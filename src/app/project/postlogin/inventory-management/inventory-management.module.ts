@@ -14,15 +14,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { InventoryManagementComponent } from './inventory-management.component';
 
 @NgModule({
-  declarations: [
-    InventoryManagementComponent,
-  ],
-  imports: [
-    CommonModule,
-    InventoryManagementRoutingModule,
-    MaterialModule,
-    SharedModule
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        InventoryManagementRoutingModule,
+        MaterialModule,
+        SharedModule,
+        InventoryManagementComponent
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class InventoryManagementModule {}

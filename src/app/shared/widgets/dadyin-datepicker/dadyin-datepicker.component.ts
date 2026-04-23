@@ -1,11 +1,15 @@
 
 import { Component, OnInit, Input, forwardRef, Injector, Inject, Optional, ChangeDetectorRef, AfterContentInit, AfterContentChecked, Output, EventEmitter } from '@angular/core';
 
-import { NG_VALUE_ACCESSOR, NgControl, ControlValueAccessor, UntypedFormControl, ControlContainer, AbstractControl } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, NgControl, ControlValueAccessor, UntypedFormControl, ControlContainer, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatDatepickerInputEvent, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, MatDatepickerActions, MatDatepickerCancel, MatDatepickerApply } from '@angular/material/datepicker';
 import { CommonService } from 'src/app/service/common.service';
+import { MatButton } from '@angular/material/button';
+import { MatInput } from '@angular/material/input';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatHint, MatSuffix, MatError } from '@angular/material/form-field';
 
 export const MY_FORMATS = {
     parse: {
@@ -27,11 +31,14 @@ export const MY_FORMATS = {
         { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DadyinDatePickerComponent), multi: true },
         { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
         { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
-    ]
+    ],
+    standalone: true,
+    imports: [MatFormField, MatLabel, NgIf, MatInput, FormsModule, MatDatepickerInput, ReactiveFormsModule, MatHint, MatDatepickerToggle, MatSuffix, MatDatepicker, MatDatepickerActions, MatButton, MatDatepickerCancel, MatDatepickerApply, MatError]
 })
 export class DadyinDatePickerComponent implements OnInit, ControlValueAccessor, AfterContentChecked {
 
     @Input() class = '';
+    @Input('disabled') isDisabled = false;
     @Input() label = "";
     // @Input() disabledDays = [0, 6]; add this into your component if you want to disable the weekends
     @Input() disabledDays = [];

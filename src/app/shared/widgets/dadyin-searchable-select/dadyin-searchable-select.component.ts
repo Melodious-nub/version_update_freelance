@@ -1,10 +1,24 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTooltip } from '@angular/material/tooltip';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'dadyin-searchable-select',
-  templateUrl: './dadyin-searchable-select.component.html',
-  styleUrls: ['./dadyin-searchable-select.component.scss'],
+    selector: 'dadyin-searchable-select',
+    templateUrl: './dadyin-searchable-select.component.html',
+    styleUrls: ['./dadyin-searchable-select.component.scss'],
+    standalone: true,
+    imports: [
+        NgClass,
+        ExtendedModule,
+        NgSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        MatTooltip,
+    ],
 })
 export class DadyinSearchableSelectComponent implements OnInit, OnChanges {
   @Input() class: any;
@@ -16,6 +30,7 @@ export class DadyinSearchableSelectComponent implements OnInit, OnChanges {
   @Input() placeholder: any = '';
   @Output() changed: any = new EventEmitter();
   @Input() isDisabled: any = false;
+  @Input('disabled') set _isDisabled(val: boolean) { this.isDisabled = val; }
   @Input() multiple = false;
   @Input() optionTag = null;
   @Input() required: any = false;
@@ -28,7 +43,7 @@ export class DadyinSearchableSelectComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['isDisabled'] && this.control) {
+    if ((changes['isDisabled'] || changes['disabled']) && this.control) {
       if (this.isDisabled) {
         this.control.disable();
       } else {

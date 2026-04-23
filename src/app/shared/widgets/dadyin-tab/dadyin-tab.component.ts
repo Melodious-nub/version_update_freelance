@@ -1,5 +1,7 @@
 import { Component, forwardRef, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgFor } from '@angular/common';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
 
 @Component({
     selector: 'dadyin-tab',
@@ -7,7 +9,9 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     styleUrls: ['./dadyin-tab.component.scss'],
     providers: [
         { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DadyinTabComponent), multi: true },
-    ]
+    ],
+    standalone: true,
+    imports: [MatTabGroup, NgFor, MatTab]
 })
 export class DadyinTabComponent implements OnInit {
 

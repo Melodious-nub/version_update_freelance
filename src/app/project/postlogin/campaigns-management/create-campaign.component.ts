@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { Location } from '@angular/common';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Location, NgIf, NgFor, NgClass } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -17,6 +17,16 @@ import {
 } from '../social-broadcast-management/service/social-profiles-api.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { formatGeneratedContentToHtml, htmlToSocialText } from 'src/app/helpers/content-utils';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { DadyinSearchSelectNewComponent } from '../../../shared/widgets/dadyin-search-select-new/dadyin-search-select-new.component';
+import { DadyinSearchableSelectComponent } from '../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { TimePickerComponent } from '../../../shared/widgets/time-picker/time-picker.component';
+import { DadyinSelectComponent } from '../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { MatTooltip } from '@angular/material/tooltip';
+import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
+import { SpinnerOverlayComponent } from '../../../shared/component/spinner-overlay/spinner-overlay.component';
 
 type ProductImageTile = {
   productId: any;
@@ -28,9 +38,29 @@ type ProductImageTile = {
 };
 
 @Component({
-  selector: 'app-create-campaign',
-  templateUrl: './create-campaign.component.html',
-  styleUrls: ['./create-campaign.component.scss'],
+    selector: 'app-create-campaign',
+    templateUrl: './create-campaign.component.html',
+    styleUrls: ['./create-campaign.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        SpinnerOverlayComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        DadyinInputComponent,
+        MatTooltip,
+        DadyinSelectComponent,
+        TimePickerComponent,
+        DadyinSearchableSelectComponent,
+        DadyinSearchSelectNewComponent,
+        NgFor,
+        NgClass,
+        ExtendedModule,
+        CKEditorModule,
+    ],
 })
 export class CreateCampaignComponent implements OnInit {
   public Editor: any = (ClassicEditor as any).default || ClassicEditor;

@@ -3,14 +3,30 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
 
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderManagementService } from '../../../service/order-management.service';
 import { OrderManagementFormsService } from '../../../service/order-management-forms.service';
+import { NgFor, NgIf } from '@angular/common';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
+import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-create-attribute',
-  templateUrl: './create-attribute.component.html',
-  styleUrls: ['./create-attribute.component.scss'],
+    selector: 'app-create-attribute',
+    templateUrl: './create-attribute.component.html',
+    styleUrls: ['./create-attribute.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        NgSelectModule,
+        NgFor,
+        NgIf,
+    ],
 })
 export class CreateAttributeComponent implements OnInit {
   listViewAttribute = null

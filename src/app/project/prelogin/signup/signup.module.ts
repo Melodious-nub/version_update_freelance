@@ -10,16 +10,14 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { SignupOTPComponent } from './signup-otp/signup-otp.component';
 
 @NgModule({
-  declarations: [
-    SignupComponent,
-    SignupOTPComponent
-  ],
-  imports: [
-    CommonModule,
-    SignupRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-  ]
+    imports: [
+        CommonModule,
+        SignupRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        SignupComponent,
+        SignupOTPComponent,
+    ]
 })
 export class SignupModule { }

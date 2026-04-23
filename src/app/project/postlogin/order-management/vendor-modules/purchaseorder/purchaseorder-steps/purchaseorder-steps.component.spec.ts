@@ -8,8 +8,8 @@ describe('PurchaseorderStepsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PurchaseorderStepsComponent],
-    }).compileComponents();
+    imports: [PurchaseorderStepsComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

@@ -7,16 +7,14 @@ import { PrivacyPolicyComponent } from './privacy-policy.component';
 import { PrivacyPolicyRoutingModule } from './privacy-policy-routing.module';
 
 @NgModule({
-  declarations: [
-    PrivacyPolicyComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    PrivacyPolicyRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        PrivacyPolicyRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        PrivacyPolicyComponent,
+    ]
 })
 export class PrivacyPolicyModule { }

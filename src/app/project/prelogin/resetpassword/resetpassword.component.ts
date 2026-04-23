@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GenricResponse } from 'src/app/model/common/generic-response';
 import { SignupUser } from 'src/app/model/signup/SignupUser';
 import { ToastrService } from 'ngx-toastr';
 import { SignupService } from '../signup.service';
+import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatError } from '@angular/material/form-field';
+import { NgIf } from '@angular/common';
+import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyin-input.component';
 
 @Component({
-  selector: 'app-reset-password',
-  templateUrl: './resetpassword.component.html',
-  styleUrls: ['./resetpassword.component.scss'],
+    selector: 'app-reset-password',
+    templateUrl: './resetpassword.component.html',
+    styleUrls: ['./resetpassword.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        NgIf,
+        MatError,
+        DadyinButtonComponent,
+    ],
 })
 export class ResetPasswordComponent implements OnInit {
   public resetPasswordGroup: UntypedFormGroup;

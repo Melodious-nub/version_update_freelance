@@ -6,15 +6,13 @@ import { ContactusComponent } from './contact-us.component';
 import { ContactusRoutingModule } from './contact-us-routing.module';
 
 @NgModule({
-  declarations: [
-    ContactusComponent
-  ],
-  imports: [
-    CommonModule,
-    ContactusRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-  ]
+    imports: [
+        CommonModule,
+        ContactusRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        ContactusComponent,
+    ]
 })
 export class ContactusModule { }

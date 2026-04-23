@@ -20,27 +20,25 @@ import { ProductWiseCreateInventoryComponent } from './product-wise-create-inven
 
 
 @NgModule({
-  declarations: [
-    InventoryinComponent,
-    InventoryinListComponent,
-    OrderArrivalComponent,
-    AddedToInventoryComponent,
-    ContainerInComponent,
-    OrderWiseCreateInventoryComponent,
-    InventoryAssigningModalComponent,
-    OrderWiseComponent,
-    ProductWiseComponent,
-    ProductWiseCreateInventoryComponent,
-  ],
-  imports: [
-    CommonModule,
-    InventoryinRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-    MaterialModule,
-    MatStepperModule,
-    ToastrModule,
-  ],
+    imports: [
+        CommonModule,
+        InventoryinRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        MaterialModule,
+        MatStepperModule,
+        ToastrModule,
+        InventoryinComponent,
+        InventoryinListComponent,
+        OrderArrivalComponent,
+        AddedToInventoryComponent,
+        ContainerInComponent,
+        OrderWiseCreateInventoryComponent,
+        InventoryAssigningModalComponent,
+        OrderWiseComponent,
+        ProductWiseComponent,
+        ProductWiseCreateInventoryComponent,
+    ],
 })
 export class InventoryinModule {}

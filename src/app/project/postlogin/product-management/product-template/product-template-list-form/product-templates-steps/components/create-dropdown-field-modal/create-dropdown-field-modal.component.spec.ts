@@ -8,8 +8,8 @@ describe('CreateDropdownFieldModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateDropdownFieldModalComponent ]
-    })
+    imports: [CreateDropdownFieldModalComponent]
+})
     .compileComponents();
   });
 

@@ -12,11 +12,25 @@ import { sidebarMenu } from 'src/app/shared/menuconstant';
 import { SelectMenuService } from '../select-menu.service';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { TokenService } from 'src/app/service/token.service';
+import { DadyinButtonComponent } from '../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatTooltip } from '@angular/material/tooltip';
+import { NgStyle, NgFor, NgIf, NgClass } from '@angular/common';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 
 @Component({
-  selector: 'sidebar-layout',
-  templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.scss'],
+    selector: 'sidebar-layout',
+    templateUrl: './side-bar.component.html',
+    styleUrls: ['./side-bar.component.scss'],
+    standalone: true,
+    imports: [
+        ExtendedModule,
+        NgStyle,
+        NgFor,
+        NgIf,
+        NgClass,
+        MatTooltip,
+        DadyinButtonComponent,
+    ],
 })
 export class SideBarComponent implements OnInit {
   @Input() isExpanded = true;

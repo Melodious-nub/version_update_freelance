@@ -1,11 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryoutmanagementService } from '../../../service/inventoryout-management.service';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { DataTableComponent } from '../../../../../../../shared/component/data-table/data-table.component';
+import { DateScrollComponent } from '../../../../../../../shared/component/date-scroll/date-scroll.component';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-order-wise',
-  templateUrl: './order-wise.component.html',
-  styleUrls: ['./order-wise.component.scss'],
+    selector: 'app-order-wise',
+    templateUrl: './order-wise.component.html',
+    styleUrls: ['./order-wise.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        DateScrollComponent,
+        DataTableComponent,
+    ],
 })
 export class OrderWiseComponent implements OnInit {
   list = [];

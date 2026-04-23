@@ -10,19 +10,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
-  declarations: [
-    UsersManagementComponent,
-    InvitesComponent
-  ],
-  imports: [
-    CommonModule,
-    UsersManagementRoutingModule,
-    MaterialModule,
-    SharedModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatStepperModule,
-    MatTabsModule
-  ]
+    imports: [
+        CommonModule,
+        UsersManagementRoutingModule,
+        MaterialModule,
+        SharedModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatStepperModule,
+        MatTabsModule,
+        UsersManagementComponent,
+        InvitesComponent
+    ]
 })
 export class UsersManagementModule { }

@@ -14,15 +14,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { ContainerManagementComponent } from './container-management.component';
 
 @NgModule({
-  declarations: [
-    ContainerManagementComponent,
-  ],
-  imports: [
-    CommonModule,
-    ContainerManagementRoutingModule,
-    MaterialModule,
-    SharedModule
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        ContainerManagementRoutingModule,
+        MaterialModule,
+        SharedModule,
+        ContainerManagementComponent
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class ContainerManagementModule {}

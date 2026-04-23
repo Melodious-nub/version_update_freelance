@@ -1,13 +1,19 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormControl } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UntypedFormArray, UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
 
 @Component({
-  selector: 'app-waste-option-modal',
-  templateUrl: './waste-option-modal.component.html',
-  styleUrls: ['./waste-option-modal.component.scss'],
+    selector: 'app-waste-option-modal',
+    templateUrl: './waste-option-modal.component.html',
+    styleUrls: ['./waste-option-modal.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatDialogClose,
+    ],
 })
 export class WasteOptionModalComponent implements OnInit {
   formulaValue = '';

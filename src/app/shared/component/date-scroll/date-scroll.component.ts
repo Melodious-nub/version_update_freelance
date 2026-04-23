@@ -1,10 +1,15 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgFor, NgClass } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
 
 
 @Component({
-  selector: 'app-date-scroll',
-  templateUrl: './date-scroll.component.html',
-  styleUrls: ['./date-scroll.component.scss']
+    selector: 'app-date-scroll',
+    templateUrl: './date-scroll.component.html',
+    styleUrls: ['./date-scroll.component.scss'],
+    standalone: true,
+    imports: [MatIcon, NgFor, NgClass, ExtendedModule]
 })
 export class DateScrollComponent implements OnInit,OnChanges {
   @Input() initialDate=new Date()

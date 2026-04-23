@@ -8,8 +8,8 @@ describe('ThreeSceneComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ThreeSceneComponent ]
-    })
+    imports: [ThreeSceneComponent]
+})
     .compileComponents();
   });
 

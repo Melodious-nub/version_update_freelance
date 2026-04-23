@@ -10,11 +10,14 @@ import { BusinessAccountService } from 'src/app/project/postlogin/business-accou
 import { ContainerManagementService } from 'src/app/project/postlogin/container-management/service/container-management.service';
 import { OrderManagementService } from '../../service/order-management.service';
 import { OrderManagementFormsService } from '../../service/order-management-forms.service';
+import { CreateAttributeComponent } from './create-attribute/create-attribute.component';
 
 @Component({
-  selector: 'app-attribute-steps',
-  templateUrl: './attribute-steps.component.html',
-  styleUrls: ['./attribute-steps.component.scss']
+    selector: 'app-attribute-steps',
+    templateUrl: './attribute-steps.component.html',
+    styleUrls: ['./attribute-steps.component.scss'],
+    standalone: true,
+    imports: [CreateAttributeComponent]
 })
 export class AttributeSetStepsComponent implements OnInit {
   // ************* Variable Declarations *************

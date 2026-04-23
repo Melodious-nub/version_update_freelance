@@ -8,8 +8,8 @@ describe('UnloadingDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UnloadingDetailsComponent],
-    }).compileComponents();
+    imports: [UnloadingDetailsComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

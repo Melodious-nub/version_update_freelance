@@ -1,11 +1,15 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'app-preview-document-dialog',
-  templateUrl: './preview-document-dialog.component.html',
-  styleUrls: ['./preview-document-dialog.component.scss']
+    selector: 'app-preview-document-dialog',
+    templateUrl: './preview-document-dialog.component.html',
+    styleUrls: ['./preview-document-dialog.component.scss'],
+    standalone: true,
+    imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatButton, DadyinButtonComponent, MatDialogClose]
 })
 export class PreviewDocumentDialogComponent implements OnInit {
 

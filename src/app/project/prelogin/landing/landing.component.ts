@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -11,10 +11,23 @@ import { SwiperOptions } from 'swiper';
 import { OrderManagementService } from '../../postlogin/order-management/service/order-management.service';
 import { environment } from 'src/environments/environment';
 import { BusinessAccountService } from '../../postlogin/business-account/business-account.service';
+import { SwiperModule } from 'swiper/angular';
+import { MatIcon } from '@angular/material/icon';
+import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { NgIf, NgFor } from '@angular/common';
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss'],
+    selector: 'app-landing',
+    templateUrl: './landing.component.html',
+    styleUrls: ['./landing.component.scss'],
+    standalone: true,
+    imports: [
+        RouterLink,
+        NgIf,
+        DadyinButtonComponent,
+        MatIcon,
+        SwiperModule,
+        NgFor,
+    ],
 })
 export class LandingComponent implements OnInit {
   productsList = [];

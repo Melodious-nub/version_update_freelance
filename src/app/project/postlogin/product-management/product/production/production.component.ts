@@ -1,6 +1,6 @@
 import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
+import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { ToastrService } from 'ngx-toastr';
@@ -9,11 +9,21 @@ import { UomService } from 'src/app/service/uom.service';
 import { BatchModalComponent } from '../../common-modals/batch-modal/batch-modal/batch-modal.component';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { NgFor, NgIf, DatePipe } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-production',
-  templateUrl: './production.component.html',
-  styleUrls: ['./production.component.scss'],
+    selector: 'app-production',
+    templateUrl: './production.component.html',
+    styleUrls: ['./production.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgFor,
+        NgIf,
+        MatPaginator,
+        DatePipe,
+    ],
 })
 export class ProductionComponent implements OnInit {
   productionDetails: any;

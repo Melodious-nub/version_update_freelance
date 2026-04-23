@@ -1,17 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InventoryoutmanagementService } from '../service/inventoryout-management.service';
-import { UntypedFormArray, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { InventoryAssigningModalComponent } from '../modals/inventory-assigning-modal/inventory-assigning-modal.component';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { ConfirmationDialogComponent } from '../../../product-management/product-template/product-template-list-form/product-templates-steps/template-process/components/process/edit-process/components/select-process-name/confirmation-dialog/confirmation-dialog.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { DadyinSelectComponent } from '../../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { DadyinInputComponent } from '../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
+import { NgIf, NgClass, NgFor } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-order-wise-create-inventory',
-  templateUrl: './order-wise-create-inventory.component.html',
-  styleUrls: ['./order-wise-create-inventory.component.scss'],
+    selector: 'app-order-wise-create-inventory',
+    templateUrl: './order-wise-create-inventory.component.html',
+    styleUrls: ['./order-wise-create-inventory.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        MatIcon,
+        NgIf,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        DadyinSelectComponent,
+        NgClass,
+        ExtendedModule,
+        NgFor,
+    ],
 })
 export class OrderWiseCreateInventoryComponent implements OnInit {
   id = '';

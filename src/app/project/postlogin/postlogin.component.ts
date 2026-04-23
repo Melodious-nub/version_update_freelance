@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderComponent } from '../../layout/header/header.component';
 
 
 @Component({
-  selector: 'app-postlogin',
-  templateUrl: './postlogin.component.html',
-  styleUrls: ['./postlogin.component.scss'],
+    selector: 'app-postlogin',
+    templateUrl: './postlogin.component.html',
+    styleUrls: ['./postlogin.component.scss'],
+    standalone: true,
+    imports: [HeaderComponent],
 })
 export class PostloginComponent implements OnInit {
  

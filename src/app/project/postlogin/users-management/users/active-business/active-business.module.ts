@@ -9,19 +9,17 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [
-    ActiveBusinessComponent,
-    ActiveBusinessListComponent
-  ],
-  imports: [
-    CommonModule,
-    ActiveBusinessRoutingModule,
-    MaterialModule,
-    SharedModule
-  ],
-  exports: [
-    ActiveBusinessComponent,
-    ActiveBusinessListComponent
-  ]
+    imports: [
+        CommonModule,
+        ActiveBusinessRoutingModule,
+        MaterialModule,
+        SharedModule,
+        ActiveBusinessComponent,
+        ActiveBusinessListComponent
+    ],
+    exports: [
+        ActiveBusinessComponent,
+        ActiveBusinessListComponent
+    ]
 })
 export class ActiveBusinessModule { }

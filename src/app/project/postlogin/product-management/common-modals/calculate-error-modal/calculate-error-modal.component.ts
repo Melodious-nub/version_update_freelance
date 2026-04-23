@@ -1,15 +1,21 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { Inject } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
+import { SortFormArrayPipe } from '../../../../../shared/pipes/sort-formarray-sortorder.pipe';
+import { MatIcon } from '@angular/material/icon';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgIf, NgFor, NgClass } from '@angular/common';
 @Component({
-  selector: 'app-calculate-error-modal',
-  templateUrl: './calculate-error-modal.component.html',
-  styleUrls: ['./calculate-error-modal.component.scss']
+    selector: 'app-calculate-error-modal',
+    templateUrl: './calculate-error-modal.component.html',
+    styleUrls: ['./calculate-error-modal.component.scss'],
+    standalone: true,
+    imports: [MatDialogClose, NgIf, NgFor, FormsModule, ReactiveFormsModule, NgClass, ExtendedModule, MatIcon, SortFormArrayPipe]
 })
 export class CalculateErrorModalComponent implements OnInit {
   productForm = this.formsService.createProductForm()

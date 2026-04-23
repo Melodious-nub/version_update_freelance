@@ -1,10 +1,18 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
+import { FormsModule } from '@angular/forms';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'select-process-name',
-  templateUrl: './select-process-name.component.html',
-  styleUrls: ['./select-process-name.component.scss'],
+    selector: 'select-process-name',
+    templateUrl: './select-process-name.component.html',
+    styleUrls: ['./select-process-name.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        FormsModule,
+        NgFor,
+    ],
 })
 export class SelectProcessNameComponent implements OnInit {
   @Input() isShowTextBox: boolean = true;

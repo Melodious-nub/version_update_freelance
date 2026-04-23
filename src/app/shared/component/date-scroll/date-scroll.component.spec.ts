@@ -8,8 +8,8 @@ describe('DateScrollComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DateScrollComponent ]
-    })
+    imports: [DateScrollComponent]
+})
     .compileComponents();
   });
 

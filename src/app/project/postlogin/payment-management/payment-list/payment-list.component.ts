@@ -3,10 +3,22 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { BusinessAccountService } from '../../business-account/business-account.service';
 import { PaymentManagementService } from '../service/payment-management.service';
+import { DataTableComponent } from '../../../../shared/component/data-table/data-table.component';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../../shared/component/search-filter/search-filter.component';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
 @Component({
-  selector: 'app-payment-list',
-  templateUrl: './payment-list.component.html',
-  styleUrls: ['./payment-list.component.scss'],
+    selector: 'app-payment-list',
+    templateUrl: './payment-list.component.html',
+    styleUrls: ['./payment-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabGroup,
+        MatTab,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent,
+    ],
 })
 export class PaymentListComponent implements OnInit {
   @Input('single') single = false;

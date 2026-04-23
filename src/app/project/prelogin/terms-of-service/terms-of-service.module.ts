@@ -7,16 +7,14 @@ import { TermsOfServiceComponent } from './terms-of-service.component';
 import { TermsOfServiceRoutingModule } from './terms-of-service-routing.module';
 
 @NgModule({
-  declarations: [
-    TermsOfServiceComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    TermsOfServiceRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        TermsOfServiceRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        TermsOfServiceComponent,
+    ]
 })
 export class TermsOfServiceModule { }

@@ -1,13 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { OrderManagementService } from '../../service/order-management.service';
+import { DataTableComponent } from '../../../../../../shared/component/data-table/data-table.component';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../../../../shared/component/search-filter/search-filter.component';
 
 @Component({
-  selector: 'app-notes-list',
-  templateUrl: './notes-list.component.html',
-  styleUrls: ['./notes-list.component.scss'],
+    selector: 'app-notes-list',
+    templateUrl: './notes-list.component.html',
+    styleUrls: ['./notes-list.component.scss'],
+    standalone: true,
+    imports: [
+        RouterLink,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent,
+    ],
 })
 export class NotesListComponent implements OnInit {
   notesList: any[] = [];

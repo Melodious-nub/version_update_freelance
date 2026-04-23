@@ -6,9 +6,9 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {
   Subject,
@@ -34,12 +34,52 @@ import { QcProductDetailComponent } from '../qc-product-detail/qc-product-detail
 import { PaymentService } from 'src/app/service/payment.service';
 import { SwiperOptions } from 'swiper';
 import { TermsDialogComponent } from 'src/app/shared/dialogs/terms/terms-dialog.component';
-import { Location } from '@angular/common';
+import { Location, NgStyle, NgIf, NgFor, NgClass, TitleCasePipe, DatePipe } from '@angular/common';
+import { NumberFormatterPipe } from '../../../../shared/pipes/number-formatter.pipe';
+import { PaymentComponent } from '../../order-management/vendor-modules/purchaseorder/purchaseorder-steps/payment/payment.component';
+import { GridViewProductCardComponent } from './grid-view-product-card/grid-view-product-card.component';
+import { SwiperModule } from 'swiper/angular';
+import { MatIcon } from '@angular/material/icon';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { DadyinSelectComponent } from '../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { DadyinMapAutoCompleteComponent } from '../../../../shared/widgets/dadyin-map-autocomplete/dadyin-map-autocomplete.component';
+import { DadyinSearchableSelectComponent } from '../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { DadyinTabComponent } from '../../../../shared/widgets/dadyin-tab/dadyin-tab.component';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatTooltip } from '@angular/material/tooltip';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 
 @Component({
-  selector: 'app-quick-checkout-order',
-  templateUrl: './quick-checkout-order.html',
-  styleUrls: ['./quick-checkout-order.scss'],
+    selector: 'app-quick-checkout-order',
+    templateUrl: './quick-checkout-order.html',
+    styleUrls: ['./quick-checkout-order.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgStyle,
+        ExtendedModule,
+        NgIf,
+        MatTooltip,
+        RouterLink,
+        DadyinButtonComponent,
+        CdkDrag,
+        NgFor,
+        DadyinTabComponent,
+        DadyinSearchableSelectComponent,
+        NgClass,
+        DadyinMapAutoCompleteComponent,
+        DadyinSelectComponent,
+        NgbTooltip,
+        MatIcon,
+        SwiperModule,
+        GridViewProductCardComponent,
+        PaymentComponent,
+        TitleCasePipe,
+        DatePipe,
+        NumberFormatterPipe,
+    ],
 })
 export class QuickCheckoutOrderComponent implements OnInit {
   cartView = false;

@@ -1,17 +1,27 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormArray, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatTabGroup } from '@angular/material/tabs';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
 import { ToastrService } from 'ngx-toastr';
 import { FormsService } from 'src/app/service/forms.service';
 import { ApiService } from 'src/app/service/api.service';
 import { UomService } from 'src/app/service/uom.service';
 import { ContainerManagementService } from 'src/app/project/postlogin/container-management/service/container-management.service';
+import { NumberFormatterPipe } from '../../../../../../shared/pipes/number-formatter.pipe';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgFor, NgIf, NgClass, DatePipe } from '@angular/common';
+import { DadyinSelectComponent } from '../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
+import { MatTooltip } from '@angular/material/tooltip';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'app-batch-modal',
-  templateUrl: './batch-modal.component.html',
-  styleUrls: ['./batch-modal.component.scss']
+    selector: 'app-batch-modal',
+    templateUrl: './batch-modal.component.html',
+    styleUrls: ['./batch-modal.component.scss'],
+    standalone: true,
+    imports: [CdkDrag, CdkDragHandle, DadyinButtonComponent, MatTooltip, MatExpansionPanel, FormsModule, ReactiveFormsModule, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinSelectComponent, MatTabGroup, NgFor, MatTab, NgIf, MatExpansionPanelContent, NgClass, ExtendedModule, DatePipe, NumberFormatterPipe]
 })
 export class BatchModalComponent implements OnInit {
 

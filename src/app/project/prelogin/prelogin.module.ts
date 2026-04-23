@@ -8,17 +8,15 @@ import { LandingComponent } from './landing/landing.component';
 import { PreloginRoutingModule } from './prelogin-routing.module';
 
 
-@NgModule({ 
-  declarations: [
-    PreloginComponent
-  ],
-  imports: [
-    CommonModule,
-    LayoutModule,
-    PreloginRoutingModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+@NgModule({
+    imports: [
+        CommonModule,
+        LayoutModule,
+        PreloginRoutingModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        PreloginComponent
+    ]
 })
 export class PreloginModule { }

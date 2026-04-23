@@ -10,19 +10,16 @@ import { AdditionalCostCommonComponent } from './common/additional-cost-common/a
 
 
 @NgModule({
-  declarations: [
-    AddeditProductTypeComponent,
-    AddeditSubtypeComponent,
-    AdditionalCostCommonComponent,
-    BuyingCapacityCommonComponent
-  ],
-  imports: [
-    ProductTypeRoutingModule,
-    CommonModule,
-    SharedModule,
-  ],
-  exports: [
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        ProductTypeRoutingModule,
+        CommonModule,
+        SharedModule,
+        AddeditProductTypeComponent,
+        AddeditSubtypeComponent,
+        AdditionalCostCommonComponent,
+        BuyingCapacityCommonComponent,
+    ],
+    exports: [],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class ProductTypeModule { }

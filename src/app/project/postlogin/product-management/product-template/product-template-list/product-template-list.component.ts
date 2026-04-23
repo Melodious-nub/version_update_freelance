@@ -1,17 +1,40 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
-import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProdTemplate } from 'src/app/model/common/product-template.model';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
 import { BusinessAccountService } from '../../../business-account/business-account.service';
+import { DataTableComponent } from '../../../../../shared/component/data-table/data-table.component';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { SearchFilterComponent } from '../../../../../shared/component/search-filter/search-filter.component';
+import { MatBadge } from '@angular/material/badge';
+import { NgFor, NgIf } from '@angular/common';
+import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-product-template-list',
-  templateUrl: './product-template-list.component.html',
-  styleUrls: ['./product-template-list.component.scss'],
+    selector: 'app-product-template-list',
+    templateUrl: './product-template-list.component.html',
+    styleUrls: ['./product-template-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabGroup,
+        NgFor,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        NgIf,
+        SearchFilterComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinButtonComponent,
+        DataTableComponent,
+    ],
 })
 export class ProductTemplateListComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

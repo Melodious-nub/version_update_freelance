@@ -3,11 +3,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LOCALSTORAGEKEYS } from 'src/app/shared/constant';
 import { ProductManagementService } from '../../../service/product-management.service';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
+import { DataTableComponent } from '../../../../../../shared/component/data-table/data-table.component';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../../../../shared/component/search-filter/search-filter.component';
 
 @Component({
-  selector: 'app-subtype-list',
-  templateUrl: './subtype-list.component.html',
-  styleUrls: ['./subtype-list.component.scss'],
+    selector: 'app-subtype-list',
+    templateUrl: './subtype-list.component.html',
+    styleUrls: ['./subtype-list.component.scss'],
+    standalone: true,
+    imports: [
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent,
+    ],
 })
 export class SubtypeListComponent implements OnInit {
   public filterValue: string;

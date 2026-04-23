@@ -12,22 +12,20 @@ import { QuotationComponent } from './quotation.component';
 import { MaterialModule } from 'src/app/shared/modules/material.module';
 
 @NgModule({
-  declarations: [
-    QuotationListComponent,
-    CreateQuotationComponent,
-    QuotationStepsComponent,
-    QuotationComponent
-  ],
-  imports: [
-    CommonModule,
-    QuotationRoutingModule,
-    SharedModule,
-    MaterialModule
-  ],
-  exports: [ QuotationListComponent,
-    CreateQuotationComponent,
-    QuotationStepsComponent,
-    QuotationComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        QuotationRoutingModule,
+        SharedModule,
+        MaterialModule,
+        QuotationListComponent,
+        CreateQuotationComponent,
+        QuotationStepsComponent,
+        QuotationComponent
+    ],
+    exports: [QuotationListComponent,
+        CreateQuotationComponent,
+        QuotationStepsComponent,
+        QuotationComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class QuotationModule { }

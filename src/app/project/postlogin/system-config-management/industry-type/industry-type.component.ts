@@ -6,9 +6,10 @@ import { SystemConfigFormsService } from '../service/system-config-forms.service
 import { BusinessAccountService } from '../../business-account/business-account.service';
 
 @Component({
-  selector: 'app-industry-type',
-  templateUrl: './industry-type.component.html',
-  styleUrls: ['./industry-type.component.scss'],
+    selector: 'app-industry-type',
+    templateUrl: './industry-type.component.html',
+    styleUrls: ['./industry-type.component.scss'],
+    standalone: true,
 })
 export class IndustryTypeComponent implements OnInit {
   

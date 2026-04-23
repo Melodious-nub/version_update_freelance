@@ -7,7 +7,7 @@ import {
   ChangeDetectorRef,
   HostListener,
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
@@ -23,11 +23,33 @@ import { BillFormsService } from '../../bill-forms.service';
 import { BillManagementService } from '../../bill-management.service';
 import { OrderManagementService } from '../../../../service/order-management.service';
 import { PricecompareDialogComponent } from 'src/app/shared/component/pricecompare-dialog/pricecompare-dialog.component';
+import { OrderTransactionPackagesComponent } from '../../../../../../../shared/component/order-transaction-packages/order-transaction-packages.component';
+import { DadyinInputComponent } from '../../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { DadyinSelectComponent } from '../../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { NgIf } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinSearchableSelectComponent } from '../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-create-bill',
-  templateUrl: './create-bill.component.html',
-  styleUrls: ['./create-bill.component.scss'],
+    selector: 'app-create-bill',
+    templateUrl: './create-bill.component.html',
+    styleUrls: ['./create-bill.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+        NgIf,
+        DadyinSelectComponent,
+        DadyinInputComponent,
+        OrderTransactionPackagesComponent,
+    ],
 })
 export class CreateBillComponent implements OnInit {
   currentBusinessAccount: any;

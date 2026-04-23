@@ -14,21 +14,19 @@ import { AllBusinessModule } from './all-business/all-business.module';
 
 
 @NgModule({
-  declarations: [
-    UsersComponent
-  ],
-  imports: [
-    CommonModule,
-    UsersRoutingModule,
-    MaterialModule,
-    SharedModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatStepperModule,
-    MatTabsModule,
-    ActiveBusinessModule,
-    InactiveBusinessModule,
-    AllBusinessModule,
-  ]
+    imports: [
+        CommonModule,
+        UsersRoutingModule,
+        MaterialModule,
+        SharedModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatStepperModule,
+        MatTabsModule,
+        ActiveBusinessModule,
+        InactiveBusinessModule,
+        AllBusinessModule,
+        UsersComponent,
+    ]
 })
 export class UsersModule { }

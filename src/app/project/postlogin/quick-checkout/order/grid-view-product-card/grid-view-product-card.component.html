@@ -413,7 +413,7 @@
     </div>
     <div class="d-flex align-items-center justify-content-end">
       <div [ngbTooltip]="customtooltip">
-        <span
+        <dadyin-button
           class="d-flex align-items-center justify-content-center mx-1"
           [isDisabled]="hideAddToOrder(product?.productDetails?.audit)"
           [matTooltip]="
@@ -430,7 +430,7 @@
           }"
         >
           {{ getOwner(product?.productDetails?.audit) }}
-        </span>
+        </dadyin-button>
       </div>
       <div style="height: 24px">
         <mat-icon style="height: 24px" class="star-icon-size">star</mat-icon>

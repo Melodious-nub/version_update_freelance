@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { forkJoin } from 'rxjs';
 import { VendorFormsService } from '../../service/vendor-forms.service';
@@ -8,13 +8,31 @@ import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
 import { EmailDialogComponent } from '../email-dialog/email-dialog.component';
 import { environment } from 'src/environments/environment';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { NgIf, NgFor, SlicePipe, DatePipe } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 export type NoteReminderDialogType = 'note' | 'reminder';
 
 @Component({
-  selector: 'app-note-dialog',
-  templateUrl: './note-dialog.component.html',
-  styleUrls: ['./note-dialog.component.scss'],
+    selector: 'app-note-dialog',
+    templateUrl: './note-dialog.component.html',
+    styleUrls: ['./note-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        NgIf,
+        DadyinButtonComponent,
+        MatTooltipModule,
+        MatExpansionModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgFor,
+        SlicePipe,
+        DatePipe,
+    ],
 })
 export class NoteDialogComponent implements OnInit {
   noteForm = this.vendorFormService.noteForm();

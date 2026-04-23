@@ -8,8 +8,8 @@ describe('UsersManagementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UsersManagementComponent ]
-    })
+    imports: [UsersManagementComponent]
+})
     .compileComponents();
   });
 

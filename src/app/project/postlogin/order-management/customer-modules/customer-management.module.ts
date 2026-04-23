@@ -16,24 +16,22 @@ import { BillManagementModule } from '../vendor-modules/bill-management/bill-man
 
 
 @NgModule({
-  declarations: [
-    CustomerManagementComponent
-  ],
-  imports: [
-    CommonModule,
-    CustomerManagementRoutingModule,
-    MaterialModule,
-    SharedModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatStepperModule,
-    ReceivedPoModule,
-    ReceivedRfqModule,
-    QuotationModule,
-    InvoiceManagementModule
-  ],
-  exports:[
-    CustomerManagementComponent
-  ]
+    imports: [
+        CommonModule,
+        CustomerManagementRoutingModule,
+        MaterialModule,
+        SharedModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatStepperModule,
+        ReceivedPoModule,
+        ReceivedRfqModule,
+        QuotationModule,
+        InvoiceManagementModule,
+        CustomerManagementComponent
+    ],
+    exports: [
+        CustomerManagementComponent
+    ]
 })
 export class CustomerManagementModule { }

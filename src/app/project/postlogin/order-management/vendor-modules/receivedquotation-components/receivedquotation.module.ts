@@ -12,25 +12,24 @@ import { ReceivedquotationListComponent } from './receivedquotation-list/receive
 import { ReceivedQuotationComponent } from './receivedquotation.component';
 
 @NgModule({
-  declarations: [
-    ReceivedquotationListComponent,
-    ViewQuotationComponent,
-    ReceivedQuotationStepsComponent,
-    ReceivedQuotationComponent
-  ],
-  imports: [
-    CommonModule,
-    ReceivedQuotationRoutingModule,
-    SharedModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatStepperModule
-  ],
-  exports: [
-    ReceivedquotationListComponent,
-    ViewQuotationComponent,
-    ReceivedQuotationStepsComponent,
-    ReceivedQuotationComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        ReceivedQuotationRoutingModule,
+        SharedModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatStepperModule,
+        ReceivedquotationListComponent,
+        ViewQuotationComponent,
+        ReceivedQuotationStepsComponent,
+        ReceivedQuotationComponent
+    ],
+    exports: [
+        ReceivedquotationListComponent,
+        ViewQuotationComponent,
+        ReceivedQuotationStepsComponent,
+        ReceivedQuotationComponent
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class ReceivedQuotationModule { }

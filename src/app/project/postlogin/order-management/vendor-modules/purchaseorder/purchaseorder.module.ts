@@ -13,29 +13,27 @@ import { PurchaseorderRoutingModule } from './purchaseorder-routing.module';
 import { PaymentComponent } from './purchaseorder-steps/payment/payment.component';
 
 @NgModule({
-  declarations: [
-    PurchaseorderComponent,
-    PurchaseorderListComponent,
-    PurchaseorderStepsComponent,
-    CreateOrderComponent,
-    PaymentComponent,
-  ],
-  imports: [
-    CommonModule,
-    PurchaseorderRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-    MaterialModule,
-    MatStepperModule,
-    ToastrModule,
-  ],
-  exports: [
-    PurchaseorderComponent,
-    PurchaseorderListComponent,
-    PurchaseorderStepsComponent,
-    CreateOrderComponent,
-    PaymentComponent,
-  ],
+    imports: [
+        CommonModule,
+        PurchaseorderRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        MaterialModule,
+        MatStepperModule,
+        ToastrModule,
+        PurchaseorderComponent,
+        PurchaseorderListComponent,
+        PurchaseorderStepsComponent,
+        CreateOrderComponent,
+        PaymentComponent,
+    ],
+    exports: [
+        PurchaseorderComponent,
+        PurchaseorderListComponent,
+        PurchaseorderStepsComponent,
+        CreateOrderComponent,
+        PaymentComponent,
+    ],
 })
 export class PurchaseorderModule {}

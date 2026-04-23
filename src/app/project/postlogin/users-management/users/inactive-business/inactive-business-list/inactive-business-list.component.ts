@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-inactive-business-list',
-  templateUrl: './inactive-business-list.component.html',
-  styleUrls: ['./inactive-business-list.component.scss']
+    selector: 'app-inactive-business-list',
+    templateUrl: './inactive-business-list.component.html',
+    styleUrls: ['./inactive-business-list.component.scss'],
+    standalone: true
 })
 export class InactiveBusinessListComponent implements OnInit {
 

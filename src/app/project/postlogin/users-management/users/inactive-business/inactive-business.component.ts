@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-inactive-business',
-  templateUrl: './inactive-business.component.html',
-  styleUrls: ['./inactive-business.component.scss']
+    selector: 'app-inactive-business',
+    templateUrl: './inactive-business.component.html',
+    styleUrls: ['./inactive-business.component.scss'],
+    standalone: true,
+    imports: [RouterOutlet]
 })
 export class InactiveBusinessComponent implements OnInit {
 

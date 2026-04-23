@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InactiveBusinessListComponent } from './inactive-business/inactive-business-list/inactive-business-list.component';
+import { ActiveBusinessListComponent } from './active-business/active-business-list/active-business-list.component';
+import { AllBusinessListComponent } from './all-business/all-business-list/all-business-list.component';
+import { MatBadge } from '@angular/material/badge';
+import { NgFor, NgIf } from '@angular/common';
+import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+    selector: 'app-users',
+    templateUrl: './users.component.html',
+    styleUrls: ['./users.component.scss'],
+    standalone: true,
+    imports: [MatTabGroup, NgFor, MatTab, MatTabLabel, MatBadge, MatTabContent, NgIf, AllBusinessListComponent, ActiveBusinessListComponent, InactiveBusinessListComponent]
 })
 export class UsersComponent implements OnInit {
   currentStepIndex = 0;

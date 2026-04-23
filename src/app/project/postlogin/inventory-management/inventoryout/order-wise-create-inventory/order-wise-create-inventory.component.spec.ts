@@ -8,8 +8,8 @@ describe('OrderWiseCreateInventoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OrderWiseCreateInventoryComponent ]
-    })
+    imports: [OrderWiseCreateInventoryComponent]
+})
     .compileComponents();
   });
 

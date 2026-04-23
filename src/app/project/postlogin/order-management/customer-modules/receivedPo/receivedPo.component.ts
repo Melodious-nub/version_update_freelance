@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-receivedPo',
-  templateUrl: './receivedPo.component.html',
-  styleUrls: ['./receivedPo.component.scss'],
+    selector: 'app-receivedPo',
+    templateUrl: './receivedPo.component.html',
+    styleUrls: ['./receivedPo.component.scss'],
+    standalone: true,
+    imports: [RouterOutlet],
 })
 export class ReceivedPoComponent implements OnInit {
   constructor() {}

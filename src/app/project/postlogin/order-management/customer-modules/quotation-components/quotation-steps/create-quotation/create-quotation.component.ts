@@ -7,7 +7,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
@@ -20,11 +20,39 @@ import { OrderManagementService } from '../../../../service/order-management.ser
 import { ApiService } from 'src/app/service/api.service';
 import { PricecompareDialogComponent } from 'src/app/shared/component/pricecompare-dialog/pricecompare-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { OrderTransactionPackagesComponent } from '../../../../../../../shared/component/order-transaction-packages/order-transaction-packages.component';
+import { MatOption } from '@angular/material/core';
+import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
+import { DadyinInputComponent } from '../../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { DadyinSelectComponent } from '../../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { NgIf, NgFor } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinSearchableSelectComponent } from '../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-create-quotation',
-  templateUrl: './create-quotation.component.html',
-  styleUrls: ['./create-quotation.component.scss'],
+    selector: 'app-create-quotation',
+    templateUrl: './create-quotation.component.html',
+    styleUrls: ['./create-quotation.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+        NgIf,
+        DadyinSelectComponent,
+        DadyinInputComponent,
+        MatAutocompleteTrigger,
+        MatAutocomplete,
+        NgFor,
+        MatOption,
+        OrderTransactionPackagesComponent,
+    ],
 })
 export class CreateQuotationComponent implements OnInit, AfterViewInit {
   tierPriceView = false;

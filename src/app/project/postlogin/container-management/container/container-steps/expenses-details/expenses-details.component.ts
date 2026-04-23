@@ -1,11 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, Pipe } from '@angular/core';
-import {
-  UntypedFormArray,
-  UntypedFormBuilder,
-  FormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
@@ -14,11 +8,38 @@ import { ToastrService } from 'ngx-toastr';
 import { ContainerManagementService } from '../../../service/container-management.service';
 import { Subject, takeUntil } from 'rxjs';
 import { ContainerFormsService } from '../../../service/container-forms.service';
+import { MatOption } from '@angular/material/core';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinInputComponent } from '../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { NgFor, NgIf, NgClass, NgStyle, SlicePipe } from '@angular/common';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-expenses-details',
-  templateUrl: './expenses-details.component.html',
-  styleUrls: ['./expenses-details.component.scss'],
+    selector: 'app-expenses-details',
+    templateUrl: './expenses-details.component.html',
+    styleUrls: ['./expenses-details.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        NgFor,
+        DadyinInputComponent,
+        NgIf,
+        DadyinButtonComponent,
+        MatAutocompleteTrigger,
+        NgClass,
+        ExtendedModule,
+        MatAutocomplete,
+        MatOption,
+        NgStyle,
+        SlicePipe,
+    ],
 })
 export class ExpensesDetailsComponent implements OnInit {
   @Input() isExport: any;

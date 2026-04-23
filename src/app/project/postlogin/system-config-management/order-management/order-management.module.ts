@@ -8,18 +8,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NotesModule } from './notes/notes.module';
 
 @NgModule({
-  declarations: [
-    OrderManagementComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    ReactiveFormsModule,
-    OrderManagementRoutingModule,
-    ProductAttributeSetModule,
-    NotesModule
-  ],
-  exports:[OrderManagementComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+    imports: [
+        CommonModule,
+        SharedModule,
+        ReactiveFormsModule,
+        OrderManagementRoutingModule,
+        ProductAttributeSetModule,
+        NotesModule,
+        OrderManagementComponent
+    ],
+    exports: [OrderManagementComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class OrderManagementModule { }

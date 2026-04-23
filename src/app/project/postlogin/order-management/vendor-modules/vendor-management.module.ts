@@ -18,21 +18,21 @@ import { PurchaseorderModule } from './purchaseorder/purchaseorder.module';
 import { BillManagementModule } from './bill-management/bill-management.module';
 
 @NgModule({
-  declarations: [VendorManagementComponent],
-  imports: [
-    CommonModule,
-    VendorManagementRoutingModule,
-    MaterialModule,
-    SharedModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatStepperModule,
-    PurchaseorderModule,
-    rfqModule,
-    ReceivedQuotationModule,
-    BillManagementModule,
-  ],
-  exports: [VendorManagementComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        VendorManagementRoutingModule,
+        MaterialModule,
+        SharedModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatStepperModule,
+        PurchaseorderModule,
+        rfqModule,
+        ReceivedQuotationModule,
+        BillManagementModule,
+        VendorManagementComponent,
+    ],
+    exports: [VendorManagementComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class VendorManagementModule { }

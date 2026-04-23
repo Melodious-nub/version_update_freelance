@@ -13,24 +13,22 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProductTemplateModule } from '../product-management/product-template/product-template.module';
 
 @NgModule({
-  declarations: [
-    SystemConfigManagementComponent,
-    IndustryTypeComponent,
-    BusinessEntityConfigurationComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    SystemConfigRoutingModule,
-    DragDropModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatIconModule,
-    ProductTemplateModule
-  ],
-  exports: [
-    BusinessEntityConfigurationComponent
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+    imports: [
+        CommonModule,
+        SharedModule,
+        SystemConfigRoutingModule,
+        DragDropModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatIconModule,
+        ProductTemplateModule,
+        SystemConfigManagementComponent,
+        IndustryTypeComponent,
+        BusinessEntityConfigurationComponent
+    ],
+    exports: [
+        BusinessEntityConfigurationComponent
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class SystemConfigModule { }

@@ -7,8 +7,8 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
 import { ToastrService } from 'ngx-toastr';
@@ -19,11 +19,47 @@ import { BusinessAccountService } from 'src/app/project/postlogin/business-accou
 import { ThreeSceneComponent } from 'src/app/shared/component/three-scene/three-scene.component';
 import { OrderManagementService } from 'src/app/project/postlogin/order-management/service/order-management.service';
 import { environment } from 'src/environments/environment';
+import { NumberFormatterPipe } from '../../../../../../shared/pipes/number-formatter.pipe';
+import { MatIcon } from '@angular/material/icon';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { ThreeSceneComponent as ThreeSceneComponent_1 } from '../../../../../../shared/component/three-scene/three-scene.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { DadyinInputComponent } from '../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { DadyinSelectComponent } from '../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinSearchableSelectComponent } from '../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { NgIf, NgFor, NgStyle, NgClass, SlicePipe, DatePipe } from '@angular/common';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-order-details',
-  templateUrl: './order-details.component.html',
-  styleUrls: ['./order-details.component.scss'],
+    selector: 'app-order-details',
+    templateUrl: './order-details.component.html',
+    styleUrls: ['./order-details.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        ReactiveFormsModule,
+        NgIf,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+        DadyinSelectComponent,
+        DadyinInputComponent,
+        NgFor,
+        NgStyle,
+        ExtendedModule,
+        ThreeSceneComponent_1,
+        NgClass,
+        RouterLink,
+        NgbTooltip,
+        MatIcon,
+        SlicePipe,
+        DatePipe,
+        NumberFormatterPipe,
+    ],
 })
 export class OrderDetailsComponent implements OnInit {
   containerData: any;

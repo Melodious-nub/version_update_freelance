@@ -2,15 +2,34 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, debounceTime } from 'rxjs';
 import { FormsService } from '../../../../../../../../../../service/forms.service';
 import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectorRef } from '@angular/core';
-import { UntypedFormArray, FormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UomService } from 'src/app/service/uom.service';
 import { ToastrService } from 'ngx-toastr';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { DadyinSearchableSelectComponent } from '../../../../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { DadyinButtonComponent } from '../../../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { NgIf, NgFor, NgClass } from '@angular/common';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } from '@angular/material/expansion';
 @Component({
-  selector: 'app-raw-material-process',
-  templateUrl: './raw-material-process.component.html',
-  styleUrls: ['./raw-material-process.component.scss'],
+    selector: 'app-raw-material-process',
+    templateUrl: './raw-material-process.component.html',
+    styleUrls: ['./raw-material-process.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        NgIf,
+        DadyinButtonComponent,
+        DadyinSearchableSelectComponent,
+        NgFor,
+        MatExpansionPanelContent,
+        NgClass,
+        ExtendedModule,
+    ],
 })
 export class RawMaterialProcessComponent implements OnInit {
   @Input() templateForm: any;

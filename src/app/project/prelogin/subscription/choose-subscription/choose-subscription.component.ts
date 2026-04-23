@@ -3,11 +3,16 @@ import { PaymentInfoList } from '../payment-info-list';
 import { Router } from '@angular/router';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { SubscriptionService } from '../subscription.service';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgIf, NgFor, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-choose-subscription',
-  templateUrl: './choose-subscription.component.html',
-  styleUrls: ['./choose-subscription.component.scss']
+    selector: 'app-choose-subscription',
+    templateUrl: './choose-subscription.component.html',
+    styleUrls: ['./choose-subscription.component.scss'],
+    standalone: true,
+    imports: [NgIf, NgFor, NgClass, ExtendedModule, DadyinButtonComponent]
 })
 export class ChooseSubscriptionComponent implements OnInit {
   calenderList = [{ name: 'Yearly', isChecked: true, value: 'Year' }, { name: 'Monthly', isChecked: false, value: 'Month' }];

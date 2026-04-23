@@ -75,7 +75,18 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 
 @NgModule({
-    declarations: [
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        NgSelectModule,
+        HttpClientJsonpModule,
+        GoogleMapsModule,
+        NgbTooltipModule,
+        SwiperModule,
+        DragDropModule,
+        CKEditorModule,
         DeleteDialogComponent,
         AddCostDialogComponent,
         AddNewAttributesDialogComponent,
@@ -126,19 +137,6 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
         PaymentDialogComponent,
         ChangePasswordDialogComponent,
         OrderByPipe
-    ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        NgSelectModule,
-        HttpClientJsonpModule,
-        GoogleMapsModule,
-        NgbTooltipModule,
-        SwiperModule,
-        DragDropModule, 
-        CKEditorModule
     ],
     exports: [
         DeleteDialogComponent,
@@ -199,7 +197,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
         ChangePasswordDialogComponent,
         OrderByPipe
     ],
-    providers: [HttpService, ApiService, SortFormArrayPipe, SortNamePipe,SortNumberPropertyPipe, ShortNamePipe, NumberFormatterPipe,SortProductPipe, OrderByPipe],
+    providers: [HttpService, ApiService, SortFormArrayPipe, SortNamePipe, SortNumberPropertyPipe, ShortNamePipe, NumberFormatterPipe, SortProductPipe, OrderByPipe],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class SharedModule { }

@@ -13,29 +13,27 @@ import { ReceivedPoRoutingModule } from './receivedPo-routing.module';
 import { RecordPaymentDialog } from './shared/record-payment-dialog/record-payment-dialog.component';
 
 @NgModule({
-  declarations: [
-    ReceivedPoComponent,
-    ReceivedPoListComponent,
-    ReceivedPoStepsComponent,
-    CreateOrderComponent,
-    RecordPaymentDialog,
-  ],
-  imports: [
-    CommonModule,
-    ReceivedPoRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-    MaterialModule,
-    MatStepperModule,
-    ToastrModule,
-  ],
-  exports: [
-    ReceivedPoComponent,
-    ReceivedPoListComponent,
-    ReceivedPoStepsComponent,
-    CreateOrderComponent,
-    RecordPaymentDialog,
-  ],
+    imports: [
+        CommonModule,
+        ReceivedPoRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        MaterialModule,
+        MatStepperModule,
+        ToastrModule,
+        ReceivedPoComponent,
+        ReceivedPoListComponent,
+        ReceivedPoStepsComponent,
+        CreateOrderComponent,
+        RecordPaymentDialog,
+    ],
+    exports: [
+        ReceivedPoComponent,
+        ReceivedPoListComponent,
+        ReceivedPoStepsComponent,
+        CreateOrderComponent,
+        RecordPaymentDialog,
+    ],
 })
 export class ReceivedPoModule {}

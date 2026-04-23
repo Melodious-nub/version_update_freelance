@@ -2,15 +2,18 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Component, OnInit } from '@angular/core';
 import { Inject } from '@angular/core';
 import { FormArray, UntypedFormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PageEvent } from '@angular/material/paginator';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
+import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
+import { NgFor, NgIf, DatePipe } from '@angular/common';
 @Component({
-  selector: 'app-inventory-ledger-modal',
-  templateUrl: './inventory-ledger-modal.component.html',
-  styleUrls: ['./inventory-ledger-modal.component.scss']
+    selector: 'app-inventory-ledger-modal',
+    templateUrl: './inventory-ledger-modal.component.html',
+    styleUrls: ['./inventory-ledger-modal.component.scss'],
+    standalone: true,
+    imports: [MatDialogClose, NgFor, NgIf, MatPaginator, DatePipe]
 })
 export class InventoryLedgerModalComponent implements OnInit {
   inventoryLedgerData: any[] = [];

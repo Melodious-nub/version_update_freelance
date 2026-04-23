@@ -17,31 +17,28 @@ import { BulkAddDialogComponent } from './shared/bulk-add-dialog/bulk-add-dialog
 import { SystemConfigModule } from '../system-config-management/system-config-management.module';
 
 @NgModule({
-  declarations: [
-    NoteDialogComponent,
-    EmailDialogComponent,
-    VendorCustomerManagementComponent,
-    AddEditVendorComponent,
-    VendorDetailsComponent,
-    WarehouseDetailsComponent,
-    AccountDetailsComponent,
-    LeadFilterBoxComponent,
-    selectSalesRepDialogComponent,
-    BulkAddDialogComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    VendorManagementRoutingModule,
-    CustomerManagementModule,
-    VendorManagementModule,
-    SystemConfigModule
-    
-  ],
-  exports:[
-    CustomerManagementModule,
-    VendorManagementModule
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+    imports: [
+        CommonModule,
+        SharedModule,
+        VendorManagementRoutingModule,
+        CustomerManagementModule,
+        VendorManagementModule,
+        SystemConfigModule,
+        NoteDialogComponent,
+        EmailDialogComponent,
+        VendorCustomerManagementComponent,
+        AddEditVendorComponent,
+        VendorDetailsComponent,
+        WarehouseDetailsComponent,
+        AccountDetailsComponent,
+        LeadFilterBoxComponent,
+        selectSalesRepDialogComponent,
+        BulkAddDialogComponent
+    ],
+    exports: [
+        CustomerManagementModule,
+        VendorManagementModule
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class VendorCustomerManagementModule { }

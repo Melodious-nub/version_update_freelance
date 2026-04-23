@@ -12,19 +12,17 @@ import { NotesListComponent } from './notes-list/notes-list.component';
 import { CreateNoteComponent } from './create-note/create-note.component';
 
 @NgModule({
-  declarations: [
-    NotesListComponent,
-    CreateNoteComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatStepperModule,
-    NotesRoutingModule
-  ],
-  exports: [NotesListComponent, CreateNoteComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        SharedModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatStepperModule,
+        NotesRoutingModule,
+        NotesListComponent,
+        CreateNoteComponent
+    ],
+    exports: [NotesListComponent, CreateNoteComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class NotesModule { }

@@ -18,28 +18,26 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { PurchaseorderModule } from './order-management/vendor-modules/purchaseorder/purchaseorder.module';
 @NgModule({
-  declarations: [
-    PostloginComponent,
-    ChooseBusinessAccountComponent,
-    BusinessAccountComponent,
-    ForbiddenComponent,
-    BusinessRegistrationComponent,
-    QuickCheckoutOrderComponent,
-    QuickCheckoutComponent,
-    QcProductDetailComponent,
-  ],
-  imports: [
-    CommonModule,
-    LayoutModule,
-    PostloginRoutingModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatStepperModule,
-    DragDropModule,
-    MatSidenavModule,
-    PurchaseorderModule
-  ],
-  providers: [HeaderService],
+    imports: [
+        CommonModule,
+        LayoutModule,
+        PostloginRoutingModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatStepperModule,
+        DragDropModule,
+        MatSidenavModule,
+        PurchaseorderModule,
+        PostloginComponent,
+        ChooseBusinessAccountComponent,
+        BusinessAccountComponent,
+        ForbiddenComponent,
+        BusinessRegistrationComponent,
+        QuickCheckoutOrderComponent,
+        QuickCheckoutComponent,
+        QcProductDetailComponent
+    ],
+    providers: [HeaderService],
 })
 export class PostloginModule {}

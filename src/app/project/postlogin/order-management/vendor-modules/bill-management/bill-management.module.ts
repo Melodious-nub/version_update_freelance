@@ -8,23 +8,21 @@ import { MaterialModule } from 'src/app/shared/modules/material.module';
 import { BillListComponent } from './bill-list/bill-list.component';
 import { CreateBillComponent } from './bill-steps/create-bill/create-bill.component';
 @NgModule({
-  declarations: [
-    BillManagementComponent,
-    BillListComponent,
-    BillStepsComponent,
-    CreateBillComponent,
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    MaterialModule,
-    BillManagementRoutingModule,
-  ],
-  exports: [
-    BillManagementComponent,
-    BillListComponent,
-    BillStepsComponent,
-    CreateBillComponent,
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        MaterialModule,
+        BillManagementRoutingModule,
+        BillManagementComponent,
+        BillListComponent,
+        BillStepsComponent,
+        CreateBillComponent,
+    ],
+    exports: [
+        BillManagementComponent,
+        BillListComponent,
+        BillStepsComponent,
+        CreateBillComponent,
+    ],
 })
 export class BillManagementModule {}

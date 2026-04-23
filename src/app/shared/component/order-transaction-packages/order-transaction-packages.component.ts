@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime, Subject } from 'rxjs';
@@ -7,11 +7,38 @@ import { BusinessAccountService } from 'src/app/project/postlogin/business-accou
 import { OrderFormsService } from 'src/app/project/postlogin/order-management/service/order-forms.service';
 import { ApiService } from 'src/app/service/api.service';
 import { environment } from 'src/environments/environment';
+import { NumberFormatterPipe } from '../../pipes/number-formatter.pipe';
+import { DadyinSelectComponent } from '../../widgets/dadyin-select/dadyin-select.component';
+import { MatTooltip } from '@angular/material/tooltip';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { MatOption } from '@angular/material/core';
+import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
+import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
+import { NgIf, NgFor, NgClass, DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-order-transaction-packages',
-  templateUrl: './order-transaction-packages.component.html',
-  styleUrls: ['./order-transaction-packages.component.scss'],
+    selector: 'app-order-transaction-packages',
+    templateUrl: './order-transaction-packages.component.html',
+    styleUrls: ['./order-transaction-packages.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        DadyinButtonComponent,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        MatAutocompleteTrigger,
+        MatAutocomplete,
+        MatOption,
+        NgClass,
+        ExtendedModule,
+        NgbTooltip,
+        MatTooltip,
+        DadyinSelectComponent,
+        DecimalPipe,
+        NumberFormatterPipe,
+    ],
 })
 export class OrderTransactionPackagesComponent implements OnInit {
   @Input() tierPriceView: boolean = false;

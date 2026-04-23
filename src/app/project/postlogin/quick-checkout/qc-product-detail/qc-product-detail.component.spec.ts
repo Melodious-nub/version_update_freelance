@@ -8,8 +8,8 @@ describe('QcProductDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QcProductDetailComponent ]
-    })
+    imports: [QcProductDetailComponent]
+})
     .compileComponents();
   });
 

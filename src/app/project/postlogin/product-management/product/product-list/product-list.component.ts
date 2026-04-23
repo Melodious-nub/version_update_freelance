@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -14,11 +14,49 @@ import { ProductService } from '../service/product.service';
 import { OrderManagementService } from '../../../order-management/service/order-management.service';
 import { RawMaterialPriceModalComponent } from '../../common-modals/raw-material-price-modal/raw-material-price-modal.component';
 import { SeoService } from 'src/app/core/seo.service';
+import { NumberFormatterPipe } from '../../../../../shared/pipes/number-formatter.pipe';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { SocialPostsListComponent } from '../../../social-broadcast-management/social-posts/social-posts-list/social-posts-list.component';
+import { OtherDetailsComponent } from '../other-details/other-details.component';
+import { ProductionComponent } from '../production/production.component';
+import { RelatedPoComponent } from '../related-po/related-po.component';
+import { TemplateViewComponent } from '../template-view/template-view.component';
+import { AddPackageComponent } from '../add-package/add-package.component';
+import { AddProductComponent } from '../add-product/add-product.component';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { MatTooltip } from '@angular/material/tooltip';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgClass, NgIf, NgFor } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss'],
+    selector: 'app-product-list',
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinButtonComponent,
+        NgClass,
+        ExtendedModule,
+        NgIf,
+        MatTooltip,
+        CdkDrag,
+        NgFor,
+        MatTabGroup,
+        MatTab,
+        AddProductComponent,
+        AddPackageComponent,
+        TemplateViewComponent,
+        RelatedPoComponent,
+        ProductionComponent,
+        OtherDetailsComponent,
+        SocialPostsListComponent,
+        NgbTooltip,
+        NumberFormatterPipe,
+    ],
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

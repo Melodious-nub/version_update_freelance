@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
@@ -11,11 +11,29 @@ import { OrderManagementService } from '../../../service/order-management.servic
 import { FormsService } from 'src/app/service/forms.service';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ViewQuotationComponent } from './view-quotation/view-quotation.component';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
+import { MatTooltip } from '@angular/material/tooltip';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-quotation-steps',
-  templateUrl: './receivedquotation-steps.component.html',
-  styleUrls: ['./receivedquotation-steps.component.scss'],
+    selector: 'app-quotation-steps',
+    templateUrl: './receivedquotation-steps.component.html',
+    styleUrls: ['./receivedquotation-steps.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgIf,
+        MatTooltip,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabGroup,
+        MatTab,
+        ViewQuotationComponent,
+        DatePipe,
+    ],
 })
 export class ReceivedQuotationStepsComponent implements OnInit {
   // ************* Variable Declarations *************

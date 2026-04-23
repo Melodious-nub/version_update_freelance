@@ -3,7 +3,7 @@ import {
   OnInit,
   HostListener,
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -12,11 +12,36 @@ import { CommonService } from 'src/app/service/common.service';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm/confirm-dialog.component';
+import { TemplateCalculatorComponent } from './product-templates-steps/template-calculator/template-calculator.component';
+import { TemplateProcessComponent } from './product-templates-steps/template-process/template-process.component';
+import { TemplateInfoComponent } from './product-templates-steps/template-info/template-info.component';
+import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
+import { MatTooltip } from '@angular/material/tooltip';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgClass, NgIf, NgFor } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-product-template-list-form',
-  templateUrl: './product-template-list-form.component.html',
-  styleUrls: ['./product-template-list-form.component.scss'],
+    selector: 'app-product-template-list-form',
+    templateUrl: './product-template-list-form.component.html',
+    styleUrls: ['./product-template-list-form.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgClass,
+        ExtendedModule,
+        MatTooltip,
+        NgIf,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabGroup,
+        MatTab,
+        TemplateInfoComponent,
+        MatTabLabel,
+        TemplateProcessComponent,
+        TemplateCalculatorComponent,
+    ],
 })
 export class ProductTemplateListFormComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

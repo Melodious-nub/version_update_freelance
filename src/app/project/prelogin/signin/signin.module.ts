@@ -8,16 +8,14 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { SigninComponent } from './signin.component';
 
 @NgModule({
-  declarations: [
-    SigninComponent
-  ],
-  imports: [
-    CommonModule,
-    SigninRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        SigninRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        SigninComponent,
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class SigninModule { }

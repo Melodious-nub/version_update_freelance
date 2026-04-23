@@ -1,17 +1,31 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormGroup
-} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
+import { DadyinSearchableSelectComponent } from '../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgClass, NgIf, NgFor } from '@angular/common';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
 
 
 @Component({
-  selector: 'template-info',
-  templateUrl: './template-info.component.html',
-  styleUrls: ['./template-info.component.scss'],
+    selector: 'template-info',
+    templateUrl: './template-info.component.html',
+    styleUrls: ['./template-info.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        NgClass,
+        ExtendedModule,
+        DadyinSearchableSelectComponent,
+        NgIf,
+        NgFor,
+    ],
 })
 export class TemplateInfoComponent implements OnInit {
   @Input() templateForm: UntypedFormGroup;

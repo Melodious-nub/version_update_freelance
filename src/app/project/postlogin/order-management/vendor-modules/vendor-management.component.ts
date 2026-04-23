@@ -1,10 +1,34 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BillListComponent } from './bill-management/bill-list/bill-list.component';
+import { PurchaseorderListComponent } from './purchaseorder/purchaseorder-list/purchaseorder-list.component';
+import { ReceivedquotationListComponent } from './receivedquotation-components/receivedquotation-list/receivedquotation-list.component';
+import { RfqListComponent } from './rfq-components/rfq-list/rfq-list.component';
+import { MatBadge } from '@angular/material/badge';
+import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-vendor-management',
-  templateUrl: './vendor-management.component.html',
-  styleUrls: ['./vendor-management.component.scss'],
+    selector: 'app-vendor-management',
+    templateUrl: './vendor-management.component.html',
+    styleUrls: ['./vendor-management.component.scss'],
+    standalone: true,
+    imports: [
+        NgClass,
+        ExtendedModule,
+        MatTabGroup,
+        NgFor,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        NgIf,
+        RfqListComponent,
+        ReceivedquotationListComponent,
+        PurchaseorderListComponent,
+        BillListComponent,
+    ],
 })
 export class VendorManagementComponent implements OnInit {
   @Input('single') single = false;

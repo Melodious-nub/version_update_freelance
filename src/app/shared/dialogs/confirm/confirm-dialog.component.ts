@@ -1,10 +1,20 @@
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
+import { MatButton } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'confirm-dialog',
-  templateUrl: './confirm-dialog.component.html',
-  styleUrls: ['./confirm-dialog.component.scss'],
+    selector: 'confirm-dialog',
+    templateUrl: './confirm-dialog.component.html',
+    styleUrls: ['./confirm-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatDialogTitle,
+        MatDialogActions,
+        MatButton,
+        MatDialogClose,
+    ],
 })
 export class ConfirmDialogComponent {
   okayButtonText='Yes'

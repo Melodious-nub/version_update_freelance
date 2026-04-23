@@ -1,16 +1,21 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
+import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { UomService } from 'src/app/service/uom.service';
 import { environment } from 'src/environments/environment';
+import { FormsModule } from '@angular/forms';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgFor, NgClass, NgStyle, NgIf } from '@angular/common';
 
 @Component({
     selector: 'data-table-editable',
     templateUrl: './data-table-editable.component.html',
-    styleUrls: ['./data-table-editable.component.scss']
+    styleUrls: ['./data-table-editable.component.scss'],
+    standalone: true,
+    imports: [MatTable, MatSort, NgFor, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, NgClass, ExtendedModule, NgStyle, MatCellDef, MatCell, NgIf, FormsModule, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator]
 })
 export class DataTableEditableComponent implements OnInit {
     imgUrl: any = environment.imgUrl

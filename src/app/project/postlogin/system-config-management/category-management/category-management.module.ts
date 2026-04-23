@@ -7,17 +7,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductCategoriesModule } from './product-categories/product-categories.module';
 
 @NgModule({
-  declarations: [
-    CategoryManagementComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    ReactiveFormsModule,
-    CategoryManagementRoutingModule,
-    ProductCategoriesModule
-  ],
-  exports:[CategoryManagementComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+    imports: [
+        CommonModule,
+        SharedModule,
+        ReactiveFormsModule,
+        CategoryManagementRoutingModule,
+        ProductCategoriesModule,
+        CategoryManagementComponent
+    ],
+    exports: [CategoryManagementComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class CategoryManagementModule { }

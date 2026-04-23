@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { BusinessAccountService } from '../../business-account/business-account.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-user-management',
-  templateUrl: './user-management.component.html',
-  styleUrls: ['./user-management.component.scss'],
+    selector: 'app-user-management',
+    templateUrl: './user-management.component.html',
+    styleUrls: ['./user-management.component.scss'],
+    standalone: true,
+    imports: [RouterOutlet],
 })
 export class UsermanagementComponent implements OnInit {
   public currentMainIndex: number = 0;

@@ -9,18 +9,18 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [ProductTagsComponent, ProductTagsListComponent],
-  imports: [
-    CommonModule,
-    ProductRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-    MatStepperModule,
-    ToastrModule,
-  ],
-  providers: [
-    DatePipe
-  ]
+    imports: [
+        CommonModule,
+        ProductRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        MatStepperModule,
+        ToastrModule,
+        ProductTagsComponent, ProductTagsListComponent,
+    ],
+    providers: [
+        DatePipe
+    ]
 })
 export class ProductTagsModule { }

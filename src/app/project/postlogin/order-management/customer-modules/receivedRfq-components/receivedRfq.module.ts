@@ -13,23 +13,21 @@ import { ReceivedRfqComponent } from './receivedRfq.component';
 import { ReceivedRfqRoutingModule } from './receivedRfq.routing.module';
 
 @NgModule({
-  declarations: [
-    ReceivedRfqListComponent,
-    ViewRfqComponent,
-    ReceivedRfqStepsComponent,
-    ReceivedRfqComponent
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    SharedModule,
-    ReceivedRfqRoutingModule
+    imports: [
+        CommonModule,
+        MaterialModule,
+        SharedModule,
+        ReceivedRfqRoutingModule,
+        ReceivedRfqListComponent,
+        ViewRfqComponent,
+        ReceivedRfqStepsComponent,
+        ReceivedRfqComponent
     ],
-  exports: [
-    ReceivedRfqListComponent,
-    ViewRfqComponent,
-    ReceivedRfqStepsComponent,
-    ReceivedRfqComponent
-  ]
+    exports: [
+        ReceivedRfqListComponent,
+        ViewRfqComponent,
+        ReceivedRfqStepsComponent,
+        ReceivedRfqComponent
+    ]
 })
 export class ReceivedRfqModule { }

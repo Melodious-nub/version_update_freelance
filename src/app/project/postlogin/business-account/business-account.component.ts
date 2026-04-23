@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -10,11 +10,33 @@ import { TokenService } from 'src/app/service/token.service';
 import { BusinessRegistrationFormsService } from './services/business-registration-forms.service';
 import { BusinessAccountService } from './business-account.service';
 import { SwiperOptions } from 'swiper';
-import { SwiperComponent } from 'swiper/angular';
+import { SwiperComponent, SwiperModule } from 'swiper/angular';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { NgIf, NgFor, NgClass } from '@angular/common';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { DadyinMapAutoCompleteComponent } from '../../../shared/widgets/dadyin-map-autocomplete/dadyin-map-autocomplete.component';
+import { DadyinSelectComponent } from '../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyin-input.component';
 @Component({
-  selector: 'app-business-account',
-  templateUrl: './business-account.html',
-  styleUrls: ['./business-account.scss'],
+    selector: 'app-business-account',
+    templateUrl: './business-account.html',
+    styleUrls: ['./business-account.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        DadyinSelectComponent,
+        DadyinMapAutoCompleteComponent,
+        NgSelectModule,
+        NgIf,
+        DadyinButtonComponent,
+        NgFor,
+        NgClass,
+        ExtendedModule,
+        SwiperModule,
+    ],
 })
 export class BusinessAccountComponent implements OnInit {
   @ViewChild('swiperR', { static: false }) swiperR?: SwiperComponent;

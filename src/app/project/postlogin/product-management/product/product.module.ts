@@ -21,20 +21,20 @@ import { CustomerDialogComponent } from './modals/customer-dialog/customer-dialo
 import { ProductionComponent } from './production/production.component';
 
 @NgModule({
-  declarations: [ProductComponent, ProductListComponent, AddProductComponent, ProductListAllComponent, AddPackageComponent, TemplateViewComponent, RelatedPoComponent, OtherDetailsComponent, QuickPricingModalComponent, FilterBoxComponent,CustomerDialogComponent,ProductionComponent],
-  imports: [
-    CommonModule,
-    ProductRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-    SocialPostsModule,
-    MatStepperModule,
-    MatPaginatorModule,
-    ToastrModule,
-  ],
-  providers: [
-    DatePipe
-  ]
+    imports: [
+        CommonModule,
+        ProductRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        SocialPostsModule,
+        MatStepperModule,
+        MatPaginatorModule,
+        ToastrModule,
+        ProductComponent, ProductListComponent, AddProductComponent, ProductListAllComponent, AddPackageComponent, TemplateViewComponent, RelatedPoComponent, OtherDetailsComponent, QuickPricingModalComponent, FilterBoxComponent, CustomerDialogComponent, ProductionComponent,
+    ],
+    providers: [
+        DatePipe
+    ]
 })
 export class ProductModule { }

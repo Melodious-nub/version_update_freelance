@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MatIcon } from '@angular/material/icon';
+import { MatTooltip } from '@angular/material/tooltip';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
     selector: 'dadyin-selected-value',
@@ -7,7 +10,9 @@ import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
     styleUrls: ['./dadyin-selected-value.component.scss'],
     providers: [
         { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DadyinSelectedValueComponent), multi: true },
-    ]
+    ],
+    standalone: true,
+    imports: [NgFor, NgIf, MatTooltip, MatIcon]
 })
 export class DadyinSelectedValueComponent implements OnInit {
 

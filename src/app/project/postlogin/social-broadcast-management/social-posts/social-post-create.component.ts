@@ -1,9 +1,9 @@
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChildren, QueryList, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { SocialProfilesApiService } from '../service/social-profiles-api.service';
-import { MatExpansionPanel } from '@angular/material/expansion';
-import { Location } from '@angular/common';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
+import { Location, NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgClass, NgTemplateOutlet } from '@angular/common';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { APPCOMMONHELPERS } from 'src/app/helpers/appcommonhelpers';
@@ -16,6 +16,16 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
 import { formatGeneratedContentToHtml, htmlToSocialText } from '../../../../helpers/content-utils';
+import { TimePickerComponent } from '../../../../shared/widgets/time-picker/time-picker.component';
+import { MatIcon } from '@angular/material/icon';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { DadyinSearchSelectNewComponent } from '../../../../shared/widgets/dadyin-search-select-new/dadyin-search-select-new.component';
+import { DadyinSelectComponent } from '../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { DadyinInputComponent } from '../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
+import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SpinnerOverlayComponent } from '../../../../shared/component/spinner-overlay/spinner-overlay.component';
 
 type ProductImageTile = {
     productId: any;
@@ -29,7 +39,9 @@ type ProductImageTile = {
 @Component({
     selector: 'app-social-post-create',
     templateUrl: './social-post-create.component.html',
-    styleUrls: ['./social-post-detail.component.scss']
+    styleUrls: ['./social-post-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, SpinnerOverlayComponent, DadyinButtonComponent, MatTabGroup, NgFor, MatTab, MatTabLabel, NgSwitch, NgSwitchCase, NgSwitchDefault, MatTabContent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, DadyinSelectComponent, DadyinSearchSelectNewComponent, CKEditorModule, NgClass, ExtendedModule, MatIcon, TimePickerComponent, NgTemplateOutlet]
 })
 export class SocialPostCreateComponent implements OnInit, AfterViewInit, OnDestroy {
     public Editor = ClassicEditor;

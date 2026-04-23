@@ -1,11 +1,15 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationStrategy } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'app-forbidden',
-  templateUrl: './forbidden.component.html',
-  styleUrls: ['./forbidden.component.scss']
+    selector: 'app-forbidden',
+    templateUrl: './forbidden.component.html',
+    styleUrls: ['./forbidden.component.scss'],
+    standalone: true,
+    imports: [MatButton, MatIcon]
 })
 export class ForbiddenComponent implements OnInit {
 

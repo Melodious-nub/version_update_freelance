@@ -17,26 +17,24 @@ import { DocumentsDetailsComponent } from './container-steps/documents-details/d
 import { ExpensesDetailsComponent } from './container-steps/expenses-details/expenses-details.component';
 
 @NgModule({
-  declarations: [
-    ContainerComponent,
-    ContainerListComponent,
-    ContainerStepsComponent,
-    OrderDetailsComponent,
-    ContainerInfoComponent,
-    ExpensesDetailsComponent,
-    DocumentsDetailsComponent,
-    UnloadingDetailsComponent
-  ],
-  imports: [
-    CommonModule,
-    ContainerRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-    MaterialModule,
-    MatStepperModule,
-    MatExpansionModule,
-    ToastrModule,
-  ],
+    imports: [
+        CommonModule,
+        ContainerRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        MaterialModule,
+        MatStepperModule,
+        MatExpansionModule,
+        ToastrModule,
+        ContainerComponent,
+        ContainerListComponent,
+        ContainerStepsComponent,
+        OrderDetailsComponent,
+        ContainerInfoComponent,
+        ExpensesDetailsComponent,
+        DocumentsDetailsComponent,
+        UnloadingDetailsComponent,
+    ],
 })
 export class ContainerModule {}

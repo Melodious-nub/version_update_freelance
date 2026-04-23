@@ -8,18 +8,61 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
+import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { ApiService } from 'src/app/service/api.service';
 import { UomService } from 'src/app/service/uom.service';
 import { environment } from 'src/environments/environment';
+import { NumberFormatterPipe } from '../../pipes/number-formatter.pipe';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
+import { MatBadge } from '@angular/material/badge';
+import { MatIcon } from '@angular/material/icon';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { MatTooltip } from '@angular/material/tooltip';
+import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgFor, NgIf, NgStyle, NgClass, SlicePipe, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'data-table',
-  templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.scss'],
+    selector: 'data-table',
+    templateUrl: './data-table.component.html',
+    styleUrls: ['./data-table.component.scss'],
+    standalone: true,
+    imports: [
+        MatTable,
+        MatSort,
+        NgFor,
+        MatColumnDef,
+        NgIf,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        NgStyle,
+        ExtendedModule,
+        MatCheckbox,
+        MatCellDef,
+        MatCell,
+        MatSortHeader,
+        NgClass,
+        DadyinButtonComponent,
+        MatTooltip,
+        NgbTooltip,
+        MatIcon,
+        MatBadge,
+        FormsModule,
+        NgSelectModule,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        MatPaginator,
+        SlicePipe,
+        DatePipe,
+        NumberFormatterPipe,
+    ],
 })
 export class DataTableComponent implements OnInit {
   initialSelection = [];

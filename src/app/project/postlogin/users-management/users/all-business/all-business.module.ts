@@ -7,19 +7,17 @@ import { MaterialModule } from 'src/app/shared/modules/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AllBusinessComponent,
-    AllBusinessListComponent
-  ],
-  imports: [
-    CommonModule,
-    AllBusinessRoutingModule,
-    MaterialModule,
-    SharedModule
-  ],
-  exports: [
-    AllBusinessComponent,
-    AllBusinessListComponent
-  ]
+    imports: [
+        CommonModule,
+        AllBusinessRoutingModule,
+        MaterialModule,
+        SharedModule,
+        AllBusinessComponent,
+        AllBusinessListComponent
+    ],
+    exports: [
+        AllBusinessComponent,
+        AllBusinessListComponent
+    ]
 })
 export class AllBusinessModule { }

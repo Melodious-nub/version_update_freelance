@@ -1,11 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NotesListComponent } from './notes/notes-list/notes-list.component';
+import { AttributeListComponent } from './product-attributeset/attribute-list/attribute-list.component';
+import { MatBadge } from '@angular/material/badge';
+import { NgFor, NgIf } from '@angular/common';
+import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-order-management',
-  templateUrl: './order-management.component.html',
-  styleUrls: ['./order-management.component.scss'],
+    selector: 'app-order-management',
+    templateUrl: './order-management.component.html',
+    styleUrls: ['./order-management.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabGroup,
+        NgFor,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        NgIf,
+        AttributeListComponent,
+        NotesListComponent,
+    ],
 })
 export class OrderManagementComponent implements OnInit {
   public currentMainIndex: number = 0;

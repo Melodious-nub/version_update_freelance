@@ -15,20 +15,18 @@ import { CreateAttributeComponent } from './attribute-steps/create-attribute/cre
 
 
 @NgModule({
-  declarations: [
-    AttributeListComponent,
-    AttributeSetStepsComponent,
-    CreateAttributeComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatStepperModule,
-    ProductAttributeSetRoutingModule
-  ],
-  exports: [AttributeListComponent, AttributeSetStepsComponent, CreateAttributeComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        SharedModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatStepperModule,
+        ProductAttributeSetRoutingModule,
+        AttributeListComponent,
+        AttributeSetStepsComponent,
+        CreateAttributeComponent
+    ],
+    exports: [AttributeListComponent, AttributeSetStepsComponent, CreateAttributeComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class ProductAttributeSetModule { }

@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { TokenService } from 'src/app/service/token.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss'],
+    standalone: true
 })
 export class DashboardComponent implements OnInit {
 

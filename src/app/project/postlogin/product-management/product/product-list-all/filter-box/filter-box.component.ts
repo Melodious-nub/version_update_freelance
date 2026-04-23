@@ -1,15 +1,21 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { TokenService } from 'src/app/service/token.service';
 import { ProductManagementService } from '../../../service/product-management.service';
 import { Subject, debounceTime, distinctUntilChanged, fromEvent, switchMap, tap } from 'rxjs';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgIf, NgFor } from '@angular/common';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatExpansionPanelDescription } from '@angular/material/expansion';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-filter-box',
-  templateUrl: './filter-box.component.html',
-  styleUrls: ['./filter-box.component.scss']
+    selector: 'app-filter-box',
+    templateUrl: './filter-box.component.html',
+    styleUrls: ['./filter-box.component.scss'],
+    standalone: true,
+    imports: [MatIcon, NgIf, DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatExpansionPanelDescription, NgFor, MatCheckbox]
 })
 export class FilterBoxComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

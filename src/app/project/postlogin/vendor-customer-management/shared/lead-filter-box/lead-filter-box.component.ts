@@ -6,14 +6,31 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BusinessAccountService } from '../../../business-account/business-account.service';
 import { ApiService } from 'src/app/service/api.service';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { MatTooltip } from '@angular/material/tooltip';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgIf, NgFor, SlicePipe } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-lead-filter-box',
-  templateUrl: './lead-filter-box.component.html',
-  styleUrls: ['./lead-filter-box.component.scss'],
+    selector: 'app-lead-filter-box',
+    templateUrl: './lead-filter-box.component.html',
+    styleUrls: ['./lead-filter-box.component.scss'],
+    standalone: true,
+    imports: [
+        MatIcon,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        NgFor,
+        NgSelectModule,
+        MatTooltip,
+        DadyinButtonComponent,
+        SlicePipe,
+    ],
 })
 export class LeadFilterBoxComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

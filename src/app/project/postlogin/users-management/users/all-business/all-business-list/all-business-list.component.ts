@@ -10,11 +10,20 @@ import { InviteDialogComponent } from 'src/app/shared/component/invite-dialog/in
 import { BusinessAccountService } from '../../../../business-account/business-account.service';
 import { ToastrService } from 'ngx-toastr';
 import { BulkAddDialogComponent } from 'src/app/project/postlogin/vendor-customer-management/shared/bulk-add-dialog/bulk-add-dialog.component';
+import { DataTableComponent } from '../../../../../../shared/component/data-table/data-table.component';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../../../../shared/component/search-filter/search-filter.component';
 
 @Component({
-  selector: 'app-all-business-list',
-  templateUrl: './all-business-list.component.html',
-  styleUrls: ['./all-business-list.component.scss'],
+    selector: 'app-all-business-list',
+    templateUrl: './all-business-list.component.html',
+    styleUrls: ['./all-business-list.component.scss'],
+    standalone: true,
+    imports: [
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent,
+    ],
 })
 export class AllBusinessListComponent implements OnInit {
   public allBusinessList: any[] = [];

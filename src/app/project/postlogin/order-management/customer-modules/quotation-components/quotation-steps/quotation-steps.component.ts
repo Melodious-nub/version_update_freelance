@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormArray, FormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, FormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
@@ -12,11 +12,31 @@ import { BusinessAccountService } from 'src/app/project/postlogin/business-accou
 import { ContainerManagementService } from 'src/app/project/postlogin/container-management/service/container-management.service';
 import { FormsService } from 'src/app/service/forms.service';
 import { environment } from 'src/environments/environment';
+import { CreateQuotationComponent } from './create-quotation/create-quotation.component';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { MatTooltip } from '@angular/material/tooltip';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-quotation-steps',
-  templateUrl: './quotation-steps.component.html',
-  styleUrls: ['./quotation-steps.component.scss'],
+    selector: 'app-quotation-steps',
+    templateUrl: './quotation-steps.component.html',
+    styleUrls: ['./quotation-steps.component.scss'],
+    standalone: true,
+    imports: [
+        DadyinButtonComponent,
+        NgIf,
+        MatTooltip,
+        CdkDrag,
+        NgFor,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabGroup,
+        MatTab,
+        CreateQuotationComponent,
+        DatePipe,
+    ],
 })
 export class QuotationStepsComponent implements OnInit {
   // ************* Variable Declarations *************

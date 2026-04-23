@@ -1,6 +1,5 @@
 import {
   Component,
-  ComponentFactoryResolver,
   ComponentRef,
   Inject,
   OnDestroy,
@@ -8,13 +7,15 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogContent } from '@angular/material/dialog';
 import { ReplaySubject } from 'rxjs';
 
 @Component({
-  selector: 'app-component-dialog',
-  templateUrl: './component-dialog.component.html',
-  styleUrls: ['./component-dialog.component.scss'],
+    selector: 'app-component-dialog',
+    templateUrl: './component-dialog.component.html',
+    styleUrls: ['./component-dialog.component.scss'],
+    standalone: true,
+    imports: [MatDialogContent],
 })
 export class ComponentDialogComponent implements OnInit, OnDestroy {
   @ViewChild('target', { read: ViewContainerRef, static: true })
@@ -26,7 +27,6 @@ export class ComponentDialogComponent implements OnInit, OnDestroy {
 
   constructor(
     public dialogRef: MatDialogRef<ComponentDialogComponent>,
-    private resolver: ComponentFactoryResolver,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.dialogCallback$$.subscribe((data: any) => {
@@ -35,8 +35,7 @@ export class ComponentDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const factory = this.resolver.resolveComponentFactory(this.data.component);
-    this.componentRef = this.vcRef.createComponent(factory);
+    this.componentRef = this.vcRef.createComponent(this.data.component);
     let componentInstance = this.componentRef.instance;
     componentInstance.data = {
       ...this.data.data,

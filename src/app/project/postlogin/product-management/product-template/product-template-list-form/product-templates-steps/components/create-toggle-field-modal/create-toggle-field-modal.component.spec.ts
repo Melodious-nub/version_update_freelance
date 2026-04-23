@@ -8,8 +8,8 @@ describe('CreateToggleFieldModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateToggleFieldModalComponent ]
-    })
+    imports: [CreateToggleFieldModalComponent]
+})
     .compileComponents();
   });
 

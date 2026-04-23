@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { SelectMenuService } from 'src/app/layout/select-menu.service';
 import {
   customerList,
@@ -9,11 +9,23 @@ import {
 } from 'src/app/shared/menuconstant';
 import { BusinessAccountService } from '../business-account/business-account.service';
 import { environment } from 'src/environments/environment';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { FormsModule } from '@angular/forms';
+import { NgFor, NgIf, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    standalone: true,
+    imports: [
+        NgFor,
+        NgIf,
+        RouterLink,
+        FormsModule,
+        NgClass,
+        ExtendedModule,
+    ],
 })
 export class HomeComponent implements OnInit {
   menuList = sidebarMenu;

@@ -5,14 +5,12 @@ import { SocialBroadcastManagementComponent } from './social-broadcast-managemen
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [
-    SocialBroadcastManagementComponent
-  ],
-  imports: [
-    CommonModule,
-    SocialBroadcastManagementRoutingModule,
-    SharedModule
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    imports: [
+        CommonModule,
+        SocialBroadcastManagementRoutingModule,
+        SharedModule,
+        SocialBroadcastManagementComponent
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class SocialBroadcastManagementModule { }

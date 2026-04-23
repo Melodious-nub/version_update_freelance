@@ -30,44 +30,42 @@ import { WasteOptionModalComponent } from './product-template-list-form/product-
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { A11yModule } from "@angular/cdk/a11y";
 @NgModule({
-  declarations: [
-    ProductTemplateComponent,
-    ProductTemplateListFormComponent,
-    ProductTemplateListComponent,
-    TemplateInfoComponent,
-    TemplateProcessComponent,
-    TemplateCalculatorComponent,
-    ProcessComponent,
-    EditProcessComponent,
-    RawMaterialProcessComponent,
-    ProcessListComponent,
-    SelectProcessNameComponent,
-    ConfirmationDialogComponent,
-    SelectProductTypeComponent,
-    SelectProductDropdownComponent,
-    CreateAttributeGroupModalComponent,
-    CreateToggleFieldModalComponent,
-    CreateDropdownFieldModalComponent,
-    AttributeValueModalComponent,
-    UsageFormulasModalComponent,
-    ProductComponent,
-    PackageComponent,
-    ProcessWasteModalComponent,
-    WasteOptionModalComponent
-  ],
-  imports: [
-    CommonModule,
-    DragDropModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-    ProductTemplateRoutingModule,
-    MatTooltipModule,
-    A11yModule
-],
-  exports: [
-    CreateToggleFieldModalComponent,
-    CreateDropdownFieldModalComponent
-  ]
+    imports: [
+        CommonModule,
+        DragDropModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        ProductTemplateRoutingModule,
+        MatTooltipModule,
+        A11yModule,
+        ProductTemplateComponent,
+        ProductTemplateListFormComponent,
+        ProductTemplateListComponent,
+        TemplateInfoComponent,
+        TemplateProcessComponent,
+        TemplateCalculatorComponent,
+        ProcessComponent,
+        EditProcessComponent,
+        RawMaterialProcessComponent,
+        ProcessListComponent,
+        SelectProcessNameComponent,
+        ConfirmationDialogComponent,
+        SelectProductTypeComponent,
+        SelectProductDropdownComponent,
+        CreateAttributeGroupModalComponent,
+        CreateToggleFieldModalComponent,
+        CreateDropdownFieldModalComponent,
+        AttributeValueModalComponent,
+        UsageFormulasModalComponent,
+        ProductComponent,
+        PackageComponent,
+        ProcessWasteModalComponent,
+        WasteOptionModalComponent
+    ],
+    exports: [
+        CreateToggleFieldModalComponent,
+        CreateDropdownFieldModalComponent
+    ]
 })
 export class ProductTemplateModule { }

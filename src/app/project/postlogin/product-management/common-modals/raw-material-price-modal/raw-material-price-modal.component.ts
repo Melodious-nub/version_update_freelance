@@ -1,16 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Inject } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UntypedFormBuilder, FormsModule } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
 import { ProductService } from '../../product/service/product.service';
+import { NgIf } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-raw-material-price-modal',
-  templateUrl: './raw-material-price-modal.component.html',
-  styleUrls: ['./raw-material-price-modal.component.scss'],
+    selector: 'app-raw-material-price-modal',
+    templateUrl: './raw-material-price-modal.component.html',
+    styleUrls: ['./raw-material-price-modal.component.scss'],
+    standalone: true,
+    imports: [
+        MatDialogClose,
+        FormsModule,
+        DadyinButtonComponent,
+        NgIf,
+    ],
 })
 export class RawMaterialPriceModalComponent implements OnInit {
   prompt = null;

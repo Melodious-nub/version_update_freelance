@@ -10,7 +10,6 @@ import { CampaignFilterBoxComponent } from './filter-box/campaign-filter-box.com
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [CampaignsManagementComponent, CreateCampaignComponent, CampaignDetailComponent, CampaignHistoryComponent, CampaignFilterBoxComponent],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SharedModule, CampaignsManagementRoutingModule],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, SharedModule, CampaignsManagementRoutingModule, CampaignsManagementComponent, CreateCampaignComponent, CampaignDetailComponent, CampaignHistoryComponent, CampaignFilterBoxComponent],
 })
 export class CampaignsManagementModule {}

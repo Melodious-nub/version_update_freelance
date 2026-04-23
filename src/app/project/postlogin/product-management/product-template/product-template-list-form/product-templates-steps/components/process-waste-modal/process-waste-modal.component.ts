@@ -1,14 +1,28 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormArray, FormControl, UntypedFormGroup } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
 import { WasteOptionModalComponent } from '../waste-option-modal/waste-option-modal.component';
+import { DadyinButtonComponent } from '../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgStyle, NgFor, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-process-waste-modal',
-  templateUrl: './process-waste-modal.component.html',
-  styleUrls: ['./process-waste-modal.component.scss'],
+    selector: 'app-process-waste-modal',
+    templateUrl: './process-waste-modal.component.html',
+    styleUrls: ['./process-waste-modal.component.scss'],
+    standalone: true,
+    imports: [
+        MatDialogClose,
+        FormsModule,
+        ReactiveFormsModule,
+        NgStyle,
+        ExtendedModule,
+        NgFor,
+        NgClass,
+        DadyinButtonComponent,
+    ],
 })
 export class ProcessWasteModalComponent implements OnInit {
   calculateOptionForm: UntypedFormGroup = this.formsService.calculateOptionsForm();

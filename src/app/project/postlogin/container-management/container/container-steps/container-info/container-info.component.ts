@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
@@ -7,11 +7,39 @@ import { ToastrService } from 'ngx-toastr';
 import { ContainerManagementService } from '../../../service/container-management.service';
 import { Subject } from 'rxjs';
 import { ContainerFormsService } from '../../../service/container-forms.service';
+import { MatOption } from '@angular/material/core';
+import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
+import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { DadyinSelectComponent } from '../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
+import { DadyinInputComponent } from '../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgStyle, NgFor, NgIf, SlicePipe } from '@angular/common';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-container-info',
-  templateUrl: './container-info.component.html',
-  styleUrls: ['./container-info.component.scss'],
+    selector: 'app-container-info',
+    templateUrl: './container-info.component.html',
+    styleUrls: ['./container-info.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        NgStyle,
+        ExtendedModule,
+        MatExpansionPanelContent,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        NgFor,
+        DadyinSelectComponent,
+        NgIf,
+        DadyinButtonComponent,
+        MatAutocompleteTrigger,
+        MatAutocomplete,
+        MatOption,
+        SlicePipe,
+    ],
 })
 export class ContainerInfoComponent implements OnInit {
   @Input() isExport: any;

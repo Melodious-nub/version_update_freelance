@@ -1,11 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgClass, NgIf, TitleCasePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-social-callback',
-  templateUrl: './social-callback.component.html',
-  styleUrls: ['./social-callback.component.scss'],
+    selector: 'app-social-callback',
+    templateUrl: './social-callback.component.html',
+    styleUrls: ['./social-callback.component.scss'],
+    standalone: true,
+    imports: [
+        NgClass,
+        ExtendedModule,
+        NgIf,
+        TitleCasePipe,
+    ],
 })
 export class SocialCallbackComponent implements OnInit, OnDestroy {
   provider = 'N/A';

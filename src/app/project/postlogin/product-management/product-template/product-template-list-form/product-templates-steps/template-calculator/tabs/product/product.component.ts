@@ -1,12 +1,6 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
-import {
-  UntypedFormArray,
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ProductTemplateService } from 'src/app/project/postlogin/product-management/product-template/service/product-template.service';
@@ -18,11 +12,40 @@ import { CreateToggleFieldModalComponent } from '../../../components/create-togg
 import { UsageFormulasModalComponent } from '../../../components/usage-formulas-modal/usage-formulas-modal.component';
 import { SortFormArrayPipe } from 'src/app/shared/pipes/sort-formarray-sortorder.pipe';
 import { CalculateErrorModalComponent } from 'src/app/project/postlogin/product-management/common-modals/calculate-error-modal/calculate-error-modal.component';
+import { SortNamePipe } from '../../../../../../../../../shared/pipes/sort-array-ascending-name.pipe';
+import { SortFormArrayPipe as SortFormArrayPipe_1 } from '../../../../../../../../../shared/pipes/sort-formarray-sortorder.pipe';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatIcon } from '@angular/material/icon';
+import { MatOption } from '@angular/material/core';
+import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgStyle, NgIf, NgClass, NgFor } from '@angular/common';
+import { DadyinButtonComponent } from '../../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html', 
-  styleUrls: ['./product.component.scss'],
+    selector: 'app-product',
+    templateUrl: './product.component.html',
+    styleUrls: ['./product.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        DadyinButtonComponent,
+        NgStyle,
+        ExtendedModule,
+        NgIf,
+        NgClass,
+        NgFor,
+        ReactiveFormsModule,
+        MatAutocompleteTrigger,
+        MatAutocomplete,
+        MatOption,
+        MatIcon,
+        MatTooltip,
+        CdkDropList,
+        CdkDrag,
+        SortFormArrayPipe_1,
+        SortNamePipe,
+    ],
 })
 export class ProductComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

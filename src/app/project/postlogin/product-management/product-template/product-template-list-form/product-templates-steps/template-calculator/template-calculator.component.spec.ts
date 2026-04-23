@@ -8,8 +8,8 @@ describe('TemplateCalculatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TemplateCalculatorComponent],
-    }).compileComponents();
+    imports: [TemplateCalculatorComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

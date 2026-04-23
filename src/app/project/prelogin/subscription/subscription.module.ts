@@ -10,16 +10,14 @@ import { OnboardingComponent } from './onboarding/onboarding.component';
 
 
 @NgModule({
-  declarations: [
-    SubscriptionComponent,
-    ChooseSubscriptionComponent,
-    PaymentSubscriptionComponent,
-    OnboardingComponent
-  ],
-  imports: [
-    CommonModule,
-    SubscriptionRoutingModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        SubscriptionRoutingModule,
+        SharedModule,
+        SubscriptionComponent,
+        ChooseSubscriptionComponent,
+        PaymentSubscriptionComponent,
+        OnboardingComponent
+    ]
 })
 export class SubscriptionModule { }

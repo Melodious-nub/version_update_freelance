@@ -1,11 +1,22 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Subject, Subscription, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'search-filter',
     templateUrl: './search-filter.component.html',
     styleUrls: ['./search-filter.component.scss'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        MatIcon,
+        MatIconButton,
+    ],
 })
 export class SearchFilterComponent implements OnInit {
     @Input() searchControl =new UntypedFormControl();

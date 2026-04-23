@@ -7,16 +7,14 @@ import { MaterialModule } from 'src/app/shared/modules/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    DashboardComponent,
-  ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HomeComponent,
+        DashboardComponent
+    ]
 })
 export class HomeModule { }

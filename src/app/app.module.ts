@@ -33,60 +33,56 @@ const APPINIT_PROVIDES = [AppInitService, {
 }];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LandingComponent,
-    SocialCallbackComponent
-  ],
-  imports: [
-    CKEditorModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    StoreModule.forRoot({}),
-    ToastrModule.forRoot({
-      timeOut: 2500,
-      positionClass: 'toast-center-center', // Custom position class
-      closeButton:true
-
-    }),
-    MatStepperModule,
-    DragDropModule
-  ],
-  providers: [
-    APPINIT_PROVIDES,
-    AppInitService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: BusinessAccountInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: CacheInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: SpinnerInterceptor,
-      multi: true,
-    },
-    {
-      provide: ErrorHandler,
-      useClass: GlobalErrorHandler,
-    },
-
-  ],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent],
+    imports: [
+        CKEditorModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        CommonModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        StoreModule.forRoot({}),
+        ToastrModule.forRoot({
+            timeOut: 2500,
+            positionClass: 'toast-center-center', // Custom position class
+            closeButton: true
+        }),
+        MatStepperModule,
+        DragDropModule,
+        LandingComponent,
+        SocialCallbackComponent
+    ],
+    providers: [
+        APPINIT_PROVIDES,
+        AppInitService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: BusinessAccountInterceptor,
+            multi: true,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: CacheInterceptor,
+            multi: true,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: SpinnerInterceptor,
+            multi: true,
+        },
+        {
+            provide: ErrorHandler,
+            useClass: GlobalErrorHandler,
+        },
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

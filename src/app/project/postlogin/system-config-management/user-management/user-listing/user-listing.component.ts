@@ -6,11 +6,30 @@ import { UomService } from 'src/app/service/uom.service';
 import { ApiService } from 'src/app/service/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsermanagementService } from '../service/user-management.service';
+import { DataTableComponent } from '../../../../../shared/component/data-table/data-table.component';
+import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
+import { SearchFilterComponent } from '../../../../../shared/component/search-filter/search-filter.component';
+import { MatBadge } from '@angular/material/badge';
+import { NgFor, NgIf } from '@angular/common';
+import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-user-listing',
-  templateUrl: './user-listing.component.html',
-  styleUrls: ['./user-listing.component.scss'],
+    selector: 'app-user-listing',
+    templateUrl: './user-listing.component.html',
+    styleUrls: ['./user-listing.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabGroup,
+        NgFor,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        NgIf,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent,
+    ],
 })
 export class UserListingComponent implements OnInit {
   public userListing: any[];
