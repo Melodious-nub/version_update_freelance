@@ -93,21 +93,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "product-template:build"
+            "buildTarget": "product-template:build"
           },
           "configurations": {
             "local": {
-              "browserTarget": "product-template:build:local"
+              "buildTarget": "product-template:build:local"
             },
             "production": {
-              "browserTarget": "product-template:build:production"
+              "buildTarget": "product-template:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "product-template:build"
+            "buildTarget": "product-template:build"
           }
         },
         "test": {
