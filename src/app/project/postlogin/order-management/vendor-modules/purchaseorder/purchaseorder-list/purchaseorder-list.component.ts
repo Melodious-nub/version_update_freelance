@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -39,8 +39,8 @@ export class PurchaseorderListComponent implements OnInit {
   fb = inject(UntypedFormBuilder);
   businessAccountService = inject(BusinessAccountService);
 
-  @Input() single = false;
-  @Input() vendorId = null;
+  readonly single = input(false);
+  readonly vendorId = input(null);
   uomSetting = false;
   public preferredUoms: any[];
   public preferForm: UntypedFormGroup = this.formService.createPreferUomForm();
@@ -118,8 +118,9 @@ export class PurchaseorderListComponent implements OnInit {
     });
     uomQuery = encodeURI(uomQuery);
     let filter = '';
-    if (this.vendorId) {
-      filter = filter + `&filter=requestTo.id:${this.vendorId}`;
+    const vendorId = this.vendorId();
+    if (vendorId) {
+      filter = filter + `&filter=requestTo.id:${vendorId}`;
     }
     if (this.businessAccountService.currentBusinessAccountId) {
       filter =
@@ -187,9 +188,10 @@ export class PurchaseorderListComponent implements OnInit {
   }
 
   addPurchaseorder(): void {
-    if (this.vendorId) {
+    const vendorId = this.vendorId();
+    if (vendorId) {
       this.router.navigateByUrl(
-        `home/order-management/vendor/purchaseorder/add?vendorId=${this.vendorId}`
+        `home/order-management/vendor/purchaseorder/add?vendorId=${vendorId}`
       );
     } else {
       this.router.navigateByUrl(

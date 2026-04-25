@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -98,8 +98,8 @@ export class ReceivedPoListComponent implements OnInit {
   pageIndex: any = 0;
   pageS = 20;
   sortQuery: any = 'audit.lastModifiedDate,desc';
-  @Input() customerId: any = null;
-  @Input() single = false;
+  readonly customerId = input<any>(null);
+  readonly single = input(false);
 
   public pageConfig: any = {
     itemPerPage: 20,
@@ -121,8 +121,9 @@ export class ReceivedPoListComponent implements OnInit {
     });
     uomQuery = encodeURI(uomQuery);
     let filter = '';
-    if (this.customerId) {
-      filter = `&filter=requestFrom.id:${this.customerId}`;
+    const customerId = this.customerId();
+    if (customerId) {
+      filter = `&filter=requestFrom.id:${customerId}`;
     }
     if (this.filterValue) {
       filter = filter + `&searchString=${this.filterValue}`;
@@ -203,9 +204,10 @@ export class ReceivedPoListComponent implements OnInit {
   }
 
   addReceivedPo(): void {
-    if (this.customerId) {
+    const customerId = this.customerId();
+    if (customerId) {
       this.router.navigateByUrl(
-        `home/order-management/customer/receivedPo/add?customerId=${this.customerId}`
+        `home/order-management/customer/receivedPo/add?customerId=${customerId}`
       );
     } else {
       this.router.navigateByUrl(

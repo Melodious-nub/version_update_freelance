@@ -1,5 +1,5 @@
 
-import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, Output, EventEmitter, inject, input } from '@angular/core';
 import { FormControl, FormGroup, Validators, UntypedFormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -40,23 +40,23 @@ export class WarehouseDetailsComponent {
   private route = inject(ActivatedRoute);
   vendorFormsService = inject(VendorFormsService);
 
-  @Input() vendorForm: any;
-  @Input() isCustomer: any;
-  @Input() countries: any;
+  readonly vendorForm = input<any>(undefined);
+  readonly isCustomer = input<any>(undefined);
+  readonly countries = input<any>(undefined);
 
   get wareHouseDetails() {
-    return this.vendorForm.get('warehouses') as UntypedFormArray;
+    return this.vendorForm().get('warehouses') as UntypedFormArray;
   }
   get contactDetails() {
-    return this.vendorForm.get('contacts') as UntypedFormArray;
+    return this.vendorForm().get('contacts') as UntypedFormArray;
   }
   get primaryContact() {
-    return this.vendorForm
+    return this.vendorForm()
       .get('relationAccountDetail')
       .get('primaryContact')
   }
   get purchaseDepartmentPricings() {
-    return this.vendorForm.get('purchaseDepartmentPricings') as UntypedFormArray;
+    return this.vendorForm().get('purchaseDepartmentPricings') as UntypedFormArray;
   }
 
   addWareHouseItem() {

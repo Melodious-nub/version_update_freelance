@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, inject, viewChild } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Location, NgClass } from '@angular/common';
@@ -95,7 +95,7 @@ export class CreateCampaignComponent implements OnInit {
   private connectedPlatformNames: string[] = [];
   private connectedPlatformIdsCsv: string = '';
 
-  @ViewChild('refFileInput') refFileInputRef!: ElementRef<HTMLInputElement>;
+  readonly refFileInputRef = viewChild.required<ElementRef<HTMLInputElement>>('refFileInput');
   selectedAttachments: Array<{ file: File; url: string; name: string }> = [];
   maxAttachments = 3;
   allowedImageTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
@@ -591,7 +591,7 @@ export class CreateCampaignComponent implements OnInit {
 
     try { this.selectedAttachments = []; } catch (e) { }
     try {
-      const el = this.refFileInputRef?.nativeElement;
+      const el = this.refFileInputRef()?.nativeElement;
       if (el) el.value = '';
     } catch (e) { }
 
@@ -1534,7 +1534,7 @@ export class CreateCampaignComponent implements OnInit {
     try {
       if (this.isLoading) return;
       if (this.isPersonalisedRetail) return;
-      this.refFileInputRef?.nativeElement?.click();
+      this.refFileInputRef()?.nativeElement?.click();
     } catch (e) {}
   }
 
@@ -1711,7 +1711,7 @@ export class CreateCampaignComponent implements OnInit {
               if (val === 'retail') {
                 this.selectedAttachments = [];
                 try {
-                  const el = this.refFileInputRef?.nativeElement;
+                  const el = this.refFileInputRef()?.nativeElement;
                   if (el) el.value = '';
                 } catch (e) { }
 

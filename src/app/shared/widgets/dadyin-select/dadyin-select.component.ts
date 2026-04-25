@@ -1,5 +1,5 @@
 import { ControlContainer, UntypedFormControl, NG_VALUE_ACCESSOR, ControlValueAccessor, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef, ViewEncapsulation, AfterContentChecked, inject } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, ViewEncapsulation, AfterContentChecked, inject, input, output } from '@angular/core';
 import { CommonService } from 'src/app/service/common.service';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { NgClass, NgStyle } from '@angular/common';
@@ -31,23 +31,23 @@ export class DadyinSelectComponent implements ControlValueAccessor, OnInit, Afte
 
     @Input() height: string | null = null;
     @Input() fontSize: string | null = null;
-    @Input() label = '';
-    @Input() labelBackground = ''
-    @Input() optionLabel = 'label';
-    @Input() optionValue = 'value';
-    @Input() emptyOption = 'Select';
+    readonly label = input('');
+    readonly labelBackground = input('');
+    readonly optionLabel = input('label');
+    readonly optionValue = input('value');
+    readonly emptyOption = input('Select');
     @Input() optionArr: any = [];
     @Input() set items(val: any) { this.optionArr = val; }
-    @Input() isMultiSelect = false;
-    @Input() formControlName = '';
-    @Input() customError = "";
-    @Input() showUser: boolean = false;
+    readonly isMultiSelect = input(false);
+    readonly formControlName = input('');
+    readonly customError = input("");
+    readonly showUser = input<boolean>(false);
     @Input() isDisabled: boolean = false;
     @Input('disabled') set _isDisabled(val: boolean) { this.isDisabled = val; }
-    @Input() isErrorClass: boolean = false;
-    @Output() selectedStateChange = new EventEmitter();
-    @Output() onSelect = new EventEmitter();
-    @Input() class: any = '';
+    readonly isErrorClass = input<boolean>(false);
+    readonly selectedStateChange = output<any>();
+    readonly onSelect = output<any>();
+    readonly class = input<any>('');
     control!: UntypedFormControl;
     onChange: any = (val) => {
     };
@@ -67,8 +67,9 @@ export class DadyinSelectComponent implements ControlValueAccessor, OnInit, Afte
     }
 
     ngOnInit(): void {
-        if (this.controlContainer.control && this.formControlName) {
-            this.control = this.controlContainer.control.get(this.formControlName) as UntypedFormControl;
+        const formControlName = this.formControlName();
+        if (this.controlContainer.control && formControlName) {
+            this.control = this.controlContainer.control.get(formControlName) as UntypedFormControl;
             if (this.control) {
                 if (this.control.validator) {
                     const validator = this.control.validator && this.control.validator({} as AbstractControl);
@@ -121,8 +122,9 @@ export class DadyinSelectComponent implements ControlValueAccessor, OnInit, Afte
     getFieldErrorDesc() {
         if (this.control?.errors) {
             if (this.control.dirty || this.control.touched) {
-                if (this.customError.length) {
-                    return this.customError;
+                const customError = this.customError();
+                if (customError.length) {
+                    return customError;
                 }
                 return this.commonService.getFieldErrorDesc(this.control);
             }

@@ -1,5 +1,5 @@
 import { UntypedFormGroup, FormsModule } from '@angular/forms';
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
@@ -13,22 +13,22 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
 export class TemplateViewComponent implements OnInit{
   apiService = inject(ApiService);
 
-  @Input() productForm: UntypedFormGroup;
-  @Input() currentStepIndex: any;
-  @Input() componentUoms: any;
+  readonly productForm = input<UntypedFormGroup>(undefined);
+  readonly currentStepIndex = input<any>(undefined);
+  readonly componentUoms = input<any>(undefined);
 
 
   data: any = {};
 
   ngOnInit(): void {
-    let productTemplateId: any = this.productForm.get('productTemplateId').value
+    let productTemplateId: any = this.productForm().get('productTemplateId').value
     this.getProductTemplateById(productTemplateId)
   }
 
   async getProductTemplateById(templateId: any) {
     try {
       let uomQuery = ``;
-      this.componentUoms.controls.forEach((element) => {
+      this.componentUoms().controls.forEach((element) => {
         uomQuery =
           uomQuery +
           `&uomMap[${element.get('attributeName').value}]=${element.get('userConversionUom').value

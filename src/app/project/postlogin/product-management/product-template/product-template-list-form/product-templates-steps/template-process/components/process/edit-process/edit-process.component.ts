@@ -1,5 +1,5 @@
 import { FormsService } from '../../../../../../../../../../service/forms.service';
-import { ChangeDetectorRef, Component, EventEmitter, Input, Output, OnChanges, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -37,14 +37,14 @@ export class EditProcessComponent implements OnChanges{
   toastr = inject(ToastrService);
   route = inject(ActivatedRoute);
 
-  @Input() process: any;
-  @Input() templateForm: any;
-  @Input() index: number = 0;
-  @Input() isExpandAll: boolean;
+  readonly process = input<any>(undefined);
+  readonly templateForm = input<any>(undefined);
+  readonly index = input<number>(0);
+  readonly isExpandAll = input<boolean>(undefined);
 
-  @Output() calculate = new EventEmitter();
-  @Output() deleteProcessEvent = new EventEmitter();
-  @Input() componentUoms: any;
+  readonly calculate = output<any>();
+  readonly deleteProcessEvent = output<any>();
+  readonly componentUoms = input<any>(undefined);
 
   isExpanded = true;
   isProcessSaved = true;
@@ -52,25 +52,25 @@ export class EditProcessComponent implements OnChanges{
   async
 
   ngOnChanges() {
-    this.isExpanded = this.isExpandAll;
+    this.isExpanded = this.isExpandAll();
   }
 
   updatevalue() {
-    this.templateForm.updateValueAndValidity();
+    this.templateForm().updateValueAndValidity();
   }
 
 
 
   async enableForm() {
 
-    this.process.enable();
+    this.process().enable();
     this.apiService.finalSave = false;
     this.templateProcessType.disable({ emitEvent: false, onlySelf: true });
     this.isExistingProcess.setValue(false);
   }
 
   async disableForm() {
-    this.process.disable();
+    this.process().disable();
   }
 
   getFilteredProductsList(i) {
@@ -100,7 +100,7 @@ export class EditProcessComponent implements OnChanges{
   }
 
   addNewProcessProductControl(remainingPercent?: any) {
-    if (this.process.disabled) {
+    if (this.process().disabled) {
       return;
     }
     const processProductForm = this.FormsService.createProcessProductForm();
@@ -112,10 +112,10 @@ export class EditProcessComponent implements OnChanges{
       processProductForm.get('usedPercent').setValue(remainingPercent)
     }
 
-    const metricCost = this.componentUoms.controls.find(
+    const metricCost = this.componentUoms().controls.find(
       (item) => item.value.attributeName?.toUpperCase() == 'METRICCOST'
     );
-    const density = this.componentUoms.controls.find(
+    const density = this.componentUoms().controls.find(
       (item) => item.value.attributeName?.toUpperCase() == 'DENSITY'
     );
     processProductForm
@@ -146,7 +146,7 @@ export class EditProcessComponent implements OnChanges{
       this.getProcessConversionTypes.markAsTouched()
       return;
     }
-    const metricCost = this.componentUoms.controls.find(
+    const metricCost = this.componentUoms().controls.find(
       (item) => item.value.attributeName?.toUpperCase() == 'METRICCOST'
     );
     const conversionTypeForm = this.FormsService.createConversionTypeForm()
@@ -198,8 +198,8 @@ export class EditProcessComponent implements OnChanges{
         this.FormsService.createConversionTypeForm()
       );
     }
-    this.process.get('process').patchValue(data);
-    this.process.get('existingProcessId').setValue(data.id);
+    this.process().get('process').patchValue(data);
+    this.process().get('existingProcessId').setValue(data.id);
     this.apiService.finalSave = true;
     this.templateProcessType.enable({
       emitEvent: false,
@@ -303,7 +303,7 @@ export class EditProcessComponent implements OnChanges{
         });
         return;
       } else {
-        const templateFormValue: any = this.templateForm.getRawValue();
+        const templateFormValue: any = this.templateForm().getRawValue();
         if (!this.route.snapshot.params.id) {
           templateFormValue.productTemplateCalculator = null;
         }
@@ -335,7 +335,7 @@ export class EditProcessComponent implements OnChanges{
         let res: any = await this.apiService.saveProcessList(templateFormValue);
         this.apiService.finalSave = true;
         let uomQuery = ``;
-        this.componentUoms.controls.forEach((element) => {
+        this.componentUoms().controls.forEach((element) => {
           uomQuery =
             uomQuery +
             `&uomMap[${element.get('attributeName').value}]=${element.get('userConversionUom').value
@@ -345,13 +345,13 @@ export class EditProcessComponent implements OnChanges{
         await this.apiService.Get_All_Product_List_Uom_Based(uomQuery);
         await this.apiService.Get_All_Processes(uomQuery);
         setTimeout(() => {
-          this.templateForm.patchValue(res, {
+          this.templateForm().patchValue(res, {
             emitEvent: false,
             onlySelf: true,
           });
         }, 500);
         this.disableForm();
-        this.templateForm.patchValue(res, {
+        this.templateForm().patchValue(res, {
           emitEvent: false,
           onlySelf: true,
         });
@@ -412,9 +412,9 @@ export class EditProcessComponent implements OnChanges{
   }
 
   async setIdsToNullOnEdit() {
-    let data = this.process.getRawValue();
+    let data = this.process().getRawValue();
     const newData = this.cleanDataId(data);
-    this.process.patchValue(newData);
+    this.process().patchValue(newData);
   }
 
   cleanDataId(data) {
@@ -493,11 +493,11 @@ export class EditProcessComponent implements OnChanges{
 
 
   deleteProcess() {
-    this.deleteProcessEvent.emit();
+    this.deleteProcessEvent.emit(undefined as any);
   }
 
   calculateValues() {
-    this.calculate.emit({ index: this.index });
+    this.calculate.emit({ index: this.index() });
   }
 
   resetProduct(i) {
@@ -518,7 +518,7 @@ export class EditProcessComponent implements OnChanges{
           processForm: this.processForm,
           productList: this.apiService.allproductsListForProcess,
           calculate: this.calculate,
-          index: this.index,
+          index: this.index(),
         },
       })
       .afterClosed()
@@ -584,16 +584,16 @@ export class EditProcessComponent implements OnChanges{
   // Start Getters
 
   get processForm() {
-    const control = this.process.get('process') as UntypedFormGroup;
+    const control = this.process().get('process') as UntypedFormGroup;
     return control;
   }
 
   get getprocessDescription() {
-    const control = this.process.get('process').get('description');
+    const control = this.process().get('process').get('description');
     return control;
   }
   get getProductOfProcessDescription() {
-    const control = this.process
+    const control = this.process()
       .get('process')
       .get('productOfProcess')
       .get('productMeta')
@@ -602,33 +602,33 @@ export class EditProcessComponent implements OnChanges{
   }
 
   get getProductOfProcessId() {
-    const control = this.process
+    const control = this.process()
       .get('process')
       .get('productOfProcess')
       .get('id');
     return control;
   }
   get getprocessId() {
-    const control = this.process.get('process').get('id');
+    const control = this.process().get('process').get('id');
     return control;
   }
 
   get getprocessProducts() {
     const control = <UntypedFormArray>(
-      this.process.get('process').get('processProducts')
+      this.process().get('process').get('processProducts')
     );
     return control;
   }
   get getProcessConversionTypes() {
     const control = <UntypedFormArray>(
-      this.process.get('process').get('processConversionTypes')
+      this.process().get('process').get('processConversionTypes')
     );
     return control;
   }
 
   get productOfProcess() {
     const control = <UntypedFormGroup>(
-      this.process.get('process').get('productOfProcess')
+      this.process().get('process').get('productOfProcess')
     );
     return control;
   }
@@ -673,11 +673,11 @@ export class EditProcessComponent implements OnChanges{
   }
 
   get templateProcesses() {
-    return this.templateForm.get('templateProcesses') as UntypedFormArray;
+    return this.templateForm().get('templateProcesses') as UntypedFormArray;
   }
 
   get templateProcessType() {
-    return this.templateForm.get('templateProcessType') as UntypedFormControl;
+    return this.templateForm().get('templateProcessType') as UntypedFormControl;
   }
 
   get usedToggle() {
@@ -685,7 +685,7 @@ export class EditProcessComponent implements OnChanges{
   }
 
   get isExistingProcess() {
-    return this.process.get('isExistingProcess');
+    return this.process().get('isExistingProcess');
   }
   get metricCostUom() {
     return this.getprocessProducts.controls[0]
@@ -732,11 +732,11 @@ export class EditProcessComponent implements OnChanges{
 
 
   get rawMaterialProcess() {
-    return this.templateForm.get('rawMaterialProcess');
+    return this.templateForm().get('rawMaterialProcess');
   }
 
   get fixedProcess() {
-    return this.templateForm.get('fixedProcess');
+    return this.templateForm().get('fixedProcess');
   }
 
   onSelectOption(event: any) {
@@ -776,7 +776,7 @@ export class EditProcessComponent implements OnChanges{
   }
 
   get templateProcessMaterialType() {
-    return this.templateForm.get('templateProcessMaterialType');
+    return this.templateForm().get('templateProcessMaterialType');
   }
 
   changeTotalWasteWeight() {

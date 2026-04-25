@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef, ChangeDetectorRef, AfterContentChecked, Output, EventEmitter, inject } from '@angular/core';
+import { Component, forwardRef, ChangeDetectorRef, AfterContentChecked, inject, input, output } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { CommonService } from 'src/app/service/common.service';
 import { MatCheckbox } from '@angular/material/checkbox';
@@ -20,12 +20,12 @@ export class DadyinCheckBoxComponent implements AfterContentChecked{
   private commonService = inject(CommonService);
   private cdr = inject(ChangeDetectorRef);
 
-  @Input() ischecked = false;
-  @Input('disabled') isDisabled = false;
-  @Input() class = '';
-  @Input() label = '';
-  @Input() color = 'primary';
-  @Output() valueChange = new EventEmitter<string>();
+  readonly ischecked = input(false);
+  readonly isDisabled = input(false, { alias: "disabled" });
+  readonly class = input('');
+  readonly label = input('');
+  readonly color = input('primary');
+  readonly valueChange = output<any>();
 
   ngAfterContentChecked() {
     this.cdr.detectChanges();

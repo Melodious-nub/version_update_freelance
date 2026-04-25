@@ -1,15 +1,15 @@
-<div [class]="class">
+<div [class]="class()">
   <div class="attribute one attr-b">
     @if (label) {
-      <label [class.required]="isRequired">{{ label }}</label>
+      <label [class.required]="isRequired()">{{ label }}</label>
     }
 
     <div class="attribute-input time-picker-attribute-input">
       <input
         type="time"
         autocomplete="off"
-        [step]="minutesGap * 60"
-        [placeholder]="placeholder || label"
+        [step]="minutesGap() * 60"
+        [placeholder]="placeholder() || label"
         [value]="value"
         [disabled]="disabled || control?.disabled"
         (change)="onTimeSet($event)"

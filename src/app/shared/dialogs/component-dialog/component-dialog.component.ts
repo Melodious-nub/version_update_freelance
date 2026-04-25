@@ -1,4 +1,4 @@
-import { Component, ComponentRef, OnDestroy, OnInit, ViewChild, ViewContainerRef, inject } from '@angular/core';
+import { Component, ComponentRef, OnDestroy, OnInit, ViewContainerRef, inject, viewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogContent } from '@angular/material/dialog';
 import { ReplaySubject } from 'rxjs';
 
@@ -12,8 +12,7 @@ export class ComponentDialogComponent implements OnInit, OnDestroy {
   dialogRef = inject<MatDialogRef<ComponentDialogComponent>>(MatDialogRef);
   data = inject(MAT_DIALOG_DATA);
 
-  @ViewChild('target', { read: ViewContainerRef, static: true })
-  vcRef!: ViewContainerRef;
+  readonly vcRef = viewChild.required('target', { read: ViewContainerRef });
 
   componentRef!: ComponentRef<any>;
   dialogCallback$ = new ReplaySubject<any>();
@@ -26,7 +25,7 @@ export class ComponentDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.componentRef = this.vcRef.createComponent(this.data.component);
+    this.componentRef = this.vcRef().createComponent(this.data.component);
     let componentInstance = this.componentRef.instance;
     componentInstance.data = {
       ...this.data.data,

@@ -1,6 +1,6 @@
-<div class="datatable-container" [style.width]="width" [style.height]="'calc(' + height + ' - 190px)'">
+<div class="datatable-container" [style.width]="width()" [style.height]="'calc(' + height() + ' - 190px)'">
   <mat-table [dataSource]="dataSource" matSort (matSortChange)="onSortChange($event)">
-    @for (col of headers; track col; let i = $index) {
+    @for (col of headers(); track col; let i = $index) {
       <ng-container [matColumnDef]="col.prop">
         @if (col.prop === 'select') {
         <mat-header-cell [ngStyle]="{
@@ -29,12 +29,12 @@
           }" class="w-100">
             <div class="d-flex flex-column w-100">
               <div [ngClass]="{'center-cell-header': col?.dataType === 'number'}">
-                {{ headers[i]?.name }}
+                {{ headers()[i]?.name }}
               </div>
               <div [ngClass]="{'center-cell-header': col?.dataType === 'number'}">
-                {{ tableData?.[0]?.[headers[i]?.prop]?.userConversionUom || '' }}
+                {{ tableData?.[0]?.[headers()[i]?.prop]?.userConversionUom || '' }}
               </div>
-              @if (headers[i]?.subText) {
+              @if (headers()[i]?.subText) {
                 <div class="sub-text"></div>
               }
             </div>
@@ -147,7 +147,7 @@
                 <ng-template #icontooltip>
                   <div class="profile-actions">
                     @for (
-                      action of actions.slice(4, actions?.length); track
+                      action of actions().slice(4, actions()?.length); track
                       action; let i = $index) {
                       @if (check(action, row)) {
                         <div
@@ -181,7 +181,7 @@
                         [theme]="'borderless-primary'">
                       </dadyin-button>
                     }
-                    @for (action of actions?.slice(0, 4); track action) {
+                    @for (action of actions()?.slice(0, 4); track action) {
                       @if (check(action, row)) {
                         <div class="actionicons">
                           @if (!action?.type) {
@@ -201,7 +201,7 @@
                         </div>
                       }
                     }
-                    @if (actions.length > 4) {
+                    @if (actions().length > 4) {
                       <mat-icon class="edit-icon" triggers="manual" #t="ngbTooltip"
                         (click)="t.open(); $event.stopPropagation()" [ngbTooltip]="icontooltip"
                       placement="bottom-end">more_vert</mat-icon>
@@ -280,7 +280,7 @@
                     </span>
                   }
                   <div [attr.data-label]="col.name" class="text-ellipsis" [ngClass]="getCellNgClass(col)"
-                    [ngbTooltip]="col.isTooltip ? tooltipContent : null" #tooltipRef="ngbTooltip"
+                    [ngbTooltip]="col.isTooltip ? tooltipContent() : null" #tooltipRef="ngbTooltip"
                     [tooltipClass]="'custom-tooltip'" [placement]="'bottom'"
                     [triggers]="col.isTooltip ? 'manual' : 'hover'" [openDelay]="300" [closeDelay]="500"
                     [disableTooltip]="!col.isTooltip" [container]="'body'"
@@ -382,7 +382,7 @@
               }
               @if (col.type === 'uom') {
                 <div [attr.data-label]="col.name" class="text-ellipsis" [ngClass]="{'tooltip-enabled': col.isTooltip}"
-                  [ngbTooltip]="col.isTooltip ? tooltipContent : null" #tooltipRef="ngbTooltip"
+                  [ngbTooltip]="col.isTooltip ? tooltipContent() : null" #tooltipRef="ngbTooltip"
                   [tooltipClass]="'custom-tooltip'" [placement]="'bottom'"
                   [triggers]="col.isTooltip ? 'manual' : 'hover'" [openDelay]="300" [closeDelay]="500"
                   [disableTooltip]="!col.isTooltip" [container]="'body'"

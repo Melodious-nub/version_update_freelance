@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef, HostListener, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, HostListener, OnDestroy, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -66,12 +66,12 @@ export class CreateInvoiceComponent implements OnInit, OnDestroy {
   }
 
   map1 = false;
-  @Input() componentUoms: any;
+  readonly componentUoms = input<any>(undefined);
   productsList: any;
   quotationsList: any;
-  @Input() invoiceForm: UntypedFormGroup;
-  @Output() calculate = new EventEmitter();
-  @Output() patchEditData = new EventEmitter();
+  readonly invoiceForm = input<UntypedFormGroup>(undefined);
+  readonly calculate = output<any>();
+  readonly patchEditData = output<any>();
   private ngUnsubscribe: Subject<void> = new Subject();
   public buyingTypeList: any[] = [
     { name: 'SKU', value: 'SKU' },
@@ -113,7 +113,7 @@ export class CreateInvoiceComponent implements OnInit, OnDestroy {
   }
 
   get customerId() {
-    return this.invoiceForm.get('requestFrom').get('id');
+    return this.invoiceForm().get('requestFrom').get('id');
   }
 
   setDatas() {
@@ -124,20 +124,20 @@ export class CreateInvoiceComponent implements OnInit, OnDestroy {
     const editTillDate = new Date(
       currentDate.getTime() + 7 * 24 * 60 * 60 * 1000
     );
-    this.invoiceForm
+    this.invoiceForm()
       .get('date')
       .setValue(currentDate.toISOString().split('T')[0]);
-    this.invoiceForm
+    this.invoiceForm()
       .get('expectedByDate')
       .setValue(expectedByDate.toISOString().split('T')[0]);
-    this.invoiceForm
+    this.invoiceForm()
       .get('editTillDate')
       .setValue(editTillDate.toISOString().split('T')[0]);
-    this.invoiceForm.get('loadingTypeId').setValue('FLOOR');
+    this.invoiceForm().get('loadingTypeId').setValue('FLOOR');
   }
 
   get productPackages() {
-    return this.invoiceForm.get('productPackages') as UntypedFormArray;
+    return this.invoiceForm().get('productPackages') as UntypedFormArray;
   }
 
   ngOnDestroy(): void {
@@ -237,32 +237,32 @@ export class CreateInvoiceComponent implements OnInit, OnDestroy {
     if (!this.isEditable) {
       return;
     }
-    this.invoiceForm.get('importLocalType').setValue(value);
+    this.invoiceForm().get('importLocalType').setValue(value);
   }
   get importLocalType() {
-    return this.invoiceForm.get('importLocalType');
+    return this.invoiceForm().get('importLocalType');
   }
 
   get status() {
-    return this.invoiceForm.get('status');
+    return this.invoiceForm().get('status');
   }
 
   get isEditable() {
     return (
       this.status.value != 'CONFIRMED' &&
       this.status.value != 'REJECTED' &&
-      !this.invoiceForm.get('isQuickCheckout').value
+      !this.invoiceForm().get('isQuickCheckout').value
     );
   }
 
   get incoTermId() {
-    return this.invoiceForm.get('incoTermId');
+    return this.invoiceForm().get('incoTermId');
   }
   get departurePortId() {
-    return this.invoiceForm.get('departurePortId');
+    return this.invoiceForm().get('departurePortId');
   }
   get buyingType() {
-    return this.invoiceForm.get('buyingType');
+    return this.invoiceForm().get('buyingType');
   }
 
   onChangeCustomer() {
@@ -273,15 +273,15 @@ export class CreateInvoiceComponent implements OnInit, OnDestroy {
   }
 
   get noteId() {
-    return this.invoiceForm.get('noteTemplate').get('id');
+    return this.invoiceForm().get('noteTemplate').get('id');
   }
 
   get media_url_ids() {
-    return this.invoiceForm.get('media_url_ids');
+    return this.invoiceForm().get('media_url_ids');
   }
 
   get media_urls() {
-    return this.invoiceForm.get('media_urls');
+    return this.invoiceForm().get('media_urls');
   }
 
   getNoteTitle() {
@@ -293,7 +293,7 @@ export class CreateInvoiceComponent implements OnInit, OnDestroy {
 
   getUomQuery() {
     let uomQuery = ``;
-    this.componentUoms.controls.forEach((element) => {
+    this.componentUoms().controls.forEach((element) => {
       element.get('columnMappings').value.forEach((col) => {
         uomQuery =
           uomQuery +

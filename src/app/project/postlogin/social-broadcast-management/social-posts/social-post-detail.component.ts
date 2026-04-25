@@ -1,6 +1,6 @@
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ElementRef, OnDestroy, inject, viewChild } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { debounceTime, distinctUntilChanged, finalize, switchMap } from 'rxjs/operators';
 import { first, Observable, of } from 'rxjs';
@@ -61,7 +61,7 @@ export class SocialPostDetailComponent implements OnInit, OnDestroy {
             'bulletedList', 'numberedList', '|', 'undo', 'redo'
         ]
     };
-    @ViewChild('generatedImagesFileInput') generatedImagesFileInputRef!: ElementRef<HTMLInputElement>;
+    readonly generatedImagesFileInputRef = viewChild.required<ElementRef<HTMLInputElement>>('generatedImagesFileInput');
     postForm: UntypedFormGroup;
     isLoading = false;
     postDetails: any = null;
@@ -81,8 +81,8 @@ export class SocialPostDetailComponent implements OnInit, OnDestroy {
     finalDescriptionHtml: SafeHtml = '';
     platformContentsMap: { [key: string]: any[] } = {};
     platformContentsTextMap: { [key: string]: string } = {};
-    @ViewChild('fileInput') fileInputRef!: ElementRef<HTMLInputElement>;
-    @ViewChild('publicationTimePickerInput') publicationTimePickerInputRef!: ElementRef<HTMLInputElement>;
+    readonly fileInputRef = viewChild.required<ElementRef<HTMLInputElement>>('fileInput');
+    readonly publicationTimePickerInputRef = viewChild.required<ElementRef<HTMLInputElement>>('publicationTimePickerInput');
     selectedAttachments: Array<{ file: File; url: string; name: string }> = [];
     hoveredImageUrl: string | null = null;
     maxAttachments = 3;
@@ -389,7 +389,7 @@ export class SocialPostDetailComponent implements OnInit, OnDestroy {
             if (goesLive === 'now') return;
             if (this.postForm.get('publicationTime')?.disabled) return;
 
-            const input = this.publicationTimePickerInputRef?.nativeElement;
+            const input = this.publicationTimePickerInputRef()?.nativeElement;
             if (!input) return;
             try { input.click(); } catch (e) { }
             try { input.focus(); } catch (e) { }
@@ -650,8 +650,9 @@ export class SocialPostDetailComponent implements OnInit, OnDestroy {
     openFilePicker() {
         if (this.isRejected || this.isPublished) return;
         try {
-            if (this.fileInputRef && this.fileInputRef.nativeElement) {
-                try { this.fileInputRef.nativeElement.click(); return; } catch (e) { }
+            const fileInputRef = this.fileInputRef();
+            if (fileInputRef && fileInputRef.nativeElement) {
+                try { fileInputRef.nativeElement.click(); return; } catch (e) { }
             }
             const input = document.createElement('input');
             input.type = 'file';
@@ -725,9 +726,10 @@ export class SocialPostDetailComponent implements OnInit, OnDestroy {
         if (this.isRejected || this.isPublished) return;
         if (!this.canAddMoreGeneratedImages) return;
         try {
-            if (this.generatedImagesFileInputRef && this.generatedImagesFileInputRef.nativeElement) {
-                this.generatedImagesFileInputRef.nativeElement.value = '';
-                this.generatedImagesFileInputRef.nativeElement.click();
+            const generatedImagesFileInputRef = this.generatedImagesFileInputRef();
+            if (generatedImagesFileInputRef && generatedImagesFileInputRef.nativeElement) {
+                generatedImagesFileInputRef.nativeElement.value = '';
+                generatedImagesFileInputRef.nativeElement.click();
             }
         } catch (e) { }
     }

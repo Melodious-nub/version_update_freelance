@@ -1,5 +1,5 @@
 <div class="app-content">
-  <form [formGroup]="vendorForm">
+  <form [formGroup]="vendorForm()">
     <mat-expansion-panel expanded="true">
       <mat-expansion-panel-header>
         <mat-panel-description>
@@ -67,7 +67,7 @@
                     <div class="attribute b-none width-perc-30" formGroupName="phone">
                       <label class="bg-white" for="yesno">Country Code</label>
                       <ng-select appendTo="body" formControlName="countryId" [searchFn]="customSearchFn" [clearable]="false"
-                        class="custom" [items]="countries" labelForId="yesno" bindValue="id">
+                        class="custom" [items]="countries()" labelForId="yesno" bindValue="id">
                         <ng-template ng-label-tmp let-item="item">
                           <div>
                         <img width="10px" height="10px" src="{{
@@ -90,7 +90,7 @@
                             </ng-template>
                           </ng-select>
                           @if (
-                            vendorForm
+                            vendorForm()
                             .get('relationAccountDetail')
                             .get('primaryContact')
                             .get('phone')
@@ -125,7 +125,7 @@
                       <div class="col-12 col-md-4 d-flex align-items-center">
                         <div class="attribute one attr-b width-perc-90">
                           <label for="businessLine">{{
-                            isCustomer ? "Relation Type" : "Business Type"
+                            isCustomer() ? "Relation Type" : "Business Type"
                           }}</label>
                           <div class="attribute-input w-100">
                             <select class="bg-white w-100" style="z-index: 99;width: 100% !important;"
@@ -164,7 +164,7 @@
                             <div class="width-perc-30 attribute b-none">
                               <label class="bg-white" for="yesno">Country Code</label>
                               <ng-select appendTo="body" formControlName="countryId" [searchFn]="customSearchFn"
-                                [clearable]="false" class="custom" [items]="countries" labelForId="yesno" bindValue="id">
+                                [clearable]="false" class="custom" [items]="countries()" labelForId="yesno" bindValue="id">
                                 <ng-template ng-label-tmp let-item="item">
                                   <div>
                           <img width="10px" height="10px" src="{{
@@ -187,7 +187,7 @@
                                     </ng-template>
                                   </ng-select>
                                   @if (
-                                    vendorForm
+                                    vendorForm()
                                     .get('relationAccountDetail')
                                     .get('primaryContact')
                                     .get('landline')
@@ -212,7 +212,7 @@
                                   <div class="width-perc-30 attribute b-none">
                                     <label class="bg-white" for="yesno">Country Code</label>
                                     <ng-select appendTo="body" formControlName="countryId" [searchFn]="customSearchFn"
-                                      [clearable]="false" class="custom" [items]="countries" labelForId="yesno" bindValue="id">
+                                      [clearable]="false" class="custom" [items]="countries()" labelForId="yesno" bindValue="id">
                                       <ng-template ng-label-tmp let-item="item">
                                         <div>
                           <img width="10px" height="10px" src="{{
@@ -235,7 +235,7 @@
                                           </ng-template>
                                         </ng-select>
                                         @if (
-                                          vendorForm
+                                          vendorForm()
                                           .get('relationAccountDetail')
                                           .get('primaryContact')
                                           .get('fax')
@@ -277,14 +277,14 @@
               <dadyin-map-autocomplete [label]="'Search Address'" (address)="
                   onAddressSelection(
                     $event,
-                    vendorForm
+                    vendorForm()
                       .get('relationAccountDetail')
                       .get('primaryContact')
                       .get('address'),
                     true
                   )
                 " [control]="
-                  vendorForm
+                  vendorForm()
                     .get('relationAccountDetail')
                     .get('primaryContact')
                     .get('address')
@@ -452,21 +452,21 @@
                                     [isClearable]="false"></dadyin-input>
                                   </div>
                                   <div class="col-12 col-md-2">
-                                    @if (isCustomer) {
+                                    @if (isCustomer()) {
                                       <div class="attribute tabular-sheet mx-1 attr-b">
                                         <div class="attribute-input bg-white">
                                           <div class="toggle width-perc-100">
                       <button class="width-perc-50" (click)="
-                          vendorForm.get('isLivePricingOn').setValue(true)
+                          vendorForm().get('isLivePricingOn').setValue(true)
                         " [ngClass]="{
-                          active: vendorForm.get('isLivePricingOn').value
+                          active: vendorForm().get('isLivePricingOn').value
                         }">
                                               Live Pricing
                                             </button>
                       <button class="width-perc-50" (click)="
-                          vendorForm.get('isLivePricingOn').setValue(false)
+                          vendorForm().get('isLivePricingOn').setValue(false)
                         " [ngClass]="{
-                          active: !vendorForm.get('isLivePricingOn').value
+                          active: !vendorForm().get('isLivePricingOn').value
                         }">
                                               Fixed Price
                                             </button>
@@ -474,7 +474,7 @@
                                         </div>
                                       </div>
                                     }
-                                    @if (!isCustomer) {
+                                    @if (!isCustomer()) {
                                       <dadyin-select formControlName="fulfillmentLimitInDays" optionLabel="label" optionValue="value"
                                         label="Time Limit for Fullfilment" [emptyOption]="'Time Limit for Fullfilment'"
                                         [optionArr]="timeLimit">
@@ -527,7 +527,7 @@
                                   </div>
 
                                   <div class="col-12 col-md-2">
-                                    @if (!isCustomer) {
+                                    @if (!isCustomer()) {
                                       <div matTooltip="Usual Incoterm for this vendor">
                                         <dadyin-select formControlName="incoTermId" optionLabel="description" optionValue="id"
                                           label="Select Incoterm" [emptyOption]="'Select Incoterm'"
@@ -698,7 +698,7 @@
                                             </td>
                                             <td formGroupName="phone" class="countrycode-column">
                                               <ng-select appendTo="body" formControlName="countryId" [searchFn]="customSearchFn"
-                                                [clearable]="false" class="custom" [items]="countries" labelForId="yesno" bindValue="id">
+                                                [clearable]="false" class="custom" [items]="countries()" labelForId="yesno" bindValue="id">
                                                 <ng-template ng-label-tmp let-item="item">
                                                   <div>
                           <img width="10px" height="10px" src="{{

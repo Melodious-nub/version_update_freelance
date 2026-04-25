@@ -1,4 +1,4 @@
-<form [formGroup]="invoiceForm">
+<form [formGroup]="invoiceForm()">
   <mat-expansion-panel expanded="true" #expansionPanel1>
     <mat-expansion-panel-header (click)="expandPanel(expansionPanel1, $event)">
       <mat-panel-description>
@@ -202,7 +202,7 @@
               </dadyin-select>
             </div>
             <div class="col-12 col-md-2">
-              @if (invoiceForm.get('fulfilmentType').value === 'CONTAINER') {
+              @if (invoiceForm().get('fulfilmentType').value === 'CONTAINER') {
                 <div class="attribute one w-100">
                   <div
                     class="attribute-select justify-content-around w-100 title-text"
@@ -228,7 +228,7 @@
               }
             </div>
             <div class="col-12 col-md-2">
-              @if (invoiceForm.get('fulfilmentType').value === 'CONTAINER') {
+              @if (invoiceForm().get('fulfilmentType').value === 'CONTAINER') {
                 <div class="attribute one w-100">
                   <div
                     class="attribute-select justify-content-around w-100 title-text"
@@ -359,7 +359,7 @@
           ]"
                 [isEditable]="isEditable"
                 [orderFile]="invoiceFile"
-                [orderForm]="invoiceForm"
+                [orderForm]="invoiceForm()"
                 (getProducts)="getProductsList($event)"
                 (generatePoFromPdf)="generateInvoiceFromPdf($event)"
                 (calculate)="calculateValues()"

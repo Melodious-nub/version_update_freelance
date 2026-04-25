@@ -7,7 +7,7 @@
     </mat-expansion-panel-header>
 
     <ng-template matExpansionPanelContent>
-      <div [formGroup]="containerForm">
+      <div [formGroup]="containerForm()">
         <div class="input-order">
           <div class="inp">
             <div class="attribute one">
@@ -114,7 +114,7 @@
                     </dadyin-select>
                   </div>
                   <div class="inp">
-                    @if (!isExport) {
+                    @if (!isExport()) {
                       <div formGroupName="importCost">
                         <div class="attribute one">
                           <label for="">Orders value</label>
@@ -141,7 +141,7 @@
                           </div>
                         </div>
                       }
-                      @if (isExport) {
+                      @if (isExport()) {
                         <div formGroupName="exportCost">
                           <div class="attribute one">
                             <label for="">Order value</label>
@@ -171,7 +171,7 @@
                       </div>
 
                       <div class="inp">
-                        @if (!isExport) {
+                        @if (!isExport()) {
                           <div formGroupName="importCost">
                             <div class="attribute one">
                               <label for="">Total Cost</label>
@@ -198,7 +198,7 @@
                               </div>
                             </div>
                           }
-                          @if (isExport) {
+                          @if (isExport()) {
                             <div formGroupName="exportCost">
                               <div class="attribute one">
                                 <label for="">Total Cost</label>
@@ -254,16 +254,16 @@
                               style="min-width: 100px"
               [ngStyle]="{
                 color:
-                  containerForm.get('filledOdometer').get('odometerType')
+                  containerForm().get('filledOdometer').get('odometerType')
                     .value === 'Weight'
                     ? '#03266d'
                     : '#3E7FFF'
               }"
                               >
                               {{
-                              containerForm.get("filledOdometer").get("odometerType").value
+                              containerForm().get("filledOdometer").get("odometerType").value
                               | slice : 0 : 1
-                              }}{{ containerForm.get("filledOdometer").get("value").value }}
+                              }}{{ containerForm().get("filledOdometer").get("value").value }}
                             </div>
                           </div>
                         </div>
@@ -283,16 +283,16 @@
                             style="min-width: 100px"
             [ngStyle]="{
               color:
-                containerForm.get('filledOdometer').get('odometerType').value ===
+                containerForm().get('filledOdometer').get('odometerType').value ===
                 'Weight'
                   ? '#03266d'
                   : '#3E7FFF'
             }"
                             >
                             {{
-                            containerForm.get("remainingOdometer").get("odometerType").value
+                            containerForm().get("remainingOdometer").get("odometerType").value
                             | slice : 0 : 1
-                            }}{{ containerForm.get("remainingOdometer").get("value").value }}
+                            }}{{ containerForm().get("remainingOdometer").get("value").value }}
                           </div>
                         </div>
                       </mat-panel-description>
@@ -338,9 +338,9 @@
                           <div class="attribute one">
                             <div class="attribute-input bg-white">
                               <div style="width: 60%; padding-left: 2%">
-                                {{ containerForm.get("weight").get("attributeValue").value }}
+                                {{ containerForm().get("weight").get("attributeValue").value }}
                                 @if (
-                                  containerForm.get('weight').get('attributeValue').value
+                                  containerForm().get('weight').get('attributeValue').value
                                   ) {
                                   <span
                                     >
@@ -348,7 +348,7 @@
                                   </span>
                                 }
                                 {{
-                                containerForm
+                                containerForm()
                                 .get("containerTypeInformation")
                                 .get("weight")
                                 .get("attributeValue").value
@@ -356,7 +356,7 @@
                               </div>
                               <select
                 [formControl]="
-                  containerForm
+                  containerForm()
                     .get('containerTypeInformation')
                     .get('weight')
                     .get('userConversionUom')
@@ -375,9 +375,9 @@
                           <div class="attribute one mt-2">
                             <div class="attribute-input bg-white">
                               <div style="width: 60%; padding-left: 2%">
-                                {{ containerForm.get("volume").get("attributeValue").value }}
+                                {{ containerForm().get("volume").get("attributeValue").value }}
                                 @if (
-                                  containerForm.get('volume').get('attributeValue').value
+                                  containerForm().get('volume').get('attributeValue').value
                                   ) {
                                   <span
                                     >
@@ -385,7 +385,7 @@
                                   </span>
                                 }
                                 {{
-                                containerForm
+                                containerForm()
                                 .get("containerTypeInformation")
                                 .get("volume")
                                 .get("attributeValue").value
@@ -393,7 +393,7 @@
                               </div>
                               <select
                 [formControl]="
-                  containerForm
+                  containerForm()
                     .get('containerTypeInformation')
                     .get('volume')
                     .get('userConversionUom')
@@ -443,11 +443,11 @@
                                 <th>WEIGHT ({{ getUomByName("weight") }})</th>
                                 <th>VOL ({{ getUomByName("volume") }})</th>
                                 <th style="width: 150px">LOADING TYPE</th>
-                                @if (isExport) {
+                                @if (isExport()) {
                                   <th>QTY ORDERED</th>
                                 }
                                 <th>QTY LOADED</th>
-                                @if (!isExport) {
+                                @if (!isExport()) {
                                   <th>QTY RECEIVED</th>
                                 }
                                 <th colspan="6">NOTES</th>
@@ -533,7 +533,7 @@
                                               }
                                             </select>
                                           </td>
-                                          @if (isExport) {
+                                          @if (isExport()) {
                                             <td>
                                               <input
                                                 type="number"
@@ -545,15 +545,15 @@
                                             }
                                             <td>
                                               <input
-                                                [ngClass]="{ 'bg-grey': !isExport }"
+                                                [ngClass]="{ 'bg-grey': !isExport() }"
                                                 (change)="calculateValues()"
-                                                [readonly]="!isExport"
+                                                [readonly]="!isExport()"
                                                 type="number"
                                                 formControlName="quantityLoaded"
                                                 min="0"
                                                 />
                                               </td>
-                                              @if (!isExport) {
+                                              @if (!isExport()) {
                                                 <td>
                                                   <input
                                                     type="number"
@@ -609,7 +609,7 @@
                                                   <th class="cell-white"></th>
                                                   <th style="padding-left: 7px" colspan="2">PRODUCT CODE</th>
                                                   <th>QTY ORDERED</th>
-                                                  <th>QTY {{ isExport ? "LOADED" : "RECEIVED" }}</th>
+                                                  <th>QTY {{ isExport() ? "LOADED" : "RECEIVED" }}</th>
                                                   <th style="width: 150px">LOADING TYPE</th>
                                                   <th colspan="3" style="text-align: center">
                                                     (LOCATION IN CONTAINER)
@@ -657,7 +657,7 @@
                                                         />
                                                       </td>
                                                       <td>
-                                                        @if (!isExport) {
+                                                        @if (!isExport()) {
                                                           <input
                                                             class="input-rowNumber"
                                                             type="number"
@@ -666,7 +666,7 @@
                                                             min="0"
                                                             />
                                                         }
-                                                        @if (isExport) {
+                                                        @if (isExport()) {
                                                           <input
                                                             class="input-rowNumber"
                                                             type="number"
@@ -842,16 +842,16 @@
                                                               <th>VOL ({{ getUomByName("volume") }})</th>
                                                               <th colspan="3" style="text-align: center">LOCATION</th>
                                                               <th style="width: 150px">LOADING TYPE</th>
-                                                              @if (isExport) {
+                                                              @if (isExport()) {
                                                                 <th>QTY ORDERED</th>
                                                               }
-                                                              @if (isExport) {
+                                                              @if (isExport()) {
                                                                 <th>QTY LOADED</th>
                                                               }
-                                                              @if (!isExport) {
+                                                              @if (!isExport()) {
                                                                 <th>QTY LOADED</th>
                                                               }
-                                                              @if (!isExport) {
+                                                              @if (!isExport()) {
                                                                 <th>QTY RECEIVED</th>
                                                               }
                                                               <th>NOTES</th>
@@ -934,7 +934,7 @@
                                                                             }
                                                                           </select>
                                                                         </td>
-                                                                        @if (isExport) {
+                                                                        @if (isExport()) {
                                                                           <td>
                                                                             <input
                                                                               disabled
@@ -944,7 +944,7 @@
                                                                               />
                                                                             </td>
                                                                           }
-                                                                          @if (isExport) {
+                                                                          @if (isExport()) {
                                                                             <td>
                                                                               <input
                                                                                 type="number"
@@ -954,7 +954,7 @@
                                                                                 />
                                                                               </td>
                                                                             }
-                                                                            @if (!isExport) {
+                                                                            @if (!isExport()) {
                                                                               <td>
                                                                                 <input
                                                                                   type="number"
@@ -964,7 +964,7 @@
                                                                                   />
                                                                                 </td>
                                                                               }
-                                                                              @if (!isExport) {
+                                                                              @if (!isExport()) {
                                                                                 <td>
                                                                                   <input
                                                                                     type="number"
@@ -1174,7 +1174,7 @@
                                                                                   <th colspan="2">PHONE NUMBER</th>
                                                                                   <th colspan="2">
                                                                                     PAYMENT AMOUNT ({{
-                                                                                    isExport
+                                                                                    isExport()
                                                                                     ? getUomByName("exportCost")
                                                                                     : getUomByName("importCost")
                                                                                     }})
@@ -1214,7 +1214,7 @@
                                                                                     >
                                                                                     @if (
                                                                                       labourExpense.get('addedByBusinessAccountId').value ===
-                                                                                      this.currentBusinessAccount?.id
+                                                                                      this.currentBusinessAccount()?.id
                                                                                       ) {
                                                                                       <tr
                                                                                         >
@@ -1390,7 +1390,7 @@
                                                                                         <th>QTY USED</th>
                                                                                         <th colspan="3">
                                                                                           MATERIAL COST ({{
-                                                                                          isExport
+                                                                                          isExport()
                                                                                           ? getUomByName("exportCost")
                                                                                           : getUomByName("importCost")
                                                                                           }})
@@ -1428,7 +1428,7 @@
                                                                                           >
                                                                                           @if (
                                                                                             unloadingMaterialExpense.get('addedByBusinessAccountId')
-                                                                                            .value === this.currentBusinessAccount?.id
+                                                                                            .value === this.currentBusinessAccount()?.id
                                                                                             ) {
                                                                                             <tr
                                                                                               >

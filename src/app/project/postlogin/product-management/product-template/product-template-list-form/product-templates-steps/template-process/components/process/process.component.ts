@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
@@ -31,26 +31,26 @@ export class ProcessComponent {
   toastr = inject(ToastrService);
 
   // ************* Variable Declarations *************
-  @Input() public templateForm: UntypedFormGroup;
-  @Input() componentUoms: any;
+  public readonly templateForm = input<UntypedFormGroup>(undefined);
+  readonly componentUoms = input<any>(undefined);
 
   isShowProcessList: boolean = false;
   isExpandAll: boolean = true;
 
-  @Output() calculate = new EventEmitter();
+  readonly calculate = output<any>();
 
   calculateValues(event: any) {
     this.calculate.emit(event);
   }
 
   getUomByName(type: any) {
-    const componentUoms: any = this.componentUoms.getRawValue();
+    const componentUoms: any = this.componentUoms().getRawValue();
     return componentUoms.find(
       (item) => item.attributeName?.toUpperCase() == type?.toUpperCase()
     )?.userConversionUom;
   }
   get templateProcessType() {
-    return this.templateForm.get('templateProcessType');
+    return this.templateForm().get('templateProcessType');
   }
   async createNewProcess(existing: boolean) {
     try {
@@ -195,31 +195,31 @@ export class ProcessComponent {
   }
 
   get templateProcesses() {
-    return this.templateForm.get('templateProcesses') as UntypedFormArray;
+    return this.templateForm().get('templateProcesses') as UntypedFormArray;
   }
 
   getTemplateCost() {
     return (
-      (this.templateForm.get('templateCost').get('attributeValue').value ??
+      (this.templateForm().get('templateCost').get('attributeValue').value ??
         '') +
       ' ' +
-      (this.templateForm.get('templateCost').get('userConversionUom').value ??
+      (this.templateForm().get('templateCost').get('userConversionUom').value ??
         '')
     );
   }
 
   getTemplateDensity() {
     return (
-      (this.templateForm.get('templateDensity').get('attributeValue').value ??
+      (this.templateForm().get('templateDensity').get('attributeValue').value ??
         '') +
       ' ' +
-      (this.templateForm.get('templateDensity').get('userConversionUom')
+      (this.templateForm().get('templateDensity').get('userConversionUom')
         .value ?? '')
     );
   }
 
   get templateProcessMaterialType() {
-    return this.templateForm.get('templateProcessMaterialType');
+    return this.templateForm().get('templateProcessMaterialType');
   }
 
   setTemplateProcessMaterialType(type: string) {

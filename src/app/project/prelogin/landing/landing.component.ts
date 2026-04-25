@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, inject, viewChild } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -37,8 +37,8 @@ export class LandingComponent implements OnInit, AfterViewInit {
   OrderManagementService = inject(OrderManagementService);
   businessAccountService = inject(BusinessAccountService);
 
-  @ViewChild('swiperLanding') swiperLanding?: ElementRef;
-  @ViewChild('swiperLanding2') swiperLanding2?: ElementRef;
+  readonly swiperLanding = viewChild<ElementRef>('swiperLanding');
+  readonly swiperLanding2 = viewChild<ElementRef>('swiperLanding2');
   productsList = [];
   industryTypeId = this.fb.control(null);
   productSearchRequest: any = {};
@@ -62,7 +62,7 @@ export class LandingComponent implements OnInit, AfterViewInit {
   imgSrc = environment.imgUrl;
 
   ngAfterViewInit() {
-    [this.swiperLanding, this.swiperLanding2].forEach(swiper => {
+    [this.swiperLanding(), this.swiperLanding2()].forEach(swiper => {
       if (swiper) {
         const swiperEl = swiper.nativeElement;
         Object.assign(swiperEl, this.swiperConfig);

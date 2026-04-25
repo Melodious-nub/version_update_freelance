@@ -2,28 +2,28 @@
   <div class="process-table">
     <!-- Material Cost -->
     <table>
-      @if (!tierPriceView) {
+      @if (!tierPriceView()) {
         <thead>
           <tr>
-            <th [attr.colspan]="16 - this.displayedColumns?.length">
+            <th [attr.colspan]="16 - this.displayedColumns()?.length">
               Product Code | Product Description
             </th>
-            @if (displayedColumns.includes('pkgs')) {
+            @if (displayedColumns().includes('pkgs')) {
               <th class="width-100">
                 <div>PKG's (SKU)</div>
               </th>
             }
-            @if (displayedColumns.includes('qoh')) {
+            @if (displayedColumns().includes('qoh')) {
               <th class="width-100">
                 <div>QOH</div>
               </th>
             }
-            @if (displayedColumns.includes('qtyReq')) {
+            @if (displayedColumns().includes('qtyReq')) {
               <th class="width-100">
                 <div>QTY Req.(SKU)</div>
               </th>
             }
-            @if (displayedColumns.includes('metricCost')) {
+            @if (displayedColumns().includes('metricCost')) {
               <th class="number-column" class="width-100">
                 @if (
                   productPackages?.controls[0]
@@ -49,27 +49,27 @@
                 }
               </th>
             }
-            @if (displayedColumns.includes('prevPurchaseDates')) {
+            @if (displayedColumns().includes('prevPurchaseDates')) {
               <th class="width-100">
                 <div>Prev. Purchase Dates</div>
               </th>
             }
-            @if (displayedColumns.includes('prevQty')) {
+            @if (displayedColumns().includes('prevQty')) {
               <th class="width-100">
                 <div>Prev. QTY</div>
               </th>
             }
-            @if (displayedColumns.includes('prevPrice')) {
+            @if (displayedColumns().includes('prevPrice')) {
               <th class="width-100">
                 <div>Prev. Price</div>
               </th>
             }
-            @if (displayedColumns.includes('prevVendor')) {
+            @if (displayedColumns().includes('prevVendor')) {
               <th class="width-100">
                 <div>Prev. Vendor #</div>
               </th>
             }
-            @if (displayedColumns.includes('weight')) {
+            @if (displayedColumns().includes('weight')) {
               <th class="width-100 weight number-column">
                 <div>
                   WT ({{
@@ -80,7 +80,7 @@
                 </div>
               </th>
             }
-            @if (displayedColumns.includes('volume')) {
+            @if (displayedColumns().includes('volume')) {
               <th class="width-100 volume number-column">
                 <div>
                   VOL ({{
@@ -91,7 +91,7 @@
                 </div>
               </th>
             }
-            @if (displayedColumns.includes('skuPrice')) {
+            @if (displayedColumns().includes('skuPrice')) {
               <th class="width-120 number-column">
                 <div>
                   PRICE ({{
@@ -102,12 +102,12 @@
                 </div>
               </th>
             }
-            @if (displayedColumns.includes('qtySkus')) {
+            @if (displayedColumns().includes('qtySkus')) {
               <th class="width-125 text-center">
                 <span>QTY SKUS </span>
               </th>
             }
-            @if (displayedColumns.includes('subTotal')) {
+            @if (displayedColumns().includes('subTotal')) {
               <th class="width-125 number-column">
                 <div>
                   Sub Total ({{
@@ -118,7 +118,7 @@
                 </div>
               </th>
             }
-            @if (displayedColumns.includes('action')) {
+            @if (displayedColumns().includes('action')) {
               <th>
                 <span>ACTION</span>
               </th>
@@ -128,47 +128,47 @@
         <tbody>
           @if (productPackages?.controls?.length === 0) {
             <tr>
-              <td [attr.colspan]="16 - this.displayedColumns?.length"></td>
-              @if (displayedColumns.includes('pkgs')) {
+              <td [attr.colspan]="16 - this.displayedColumns()?.length"></td>
+              @if (displayedColumns().includes('pkgs')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('qoh')) {
+              @if (displayedColumns().includes('qoh')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('qtyReq')) {
+              @if (displayedColumns().includes('qtyReq')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('metricCost')) {
+              @if (displayedColumns().includes('metricCost')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('prevPurchaseDates')) {
+              @if (displayedColumns().includes('prevPurchaseDates')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('prevQty')) {
+              @if (displayedColumns().includes('prevQty')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('prevPrice')) {
+              @if (displayedColumns().includes('prevPrice')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('prevVendor')) {
+              @if (displayedColumns().includes('prevVendor')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('weight')) {
+              @if (displayedColumns().includes('weight')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('volume')) {
+              @if (displayedColumns().includes('volume')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('skuPrice')) {
+              @if (displayedColumns().includes('skuPrice')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('qtySkus')) {
+              @if (displayedColumns().includes('qtySkus')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('subTotal')) {
+              @if (displayedColumns().includes('subTotal')) {
                 <td></td>
               }
-              @if (displayedColumns.includes('action')) {
+              @if (displayedColumns().includes('action')) {
                 <td class="actions">
                   <dadyin-button [isDisabled]="!isEditable" (clicked)="addProductPackage()" [theme]="'borderless-primary'"
                     type="icon" [typeval]="'add_circle_outline'">
@@ -182,14 +182,14 @@
             productPackage; let i = $index) {
             <ng-container [formGroup]="productPackage">
               <tr>
-                <td [attr.colspan]="16 - this.displayedColumns?.length" class="px-1" formGroupName="productDetails">
+                <td [attr.colspan]="16 - this.displayedColumns()?.length" class="px-1" formGroupName="productDetails">
                   @if (!productPackage.get('productId').value) {
                     <input required (input)="getProductsList($event)" placeholder="Search for Product Code/Description"
                       [matAutocomplete]="description" formControlName="description" />
                   <mat-autocomplete (optionSelected)="
                       onChange($event.option.value, productPackage)
                     " autoActiveFirstOption #description="matAutocomplete">
-                        @for (item of productsList; track item) {
+                        @for (item of productsList(); track item) {
                           <mat-option [value]="item">
                       <span style="padding: 3px" class="mx-1" [ngClass]="{
                           'self-product':
@@ -271,7 +271,7 @@
                       </div>
                     }
                   </td>
-                  @if (displayedColumns.includes('pkgs')) {
+                  @if (displayedColumns().includes('pkgs')) {
                     <td>
                 <select class="width-95 b-round" [formControl]="
                     productPackage?.get('productDetails').get('skuPackageType')
@@ -284,7 +284,7 @@
                       </select>
                     </td>
                   }
-                  @if (displayedColumns.includes('qoh')) {
+                  @if (displayedColumns().includes('qoh')) {
                     <td class="cursor-pointer" style="overflow: visible; position: relative"
                       [ngbTooltip]="purchaseTooltip" #purchaseTooltipRefQoh="ngbTooltip"
                       [tooltipClass]="'custom-tooltip'" [placement]="'bottom'" [triggers]="'manual'" [openDelay]="300"
@@ -300,18 +300,18 @@
                       </section>
                     </td>
                   }
-                  @if (displayedColumns.includes('qtyReq')) {
+                  @if (displayedColumns().includes('qtyReq')) {
                     <td>
                       <input class="text-center" (change)="calculateValues()" type="text" formControlName="quantity" />
                     </td>
                   }
-                  @if (displayedColumns.includes('metricCost')) {
+                  @if (displayedColumns().includes('metricCost')) {
                     <td class="number-column">
                       <input class="text-center" (change)="calculateValues()" type="text"
                         [formControl]="getMetricCostControl(productPackage)" />
                       </td>
                     }
-                    @if (displayedColumns.includes('prevPurchaseDates')) {
+                    @if (displayedColumns().includes('prevPurchaseDates')) {
                       <td>
                         <div class="bg-disable">
                           {{
@@ -321,7 +321,7 @@
                         </div>
                       </td>
                     }
-                    @if (displayedColumns.includes('prevQty')) {
+                    @if (displayedColumns().includes('prevQty')) {
                       <td>
                         <div class="bg-disable">
                           {{
@@ -330,7 +330,7 @@
                         </div>
                       </td>
                     }
-                    @if (displayedColumns.includes('prevPrice')) {
+                    @if (displayedColumns().includes('prevPrice')) {
                       <td>
                         <div class="bg-disable">
                           {{
@@ -339,7 +339,7 @@
                         </div>
                       </td>
                     }
-                    @if (displayedColumns.includes('prevVendor')) {
+                    @if (displayedColumns().includes('prevVendor')) {
                       <td>
                         <div class="bg-disable">
                           {{
@@ -348,7 +348,7 @@
                         </div>
                       </td>
                     }
-                    @if (displayedColumns.includes('weight')) {
+                    @if (displayedColumns().includes('weight')) {
                       <td class="weight number-column">
                         <div>
                           {{
@@ -358,7 +358,7 @@
                         </div>
                       </td>
                     }
-                    @if (displayedColumns.includes('volume')) {
+                    @if (displayedColumns().includes('volume')) {
                       <td class="volume number-column">
                         <div>
                           {{
@@ -368,7 +368,7 @@
                         </div>
                       </td>
                     }
-                    @if (displayedColumns.includes('skuPrice')) {
+                    @if (displayedColumns().includes('skuPrice')) {
                       <td style="overflow: visible; position: relative"
                         class="number-column" formGroupName="cost" [ngbTooltip]="prevsales" #prevsalesRefPrice="ngbTooltip"
                         [tooltipClass]="'custom-tooltip'" [placement]="'bottom'" [triggers]="'manual'" [openDelay]="300"
@@ -389,7 +389,7 @@
                         }
                       </td>
                     }
-                    @if (displayedColumns.includes('qtySkus')) {
+                    @if (displayedColumns().includes('qtySkus')) {
                       <td class="text-center">
                         <section [matTooltip]="isQuantityLessThanContainerMqo(i)"
                           class="bg-white my-1 d-flex align-items-center" style="column-gap: 2px">
@@ -404,7 +404,7 @@
                           </section>
                         </td>
                       }
-                      @if (displayedColumns.includes('subTotal')) {
+                      @if (displayedColumns().includes('subTotal')) {
                         <td class="number-column text-center">
                           <div class="bg-disable price-text">
                             {{
@@ -414,7 +414,7 @@
                           </div>
                         </td>
                       }
-                      @if (displayedColumns.includes('action')) {
+                      @if (displayedColumns().includes('action')) {
                         <td class="actions">
                           @if (
                             status.value !== 'CONFIRMED' &&
@@ -445,7 +445,7 @@
                 <ng-container>
                   @if (type !== 'rcvrfq') {
                     <tr class="bg-light b-light">
-                      <td [attr.colspan]="16 - this.displayedColumns?.length">
+                      <td [attr.colspan]="16 - this.displayedColumns()?.length">
                         <section class="font-size-12 w-100 text-black fw-bold text-start mx-2">
                           Estimated
                           {{
@@ -454,79 +454,79 @@
                           <i class="material-icon text-dark">info</i>
                         </section>
                       </td>
-                      @if (displayedColumns.includes('pkgs')) {
+                      @if (displayedColumns().includes('pkgs')) {
                         <td></td>
                       }
-                      @if (displayedColumns.includes('qtyReq')) {
+                      @if (displayedColumns().includes('qtyReq')) {
                         <td>
                           <section class="mx-1 font-size-12 text-center text-start">
-                            {{ orderForm.get("totalSku").value }}
+                            {{ orderForm().get("totalSku").value }}
                           </section>
                         </td>
                       }
-                      @if (displayedColumns.includes('metricCost')) {
+                      @if (displayedColumns().includes('metricCost')) {
                         <td></td>
                       }
-                      @if (displayedColumns.includes('prevPurchaseDates')) {
+                      @if (displayedColumns().includes('prevPurchaseDates')) {
                         <td></td>
                       }
-                      @if (displayedColumns.includes('prevQty')) {
+                      @if (displayedColumns().includes('prevQty')) {
                         <td></td>
                       }
-                      @if (displayedColumns.includes('prevPrice')) {
+                      @if (displayedColumns().includes('prevPrice')) {
                         <td></td>
                       }
-                      @if (displayedColumns.includes('prevVendor')) {
+                      @if (displayedColumns().includes('prevVendor')) {
                         <td></td>
                       }
-                      @if (displayedColumns.includes('weight')) {
+                      @if (displayedColumns().includes('weight')) {
                         <td>
                           <section class="font-size-12 text-end">
                             Wt :
                             {{
-                            orderForm.get("weight").get("attributeValue").value
+                            orderForm().get("weight").get("attributeValue").value
                             | numberFormatter : 3
                             }}
                           </section>
                         </td>
                       }
-                      @if (displayedColumns.includes('volume')) {
+                      @if (displayedColumns().includes('volume')) {
                         <td>
                           <section class="font-size-12 text-end">
                             Vol :
                             {{
-                            orderForm.get("volume").get("attributeValue").value
+                            orderForm().get("volume").get("attributeValue").value
                             | numberFormatter : 3
                             }}
                           </section>
                         </td>
                       }
-                      @if (displayedColumns.includes('skuPrice')) {
+                      @if (displayedColumns().includes('skuPrice')) {
                         <td></td>
                       }
-                      @if (displayedColumns.includes('qtySkus')) {
+                      @if (displayedColumns().includes('qtySkus')) {
                         <td>
                           <section class="font-size-12">
                             Total SKUs :
-                            {{ orderForm.get("totalSku").value }}
+                            {{ orderForm().get("totalSku").value }}
                           </section>
                         </td>
                       }
-                      @if (displayedColumns.includes('subTotal')) {
+                      @if (displayedColumns().includes('subTotal')) {
                         <td>
                           <section class="font-size-12 text-end">
                             Sub Total :
                             {{
-                            orderForm.get("cost").get("attributeValue").value
+                            orderForm().get("cost").get("attributeValue").value
                             | numberFormatter : 3
                             }}
                           </section>
                         </td>
                       }
-                      @if (displayedColumns.includes('qoh')) {
+                      @if (displayedColumns().includes('qoh')) {
                         <td></td>
                       }
-                      @if (displayedColumns.includes('action')) {
+                      @if (displayedColumns().includes('action')) {
                         <td class="actions"></td>
                       }
                     </tr>
@@ -535,7 +535,7 @@
               </tbody>
             }
 
-            @if (tierPriceView) {
+            @if (tierPriceView()) {
               <thead>
                 <tr>
                   <th>Product Code | Product Description</th>
@@ -607,7 +607,7 @@
                   <mat-autocomplete (optionSelected)="
                       onChange($event.option.value, productPackage)
                     " autoActiveFirstOption #description="matAutocomplete">
-                              @for (item of productsList; track item) {
+                              @for (item of productsList(); track item) {
                                 <mat-option [value]="item">
                       <span style="padding: 3px" class="mx-1" [ngClass]="{
                           'self-product':
@@ -719,14 +719,14 @@
                             }}
                           </div>
                         </td>
-                        @if (displayedColumns.includes('qoh')) {
+                        @if (displayedColumns().includes('qoh')) {
                           <td>
                             <section class="text-light ps-2 cursor-pointer">
                               {{ productPackage?.value.productDetails?.qoh }}
                             </section>
                           </td>
                         }
-                        @if (displayedColumns.includes('action')) {
+                        @if (displayedColumns().includes('action')) {
                           <td class="actions">
                             @if (
                               status.value !== 'CONFIRMED' &&
@@ -780,11 +780,11 @@
           min-height: 20px;
           resize: vertical;
           border-radius: 6px;
-        " placeholder="Type Quick Note" [formControl]="orderForm.get('customNote')"></textarea>
+        " placeholder="Type Quick Note" [formControl]="orderForm().get('customNote')"></textarea>
             </div>
           </div>
 
-          <div [formGroup]="orderForm" class="row mx-auto b-round bg-white order-form-container">
+          <div [formGroup]="orderForm()" class="row mx-auto b-round bg-white order-form-container">
             @if (type !== 'rcvrfq' && type !== 'rcvquotation' && type !== 'bill') {
               <div class="col-md-3 col-12 px-2">
                 <div class="b-round h-100">
@@ -882,10 +882,10 @@
                                     <input class="fw-bold text-right b-none" placeholder="Enter Discount in %" type="number" min="0"
                         max="100" (change)="
                           onChangePercentage(
-                            orderForm.get('discountPercentage'),
+                            orderForm().get('discountPercentage'),
                             'discountType'
                           )
-                        " [formControl]="orderForm.get('discountPercentage')" />
+                        " [formControl]="orderForm().get('discountPercentage')" />
                                       <span class="mx-1">%</span>
                                     </div>
                                   </td>
@@ -893,17 +893,17 @@
                                     <div class="d-flex p-0 align-items-center">
                       <input class="fw-bold text-right b-none" type="number" (change)="
                           onChangeCost(
-                            orderForm.get('discountCost').get('attributeValue'),
+                            orderForm().get('discountCost').get('attributeValue'),
                             'discountType'
                           )
                         " [formControl]="
-                          orderForm.get('discountCost').get('attributeValue')
+                          orderForm().get('discountCost').get('attributeValue')
                         " placeholder="0.000" [value]="
-                          orderForm.get('discountCost').get('attributeValue')
+                          orderForm().get('discountCost').get('attributeValue')
                             .value | numberFormatter : 3
                         " />
                                         <span class="mx-1">{{
-                                          orderForm.get("discountCost").get("userConversionUom")
+                                          orderForm().get("discountCost").get("userConversionUom")
                                           .value
                                         }}</span>
                                       </div>
@@ -918,10 +918,10 @@
                                         <input class="fw-bold text-right b-none" [min]="0" [max]="100" placeholder="Enter Sales Tax in %"
                         (change)="
                           onChangePercentage(
-                            orderForm.get('salesTaxPercentage'),
+                            orderForm().get('salesTaxPercentage'),
                             'salesTaxType'
                           )
-                        " type="number" [formControl]="orderForm.get('salesTaxPercentage')" />
+                        " type="number" [formControl]="orderForm().get('salesTaxPercentage')" />
                                           <span class="mx-1">%</span>
                                         </div>
                                       </td>
@@ -929,17 +929,17 @@
                                         <div class="d-flex p-0 align-items-center">
                       <input class="fw-bold text-right b-none" type="number" (change)="
                           onChangeCost(
-                            orderForm.get('salesTaxCost').get('attributeValue'),
+                            orderForm().get('salesTaxCost').get('attributeValue'),
                             'salesTaxType'
                           )
                         " [formControl]="
-                          orderForm.get('salesTaxCost').get('attributeValue')
+                          orderForm().get('salesTaxCost').get('attributeValue')
                         " placeholder="0.000" [value]="
-                          orderForm.get('salesTaxCost').get('attributeValue')
+                          orderForm().get('salesTaxCost').get('attributeValue')
                             .value | numberFormatter : 3
                         " />
                                             <span class="mx-1">{{
-                                              orderForm.get("salesTaxCost").get("userConversionUom")
+                                              orderForm().get("salesTaxCost").get("userConversionUom")
                                               .value
                                             }}</span>
                                           </div>
@@ -955,7 +955,7 @@
                                         </td>
                                         <td class="number-column">
                     <input placeholder="Delivery Cost" (change)="onChangeDeliveryCost()" type="number" [formControl]="
-                        orderForm.get('deliveryCost').get('attributeValue')
+                        orderForm().get('deliveryCost').get('attributeValue')
                       " />
                                           </td>
                                         </tr>
@@ -969,11 +969,11 @@
                                             <div class="bg-light">
                                               <span>
                                                 {{
-                                                orderForm.get("totalCost").get("attributeValue").value
+                                                orderForm().get("totalCost").get("attributeValue").value
                                                 | numberFormatter : 3
                                                 }}
                                                 {{
-                                                orderForm.get("totalCost").get("userConversionUom")
+                                                orderForm().get("totalCost").get("userConversionUom")
                                                 .value
                                                 }}
                                               </span>

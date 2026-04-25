@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, input, output } from '@angular/core';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { NgClass } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
@@ -11,14 +11,14 @@ import { MatIcon } from '@angular/material/icon';
     imports: [MatIcon, NgClass, ExtendedModule]
 })
 export class DateScrollComponent implements OnInit{
-  @Input() initialDate=new Date()
+  readonly initialDate = input(new Date());
   @Input() startDate=this.getDateWithoutTime(new Date())
   @Input() selectedDate=this.startDate
-  @Output() dateSelected=new EventEmitter()
+  readonly dateSelected = output<any>();
   constructor() { }
 
   ngOnInit(): void {
-    this.startDate=this.getDateWithoutTime(this.initialDate)
+    this.startDate=this.getDateWithoutTime(this.initialDate())
     this.selectedDate=this.startDate
   }
 

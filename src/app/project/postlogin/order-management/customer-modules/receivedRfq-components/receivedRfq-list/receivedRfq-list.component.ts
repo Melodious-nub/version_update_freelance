@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -72,9 +72,9 @@ export class ReceivedRfqListComponent implements OnInit {
   pageIndex: any = 0;
   pageS = 20;
   sortQuery: any = 'audit.lastModifiedDate,desc';
-  @Input() role: any;
-  @Input() single = false;
-  @Input() customerId: any = null;
+  readonly role = input<any>(undefined);
+  readonly single = input(false);
+  readonly customerId = input<any>(null);
 
   public pageConfig: any = {
     itemPerPage: 20,
@@ -96,8 +96,9 @@ export class ReceivedRfqListComponent implements OnInit {
     });
     uomQuery = encodeURI(uomQuery);
     let filter = '';
-    if (this.customerId) {
-      filter = `&filter=requestTo.id:${this.customerId}`;
+    const customerId = this.customerId();
+    if (customerId) {
+      filter = `&filter=requestTo.id:${customerId}`;
     }
     if (this.filterValue) {
       filter = filter + `&searchString=${this.filterValue}`;
@@ -137,7 +138,7 @@ export class ReceivedRfqListComponent implements OnInit {
         if (event?.row?.id) {
           this.router.navigateByUrl(
             'home/order-management/' +
-              this.role +
+              this.role() +
               '/receivedRfq/view/' +
               event.row.id
           );
@@ -159,7 +160,7 @@ export class ReceivedRfqListComponent implements OnInit {
   viewRecord(event): void {
     this.router.navigateByUrl(
       'home/order-management/' +
-        this.role +
+        this.role() +
         '/receivedRfq/view/' +
         event.data.id
     );

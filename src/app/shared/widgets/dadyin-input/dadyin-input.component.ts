@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef, AfterContentChecked, Output, EventEmitter, HostListener, inject } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, AfterContentChecked, HostListener, inject, input, output } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, ControlContainer, UntypedFormControl, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonService } from 'src/app/service/common.service';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
@@ -32,27 +32,27 @@ export class DadyinInputComponent
 
   @Input() height: string | null = null;
   @Input() fontSize: string | null = null;
-  @Input() class: string = '';
-  @Input() inputType: string = 'text';
+  readonly class = input<string>('');
+  readonly inputType = input<string>('text');
   @Input() label: string = '';
-  @Input() rows;
-  @Input() labelBackground: string = '#fffff';
-  @Input() placeholder: string = '';
-  @Input() isClearable: boolean = false;
+  readonly rows = input(undefined);
+  readonly labelBackground = input<string>('#fffff');
+  readonly placeholder = input<string>('');
+  readonly isClearable = input<boolean>(false);
   @Input() isDisabled: boolean = false;
   @Input('disabled') set _isDisabled(val: boolean) { this.isDisabled = val; }
-  @Input() formControlName: string = '';
-  @Input() formControl: UntypedFormControl | null = null; // New input for direct FormControl
-  @Input() customError: string = '';
-  @Input() noPaste: boolean = false;
-  @Input() isErrorClass: boolean = false;
-  @Input() convertUpperCase: boolean = false;
-  @Input() minDate:any;        
+  readonly formControlName = input<string>('');
+  readonly formControl = input<UntypedFormControl | null>(null); // New input for direct FormControl
+  readonly customError = input<string>('');
+  readonly noPaste = input<boolean>(false);
+  readonly isErrorClass = input<boolean>(false);
+  readonly convertUpperCase = input<boolean>(false);
+  readonly minDate = input<any>(undefined);        
 
-  @Output() blurEvent = new EventEmitter<any>();
-  @Output() clickedEvent = new EventEmitter<any>();
-  @Output() keyupEvent = new EventEmitter<any>();
-  @Output() selectedStateChange = new EventEmitter<any>();
+  readonly blurEvent = output<any>();
+  readonly clickedEvent = output<any>();
+  readonly keyupEvent = output<any>();
+  readonly selectedStateChange = output<any>();
 
   control: UntypedFormControl | null = null;
   onChange: (value: any) => void = () => {};
@@ -75,20 +75,22 @@ export class DadyinInputComponent
 
   @HostListener('paste', ['$event'])
   blockPaste(e: ClipboardEvent) {
-    if (this.noPaste) {
+    if (this.noPaste()) {
       e.preventDefault();
     }
   }
 
   ngOnInit(): void {
     // Priority 1: Use directly provided formControl
-    if (this.formControl) {
-      this.control = this.formControl;
+    const formControl = this.formControl();
+    const formControlName = this.formControlName();
+    if (formControl) {
+      this.control = formControl;
     }
     // Priority 2: Use formControlName from parent form
-    else if (this.controlContainer && this.formControlName) {
+    else if (this.controlContainer && formControlName) {
       this.control = this.controlContainer.control?.get(
-        this.formControlName
+        formControlName
       ) as UntypedFormControl;
     }
 
@@ -120,12 +122,12 @@ export class DadyinInputComponent
     if (value !== undefined && value !== null) {
       if (typeof value === 'string') {
         this.value =
-          this.inputType === 'textarea'
+          this.inputType() === 'textarea'
             ? value.replace(/\n\r?/g, '<br />').trim()
             : value.trim();
       } else if (value.currentTarget) {
         const element = value.currentTarget as HTMLInputElement;
-        if (this.convertUpperCase) {
+        if (this.convertUpperCase()) {
           const startPos = element.selectionStart;
           const endPos = element.selectionEnd;
           element.value = element.value.toUpperCase();
@@ -148,7 +150,7 @@ export class DadyinInputComponent
   getFieldErrorDesc(): string {
     if (this.control?.errors && (this.control.dirty || this.control.touched)) {
       return (
-        this.customError || this.commonService.getFieldErrorDesc(this.control)
+        this.customError() || this.commonService.getFieldErrorDesc(this.control)
       );
     }
     return '';
@@ -159,11 +161,11 @@ export class DadyinInputComponent
   }
 
   showRegularInput(): boolean {
-    return !['textarea', 'date', 'datetime-local'].includes(this.inputType);
+    return !['textarea', 'date', 'datetime-local'].includes(this.inputType());
   }
 
   getInputType(): string {
-    return this.inputType === 'password' && !this.pwToggle
+    return this.inputType() === 'password' && !this.pwToggle
       ? 'password'
       : 'text';
   }

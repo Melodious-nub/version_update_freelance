@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -35,8 +35,8 @@ export class ReceivedquotationListComponent implements OnInit {
   fb = inject(UntypedFormBuilder);
   businessAccountService = inject(BusinessAccountService);
 
-  @Input() single = false;
-  @Input() vendorId = null;
+  readonly single = input(false);
+  readonly vendorId = input(null);
   uomSetting = false;
   public preferredUoms: any[];
   public preferForm: UntypedFormGroup = this.formService.createPreferUomForm();
@@ -74,7 +74,7 @@ export class ReceivedquotationListComponent implements OnInit {
   pageS = 20;
   sortQuery: any = 'audit.lastModifiedDate,desc';
 
-  @Input() role: any;
+  readonly role = input<any>(undefined);
 
   public pageConfig: any = {
     itemPerPage: 20,

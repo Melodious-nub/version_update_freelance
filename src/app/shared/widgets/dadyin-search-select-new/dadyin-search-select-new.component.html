@@ -1,13 +1,13 @@
 <div style="position: relative">
   <label for="" class="label-search"
-    >{{ label }} ({{ selectedItems?.value?.length }})</label
+    >{{ label() }} ({{ selectedItems()?.value?.length }})</label
     >
     <div class="selected p-2">
       <div class="attribute b-none inner-box">
-        @if (typeahead) {
-          @if (addTag) {
+        @if (typeahead()) {
+          @if (addTag()) {
             <ng-select
-              [maxSelectedItems]="maxSelectedItems"
+              [maxSelectedItems]="maxSelectedItems()"
               (change)="onChange()"
               (search)="searchText.next($event)"
               class="search-select"
@@ -16,11 +16,11 @@
               [hideSelected]="true"
               appendTo="body"
               [multiple]="true"
-              [items]="fullItems"
-              [disabled]="disabled"
-              [formControl]="selectedItems"
+              [items]="fullItems()"
+              [disabled]="disabled()"
+              [formControl]="selectedItems()"
               placeholder="Select"
-              [bindValue]="bindValue"
+              [bindValue]="bindValue()"
               bindLabel="description"
               [minTermLength]="1"
               [clearable]="false"
@@ -35,9 +35,9 @@
               </ng-template>
             </ng-select>
           }
-          @if (!addTag) {
+          @if (!addTag()) {
             <ng-select
-              [maxSelectedItems]="maxSelectedItems"
+              [maxSelectedItems]="maxSelectedItems()"
               (change)="onChange()"
               class="search-select"
               [typeahead]="searchText"
@@ -45,11 +45,11 @@
               [hideSelected]="true"
               appendTo="body"
               [multiple]="true"
-              [items]="fullItems"
-              [disabled]="disabled"
-              [formControl]="selectedItems"
+              [items]="fullItems()"
+              [disabled]="disabled()"
+              [formControl]="selectedItems()"
               placeholder="Select"
-              [bindValue]="bindValue"
+              [bindValue]="bindValue()"
               bindLabel="description"
               [minTermLength]="1"
               [clearable]="false"
@@ -65,9 +65,9 @@
             </ng-select>
           }
         }
-        @if (!typeahead) {
+        @if (!typeahead()) {
           <ng-select
-            [maxSelectedItems]="maxSelectedItems"
+            [maxSelectedItems]="maxSelectedItems()"
             (change)="onChange()"
             class="search-select"
             [minTermLength]="1"
@@ -76,12 +76,12 @@
             [hideSelected]="true"
             appendTo="body"
             [multiple]="true"
-            [items]="fullItems"
-            [formControl]="selectedItems"
-            [disabled]="disabled"
+            [items]="fullItems()"
+            [formControl]="selectedItems()"
+            [disabled]="disabled()"
             placeholder="Select"
             bindLabel="description"
-            [bindValue]="bindValue"
+            [bindValue]="bindValue()"
             [clearable]="false"
             >
             <ng-template ng-option-tmp let-item="item" let-index="index">
@@ -97,17 +97,17 @@
       </div>
 
       <div class="d-flex flex-wrap w-100 selection-area-custom">
-        @if (typeahead) {
-          @for (item of selectedItems.value; track item; let i = $index) {
+        @if (typeahead()) {
+          @for (item of selectedItems().value; track item; let i = $index) {
             <div
-              [ngClass]="{ 'b-primary-all': highlightItems?.includes(item) }"
+              [ngClass]="{ 'b-primary-all': highlightItems()?.includes(item) }"
               (click)="onItemClick(item)"
               class="value bg-light b-all primary-text px-1"
               >
               <div>
                 {{ item?.description ?? item }}
               </div>
-              @if (!disabled) {
+              @if (!disabled()) {
                 <i
                   class="mx-1 material-icon"
                   (click)="remove(item, i)"
@@ -117,17 +117,17 @@
             </div>
           }
         }
-        @if (!typeahead) {
-          @for (item of selectedItems.value; track item; let i = $index) {
+        @if (!typeahead()) {
+          @for (item of selectedItems().value; track item; let i = $index) {
             <div
-              [ngClass]="{ 'b-primary-all': highlightItems?.includes(item) }"
+              [ngClass]="{ 'b-primary-all': highlightItems()?.includes(item) }"
               (click)="onItemClick(item)"
               class="value bg-light b-all primary-text px-1"
               >
               <div>
                 {{ getName(item) ?? item }}
               </div>
-              @if (!disabled) {
+              @if (!disabled()) {
                 <i
                   class="mx-1 material-icon"
                   (click)="remove(item, i)"

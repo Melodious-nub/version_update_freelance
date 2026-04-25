@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output, OnDestroy, inject } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -78,14 +78,14 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   map2 = false;
   map1 = false;
   map3 = false;
-  @Input() componentUoms: any;
+  readonly componentUoms = input<any>(undefined);
   productsList: any;
   files: any[] = [];
-  @Input() receivedPoForm: UntypedFormGroup;
-  @Input() isSelfPO: any;
-  @Output() calculate = new EventEmitter();
-  @Output() patchEditData = new EventEmitter();
-  @Output() generatePdf = new EventEmitter();
+  readonly receivedPoForm = input<UntypedFormGroup>(undefined);
+  readonly isSelfPO = input<any>(undefined);
+  readonly calculate = output<any>();
+  readonly patchEditData = output<any>();
+  readonly generatePdf = output<any>();
   private ngUnsubscribe: Subject<void> = new Subject();
   public buyingTypeList: any[] = [
     { name: 'SKU', value: 'SKU' },
@@ -125,18 +125,19 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   get isCreatedByMe() {
     const loggedInAccountId =
       this.businessAccountService.currentBusinessAccountId;
+    const receivedPoForm = this.receivedPoForm();
     return (
-      this.receivedPoForm.value?.audit?.businessAccountId ==
-        loggedInAccountId || this.receivedPoForm.value?.status !== 'CONFIRMED'
+      receivedPoForm.value?.audit?.businessAccountId ==
+        loggedInAccountId || receivedPoForm.value?.status !== 'CONFIRMED'
     );
   }
 
   get productPackages() {
-    return this.receivedPoForm.get('productPackages') as UntypedFormArray;
+    return this.receivedPoForm().get('productPackages') as UntypedFormArray;
   }
 
   get orderId() {
-    return this.receivedPoForm.get('id');
+    return this.receivedPoForm().get('id');
   }
 
   onChangeCustomer() {
@@ -201,29 +202,29 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       this.toastr.warning('Percentage cannot be less than 100');
       control.patchValue(0);
     }
-    this.receivedPoForm.get(type).setValue('PERCENTAGE');
+    this.receivedPoForm().get(type).setValue('PERCENTAGE');
     this.checkIfNullOrEmpty();
     this.calculateValues();
   }
 
   onChangeCost(control: any, type) {
-    this.receivedPoForm.get(type).setValue('COST');
+    this.receivedPoForm().get(type).setValue('COST');
     this.checkIfNullOrEmpty();
     this.calculateValues();
   }
 
   checkIfNullOrEmpty() {
-    if (!this.receivedPoForm.get('discountType').value) {
-      this.receivedPoForm.get('discountType').setValue('PERCENTAGE');
+    if (!this.receivedPoForm().get('discountType').value) {
+      this.receivedPoForm().get('discountType').setValue('PERCENTAGE');
     }
 
-    if (!this.receivedPoForm.get('salesTaxType').value) {
-      this.receivedPoForm.get('salesTaxType').setValue('PERCENTAGE');
+    if (!this.receivedPoForm().get('salesTaxType').value) {
+      this.receivedPoForm().get('salesTaxType').setValue('PERCENTAGE');
     }
   }
 
   onSelectQuotation(quotation: any) {
-    this.receivedPoForm
+    this.receivedPoForm()
       .get('referenceOrder')
       .get('quotationId')
       .patchValue(quotation.id);
@@ -252,7 +253,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       .copyProductForAccount(
         productPackage.packageId,
         productPackage.productId,
-        this.receivedPoForm.getRawValue()?.id,
+        this.receivedPoForm().getRawValue()?.id,
         cloneForCustomisation
       )
       .pipe(takeUntil(this.ngUnsubscribe))
@@ -313,11 +314,11 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   }
 
   toggleType(value: any) {
-    this.receivedPoForm.get('importLocalType').setValue(value);
+    this.receivedPoForm().get('importLocalType').setValue(value);
   }
 
   get importLocalType() {
-    return this.receivedPoForm.get('importLocalType');
+    return this.receivedPoForm().get('importLocalType');
   }
 
   getMetricCost(productPackage) {
@@ -332,7 +333,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   }
 
   get status() {
-    return this.receivedPoForm.get('status');
+    return this.receivedPoForm().get('status');
   }
 
   addProductPackage() {
@@ -361,7 +362,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     return (
       this.status.value != 'CONFIRMED' &&
       this.status.value != 'REJECTED' &&
-      !this.receivedPoForm.get('isQuickCheckout').value
+      !this.receivedPoForm().get('isQuickCheckout').value
     );
   }
 
@@ -389,10 +390,10 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   })();
 
   get customerId() {
-    return this.receivedPoForm.get('requestFrom').get('id');
+    return this.receivedPoForm().get('requestFrom').get('id');
   }
   get buyingType() {
-    return this.receivedPoForm.get('buyingType');
+    return this.receivedPoForm().get('buyingType');
   }
   onChange(item, productPackage: UntypedFormGroup) {
     productPackage.patchValue(item, {
@@ -437,7 +438,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       quantityControl.patchValue(1);
       return;
     }
-    this.receivedPoForm.get('isUpdated').setValue(true);
+    this.receivedPoForm().get('isUpdated').setValue(true);
     this.calculateValues();
   }
   updateProductQuantityInOrder(i, quantity) {
@@ -454,18 +455,18 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       quantityControl.patchValue(1);
       return;
     }
-    this.receivedPoForm.get('isUpdated').setValue(true);
+    this.receivedPoForm().get('isUpdated').setValue(true);
     this.calculateValues();
   }
 
   changeCostByUser(productPackageForm) {
     productPackageForm.get('isCostInputByUser').patchValue(true);
-    this.receivedPoForm.get('isUpdated').setValue(true);
+    this.receivedPoForm().get('isUpdated').setValue(true);
     this.calculateValues();
   }
 
   get noteId() {
-    return this.receivedPoForm.get('noteTemplate').get('id');
+    return this.receivedPoForm().get('noteTemplate').get('id');
   }
 
   getNoteTitle() {
@@ -478,10 +479,10 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   // file related
 
   get media_url_ids() {
-    return this.receivedPoForm.get('media_url_ids');
+    return this.receivedPoForm().get('media_url_ids');
   }
   get media_urls() {
-    return this.receivedPoForm.get('media_urls');
+    return this.receivedPoForm().get('media_urls');
   }
   poFile: any = null;
 
@@ -551,7 +552,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     this.apiService.Get_All_Attributes();
     const receivedPoForm =
       this.orderFormsService.createReceivedPurchaseOrderForm();
-    receivedPoForm.patchValue(this.receivedPoForm.getRawValue());
+    receivedPoForm.patchValue(this.receivedPoForm().getRawValue());
     const dialogRef = this.dialog.open(QcProductDetailComponent, {
       data: {
         productData: productPackage,
@@ -599,7 +600,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   }
 
   poSelected(event) {
-    if (this.receivedPoForm.value.status != 'DRAFT') {
+    if (this.receivedPoForm().value.status != 'DRAFT') {
       return;
     }
     this.generatePoFromPdf(event.target.files[0]);
@@ -663,13 +664,13 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   }
 
   onChangeDeliveryCost() {
-    this.receivedPoForm.get('deliveryCostInputByUser').patchValue(true);
+    this.receivedPoForm().get('deliveryCostInputByUser').patchValue(true);
     this.calculateValues();
   }
 
   getUomQuery() {
     let uomQuery = ``;
-    this.componentUoms.controls.forEach((element) => {
+    this.componentUoms().controls.forEach((element) => {
       element.get('columnMappings').value.forEach((col) => {
         uomQuery =
           uomQuery +
@@ -681,7 +682,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   }
 
   printPdf() {
-    this.generatePdf.emit();
+    this.generatePdf.emit(undefined as any);
   }
 
   // end

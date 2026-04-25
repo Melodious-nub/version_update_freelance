@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, Pipe, OnDestroy, inject } from '@angular/core';
+import { Component, Pipe, OnDestroy, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -47,14 +47,14 @@ export class ExpensesDetailsComponent implements OnDestroy{
   toastr = inject(ToastrService);
   uomService = inject(UomService);
 
-  @Input() isExport: any;
+  readonly isExport = input<any>(undefined);
   expanded:any[]=[]
-  @Input() componentUoms: any;
-  @Input() containerForm: UntypedFormGroup;
-  @Input() currentBusinessAccount: any;
+  readonly componentUoms = input<any>(undefined);
+  readonly containerForm = input<UntypedFormGroup>(undefined);
+  readonly currentBusinessAccount = input<any>(undefined);
   private ngUnsubscribe: Subject<void> = new Subject();
   public purchaseOrdersList: any[] = [];
-  @Output()     calculate = new EventEmitter();
+  readonly calculate = output<any>();
 
   expenseView: any = 'Product';
 
@@ -82,18 +82,18 @@ export class ExpensesDetailsComponent implements OnDestroy{
   }
 
   getAttributeUserConversionUom(value: any): any {
-    return this.containerForm.get(value).get('userConversionUom');
+    return this.containerForm().get(value).get('userConversionUom');
   }
   getAttributeAttributeValue(value: any): any {
-    return this.containerForm.get(value).get('attributeValue');
+    return this.containerForm().get(value).get('attributeValue');
   }
 
   get miscellaneousExpenses() {
-    return this.containerForm.get('containerExpense').get('miscellaneousExpenses') as UntypedFormArray
+    return this.containerForm().get('containerExpense').get('miscellaneousExpenses') as UntypedFormArray
   }
 
   get containerOrders() {
-    return this.containerForm.get('containerOrders') as UntypedFormArray;
+    return this.containerForm().get('containerOrders') as UntypedFormArray;
   }
 
   getPurchaseOrderDetail(i) {
@@ -109,19 +109,19 @@ export class ExpensesDetailsComponent implements OnDestroy{
   }
 
   calculateValues() {
-    this.calculate.emit();
+    this.calculate.emit(undefined as any);
   }
 
 
   addInmiscellaneousExpensesExpense() {
     const Form =   this.containerFormService.miscellaneousExpenseForm()
-    Form.get('addedByBusinessAccountId').setValue(this.currentBusinessAccount?.id)
-    Form.get('cost').get('userConversionUom').setValue(this.isExport ? this.getUomByName('exportCost') : this.getUomByName('importCost'))
+    Form.get('addedByBusinessAccountId').setValue(this.currentBusinessAccount()?.id)
+    Form.get('cost').get('userConversionUom').setValue(this.isExport() ? this.getUomByName('exportCost') : this.getUomByName('importCost'))
     this.miscellaneousExpenses.push(Form);
   }
 
   getFilteredMiscellaneousExpenses() {
-    let filteredControls = this.miscellaneousExpenses.controls.filter((item)=> (item.get('addedByBusinessAccountId').value==this.currentBusinessAccount?.id))
+    let filteredControls = this.miscellaneousExpenses.controls.filter((item)=> (item.get('addedByBusinessAccountId').value==this.currentBusinessAccount()?.id))
     return filteredControls
   }
 
@@ -191,7 +191,7 @@ export class ExpensesDetailsComponent implements OnDestroy{
     }
   }
   getUomByName(type:any) {
-    const componentUoms: any = this.componentUoms.getRawValue();
+    const componentUoms: any = this.componentUoms().getRawValue();
     return componentUoms.find((item)=> item.attributeName?.toUpperCase()==type?.toUpperCase())?.userConversionUom
   }
 }

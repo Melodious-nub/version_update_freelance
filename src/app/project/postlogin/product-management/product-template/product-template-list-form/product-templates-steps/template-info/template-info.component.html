@@ -1,4 +1,4 @@
-<form [formGroup]="templateForm">
+<form [formGroup]="templateForm()">
   <mat-expansion-panel expanded="true">
     <mat-expansion-panel-header>
       <mat-panel-description>
@@ -14,7 +14,7 @@
               <label for="">Template Code * </label>
               <div class="attribute-input">
                 <input
-                  [ngClass]="{'b-red': templateForm.get('templateCode').invalid && templateForm.get('templateCode').touched}"
+                  [ngClass]="{'b-red': templateForm().get('templateCode').invalid && templateForm().get('templateCode').touched}"
                   tabindex="1" type="text" formControlName="templateCode" placeholder="Enter your value" />
                 </div>
               </div>
@@ -24,7 +24,7 @@
                 <label for="">Template Name *</label>
                 <div class="attribute-input">
                   <input tabindex="2"
-                    [ngClass]="{'b-red': templateForm.get('templateName').invalid && templateForm.get('templateName').touched}"
+                    [ngClass]="{'b-red': templateForm().get('templateName').invalid && templateForm().get('templateName').touched}"
                     type="text" formControlName="templateName" placeholder="Enter your value" />
                   </div>
                 </div>
@@ -57,7 +57,7 @@
             <label for="">Description *</label>
             <div class="attribute-input">
               <textarea tabindex="3" class="b-round"
-                [ngClass]="{'b-red': templateForm.get('description').invalid && templateForm.get('description').touched}"
+                [ngClass]="{'b-red': templateForm().get('description').invalid && templateForm().get('description').touched}"
               type="text" formControlName="description" rows="4"></textarea>
             </div>
           </div>

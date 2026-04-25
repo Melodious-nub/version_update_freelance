@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, HostListener, Input, OnInit, Output, OnDestroy, inject } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit, OnDestroy, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -76,14 +76,14 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
   map1 = false;
   map3 = false;
   rcvrfqList: any;
-  @Input() componentUoms: any;
+  readonly componentUoms = input<any>(undefined);
   currentBusinessAccount: any;
   productsList: any[] = [];
-  @Input() quotationForm: UntypedFormGroup;
-  @Output() calculate = new EventEmitter();
-  @Output() patchEditData = new EventEmitter();
+  readonly quotationForm = input<UntypedFormGroup>(undefined);
+  readonly calculate = output<any>();
+  readonly patchEditData = output<any>();
 
-  @Output() generatePdf = new EventEmitter();
+  readonly generatePdf = output<any>();
 
   quotationFile: any = null;
 
@@ -92,7 +92,7 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
   async ngOnInit() {
     this.businessAccountService.$currentBusinessAccount.subscribe((res) => {
       this.currentBusinessAccount = res;
-      this.quotationForm
+      this.quotationForm()
         .get('requestFrom')
         .get('id')
         .patchValue(this.currentBusinessAccount?.id);
@@ -134,11 +134,11 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
         .Get_Single_customer(relationAccount[0]?.id)
         .toPromise();
       console.log(data)
-      this.quotationForm.get('buyingCapacityType').setValue(data?.buyingType ? data?.buyingType : 'SKU' );
-      this.quotationForm.get('buyingType').setValue(data?.buyingType ? data?.buyingType : 'SKU');
-      this.quotationForm.get('discountPercentage').setValue(data?.discountPercentage ? data?.discountPercentage : 0);
-      this.quotationForm.get('buyingCapacityDefault').setValue(data?.buyingType ? data?.buyingType : 'SKU');
-      this.quotationForm.get('discountPercentageDefault').setValue(data?.discountPercentage ? data?.discountPercentage : 0);
+      this.quotationForm().get('buyingCapacityType').setValue(data?.buyingType ? data?.buyingType : 'SKU' );
+      this.quotationForm().get('buyingType').setValue(data?.buyingType ? data?.buyingType : 'SKU');
+      this.quotationForm().get('discountPercentage').setValue(data?.discountPercentage ? data?.discountPercentage : 0);
+      this.quotationForm().get('buyingCapacityDefault').setValue(data?.buyingType ? data?.buyingType : 'SKU');
+      this.quotationForm().get('discountPercentageDefault').setValue(data?.discountPercentage ? data?.discountPercentage : 0);
       if (changed && this.productPackages.controls[0].get('productId').value > 0) {
         this.calculateValues();
       }    
@@ -157,32 +157,32 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
     const editTillDate = new Date(
       currentDate.getTime() + 7 * 24 * 60 * 60 * 1000
     );
-    this.quotationForm
+    this.quotationForm()
       .get('date')
       .setValue(currentDate.toISOString().split('T')[0]);
-    this.quotationForm
+    this.quotationForm()
       .get('expectedByDate')
       .setValue(expectedByDate.toISOString().split('T')[0]);
-    this.quotationForm
+    this.quotationForm()
       .get('editTillDate')
       .setValue(editTillDate.toISOString().split('T')[0]);
-    this.quotationForm.get('loadingTypeId').setValue('FLOOR');
+    this.quotationForm().get('loadingTypeId').setValue('FLOOR');
   }
 
   get isEditable() {
     return (
       this.status.value != 'CONFIRMED' &&
       this.status.value != 'REJECTED' &&
-      !this.quotationForm.get('isQuickCheckout').value
+      !this.quotationForm().get('isQuickCheckout').value
     );
   }
 
   get productPackages() {
-    return this.quotationForm.get('productPackages') as UntypedFormArray;
+    return this.quotationForm().get('productPackages') as UntypedFormArray;
   }
 
   get messages() {
-    return this.quotationForm.get('messages') as UntypedFormArray;
+    return this.quotationForm().get('messages') as UntypedFormArray;
   }
 
   ngOnDestroy(): void {
@@ -220,7 +220,7 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   get status() {
-    return this.quotationForm.get('status');
+    return this.quotationForm().get('status');
   }
 
   onChange(item, productPackage: UntypedFormGroup) {
@@ -269,7 +269,7 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
 
   // end
   get buyingType() {
-    return this.quotationForm.get('buyingType');
+    return this.quotationForm().get('buyingType');
   }
 
   addProductPackage() {
@@ -283,7 +283,7 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
 
   getUomQuery() {
     let uomQuery = ``;
-    this.componentUoms.controls.forEach((element) => {
+    this.componentUoms().controls.forEach((element) => {
       element.get('columnMappings').value.forEach((col) => {
         uomQuery =
           uomQuery +
@@ -432,7 +432,7 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
     }
   }
   get customerId() {
-    return this.quotationForm.get('requestTo').get('id');
+    return this.quotationForm().get('requestTo').get('id');
   }
 
   calculateValues() {
@@ -450,16 +450,16 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   onSelectRfq(rfq: any) {
-    this.quotationForm
+    this.quotationForm()
       .get('referenceOrder')
       .get('rfQuotationId')
       .patchValue(rfq?.id);
-    this.quotationForm.get('requestFrom').patchValue(rfq?.requestTo);
-    this.quotationForm.get('requestTo').patchValue(rfq?.requestFrom);
-    this.quotationForm.get('incoTermId').patchValue(rfq?.incoTermId);
-    this.quotationForm.get('departurePortId').patchValue(rfq?.departurePortId);
-    this.quotationForm.get('buyingType').patchValue(rfq?.buyingType);
-    this.quotationForm.get('importLocalType').patchValue(rfq?.importLocalType);
+    this.quotationForm().get('requestFrom').patchValue(rfq?.requestTo);
+    this.quotationForm().get('requestTo').patchValue(rfq?.requestFrom);
+    this.quotationForm().get('incoTermId').patchValue(rfq?.incoTermId);
+    this.quotationForm().get('departurePortId').patchValue(rfq?.departurePortId);
+    this.quotationForm().get('buyingType').patchValue(rfq?.buyingType);
+    this.quotationForm().get('importLocalType').patchValue(rfq?.importLocalType);
     rfq.productPackages.forEach((product) => {
       product.id = null;
     });
@@ -467,23 +467,23 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   toggleType(value: any) {
-    this.quotationForm.get('importLocalType').setValue(value);
+    this.quotationForm().get('importLocalType').setValue(value);
   }
 
   get importLocalType() {
-    return this.quotationForm.get('importLocalType');
+    return this.quotationForm().get('importLocalType');
   }
 
   get noteId() {
-    return this.quotationForm.get('noteTemplate').get('id');
+    return this.quotationForm().get('noteTemplate').get('id');
   }
 
   get media_url_ids() {
-    return this.quotationForm.get('media_url_ids');
+    return this.quotationForm().get('media_url_ids');
   }
 
   get media_urls() {
-    return this.quotationForm.get('media_urls');
+    return this.quotationForm().get('media_urls');
   }
 
 
@@ -664,7 +664,7 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   selectOption(option: boolean) {
-    this.quotationForm.get('isRegularPrice')?.setValue(option);
+    this.quotationForm().get('isRegularPrice')?.setValue(option);
     if (option) {
       this.tierPriceView = false;
     } else {
@@ -675,7 +675,7 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
 
 
   get buyingCapacityType() {
-    return this.quotationForm.get('buyingCapacityType');
+    return this.quotationForm().get('buyingCapacityType');
   }
 
 }

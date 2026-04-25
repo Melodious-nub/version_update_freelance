@@ -1,4 +1,4 @@
-<form [formGroup]="billForm">
+<form [formGroup]="billForm()">
   <mat-expansion-panel expanded="true" #expansionPanel1>
     <mat-expansion-panel-header (click)="expandPanel(expansionPanel1, $event)">
       <mat-panel-description>
@@ -236,7 +236,7 @@
             'skuPrice',
             'subTotal',
             'action'
-          ]" [isEditable]="isEditable" [orderFile]="billFile" [orderForm]="billForm"
+          ]" [isEditable]="isEditable" [orderFile]="billFile" [orderForm]="billForm()"
         (generatePoFromPdf)="generateBillFromPdf($event)" (getProducts)="getProductsList($event)"
         (calculate)="calculateValues()" [productsList]="productsList" [productPackages]="productPackages"
       [type]="'bill'"></app-order-transaction-packages>

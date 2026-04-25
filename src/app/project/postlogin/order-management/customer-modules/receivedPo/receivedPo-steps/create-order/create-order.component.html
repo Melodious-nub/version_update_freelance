@@ -1,4 +1,4 @@
-<form [formGroup]="receivedPoForm">
+<form [formGroup]="receivedPoForm()">
   <mat-expansion-panel expanded="true" #expansionPanel1>
     <mat-expansion-panel-header (click)="expandPanel(expansionPanel1, $event)">
       <mat-panel-description>
@@ -137,7 +137,7 @@
 
             <div class="col-12 col-md-2">
               @if (
-                receivedPoForm.get('fulfilmentType').value === 'CONTAINER'
+                receivedPoForm().get('fulfilmentType').value === 'CONTAINER'
                 ) {
                 <div class="attribute one w-100">
                   <div class="attribute-select justify-content-around w-100 title-text">
@@ -160,7 +160,7 @@
             </div>
             <div class="col-12 col-md-2">
               @if (
-                receivedPoForm.get('fulfilmentType').value === 'CONTAINER'
+                receivedPoForm().get('fulfilmentType').value === 'CONTAINER'
                 ) {
                 <div class="attribute one w-100">
                   <div class="attribute-select justify-content-around w-100 title-text">
@@ -360,7 +360,7 @@
                     <td style="width: unset !important" colspan="3" class="px-1" formGroupName="productDetails">
                       <div class="d-flex align-items-center b-none">
                         @if (!productPackage.get('productId').value) {
-                          <input [readonly]="!isSelfPO" [ngClass]="{ 'bg-disable': !isSelfPO }"
+                          <input [readonly]="!isSelfPO()" [ngClass]="{ 'bg-disable': !isSelfPO() }"
                             placeholder="Search for Product Code/Description" [matAutocomplete]="product"
                             (input)="getProductsList($event)" formControlName="description" />
                         <mat-autocomplete (optionSelected)="
@@ -528,7 +528,7 @@
                         </td>
                         <td class="number-column" formGroupName="cost" matTooltip="{{ getMetricCost(productPackage) }}">
                           @if (
-                            !receivedPoForm.get('isQuickCheckout').value &&
+                            !receivedPoForm().get('isQuickCheckout').value &&
                             isEditableCost
                             ) {
                             @if (
@@ -540,7 +540,7 @@
                             }
                           }
                           @if (
-                            receivedPoForm.get('isQuickCheckout').value ||
+                            receivedPoForm().get('isQuickCheckout').value ||
                             !isEditableCost
                             ) {
                             <div class="bg-disable">
@@ -625,7 +625,7 @@
                       <td></td>
                       <td>
                         <section class="ps-2">
-                          {{ receivedPoForm.get("totalSku").value }}
+                          {{ receivedPoForm().get("totalSku").value }}
                         </section>
                       </td>
                       <td>
@@ -636,7 +636,7 @@
                     <td class="number-column">
                       <section class="pe-1">
                         {{
-                        receivedPoForm.get("weight").get("attributeValue").value
+                        receivedPoForm().get("weight").get("attributeValue").value
                         | numberFormatter : 3
                         }}
                       </section>
@@ -644,7 +644,7 @@
                     <td class="number-column">
                       <section class="pe-1">
                         {{
-                        receivedPoForm.get("volume").get("attributeValue").value
+                        receivedPoForm().get("volume").get("attributeValue").value
                         | numberFormatter : 3
                         }}
                       </section>
@@ -652,7 +652,7 @@
                     <td class="number-column">
                       @if (!checkIfAnyProductIsSelfProduct()) {
                       <input type="text" [formControl]="
-                          receivedPoForm.get('totalCost').get('attributeValue')
+                          receivedPoForm().get('totalCost').get('attributeValue')
                         " />
                         }
                       </td>
@@ -663,7 +663,7 @@
                       <td class="number-column">
                         @if (!checkIfAnyProductIsSelfProduct()) {
                       <input type="text" [formControl]="
-                          receivedPoForm.get('totalCost').get('attributeValue')
+                          receivedPoForm().get('totalCost').get('attributeValue')
                         " />
                           }
                         </td>
@@ -683,10 +683,10 @@
               min-height: 20px;
               resize: vertical;
               border-radius: 6px;
-            " placeholder="Type Quick Note" [formControl]="receivedPoForm.get('customNote')"></textarea>
+            " placeholder="Type Quick Note" [formControl]="receivedPoForm().get('customNote')"></textarea>
               </div>
             </div>
-            <div [formGroup]="receivedPoForm" class="row mx-auto b-round bg-white">
+            <div [formGroup]="receivedPoForm()" class="row mx-auto b-round bg-white">
               <div class="col-12 col-md-3 p-2">
                 <div class="b-round">
                   <div class="text-nowrap me-2">
@@ -774,11 +774,11 @@
                                   <input class="text-primary fw-bold text-right b-none" placeholder="Enter Discount in %"
                             type="number" min="0" max="100" (change)="
                               onChangePercentage(
-                                receivedPoForm.get('discountPercentage'),
+                                receivedPoForm().get('discountPercentage'),
                                 'discountType'
                               )
                             " [formControl]="
-                              receivedPoForm.get('discountPercentage')
+                              receivedPoForm().get('discountPercentage')
                             " />
                                     <span class="mx-1 text-primary">%</span>
                                   </div>
@@ -787,23 +787,23 @@
                                   <div class="d-flex p-0 align-items-center">
                           <input class="fw-bold text-right b-none" type="number" (change)="
                               onChangeCost(
-                                receivedPoForm
+                                receivedPoForm()
                                   .get('discountCost')
                                   .get('attributeValue'),
                                 'discountType'
                               )
                             " [formControl]="
-                              receivedPoForm
+                              receivedPoForm()
                                 .get('discountCost')
                                 .get('attributeValue')
                             " placeholder="0.000" [value]="
-                              receivedPoForm
+                              receivedPoForm()
                                 .get('discountCost')
                                 .get('attributeValue').value
                                 | numberFormatter : 3
                             " />
                                       <span class="mx-1">{{
-                                        receivedPoForm
+                                        receivedPoForm()
                                         .get("discountCost")
                                         .get("userConversionUom").value
                                       }}</span>
@@ -819,11 +819,11 @@
                                       <input class="text-primary fw-bold text-right b-none" [min]="0" [max]="100"
                             placeholder="Enter Sales Tax in %" (change)="
                               onChangePercentage(
-                                receivedPoForm.get('salesTaxPercentage'),
+                                receivedPoForm().get('salesTaxPercentage'),
                                 'salesTaxType'
                               )
                             " type="number" [formControl]="
-                              receivedPoForm.get('salesTaxPercentage')
+                              receivedPoForm().get('salesTaxPercentage')
                             " />
                                         <span class="mx-1 text-primary">%</span>
                                       </div>
@@ -832,23 +832,23 @@
                                       <div class="d-flex p-0 align-items-center">
                           <input class="fw-bold text-right b-none" type="number" (change)="
                               onChangeCost(
-                                receivedPoForm
+                                receivedPoForm()
                                   .get('salesTaxCost')
                                   .get('attributeValue'),
                                 'salesTaxType'
                               )
                             " [formControl]="
-                              receivedPoForm
+                              receivedPoForm()
                                 .get('salesTaxCost')
                                 .get('attributeValue')
                             " placeholder="0.000" [value]="
-                              receivedPoForm
+                              receivedPoForm()
                                 .get('salesTaxCost')
                                 .get('attributeValue').value
                                 | numberFormatter : 3
                             " />
                                           <span class="mx-1">{{
-                                            receivedPoForm
+                                            receivedPoForm()
                                             .get("salesTaxCost")
                                             .get("userConversionUom").value
                                           }}</span>
@@ -866,7 +866,7 @@
                                       <td class="number-column">
                                         <input class="text-primary" placeholder="Delivery Cost" (change)="onChangeDeliveryCost()"
                           type="number" [formControl]="
-                            receivedPoForm
+                            receivedPoForm()
                               .get('deliveryCost')
                               .get('attributeValue')
                           " />
@@ -882,13 +882,13 @@
                                           <div class="bg-light">
                                             <span>
                                               {{
-                                              receivedPoForm
+                                              receivedPoForm()
                                               .get("totalCost")
                                               .get("attributeValue").value
                                               | numberFormatter : 3
                                               }}
                                               {{
-                                              receivedPoForm
+                                              receivedPoForm()
                                               .get("totalCost")
                                               .get("userConversionUom").value
                                               }}

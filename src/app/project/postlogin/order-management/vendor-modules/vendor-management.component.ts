@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BillListComponent } from './bill-management/bill-list/bill-list.component';
 import { PurchaseorderListComponent } from './purchaseorder/purchaseorder-list/purchaseorder-list.component';
@@ -31,8 +31,8 @@ export class VendorManagementComponent implements OnInit {
   private router = inject(Router);
   route = inject(ActivatedRoute);
 
-  @Input() single = false;
-  @Input() vendorId = false;
+  readonly single = input(false);
+  readonly vendorId = input(false);
   currentStepIndex = 0;
   tabs: Array<any> = [
     {

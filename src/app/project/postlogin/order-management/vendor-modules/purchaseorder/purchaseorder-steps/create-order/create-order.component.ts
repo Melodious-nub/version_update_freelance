@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef, HostListener, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, HostListener, OnDestroy, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -72,13 +72,13 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   map2 = false;
   map1 = false;
   map3 = false;
-  @Input() componentUoms: any;
+  readonly componentUoms = input<any>(undefined);
   productsList: any;
   quotationsList: any;
-  @Input() purchaseOrderForm: UntypedFormGroup;
-  @Output() generatePdf = new EventEmitter();
-  @Output() calculate = new EventEmitter();
-  @Output() patchEditData = new EventEmitter();
+  readonly purchaseOrderForm = input<UntypedFormGroup>(undefined);
+  readonly generatePdf = output<any>();
+  readonly calculate = output<any>();
+  readonly patchEditData = output<any>();
   private ngUnsubscribe: Subject<void> = new Subject();
   public buyingTypeList: any[] = [
     { name: 'SKU', value: 'SKU' },
@@ -136,16 +136,16 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     const editTillDate = new Date(
       currentDate.getTime() + 7 * 24 * 60 * 60 * 1000
     );
-    this.purchaseOrderForm
+    this.purchaseOrderForm()
       .get('date')
       .setValue(currentDate.toISOString().split('T')[0]);
-    this.purchaseOrderForm
+    this.purchaseOrderForm()
       .get('expectedByDate')
       .setValue(expectedByDate.toISOString().split('T')[0]);
-    this.purchaseOrderForm
+    this.purchaseOrderForm()
       .get('editTillDate')
       .setValue(editTillDate.toISOString().split('T')[0]);
-    this.purchaseOrderForm.get('loadingTypeId').setValue('FLOOR');
+    this.purchaseOrderForm().get('loadingTypeId').setValue('FLOOR');
   }
 
   getQuotationsList(event: any) {
@@ -161,12 +161,12 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   }
 
   onSelectQuotation(quotation: any) {
-    this.purchaseOrderForm
+    this.purchaseOrderForm()
       .get('referenceOrder')
       .get('quotationId')
       .patchValue(quotation?.id);
-    this.purchaseOrderForm.get('requestFrom').patchValue(quotation?.requestTo);
-    this.purchaseOrderForm.get('requestTo').patchValue(quotation?.requestFrom);
+    this.purchaseOrderForm().get('requestFrom').patchValue(quotation?.requestTo);
+    this.purchaseOrderForm().get('requestTo').patchValue(quotation?.requestFrom);
     delete quotation.id;
     delete quotation.status;
     delete quotation.transactionId;
@@ -179,7 +179,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   }
 
   get productPackages() {
-    return this.purchaseOrderForm.get('productPackages') as UntypedFormArray;
+    return this.purchaseOrderForm().get('productPackages') as UntypedFormArray;
   }
 
   ngOnDestroy(): void {
@@ -216,12 +216,12 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   }
 
   get requestFromAddress() {
-    const itm = this.purchaseOrderForm.get('requestFrom').value;
+    const itm = this.purchaseOrderForm().get('requestFrom').value;
     return itm ? itm?.address : '';
   }
 
   get requestToAddress() {
-    const id = this.purchaseOrderForm.get('requestTo').value.id;
+    const id = this.purchaseOrderForm().get('requestTo').value.id;
     const item = this.businessAccountService.vendorList.find(
       (vendor) => vendor.relationAccountId == Number(id)
     );
@@ -357,37 +357,37 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     if (!this.isEditable) {
       return;
     }
-    this.purchaseOrderForm.get('importLocalType').setValue(value);
+    this.purchaseOrderForm().get('importLocalType').setValue(value);
   }
 
   
   get importLocalType() {
-    return this.purchaseOrderForm.get('importLocalType');
+    return this.purchaseOrderForm().get('importLocalType');
   }
 
   get status() {
-    return this.purchaseOrderForm.get('status');
+    return this.purchaseOrderForm().get('status');
   }
 
   get isEditable() {
     return (
       this.status.value != 'CONFIRMED' &&
       this.status.value != 'REJECTED' &&
-      !this.purchaseOrderForm.get('isQuickCheckout').value
+      !this.purchaseOrderForm().get('isQuickCheckout').value
     );
   }
 
   get incoTermId() {
-    return this.purchaseOrderForm.get('incoTermId');
+    return this.purchaseOrderForm().get('incoTermId');
   }
   get departurePortId() {
-    return this.purchaseOrderForm.get('departurePortId');
+    return this.purchaseOrderForm().get('departurePortId');
   }
   get buyingType() {
-    return this.purchaseOrderForm.get('buyingType');
+    return this.purchaseOrderForm().get('buyingType');
   }
   get vendorId() {
-    return this.purchaseOrderForm.get('requestTo').get('id');
+    return this.purchaseOrderForm().get('requestTo').get('id');
   }
 
   onChangeVendor() {
@@ -401,13 +401,13 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       this.buyingType.setValue('CONTAINER_40_FT_HQ');
     }
     if (vendor?.fulfillmentLimitInDays) {
-      this.purchaseOrderForm.get('requiredByDate').setValue(null);
+      this.purchaseOrderForm().get('requiredByDate').setValue(null);
       const currentDate = new Date();
       const futureDate = new Date(
         currentDate.getTime() +
           vendor?.fulfillmentLimitInDays * 24 * 60 * 60 * 1000
       );
-      this.purchaseOrderForm
+      this.purchaseOrderForm()
         .get('requiredByDate')
         .setValue(futureDate.toISOString().split('T')[0]);
     }
@@ -450,7 +450,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
 
   getUomQuery() {
     let uomQuery = ``;
-    this.componentUoms.controls.forEach((element) => {
+    this.componentUoms().controls.forEach((element) => {
       element.get('columnMappings').value.forEach((col) => {
         uomQuery =
           uomQuery +
@@ -462,7 +462,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   }
 
   printPdf() {
-    this.generatePdf.emit()
+    this.generatePdf.emit(undefined as any)
   }
 
 

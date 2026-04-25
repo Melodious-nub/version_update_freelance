@@ -31,7 +31,7 @@
             <dadyin-button [theme]="'primary'" label="Apply" (clicked)="apply()"></dadyin-button>
           </div>
           <div class="filter-card-form" [formGroup]="filterForm">
-            @if (mode === 'status') {
+            @if (mode() === 'status') {
               <div class="filter-section">
                 <h4 class="filter-section-title">Status</h4>
                 <div class="d-flex align-items-center flex-wrap">
@@ -50,7 +50,7 @@
                 </div>
               </div>
             }
-            @if (mode === 'interval') {
+            @if (mode() === 'interval') {
               <div class="filter-section">
                 <h4 class="filter-section-title">Interval Type</h4>
                 <div class="d-flex align-items-center flex-wrap">

@@ -3,7 +3,7 @@
     <mat-expansion-panel-header>
       <div (click)="mep.expanded = !mep.expanded" class="panel-header p-0">
         <div class="title-text">
-          <span>Process {{ index + 1 }}</span>
+          <span>Process {{ index() + 1 }}</span>
         </div>
         <!-- Start New -->
         @if (isExistingProcess?.value === true) {
@@ -91,7 +91,7 @@
                 </div>
               </div>
               <div class="text-align-end d-flex">
-                @if (process?.disabled && apiService.finalSave) {
+                @if (process()?.disabled && apiService.finalSave) {
                   <dadyin-button (clicked)="confirmEdit()"
                     [theme]="'borderless-white'" type="image" [widthImage]="'17px'" [heightImage]="'17px'"
                     [typeval]="'assets/nicons/edit-pen.png'">
@@ -100,7 +100,7 @@
                 <dadyin-button (clicked)="deleteProcess()" [theme]="'borderless-default'" type="image"
                   [typeval]="'assets/nicons/delete.png'">
                 </dadyin-button>
-                @if (!process?.disabled) {
+                @if (!process()?.disabled) {
                   <dadyin-button (clicked)="onSaveProcessDetails()" [theme]="'borderless-primary'"
                     type="image" [typeval]="'assets/nicons/save.png'">
                   </dadyin-button>

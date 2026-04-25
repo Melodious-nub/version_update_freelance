@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InvoiceListComponent } from './invoice-management/invoice-list/invoice-list.component';
 import { ReceivedPoListComponent } from './receivedPo/receivedPo-list/receivedPo-list.component';
@@ -58,8 +58,8 @@ export class CustomerManagementComponent implements OnInit {
       index: 3,
     },
   ];
-  @Input() single = false;
-  @Input() customerId: any = null;
+  readonly single = input(false);
+  readonly customerId = input<any>(null);
 
   ngOnInit(): void {
     this.currentStepIndex = this.route.snapshot.queryParams.currentStepIndex;

@@ -1,4 +1,4 @@
-<div [ngClass]="{ 'app-container': !single }">
+<div [ngClass]="{ 'app-container': !single() }">
   <mat-tab-group class="mat-steps"
     [(selectedIndex)]="currentStepIndex"
     (selectedTabChange)="onTabChange($event)"
@@ -16,29 +16,29 @@
           <ng-template matTabContent>
             @if (link.index === 0) {
               <app-received-rfq-list
-                [customerId]="customerId"
-                [single]="single"
+                [customerId]="customerId()"
+                [single]="single()"
                 [role]="'customer'"
               ></app-received-rfq-list>
             }
             @if (link.index === 1) {
               <app-quotation-list
-                [customerId]="customerId"
-                [single]="single"
+                [customerId]="customerId()"
+                [single]="single()"
                 [role]="'customer'"
               ></app-quotation-list>
             }
             @if (link.index === 2) {
               <app-receivedPo-list
-                [customerId]="customerId"
-                [single]="single"
+                [customerId]="customerId()"
+                [single]="single()"
                 [role]="'customer'"
               ></app-receivedPo-list>
             }
             @if (link.index === 3) {
               <app-invoice-list
-                [customerId]="customerId"
-                [single]="single"
+                [customerId]="customerId()"
+                [single]="single()"
                 [role]="'customer'"
               ></app-invoice-list>
             }

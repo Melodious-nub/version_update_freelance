@@ -1,20 +1,20 @@
 <div class="card">
   <div class="card-header">
     <div class="card-header-description">
-      {{ pageTitle }} {{ "(" + types.length + ")" }}
+      {{ pageTitle() }} {{ "(" + types().length + ")" }}
     </div>
     <div class="card-header-action">
-      {{ "(" + this.selected_types.length + "/" + types.length + ")" }}
+      {{ "(" + this.selected_types.length + "/" + types().length + ")" }}
     </div>
   </div>
   <div class="card-body">
     <ul class="types">
-      @if (this.types.length === 0) {
+      @if (this.types().length === 0) {
         <div class="data-not-found">
-          <p>{{ pageTitle }} Not Found!</p>
+          <p>{{ pageTitle() }} Not Found!</p>
         </div>
       } @else {
-        @for (type of types; track type; let i = $index) {
+        @for (type of types(); track type; let i = $index) {
           <li
             [ngClass]="this.selected_types.includes(type) ? 'active' : ''"
             (click)="selectedTypes(type)"

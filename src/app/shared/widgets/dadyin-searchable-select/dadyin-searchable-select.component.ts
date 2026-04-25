@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, input, output } from '@angular/core';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTooltip } from '@angular/material/tooltip';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -19,38 +19,39 @@ import { NgClass } from '@angular/common';
     ]
 })
 export class DadyinSearchableSelectComponent implements OnChanges{
-  @Input() class: any;
-  @Input() label: any;
-  @Input() fullItems: any;
-  @Input() bindValue: any = 'id';
-  @Input() bindLabel: any = 'description';
-  @Input() control: any = new UntypedFormControl();
-  @Input() placeholder: any = '';
-  @Output() changed: any = new EventEmitter();
+  readonly class = input<any>(undefined);
+  readonly label = input<any>(undefined);
+  readonly fullItems = input<any>(undefined);
+  readonly bindValue = input<any>('id');
+  readonly bindLabel = input<any>('description');
+  readonly control = input<any>(new UntypedFormControl());
+  readonly placeholder = input<any>('');
+  readonly changed = output<any>();
   @Input() isDisabled: any = false;
   @Input('disabled') set _isDisabled(val: boolean) { this.isDisabled = val; }
-  @Input() multiple = false;
-  @Input() optionTag = null;
-  @Input() required: any = false;
+  readonly multiple = input(false);
+  readonly optionTag = input(null);
+  readonly required = input<any>(false);
 
-  @Input() marginBottom=true
-  @Input() clearable: any =false;
+  readonly marginBottom = input(true);
+  readonly clearable = input<any>(false);
 
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ((changes['isDisabled'] || changes['disabled']) && this.control) {
+    const control = this.control();
+    if ((changes['isDisabled'] || changes['disabled']) && control) {
       if (this.isDisabled) {
-        this.control.disable();
+        control.disable();
       } else {
-        this.control.enable();
+        control.enable();
       }
     }
   }
 
   customSearchFn = (term: string, item: any): boolean => {
     if (!term || !item) return false;
-    const itemText = item[this.bindLabel]
+    const itemText = item[this.bindLabel()]
       ?.toString()
       .toLowerCase()
       .replace(/,/g, '');
@@ -74,7 +75,7 @@ export class DadyinSearchableSelectComponent implements OnChanges{
   };
 
   onChange() {
-    this.changed.emit(this.control?.value);
+    this.changed.emit(this.control()?.value);
   }
 
   returnAddress(item) {

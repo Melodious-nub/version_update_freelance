@@ -6,10 +6,10 @@
     <div class="d-flex w-100 align-items-center">
       <input
         #searchInput
-        [formControl]="searchControl"
+        [formControl]="searchControl()"
         class="py-0 w-100"
         (input)="onInput($event.target.value)"
-        [placeholder]="placeholder"
+        [placeholder]="placeholder()"
         />
         @if (searchInput.value) {
           <div
@@ -30,7 +30,7 @@
           >
         </div>
       </div>
-      @if (advSearchConfig) {
+      @if (advSearchConfig()) {
         <button
           class="mx-search-filter-icons"
           (click)="toggleFilter()"

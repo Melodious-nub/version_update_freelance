@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit, inject } from '@angular/core';
+import { Component, ElementRef, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit, inject, viewChild } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 
@@ -19,7 +19,7 @@ import { NgClass } from '@angular/common';
 export class PreloginComponent implements AfterViewInit{
   private router = inject(Router);
 
-  @ViewChild('swiperR', { static: false }) swiperR?: ElementRef;
+  readonly swiperR = viewChild<ElementRef>('swiperR');
   activeIndex = 0;
   swiperConfig: any = {
     spaceBetween: 15,
@@ -42,8 +42,9 @@ export class PreloginComponent implements AfterViewInit{
   };
 
   ngAfterViewInit() {
-    if (this.swiperR) {
-      const swiperEl = this.swiperR.nativeElement;
+    const swiperR = this.swiperR();
+    if (swiperR) {
+      const swiperEl = swiperR.nativeElement;
       Object.assign(swiperEl, this.swiperConfig);
 
       swiperEl.addEventListener('swiperslidechange', (event: any) => {
@@ -55,6 +56,6 @@ export class PreloginComponent implements AfterViewInit{
   }
 
   goToSlide(index: number) {
-    this.swiperR?.nativeElement.swiper.slideTo(index);
+    this.swiperR()?.nativeElement.swiper.slideTo(index);
   }
 }

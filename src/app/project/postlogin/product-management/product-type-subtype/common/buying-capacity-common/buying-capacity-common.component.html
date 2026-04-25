@@ -3,14 +3,14 @@
     <div class="width-100">
       &nbsp;
     </div>
-    @if (buyingCapacities?.controls?.length===0) {
+    @if (buyingCapacities()?.controls?.length===0) {
       <div>
         <div class="d-flex justify-content-end align-items-center align-items-center">
           <i class="mat-icon" (click)="addBc()">add_circle_outline</i>
         </div>
       </div>
     }
-    @for (bc of buyingCapacities?.controls; track bc; let i = $index) {
+    @for (bc of buyingCapacities()?.controls; track bc; let i = $index) {
       <div style="row-gap:5px;padding-right:3px;width: 135px; margin-right: 5px;" class="d-flex justify-content-between align-items-center"
         [formGroup]="bc">
         <div class="title-text">{{bc.value?.buyingCapacityType}} BUYER</div>
@@ -27,7 +27,7 @@
       <div class="h-30">MARKUP%</div>
       <div class="h-30">ROUND UP</div>
     </div>
-    @for (bc of buyingCapacities.controls; track bc; let i = $index) {
+    @for (bc of buyingCapacities().controls; track bc; let i = $index) {
       <div style="row-gap:5px;padding-right:3px; width: 135px;    margin-right: 5px;"
         class="flex-column d-flex justify-content-between  align-items-center" [formGroup]="bc"
         >

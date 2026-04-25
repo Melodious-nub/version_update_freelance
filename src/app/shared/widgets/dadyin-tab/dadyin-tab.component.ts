@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, Output, EventEmitter } from '@angular/core';
+import { Component, forwardRef, Input, input, output } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
@@ -15,10 +15,10 @@ import { MatTabGroup, MatTab } from '@angular/material/tabs';
 export class DadyinTabComponent {
 
     constructor() { }
-    @Output() actionClick = new EventEmitter();
+    readonly actionClick = output<any>();
     @Input() currentIndex: number = 0;
-    @Input() disabled = false;
-    @Input() action: any = [{ id: '', name: '' }]
+    readonly disabled = input(false);
+    readonly action = input<any>([{ id: '', name: '' }]);
     changeMainTab(event:any) {
       
         this.actionClick.emit({index:event});

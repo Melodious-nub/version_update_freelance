@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { BusinessAccountService } from '../../../../business-account/business-account.service';
@@ -34,7 +34,7 @@ export class InvoiceListComponent {
   formsService = inject(FormsService);
   uomService = inject(UomService);
 
-  @Input() single = false;
+  readonly single = input(false);
   invoiceList: any[];
   public searchText: string;
   public pageConfig: any = {

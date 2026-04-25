@@ -113,7 +113,7 @@
                           [searchFn]="customSearchFn"
                           [clearable]="false"
                           class="custom-table"
-                          [items]="countries"
+                          [items]="countries()"
                           labelForId="yesno"
                           bindValue="id"
                           >
@@ -269,7 +269,7 @@
                           </mat-expansion-panel>
                         </form>
 
-                        @if (!isCustomer) {
+                        @if (!isCustomer()) {
                           <mat-expansion-panel
                             class="panel-no-padding"
                             expanded="true"
@@ -355,7 +355,7 @@
                                               formControlName="countryId"
                                               [searchFn]="customSearchFn"
                                               class="custom-table"
-                                              [items]="countries"
+                                              [items]="countries()"
                                               labelForId="yesno"
                                               bindValue="id"
                                               >
@@ -450,7 +450,7 @@
                                         </mat-expansion-panel>
                                       }
 
-                                      @if (isCustomer) {
+                                      @if (isCustomer()) {
                                         <mat-expansion-panel
                                           class="panel-no-padding"
                                           expanded="true"
@@ -541,7 +541,7 @@
                                                             [searchFn]="customSearchFn"
                                                             [clearable]="false"
                                                             class="custom-table"
-                                                            [items]="countries"
+                                                            [items]="countries()"
                                                             labelForId="yesno"
                                                             bindValue="id"
                                                             >

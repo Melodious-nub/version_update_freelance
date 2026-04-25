@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef, Output, EventEmitter } from '@angular/core';
+import { Component, Input, forwardRef, input, output } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -16,32 +16,32 @@ import { MatTooltip } from '@angular/material/tooltip';
 export class DadyinButtonComponent {
 
     @Input() label = "";
-    @Input() theme = "default"; // value will be : default , primary , secondary , danger , warning
-    @Input() class = '';
-    @Input() fontSize = '';
-    @Input() size = ''; // value will be : full , small
-    @Input() type = "normal"; // value will be : normal , icon , image;
-    @Input() typeval = '';
-    @Input() height = '';
-    @Input() width = '';
-    @Input() heightImage = '30px';
-    @Input() widthImage = '30px';
+    readonly theme = input("default"); // value will be : default , primary , secondary , danger , warning
+    readonly class = input('');
+    readonly fontSize = input('');
+    readonly size = input(''); // value will be : full , small
+    readonly type = input("normal"); // value will be : normal , icon , image;
+    readonly typeval = input('');
+    readonly height = input('');
+    readonly width = input('');
+    readonly heightImage = input('30px');
+    readonly widthImage = input('30px');
     @Input() isDisabled = false;
     @Input('disabled') set _isDisabled(val: boolean) { this.isDisabled = val; }
-    @Input() tooltip = '';
-    @Output() clicked = new EventEmitter();
-    @Input() stopPropagation = true;
-    @Input() routerLink: string[] = [];
+    readonly tooltip = input('');
+    readonly clicked = output<any>();
+    readonly stopPropagation = input(true);
+    readonly routerLink = input<string[]>([]);
 
     constructor() {
     }
 
     onClick(event?: MouseEvent) {
-        if (this.stopPropagation && event) {
+        if (this.stopPropagation() && event) {
             event.stopImmediatePropagation();
             event.stopPropagation();
         }
-        this.clicked.emit()
+        this.clicked.emit(undefined as any)
     }
 
 }

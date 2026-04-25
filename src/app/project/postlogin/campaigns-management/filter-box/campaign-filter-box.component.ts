@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, HostListener, OnInit, inject, input, output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
@@ -13,8 +13,8 @@ import { MatIcon } from '@angular/material/icon';
 export class CampaignFilterBoxComponent implements OnInit {
   private fb = inject(UntypedFormBuilder);
 
-  @Output() filtersApplied = new EventEmitter<any>();
-  @Input() mode: 'status' | 'interval' = 'status';
+  readonly filtersApplied = output<any>();
+  readonly mode = input<'status' | 'interval'>('status');
 
   openFilter = false;
   filterForm: UntypedFormGroup;
@@ -46,7 +46,7 @@ export class CampaignFilterBoxComponent implements OnInit {
   private updateFilterCount(): void {
     const v = this.filterForm.value;
     let count = 0;
-    if (this.mode === 'status') {
+    if (this.mode() === 'status') {
       if (v.statusDraft) count++;
       if (v.statusRunning) count++;
       if (v.statusCompleted) count++;
@@ -61,7 +61,7 @@ export class CampaignFilterBoxComponent implements OnInit {
 
   apply(): void {
     const v = this.filterForm.value;
-    if (this.mode === 'status') {
+    if (this.mode() === 'status') {
       const selected: string[] = [];
       if (v.statusDraft) selected.push('draft');
       if (v.statusRunning) selected.push('running');

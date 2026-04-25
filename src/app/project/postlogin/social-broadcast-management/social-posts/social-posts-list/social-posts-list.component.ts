@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, SimpleChanges, inject, input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntypedFormControl } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
@@ -25,8 +25,8 @@ export class SocialPostsListComponent implements OnInit, OnChanges {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
-  @Input() productId?: any;
-  @Input() showVersionColumn: boolean = false;
+  readonly productId = input<any>(undefined);
+  readonly showVersionColumn = input<boolean>(false);
   searchControl = new UntypedFormControl('');
   socialPosts: SocialPostItem[] = [];
   filteredPosts: SocialPostItem[] = [];
@@ -125,14 +125,14 @@ export class SocialPostsListComponent implements OnInit, OnChanges {
   updateTableConfig(): void {
     this.displayedHeaders = this.headers.map(h => ({ ...h }));
 
-    if (this.productId) {
+    if (this.productId()) {
       this.displayedHeaders = this.displayedHeaders.filter(h => h.prop !== 'actions');
       const statusIdx = this.displayedHeaders.findIndex(h => h.prop === 'status');
       if (statusIdx !== -1) {
         const stageHeader = { name: 'STAGE', prop: 'stage', sortable: true, minWidth: '120px' };
         this.displayedHeaders.splice(statusIdx + 1, 0, stageHeader);
 
-        if (this.showVersionColumn) {
+        if (this.showVersionColumn()) {
           const versionHeader = { name: 'VERSION', prop: 'version', sortable: true, minWidth: '120px' };
           this.displayedHeaders.splice(statusIdx + 2, 0, versionHeader);
         }
@@ -151,8 +151,9 @@ export class SocialPostsListComponent implements OnInit, OnChanges {
       post_type: this.activeFilters.post_type,
     };
 
-    const obs = this.productId
-      ? this.socialPostsService.getSocialPostsByProduct(this.productId, this.pageIndex + 1, this.pageS, apiFilters)
+    const productId = this.productId();
+    const obs = productId
+      ? this.socialPostsService.getSocialPostsByProduct(productId, this.pageIndex + 1, this.pageS, apiFilters)
       : this.socialPostsService.getSocialPosts(this.pageIndex + 1, this.pageS, apiFilters);
 
     obs.subscribe({
@@ -349,7 +350,7 @@ export class SocialPostsListComponent implements OnInit, OnChanges {
 
   viewPost(post: SocialPostItem): void {
     if (post && post.id) {
-      if (this.productId) {
+      if (this.productId()) {
         this.router.navigate(['/home/social-broadcast-management/social-posts/detail', post.id]);
       } else {
         this.router.navigate(['detail', post.id], { relativeTo: this.route });

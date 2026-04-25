@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, HostListener, Input, OnInit, Output, OnDestroy, inject } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit, OnDestroy, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UomService } from 'src/app/service/uom.service';
@@ -61,10 +61,10 @@ export class CreateRfqComponent implements OnInit, OnDestroy {
   map3 = false;
   searchProductCode = new Subject();
   searchProductDescription = new Subject();
-  @Input() componentUoms: any;
-  @Input() rfqForm: UntypedFormGroup;
-  @Output() calculate = new EventEmitter();
-  @Output() patchEditData = new EventEmitter();
+  readonly componentUoms = input<any>(undefined);
+  readonly rfqForm = input<UntypedFormGroup>(undefined);
+  readonly calculate = output<any>();
+  readonly patchEditData = output<any>();
   private ngUnsubscribe: Subject<void> = new Subject();
   productsList: any;
 
@@ -106,7 +106,7 @@ export class CreateRfqComponent implements OnInit, OnDestroy {
           this.vendorId.setValue(1);
         }
         let uomQuery = ``;
-        this.componentUoms.controls.forEach((element) => {
+        this.componentUoms().controls.forEach((element) => {
           element.get('columnMappings').value.forEach((col) => {
             uomQuery =
               uomQuery +
@@ -139,7 +139,7 @@ export class CreateRfqComponent implements OnInit, OnDestroy {
       this.vendorId.setValue(1);
     }
     let uomQuery = ``;
-    this.componentUoms.controls.forEach((element) => {
+    this.componentUoms().controls.forEach((element) => {
       element.get('columnMappings').value.forEach((col) => {
         uomQuery =
           uomQuery +
@@ -222,15 +222,15 @@ export class CreateRfqComponent implements OnInit, OnDestroy {
   }
 
   get productPackages() {
-    return this.rfqForm.get('productPackages') as UntypedFormArray;
+    return this.rfqForm().get('productPackages') as UntypedFormArray;
   }
 
   get messages() {
-    return this.rfqForm.get('messages') as UntypedFormArray;
+    return this.rfqForm().get('messages') as UntypedFormArray;
   }
 
   get status() {
-    return this.rfqForm.get('status');
+    return this.rfqForm().get('status');
   }
   get isEditable() {
     return this.status.value != 'CONFIRMED' && this.status.value != 'REJECTED';
@@ -316,23 +316,23 @@ export class CreateRfqComponent implements OnInit, OnDestroy {
   }
 
   toggleType(value: any) {
-    this.rfqForm.get('importLocalType').setValue(value);
+    this.rfqForm().get('importLocalType').setValue(value);
   }
   get importLocalType() {
-    return this.rfqForm.get('importLocalType');
+    return this.rfqForm().get('importLocalType');
   }
 
   get buyingType() {
-    return this.rfqForm.get('buyingType');
+    return this.rfqForm().get('buyingType');
   }
   get incoTermId() {
-    return this.rfqForm.get('incoTermId');
+    return this.rfqForm().get('incoTermId');
   }
   get departurePortId() {
-    return this.rfqForm.get('departurePortId');
+    return this.rfqForm().get('departurePortId');
   }
   get vendorId() {
-    return this.rfqForm.get('requestTo').get('id');
+    return this.rfqForm().get('requestTo').get('id');
   }
   onChangeVendor() {
     const vendor = this.businessAccountService.vendorList.find(
@@ -345,13 +345,13 @@ export class CreateRfqComponent implements OnInit, OnDestroy {
       this.buyingType.setValue('CONTAINER_40_FT_HQ');
     }
     if (vendor?.fulfillmentLimitInDays) {
-      this.rfqForm.get('requiredByDate').setValue(null);
+      this.rfqForm().get('requiredByDate').setValue(null);
       const currentDate = new Date();
       const futureDate = new Date(
         currentDate.getTime() +
         vendor?.fulfillmentLimitInDays * 24 * 60 * 60 * 1000
       );
-      this.rfqForm
+      this.rfqForm()
         .get('requiredByDate')
         .setValue(futureDate.toISOString().split('T')[0]);
       this.minRequiredDate = futureDate.toISOString().split('T')[0];

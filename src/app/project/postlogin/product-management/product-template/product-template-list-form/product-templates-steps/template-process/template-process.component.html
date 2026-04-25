@@ -25,25 +25,25 @@
     </div>
     <!-- Add processes -->
     @if (templateProcessType.value === 'PROCESS') {
-      <app-create-process (calculate)="calculateValues($event)" [componentUoms]="componentUoms"
-      [templateForm]="templateForm"></app-create-process>
+      <app-create-process (calculate)="calculateValues($event)" [componentUoms]="componentUoms()"
+      [templateForm]="templateForm()"></app-create-process>
     }
     <!-- Add Material Details -->
     @if (templateProcessType.value === 'RAW_MATERIAL') {
       <div class="header-light justify-content-start">
         <div class=" font-size-14 ">
           <strong>Total Material Cost : </strong> <span class="price-text">
-          {{templateForm.get('templateCost').get('attributeValue').value}}
-        {{templateForm.get('templateCost').get('userConversionUom').value}} </span>
+          {{templateForm().get('templateCost').get('attributeValue').value}}
+        {{templateForm().get('templateCost').get('userConversionUom').value}} </span>
       </div>
       <div class=" font-size-14 ms-2">
         <strong>Total Material Density : </strong> <span class="price-text">
-        {{templateForm.get('templateDensity').get('attributeValue').value}}
-      {{templateForm.get('templateDensity').get('userConversionUom').value}} </span>
+        {{templateForm().get('templateDensity').get('attributeValue').value}}
+      {{templateForm().get('templateDensity').get('userConversionUom').value}} </span>
     </div>
   </div>
-  <app-raw-material-process (calculate)="calculateValues($event)" [componentUoms]="componentUoms"
-    [templateForm]="templateForm">
+  <app-raw-material-process (calculate)="calculateValues($event)" [componentUoms]="componentUoms()"
+    [templateForm]="templateForm()">
   </app-raw-material-process>
 }
 
@@ -51,8 +51,8 @@
   <div class="header-light justify-content-start">
     <div class=" font-size-14">
       <strong>Total Fixed Cost : </strong> <span class="price-text">
-      {{templateForm.get('templateCost').get('attributeValue').value}}
-    {{templateForm.get('templateCost').get('userConversionUom').value}} </span>
+      {{templateForm().get('templateCost').get('attributeValue').value}}
+    {{templateForm().get('templateCost').get('userConversionUom').value}} </span>
   </div>
 </div>
 <div>

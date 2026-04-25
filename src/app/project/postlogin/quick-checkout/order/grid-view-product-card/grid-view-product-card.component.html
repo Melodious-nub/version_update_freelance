@@ -34,7 +34,7 @@
 
     @if (!isNoGenericPurchase(product) && !product?.isCustomized) {
       <div class="mt-2" style="min-height: 70px">
-        @if (['SKU', 'UNIT']?.includes(buyingType?.value)) {
+        @if (['SKU', 'UNIT']?.includes(buyingType()?.value)) {
           <table
             class="text-center quantity-table b-light"
             >
@@ -49,7 +49,7 @@
             (click)="
               setQuantity(
                 product?.productDetails?.skuFirstMinimumQuantity,
-                this.i
+                this.i()
               )
             "
                   >
@@ -62,7 +62,7 @@
             (click)="
               setQuantity(
                 product?.productDetails?.skuSecondMinimumQuantity,
-                this.i
+                this.i()
               )
             "
                   >
@@ -75,7 +75,7 @@
             (click)="
               setQuantity(
                 product?.productDetails?.skuThirdMinimumQuantity,
-                this.i
+                this.i()
               )
             "
                   >
@@ -142,7 +142,7 @@
                     </tr>
                   </table>
                 }
-                @if (['PALLET']?.includes(buyingType?.value)) {
+                @if (['PALLET']?.includes(buyingType()?.value)) {
                   <table
                     class="text-center quantity-table b-light"
                     >
@@ -155,7 +155,7 @@
             (click)="
               setQuantity(
                 product?.productDetails?.skuThirdMinimumQuantity,
-                this.i
+                this.i()
               )
             "
                         >
@@ -212,7 +212,7 @@
                       'CONTAINER_40_FT',
                       'CONTAINER_20_FT',
                       'CONTAINER_40_FT_HQ'
-                      ]?.includes(buyingType?.value)
+                      ]?.includes(buyingType()?.value)
                       ) {
                       <table
                         class="text-center quantity-table b-light"
@@ -292,7 +292,7 @@
                   'bg-secondary':
                     tierPricing?.minimumQuantity === this.product.skuQuantities
                 }"
-                                        (click)="setQuantity(tierPricing.minimumQuantity, this.i)"
+                                        (click)="setQuantity(tierPricing.minimumQuantity, this.i())"
                                         class="cursor text-muted"
                                         >
                                         {{ tierPricing.minimumQuantity }}
@@ -323,7 +323,7 @@
                   setDays(
                     deliveryPricing?.numberOfDays,
                     tierPricing?.minimumQuantity,
-                    this.i
+                    this.i()
                   )
                 "
                                           class="width-100"
@@ -349,7 +349,7 @@
                                       }
                                     }
                                     <td
-                                      (click)="setDays(deliveryPricing?.numberOfDays, null, this.i)"
+                                      (click)="setDays(deliveryPricing?.numberOfDays, null, this.i())"
               [ngClass]="{
                 'bg-secondary':
                   deliveryPricing?.numberOfDays === this.product.deliveryDays
@@ -374,7 +374,7 @@
                       <div class="d-flex align-items-center justify-content-between px-2">
                         <div class="d-flex align-items-center justify-content-start">
                           <div style="text-wrap: nowrap">
-                            @if (['SKU', 'UNIT']?.includes(buyingType?.value)) {
+                            @if (['SKU', 'UNIT']?.includes(buyingType()?.value)) {
                               @if (product.productDetails?.skuCost?.attributeValue) {
                                 <b
                                   class="fw-bold font-size-14"
@@ -390,7 +390,7 @@
                                 </b>
                               }
                             }
-                            @if (['PALLET']?.includes(buyingType?.value)) {
+                            @if (['PALLET']?.includes(buyingType()?.value)) {
                               @if (product.productDetails?.palletTier?.attributeValue) {
                                 <b
                                   class="fw-bold font-size-14"
@@ -460,7 +460,7 @@
                         <div
                           class="d-flex align-items-center text-muted text-right b-top-primary font-size-12"
                           >
-                          {{ 200 + (i + 7) * 13 }}
+                          {{ 200 + (i() + 7) * 13 }}
                         </div>
                       </div>
 
@@ -483,12 +483,12 @@
                                   [theme]="'borderless-white'"
                                   type="icon"
                                   [typeval]="'remove'"
-                                  (clicked)="minus(this.i, product)"
+                                  (clicked)="minus(this.i(), product)"
                                 ></dadyin-button>
                                 <input
                                   type="number"
                                   min="1"
-                                  (change)="changeQuantity($event, i)"
+                                  (change)="changeQuantity($event, i())"
                                   required
                                   class="text-center w-100 b-none mx-1"
                                   [ngModelOptions]="{ standalone: true }"
@@ -498,7 +498,7 @@
                                     [theme]="'borderless-white'"
                                     type="icon"
                                     [typeval]="'add_circle_outline'"
-                                    (clicked)="plus(this.i, product)"
+                                    (clicked)="plus(this.i(), product)"
                                   ></dadyin-button>
                                 </div>
                               </div>
@@ -535,7 +535,7 @@
                             <dadyin-button
                               class="w-100"
                               [isDisabled]="hideAddToOrder(product?.productDetails?.audit)"
-                              (clicked)="viewDetail(product, this.i, product.isCustomized)"
+                              (clicked)="viewDetail(product, this.i(), product.isCustomized)"
                               [label]="isNoGenericPurchase(product) ? 'More Tiers' : 'View Details'"
                               [theme]="isNoGenericPurchase(product) ? 'secondary' : 'secondary'"
       [matTooltip]="
@@ -603,7 +603,7 @@
             active: product?.isCustomized
           }"
                                 >
-                                {{ isMyProductValue ? "My Product" : "Custom" }}
+                                {{ isMyProductValue() ? "My Product" : "Custom" }}
                               </button>
                               <button
                                 matTooltip="View Generic Product"

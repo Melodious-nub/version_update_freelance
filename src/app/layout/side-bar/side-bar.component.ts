@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, EventEmitter, Output, inject } from '@angular/core';
+import { Component, OnInit, inject, input, output, viewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { sidebarMenu } from 'src/app/shared/menuconstant';
@@ -28,12 +28,12 @@ export class SideBarComponent implements OnInit {
   private businessAccountService = inject(BusinessAccountService);
   tokenService = inject(TokenService);
 
-  @Input() isExpanded = true;
-  @Input() flyerMode = false;
-  @Input() label = true;
+  readonly isExpanded = input(true);
+  readonly flyerMode = input(false);
+  readonly label = input(true);
   sidebarMenus = sidebarMenu;
-  @ViewChild('sidenav') sidenav: MatSidenav;
-  @Output() toggleSidebar = new EventEmitter();
+  readonly sidenav = viewChild<MatSidenav>('sidenav');
+  readonly toggleSidebar = output<any>();
   public currentUrl: string = '';
   public sidebarShow: boolean = true;
   onClickwindow: boolean = false;

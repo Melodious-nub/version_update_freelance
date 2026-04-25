@@ -1,5 +1,5 @@
 import { Location, NgClass, TitleCasePipe, DatePipe } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, inject, viewChild } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -104,7 +104,7 @@ export class CampaignDetailComponent implements OnInit {
   public campaignPlatformsForDisplay: string[] = [];
   public campaignPublicationDate: string | null = null;
 
-  @ViewChild('refFileInput') refFileInputRef!: ElementRef<HTMLInputElement>;
+  readonly refFileInputRef = viewChild.required<ElementRef<HTMLInputElement>>('refFileInput');
   selectedAttachments: Array<{ file: File; url: string; name: string }> = [];
   maxAttachments = 3;
   allowedImageTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
@@ -1825,7 +1825,7 @@ export class CampaignDetailComponent implements OnInit {
     try {
       if (this.isLoading) return;
       if (this.isCompleted) return;
-      this.refFileInputRef?.nativeElement?.click();
+      this.refFileInputRef()?.nativeElement?.click();
     } catch (e) {
       // ignore
     }

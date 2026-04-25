@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, inject, viewChild } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
@@ -32,7 +32,7 @@ export class BatchModalComponent implements OnInit {
   containerService = inject(ContainerManagementService);
 
 
-  @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
+  readonly tabGroup = viewChild.required(MatTabGroup);
 
   batchForm: UntypedFormGroup = this.formsService.createBatchForm();
   isSaving = false;

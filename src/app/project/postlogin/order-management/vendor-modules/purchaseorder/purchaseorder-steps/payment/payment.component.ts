@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, inject, input, output } from '@angular/core';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -52,8 +52,8 @@ export class PaymentComponent implements OnInit {
 
   showPayNowButton = false;
   @Input() purchaseOrderForm: any;
-  @Input() componentUoms: any;
-  @Output() getOrderById = new EventEmitter();
+  readonly componentUoms = input<any>(undefined);
+  readonly getOrderById = output<any>();
   paymentOverview: any[] = [];
 
   ngOnInit() {

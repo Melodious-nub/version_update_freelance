@@ -1,5 +1,5 @@
 import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormsService } from 'src/app/service/forms.service';
@@ -36,9 +36,9 @@ export class OtherDetailsComponent implements OnInit {
   uomService = inject(UomService);
 
 
-  @Input() productForm: UntypedFormGroup;
+  readonly productForm = input<UntypedFormGroup>(undefined);
 
-  @Input() componentUoms: UntypedFormArray;
+  readonly componentUoms = input<UntypedFormArray>(undefined);
 
 
   isLoadingCompetitorPrices: boolean = false;
@@ -69,7 +69,7 @@ export class OtherDetailsComponent implements OnInit {
 
 
   get similarProducts() {
-    return this.productForm.get('similarProducts') as UntypedFormArray;
+    return this.productForm().get('similarProducts') as UntypedFormArray;
   }
 
   removeSimilarProduct(i) {
@@ -81,7 +81,7 @@ export class OtherDetailsComponent implements OnInit {
   }
 
   get keywords() {
-    return this.productForm.get('keyWords');
+    return this.productForm().get('keyWords');
   }
 
   addKeyword(inp: any) {
@@ -124,11 +124,11 @@ export class OtherDetailsComponent implements OnInit {
   }
 
   get productCompetitors() {
-    return this.productForm.get('productCompetitors') as UntypedFormArray;
+    return this.productForm().get('productCompetitors') as UntypedFormArray;
   }
 
   async fetchCompetitorPrices() {
-    const productId = this.productForm?.get('id')?.value;
+    const productId = this.productForm()?.get('id')?.value;
     if (!productId) {
       this.toastr.error('Product ID is required to fetch competitor prices');
       return;

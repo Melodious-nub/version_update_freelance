@@ -1,5 +1,5 @@
 import { VendorFormsService } from '../../service/vendor-forms.service';
-import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectorRef, OnChanges, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnChanges, inject, input, output, viewChild } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators, UntypedFormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
@@ -102,7 +102,7 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
   ];
 
   ngOnChanges(): void {
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('verifiedStatus')
       .valueChanges.subscribe((res) => {
@@ -112,15 +112,13 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
       });
   }
 
-  @Input() vendorForm: UntypedFormGroup;
-  @Input() isCustomer: any;
+  readonly vendorForm = input<UntypedFormGroup>(undefined);
+  readonly isCustomer = input<any>(undefined);
   public industrySubTypes: any;
-  @Input() countries: any;
-  @Output()
-  emitBusinessAccountSelected: EventEmitter<any> = new EventEmitter();
-  @Output()
-  emitClearBusinessAccount: EventEmitter<any> = new EventEmitter();
-  @ViewChild(BusinessEntityConfigurationComponent) businessEntityConfigComponent: BusinessEntityConfigurationComponent;
+  readonly countries = input<any>(undefined);
+  readonly emitBusinessAccountSelected = output<any>();
+  readonly emitClearBusinessAccount = output<any>();
+  readonly businessEntityConfigComponent = viewChild(BusinessEntityConfigurationComponent);
 
   ngOnInit(): void {
     this.loadPort();
@@ -132,27 +130,27 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
     this.industryTypeIds.valueChanges.subscribe((res) => {
       this.getIndustrySubTypes(res);
     });
-    this.isEnabled = this.vendorForm.get('relationAccountDetail').get('name')
+    this.isEnabled = this.vendorForm().get('relationAccountDetail').get('name')
       .disabled
       ? true
       : false;
 
     // Setting validation to country code if number entered
-    this.vendorForm.valueChanges.subscribe((val) => {
-      let landlineNumber = this.vendorForm
+    this.vendorForm().valueChanges.subscribe((val) => {
+      let landlineNumber = this.vendorForm()
         .get('relationAccountDetail')
         .get('primaryContact')
         .get('landline')
         .get('number').value;
       if (landlineNumber != null) {
-        this.vendorForm
+        this.vendorForm()
           .get('relationAccountDetail')
           .get('primaryContact')
           .get('landline')
           .get('countryId')
           .setValidators([Validators.required]);
       } else {
-        this.vendorForm
+        this.vendorForm()
           .get('relationAccountDetail')
           .get('primaryContact')
           .get('landline')
@@ -160,20 +158,20 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
           .setValidators(null);
       }
 
-      let phoneNumber = this.vendorForm
+      let phoneNumber = this.vendorForm()
         .get('relationAccountDetail')
         .get('primaryContact')
         .get('phone')
         .get('number').value;
       if (phoneNumber == null || phoneNumber == '') {
-        this.vendorForm
+        this.vendorForm()
           .get('relationAccountDetail')
           .get('primaryContact')
           .get('phone')
           .get('countryId')
           .setValidators(null);
       } else {
-        this.vendorForm
+        this.vendorForm()
           .get('relationAccountDetail')
           .get('primaryContact')
           .get('phone')
@@ -181,39 +179,39 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
           .setValidators([Validators.required]);
       }
 
-      let faxNumber = this.vendorForm
+      let faxNumber = this.vendorForm()
         .get('relationAccountDetail')
         .get('primaryContact')
         .get('fax')
         .get('number').value;
       if (faxNumber == null || faxNumber == '') {
-        this.vendorForm
+        this.vendorForm()
           .get('relationAccountDetail')
           .get('primaryContact')
           .get('fax')
           .get('countryId')
           .setValidators(null);
       } else {
-        this.vendorForm
+        this.vendorForm()
           .get('relationAccountDetail')
           .get('primaryContact')
           .get('fax')
           .get('countryId')
           .setValidators([Validators.required]);
       }
-      this.vendorForm
+      this.vendorForm()
         .get('relationAccountDetail')
         .get('primaryContact')
         .get('landline')
         .get('countryId')
         .updateValueAndValidity({ emitEvent: false });
-      this.vendorForm
+      this.vendorForm()
         .get('relationAccountDetail')
         .get('primaryContact')
         .get('phone')
         .get('countryId')
         .updateValueAndValidity({ emitEvent: false });
-      this.vendorForm
+      this.vendorForm()
         .get('relationAccountDetail')
         .get('primaryContact')
         .get('fax')
@@ -241,7 +239,7 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
 
   populateAttributeValuesFromRelationAccount(retryCount: number = 0, maxRetries: number = 10) {
     try {
-      const relationAccountAttributeValues = this.vendorForm.get('relationAccountAttributeValues') as UntypedFormArray;
+      const relationAccountAttributeValues = this.vendorForm().get('relationAccountAttributeValues') as UntypedFormArray;
       if (!relationAccountAttributeValues) {
         throw new Error('Relation account attribute values not found');
       }
@@ -251,7 +249,8 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
       }
 
       // Check if business entity config component is available
-      if (!this.businessEntityConfigComponent?.configurationForm) {
+      const businessEntityConfigComponent = this.businessEntityConfigComponent();
+      if (!businessEntityConfigComponent?.configurationForm) {
         // Retry if component is not yet available
         if (retryCount < maxRetries) {
           console.log(`Business entity configuration component not available, retrying... (${retryCount + 1}/${maxRetries})`);
@@ -265,7 +264,7 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
         }
       }
 
-      const configurationForm = this.businessEntityConfigComponent.configurationForm;
+      const configurationForm = businessEntityConfigComponent.configurationForm;
       const sections = configurationForm.get('sections') as UntypedFormArray;
 
       if (!sections || sections.length === 0) {
@@ -329,11 +328,11 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
   }
 
   selectBusinessAccount(item) {
-    this.vendorForm.get('relationAccountDetail').patchValue(item);
+    this.vendorForm().get('relationAccountDetail').patchValue(item);
     this.disableBusinessDetail();
 
 
-    this.emitBusinessAccountSelected.emit();
+    this.emitBusinessAccountSelected.emit(undefined as any);
   }
 
   customSearchFn(term: string, item: any) {
@@ -374,7 +373,7 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
     control.patchValue(address);
 
     if (address?.addressCountry && isPrimary) {
-      const country = this.countries.find(
+      const country = this.countries().find(
         (item) =>
           item?.name?.toUpperCase() == address?.addressCountry?.toUpperCase()
       );
@@ -396,20 +395,20 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
   }
 
   get industryTypeIds() {
-    return this.vendorForm.get('industryTypeIds');
+    return this.vendorForm().get('industryTypeIds');
   }
   get industrySubTypeIds() {
-    return this.vendorForm.get('industrySubTypeIds');
+    return this.vendorForm().get('industrySubTypeIds');
   }
   get keywords() {
-    return this.vendorForm.get('keywords');
+    return this.vendorForm().get('keywords');
   }
   get productCategoryIds() {
-    return this.vendorForm.get('productCategoryIds');
+    return this.vendorForm().get('productCategoryIds');
   }
 
   get productTypesIds() {
-    return this.vendorForm.get('productTypeIds');
+    return this.vendorForm().get('productTypeIds');
   }
 
   toggleType(value) {
@@ -417,24 +416,24 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
   }
 
   get isImportExport() {
-    return this.vendorForm.get('isImportExport');
+    return this.vendorForm().get('isImportExport');
   }
 
   get businessLine() {
-    return this.vendorForm.get('businessLine');
+    return this.vendorForm().get('businessLine');
   }
   get logoImage() {
-    return this.vendorForm.get('relationAccountDetail').get('businessLogo');
+    return this.vendorForm().get('relationAccountDetail').get('businessLogo');
   }
   get addressCountry() {
-    return this.vendorForm
+    return this.vendorForm()
       .get('relationAccountDetail')
       .get('primaryContact')
       .get('address')
       .get('addressCountry');
   }
   get address() {
-    return this.vendorForm
+    return this.vendorForm()
       .get('relationAccountDetail')
       .get('primaryContact')
       .get('address')
@@ -502,19 +501,19 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
   }
 
   get businessAddress() {
-    return this.vendorForm
+    return this.vendorForm()
       .get('relationAccountDetail')
       .get('branchDetails') as UntypedFormArray;
   }
   get primaryContact() {
-    return this.vendorForm.get('relationAccountDetail').get('primaryContact');
+    return this.vendorForm().get('relationAccountDetail').get('primaryContact');
   }
   get notes() {
-    return this.vendorForm.get('notes') as UntypedFormArray;
+    return this.vendorForm().get('notes') as UntypedFormArray;
   }
 
   get reminders() {
-    return this.vendorForm.get('reminders') as UntypedFormArray;
+    return this.vendorForm().get('reminders') as UntypedFormArray;
   }
 
   openNoteDialog() {
@@ -522,52 +521,52 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
       width: '60%',
       data: {
         type: 'note',
-        relationAccountDetail: this.vendorForm.get('relationAccountDetail').value,
-        assignedSalesId: this.vendorForm.get('salesRepId').value,
+        relationAccountDetail: this.vendorForm().get('relationAccountDetail').value,
+        assignedSalesId: this.vendorForm().get('salesRepId').value,
         notes: this.notes,
-        relationStatusId: this.vendorForm.get('relationStatusId').value,
-        businessCategory: this.vendorForm.value.businessCategory,
-        id: this.vendorForm.get('id').value,
+        relationStatusId: this.vendorForm().get('relationStatusId').value,
+        businessCategory: this.vendorForm().value.businessCategory,
+        id: this.vendorForm().get('id').value,
       },
     });
   }
  
 
   disableBusinessDetail() {
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('name')
       .disable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('primaryContact')
       .get('address')
       .disable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('primaryContact')
       .disable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('taxId')
       .disable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('gst')
       .disable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('panCard')
       .disable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('einNumber')
       .disable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('ssnNumber')
       .disable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('itinNumber')
       .disable({ onlySelf: true, emitEvent: false });
@@ -575,85 +574,85 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
   }
 
   clear() {
-    this.vendorForm.get('relationAccountDetail').reset();
-    this.vendorForm
+    this.vendorForm().get('relationAccountDetail').reset();
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('name')
       .enable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('primaryContact')
       .get('address')
       .enable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('primaryContact')
       .enable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('taxId')
       .enable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('gst')
       .enable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('panCard')
       .enable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('einNumber')
       .enable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('ssnNumber')
       .enable({ onlySelf: true, emitEvent: false });
-    this.vendorForm
+    this.vendorForm()
       .get('relationAccountDetail')
       .get('itinNumber')
       .enable({ onlySelf: true, emitEvent: false });
     this.isEnabled = false;
-    this.emitClearBusinessAccount.emit();
+    this.emitClearBusinessAccount.emit(undefined as any);
   }
 
   sendInvite() {
-    this.vendorForm
+    this.vendorForm()
       .get('sendInvite')
-      .setValue(!this.vendorForm.get('sendInvite').value);
-    if (this.vendorForm.get('sendInvite').value == true) {
+      .setValue(!this.vendorForm().get('sendInvite').value);
+    if (this.vendorForm().get('sendInvite').value == true) {
       let inviteDetail = {
-        invitedTo: this.vendorForm.get('relationAccountDetail').get('name')
+        invitedTo: this.vendorForm().get('relationAccountDetail').get('name')
           .value,
-        email: this.vendorForm
+        email: this.vendorForm()
           .get('relationAccountDetail')
           .get('primaryContact')
           .get('email').value,
-        phone: this.vendorForm
+        phone: this.vendorForm()
           .get('relationAccountDetail')
           .get('primaryContact')
           .get('phone').value,
         inviteType: 'RELATION',
-        inviteTypeReferenceId: this.vendorForm.get('id').value,
+        inviteTypeReferenceId: this.vendorForm().get('id').value,
         redirectType: 'HOME',
         businessAccountToId:
-          this.vendorForm.get('relationAccountDetail')?.get('id')?.value ||
+          this.vendorForm().get('relationAccountDetail')?.get('id')?.value ||
           null,
       };
       if (this.router.url.includes('edit')) {
         this.authService.sendInvite(inviteDetail).subscribe((res) => {
-          this.vendorForm.get('invite').patchValue(res);
+          this.vendorForm().get('invite').patchValue(res);
         });
       }
     }
   }
 
   getLabel() {
-    if (this.vendorForm.get('businessCategory').value == 'CUSTOMER') {
+    if (this.vendorForm().get('businessCategory').value == 'CUSTOMER') {
       return 'Customer';
-    } else if (this.vendorForm.get('businessCategory').value == 'LEAD') {
+    } else if (this.vendorForm().get('businessCategory').value == 'LEAD') {
       return 'Lead';
-    } else if (this.vendorForm.get('businessCategory').value == 'PROSPECT') {
+    } else if (this.vendorForm().get('businessCategory').value == 'PROSPECT') {
       return 'Prospect';
     } else {
       return 'Vendor';
@@ -662,7 +661,7 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
 
 
   getConfigurationType(): string {
-    const businessCategory = this.vendorForm.get('businessCategory')?.value;
+    const businessCategory = this.vendorForm().get('businessCategory')?.value;
     if (businessCategory === 'CUSTOMER') {
       return 'CUSTOMER';
     } else if (businessCategory === 'LEAD') {
@@ -679,13 +678,14 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
    * and populates the relationAccountAttributeValues FormArray
    */
   collectAllAttributeValues(): void {
-    if (!this.businessEntityConfigComponent?.configurationForm) {
+    const businessEntityConfigComponent = this.businessEntityConfigComponent();
+    if (!businessEntityConfigComponent?.configurationForm) {
       return;
     }
 
-    const configurationForm = this.businessEntityConfigComponent.configurationForm;
+    const configurationForm = businessEntityConfigComponent.configurationForm;
     const sections = configurationForm.get('sections') as UntypedFormArray;
-    const relationAccountAttributeValues = this.vendorForm.get('relationAccountAttributeValues') as UntypedFormArray;
+    const relationAccountAttributeValues = this.vendorForm().get('relationAccountAttributeValues') as UntypedFormArray;
 
     // Clear existing values
     while (relationAccountAttributeValues.length !== 0) {

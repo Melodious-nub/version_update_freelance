@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, OnChanges, inject } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, AfterViewInit, OnChanges, inject, input, output, viewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
@@ -35,16 +35,16 @@ export class DataTableEditableComponent implements OnInit, AfterViewInit, OnChan
         this.dataSource.filter = (typeof value === 'string' ? value.trim().toLowerCase() : value) || '';
         this.getSearchValue = value;
     }
-    @Output() actionClick = new EventEmitter();
+    readonly actionClick = output<any>();
 
-    @Input() headers: any;
-    @Input() actions: any = [{ label: '', icon: '' }];
-    @Input() userShow: boolean = false;
+    readonly headers = input<any>(undefined);
+    readonly actions = input<any>([{ label: '', icon: '' }]);
+    readonly userShow = input<boolean>(false);
 
-    @Output() pageChange = new EventEmitter();
-    @Output() sortChange = new EventEmitter();
-    @Output() editData = new EventEmitter();
-    @Output() uomChange = new EventEmitter();
+    readonly pageChange = output<any>();
+    readonly sortChange = output<any>();
+    readonly editData = output<any>();
+    readonly uomChange = output<any>();
     @ViewChild(MatSort, { static: false }) set sort(sortElm: MatSort) {
         if (this.dataSource) {
             this.dataSource.sort = sortElm;
@@ -52,8 +52,12 @@ export class DataTableEditableComponent implements OnInit, AfterViewInit, OnChan
         this.sortTable = sortElm;
     }
 
-    @ViewChild('paginator') paginator: MatPaginator;
-  @Output() rowChange = new EventEmitter<{ row: any, field: string, value: any }>();
+    readonly paginator = viewChild<MatPaginator>('paginator');
+  readonly rowChange = output<{
+    row: any;
+    field: string;
+    value: any;
+}>();
 
     public config: any;
     public tableData: any;
@@ -102,15 +106,15 @@ export class DataTableEditableComponent implements OnInit, AfterViewInit, OnChan
     }
 
     ngOnInit(): void {
-        this.displayedColumns = this.headers.map(col => col.prop);
+        this.displayedColumns = this.headers().map(col => col.prop);
         this.businessId = this.businessAccountService.currentBusinessAccountId
 
     }
 
     ngAfterViewInit(): void {
-        this.sortTable.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+        this.sortTable.sortChange.subscribe(() => this.paginator().pageIndex = 0);
         this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator = this.paginator();
 
     }
 

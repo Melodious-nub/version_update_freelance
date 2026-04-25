@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -35,7 +35,7 @@ export class CreateAttributeComponent implements OnInit {
   router = inject(Router);
 
   listViewAttribute = null
-  @Input() attributeConfigForm: UntypedFormGroup
+  readonly attributeConfigForm = input<UntypedFormGroup>(undefined);
   selectedAttributes: any[] = []
   attributes: any[] = []
   allTransactionCategories: any = []
@@ -81,16 +81,16 @@ export class CreateAttributeComponent implements OnInit {
   }
   isCheckedProductSection(option: any) {
 
-    const productOptions = this.attributeConfigForm.getRawValue()?.productOptions
+    const productOptions = this.attributeConfigForm().getRawValue()?.productOptions
     return productOptions?.includes(option)
   }
   isCheckedInfoSection(option:any) {
-    const infoOptions= this.attributeConfigForm.getRawValue()?.infoOptions
+    const infoOptions= this.attributeConfigForm().getRawValue()?.infoOptions
     return infoOptions[option] ? true : false
    }
 
   isCheckedPriceSection(option: any) {
-    const priceOptions = this.attributeConfigForm.getRawValue()?.priceOptions
+    const priceOptions = this.attributeConfigForm().getRawValue()?.priceOptions
     return priceOptions?.includes(option)
   }
 
@@ -164,7 +164,7 @@ export class CreateAttributeComponent implements OnInit {
       this.productOptions.setValue(productOptions)
     }
 
-    let formData = this.attributeConfigForm.getRawValue()
+    let formData = this.attributeConfigForm().getRawValue()
     formData.attributes = this.selectedAttributes
     this.ordermanagementService.saveProductAttributes(formData).subscribe((res) => {
       this.toastr.success('Successfully Saved !');
@@ -175,7 +175,7 @@ export class CreateAttributeComponent implements OnInit {
 
   getDetailById(id: any) {
     this.ordermanagementService.getAllproductAttributeSetDetailById(id).subscribe((res) => {
-      this.attributeConfigForm.patchValue(res)
+      this.attributeConfigForm().patchValue(res)
       this.attributes = res?.attributes.map((item) => ({
         'attributeId': item.attributeId.id,
         'sortOrder': item.sortOrder
@@ -220,18 +220,18 @@ export class CreateAttributeComponent implements OnInit {
 
 
   get transactionCategory() {
-    return this.attributeConfigForm.get('transactionCategory')
+    return this.attributeConfigForm().get('transactionCategory')
   }
 
   get priceOptions() {
-    return this.attributeConfigForm.get('priceOptions')
+    return this.attributeConfigForm().get('priceOptions')
   }
 
   get productOptions() {
-    return this.attributeConfigForm.get('productOptions')
+    return this.attributeConfigForm().get('productOptions')
   }
   get infoOptions() {
-    return this.attributeConfigForm.get('infoOptions')
+    return this.attributeConfigForm().get('infoOptions')
   }
 
   onPriceSectionCheckboxClick(type: any) {

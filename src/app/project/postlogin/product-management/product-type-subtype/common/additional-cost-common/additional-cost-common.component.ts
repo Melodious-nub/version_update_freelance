@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter, inject } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, inject, input } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UomService } from 'src/app/service/uom.service';
@@ -28,7 +28,7 @@ export class AdditionalCostCommonComponent implements OnInit {
   productTypeFormService = inject(ProductTypeFormService);
   uomService = inject(UomService);
 
-  @Input() additionalCosts: UntypedFormArray;
+  readonly additionalCosts = input<UntypedFormArray>(undefined);
   additionalCostList: any;
   searchControl = new UntypedFormControl(null);
 
@@ -43,7 +43,7 @@ export class AdditionalCostCommonComponent implements OnInit {
   }
 
   isAdditionalCostExist(item) {
-    const selectedAdditionalCosts = this.additionalCosts.value.map(
+    const selectedAdditionalCosts = this.additionalCosts().value.map(
       (itm) => itm.id
     );
     return selectedAdditionalCosts.includes(item.id) ? true : false;
@@ -56,28 +56,28 @@ export class AdditionalCostCommonComponent implements OnInit {
     }
     const form = this.productTypeFormService.createAdditionalCostForm();
     form.get('description').setValue(value);
-    this.additionalCosts.push(form);
+    this.additionalCosts().push(form);
   }
 
   addSelectedItem(item) {
     const form = this.productTypeFormService.createAdditionalCostForm();
     form.patchValue(item);
-    this.additionalCosts.push(form);
+    this.additionalCosts().push(form);
     this.searchControl.setValue(null);
   }
 
   removeAdditionalcost(i) {
-    this.additionalCosts.removeAt(i);
+    this.additionalCosts().removeAt(i);
   }
   removeAcValue(i, j) {
-    const fg = this.additionalCosts.controls[i].get(
+    const fg = this.additionalCosts().controls[i].get(
       'additionalCostValues'
     ) as UntypedFormArray;
     fg.removeAt(j);
   }
 
   addAcValue(i) {
-    const fg = this.additionalCosts.controls[i].get(
+    const fg = this.additionalCosts().controls[i].get(
       'additionalCostValues'
     ) as UntypedFormArray;
     const form = this.productTypeFormService.createAdditionalCostValueForm();

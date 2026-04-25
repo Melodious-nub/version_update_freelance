@@ -7,11 +7,11 @@
     </mat-expansion-panel-header>
 
     <ng-template matExpansionPanelContent>
-      <div class="row" [formGroup]="containerForm">
-        @if (isExport) {
+      <div class="row" [formGroup]="containerForm()">
+        @if (isExport()) {
           <div class="col-3 map-grid">
           <dadyin-searchable-select (changed)="onChangeCustomer()" class="w-100" label="{{
-              isQuotation ? 'Container Quote To' : 'Container Order To'
+              isQuotation() ? 'Container Quote To' : 'Container Order To'
             }}" [control]="requestToId" [fullItems]="businessAccountService.customerList" bindValue="relationAccountId"
             bindLabel="relationAccountName"></dadyin-searchable-select>
             <dadyin-button (clicked)="openMap(2)" (click)="$event.stopPropagation()" [theme]="'borderless-primary'"
@@ -24,10 +24,10 @@
             }
           </div>
         }
-        @if (!isExport) {
+        @if (!isExport()) {
           <div class="col-3 map-grid">
           <dadyin-searchable-select (changed)="onChangeVendor()" class="w-100" label="{{
-              isQuotation ? 'Container Quote From' : 'Container Order From'
+              isQuotation() ? 'Container Quote From' : 'Container Order From'
             }}" [fullItems]="businessAccountService.exportersVendorList" [control]="requestFromId"
             bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
             <dadyin-button (clicked)="openMap(1)" (click)="$event.stopPropagation()" [theme]="'borderless-primary'"
@@ -214,22 +214,22 @@
 
       <mat-expansion-panel class="panel-no-padding mt-4" expanded="false" #expansionPanel2>
         <mat-expansion-panel-header (click)="expandPanel(expansionPanel2, $event)">
-          <mat-panel-description class="d-flex justify-content-between" [formGroup]="containerForm">
+          <mat-panel-description class="d-flex justify-content-between" [formGroup]="containerForm()">
             <div class="primary-text font-size-12 d-flex align-items-center">
               <div class="title-text me-5">Order Overview</div>
 
               <div>Filled Odometer:</div>
           <div class="bg-white mar-left-2" style="min-width: 80px" [ngStyle]="{
               color:
-                containerForm.get('filledOdometer').get('odometerType').value ===
+                containerForm().get('filledOdometer').get('odometerType').value ===
                 'Weight'
                   ? '#03266d'
                   : '#3E7FFF'
             }">
                 {{
-                containerForm.get("filledOdometer").get("odometerType").value
+                containerForm().get("filledOdometer").get("odometerType").value
                 | slice : 0 : 1
-                }}{{ containerForm.get("filledOdometer").get("value").value }}
+                }}{{ containerForm().get("filledOdometer").get("value").value }}
               </div>
             </div>
 
@@ -250,15 +250,15 @@
               Remaining Odometer:
           <div class="bg-white mar-left-2" style="min-width: 80px" [ngStyle]="{
               color:
-                containerForm.get('remainingOdometer').get('odometerType')
+                containerForm().get('remainingOdometer').get('odometerType')
                   .value === 'Weight'
                   ? '#03266d'
                   : '#3E7FFF'
             }">
                 {{
-                containerForm.get("remainingOdometer").get("odometerType").value
+                containerForm().get("remainingOdometer").get("odometerType").value
                 | slice : 0 : 1
-                }}{{ containerForm.get("remainingOdometer").get("value").value }}
+                }}{{ containerForm().get("remainingOdometer").get("value").value }}
               </div>
             </div>
           </mat-panel-description>
@@ -311,19 +311,19 @@
             <div class="attribute-input bg-white">
               <div style="width: 60%; padding-left: 2%">
                 {{
-                containerForm.get("weight").get("attributeValue").value
+                containerForm().get("weight").get("attributeValue").value
                 | numberFormatter : 3
                 }}
                 <span> / </span>
                 {{
-                containerForm
+                containerForm()
                 .get("containerTypeInformation")
                 .get("weight")
                 .get("attributeValue").value | numberFormatter : 3
                 }}
               </div>
           <select disabled [formControl]="
-              containerForm
+              containerForm()
                 .get('containerTypeInformation')
                 .get('weight')
                 .get('userConversionUom')
@@ -340,19 +340,19 @@
             <div class="attribute-input bg-white">
               <div style="width: 60%; padding-left: 2%">
                 {{
-                containerForm.get("volume").get("attributeValue").value
+                containerForm().get("volume").get("attributeValue").value
                 | numberFormatter : 3
                 }}
                 <span> / </span>
                 {{
-                containerForm
+                containerForm()
                 .get("containerTypeInformation")
                 .get("volume")
                 .get("attributeValue").value
                 }}
               </div>
           <select disabled [formControl]="
-              containerForm
+              containerForm()
                 .get('containerTypeInformation')
                 .get('volume')
                 .get('userConversionUom')
@@ -377,13 +377,13 @@
 
       <!-- // related to Purchaseorders  -->
 
-      @if (!isQuotation) {
+      @if (!isQuotation()) {
         <mat-expansion-panel class="panel-no-padding mt-4" expanded="true" #expansionPanel3>
           <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
             <mat-panel-description>
               @if (poView === 'orderWise') {
                 <div class="text-start w-100 title-text">
-                  {{ isExport ? "SOs" : "POs" }} in Container ({{
+                  {{ isExport() ? "SOs" : "POs" }} in Container ({{
                   containerOrders?.controls?.length
                   }})
                 </div>
@@ -402,7 +402,7 @@
                   <thead>
                     <tr>
                       <th style="padding-left: 20px !important">
-                        {{ isExport ? "SO#" : "PO#" }}
+                        {{ isExport() ? "SO#" : "PO#" }}
                       </th>
                       <th class="width-100">DATE</th>
                       <th>CUSTOMER NAME</th>
@@ -416,7 +416,7 @@
                       <th class="width-100">REQ. DATE</th>
                       <th>
                         PRICE ({{
-                        isExport
+                        isExport()
                         ? getUomByName("exportCost")
                         : getUomByName("importCost")
                         }})
@@ -428,7 +428,7 @@
                     @for (p of containerOrders?.controls; track p; let i = $index) {
                       @if (containerOrders?.controls?.length > 0) {
                         <tr>
-                          @if (isExport) {
+                          @if (isExport()) {
                             <td style="padding-left: 20px !important">
                     <a [routerLink]="[
                         '/home/order-management/vendor/purchaseorder/edit',
@@ -441,7 +441,7 @@
                               </a>
                             </td>
                           }
-                          @if (!isExport) {
+                          @if (!isExport()) {
                             <td style="padding-left: 20px !important">
                     <a [routerLink]="[
                         '/home/order-management/vendor/purchaseorder/edit',
@@ -538,7 +538,7 @@
                   <thead>
                     <tr>
                       <th style="padding-left: 20px !important">
-                        {{ isExport ? "SO#" : "PO#" }}
+                        {{ isExport() ? "SO#" : "PO#" }}
                       </th>
                       <th>PRODUCT CODE#</th>
                       <th class="width-100">DATE</th>
@@ -552,7 +552,7 @@
                       <th class="width-100">REQ. DATE</th>
                       <th>
                         PRICE ({{
-                        isExport
+                        isExport()
                         ? getUomByName("exportCost")
                         : getUomByName("importCost")
                         }})
@@ -569,7 +569,7 @@
                     'b-bottom-primary':
                       getProductPackages(i)?.controls?.length === j + 1
                   }">
-                          @if (isExport) {
+                          @if (isExport()) {
                             <td style="padding-left: 20px !important">
                     <a [routerLink]="[
                         '/home/order-management/vendor/purchaseorder/edit',
@@ -582,7 +582,7 @@
                               </a>
                             </td>
                           }
-                          @if (!isExport) {
+                          @if (!isExport()) {
                             <td style="padding-left: 20px !important">
                     <a [routerLink]="[
                         '/home/order-management/vendor/purchaseorder/edit',
@@ -696,7 +696,7 @@
               <div class="font-size-12 d-flex align-items-center width-perc-40">
                 @if (poView === 'orderWise') {
                   <div class="text-left fw-bold title-text me-2" style="white-space: nowrap">
-                    {{ isExport ? "SOs" : "POs" }} Not in Container ({{
+                    {{ isExport() ? "SOs" : "POs" }} Not in Container ({{
                     getFilteredPOs()?.length
                     }})
                   </div>
@@ -720,7 +720,7 @@
                       <thead>
                         <tr>
                           <th (click)="sortData('transactionId')" style="cursor: pointer; padding-left: 20px !important">
-                            {{ isExport ? "SO#" : "PO#" }}
+                            {{ isExport() ? "SO#" : "PO#" }}
                             <mat-icon class="material-icon sort-icon">
                               {{ getSortIcon("transactionId") }}
                             </mat-icon>
@@ -777,7 +777,7 @@
                           </th>
                           <th (click)="sortData('cost.attributeValue')" style="cursor: pointer">
                             PRICE ({{
-                            isExport
+                            isExport()
                             ? getUomByName("exportCost")
                             : getUomByName("importCost")
                             }})
@@ -791,7 +791,7 @@
                       <tbody>
                         @for (p of sortedData(); track p; let i = $index) {
                           <tr>
-                            @if (isExport) {
+                            @if (isExport()) {
                               <td style="padding-left: 20px !important">
                     <a [routerLink]="[
                         '/home/order-management/vendor/purchaseorder/edit',
@@ -801,7 +801,7 @@
                                 </a>
                               </td>
                             }
-                            @if (!isExport) {
+                            @if (!isExport()) {
                               <td style="padding-left: 20px !important">
                     <a [routerLink]="[
                         '/home/order-management/vendor/purchaseorder/edit',
@@ -872,7 +872,7 @@
                       <thead>
                         <tr>
                           <th (click)="sortData('transactionId')" style="padding-left: 20px !important">
-                            {{ isExport ? "SO#" : "PO#" }}
+                            {{ isExport() ? "SO#" : "PO#" }}
                             <mat-icon class="material-icon sort-icon">
                               {{ getSortIcon("transactionId") }}
                             </mat-icon>
@@ -899,7 +899,7 @@
                           </th>
                           <th>
                             PRICE ({{
-                            isExport
+                            isExport()
                             ? getUomByName("exportCost")
                             : getUomByName("importCost")
                             }})
@@ -913,7 +913,7 @@
 <tr [ngClass]="{
                     'b-bottom-primary': order?.productPackages?.length === j + 1
                   }">
-                              @if (isExport) {
+                              @if (isExport()) {
                                 <td style="padding-left: 20px !important">
                     <a [routerLink]="[
                         '/home/order-management/vendor/purchaseorder/edit',
@@ -923,7 +923,7 @@
                                   </a>
                                 </td>
                               }
-                              @if (!isExport) {
+                              @if (!isExport()) {
                                 <td style="padding-left: 20px !important">
                     <a [routerLink]="[
                         '/home/order-management/vendor/purchaseorder/edit',
@@ -1025,7 +1025,7 @@
               <!-- end -->
             }
 
-            @if (isQuotation) {
+            @if (isQuotation()) {
               <!-- // related to quotations  -->
               <mat-expansion-panel class="panel-no-padding mt-4" expanded="true" #expansionPanel3>
                 <mat-expansion-panel-header (click)="expandPanel(expansionPanel5, $event)">
@@ -1063,7 +1063,7 @@
                             <th class="width-100">REQ. DATE</th>
                             <th>
                               PRICE ({{
-                              isExport
+                              isExport()
                               ? getUomByName("exportCost")
                               : getUomByName("importCost")
                               }})
@@ -1180,7 +1180,7 @@
                         <thead>
                           <tr>
                             <th style="padding-left: 20px !important">
-                              {{ isExport ? "SO#" : "PO#" }}
+                              {{ isExport() ? "SO#" : "PO#" }}
                             </th>
                             <th>PRODUCT CODE#</th>
                             <th class="width-100">DATE</th>
@@ -1194,7 +1194,7 @@
                             <th class="width-100">REQ. DATE</th>
                             <th>
                               PRICE ({{
-                              isExport
+                              isExport()
                               ? getUomByName("exportCost")
                               : getUomByName("importCost")
                               }})
@@ -1213,7 +1213,7 @@
                     'b-bottom-primary':
                       getProductPackagesQuotation(i)?.controls?.length === j + 1
                   }">
-                                @if (isExport) {
+                                @if (isExport()) {
                                   <td style="padding-left: 20px !important">
                     <a [routerLink]="[
                         '/home/order-management/vendor/quotation/edit',
@@ -1225,7 +1225,7 @@
                                     </a>
                                   </td>
                                 }
-                                @if (!isExport) {
+                                @if (!isExport()) {
                                   <td style="padding-left: 20px !important">
                     <a [routerLink]="[
                         '/home/order-management/vendor/quotation/edit',
@@ -1366,7 +1366,7 @@
                             <thead>
                               <tr>
                                 <th (click)="sortData('transactionId')" style="cursor: pointer; padding-left: 20px !important">
-                                  {{ isExport ? "SO#" : "PO#" }}
+                                  {{ isExport() ? "SO#" : "PO#" }}
                                   <mat-icon class="material-icon sort-icon">
                                     {{ getSortIcon("transactionId") }}
                                   </mat-icon>
@@ -1423,7 +1423,7 @@
                                 </th>
                                 <th (click)="sortData('cost.attributeValue')" style="cursor: pointer">
                                   PRICE ({{
-                                  isExport
+                                  isExport()
                                   ? getUomByName("exportCost")
                                   : getUomByName("importCost")
                                   }})
@@ -1531,7 +1531,7 @@
                                 </th>
                                 <th>
                                   PRICE ({{
-                                  isExport
+                                  isExport()
                                   ? getUomByName("exportCost")
                                   : getUomByName("importCost")
                                   }})

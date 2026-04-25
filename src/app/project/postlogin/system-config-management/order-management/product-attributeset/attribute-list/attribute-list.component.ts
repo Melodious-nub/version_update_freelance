@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { OrderManagementService } from '../../service/order-management.service';
@@ -44,7 +44,7 @@ export class AttributeListComponent implements OnInit {
   pageS = 20;
   sortQuery: any = 'audit.lastModifiedDate,desc';
 
-  @Input() role: any
+  readonly role = input<any>(undefined);
 
   public pageConfig: any = {
     itemPerPage: 20,
@@ -65,7 +65,7 @@ export class AttributeListComponent implements OnInit {
       case 'Edit':
         if (event?.row?.id) {
           this.router.navigateByUrl(
-            'home/order-management/' + this.role + '/rfq/edit/' + event.row.id
+            'home/order-management/' + this.role() + '/rfq/edit/' + event.row.id
           );
         }
         break;

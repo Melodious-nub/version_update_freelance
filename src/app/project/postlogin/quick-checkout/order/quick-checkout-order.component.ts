@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, ViewChild, OnDestroy, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, OnDestroy, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, inject, viewChild } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -92,7 +92,7 @@ export class QuickCheckoutOrderComponent implements OnInit, OnDestroy, AfterView
   location = inject(Location);
   private cdr = inject(ChangeDetectorRef);
 
-  @ViewChild('swiperOrder') swiperOrder?: ElementRef;
+  readonly swiperOrder = viewChild<ElementRef>('swiperOrder');
   cartView = false;
   htmlContent: any;
   allTierPricingDetails: any;
@@ -159,7 +159,7 @@ export class QuickCheckoutOrderComponent implements OnInit, OnDestroy, AfterView
     { id: 2, name: 'Pay now', index: 1 },
   ];
 
-  @ViewChild('widgetsContent', { static: false }) widgetsContent: ElementRef;
+  readonly widgetsContent = viewChild<ElementRef>('widgetsContent');
 
   async ngOnInit() {
     if (this.route.snapshot.queryParams.productKey && !this.productSearchRequest.searchString) {
@@ -279,8 +279,9 @@ export class QuickCheckoutOrderComponent implements OnInit, OnDestroy, AfterView
   }
 
   ngAfterViewInit() {
-    if (this.swiperOrder) {
-      const swiperEl = this.swiperOrder.nativeElement;
+    const swiperOrder = this.swiperOrder();
+    if (swiperOrder) {
+      const swiperEl = swiperOrder.nativeElement;
       Object.assign(swiperEl, this.swiperConfig);
       swiperEl.initialize();
     }
@@ -396,8 +397,8 @@ export class QuickCheckoutOrderComponent implements OnInit, OnDestroy, AfterView
     );
   }
 
-  scrollLeft() { this.widgetsContent.nativeElement.scrollLeft -= 50; }
-  scrollRight() { this.widgetsContent.nativeElement.scrollLeft += 50; }
+  scrollLeft() { this.widgetsContent().nativeElement.scrollLeft -= 50; }
+  scrollRight() { this.widgetsContent().nativeElement.scrollLeft += 50; }
 
   productSearchTrigger$ = new Subject();
 

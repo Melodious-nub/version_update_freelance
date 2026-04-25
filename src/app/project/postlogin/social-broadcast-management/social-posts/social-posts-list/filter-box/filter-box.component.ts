@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, HostListener, OnInit, inject, input, output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocialPostItem } from 'src/app/model/social-broadcast/social-post.model';
 import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
@@ -15,9 +15,13 @@ import { MatIcon } from '@angular/material/icon';
 export class FilterBoxComponent implements OnInit {
   private fb = inject(UntypedFormBuilder);
 
-  @Input() posts: SocialPostItem[] = [];
-  @Output() emitFilterPosts = new EventEmitter<SocialPostItem[]>();
-  @Output() filtersApplied = new EventEmitter<{ status?: string; post_type?: string; selectedCategory?: string }>();
+  readonly posts = input<SocialPostItem[]>([]);
+  readonly emitFilterPosts = output<any>();
+  readonly filtersApplied = output<{
+    status?: string;
+    post_type?: string;
+    selectedCategory?: string;
+}>();
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: any) {
@@ -76,7 +80,7 @@ export class FilterBoxComponent implements OnInit {
 
   extractCategories(): void {
     const categoriesSet = new Set<string>();
-    this.posts.forEach(post => {
+    this.posts().forEach(post => {
       if (post.postCategory) {
         categoriesSet.add(post.postCategory);
       }
@@ -105,7 +109,7 @@ export class FilterBoxComponent implements OnInit {
 
   apply(): void {
     const formValues = this.filterForm.value;
-    let filteredPosts = [...this.posts];
+    let filteredPosts = [...this.posts()];
     const selectedStatuses: string[] = [];
     if (formValues.statusDraft) selectedStatuses.push('Draft');
     if (formValues.statusApproved) selectedStatuses.push('Approved');
@@ -178,7 +182,7 @@ export class FilterBoxComponent implements OnInit {
       selectedCategory: ''
     });
     this.filterCount = 0;
-    this.emitFilterPosts.emit([...this.posts]);
+    this.emitFilterPosts.emit([...this.posts()]);
     this.filtersApplied.emit({});
     this.openFilter = false;
   }

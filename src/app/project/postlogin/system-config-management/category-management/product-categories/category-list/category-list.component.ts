@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { CategoryManagementService } from '../../service/category-management.service';
@@ -114,7 +114,7 @@ export class CategoryListComponent implements OnInit {
   pageS = 20;
   sortQuery: any = 'audit.lastModifiedDate,desc';
 
-  @Input() role: any;
+  readonly role = input<any>(undefined);
 
   public pageConfig: any = {
     itemPerPage: 20,

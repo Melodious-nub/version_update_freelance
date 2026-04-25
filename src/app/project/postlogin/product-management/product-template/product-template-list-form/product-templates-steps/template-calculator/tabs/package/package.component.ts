@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit, inject } from '@angular/core';
+import { Component, HostListener, OnInit, inject, input } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -66,8 +66,8 @@ export class PackageComponent implements OnInit {
   currentControl: any = null;
   formulaValue = '';
 
-  @Input() productTemplateCalculator: UntypedFormGroup;
-  @Input() templateForm: UntypedFormGroup;
+  readonly productTemplateCalculator = input<UntypedFormGroup>(undefined);
+  readonly templateForm = input<UntypedFormGroup>(undefined);
   // colSpace: FormControl = this.fb.control(25);
   // attributeName: FormControl = this.fb.control('');
   // attributeType: FormControl = this.fb.control(null);
@@ -131,7 +131,7 @@ export class PackageComponent implements OnInit {
   }
 
   get packageCalculatorTemplates() {
-    return this.productTemplateCalculator.get(
+    return this.productTemplateCalculator().get(
       'packageCalculatorTemplates'
     ) as UntypedFormArray;
   }
@@ -373,7 +373,7 @@ export class PackageComponent implements OnInit {
       calculatorMetaDetails.calculatorAttributeValues
     );
     this.settingLabelAttributesIds();
-    this.productTemplateCalculator.get('id').setValue(null);
+    this.productTemplateCalculator().get('id').setValue(null);
     this.packageCalculatorTemplates.controls[i].get('id').setValue(null);
     const packageCalculatorTemplateAttributeValues =
       this.packageCalculatorTemplates.controls[i].get(
@@ -746,7 +746,7 @@ export class PackageComponent implements OnInit {
 
   testCalculatorModal(i1: any) {
     // Pass the entire template form so the modal has access to all necessary data
-    const templateFormData = this.templateForm.getRawValue();
+    const templateFormData = this.templateForm().getRawValue();
     let dialogRef = this.dialog.open(CalculateErrorModalComponent, {
       data: {
         productTemplateCalculator: templateFormData,
@@ -812,20 +812,20 @@ export class PackageComponent implements OnInit {
 
   getTemplateCost() {
     return (
-      (this.templateForm.get('templateCost').get('attributeValue').value ??
+      (this.templateForm().get('templateCost').get('attributeValue').value ??
         '') +
       ' ' +
-      (this.templateForm.get('templateCost').get('userConversionUom').value ??
+      (this.templateForm().get('templateCost').get('userConversionUom').value ??
         '')
     );
   }
 
   getTemplateDensity() {
     return (
-      (this.templateForm.get('templateDensity').get('attributeValue').value ??
+      (this.templateForm().get('templateDensity').get('attributeValue').value ??
         '') +
       ' ' +
-      (this.templateForm.get('templateDensity').get('userConversionUom')
+      (this.templateForm().get('templateDensity').get('userConversionUom')
         .value ?? '')
     );
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, inject, viewChild } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -44,7 +44,7 @@ export class ChooseBusinessAccountComponent implements OnInit, AfterViewInit {
   public userName: string = '';
   public user: UserAccount | null = null;
 
-  @ViewChild('swiperR') swiperR?: ElementRef;
+  readonly swiperR = viewChild<ElementRef>('swiperR');
   activeIndex = 0;
   swiperConfig: any = {
     spaceBetween: 15,
@@ -72,8 +72,9 @@ export class ChooseBusinessAccountComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (this.swiperR) {
-      const swiperEl = this.swiperR.nativeElement;
+    const swiperR = this.swiperR();
+    if (swiperR) {
+      const swiperEl = swiperR.nativeElement;
       Object.assign(swiperEl, this.swiperConfig);
       
       swiperEl.addEventListener('swiperslidechange', (event: any) => {
@@ -85,8 +86,9 @@ export class ChooseBusinessAccountComponent implements OnInit, AfterViewInit {
   }
 
   goToSlide(index: number) {
-    if (this.swiperR) {
-      this.swiperR.nativeElement.swiper.slideToLoop(index);
+    const swiperR = this.swiperR();
+    if (swiperR) {
+      swiperR.nativeElement.swiper.slideToLoop(index);
     }
   }
 

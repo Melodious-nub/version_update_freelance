@@ -2,10 +2,10 @@
   <div class="slides" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
     <ng-content ></ng-content>
   </div>
-  @if (cardLength>1) {
+  @if (cardLength()>1) {
     <button class="nav prev" (click)="prev()">&#10094;</button>
   }
-  @if (cardLength>1) {
+  @if (cardLength()>1) {
     <button class="nav next" (click)="next()">&#10095;</button>
   }
 </div>

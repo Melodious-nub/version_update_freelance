@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, ViewChild, ElementRef, Input, Output, EventEmitter, AfterViewInit, inject } from '@angular/core';
+import { Component, ElementRef, Input, AfterViewInit, inject, input, output, viewChild } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,10 +21,10 @@ export class DadyinMapAutoCompleteComponent implements AfterViewInit{
   @Input() height: string | null = null;
   @Input() fontSize: string | null = null;
   apiLoaded: boolean;
-  @Input() control: any;
+  readonly control = input<any>(undefined);
   @Input() label: any = '';
-  @ViewChild('autocompleteInput') autocompleteInput: ElementRef;
-  @Output() address = new EventEmitter();
+  readonly autocompleteInput = viewChild<ElementRef>('autocompleteInput');
+  readonly address = output<any>();
 
   ngAfterViewInit() {
     if (!this.apiService.googleMapApiLoaded) {
@@ -56,7 +56,7 @@ export class DadyinMapAutoCompleteComponent implements AfterViewInit{
 
   createAutocomplete() {
     const autocomplete = new google.maps.places.Autocomplete(
-      this.autocompleteInput.nativeElement
+      this.autocompleteInput().nativeElement
     );
     autocomplete.addListener('place_changed', () => {
       const place = autocomplete.getPlace();
@@ -66,7 +66,7 @@ export class DadyinMapAutoCompleteComponent implements AfterViewInit{
 
   onChangeInput(event) {
     if (!event.target.value) {
-      this.control.reset();
+      this.control().reset();
     }
   }
 }

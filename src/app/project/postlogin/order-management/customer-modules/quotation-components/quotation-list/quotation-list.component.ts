@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -35,8 +35,8 @@ export class QuotationListComponent implements OnInit {
   http = inject(HttpClient);
   fb = inject(UntypedFormBuilder);
 
-  @Input() single = false;
-  @Input() customerId: any = null;
+  readonly single = input(false);
+  readonly customerId = input<any>(null);
   uomSetting = false;
   public preferredUoms: any[];
   public preferForm: UntypedFormGroup = this.formService.createPreferUomForm();
@@ -89,7 +89,7 @@ export class QuotationListComponent implements OnInit {
   sortQuery: any = 'audit.lastModifiedDate,desc';
   searchString: any;
 
-  @Input() role: any;
+  readonly role = input<any>(undefined);
 
   public pageConfig: any = {
     itemPerPage: 20,
@@ -111,8 +111,9 @@ export class QuotationListComponent implements OnInit {
     });
     uomQuery = encodeURI(uomQuery);
     let filter = '';
-    if (this.customerId) {
-      filter = `&filter=requestTo.id:${this.customerId}`;
+    const customerId = this.customerId();
+    if (customerId) {
+      filter = `&filter=requestTo.id:${customerId}`;
     }
     if (this.filterValue) {
       filter = filter + `&searchString=${this.filterValue}`;
@@ -152,7 +153,7 @@ export class QuotationListComponent implements OnInit {
         if (event?.row?.id) {
           this.router.navigateByUrl(
             'home/order-management/' +
-              this.role +
+              this.role() +
               '/quotation/edit/' +
               event.row.id
           );
@@ -168,9 +169,10 @@ export class QuotationListComponent implements OnInit {
   }
 
   addQuotation(): void {
-    if (this.customerId) {
+    const customerId = this.customerId();
+    if (customerId) {
       this.router.navigateByUrl(
-        `home/order-management/customer/quotation/add?customerId=${this.customerId}`
+        `home/order-management/customer/quotation/add?customerId=${customerId}`
       );
     } else {
       this.router.navigateByUrl('home/order-management/customer/quotation/add');

@@ -1,27 +1,27 @@
-@if (type === 'normal') {
-  <button [matTooltip]="tooltip" (click)="onClick($event)" [style.fontSize]="fontSize" [style.height]="height"
-    [style.width]="width" class="btn-{{ theme }} {{ class }} {{ size }}"
+@if (type() === 'normal') {
+  <button [matTooltip]="tooltip()" (click)="onClick($event)" [style.fontSize]="fontSize()" [style.height]="height()"
+    [style.width]="width()" class="btn-{{ theme() }} {{ class() }} {{ size() }}"
     [disabled]="isDisabled">
     {{ label }}
   </button>
 }
 
-@if (type === 'icon') {
-  <button [matTooltip]="tooltip" (click)="onClick($event)" [style.fontSize]="fontSize" [style.height]="height"
-    [style.width]="width" class="btn-{{ theme }} {{ class }} {{ size }} btn-icon "
+@if (type() === 'icon') {
+  <button [matTooltip]="tooltip()" (click)="onClick($event)" [style.fontSize]="fontSize()" [style.height]="height()"
+    [style.width]="width()" class="btn-{{ theme() }} {{ class() }} {{ size() }} btn-icon "
     [disabled]="isDisabled">
-    <mat-icon [disabled]="isDisabled ? 'disabled' : ''">{{ typeval }}</mat-icon>
+    <mat-icon [disabled]="isDisabled ? 'disabled' : ''">{{ typeval() }}</mat-icon>
     @if (label!=='') {
       <span style="margin-left: 5px;vertical-align: super;">{{label ? label : ''}}</span>
     }
   </button>
 }
 
-@if (type === 'image') {
-  <button [matTooltip]="tooltip" (click)="onClick($event)" [style.fontSize]="fontSize" [style.height]="height"
-    [style.width]="width" class="btn-{{ theme }} {{ class }} {{ size }} btn-image p-0 "
+@if (type() === 'image') {
+  <button [matTooltip]="tooltip()" (click)="onClick($event)" [style.fontSize]="fontSize()" [style.height]="height()"
+    [style.width]="width()" class="btn-{{ theme() }} {{ class() }} {{ size() }} btn-image p-0 "
     [disabled]="isDisabled">
-    <img [style.height]="heightImage" [style.width]="widthImage" src="{{ typeval }}" class="mx-1" />
+    <img [style.height]="heightImage()" [style.width]="widthImage()" src="{{ typeval() }}" class="mx-1" />
     {{ label }}
   </button>
 }

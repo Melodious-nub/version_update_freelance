@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, HostListener, Input, OnInit, inject, output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BusinessAccountService } from '../../../business-account/business-account.service';
 import { ApiService } from 'src/app/service/api.service';
@@ -34,7 +34,7 @@ export class LeadFilterBoxComponent implements OnInit {
   leadfilterCount = 0;
   filterForm: UntypedFormGroup;
 
-  @Output() emitFilterLeads: EventEmitter<any> = new EventEmitter();
+  readonly emitFilterLeads = output<any>();
   constructor() {
     this.filterForm = this.fb.group({
       relationAccountName: [],

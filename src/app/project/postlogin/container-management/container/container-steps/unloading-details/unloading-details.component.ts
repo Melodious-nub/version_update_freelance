@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, Pipe, OnDestroy, inject } from '@angular/core';
+import { Component, Pipe, OnDestroy, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -56,14 +56,14 @@ export class UnloadingDetailsComponent implements OnDestroy{
 
   poView: any = 'orderWise';
   expanded: any[] = [];
-  @Input() containerForm: UntypedFormGroup;
-  @Input() isExport: any;
-  @Input() currentBusinessAccount: any;
-  @Output() selectedStateChange = new EventEmitter();
-  @Output() calculate = new EventEmitter();
+  readonly containerForm = input<UntypedFormGroup>(undefined);
+  readonly isExport = input<any>(undefined);
+  readonly currentBusinessAccount = input<any>(undefined);
+  readonly selectedStateChange = output<any>();
+  readonly calculate = output<any>();
   private ngUnsubscribe: Subject<void> = new Subject();
   public purchaseOrdersList: any[] = [];
-  @Input() componentUoms: any;
+  readonly componentUoms = input<any>(undefined);
 
   async
 
@@ -89,14 +89,14 @@ export class UnloadingDetailsComponent implements OnDestroy{
   }
 
   getAttributeUserConversionUom(value1: any, value2: string): any {
-    return this.containerForm.get(value1).get(value2).get('userConversionUom');
+    return this.containerForm().get(value1).get(value2).get('userConversionUom');
   }
   getAttributeAttributeValue(value1: any, value2: string): any {
-    return this.containerForm.get(value1).get(value2).get('attributeValue');
+    return this.containerForm().get(value1).get(value2).get('attributeValue');
   }
 
   get containerOrders() {
-    return this.containerForm.get('containerOrders') as UntypedFormArray;
+    return this.containerForm().get('containerOrders') as UntypedFormArray;
   }
 
   getPurchaseOrderDetail(i) {
@@ -117,15 +117,15 @@ export class UnloadingDetailsComponent implements OnDestroy{
 
   getWeightWidth() {
     if (
-      this.containerForm.get('weight').get('attributeValue').value &&
-      this.containerForm
+      this.containerForm().get('weight').get('attributeValue').value &&
+      this.containerForm()
         .get('containerTypeInformation')
         .get('weight')
         .get('attributeValue').value
     ) {
       const percent =
-        (this.containerForm.get('weight').get('attributeValue').value /
-          this.containerForm
+        (this.containerForm().get('weight').get('attributeValue').value /
+          this.containerForm()
             .get('containerTypeInformation')
             .get('weight')
             .get('attributeValue').value) *
@@ -139,15 +139,15 @@ export class UnloadingDetailsComponent implements OnDestroy{
 
   getVolumeWidth() {
     if (
-      this.containerForm.get('volume').get('attributeValue').value &&
-      this.containerForm
+      this.containerForm().get('volume').get('attributeValue').value &&
+      this.containerForm()
         .get('containerTypeInformation')
         .get('volume')
         .get('attributeValue').value
     ) {
       const percent =
-        (this.containerForm.get('volume').get('attributeValue').value /
-          this.containerForm
+        (this.containerForm().get('volume').get('attributeValue').value /
+          this.containerForm()
             .get('containerTypeInformation')
             .get('volume')
             .get('attributeValue').value) *
@@ -160,22 +160,22 @@ export class UnloadingDetailsComponent implements OnDestroy{
   }
 
   get unloadingMaterialExpenses() {
-    return this.containerForm
+    return this.containerForm()
       .get('containerExpense')
       .get('unloadingMaterialExpenses') as UntypedFormArray;
   }
 
   addInUnloadingMaterialExpense() {
     const Form =   this.containerFormService.unloadingMaterialExpenseForm()
-    Form.get('addedByBusinessAccountId').setValue(this.currentBusinessAccount?.id)
-    Form.get('cost').get('userConversionUom').setValue(this.isExport ? this.getUomByName('exportCost') : this.getUomByName('importCost'))
+    Form.get('addedByBusinessAccountId').setValue(this.currentBusinessAccount()?.id)
+    Form.get('cost').get('userConversionUom').setValue(this.isExport() ? this.getUomByName('exportCost') : this.getUomByName('importCost'))
     this.unloadingMaterialExpenses.push(
       Form
     );
   }
 
   getFilteredUnloadingMaterialExpenses() {
-    let filteredControls = this.unloadingMaterialExpenses.controls.filter((item)=> (item.get('addedByBusinessAccountId').value==this.currentBusinessAccount?.id))
+    let filteredControls = this.unloadingMaterialExpenses.controls.filter((item)=> (item.get('addedByBusinessAccountId').value==this.currentBusinessAccount()?.id))
     return filteredControls
   }
 
@@ -184,20 +184,20 @@ export class UnloadingDetailsComponent implements OnDestroy{
   }
 
   get labourExpenses() {
-    return this.containerForm
+    return this.containerForm()
       .get('containerExpense')
       .get('labourExpenses') as UntypedFormArray;
   }
 
   addInLabourExpense() {
     const Form =   this.containerFormService.labourExpenseForm()
-    Form.get('addedByBusinessAccountId').setValue(this.currentBusinessAccount?.id)
-    Form.get('cost').get('userConversionUom').setValue(this.isExport ? this.getUomByName('exportCost') : this.getUomByName('importCost'))
+    Form.get('addedByBusinessAccountId').setValue(this.currentBusinessAccount()?.id)
+    Form.get('cost').get('userConversionUom').setValue(this.isExport() ? this.getUomByName('exportCost') : this.getUomByName('importCost'))
     this.labourExpenses.push(Form);
   }
 
   getFilteredLabourExpenses() {
-    let filteredControls = this.labourExpenses.controls.filter((item)=> (item.get('addedByBusinessAccountId').value==this.currentBusinessAccount?.id))
+    let filteredControls = this.labourExpenses.controls.filter((item)=> (item.get('addedByBusinessAccountId').value==this.currentBusinessAccount()?.id))
     return filteredControls
   }
 
@@ -225,7 +225,7 @@ export class UnloadingDetailsComponent implements OnDestroy{
     const containerProducts = this.containerOrders.controls[i].get(
       'containerProducts'
     ) as UntypedFormArray;
-    if(this.isExport) {
+    if(this.isExport()) {
       const orderPalletLoadedInformations = containerProducts.controls[j].get(
         'orderPalletLoadedInformations'
       ) as UntypedFormArray;
@@ -250,7 +250,7 @@ export class UnloadingDetailsComponent implements OnDestroy{
   }
 
   calculateValues() {
-    this.calculate.emit();
+    this.calculate.emit(undefined as any);
   }
 
   filterLabourList(labourList: any, id: any) {
@@ -287,13 +287,13 @@ export class UnloadingDetailsComponent implements OnDestroy{
   printReport() {
     let data: any = {};
     data.type = 'unloadingsheet';
-    data.containerForm = this.containerForm.getRawValue();
+    data.containerForm = this.containerForm().getRawValue();
     this.printService.printData(data);
   }
 
 
   getUomByName(type:any) {
-    const componentUoms: any = this.componentUoms.getRawValue();
+    const componentUoms: any = this.componentUoms().getRawValue();
     return componentUoms.find((item)=> item.attributeName?.toUpperCase()==type?.toUpperCase())?.userConversionUom
   }
 }

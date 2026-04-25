@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -47,7 +47,7 @@ export class CreateCategoryComponent implements OnInit {
   listViewAttribute = null;
   highlightProductTypeIds = [];
   highlightProductSubTypeIds = [];
-  @Input() productCategoryForm: UntypedFormGroup;
+  readonly productCategoryForm = input<UntypedFormGroup>(undefined);
   filteredSubTypes = [];
   public buyingCapacitiesList: any[] = [
     { name: 'SKU', value: 'SKU' },
@@ -118,7 +118,7 @@ export class CreateCategoryComponent implements OnInit {
           categoryIndustryTypes: res?.categoryIndustryTypes,
           buyingCapacityType: res?.buyingCapacityType,
         };
-        this.productCategoryForm.patchValue(formData);
+        this.productCategoryForm().patchValue(formData);
         const productSubTypeIds = [];
         res.categoryProductTypes.forEach((producttype) => {
           producttype.productSubTypeIds.forEach((subtypeid) => {
@@ -137,7 +137,7 @@ export class CreateCategoryComponent implements OnInit {
 
   saveCategory() {
     let data: any = JSON.parse(
-      JSON.stringify(this.productCategoryForm.getRawValue())
+      JSON.stringify(this.productCategoryForm().getRawValue())
     );
     const categoryProductTypes = [];
     const productSubTypeIds = this.productSubTypeIds.value;
@@ -180,20 +180,20 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   get categoryProductTypes() {
-    return this.productCategoryForm.get('categoryProductTypes');
+    return this.productCategoryForm().get('categoryProductTypes');
   }
   get productSubTypeIds() {
-    return this.productCategoryForm.get('productSubTypeIds');
+    return this.productCategoryForm().get('productSubTypeIds');
   }
 
   get categoryIndustryTypes() {
-    return this.productCategoryForm.get('categoryIndustryTypes');
+    return this.productCategoryForm().get('categoryIndustryTypes');
   }
   get id() {
-    return this.productCategoryForm.get('id');
+    return this.productCategoryForm().get('id');
   }
   get buyingCapacityType() {
-    return this.productCategoryForm.get('buyingCapacityType');
+    return this.productCategoryForm().get('buyingCapacityType');
   }
 
   onClickProductType(productTypeId) {
@@ -278,7 +278,7 @@ export class CreateCategoryComponent implements OnInit {
   ];
 
   loadProductsList(filter: any = ''): void {
-    const formData = this.productCategoryForm.getRawValue();
+    const formData = this.productCategoryForm().getRawValue();
     filter = filter + "&filter=status!'DELETED'";
     let uomQuery = '';
     if (formData?.categoryProductTypes?.length > 0) {

@@ -1,5 +1,5 @@
 import { productTemplate } from '../../../../../../../shared/constant';
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { FormArray, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -28,7 +28,7 @@ export class TemplateCalculatorComponent {
 
 
   // ************* Variable Declarations *************
-  @Input() templateForm: UntypedFormGroup;
+  readonly templateForm = input<UntypedFormGroup>(undefined);
 
   currentStepIndex = 0
 
@@ -37,7 +37,7 @@ export class TemplateCalculatorComponent {
 
 
   get productTemplateCalculator() {
-    return this.templateForm.get('productTemplateCalculator');
+    return this.templateForm().get('productTemplateCalculator');
   }
 
 

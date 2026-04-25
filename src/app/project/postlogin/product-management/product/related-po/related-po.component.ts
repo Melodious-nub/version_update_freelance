@@ -1,5 +1,5 @@
 import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, OnInit, inject, input, output } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormsService } from 'src/app/service/forms.service';
@@ -32,10 +32,10 @@ export class RelatedPoComponent implements OnInit {
   uomService = inject(UomService);
 
   relatedPoDetails: any;
-  @Input() productForm: UntypedFormGroup;
+  readonly productForm = input<UntypedFormGroup>(undefined);
 
-  @Input() componentUoms: UntypedFormArray;
-  @Output() calculate = new EventEmitter();
+  readonly componentUoms = input<UntypedFormArray>(undefined);
+  readonly calculate = output<any>();
   skuQuantities: any[] = [
     { name: '1-5 (SKUS)', key: 'SKU1TO5' },
     { name: '6-20 (SKUS)', key: 'SKU6TO20' },
@@ -55,9 +55,9 @@ export class RelatedPoComponent implements OnInit {
 
   async getRelatedPoDetails() {
     try {
-      let id: any = this.productForm.get('id').value;
+      let id: any = this.productForm().get('id').value;
       let uomQuery = ``;
-      this.componentUoms.controls.forEach((element) => {
+      this.componentUoms().controls.forEach((element) => {
         uomQuery =
           uomQuery +
           `&uomMap[${element.get('attributeName').value}]=${
@@ -88,17 +88,17 @@ export class RelatedPoComponent implements OnInit {
     }
   }
   get packages() {
-    return this.productForm.get('packages').value;
+    return this.productForm().get('packages').value;
   }
 
   get tierPricingCustomization() {
-    return this.productForm
+    return this.productForm()
       .get('tierPricingDetail')
       .get('tierPricingCustomization') as UntypedFormArray;
   }
 
   get tierPricingQuickCheckout() {
-    return this.productForm
+    return this.productForm()
       .get('tierPricingDetail')
       .get('tierPricingQuickCheckout') as UntypedFormArray;
   }
@@ -202,7 +202,7 @@ export class RelatedPoComponent implements OnInit {
     }
   }
   deliveryPricings(i: any) {
-    const tierPricingCustomization = this.productForm
+    const tierPricingCustomization = this.productForm()
       .get('tierPricingDetail')
       .get('tierPricingCustomization') as UntypedFormArray;
     return tierPricingCustomization.controls[i].get(
@@ -282,6 +282,6 @@ export class RelatedPoComponent implements OnInit {
   }
 
   get buyingCapacities() {
-    return this.productForm.get('productBuyingCapacities');
+    return this.productForm().get('productBuyingCapacities');
   }
 }

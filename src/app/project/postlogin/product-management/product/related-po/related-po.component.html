@@ -1,4 +1,4 @@
-<form [formGroup]="productForm">
+<form [formGroup]="productForm()">
   <mat-expansion-panel class="my-2 no-padding" expanded="true" #mep="matExpansionPanel">
     <mat-expansion-panel-header>
       <div class="header" (click)="mep.expanded = !mep.expanded">
@@ -100,7 +100,7 @@
     </ng-template>
   </mat-expansion-panel>
   <!--  -->
-  @if (productForm.get('isQuickCheckoutEligible').value) {
+  @if (productForm().get('isQuickCheckoutEligible').value) {
     <mat-expansion-panel class="no-padding" expanded="true"
       #mep="matExpansionPanel">
       <mat-expansion-panel-header>
@@ -172,8 +172,8 @@
     }
 
     @if (
-      productForm.get('isCustomizable').value ||
-      productForm.get('preferredCustomerId').value
+      productForm().get('isCustomizable').value ||
+      productForm().get('preferredCustomerId').value
       ) {
       <mat-expansion-panel class="no-padding" expanded="true" #mep="matExpansionPanel">
         <mat-expansion-panel-header>

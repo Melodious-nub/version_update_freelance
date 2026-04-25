@@ -147,7 +147,7 @@
                     productForm.get("skuName").value ?? "SKU"
                   }}</label>
                   <div class="attribute-input">
-                    <input (change)="getCalculatedValues()" [disabled]="isSKUTypeDisable() || disableForThirdPartyProduct"
+                    <input (change)="getCalculatedValues()" [disabled]="isSKUTypeDisable() || disableForThirdPartyProduct()"
                       type="number" formControlName="unitCount" />
                     </div>
                   </div>
@@ -204,7 +204,7 @@
                       img of images?.controls; track trackByFn(j,
                       img); let j = $index) {
                       @if (images?.controls?.length > 0 && j === 0) {
-                        @if (!this.isThirdPartyProductMeta || !img.get('isHide').value) {
+                        @if (!this.isThirdPartyProductMeta() || !img.get('isHide').value) {
                           <div cdkDrag (cdkDragStarted)="onImageDragStart()" (cdkDragEnded)="onImageDragEnd()"
                             class="image-box-sm w-50  b-light"
                             [ngStyle]="j === 0 ? { border: '2px solid green' } : {}">
@@ -237,7 +237,7 @@
                         img of images?.controls; track trackByFn(j,
                         img); let j = $index) {
                         @if (images?.controls?.length > 1 && j !== 0) {
-                          @if (!this.isThirdPartyProductMeta || !img.get('isHide').value) {
+                          @if (!this.isThirdPartyProductMeta() || !img.get('isHide').value) {
                             <div cdkDrag (cdkDragStarted)="onImageDragStart()" (cdkDragEnded)="onImageDragEnd()"
                               class="image-box-sm my-2 b-light"
                               [ngStyle]="j === 0 ? { border: '2px solid green' } : {}">
@@ -835,7 +835,7 @@
           <dadyin-button class="mx-2" [isDisabled]="
               !pAttribute?.value ||
               !colSpace.value ||
-              disableForThirdPartyProduct
+              disableForThirdPartyProduct()
             " (clicked)="addExistingAttribute()" type="image" [theme]="'borderless-primary'"
                           [typeval]="'assets/nicons/add-white.png'">
                         </dadyin-button>

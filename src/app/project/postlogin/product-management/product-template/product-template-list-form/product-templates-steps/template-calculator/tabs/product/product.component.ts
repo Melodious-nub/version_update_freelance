@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
-import { Component, HostListener, Input, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy, inject, input } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -65,8 +65,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   attributeValueExpression: any = '';
   showInputMeta = false;
 
-  @Input() productTemplateCalculator: UntypedFormGroup;
-  @Input() templateForm: UntypedFormGroup;
+  readonly productTemplateCalculator = input<UntypedFormGroup>(undefined);
+  readonly templateForm = input<UntypedFormGroup>(undefined);
   currentFocusedIndex = null;
   // calculatorTemplateAttributeValues = [];
 
@@ -317,42 +317,42 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   get productCalculatorTemplateAttributeValues() {
-    return this.productTemplateCalculator.get(
+    return this.productTemplateCalculator().get(
       'productCalculatorTemplateAttributeValues'
     ) as UntypedFormArray;
   }
   get packageCalculatorTemplates() {
-    return this.productTemplateCalculator.get(
+    return this.productTemplateCalculator().get(
       'packageCalculatorTemplates'
     ) as UntypedFormArray;
   }
 
   toggleSaveInput() {
     this.showInputMeta = !this.showInputMeta;
-    this.productTemplateCalculator.get('metaCalculatorId').setValue(null);
+    this.productTemplateCalculator().get('metaCalculatorId').setValue(null);
     this.apiService.finalSave = true;
   }
 
   async onSelectCalculatorMeta() {
-    if (this.productTemplateCalculator.get('metaCalculatorId').value == 'NEW') {
+    if (this.productTemplateCalculator().get('metaCalculatorId').value == 'NEW') {
       this.showInputMeta = true;
-      this.productTemplateCalculator.get('description').setValue('');
+      this.productTemplateCalculator().get('description').setValue('');
       this.labelTypeAttributeIds = [];
       this.productCalculatorTemplateAttributeValues.clear();
       this.apiService.finalSave = false;
       return;
     }
     if (
-      this.productTemplateCalculator.get('metaCalculatorId').value == 'SAVEAS'
+      this.productTemplateCalculator().get('metaCalculatorId').value == 'SAVEAS'
     ) {
       this.showInputMeta = true;
-      this.productTemplateCalculator.get('description').setValue('');
+      this.productTemplateCalculator().get('description').setValue('');
       this.apiService.finalSave = false;
       return;
     }
     // this.showInputMeta=true
     let id = Number(
-      this.productTemplateCalculator.get('metaCalculatorId').value
+      this.productTemplateCalculator().get('metaCalculatorId').value
     );
     this.productCalculatorTemplateAttributeValues.clear();
     this.labelTypeAttributeIds = [];
@@ -361,10 +361,10 @@ export class ProductComponent implements OnInit, OnDestroy {
         return Number(id) === Number(el.id);
       }
     );
-    this.productTemplateCalculator
+    this.productTemplateCalculator()
       .get('metaCalculatorId')
       .setValue(calculatorMetaDetails?.id);
-    this.productTemplateCalculator
+    this.productTemplateCalculator()
       .get('description')
       .setValue(calculatorMetaDetails?.description);
     calculatorMetaDetails?.calculatorAttributeValues?.forEach((element) => {
@@ -389,7 +389,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.productCalculatorTemplateAttributeValues?.patchValue(
       calculatorMetaDetails?.calculatorAttributeValues
     );
-    this.productTemplateCalculator.get('id').setValue(null);
+    this.productTemplateCalculator().get('id').setValue(null);
     this.packageCalculatorTemplates.controls.forEach((pck) => {
       pck.get('id').setValue(null);
       const packageCalculatorTemplateAttributeValues = pck.get(
@@ -422,8 +422,8 @@ export class ProductComponent implements OnInit, OnDestroy {
       this.apiService.finalSave = true;
       return;
     }
-    this.productTemplateCalculator.get('id').setValue(null);
-    let data = this.productTemplateCalculator.value;
+    this.productTemplateCalculator().get('id').setValue(null);
+    let data = this.productTemplateCalculator().value;
     data = this.apiService.cleanDataId(data);
     try {
       let newData: any = {
@@ -438,8 +438,8 @@ export class ProductComponent implements OnInit, OnDestroy {
         .toPromise();
       this.apiService.Get_All_Calculator_Metas_Non_Cache();
       this.showInputMeta = false;
-      this.productTemplateCalculator.get('metaCalculatorId').setValue(res.id);
-      this.productTemplateCalculator
+      this.productTemplateCalculator().get('metaCalculatorId').setValue(res.id);
+      this.productTemplateCalculator()
         .get('description')
         .setValue(res?.description);
       this.apiService.finalSave = true;
@@ -450,7 +450,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     }
   }
   async updateCalculatorMeta() {
-    let data = this.productTemplateCalculator.getRawValue();
+    let data = this.productTemplateCalculator().getRawValue();
     let newData: any = {
       calculatorAttributeValues: data.productCalculatorTemplateAttributeValues,
       id: data.metaCalculatorId,
@@ -1198,7 +1198,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   get templateProcessType() {
-    return this.templateForm.get('templateProcessType') as UntypedFormControl;
+    return this.templateForm().get('templateProcessType') as UntypedFormControl;
   }
 
   toggleVisibility(item: any, param: any) {
@@ -1206,7 +1206,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   get templateProcesses() {
-    return this.templateForm.get('templateProcesses') as UntypedFormArray;
+    return this.templateForm().get('templateProcesses') as UntypedFormArray;
   }
 
   get lastProcessLayerWiseCalculation() {
@@ -1240,7 +1240,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   testCalculatorModal() {
     // Pass the entire template form so the modal has access to all necessary data
-    const templateFormData = this.templateForm.getRawValue();
+    const templateFormData = this.templateForm().getRawValue();
     let dialogRef = this.dialog.open(CalculateErrorModalComponent, {
       data: {
         productTemplateCalculator: templateFormData,
@@ -1307,20 +1307,20 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   getTemplateCost() {
     return (
-      (this.templateForm.get('templateCost').get('attributeValue').value ??
+      (this.templateForm().get('templateCost').get('attributeValue').value ??
         '') +
       ' ' +
-      (this.templateForm.get('templateCost').get('userConversionUom').value ??
+      (this.templateForm().get('templateCost').get('userConversionUom').value ??
         '')
     );
   }
 
   getTemplateDensity() {
     return (
-      (this.templateForm.get('templateDensity').get('attributeValue').value ??
+      (this.templateForm().get('templateDensity').get('attributeValue').value ??
         '') +
       ' ' +
-      (this.templateForm.get('templateDensity').get('userConversionUom')
+      (this.templateForm().get('templateDensity').get('userConversionUom')
         .value ?? '')
     );
   }

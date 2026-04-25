@@ -1,10 +1,10 @@
-<div class="{{ class }}">
+<div class="{{ class() }}">
   <div class="attribute one attr-b">
     <!-- Label with conditional display and styling -->
     @if (label) {
       <label
         [style.fontSize]="fontSize ? fontSize + '!important' : ''"
-        [style.backgroundColor]="labelBackground"
+        [style.backgroundColor]="labelBackground()"
         [class.required]="validationRequired"
         >
         {{ label }}
@@ -25,14 +25,14 @@
           (blur)="onBlurEvent($event)"
           (click)="onClickedEvent($event)"
           [value]="value"
-          [name]="formControlName"
+          [name]="formControlName()"
           [placeholder]="label"
           [formControl]="control"
         [ngClass]="{
           'b-red':
             (control?.invalid && (control?.touched || control?.dirty)) ||
-            isErrorClass,
-          'uppercase-text': convertUpperCase
+            isErrorClass(),
+          'uppercase-text': convertUpperCase()
         }"
           />
           <!-- Password toggle icon -->
@@ -44,7 +44,7 @@
           {{ pwToggle ? "visibility_off" : "visibility" }}
         </i> -->
         <!-- Clear icon -->
-        @if (isClearable && value && !isDisabled && !control?.disabled) {
+        @if (isClearable() && value && !isDisabled && !control?.disabled) {
           <i
             class="fa fa-close btn-clear"
             (click)="clearValue()"
@@ -63,14 +63,14 @@
     }
 
     <!-- Textarea input -->
-    @if (inputType === 'textarea') {
+    @if (inputType() === 'textarea') {
       <div class="attribute-input">
         <textarea
           [readonly]="isDisabled"
           autocomplete="off"
           class="input"
-          [name]="formControlName"
-          [rows]="rows"
+          [name]="formControlName()"
+          [rows]="rows()"
           [disabled]="isDisabled || control?.disabled"
           (input)="writeValue($event)"
           (blur)="onBlurEvent($event)"
@@ -81,7 +81,7 @@
           'b-red': control?.invalid && (control?.touched || control?.dirty)
         }"
         ></textarea>
-        @if (isClearable && value && !isDisabled && !control?.disabled) {
+        @if (isClearable() && value && !isDisabled && !control?.disabled) {
           <i
             class="fa fa-close btn-clear"
             (click)="clearValue()"
@@ -92,7 +92,7 @@
     }
 
     <!-- Date input -->
-    @if (inputType === 'date') {
+    @if (inputType() === 'date') {
       <div class="attribute-input">
         <input
           [readonly]="isDisabled"
@@ -102,19 +102,19 @@
           [disabled]="isDisabled || control?.disabled"
           type="date"
           class="input"
-          [name]="formControlName"
+          [name]="formControlName()"
           (input)="writeValue($event)"
           (blur)="onBlurEvent($event)"
           [placeholder]="label"
           [value]="value"
           [formControl]="control"
-          [min]="minDate"
+          [min]="minDate()"
           />
         </div>
       }
 
       <!-- Datetime input -->
-      @if (inputType === 'datetime-local') {
+      @if (inputType() === 'datetime-local') {
         <div class="attribute-input">
           <input
             [readonly]="isDisabled"
@@ -122,7 +122,7 @@
             [disabled]="isDisabled || control?.disabled"
             type="datetime-local"
             class="input"
-            [name]="formControlName"
+            [name]="formControlName()"
             (input)="writeValue($event)"
             (blur)="onBlurEvent($event)"
             [placeholder]="label"

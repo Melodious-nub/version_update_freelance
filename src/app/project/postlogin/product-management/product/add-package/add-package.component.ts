@@ -1,5 +1,5 @@
 import { FormsService } from 'src/app/service/forms.service';
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, OnInit, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -64,18 +64,18 @@ export class AddPackageComponent implements OnInit {
   sortFormArray = inject(SortFormArrayPipe);
   dialog = inject(MatDialog);
 
-  @Input() productForm: UntypedFormGroup;
-  @Input() componentUoms: UntypedFormArray;
+  readonly productForm = input<UntypedFormGroup>(undefined);
+  readonly componentUoms = input<UntypedFormArray>(undefined);
 
-  @Input() disableForThirdPartyProduct: any;
-  @Input() isThirdPartyProductMeta: any
+  readonly disableForThirdPartyProduct = input<any>(undefined);
+  readonly isThirdPartyProductMeta = input<any>(undefined);
   imgUrl = environment.imgUrl;
 
   private ngUnsubscribe: Subject<void> = new Subject();
   pAttribute = new UntypedFormControl(null);
   colSpace = new UntypedFormControl('25');
 
-  @Output() calculate = new EventEmitter();
+  readonly calculate = output<any>();
   tempPackages: any;
   labelTypeAttributeIds: any = [];
   allProductsPackagingMaterial: any[] = []
@@ -94,8 +94,8 @@ export class AddPackageComponent implements OnInit {
     this.labelTypeAttributeIds = [];
     tempPackages?.forEach((ele, index) => {
       this.labelTypeAttributeIds[index] = [];
-      if (this.productForm.get('skuName').value) {
-        if (ele.packageType == this.productForm.get('skuName').value) {
+      if (this.productForm().get('skuName').value) {
+        if (ele.packageType == this.productForm().get('skuName').value) {
           this.packages.controls[index].get('isSku').setValue(true);
         } else {
           this.packages.controls[index].get('isSku').setValue(false);
@@ -255,7 +255,7 @@ export class AddPackageComponent implements OnInit {
 
   renderPackageAttributes(event: any, i) {
     if (this.packages.controls[i].get('isSku').value) {
-      this.productForm
+      this.productForm()
         .get('skuName')
         .setValue(this.packages.controls[i].get('packageType').value);
     }
@@ -432,7 +432,7 @@ export class AddPackageComponent implements OnInit {
 
 
   skuChange(event: any, i) {
-    this.productForm
+    this.productForm()
       .get('skuName')
       .setValue(this.packages.controls[i].get('packageType').value);
     if (event.target.value) {
@@ -534,7 +534,7 @@ export class AddPackageComponent implements OnInit {
   }
 
   get packages() {
-    return this.productForm.get('packages') as UntypedFormArray;
+    return this.productForm().get('packages') as UntypedFormArray;
   }
 
   async toggleAttribute(item: UntypedFormGroup, index, i) {
@@ -672,7 +672,7 @@ export class AddPackageComponent implements OnInit {
   }
 
   get isPackageAttributes() {
-    return this.productForm.get('isPackageAttributes');
+    return this.productForm().get('isPackageAttributes');
   }
   trackByFn(index, item) {
     return index;
@@ -730,7 +730,7 @@ export class AddPackageComponent implements OnInit {
 
   Get_All_Product_List_IsPackage(event: any) {
     let uomQuery = ``;
-    this.componentUoms.controls.forEach((element) => {
+    this.componentUoms().controls.forEach((element) => {
       element.get('columnMappings').value.forEach(col => {
         uomQuery =
           uomQuery +
@@ -749,7 +749,7 @@ export class AddPackageComponent implements OnInit {
 
   isNotEditable(i) {
     const isSkuIndex = this.packages.controls?.findIndex((pck) => pck.get('isSku').value)
-    if ((this.disableForThirdPartyProduct || this.isThirdPartyProductMeta) && i <= isSkuIndex) {
+    if ((this.disableForThirdPartyProduct() || this.isThirdPartyProductMeta()) && i <= isSkuIndex) {
       return true
     }
     else {
@@ -807,7 +807,7 @@ export class AddPackageComponent implements OnInit {
   }
 
   removeImage(j, index: number) {
-    if (this.disableForThirdPartyProduct || this.isThirdPartyProductMeta) {
+    if (this.disableForThirdPartyProduct() || this.isThirdPartyProductMeta()) {
       this.toastr.warning('Not Editable for Third Party Product');
       return;
     }

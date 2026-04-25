@@ -4,7 +4,7 @@
     matSort
     (matSortChange)="onSortChange($event)"
     >
-    @for (col of headers; track col) {
+    @for (col of headers(); track col) {
       <ng-container  [matColumnDef]="col.prop">
         <mat-header-cell sticky
           *matHeaderCellDef

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, inject, viewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { BusinessAccountService } from '../business-account/business-account.service';
@@ -66,7 +66,7 @@ export class VendorCustomerManagementComponent implements OnInit {
   pdfGeneratorService = inject(PdfGeneratorService);
   private systemConfigService = inject(SystemConfigService);
 
-  @ViewChild(DataTableComponent) dataTable!: DataTableComponent;
+  readonly dataTable = viewChild.required(DataTableComponent);
   employeeId = null;
   productCategoryId = null;
   edit = false;
@@ -1030,7 +1030,7 @@ export class VendorCustomerManagementComponent implements OnInit {
       this.loadListing();
       this.salesRepIds = [];
       this.relationStatusId = null;
-      this.dataTable.clearSelection();
+      this.dataTable().clearSelection();
       this.bulkAssignmentIds = [];
     } catch (err: any) {
       console.log(err);

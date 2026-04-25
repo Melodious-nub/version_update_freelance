@@ -82,8 +82,8 @@
     @if (!this.isShowProcessList) {
       @for (process of templateProcesses?.controls; track process; let i = $index) {
         <div>
-          <app-edit-process [componentUoms]="componentUoms" (calculate)="calculateValues($event)"
-            [existingProcess]="existingProcess" (deleteProcessEvent)="removeProcess(i)" [templateForm]="templateForm"
+          <app-edit-process [componentUoms]="componentUoms()" (calculate)="calculateValues($event)"
+            [existingProcess]="existingProcess" (deleteProcessEvent)="removeProcess(i)" [templateForm]="templateForm()"
             [index]="i" [isExpandAll]="isExpandAll" [process]="process">
           </app-edit-process>
         </div>

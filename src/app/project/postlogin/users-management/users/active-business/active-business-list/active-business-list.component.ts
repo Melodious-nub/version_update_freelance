@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -73,9 +73,9 @@ export class ActiveBusinessListComponent implements OnInit {
   pageIndex: any = 0;
   pageS = 20;
   sortQuery: any = 'audit.lastModifiedDate,desc';
-  @Input() role: any;
-  @Input() single = false;
-  @Input() customerId: any = null;
+  readonly role = input<any>(undefined);
+  readonly single = input(false);
+  readonly customerId = input<any>(null);
 
   public pageConfig: any = {
     itemPerPage: 20,
@@ -89,8 +89,9 @@ export class ActiveBusinessListComponent implements OnInit {
 
   getBusinessList(): void {
     let filter = '';
-    if (this.customerId) {
-      filter = `&filter=requestTo.id:${this.customerId}`;
+    const customerId = this.customerId();
+    if (customerId) {
+      filter = `&filter=requestTo.id:${customerId}`;
     }
     if (this.filterValue) {
       filter = filter + `&searchString=${this.filterValue}`;

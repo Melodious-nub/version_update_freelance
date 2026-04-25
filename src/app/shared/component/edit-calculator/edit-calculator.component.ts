@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewChecked, ChangeDetectorRef, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, Input, AfterViewChecked, ChangeDetectorRef, OnDestroy, inject, input, output } from '@angular/core';
 import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject, Subscription, takeUntil } from 'rxjs';
@@ -127,11 +127,11 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
     return this._isShowingCalculator;
   }
 
-  @Input() productList: any[];
-  @Input() conversionTypesList: any[];
-  @Input() attributeList: ProcessAttribute[];
-  @Output() isEdittingCalculatorEvent = new EventEmitter<boolean>();
-  @Output() userInputChange = new EventEmitter<void>();
+  readonly productList = input<any[]>(undefined);
+  readonly conversionTypesList = input<any[]>(undefined);
+  readonly attributeList = input<ProcessAttribute[]>(undefined);
+  readonly isEdittingCalculatorEvent = output<any>();
+  readonly userInputChange = output<any>();
 
   public get id(): number {
     if (this.processCalculatorForm && this.processCalculatorForm.get('id')) {
@@ -200,8 +200,9 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
   }
 
   public getProductName(productId: number): string {
-    const product = this.productList
-      ? this.productList.find((product) => product?.id === productId)
+    const productList = this.productList();
+    const product = productList
+      ? productList.find((product) => product?.id === productId)
       : false;
     if (product) {
       return product?.description;
@@ -211,8 +212,9 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
   }
 
   public getConversionTypeName(conversionTypeId: number): string {
-    const conversionType = this.conversionTypesList
-      ? this.conversionTypesList.find(
+    const conversionTypesList = this.conversionTypesList();
+    const conversionType = conversionTypesList
+      ? conversionTypesList.find(
           (conversionType) => conversionType?.id === conversionTypeId
         )
       : false;
@@ -224,8 +226,9 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
   }
 
   public getAttribute(attributeId: number): ProcessAttribute {
-    const attribute = this.attributeList
-      ? this.attributeList.find((attribute) => attribute.id === attributeId)
+    const attributeList = this.attributeList();
+    const attribute = attributeList
+      ? attributeList.find((attribute) => attribute.id === attributeId)
       : false;
     if (attribute) {
       return attribute;
@@ -249,14 +252,17 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
   }
 
   private setInitialValues(): void {
+    const productList = this.productList();
+    const conversionTypesList = this.conversionTypesList();
+    const attributeList = this.attributeList();
     if (
       this.processCalculatorForm &&
       this.calculatorMeta.value &&
       this.products &&
       this.conversionType &&
-      this.productList &&
-      this.conversionTypesList &&
-      this.attributeList
+      productList &&
+      conversionTypesList &&
+      attributeList
     ) {
       if (this.id) {
         this.constructValues();
@@ -267,9 +273,9 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
       this.processCalculatorForm &&
       this.products &&
       this.conversionType &&
-      this.productList &&
-      this.conversionTypesList &&
-      this.attributeList
+      productList &&
+      conversionTypesList &&
+      attributeList
     ) {
       if (this.id) {
         this.constructValues();
@@ -532,7 +538,7 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
         const processCalculatorProductAttributeValues: ProcessCalculatorConversionAttributeValues[] =
           [];
         for (const calculatorAttributeValue of calculatorAttributeValues) {
-          const product = this.productList.find(
+          const product = this.productList().find(
             (product) => product?.id === value?.subProduct
           );
           for (const subProductAttributeValue of product?.productAttributeValues) {
@@ -576,7 +582,7 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
             if (!isPresentAlready) {
               const processCalculatorConversionAttributeValues: ProcessCalculatorConversionAttributeValues =
                 {
-                  attribute: this.attributeList.find(
+                  attribute: this.attributeList().find(
                     (attribute) =>
                       attribute.id === processCalculatorProductAttribute.id
                   ),
@@ -819,7 +825,7 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
         const processCalculatorProductAttributeValues: ProcessCalculatorConversionAttributeValues[] =
           [];
         for (const calculatorAttributeValue of calculatorAttributeValues) {
-          for (const attribute of this.attributeList) {
+          for (const attribute of this.attributeList()) {
             if (calculatorAttributeValue.attribute === attribute?.id) {
               const processCalculatorConversionAttributeValues: ProcessCalculatorConversionAttributeValues =
                 {
@@ -857,7 +863,7 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
             if (!isPresentAlready) {
               const processCalculatorConversionAttributeValues: ProcessCalculatorConversionAttributeValues =
                 {
-                  attribute: this.attributeList.find(
+                  attribute: this.attributeList().find(
                     (attribute) =>
                       attribute.id ===
                       processCalculatorConversionTypeAttribute.id
@@ -1116,7 +1122,7 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
   public addSubProductAttribute(): void {
     this.isBeingAddedNewSubProductAttribute = true;
     this.allAttributesForSubProduct = [];
-    for (const attribute of this.attributeList) {
+    for (const attribute of this.attributeList()) {
       const searchAttribute = this.processCalculatorProductAttributes.find(
         (productAttribute) => productAttribute?.id === attribute?.id
       );
@@ -1164,7 +1170,7 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
   public addConversionTypeAttribute(): void {
     this.isBeingAddedNewConversionTypeAttribute = true;
     this.allAttributesForConversionType = [];
-    for (const attribute of this.attributeList) {
+    for (const attribute of this.attributeList()) {
       const searchAttribute =
         this.processCalculatorConversionTypeAttributes.find(
           (conversionTypeAttribute) =>
@@ -1215,7 +1221,7 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
   public addAttributeValueAttribute(): void {
     this.isBeingAddedNewAttributeValueAttribute = true;
     this.allAttributesForAttributeValue = [];
-    for (const attribute of this.attributeList) {
+    for (const attribute of this.attributeList()) {
       const searchAttribute = (
         this.processCalculatorAttributeValues
           ?.value as ProcessProductAttributeValues[]
@@ -1569,7 +1575,7 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
       _dialogRef.afterClosed().subscribe((result) => {
         if (result === 1) {
           this.isEdittingCalculatorEvent.emit(false);
-          this.userInputChange.emit();
+          this.userInputChange.emit(undefined as any);
         }
       });
     } else {

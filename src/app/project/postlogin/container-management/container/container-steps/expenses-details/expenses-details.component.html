@@ -1,4 +1,4 @@
-<form [formGroup]="containerForm">
+<form [formGroup]="containerForm()">
   <mat-expansion-panel expanded="true" #expansionPanel1>
     <mat-expansion-panel-header (click)="expandPanel(expansionPanel1, $event)">
       <mat-panel-description>
@@ -106,7 +106,7 @@
                   </dadyin-select>
                 </div> -->
                 <div class="inp">
-                  @if (!isExport) {
+                  @if (!isExport()) {
                     <div formGroupName="importCost">
                       <dadyin-input
                         inputType="text"
@@ -117,7 +117,7 @@
                       </dadyin-input>
                     </div>
                   }
-                  @if (isExport) {
+                  @if (isExport()) {
                     <div formGroupName="exportCost">
                       <dadyin-input
                         inputType="text"
@@ -130,7 +130,7 @@
                   }
                 </div>
                 <div class="inp">
-                  @if (!isExport) {
+                  @if (!isExport()) {
                     <div formGroupName="importCost">
                       <dadyin-input
                         inputType="text"
@@ -141,7 +141,7 @@
                       </dadyin-input>
                     </div>
                   }
-                  @if (isExport) {
+                  @if (isExport()) {
                     <div formGroupName="exportCost">
                       <dadyin-input
                         inputType="text"
@@ -180,7 +180,7 @@
                     <th>SERVICE PROVIDER</th>
                     <th>
                       EXPENSE AMOUNT ({{
-                      isExport
+                      isExport()
                       ? getUomByName("exportCost")
                       : getUomByName("importCost")
                       }})
@@ -219,7 +219,7 @@
                       >
                       @if (
                         miscellaneousExpense.get('addedByBusinessAccountId').value ===
-                        this.currentBusinessAccount?.id
+                        this.currentBusinessAccount()?.id
                         ) {
                         <tr
                           >

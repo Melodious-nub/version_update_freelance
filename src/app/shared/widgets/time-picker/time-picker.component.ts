@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, forwardRef, ChangeDetectorRef, AfterContentChecked, OnChanges, SimpleChanges, inject } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, ChangeDetectorRef, AfterContentChecked, OnChanges, SimpleChanges, inject, input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, UntypedFormControl, ControlContainer } from '@angular/forms';
 import { CommonService } from 'src/app/service/common.service';
 
@@ -21,17 +21,17 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterC
   private cdr = inject(ChangeDetectorRef);
 
 
-  @Input() class = '';
+  readonly class = input('');
   @Input() label = '';
-  @Input() leftHint = '';
-  @Input() rightHint = '';
-  @Input() customError = '';
-  @Input() formControlName = '';
-  @Input() inputWidth = '100%';
-  @Input() isRequired: boolean = false;
-  @Input() placeholder = '';
-  @Input() format = 24; // kept for API compatibility, native input always uses HH:mm
-  @Input() minutesGap = 5;
+  readonly leftHint = input('');
+  readonly rightHint = input('');
+  readonly customError = input('');
+  readonly formControlName = input('');
+  readonly inputWidth = input('100%');
+  readonly isRequired = input<boolean>(false);
+  readonly placeholder = input('');
+  readonly format = input(24); // kept for API compatibility, native input always uses HH:mm
+  readonly minutesGap = input(5);
   @Input() disabled: boolean = false;
 
   control!: UntypedFormControl;
@@ -49,7 +49,7 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterC
 
   ngOnInit(): void {
     if (this.controlContainer?.control) {
-      this.control = this.controlContainer.control.get(this.formControlName) as UntypedFormControl;
+      this.control = this.controlContainer.control.get(this.formControlName()) as UntypedFormControl;
       this.syncDisabledToControl();
     }
   }
@@ -97,7 +97,8 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterC
   }
 
   getFieldErrorDesc() {
-    if (this.customError?.length) return this.customError;
+    const customError = this.customError();
+    if (customError?.length) return customError;
     return this.commonService.getFieldErrorDesc(this.control);
   }
 }

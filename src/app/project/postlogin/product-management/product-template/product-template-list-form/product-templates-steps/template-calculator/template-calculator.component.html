@@ -28,11 +28,11 @@
       </div>
     </div>
     @if (calculatorType.value === 'product') {
-      <app-product-calculator [templateForm]="templateForm" [productTemplateCalculator]="productTemplateCalculator">
+      <app-product-calculator [templateForm]="templateForm()" [productTemplateCalculator]="productTemplateCalculator">
       </app-product-calculator>
     }
     @if (calculatorType.value === 'package') {
-      <app-package [templateForm]="templateForm" [productTemplateCalculator]="productTemplateCalculator">
+      <app-package [templateForm]="templateForm()" [productTemplateCalculator]="productTemplateCalculator">
       </app-package>
     }
   </section>

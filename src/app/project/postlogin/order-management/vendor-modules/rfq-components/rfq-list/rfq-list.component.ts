@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -37,8 +37,8 @@ export class RfqListComponent implements OnInit {
   fb = inject(UntypedFormBuilder);
   businessAccountService = inject(BusinessAccountService);
 
-  @Input() single = false;
-  @Input() vendorId = null;
+  readonly single = input(false);
+  readonly vendorId = input(null);
   uomSetting = false;
   public preferredUoms: any[];
   public preferForm: UntypedFormGroup = this.formService.createPreferUomForm();
@@ -87,7 +87,7 @@ export class RfqListComponent implements OnInit {
   pageS = 20;
   sortQuery: any = 'audit.lastModifiedDate,desc';
 
-  @Input() role: any;
+  readonly role = input<any>(undefined);
 
   public pageConfig: any = {
     itemPerPage: 20,
@@ -109,8 +109,9 @@ export class RfqListComponent implements OnInit {
     });
     uomQuery = encodeURI(uomQuery);
     let filter = '';
-    if (this.vendorId) {
-      filter = `&filter=requestTo.id:${this.vendorId}`;
+    const vendorId = this.vendorId();
+    if (vendorId) {
+      filter = `&filter=requestTo.id:${vendorId}`;
     }
     if (this.filterValue) {
       filter = filter + `&searchString=${this.filterValue}`;
@@ -154,7 +155,7 @@ export class RfqListComponent implements OnInit {
       case 'Edit':
         if (event?.row?.id) {
           this.router.navigateByUrl(
-            'home/order-management/' + this.role + '/rfq/edit/' + event.row.id
+            'home/order-management/' + this.role() + '/rfq/edit/' + event.row.id
           );
         }
         break;
@@ -168,13 +169,14 @@ export class RfqListComponent implements OnInit {
   }
 
   addRfq(): void {
-    if (this.vendorId) {
+    const vendorId = this.vendorId();
+    if (vendorId) {
       this.router.navigateByUrl(
-        `'home/order-management/' + ${this.role} + '/rfq/add?vendorId=${this.vendorId}`
+        `'home/order-management/' + ${this.role()} + '/rfq/add?vendorId=${vendorId}`
       );
     } else {
       this.router.navigateByUrl(
-        'home/order-management/' + this.role + '/rfq/add'
+        'home/order-management/' + this.role() + '/rfq/add'
       );
     }
   }
@@ -186,7 +188,7 @@ export class RfqListComponent implements OnInit {
 
   editRecord(event): void {
     this.router.navigateByUrl(
-      'home/order-management/' + this.role + '/rfq/edit/' + event.data.id
+      'home/order-management/' + this.role() + '/rfq/edit/' + event.data.id
     );
   }
 

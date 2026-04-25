@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, inject } from '@angular/core';
+import { Component, Input, OnInit, inject, input, output } from '@angular/core';
 import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -44,18 +44,18 @@ export class OrderTransactionPackagesComponent implements OnInit {
   apiService = inject(ApiService);
   router = inject(Router);
 
-  @Input() tierPriceView: boolean = false;
+  readonly tierPriceView = input<boolean>(false);
   @Input() productPackages: any;
   @Input() isEditable: any;
-  @Input() orderForm: any;
-  @Input() productsList;
+  readonly orderForm = input<any>(undefined);
+  readonly productsList = input(undefined);
   @Input() type: string; // 'order' or 'quotation'
-  @Output() calculate = new EventEmitter();
-  @Output() getProducts = new EventEmitter();
-  @Output() generatePoFromPdf = new EventEmitter();
+  readonly calculate = output<any>();
+  readonly getProducts = output<any>();
+  readonly generatePoFromPdf = output<any>();
   private searchSubject = new Subject<string>();
 
-  @Input() displayedColumns = [];
+  readonly displayedColumns = input([]);
 
   @Input() orderFile: any;
 
@@ -111,10 +111,10 @@ export class OrderTransactionPackagesComponent implements OnInit {
   }
 
   get buyingType() {
-    return this.orderForm.get('buyingType');
+    return this.orderForm().get('buyingType');
   }
   get status() {
-    return this.orderForm.get('status');
+    return this.orderForm().get('status');
   }
 
   getMetricCostControl(productPackage) {
@@ -267,24 +267,24 @@ export class OrderTransactionPackagesComponent implements OnInit {
       this.toastr.warning('Percentage cannot be less than 0');
       control.patchValue(0);
     }
-    this.orderForm.get(type).setValue('PERCENTAGE');
+    this.orderForm().get(type).setValue('PERCENTAGE');
     this.checkIfNullOrEmpty();
     this.calculateValues();
   }
 
   onChangeCost(control: any, type) {
-    this.orderForm.get(type).setValue('COST');
+    this.orderForm().get(type).setValue('COST');
     this.checkIfNullOrEmpty();
     this.calculateValues();
   }
 
   checkIfNullOrEmpty() {
-    if (!this.orderForm.get('discountType').value) {
-      this.orderForm.get('discountType').setValue('PERCENTAGE');
+    if (!this.orderForm().get('discountType').value) {
+      this.orderForm().get('discountType').setValue('PERCENTAGE');
     }
 
-    if (!this.orderForm.get('salesTaxType').value) {
-      this.orderForm.get('salesTaxType').setValue('PERCENTAGE');
+    if (!this.orderForm().get('salesTaxType').value) {
+      this.orderForm().get('salesTaxType').setValue('PERCENTAGE');
     }
   }
 
@@ -296,7 +296,7 @@ export class OrderTransactionPackagesComponent implements OnInit {
   }
 
   onChangeDeliveryCost() {
-    this.orderForm.get('deliveryCostInputByUser').patchValue(true);
+    this.orderForm().get('deliveryCostInputByUser').patchValue(true);
     this.calculateValues();
   }
 
@@ -364,15 +364,15 @@ export class OrderTransactionPackagesComponent implements OnInit {
     );
   }
   get noteId() {
-    return this.orderForm.get('noteTemplate').get('id');
+    return this.orderForm().get('noteTemplate').get('id');
   }
 
   get media_url_ids() {
-    return this.orderForm.get('media_url_ids');
+    return this.orderForm().get('media_url_ids');
   }
 
   get media_urls() {
-    return this.orderForm.get('media_urls');
+    return this.orderForm().get('media_urls');
   }
 
   viewFile(name: any) {

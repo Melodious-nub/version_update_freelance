@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnDestroy, inject } from '@angular/core';
+import { Component, OnDestroy, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -47,15 +47,15 @@ export class ContainerInfoComponent implements OnDestroy{
   toastr = inject(ToastrService);
   uomService = inject(UomService);
 
-  @Input() isExport: any;
+  readonly isExport = input<any>(undefined);
   expanded: any[] = [];
-  @Input() containerForm: UntypedFormGroup;
-  @Input() componentUoms: any;
-  @Input() currentBusinessAccount: any;
+  readonly containerForm = input<UntypedFormGroup>(undefined);
+  readonly componentUoms = input<any>(undefined);
+  readonly currentBusinessAccount = input<any>(undefined);
   private ngUnsubscribe: Subject<void> = new Subject();
   public purchaseOrdersList: any[] = [];
 
-  @Output() calculate = new EventEmitter();
+  readonly calculate = output<any>();
 
   async
 
@@ -81,14 +81,14 @@ export class ContainerInfoComponent implements OnDestroy{
   }
 
   getAttributeUserConversionUom(value: any): any {
-    return this.containerForm.get(value).get('userConversionUom');
+    return this.containerForm().get(value).get('userConversionUom');
   }
   getAttributeAttributeValue(value: any): any {
-    return this.containerForm.get(value).get('attributeValue');
+    return this.containerForm().get(value).get('attributeValue');
   }
 
   get finalContactDetails() {
-    return this.containerForm
+    return this.containerForm()
       .get('containerExpense')
       .get('containerContacts') as UntypedFormArray;
   }
@@ -96,9 +96,10 @@ export class ContainerInfoComponent implements OnDestroy{
   addInFinalContact() {
     const Form = this.containerFormService.containerContactForm();
     Form.get('addedByBusinessAccountId').setValue(
-      this.currentBusinessAccount?.id
+      this.currentBusinessAccount()?.id
     );
-    if (this.isExport) {
+    const isExport = this.isExport();
+    if (isExport) {
       Form.get('forExporter').setValue(true);
     } else {
       Form.get('forImporter').setValue(true);
@@ -106,7 +107,7 @@ export class ContainerInfoComponent implements OnDestroy{
     Form.get('cost')
       .get('userConversionUom')
       .setValue(
-        this.isExport
+        isExport
           ? this.getUomByName('exportCost')
           : this.getUomByName('importCost')
       );
@@ -116,7 +117,7 @@ export class ContainerInfoComponent implements OnDestroy{
     let filteredControls = this.finalContactDetails.controls.filter(
       (item) =>
         item.get('addedByBusinessAccountId').value ==
-        this.currentBusinessAccount?.id
+        this.currentBusinessAccount()?.id
     );
     return filteredControls;
   }
@@ -163,17 +164,17 @@ export class ContainerInfoComponent implements OnDestroy{
   }
 
   share(item) {
-    if (this.isExport) {
+    if (this.isExport()) {
       item.get('forImporter').setValue(true);
-      this.calculate.emit();
+      this.calculate.emit(undefined as any);
     } else {
       item.get('forExporter').setValue(true);
-      this.calculate.emit();
+      this.calculate.emit(undefined as any);
     }
   }
 
   getUomByName(type: any) {
-    const componentUoms: any = this.componentUoms.getRawValue();
+    const componentUoms: any = this.componentUoms().getRawValue();
     return componentUoms.find(
       (item) => item.attributeName?.toUpperCase() == type?.toUpperCase()
     )?.userConversionUom;

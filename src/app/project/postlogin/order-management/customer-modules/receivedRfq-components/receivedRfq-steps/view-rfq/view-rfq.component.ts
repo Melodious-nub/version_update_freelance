@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output, OnDestroy, inject } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UomService } from 'src/app/service/uom.service';
@@ -56,12 +56,12 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
   map2 = false;
   map1 = false;
   map3 = false;
-  @Input() isSelfRfq: any;
+  readonly isSelfRfq = input<any>(undefined);
   searchProductCode = new Subject();
   searchProductDescription = new Subject();
-  @Input() componentUoms: any;
-  @Input() rfqForm: UntypedFormGroup;
-  @Output() calculate = new EventEmitter();
+  readonly componentUoms = input<any>(undefined);
+  readonly rfqForm = input<UntypedFormGroup>(undefined);
+  readonly calculate = output<any>();
   private ngUnsubscribe: Subject<void> = new Subject();
   productsList: any;
   minRequiredDate: any = new Date().toISOString().split('T')[0];
@@ -89,7 +89,7 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
         editData.requiredByDate =
           editData?.requiredByDate?.slice(0, 10) ?? null;
         editData.date = editData?.date?.slice(0, 10) ?? null;
-        const productPackages = this.rfqForm.get(
+        const productPackages = this.rfqForm().get(
           'productPackages'
         ) as UntypedFormArray;
         productPackages.clear();
@@ -100,7 +100,7 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
           productPackages.push(productPackage);
         });
 
-        const messages = this.rfqForm.get('messages') as UntypedFormArray;
+        const messages = this.rfqForm().get('messages') as UntypedFormArray;
 
         messages.clear();
         editData?.messages.forEach((element) => {
@@ -109,7 +109,7 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
           messages.push(productPackage);
         });
 
-        this.rfqForm.patchValue(editData);
+        this.rfqForm().patchValue(editData);
       }
     } catch (err) {
       this.toastr.error(err ?? 'Some Error Occurred');
@@ -117,11 +117,11 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
   }
 
   get productPackages() {
-    return this.rfqForm.get('productPackages') as UntypedFormArray;
+    return this.rfqForm().get('productPackages') as UntypedFormArray;
   }
 
   get messages() {
-    return this.rfqForm.get('messages') as UntypedFormArray;
+    return this.rfqForm().get('messages') as UntypedFormArray;
   }
 
   ngOnDestroy(): void {
@@ -169,7 +169,7 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
 
   get requestToAddress() {
     const item = this.businessAccountService.vendorList.find(
-      (item) => item.relationAccountId == this.rfqForm.get('requestToId').value
+      (item) => item.relationAccountId == this.rfqForm().get('requestToId').value
     );
     return item ? item?.address : '';
   }
@@ -190,7 +190,7 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
   async calculateValues() {
     try {
       let uomQuery = ``;
-      this.componentUoms.controls.forEach((element) => {
+      this.componentUoms().controls.forEach((element) => {
         element.get('columnMappings').value.forEach((col) => {
           uomQuery =
             uomQuery +
@@ -198,7 +198,7 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
         });
       });
       uomQuery = encodeURI(uomQuery);
-      let data: any = this.rfqForm.getRawValue();
+      let data: any = this.rfqForm().getRawValue();
       const res: any = await this.ordermanagementService.Calculate_Rfq_Values(
         data,
         uomQuery
@@ -210,19 +210,19 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
   }
 
   toggleType(value: any) {
-    this.rfqForm.get('importLocalType').setValue(value);
+    this.rfqForm().get('importLocalType').setValue(value);
   }
   get importLocalType() {
-    return this.rfqForm.get('importLocalType');
+    return this.rfqForm().get('importLocalType');
   }
   get requestFromName() {
-    return this.rfqForm.get('requestFrom').get('name');
+    return this.rfqForm().get('requestFrom').get('name');
   }
   get requestFromId() {
-    return this.rfqForm.get('requestFrom').get('id');
+    return this.rfqForm().get('requestFrom').get('id');
   }
   get requestFromAddress() {
-    const itm = this.rfqForm.get('requestFrom').value;
+    const itm = this.rfqForm().get('requestFrom').value;
     return itm ? itm?.address : '';
   }
   getProductsList(event: any) {
@@ -231,7 +231,7 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
       this.requestFromId.setValue(1);
     }
     let uomQuery = ``;
-    this.componentUoms.controls.forEach((element) => {
+    this.componentUoms().controls.forEach((element) => {
       element.get('columnMappings').value.forEach((col) => {
         uomQuery =
           uomQuery +
@@ -293,16 +293,16 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
   }
 
   get buyingType() {
-    return this.rfqForm.get('buyingType');
+    return this.rfqForm().get('buyingType');
   }
   get incoTermId() {
-    return this.rfqForm.get('incoTermId');
+    return this.rfqForm().get('incoTermId');
   }
   get departurePortId() {
-    return this.rfqForm.get('departurePortId');
+    return this.rfqForm().get('departurePortId');
   }
   get customerId() {
-    return this.rfqForm.get('requestFrom').get('id');
+    return this.rfqForm().get('requestFrom').get('id');
   }
   onChangeCustomer() {
     const customer = this.businessAccountService.customerList.find(
@@ -315,13 +315,13 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
       this.buyingType.setValue('CONTAINER_40_FT_HQ');
     }
     if (customer?.fulfillmentLimitInDays) {
-      this.rfqForm.get('requiredByDate').setValue(null);
+      this.rfqForm().get('requiredByDate').setValue(null);
       const currentDate = new Date();
       const futureDate = new Date(
         currentDate.getTime() +
           customer?.fulfillmentLimitInDays * 24 * 60 * 60 * 1000
       );
-      this.rfqForm
+      this.rfqForm()
         .get('requiredByDate')
         .setValue(futureDate.toISOString().split('T')[0]);
       this.minRequiredDate = futureDate.toISOString().split('T')[0];
@@ -329,13 +329,13 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
   }
 
   get media_url_ids() {
-    return this.rfqForm.get('media_url_ids');
+    return this.rfqForm().get('media_url_ids');
   }
   get media_urls() {
-    return this.rfqForm.get('media_urls');
+    return this.rfqForm().get('media_urls');
   }
   get noteId() {
-    return this.rfqForm.get('noteTemplate').get('id');
+    return this.rfqForm().get('noteTemplate').get('id');
   }
 
   getNoteTitle() {

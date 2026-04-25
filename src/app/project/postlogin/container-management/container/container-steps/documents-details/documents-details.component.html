@@ -52,7 +52,7 @@
                 >
                 @if (
                   document.get('addedByBusinessAccountId').value ===
-                  this.currentBusinessAccount?.id
+                  this.currentBusinessAccount()?.id
                   ) {
                   <tr
                     >

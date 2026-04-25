@@ -82,7 +82,7 @@
                       white-space: nowrap;
                       align-content: end;
                     ">
-                          {{ productForm.get("unitName").value }}
+                          {{ productForm().get("unitName").value }}
                         </div>
                       }
                     </div>
@@ -771,7 +771,7 @@
               img of getImages(i)?.controls; track trackByFn(j,
               img); let j = $index) {
               @if (getImages(i)?.controls?.length > 0 && j === 0) {
-                @if (!this.isThirdPartyProductMeta || !img.get('isHide').value) {
+                @if (!this.isThirdPartyProductMeta() || !img.get('isHide').value) {
                   <div cdkDrag (cdkDragStarted)="onImageDragStart()" (cdkDragEnded)="onImageDragEnd()"
                     class="image-box-sm w-50  b-light" [ngStyle]="j === 0 ? { border: '2px solid green' } : {}">
                     <img [matTooltip]="j === 0 ? 'This will be Featured image' : ''" height="100%" width="100%"
@@ -801,7 +801,7 @@
                 img of getImages(i)?.controls; track trackByFn(j,
                 img); let j = $index) {
                 @if (getImages(i)?.controls?.length > 1 && j !== 0) {
-                  @if (!this.isThirdPartyProductMeta || !img.get('isHide').value) {
+                  @if (!this.isThirdPartyProductMeta() || !img.get('isHide').value) {
                     <div cdkDrag (cdkDragStarted)="onImageDragStart()" (cdkDragEnded)="onImageDragEnd()"
                       class="image-box-sm my-2 b-light" [ngStyle]="j === 0 ? { border: '2px solid green' } : {}">
                       <img [matTooltip]="j === 0 ? 'This will be Featured image' : ''" height="100%" width="100%"

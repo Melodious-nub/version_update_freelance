@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, OnDestroy, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit, OnDestroy, inject, input, output, viewChild } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -63,25 +63,25 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   containerData: any;
 
-  @ViewChild('expansionPanel2') expansionPanel2;
-  @ViewChild('threejs') threejs!: ThreeSceneComponent;
+  readonly expansionPanel2 = viewChild<MatExpansionPanel>('expansionPanel2');
+  readonly threejs = viewChild.required<ThreeSceneComponent>('threejs');
 
   squares: number[] = [];
   numParts = 62; // Default number of parts (e.g., divide into 4 equal squares)
   height: any;
   width: any;
   poView: any = 'orderWise';
-  @Input() componentUoms: any;
-  @Input() isExport: any;
-  @Input() isQuotation: any;
-  @Input() containerForm: UntypedFormGroup;
-  @Input() currentBusinessAccount: any;
-  @Output() calculate = new EventEmitter();
+  readonly componentUoms = input<any>(undefined);
+  readonly isExport = input<any>(undefined);
+  readonly isQuotation = input<any>(undefined);
+  readonly containerForm = input<UntypedFormGroup>(undefined);
+  readonly currentBusinessAccount = input<any>(undefined);
+  readonly calculate = output<any>();
   private ngUnsubscribe: Subject<void> = new Subject();
-  @Input() purchaseOrdersList: any[] = [];
+  readonly purchaseOrdersList = input<any[]>([]);
   filteredPurchasedOrdersList: any[] = [];
   filteredQuotationsList: any[] = [];
-  @Input() quotationsList: any[] = [];
+  readonly quotationsList = input<any[]>([]);
   filterTermPo = new UntypedFormControl();
   filterTermQuotation = new UntypedFormControl();
   map1 = false;
@@ -168,8 +168,8 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async ngOnInit() {
-    this.filteredPurchasedOrdersList = this.purchaseOrdersList;
-    this.filteredQuotationsList = this.quotationsList;
+    this.filteredPurchasedOrdersList = this.purchaseOrdersList();
+    this.filteredQuotationsList = this.quotationsList();
 
     this.filterTermPo.valueChanges.subscribe((res) => {
       this.getFilteredPOs();
@@ -210,18 +210,18 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getAttributeUserConversionUom(value1: any, value2: string): any {
-    return this.containerForm.get(value1).get(value2).get('userConversionUom');
+    return this.containerForm().get(value1).get(value2).get('userConversionUom');
   }
   getAttributeAttributeValue(value1: any, value2: string): any {
-    return this.containerForm.get(value1).get(value2).get('attributeValue');
+    return this.containerForm().get(value1).get(value2).get('attributeValue');
   }
 
   get containerOrders() {
-    return this.containerForm.get('containerOrders') as UntypedFormArray;
+    return this.containerForm().get('containerOrders') as UntypedFormArray;
   }
 
   get containerQuotations() {
-    return this.containerForm.get('containerQuotations') as UntypedFormArray;
+    return this.containerForm().get('containerQuotations') as UntypedFormArray;
   }
 
   getPurchaseOrderDetail(i) {
@@ -293,7 +293,7 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   get containerTypeId() {
-    return this.containerForm
+    return this.containerForm()
       .get('containerTypeInformation')
       .get('containerTypeId');
   }
@@ -318,7 +318,7 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.containerData = null;
     const productInContainers = [];
-    if (this.isQuotation) {
+    if (this.isQuotation()) {
       this.containerQuotations.controls.forEach((order, i) => {
         const productPackages = order
           .get('quotationListView')
@@ -414,10 +414,10 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
       dimensions: container.dimensions,
       products: productInContainers,
     };
-    this.expansionPanel2.open();
+    this.expansionPanel2().open();
     setTimeout(() => {
       const ProductIdsArray = [];
-      this.threejs.create3DScene(ProductIdsArray);
+      this.threejs().create3DScene(ProductIdsArray);
     }, 1000);
   }
 
@@ -507,7 +507,7 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   calculateValues() {
-    this.calculate.emit();
+    this.calculate.emit(undefined as any);
     this.prepareThreeJsData();
   }
 
@@ -518,11 +518,11 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     const item = this.containerService.containerTypesList.find(
       (item) => item.id.toString() === this.containerTypeId.value.toString()
     );
-    this.containerForm
+    this.containerForm()
       .get('containerTypeInformation')
       .get('weight')
       .setValue(item?.weight);
-    this.containerForm
+    this.containerForm()
       .get('containerTypeInformation')
       .get('volume')
       .setValue(item?.volume);
@@ -558,27 +558,27 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     );
     let newDate = new Date(data.year, data.month, data.date).toISOString();
 
-    const editTillDate = this.containerForm.get('editTillDate');
+    const editTillDate = this.containerForm().get('editTillDate');
     if (!editTillDate.value) {
       editTillDate.setValue(newDate.slice(0, 10));
     }
-    const arrivalDate = this.containerForm.get('arrivalDate');
+    const arrivalDate = this.containerForm().get('arrivalDate');
     if (!arrivalDate.value) {
       arrivalDate.setValue(newDate.slice(0, 10));
     }
-    const gateCloseDate = this.containerForm.get('gateCloseDate');
+    const gateCloseDate = this.containerForm().get('gateCloseDate');
     if (!gateCloseDate.value) {
       gateCloseDate.setValue(newDate.slice(0, 10));
     }
-    const gateOpenDate = this.containerForm.get('gateOpenDate');
+    const gateOpenDate = this.containerForm().get('gateOpenDate');
     if (!gateOpenDate.value) {
       gateOpenDate.setValue(newDate.slice(0, 10));
     }
-    const loadingDate = this.containerForm.get('loadingDate');
+    const loadingDate = this.containerForm().get('loadingDate');
     if (!loadingDate.value) {
       loadingDate.setValue(newDate.slice(0, 10));
     }
-    const departureDate = this.containerForm.get('departureDate');
+    const departureDate = this.containerForm().get('departureDate');
     if (!departureDate.value) {
       departureDate.setValue(newDate.slice(0, 10));
     }
@@ -586,15 +586,15 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   getWeightWidth() {
     if (
-      this.containerForm.get('weight').get('attributeValue').value &&
-      this.containerForm
+      this.containerForm().get('weight').get('attributeValue').value &&
+      this.containerForm()
         .get('containerTypeInformation')
         .get('weight')
         .get('attributeValue').value
     ) {
       const percent =
-        (this.containerForm.get('weight').get('attributeValue').value /
-          this.containerForm
+        (this.containerForm().get('weight').get('attributeValue').value /
+          this.containerForm()
             .get('containerTypeInformation')
             .get('weight')
             .get('attributeValue').value) *
@@ -608,15 +608,15 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   getVolumeWidth() {
     if (
-      this.containerForm.get('volume').get('attributeValue').value &&
-      this.containerForm
+      this.containerForm().get('volume').get('attributeValue').value &&
+      this.containerForm()
         .get('containerTypeInformation')
         .get('volume')
         .get('attributeValue').value
     ) {
       const percent =
-        (this.containerForm.get('volume').get('attributeValue').value /
-          this.containerForm
+        (this.containerForm().get('volume').get('attributeValue').value /
+          this.containerForm()
             .get('containerTypeInformation')
             .get('volume')
             .get('attributeValue').value) *
@@ -633,7 +633,7 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getFilteredPOs() {
-    this.filteredPurchasedOrdersList = this.purchaseOrdersList;
+    this.filteredPurchasedOrdersList = this.purchaseOrdersList();
     for (let j = 0; j < this.containerOrders.controls?.length; j++) {
       this.filteredPurchasedOrdersList =
         this.filteredPurchasedOrdersList.filter(
@@ -655,7 +655,7 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getFilteredQuotations() {
-    this.filteredQuotationsList = this.quotationsList;
+    this.filteredQuotationsList = this.quotationsList();
     for (let j = 0; j < this.containerQuotations.controls?.length; j++) {
       const ele = this.containerQuotations.controls[j];
       this.filteredQuotationsList = this.filteredQuotationsList.filter(
@@ -675,51 +675,53 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   get requestFromId() {
-    return this.containerForm.get('requestFromId');
+    return this.containerForm().get('requestFromId');
   }
 
   get requestToId() {
-    return this.containerForm.get('requestToId');
+    return this.containerForm().get('requestToId');
   }
 
   get requestFromAddress() {
-    if (!this.isExport) {
+    if (!this.isExport()) {
       const item = this.businessAccountService.customerList.find(
         (item) =>
           item.relationAccountId ==
-          this.containerForm.get('requestFromId').value
+          this.containerForm().get('requestFromId').value
       );
       return item
         ? `${item?.address?.addressLine},${item?.address?.addressCity},${item?.address?.addressState},${item?.address?.addressCountry},${item?.address?.addressZipCode}`
         : '';
     } else {
+      const currentBusinessAccount = this.currentBusinessAccount();
       return (
-        this.currentBusinessAccount?.primaryContact?.city?.name +
+        currentBusinessAccount?.primaryContact?.city?.name +
         ',' +
-        this.currentBusinessAccount?.primaryContact?.state?.name +
+        currentBusinessAccount?.primaryContact?.state?.name +
         ',' +
-        this.currentBusinessAccount?.primaryContact?.country?.name +
+        currentBusinessAccount?.primaryContact?.country?.name +
         ',' +
-        this.currentBusinessAccount?.primaryContact?.zipcode
+        currentBusinessAccount?.primaryContact?.zipcode
       );
     }
   }
 
   get requestToAddress() {
-    if (!this.isExport) {
+    if (!this.isExport()) {
+      const currentBusinessAccount = this.currentBusinessAccount();
       return (
-        this.currentBusinessAccount?.primaryContact?.city?.name +
+        currentBusinessAccount?.primaryContact?.city?.name +
         ',' +
-        this.currentBusinessAccount?.primaryContact?.state?.name +
+        currentBusinessAccount?.primaryContact?.state?.name +
         ',' +
-        this.currentBusinessAccount?.primaryContact?.country?.name +
+        currentBusinessAccount?.primaryContact?.country?.name +
         ',' +
-        this.currentBusinessAccount?.primaryContact?.zipcode
+        currentBusinessAccount?.primaryContact?.zipcode
       );
     } else {
       const item = this.businessAccountService.exportersVendorList.find(
         (item) =>
-          item.relationAccountId == this.containerForm.get('requestToId').value
+          item.relationAccountId == this.containerForm().get('requestToId').value
       );
       return item
         ? `${item?.address?.addressLine},${item?.address?.addressCity},${item?.address?.addressState},${item?.address?.addressCountry},${item?.address?.addressZipCode}`
@@ -795,7 +797,7 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getUomByName(type: any) {
-    const componentUoms: any = this.componentUoms.getRawValue();
+    const componentUoms: any = this.componentUoms().getRawValue();
     return componentUoms.find(
       (item) => item.attributeName?.toUpperCase() == type?.toUpperCase()
     )?.userConversionUom;
@@ -804,15 +806,15 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   onChangeVendor() {
     const vendor = this.businessAccountService.exportersVendorList.find(
       (item) =>
-        item.relationAccountId == this.containerForm.get('requestFromId').value
+        item.relationAccountId == this.containerForm().get('requestFromId').value
     );
-    this.containerForm.get('incoTermId').patchValue(vendor?.incoTermId);
-    this.containerForm.get('departurePortId').patchValue(vendor?.portId);
-    this.containerForm
+    this.containerForm().get('incoTermId').patchValue(vendor?.incoTermId);
+    this.containerForm().get('departurePortId').patchValue(vendor?.portId);
+    this.containerForm()
       .get('arrivalPortId')
-      .patchValue(this.currentBusinessAccount?.portId);
+      .patchValue(this.currentBusinessAccount()?.portId);
     const currentDate = new Date();
-    this.containerForm
+    this.containerForm()
       .get('date')
       .patchValue(currentDate.toISOString().split('T')[0]);
 
@@ -828,15 +830,15 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   onChangeCustomer() {
     const customer = this.businessAccountService.customerList.find(
       (item) =>
-        item.relationAccountId == this.containerForm.get('requestToId').value
+        item.relationAccountId == this.containerForm().get('requestToId').value
     );
-    this.containerForm.get('arrivalPortId').patchValue(customer?.portId);
-    this.containerForm
+    this.containerForm().get('arrivalPortId').patchValue(customer?.portId);
+    this.containerForm()
       .get('departurePortId')
-      .patchValue(this.currentBusinessAccount?.portId);
+      .patchValue(this.currentBusinessAccount()?.portId);
 
     const currentDate = new Date();
-    this.containerForm
+    this.containerForm()
       .get('date')
       .patchValue(currentDate.toISOString().split('T')[0]);
   }

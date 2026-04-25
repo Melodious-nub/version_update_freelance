@@ -1,5 +1,5 @@
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChildren, QueryList, ViewChild, ElementRef, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, ElementRef, inject, viewChildren, viewChild } from '@angular/core';
 import { SocialProfilesApiService } from '../service/social-profiles-api.service';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
 import { Location, NgClass, NgTemplateOutlet } from '@angular/common';
@@ -60,8 +60,8 @@ export class SocialPostCreateComponent implements OnInit, OnDestroy{
             'bulletedList', 'numberedList', '|', 'undo', 'redo'
         ]
     };
-    @ViewChildren(MatExpansionPanel) expansionPanels!: QueryList<MatExpansionPanel>;
-    @ViewChild('generatedImagesFileInput') generatedImagesFileInputRef!: ElementRef<HTMLInputElement>;
+    readonly expansionPanels = viewChildren(MatExpansionPanel);
+    readonly generatedImagesFileInputRef = viewChild.required<ElementRef<HTMLInputElement>>('generatedImagesFileInput');
     postForm: UntypedFormGroup;
     isLoading = false;
     generatedResults: any[] = [];
@@ -103,7 +103,7 @@ export class SocialPostCreateComponent implements OnInit, OnDestroy{
     productsForDropdown: any[] = [];
     private productsFilter = "&filter=status!'DELETED'";
 
-    @ViewChild('refFileInput') refFileInputRef!: ElementRef<HTMLInputElement>;
+    readonly refFileInputRef = viewChild.required<ElementRef<HTMLInputElement>>('refFileInput');
     selectedAttachments: Array<{ file: File; url: string; name: string }> = [];
     hoveredImageUrl: string | null = null;
     maxAttachments = 3;
@@ -994,8 +994,9 @@ export class SocialPostCreateComponent implements OnInit, OnDestroy{
 
     openFilePicker() {
         try {
-            if (this.refFileInputRef && this.refFileInputRef.nativeElement) {
-                try { this.refFileInputRef.nativeElement.click(); return; } catch (e) { }
+            const refFileInputRef = this.refFileInputRef();
+            if (refFileInputRef && refFileInputRef.nativeElement) {
+                try { refFileInputRef.nativeElement.click(); return; } catch (e) { }
             }
             const input = document.createElement('input');
             input.type = 'file';
@@ -1071,9 +1072,10 @@ export class SocialPostCreateComponent implements OnInit, OnDestroy{
                 this.showInfoDialog('Maximum 10 images allowed', 'Image Limit');
                 return;
             }
-            if (this.generatedImagesFileInputRef && this.generatedImagesFileInputRef.nativeElement) {
-                this.generatedImagesFileInputRef.nativeElement.value = '';
-                this.generatedImagesFileInputRef.nativeElement.click();
+            const generatedImagesFileInputRef = this.generatedImagesFileInputRef();
+            if (generatedImagesFileInputRef && generatedImagesFileInputRef.nativeElement) {
+                generatedImagesFileInputRef.nativeElement.value = '';
+                generatedImagesFileInputRef.nativeElement.click();
             }
         } catch (e) {
             console.error('Failed to open file picker', e);

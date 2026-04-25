@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, OnChanges, inject } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, AfterViewInit, OnChanges, inject, input, output, viewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
@@ -95,21 +95,21 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnChanges {
       (typeof value === 'string' ? value.trim().toLowerCase() : value) || '';
     this.getSearchValue = value;
   }
-  @Output() actionClick = new EventEmitter();
-  @Output() rowSelection = new EventEmitter();
-  @Input() width: any = 'unset';
-  @Input() height: any = '90vh';
-  @Input() headers: any;
-  @Input() actions: any = [{ label: '', icon: '' }];
-  @Input() userShow: boolean = false;
-  @Input() tooltipContent: any;
+  readonly actionClick = output<any>();
+  readonly rowSelection = output<any>();
+  readonly width = input<any>('unset');
+  readonly height = input<any>('90vh');
+  readonly headers = input<any>(undefined);
+  readonly actions = input<any>([{ label: '', icon: '' }]);
+  readonly userShow = input<boolean>(false);
+  readonly tooltipContent = input<any>(undefined);
 
-  @Output() pageChange = new EventEmitter();
-  @Output() sortChange = new EventEmitter();
-  @Output() editData = new EventEmitter();
-  @Output() uomChange = new EventEmitter();
-  @Output() tooltipShow = new EventEmitter();
-  @Output() tooltipHide = new EventEmitter();
+  readonly pageChange = output<any>();
+  readonly sortChange = output<any>();
+  readonly editData = output<any>();
+  readonly uomChange = output<any>();
+  readonly tooltipShow = output<any>();
+  readonly tooltipHide = output<any>();
   @ViewChild(MatSort, { static: false }) set sort(sortElm: MatSort) {
     if (this.dataSource) {
       this.dataSource.sort = sortElm;
@@ -117,7 +117,7 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnChanges {
     this.sortTable = sortElm;
   }
 
-  @ViewChild('paginator') paginator: MatPaginator;
+  readonly paginator = viewChild<MatPaginator>('paginator');
 
   public config: any;
   public tableData: any;
@@ -128,11 +128,11 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnChanges {
   public displayedColumns: any[];
   private sortTable: MatSort;
 
-  @Output() rowChange = new EventEmitter<{
+  readonly rowChange = output<{
     row: any;
     field: string;
     value: any;
-  }>();
+}>();
 
   getStatusChipClass(status: string): string {
     switch ((status || '').toLowerCase()) {
@@ -199,14 +199,14 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.displayedColumns = this.headers.map((col) => col.prop);
+    this.displayedColumns = this.headers().map((col) => col.prop);
     this.businessId = this.businessAccountService.currentBusinessAccountId;
   }
 
   ngAfterViewInit(): void {
-    this.sortTable.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+    this.sortTable.sortChange.subscribe(() => (this.paginator().pageIndex = 0));
     this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator();
   }
 
   ngOnChanges() {
@@ -435,7 +435,7 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnChanges {
     }
     this.currentTooltipRow = null;
     this.currentTooltipProp = null;
-    this.tooltipHide.emit();
+    this.tooltipHide.emit(undefined as any);
   }
 
   getSelectionText(): string {

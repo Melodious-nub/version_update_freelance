@@ -1,5 +1,5 @@
 import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, OnInit, inject, input, output } from '@angular/core';
 import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
@@ -37,10 +37,10 @@ export class ProductionComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 25, 50];
   searchTerm = '';
   searchSubject = new Subject<string>();
-  @Input() productForm: UntypedFormGroup;
+  readonly productForm = input<UntypedFormGroup>(undefined);
 
-  @Input() componentUoms: UntypedFormArray;
-  @Output() calculate = new EventEmitter();
+  readonly componentUoms = input<UntypedFormArray>(undefined);
+  readonly calculate = output<any>();
 
   ngOnInit(): void {
     this.initSearch();
@@ -56,7 +56,7 @@ export class ProductionComponent implements OnInit {
   }
 
   loadProductionLogs(page: number = this.currentPage) {
-    const productId = Number(this.productForm?.getRawValue()?.id);
+    const productId = Number(this.productForm()?.getRawValue()?.id);
     if (!productId) {
       return;
     }
@@ -100,7 +100,7 @@ export class ProductionComponent implements OnInit {
       // position: { right: '0', top: '0' },
       panelClass: 'side-sheet-dialog',
       backdropClass: 'dark-backdrop',
-      data: { productionDetails, componentUoms: this.componentUoms, productForm: this.productForm }
+      data: { productionDetails, componentUoms: this.componentUoms(), productForm: this.productForm() }
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
@@ -110,12 +110,13 @@ export class ProductionComponent implements OnInit {
   }
 
   async getProductionDetails() {
-    if (!this.productForm?.getRawValue()?.id) {
+    const productForm = this.productForm();
+    if (!productForm?.getRawValue()?.id) {
       this.toastr.error('Product ID is required,Please save the product first');
       return;
     }
     this.apiService
-      .getProductionLogInitialize(Number(this.productForm.getRawValue()?.id))
+      .getProductionLogInitialize(Number(productForm.getRawValue()?.id))
       .subscribe({
         next: (response: any) => {
           this.productionDetails = response || [];

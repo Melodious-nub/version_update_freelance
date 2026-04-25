@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, OnInit, inject, input, output } from '@angular/core';
 import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
@@ -32,17 +32,17 @@ export class TemplateProcessComponent implements OnInit {
 
   // ************* Variable Declarations *************
 
-  @Input() templateForm: UntypedFormGroup;
-  @Input() componentUoms: any;
+  readonly templateForm = input<UntypedFormGroup>(undefined);
+  readonly componentUoms = input<any>(undefined);
 
-  @Output() calculate = new EventEmitter();
+  readonly calculate = output<any>();
 
   calculateValues(event: any) {
     this.calculate.emit(event);
   }
 
   async ngOnInit() {
-    this.templateForm.markAsUntouched({ onlySelf: true })
+    this.templateForm().markAsUntouched({ onlySelf: true })
   }
 
 
@@ -59,24 +59,24 @@ export class TemplateProcessComponent implements OnInit {
 
 
   getUomByName(type: any) {
-    const componentUoms: any = this.componentUoms.getRawValue();
+    const componentUoms: any = this.componentUoms().getRawValue();
     return componentUoms.find((item) => item.attributeName?.toUpperCase() == type?.toUpperCase())?.userConversionUom
   }
 
 
   get rawMaterialProcess() {
-    return this.templateForm.get('rawMaterialProcess');
+    return this.templateForm().get('rawMaterialProcess');
   }
 
   get fixedProcess() {
-    return this.templateForm.get('fixedProcess');
+    return this.templateForm().get('fixedProcess');
   }
 
   get templateProcessType() {
-    return this.templateForm.get('templateProcessType');
+    return this.templateForm().get('templateProcessType');
   }
 
   get templateProcesses() {
-    return this.templateForm.get('templateProcesses') as UntypedFormArray;
+    return this.templateForm().get('templateProcesses') as UntypedFormArray;
   }
 }

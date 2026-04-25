@@ -2,10 +2,10 @@
 <div class="header-wrapper mt-2">
   <div class="d-flex flex-column">
     <div class="d-flex align-items-center mb-2">
-      @if (!productId) {
+      @if (!productId()) {
         <dadyin-button [theme]="activeTab === 'posts' ? 'primary' : 'default'" label="Social Post" class="me-2" (clicked)="goToPosts()"></dadyin-button>
       }
-      @if (!productId) {
+      @if (!productId()) {
         <dadyin-button [theme]="activeTab === 'campaigns' ? 'primary' : 'default'" label="Campaigns" class="me-2" (clicked)="goToCampaigns()"></dadyin-button>
       }
     </div>
@@ -19,7 +19,7 @@
       </div>
       <div class="col-6 d-flex justify-content-end align-items-center">
         <div class="action-btns">
-          @if (!productId) {
+          @if (!productId()) {
             <dadyin-button [theme]="'primary'" label="Create Manual Post" (clicked)="createManualPost()">
             </dadyin-button>
           }

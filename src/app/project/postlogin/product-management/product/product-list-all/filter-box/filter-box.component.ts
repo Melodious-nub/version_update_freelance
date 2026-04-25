@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, HostListener, OnInit, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { TokenService } from 'src/app/service/token.service';
@@ -28,8 +28,8 @@ export class FilterBoxComponent implements OnInit {
     this.openFilter=false
    }
   openFilter=false;
-  @Input() products: any;
-  @Output() emitFilterProducts: EventEmitter<any> = new EventEmitter();
+  readonly products = input<any>(undefined);
+  readonly emitFilterProducts = output<any>();
   filterForm: UntypedFormGroup;
   createdByArray: any = [];
   byTypeArray: any = [];

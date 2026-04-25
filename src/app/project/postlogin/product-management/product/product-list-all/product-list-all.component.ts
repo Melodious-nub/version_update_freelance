@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ElementRef, inject, viewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { UomService } from 'src/app/service/uom.service';
@@ -66,8 +66,8 @@ export class ProductListAllComponent implements OnInit, OnDestroy {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.uomSetting = false;
   }
-  @ViewChild(FilterBoxComponent) filterBoxComponent: FilterBoxComponent;
-  @ViewChild('bulkUploadFileInput') bulkUploadFileInput!: ElementRef<HTMLInputElement>;
+  readonly filterBoxComponent = viewChild(FilterBoxComponent);
+  readonly bulkUploadFileInput = viewChild.required<ElementRef<HTMLInputElement>>('bulkUploadFileInput');
   uomSetting = false;
   public preferForm: UntypedFormGroup = this.formsService.createPreferUomForm();
   public productsList: any[];
@@ -245,8 +245,9 @@ export class ProductListAllComponent implements OnInit, OnDestroy {
         this.componentUoms.push(componentUomForm);
       });
       this.preferForm.patchValue(preferenceForContainer);
-      if (this.filterBoxComponent) {
-        this.filterBoxComponent?.apply();
+      const filterBoxComponent = this.filterBoxComponent();
+      if (filterBoxComponent) {
+        filterBoxComponent?.apply();
       } else {
         // Use restored filter value if available
         this.loadProductsList(this.filterValue || '');
@@ -414,7 +415,7 @@ export class ProductListAllComponent implements OnInit, OnDestroy {
 
   triggerBulkUpload(): void {
     if (this.bulkUploadInProgress) return;
-    this.bulkUploadFileInput?.nativeElement?.click();
+    this.bulkUploadFileInput()?.nativeElement?.click();
   }
 
   onBulkUploadFileSelected(event: Event): void {
@@ -474,7 +475,7 @@ export class ProductListAllComponent implements OnInit, OnDestroy {
   }
 
   onInput(): void {
-    this.filterBoxComponent?.apply();
+    this.filterBoxComponent()?.apply();
   }
 
   async copyProductDataById(id: any) {

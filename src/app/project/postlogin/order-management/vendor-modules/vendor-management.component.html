@@ -1,4 +1,4 @@
-<div class="app-container  " [ngClass]="{'app-container':!single}">
+<div class="app-container  " [ngClass]="{'app-container':!single()}">
   <mat-tab-group class="mat-steps" [(selectedIndex)]="currentStepIndex" (selectedTabChange)="onTabChange($event)">
     @for (link of tabs; track link) {
       <mat-tab>
@@ -8,16 +8,16 @@
         </ng-template>
         <ng-template matTabContent>
           @if (link.index === 0) {
-            <app-rfq-list [single]="single" [vendorId]="vendorId" [role]="'vendor'"></app-rfq-list>
+            <app-rfq-list [single]="single()" [vendorId]="vendorId()" [role]="'vendor'"></app-rfq-list>
           }
           @if (link.index === 1) {
-            <app-receivedquotation-list [single]="single" [vendorId]="vendorId"  [role]="'vendor'"></app-receivedquotation-list>
+            <app-receivedquotation-list [single]="single()" [vendorId]="vendorId()"  [role]="'vendor'"></app-receivedquotation-list>
           }
           @if (link.index === 2) {
-            <app-purchaseorder-list [single]="single" [vendorId]="vendorId"  [role]="'vendor'"></app-purchaseorder-list>
+            <app-purchaseorder-list [single]="single()" [vendorId]="vendorId()"  [role]="'vendor'"></app-purchaseorder-list>
           }
           @if (link.index === 3) {
-            <app-bill-list [single]="single" [vendorId]="vendorId"  [role]="'vendor'"></app-bill-list>
+            <app-bill-list [single]="single()" [vendorId]="vendorId()"  [role]="'vendor'"></app-bill-list>
           }
         </ng-template>
       </mat-tab>

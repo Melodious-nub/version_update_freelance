@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, HostListener, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -64,9 +64,9 @@ export class ViewQuotationComponent implements OnInit, OnDestroy {
   map3 = false;
   // @Input() componentUoms: any;
   currentBusinessAccount: any;
-  @Input() recvQuotationForm: UntypedFormGroup;
-  @Output() calculate = new EventEmitter();
-  @Output() patchEditData = new EventEmitter();
+  readonly recvQuotationForm = input<UntypedFormGroup>(undefined);
+  readonly calculate = output<any>();
+  readonly patchEditData = output<any>();
   private ngUnsubscribe: Subject<void> = new Subject();
   quotationFile = null;
 
@@ -81,11 +81,11 @@ export class ViewQuotationComponent implements OnInit, OnDestroy {
   }
 
   get productPackages() {
-    return this.recvQuotationForm.get('productPackages') as UntypedFormArray;
+    return this.recvQuotationForm().get('productPackages') as UntypedFormArray;
   }
 
   get messages() {
-    return this.recvQuotationForm.get('messages') as UntypedFormArray;
+    return this.recvQuotationForm().get('messages') as UntypedFormArray;
   }
 
   ngOnDestroy(): void {
@@ -126,11 +126,11 @@ export class ViewQuotationComponent implements OnInit, OnDestroy {
   }
 
   toggleType(value: any) {
-    this.recvQuotationForm.get('importLocalType').setValue(value);
+    this.recvQuotationForm().get('importLocalType').setValue(value);
   }
 
   get importLocalType() {
-    return this.recvQuotationForm.get('importLocalType');
+    return this.recvQuotationForm().get('importLocalType');
   }
 
   get requestFromAddress() {
@@ -149,7 +149,7 @@ export class ViewQuotationComponent implements OnInit, OnDestroy {
     const item = this.businessAccountService.vendorList.find(
       (item) =>
         item.relationAccountId ==
-        this.recvQuotationForm.get('requestFrom').get('id').value
+        this.recvQuotationForm().get('requestFrom').get('id').value
     );
     if (!item || !item.address) {
       return '';
@@ -166,15 +166,15 @@ export class ViewQuotationComponent implements OnInit, OnDestroy {
   // end
 
   get noteId() {
-    return this.recvQuotationForm.get('noteId');
+    return this.recvQuotationForm().get('noteId');
   }
 
   get media_url_ids() {
-    return this.recvQuotationForm.get('media_url_ids');
+    return this.recvQuotationForm().get('media_url_ids');
   }
 
   get media_urls() {
-    return this.recvQuotationForm.get('media_urls');
+    return this.recvQuotationForm().get('media_urls');
   }
 
  

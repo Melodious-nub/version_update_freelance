@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { NgClass } from '@angular/common';
 
@@ -12,10 +12,10 @@ import { NgClass } from '@angular/common';
     ]
 })
 export class ProductTypesComponent {
-  @Input() pageTitle: string = 'Product Type';
-  @Input() types: any = [];
+  readonly pageTitle = input<string>('Product Type');
+  readonly types = input<any>([]);
 
-  @Output() getValues = new EventEmitter<any[]>();
+  readonly getValues = output<any>();
 
   selected_types: any = [];
 

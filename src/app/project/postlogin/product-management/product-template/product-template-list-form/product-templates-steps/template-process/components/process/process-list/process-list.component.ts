@@ -1,5 +1,5 @@
 
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } from '@angular/material/expansion';
@@ -17,18 +17,18 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
 export class ProcessListComponent implements OnInit {
   fb = inject(UntypedFormBuilder);
 
-  @Input() processData: any;
+  readonly processData = input<any>(undefined);
 
   newProcessProducts: UntypedFormArray = this.fb.array([]);
 
   ngOnInit(): void {
-    if (this.processData?.controls.length > 0) {
+    if (this.processData()?.controls.length > 0) {
       this.readyNewArrayOfProcessProducts();
     }
   }
 
   readyNewArrayOfProcessProducts() {
-    this.processData?.controls.forEach((process: any) => {
+    this.processData()?.controls.forEach((process: any) => {
       this.getprocessProducts(process).controls.forEach(
         (processproduct: UntypedFormGroup) => {
           this.newProcessProducts?.push(processproduct);

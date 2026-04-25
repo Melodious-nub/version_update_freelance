@@ -1,4 +1,4 @@
-<form [formGroup]="rfqForm">
+<form [formGroup]="rfqForm()">
   <mat-expansion-panel expanded="true" #expansionPanel1>
     <mat-expansion-panel-header (click)="expandPanel(expansionPanel1, $event)">
       <mat-panel-description>
@@ -142,7 +142,7 @@
 
     <ng-template matExpansionPanelContent>
       <app-order-transaction-packages [orderFile]="rfqFile" [displayedColumns]="['pkgs', 'qtyReq']"
-        [isEditable]="isEditable" [orderForm]="rfqForm" (getProducts)="getProductsList($event)"
+        [isEditable]="isEditable" [orderForm]="rfqForm()" (getProducts)="getProductsList($event)"
         (calculate)="calculateValues()" (generatePoFromPdf)="generatePoFromPdf($event)" [productsList]="productsList"
       [productPackages]="productPackages" [type]="'rcvrfq'"></app-order-transaction-packages>
     </ng-template>

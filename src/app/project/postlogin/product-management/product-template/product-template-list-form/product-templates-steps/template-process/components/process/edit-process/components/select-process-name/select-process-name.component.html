@@ -1,6 +1,6 @@
-@if (isShowTextBox) {
-  <input type="text" [placeholder]="placeholder" name="processName" [(ngModel)]="processName"
-    [ngModelOptions]="{ standalone: true }" (input)="getProcessName($event, true)" [disabled]="disabled" />
+@if (isShowTextBox()) {
+  <input type="text" [placeholder]="placeholder()" name="processName" [(ngModel)]="processName"
+    [ngModelOptions]="{ standalone: true }" (input)="getProcessName($event, true)" [disabled]="disabled()" />
   } @else {
     <select name="processName" [(ngModel)]="processID" [ngModelOptions]="{ standalone: true }"
       (change)="getProcessName($event, false)">

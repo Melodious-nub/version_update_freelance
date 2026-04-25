@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output, inject, input } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -30,7 +30,7 @@ export class TemplateInfoComponent implements OnInit {
   formsService = inject(FormsService);
   route = inject(ActivatedRoute);
 
-  @Input() templateForm: UntypedFormGroup;
+  readonly templateForm = input<UntypedFormGroup>(undefined);
 
   submitted = false;
 
@@ -84,19 +84,19 @@ export class TemplateInfoComponent implements OnInit {
   }
 
   get industryType() {
-    return this.templateForm.get('industryTypeId');
+    return this.templateForm().get('industryTypeId');
   }
   get industrySubType() {
-    return this.templateForm.get('industrySubTypeId');
+    return this.templateForm().get('industrySubTypeId');
   }
 
 
   get productTypes() {
-    return this.templateForm.get('productTypeIds');
+    return this.templateForm().get('productTypeIds');
   }
 
   get productSubTypes() {
-    return this.templateForm.get('productSubTypeIds');
+    return this.templateForm().get('productSubTypeIds');
   }
 
   getIndustrySubTypes() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, inject, input } from '@angular/core';
 import { UntypedFormArray, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { APPCOMMONHELPERS } from 'src/app/helpers/appcommonhelpers';
@@ -17,7 +17,7 @@ export class BuyingCapacityCommonComponent implements OnInit, OnChanges {
     private route = inject(ActivatedRoute);
 
 
-    @Input() buyingCapacities: UntypedFormArray;
+    readonly buyingCapacities = input<UntypedFormArray>(undefined);
 
     buyingCapacitiesList = [
         {
@@ -47,7 +47,7 @@ export class BuyingCapacityCommonComponent implements OnInit, OnChanges {
 
 
     removeEmptyBuyingCapacities() {
-        const index = this.buyingCapacities.controls.findIndex((it) => { it.get('buyingCapacityType').value == null })
+        const index = this.buyingCapacities().controls.findIndex((it) => { it.get('buyingCapacityType').value == null })
         this.removeBc(index)
     }
 
@@ -61,33 +61,33 @@ export class BuyingCapacityCommonComponent implements OnInit, OnChanges {
         form1.get("marginPercent").setValue(60);
         form1.get("markupPercent").setValue(150);
         form1.get("decimalValue").setValue(0.5);
-        this.buyingCapacities.push(form1);
+        this.buyingCapacities().push(form1);
 
         const form2 = this.formService.createBuyingCapacityForm()
         form2.get("buyingCapacityType").setValue("SKU");
         form2.get("marginPercent").setValue(45);
         form2.get("markupPercent").setValue(81.82);
         form2.get("decimalValue").setValue(0.25);
-        this.buyingCapacities.push(form2);
+        this.buyingCapacities().push(form2);
 
         const form3 = this.formService.createBuyingCapacityForm()
         form3.get("buyingCapacityType").setValue("PALLET");
         form3.get("marginPercent").setValue(25);
         form3.get("markupPercent").setValue(33.33);
         form3.get("decimalValue").setValue(0.25);
-        this.buyingCapacities.push(form3);
+        this.buyingCapacities().push(form3);
 
         const form4 = this.formService.createBuyingCapacityForm()
         form4.get("buyingCapacityType").setValue("CONTAINER");
         form4.get("marginPercent").setValue(10);
         form4.get("markupPercent").setValue(11.11);
         form4.get("decimalValue").setValue(0.10);
-        this.buyingCapacities.push(form4);
+        this.buyingCapacities().push(form4);
     }
 
     calculateMarginAndMarkup(i, type) {
-        const marginPercent = this.buyingCapacities.controls[i].get('marginPercent')
-        const markupPercent = this.buyingCapacities.controls[i].get('markupPercent')
+        const marginPercent = this.buyingCapacities().controls[i].get('marginPercent')
+        const markupPercent = this.buyingCapacities().controls[i].get('markupPercent')
         if (type == 'margin') {
             let val = Number.parseInt(marginPercent.value);
             let a = ((val / (100 - val)) * 100).toFixed(2);
@@ -104,15 +104,15 @@ export class BuyingCapacityCommonComponent implements OnInit, OnChanges {
 
     addBc() {
         const form = this.formService.createBuyingCapacityForm()
-        this.buyingCapacities.push(form)
+        this.buyingCapacities().push(form)
     }
 
     removeBc(i) {
-        this.buyingCapacities.removeAt(i)
+        this.buyingCapacities().removeAt(i)
     }
 
     isBuyingCapacityTypeExist(item) {
-        const selectedBuyingCapacities = this.buyingCapacities.value.map((itm) => itm.buyingCapacityType)
+        const selectedBuyingCapacities = this.buyingCapacities().value.map((itm) => itm.buyingCapacityType)
         return selectedBuyingCapacities.includes(item.label) ? true : false
     }
 

@@ -4,9 +4,9 @@
     class="mat-steps tab-common"
     [(selectedIndex)]="currentIndex"
     >
-    @for (link of action; track link) {
+    @for (link of action(); track link) {
       <mat-tab
-        [disabled]="disabled"
+        [disabled]="disabled()"
         [label]="link.name"
         >
       </mat-tab>

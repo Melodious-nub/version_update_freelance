@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, Output, EventEmitter, inject } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, inject, input, output } from '@angular/core';
 import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -77,17 +77,17 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   @Input() productForm: UntypedFormGroup;
 
-  @Input() componentUoms: UntypedFormArray;
+  readonly componentUoms = input<UntypedFormArray>(undefined);
 
-  @Input() loadingProductTemplateDetail: any;
+  readonly loadingProductTemplateDetail = input<any>(undefined);
 
-  @Input() currentBusinessAccount: any;
+  readonly currentBusinessAccount = input<any>(undefined);
 
-  @Input() disableForThirdPartyProduct: any;
+  readonly disableForThirdPartyProduct = input<any>(undefined);
 
-  @Input() isThirdPartyProductMeta: any;
+  readonly isThirdPartyProductMeta = input<any>(undefined);
 
-  @Output() saveProduct: EventEmitter<any> = new EventEmitter();
+  readonly saveProduct = output<any>();
 
 
   createdBy: any;
@@ -118,8 +118,8 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   private expirySubscriptions: any[] = [];
 
-  @Output() calculate = new EventEmitter();
-  @Output() loadedDetail = new EventEmitter();
+  readonly calculate = output<any>();
+  readonly loadedDetail = output<any>();
 
   userDetail: any = [];
 
@@ -136,7 +136,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
     if (
       this.productForm.get('productTypeId').value &&
       this.productForm.get('productTypeId').value != 'null' &&
-      !this.loadingProductTemplateDetail
+      !this.loadingProductTemplateDetail()
     ) {
       this.productService.productSubTypes = [];
       let selectedProductType: any =
@@ -148,7 +148,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
       this.productService.additionalCostValues =
         selectedProductType?.additionalCosts;
       this.apiService.productTypeForCalculation.setValue(selectedProductType);
-      this.loadedDetail.emit();
+      this.loadedDetail.emit(undefined as any);
       if (
         this.productForm.get('productSubTypeId').value &&
         this.productForm.get('productSubTypeId').value != 'null'
@@ -170,7 +170,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
         if (productTemplateId) {
           this.productForm.get('productTemplateId').setValue(productTemplateId);
           let uomQuery = ``;
-          this.componentUoms.controls.forEach((element) => {
+          this.componentUoms().controls.forEach((element) => {
             uomQuery =
               uomQuery +
               `&uomMap[${element.get('attributeName').value}]=${element.get('userConversionUom').value
@@ -192,7 +192,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
         if (productTemplateId) {
           this.productForm.get('productTemplateId').setValue(productTemplateId);
           let uomQuery = ``;
-          this.componentUoms.controls.forEach((element) => {
+          this.componentUoms().controls.forEach((element) => {
             uomQuery =
               uomQuery +
               `&uomMap[${element.get('attributeName').value}]=${element.get('userConversionUom').value
@@ -330,7 +330,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   syncProductTemplate() {
-    if (this.disableForThirdPartyProduct) {
+    if (this.disableForThirdPartyProduct()) {
       return;
     }
     let productTemplateId: any =
@@ -361,7 +361,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
   async getProductTemplateById(templateId: any) {
     try {
       let uomQuery = ``;
-      this.componentUoms.controls.forEach((element) => {
+      this.componentUoms().controls.forEach((element) => {
         uomQuery =
           uomQuery +
           `&uomMap[${element.get('attributeName').value}]=${element.get('userConversionUom').value
@@ -394,7 +394,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
     this.setProductTemplateProductAttributes(productTemplateAttributes);
     this.setProductTemplatePackageAttributes(packageCalculatorTemplates);
 
-    if (res?.audit?.businessAccountId == this.currentBusinessAccount?.id) {
+    if (res?.audit?.businessAccountId == this.currentBusinessAccount()?.id) {
       if (productTemplateAttributes?.length > 0) {
         this.isProductAttributes.setValue(true);
       }
@@ -450,7 +450,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
           this.getAttributeObjectById(element.attributeId)?.description ==
           'Density'
         ) {
-          const density = this.componentUoms.controls.find(
+          const density = this.componentUoms().controls.find(
             (item) => item.value.attributeName?.toUpperCase() == 'DENSITY'
           );
           form
@@ -461,7 +461,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
           this.getAttributeObjectById(element.attributeId)?.description ==
           'Net Cost'
         ) {
-          const cost = this.componentUoms.controls.find(
+          const cost = this.componentUoms().controls.find(
             (item) => item.value.attributeName?.toUpperCase() == 'COST'
           );
           form
@@ -505,7 +505,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
                 this.getAttributeObjectById(el.attributeId)?.description ==
                 'Density'
               ) {
-                const density = this.componentUoms.controls.find(
+                const density = this.componentUoms().controls.find(
                   (item) => item.value.attributeName?.toUpperCase() == 'DENSITY'
                 );
                 packageAttributeForm
@@ -516,7 +516,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
                 this.getAttributeObjectById(el.attributeId)?.description ==
                 'Net Cost'
               ) {
-                const cost = this.componentUoms.controls.find(
+                const cost = this.componentUoms().controls.find(
                   (item) => item.value.attributeName?.toUpperCase() == 'COST'
                 );
                 packageAttributeForm
@@ -541,7 +541,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
               this.getAttributeObjectById(el.attributeId)?.description ==
               'Density'
             ) {
-              const density = this.componentUoms.controls.find(
+              const density = this.componentUoms().controls.find(
                 (item) => item.value.attributeName?.toUpperCase() == 'DENSITY'
               );
               packageAttributeForm
@@ -552,7 +552,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
               this.getAttributeObjectById(el.attributeId)?.description ==
               'Net Cost'
             ) {
-              const cost = this.componentUoms.controls.find(
+              const cost = this.componentUoms().controls.find(
                 (item) => item.value.attributeName?.toUpperCase() == 'COST'
               );
               packageAttributeForm
@@ -600,7 +600,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   removeProductCalculatorAttribute(i) {
-    if (this.disableForThirdPartyProduct) {
+    if (this.disableForThirdPartyProduct()) {
       return;
     }
     this.productAttributeValues.removeAt(i);
@@ -689,7 +689,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
       .get('userConversionUom')
       .setValue(this.uomService.availableWeightDefaultUom.value);
 
-    const metricCost = this.componentUoms.controls.find(
+    const metricCost = this.componentUoms().controls.find(
       (item) => item.value.attributeName?.toUpperCase() == 'COST'
     );
 
@@ -758,7 +758,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   removeImage(j) {
-    if (this.disableForThirdPartyProduct || this.isThirdPartyProductMeta) {
+    if (this.disableForThirdPartyProduct() || this.isThirdPartyProductMeta()) {
       this.toastr.warning('Not Editable for Third Party Product');
       return;
     }
@@ -778,7 +778,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   hideImage(isHide, index) {
-    if (this.disableForThirdPartyProduct || this.isThirdPartyProductMeta) {
+    if (this.disableForThirdPartyProduct() || this.isThirdPartyProductMeta()) {
       this.toastr.warning('Not Editable for Third Party Product');
       return;
     }
@@ -897,7 +897,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
     this.getAllProductListIsPackageTimeout = setTimeout(() => {
       let uomQuery = ``;
-      this.componentUoms.controls.forEach((element) => {
+      this.componentUoms().controls.forEach((element) => {
         element.get('columnMappings').value.forEach((col) => {
           uomQuery =
             uomQuery +
@@ -932,7 +932,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
         .get('userConversionUom')
         .setValue(this.uomService.availableWeightDefaultUom.value);
 
-      const metricCost = this.componentUoms.controls.find(
+      const metricCost = this.componentUoms().controls.find(
         (item) => item.value.attributeName?.toUpperCase() == 'COST'
       );
 
@@ -967,14 +967,14 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   toggleVisibility(item: any, param: any) {
-    if (this.disableForThirdPartyProduct) {
+    if (this.disableForThirdPartyProduct()) {
       return;
     }
     item.get('isHidden').setValue(param);
   }
 
   toggleLock(item: any, param: any) {
-    if (this.disableForThirdPartyProduct) {
+    if (this.disableForThirdPartyProduct()) {
       return;
     }
     item.get('isUserInput').setValue(param);
@@ -1281,7 +1281,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   setDefaultUoms() {
-    const componentUoms: any = this.componentUoms.getRawValue();
+    const componentUoms: any = this.componentUoms().getRawValue();
     componentUoms.forEach((element) => {
       if (element.attributeName?.toUpperCase() == 'METRICCOST') {
         this.productForm
@@ -1349,7 +1349,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   toggleGlobalAttributes(controls: UntypedFormControl[], flag: UntypedFormControl) {
-    if (this.disableForThirdPartyProduct) {
+    if (this.disableForThirdPartyProduct()) {
       return;
     }
     if (flag.value) {

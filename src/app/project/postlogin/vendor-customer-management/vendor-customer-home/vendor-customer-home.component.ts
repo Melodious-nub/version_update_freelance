@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, inject, viewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -59,7 +59,7 @@ export class AddEditVendorComponent implements OnInit {
   industrySubTypes: any[] = [];
   isSendInvite: Boolean = false;
   isShowInvite: Boolean = true;
-  @ViewChild(VendorDetailsComponent) vendorDetailsComponent: VendorDetailsComponent;
+  readonly vendorDetailsComponent = viewChild(VendorDetailsComponent);
 
   constructor() {
     this.vendorForm = this.vendorFormService.createVendorForm();
@@ -214,8 +214,9 @@ export class AddEditVendorComponent implements OnInit {
       this.vendorForm.patchValue(data);
       console.log(this.vendorForm.value);
       // Populate attribute values from relation account after loading vendor data
-      if (this.vendorDetailsComponent) {
-        this.vendorDetailsComponent.populateAttributeValuesFromRelationAccount();
+      const vendorDetailsComponent = this.vendorDetailsComponent();
+      if (vendorDetailsComponent) {
+        vendorDetailsComponent.populateAttributeValuesFromRelationAccount();
       }
     } catch (err: any) {
       if (err?.status === 404) {
@@ -229,8 +230,9 @@ export class AddEditVendorComponent implements OnInit {
 
   saveCustomer() {
     // Collect all attribute values from business entity configuration before saving
-    if (this.vendorDetailsComponent && (this.isCustomer || this.isLead || this.isProspect)) {
-      this.vendorDetailsComponent.collectAllAttributeValues();
+    const vendorDetailsComponent = this.vendorDetailsComponent();
+    if (vendorDetailsComponent && (this.isCustomer || this.isLead || this.isProspect)) {
+      vendorDetailsComponent.collectAllAttributeValues();
     }
 
     let req = this.vendorForm.getRawValue();

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { BusinessAccountService } from '../../business-account/business-account.service';
@@ -25,7 +25,7 @@ export class PaymentListComponent implements OnInit {
   private business = inject(BusinessAccountService);
   paymentManagementService = inject(PaymentManagementService);
 
-  @Input() single = false;
+  readonly single = input(false);
   paymentList: any[];
   public searchText: string;
   public pageConfig: any = {

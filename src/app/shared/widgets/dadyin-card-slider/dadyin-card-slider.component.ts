@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 
@@ -12,15 +12,15 @@ export class DadyinCardSliderComponent {
 
   constructor() { }
 
-  @Input() cardLength: any;
+  readonly cardLength = input<any>(undefined);
  
   currentIndex: number = 0;
 
   next() {
-    this.currentIndex = (this.currentIndex + 1) % this.cardLength;
+    this.currentIndex = (this.currentIndex + 1) % this.cardLength();
   }
 
   prev() {
-    this.currentIndex = (this.currentIndex - 1 + this.cardLength) % this.cardLength;
+    this.currentIndex = (this.currentIndex - 1 + this.cardLength()) % this.cardLength();
   }
 }

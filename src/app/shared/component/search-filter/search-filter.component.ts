@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, input, output } from '@angular/core';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Subject, Subscription, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { MatIconButton } from '@angular/material/button';
@@ -17,11 +17,11 @@ import { MatIcon } from '@angular/material/icon';
     ]
 })
 export class SearchFilterComponent implements OnInit, OnDestroy {
-    @Input() searchControl =new UntypedFormControl();
-    @Input() advSearchConfig;
-    @Input() placeholder: string = 'Type to search here';
-    @Output() inputChange = new EventEmitter<any>();
-    @Output() keyupEnter = new EventEmitter<any>();
+    readonly searchControl = input(new UntypedFormControl());
+    readonly advSearchConfig = input(undefined);
+    readonly placeholder = input<string>('Type to search here');
+    readonly inputChange = output<any>();
+    readonly keyupEnter = output<any>();
     valueChangesSubscription: Subscription;
     filterToggle = false;
     private searchSubject = new Subject<string>();
@@ -46,7 +46,7 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
 
     clearSearchValue(searchInput: HTMLInputElement) {
         searchInput.value = '';
-        this.searchControl.setValue('')
+        this.searchControl().setValue('')
         this.inputChange.emit('');
     }
 

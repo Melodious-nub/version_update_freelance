@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, ElementRef, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ElementRef, inject, viewChild } from '@angular/core';
 import { UntypedFormArray, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -152,7 +152,7 @@ export class BusinessRegistrationComponent implements OnInit, OnDestroy {
     connection_status: ''
   };
 
-  @ViewChild('accountTypeSelect', { read: ElementRef }) accountTypeSelect: ElementRef<HTMLSelectElement> | undefined;
+  readonly accountTypeSelect = viewChild('accountTypeSelect', { read: ElementRef });
 
   mainTab: Array<any> = [
     {
@@ -941,8 +941,8 @@ export class BusinessRegistrationComponent implements OnInit, OnDestroy {
       // open/focus the account type select so options are visible to the user
       setTimeout(() => {
         try {
-          this.accountTypeSelect?.nativeElement.focus();
-          this.accountTypeSelect?.nativeElement.click();
+          this.accountTypeSelect()?.nativeElement.focus();
+          this.accountTypeSelect()?.nativeElement.click();
         } catch (e) { }
       }, 0);
     } else {

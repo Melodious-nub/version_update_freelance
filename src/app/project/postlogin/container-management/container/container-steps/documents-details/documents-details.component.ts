@@ -1,4 +1,4 @@
-import { Component, Input, Pipe, Output, EventEmitter, OnDestroy, inject } from '@angular/core';
+import { Component, Pipe, OnDestroy, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -40,16 +40,16 @@ export class DocumentsDetailsComponent implements OnDestroy{
   apiService = inject(ApiService);
 
   imgUrl=environment.imgUrl
-  @Input() isExport: any;
+  readonly isExport = input<any>(undefined);
   expanded:any[]=[]
   imageToShow:any
-  @Input() containerForm: UntypedFormGroup;
+  readonly containerForm = input<UntypedFormGroup>(undefined);
 
-  @Input() currentBusinessAccount: any;
+  readonly currentBusinessAccount = input<any>(undefined);
   private ngUnsubscribe: Subject<void> = new Subject();
   public purchaseOrdersList: any[] = [];
   documentForm: UntypedFormGroup=this.containerFormService.documentForm();
-  @Output() calculate = new EventEmitter();
+  readonly calculate = output<any>();
   file:any
 
   async
@@ -76,16 +76,16 @@ export class DocumentsDetailsComponent implements OnDestroy{
   }
 
   getAttributeUserConversionUom(value: any): any {
-    return this.containerForm.get(value).get('userConversionUom');
+    return this.containerForm().get(value).get('userConversionUom');
   }
   getAttributeAttributeValue(value: any): any {
-    return this.containerForm.get(value).get('attributeValue');
+    return this.containerForm().get(value).get('attributeValue');
   }
 
 
 
   get documents() {
-    return this.containerForm
+    return this.containerForm()
       .get('documents') as UntypedFormArray;
   }
 
@@ -109,12 +109,12 @@ export class DocumentsDetailsComponent implements OnDestroy{
 
   addDocument() {
     const Form = this.containerFormService.documentForm()
-    Form.get('addedByBusinessAccountId').setValue(this.currentBusinessAccount?.id)
+    Form.get('addedByBusinessAccountId').setValue(this.currentBusinessAccount()?.id)
     this.documents.push(Form);
   }
 
   getFilteredDocuments() {
-    let filteredControls = this.documents.controls.filter((item)=> (item.get('addedByBusinessAccountId').value==this.currentBusinessAccount?.id))
+    let filteredControls = this.documents.controls.filter((item)=> (item.get('addedByBusinessAccountId').value==this.currentBusinessAccount()?.id))
     return filteredControls
   }
 

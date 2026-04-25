@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
-import { Component, HostListener, OnInit, Input, inject } from '@angular/core';
+import { Component, HostListener, OnInit, inject, input } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -60,8 +60,8 @@ export class BusinessEntityConfigurationComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.formulaAutoComplete = false;
   }
-  @Input() isReadOnly: boolean = false;
-  @Input() configurationType: string;
+  readonly isReadOnly = input<boolean>(false);
+  readonly configurationType = input<string>(undefined);
   excelView = [false, false, false, false, false, false, false, false];
   configurationForm: UntypedFormGroup;
   configurationTypes: any[] = [];
@@ -91,7 +91,7 @@ export class BusinessEntityConfigurationComponent implements OnInit {
     await this.apiService.Get_All_AttributeTypes().catch(() => { });
 
     // Determine configuration type from input or dialog data
-    const configType = this.configurationType || this.dialogData?.configurationType;
+    const configType = this.configurationType() || this.dialogData?.configurationType;
 
     // Load active configuration if configurationType is provided
     if (configType) {

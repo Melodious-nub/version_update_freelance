@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Observable, debounceTime } from 'rxjs';
 import { FormsService } from '../../../../../../../../../../service/forms.service';
-import { Component, EventEmitter, Input, Output, ChangeDetectorRef, inject } from '@angular/core';
+import { Component, ChangeDetectorRef, inject, input, output } from '@angular/core';
 import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -36,11 +36,11 @@ export class RawMaterialProcessComponent {
   route = inject(ActivatedRoute);
   private cdr = inject(ChangeDetectorRef);
 
-  @Input() templateForm: any;
-  @Input() index: number = 0;
-  @Input() isExpandAll: boolean;
-  @Input() componentUoms: any;
-  @Output() calculate = new EventEmitter();
+  readonly templateForm = input<any>(undefined);
+  readonly index = input<number>(0);
+  readonly isExpandAll = input<boolean>(undefined);
+  readonly componentUoms = input<any>(undefined);
+  readonly calculate = output<any>();
   filteredProductList$: Observable<any>;
 
   isExpanded = true;
@@ -48,7 +48,7 @@ export class RawMaterialProcessComponent {
   async
 
   get process() {
-    return this.templateForm.get('rawMaterialProcess');
+    return this.templateForm().get('rawMaterialProcess');
   }
 
   getFilteredProductsList(i) {
@@ -140,10 +140,10 @@ export class RawMaterialProcessComponent {
 
   addNewProcessProductControl() {
     const processProductForm = this.FormsService.createProcessProductForm();
-    const metricCost = this.componentUoms.controls.find(
+    const metricCost = this.componentUoms().controls.find(
       (item) => item.value.attributeName?.toUpperCase() == 'METRICCOST'
     );
-    const density = this.componentUoms.controls.find(
+    const density = this.componentUoms().controls.find(
       (item) => item.value.attributeName?.toUpperCase() == 'DENSITY'
     );
     processProductForm
@@ -166,7 +166,7 @@ export class RawMaterialProcessComponent {
   }
   addNewProcessConversionTypeControl() {
     const conversionTypeForm = this.FormsService.createConversionTypeForm();
-    const metricCost = this.componentUoms.controls.find(
+    const metricCost = this.componentUoms().controls.find(
       (item) => item.value.attributeName?.toUpperCase() == 'METRICCOST'
     );
     conversionTypeForm
@@ -423,7 +423,7 @@ export class RawMaterialProcessComponent {
       this.process.markAllAsTouched();
       return;
     }
-    this.calculate.emit();
+    this.calculate.emit(undefined as any);
   }
 
   resetProduct(i) {

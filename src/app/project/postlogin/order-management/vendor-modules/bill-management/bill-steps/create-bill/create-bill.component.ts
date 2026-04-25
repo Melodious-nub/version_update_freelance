@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef, HostListener, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, HostListener, OnDestroy, inject, input, output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -66,12 +66,12 @@ export class CreateBillComponent implements OnInit, OnDestroy {
   }
 
   map1 = false;
-  @Input() componentUoms: any;
+  readonly componentUoms = input<any>(undefined);
   productsList: any;
   quotationsList: any;
-  @Input() billForm: UntypedFormGroup;
-  @Output() calculate = new EventEmitter();
-  @Output() patchEditData = new EventEmitter();
+  readonly billForm = input<UntypedFormGroup>(undefined);
+  readonly calculate = output<any>();
+  readonly patchEditData = output<any>();
   private ngUnsubscribe: Subject<void> = new Subject();
   public buyingTypeList: any[] = [
     { name: 'SKU', value: 'SKU' },
@@ -121,18 +121,18 @@ export class CreateBillComponent implements OnInit, OnDestroy {
     const editTillDate = new Date(
       currentDate.getTime() + 7 * 24 * 60 * 60 * 1000
     );
-    this.billForm.get('date').setValue(currentDate.toISOString().split('T')[0]);
-    this.billForm
+    this.billForm().get('date').setValue(currentDate.toISOString().split('T')[0]);
+    this.billForm()
       .get('expectedByDate')
       .setValue(expectedByDate.toISOString().split('T')[0]);
-    this.billForm
+    this.billForm()
       .get('editTillDate')
       .setValue(editTillDate.toISOString().split('T')[0]);
-    this.billForm.get('loadingTypeId').setValue('FLOOR');
+    this.billForm().get('loadingTypeId').setValue('FLOOR');
   }
 
   get productPackages() {
-    return this.billForm.get('productPackages') as UntypedFormArray;
+    return this.billForm().get('productPackages') as UntypedFormArray;
   }
 
   ngOnDestroy(): void {
@@ -163,12 +163,12 @@ export class CreateBillComponent implements OnInit, OnDestroy {
   }
 
   get requestFromAddress() {
-    const itm = this.billForm.get('requestFrom').value;
+    const itm = this.billForm().get('requestFrom').value;
     return itm ? itm?.address : '';
   }
 
   get requestToAddress() {
-    const id = this.billForm.get('requestTo').value.id;
+    const id = this.billForm().get('requestTo').value.id;
     const item = this.businessAccountService.vendorList.find(
       (vendor) => vendor.relationAccountId == Number(id)
     );
@@ -304,38 +304,38 @@ export class CreateBillComponent implements OnInit, OnDestroy {
     if (!this.isEditable) {
       return;
     }
-    this.billForm.get('importLocalType').setValue(value);
+    this.billForm().get('importLocalType').setValue(value);
   }
   get importLocalType() {
-    return this.billForm.get('importLocalType');
+    return this.billForm().get('importLocalType');
   }
 
   get status() {
-    return this.billForm.get('status');
+    return this.billForm().get('status');
   }
 
   get isEditable() {
     return (
       this.status.value != 'CONFIRMED' &&
       this.status.value != 'REJECTED' &&
-      !this.billForm.get('isQuickCheckout').value
+      !this.billForm().get('isQuickCheckout').value
     );
   }
 
   get incoTermId() {
-    return this.billForm.get('incoTermId');
+    return this.billForm().get('incoTermId');
   }
   get departurePortId() {
-    return this.billForm.get('departurePortId');
+    return this.billForm().get('departurePortId');
   }
   get buyingType() {
-    return this.billForm.get('buyingType');
+    return this.billForm().get('buyingType');
   }
   get vendorId() {
-    return this.billForm.get('requestTo').get('id');
+    return this.billForm().get('requestTo').get('id');
   }
   get customerId() {
-    return this.billForm.get('requestFrom').get('id');
+    return this.billForm().get('requestFrom').get('id');
   }
 
   onChangeVendor() {
@@ -349,13 +349,13 @@ export class CreateBillComponent implements OnInit, OnDestroy {
       this.buyingType.setValue('CONTAINER_40_FT_HQ');
     }
     if (vendor?.fulfillmentLimitInDays) {
-      this.billForm.get('requiredByDate').setValue(null);
+      this.billForm().get('requiredByDate').setValue(null);
       const currentDate = new Date();
       const futureDate = new Date(
         currentDate.getTime() +
           vendor?.fulfillmentLimitInDays * 24 * 60 * 60 * 1000
       );
-      this.billForm
+      this.billForm()
         .get('requiredByDate')
         .setValue(futureDate.toISOString().split('T')[0]);
       this.minRequiredDate = futureDate.toISOString().split('T')[0];
@@ -364,15 +364,15 @@ export class CreateBillComponent implements OnInit, OnDestroy {
   }
 
   get noteId() {
-    return this.billForm.get('noteTemplate').get('id');
+    return this.billForm().get('noteTemplate').get('id');
   }
 
   get media_url_ids() {
-    return this.billForm.get('media_url_ids');
+    return this.billForm().get('media_url_ids');
   }
 
   get media_urls() {
-    return this.billForm.get('media_urls');
+    return this.billForm().get('media_urls');
   }
 
   getNoteTitle() {
@@ -384,7 +384,7 @@ export class CreateBillComponent implements OnInit, OnDestroy {
 
   getUomQuery() {
     let uomQuery = ``;
-    this.componentUoms.controls.forEach((element) => {
+    this.componentUoms().controls.forEach((element) => {
       element.get('columnMappings').value.forEach((col) => {
         uomQuery =
           uomQuery +
