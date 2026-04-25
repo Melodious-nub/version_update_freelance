@@ -13,10 +13,10 @@
       </div>
 
       <div class="status " [ngClass]="{
-           'status-sent': productForm?.value?.status == 'SENT',
-           'status-draft': productForm?.value?.status == 'DRAFT',
-           'status-confirmed': productForm?.value?.status == 'CONFIRMED',
-            'status-rejected': productForm?.value?.status == 'REJECTED'
+           'status-sent': productForm?.value?.status === 'SENT',
+           'status-draft': productForm?.value?.status === 'DRAFT',
+           'status-confirmed': productForm?.value?.status === 'CONFIRMED',
+            'status-rejected': productForm?.value?.status === 'REJECTED'
          }"> {{ productForm?.value?.status }}
       </div>
       <!-- <div>
@@ -29,13 +29,13 @@
   </div>
 
   <div class="d-flex justify-content-end align-items-center">
-    @if (productForm?.value?.status == 'DELETED') {
+    @if (productForm?.value?.status === 'DELETED') {
       @if (editMode) {
         <dadyin-button (clicked)="confirmActivate()" label="Activate" [theme]="'primary'">
         </dadyin-button>
       }
     }
-    @if (productForm?.value?.status != 'DELETED') {
+    @if (productForm?.value?.status !== 'DELETED') {
       <dadyin-button matTooltip="Share" type="image" [theme]="'borderless-primary'"
       [typeval]="'assets/nicons/share.png'" (clicked)="shareProduct()"></dadyin-button>
       @if (this.route.snapshot.queryParams['receivedPOId']) {
@@ -707,7 +707,7 @@
                                                         </div>
                                                       </td>
                                                       @for (item of tierPricingQuickCheckout.value; track item) {
-                                                        @if (item?.skuType != 'TRUCK') {
+                                                        @if (item?.skuType !== 'TRUCK') {
                                                           <td class="bg-light">
                                                             <div>
                                                               @if (item?.minimumQuantity) {

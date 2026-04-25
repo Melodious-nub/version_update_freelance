@@ -29,7 +29,7 @@ export class DadyinButtonComponent implements OnInit {
     @Input() isDisabled = false;
     @Input('disabled') set _isDisabled(val: boolean) { this.isDisabled = val; }
     @Input() tooltip = '';
-    @Output('clicked') clicked = new EventEmitter();
+    @Output() clicked = new EventEmitter();
     @Input() stopPropagation = true;
     @Input() routerLink: string[] = [];
 

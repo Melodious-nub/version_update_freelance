@@ -11,7 +11,7 @@
     [style.width]="width" class="btn-{{ theme }} {{ class }} {{ size }} btn-icon "
     [disabled]="isDisabled">
     <mat-icon [disabled]="isDisabled ? 'disabled' : ''">{{ typeval }}</mat-icon>
-    @if (label!='') {
+    @if (label!=='') {
       <span style="margin-left: 5px;vertical-align: super;">{{label ? label : ''}}</span>
     }
   </button>

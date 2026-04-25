@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject, Input, OnDestroy } from '@angular/core';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
@@ -35,7 +35,7 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
         MatOption
     ]
 })
-export class PricecompareDialogComponent implements OnInit {
+export class PricecompareDialogComponent implements OnInit, OnDestroy {
   public imgUrl = environment.imgUrl;
   constructor(
     public dialog: MatDialog,

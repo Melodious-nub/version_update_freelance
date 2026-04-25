@@ -4,7 +4,7 @@ import {
   HostListener,
   Input,
   OnInit,
-  Output,
+  Output, OnDestroy,
 } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -60,7 +60,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
         NumberFormatterPipe
     ]
 })
-export class CreateOrderComponent implements OnInit {
+export class CreateOrderComponent implements OnInit, OnDestroy {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.map2 = false;
     this.map1 = false;

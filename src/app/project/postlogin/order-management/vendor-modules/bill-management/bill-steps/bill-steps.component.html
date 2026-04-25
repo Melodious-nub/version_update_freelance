@@ -114,7 +114,7 @@
         >
       </dadyin-button>
       @if (
-        billForm.get('status').value == 'DRAFT' && billForm.get('id').value
+        billForm.get('status').value === 'DRAFT' && billForm.get('id').value
         ) {
         <dadyin-button
           matTooltip="Delete"
@@ -134,10 +134,10 @@
       </dadyin-button>
       @if (
         !billForm?.value?.isQuickCheckout &&
-        billForm?.value.status != 'CONFIRMED' &&
-        billForm?.value.status != 'PLACED' &&
-        billForm?.value.status != 'COMPLETED' &&
-        billForm?.value.status != 'REJECTED'
+        billForm?.value.status !== 'CONFIRMED' &&
+        billForm?.value.status !== 'PLACED' &&
+        billForm?.value.status !== 'COMPLETED' &&
+        billForm?.value.status !== 'REJECTED'
         ) {
         <dadyin-button
           matTooltip="Save this in Draft"
@@ -150,10 +150,10 @@
       }
       @if (
         !billForm?.value?.isQuickCheckout &&
-        billForm?.value.status != 'CONFIRMED' &&
-        billForm?.value.status != 'PLACED' &&
-        billForm?.value.status != 'COMPLETED' &&
-        billForm?.value.status != 'REJECTED'
+        billForm?.value.status !== 'CONFIRMED' &&
+        billForm?.value.status !== 'PLACED' &&
+        billForm?.value.status !== 'COMPLETED' &&
+        billForm?.value.status !== 'REJECTED'
         ) {
         <dadyin-button
           matTooltip="Place Order"

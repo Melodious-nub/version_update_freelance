@@ -418,14 +418,14 @@
                         <button
                           (click)="expenseView = 'Product'"
                           class="width-perc-50"
-                          [ngClass]="{ active: expenseView == 'Product' }"
+                          [ngClass]="{ active: expenseView === 'Product' }"
                           >
                           Product Wise
                         </button>
                         <button
                           (click)="expenseView = 'Order'"
                           class="width-perc-50"
-                          [ngClass]="{ active: expenseView == 'Order' }"
+                          [ngClass]="{ active: expenseView === 'Order' }"
                           >
                           Order Wise
                         </button>
@@ -597,7 +597,7 @@
                           order
                             .get('purchaseOrderDetail')
                             .get('odometer')
-                            .get('odometerType').value == 'Weight'
+                            .get('odometerType').value === 'Weight'
                             ? '#03266d'
                             : '#3E7FFF'
                       }"

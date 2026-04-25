@@ -99,7 +99,7 @@
                   <b> + Save as new calculator </b>
                 </option>
                 @for (meta of apiService.allCalculatorMetas; track meta) {
-                  @if (meta.packageType == 'UNIT') {
+                  @if (meta.packageType === 'UNIT') {
                     <option [value]="meta.id">
                       {{ meta.description }}
                     </option>
@@ -839,7 +839,7 @@
                 <!-- process calculator layerwise started -->
                 @if (
                   lastProcessLayerWiseCalculation?.value == false &&
-                  templateProcessType.value == 'PROCESS'
+                  templateProcessType.value === 'PROCESS'
                   ) {
                   <div class="panel-header my-2 bg-card-header">
                     <div>

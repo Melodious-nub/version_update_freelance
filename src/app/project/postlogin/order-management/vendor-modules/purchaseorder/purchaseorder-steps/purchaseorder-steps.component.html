@@ -77,7 +77,7 @@
 </dadyin-button>
 @if (
   purchaseOrderForm.getRawValue().id &&
-  purchaseOrderForm.get('status').value == 'CONFIRMED' &&  purchaseOrderForm.get('paymentStatus').value!='COMPLETED'
+  purchaseOrderForm.get('status').value === 'CONFIRMED' &&  purchaseOrderForm.get('paymentStatus').value!=='COMPLETED'
   ) {
   <dadyin-button matTooltip="Convert To Invoice" (clicked)="convertPoToInvoice()" [theme]="'borderless-default'" type="image"
     [typeval]="'assets/nicons/refresh.png'">
@@ -86,7 +86,7 @@
 <dadyin-button matTooltip="Download" (clicked)="generatePdf()" [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/download.png'">
 </dadyin-button>
 @if (
-  purchaseOrderForm.get('status').value == 'DRAFT' &&
+  purchaseOrderForm.get('status').value === 'DRAFT' &&
   purchaseOrderForm.get('id').value
   ) {
   <dadyin-button matTooltip="Delete" (clicked)="confirmDelete()" [theme]="'borderless-default'" type="image"
@@ -97,20 +97,20 @@
 </dadyin-button>
 @if (
   !purchaseOrderForm.getRawValue()?.isQuickCheckout &&
-  purchaseOrderForm.getRawValue().status != 'CONFIRMED' &&
-  purchaseOrderForm.getRawValue().status != 'PLACED' &&
-  purchaseOrderForm.getRawValue().status != 'COMPLETED' &&
-  purchaseOrderForm.getRawValue().status != 'REJECTED'
+  purchaseOrderForm.getRawValue().status !== 'CONFIRMED' &&
+  purchaseOrderForm.getRawValue().status !== 'PLACED' &&
+  purchaseOrderForm.getRawValue().status !== 'COMPLETED' &&
+  purchaseOrderForm.getRawValue().status !== 'REJECTED'
   ) {
   <dadyin-button matTooltip="Save this in Draft" (clicked)="savePo('DRAFT')" [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/save.png'">
   </dadyin-button>
 }
 @if (
   !purchaseOrderForm.getRawValue()?.isQuickCheckout &&
-  purchaseOrderForm.getRawValue().status != 'CONFIRMED' &&
-  purchaseOrderForm.getRawValue().status != 'PLACED' &&
-  purchaseOrderForm.getRawValue().status != 'COMPLETED' &&
-  purchaseOrderForm.getRawValue().status != 'REJECTED'
+  purchaseOrderForm.getRawValue().status !== 'CONFIRMED' &&
+  purchaseOrderForm.getRawValue().status !== 'PLACED' &&
+  purchaseOrderForm.getRawValue().status !== 'COMPLETED' &&
+  purchaseOrderForm.getRawValue().status !== 'REJECTED'
   ) {
   <dadyin-button matTooltip="Place Order" (clicked)="savePo('PLACED')" [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/place.png'">
   </dadyin-button>
@@ -167,7 +167,7 @@
       (patchEditData)="patchEditData($event, true)" [purchaseOrderForm]="purchaseOrderForm"></app-create-order>
     }
   </mat-tab>
-  <mat-tab [disabled]="status.value != 'CONFIRMED'" label="Payment">
+  <mat-tab [disabled]="status.value !== 'CONFIRMED'" label="Payment">
     @if (currentStepIndex == 1) {
       <app-payment [componentUoms]="componentUoms" [purchaseOrderForm]="purchaseOrderForm"
       (getOrderById)="getOrderById()"></app-payment>

@@ -53,7 +53,7 @@ export class DadyinDatePickerComponent implements OnInit, ControlValueAccessor, 
     @Input() cancelBtn: string = "Cancel";
     @Input() actionBtn: string = "Submit";
     @Input() showActionBtn: boolean = false;
-    @Output('onAction') onAction = new EventEmitter();
+    @Output() onAction = new EventEmitter();
     validationRequired: boolean = false;
 
     control!: UntypedFormControl;

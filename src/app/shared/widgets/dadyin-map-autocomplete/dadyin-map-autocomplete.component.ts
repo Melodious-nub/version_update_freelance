@@ -31,7 +31,7 @@ export class DadyinMapAutoCompleteComponent implements OnInit, AfterViewInit {
   @Input() control: any;
   @Input() label: any = '';
   @ViewChild('autocompleteInput') autocompleteInput: ElementRef;
-  @Output('address') address = new EventEmitter();
+  @Output() address = new EventEmitter();
   constructor(public httpClient: HttpClient, public apiService: ApiService) {}
 
   ngOnInit(): void {}

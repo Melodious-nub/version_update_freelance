@@ -20,7 +20,7 @@ import { MatTabGroup, MatTab } from '@angular/material/tabs';
     ]
 })
 export class PaymentListComponent implements OnInit {
-  @Input('single') single = false;
+  @Input() single = false;
   paymentList: any[];
   public searchText: string;
   public pageConfig: any = {

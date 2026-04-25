@@ -65,7 +65,7 @@ export class ReceivedRfqListComponent implements OnInit {
   sortQuery: any = 'audit.lastModifiedDate,desc';
   @Input() role: any;
   @Input() single = false;
-  @Input('customerId') customerId: any = null;
+  @Input() customerId: any = null;
 
   public pageConfig: any = {
     itemPerPage: 20,

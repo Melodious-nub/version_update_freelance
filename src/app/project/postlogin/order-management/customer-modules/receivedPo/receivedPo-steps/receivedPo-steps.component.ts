@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -39,7 +39,7 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
         DatePipe
     ]
 })
-export class ReceivedPoStepsComponent implements OnInit {
+export class ReceivedPoStepsComponent implements OnInit, OnDestroy {
   // ************* Variable Declarations *************
   currentStepIndex = 0;
   receivedPoForm: UntypedFormGroup;

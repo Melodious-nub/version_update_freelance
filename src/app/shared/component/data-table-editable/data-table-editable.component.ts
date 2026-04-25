@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, OnChanges } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
@@ -16,7 +16,7 @@ import { NgClass, NgStyle } from '@angular/common';
     styleUrls: ['./data-table-editable.component.scss'],
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, NgClass, ExtendedModule, NgStyle, MatCellDef, MatCell, FormsModule, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator]
 })
-export class DataTableEditableComponent implements OnInit {
+export class DataTableEditableComponent implements OnInit, AfterViewInit, OnChanges {
     imgUrl: any = environment.imgUrl
     @Input() set data(tableData) {
         this.tableData = tableData;

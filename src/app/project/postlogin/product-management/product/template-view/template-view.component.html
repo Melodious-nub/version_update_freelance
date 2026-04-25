@@ -52,7 +52,7 @@
       </div>
     </div>
   </mat-expansion-panel>
-  @if (data.templateProcessType=='PROCESS') {
+  @if (data.templateProcessType==='PROCESS') {
     <div class="header-light justify-content-start">
       <div class="primary-text font-size-12 ">
         <strong>Template Cost : </strong> <span class="price-text">
@@ -264,7 +264,7 @@
     </mat-expansion-panel>
   }
 }
-@if (data.templateProcessType=='RAW_MATERIAL') {
+@if (data.templateProcessType==='RAW_MATERIAL') {
   <div class="header-light">
     <div class="primary-text font-size-14 ">
       <strong>Total Material Cost : </strong> <span class="price-text"> $
@@ -455,7 +455,7 @@
     </mat-expansion-panel>
   </ng-container>
 }
-@if (data.templateProcessType=='FIXED') {
+@if (data.templateProcessType==='FIXED') {
   <div class="header-light">
     <div class="primary-text font-size-14">
       <strong>Total Fixed Cost : </strong> <span class="price-text"> $
@@ -509,6 +509,6 @@
         </ng-template>
       </mat-expansion-panel>
     }
-    @if (data.templateProcessType=='NONE') {
+    @if (data.templateProcessType==='NONE') {
     }
   }

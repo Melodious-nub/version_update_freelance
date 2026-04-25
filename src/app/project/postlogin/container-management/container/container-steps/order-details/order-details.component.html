@@ -221,7 +221,7 @@
               <div>Filled Odometer:</div>
           <div class="bg-white mar-left-2" style="min-width: 80px" [ngStyle]="{
               color:
-                containerForm.get('filledOdometer').get('odometerType').value ==
+                containerForm.get('filledOdometer').get('odometerType').value ===
                 'Weight'
                   ? '#03266d'
                   : '#3E7FFF'
@@ -251,7 +251,7 @@
           <div class="bg-white mar-left-2" style="min-width: 80px" [ngStyle]="{
               color:
                 containerForm.get('remainingOdometer').get('odometerType')
-                  .value == 'Weight'
+                  .value === 'Weight'
                   ? '#03266d'
                   : '#3E7FFF'
             }">
@@ -279,10 +279,10 @@
             <div class="attribute-input bg-white">
               <div class="toggle width-perc-100">
                 <button (click)="poView = 'productWise'" class="width-perc-50"
-                  [ngClass]="{ active: poView == 'productWise' }">
+                  [ngClass]="{ active: poView === 'productWise' }">
                   Product Wise
                 </button>
-                <button (click)="poView = 'orderWise'" class="width-perc-50" [ngClass]="{ active: poView == 'orderWise' }">
+                <button (click)="poView = 'orderWise'" class="width-perc-50" [ngClass]="{ active: poView === 'orderWise' }">
                   Order Wise
                 </button>
               </div>
@@ -381,14 +381,14 @@
         <mat-expansion-panel class="panel-no-padding mt-4" expanded="true" #expansionPanel3>
           <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
             <mat-panel-description>
-              @if (poView == 'orderWise') {
+              @if (poView === 'orderWise') {
                 <div class="text-start w-100 title-text">
                   {{ isExport ? "SOs" : "POs" }} in Container ({{
                   containerOrders?.controls?.length
                   }})
                 </div>
               }
-              @if (poView == 'productWise') {
+              @if (poView === 'productWise') {
                 <div class="w-100 title-text">
                   Products in Container ({{ containerOrders?.controls?.length }})
                 </div>
@@ -396,7 +396,7 @@
             </mat-panel-description>
           </mat-expansion-panel-header>
           <ng-template matExpansionPanelContent>
-            @if (poView == 'orderWise') {
+            @if (poView === 'orderWise') {
               <div class="process-table table-padding">
                 <table>
                   <thead>
@@ -489,7 +489,7 @@
                   <td [ngStyle]="{
                       color:
                         p.get('purchaseOrderDetail').value?.odometer
-                          ?.odometerType == 'Weight'
+                          ?.odometerType === 'Weight'
                           ? '#03266d'
                           : '#3E7FFF'
                     }">
@@ -532,7 +532,7 @@
                 </table>
               </div>
             }
-            @if (poView == 'productWise') {
+            @if (poView === 'productWise') {
               <div class="process-table">
                 <table>
                   <thead>
@@ -657,7 +657,7 @@
                             </td>
                   <td [ngStyle]="{
                       color:
-                        item.value?.productDetails.skuOdometer?.odometerType ==
+                        item.value?.productDetails.skuOdometer?.odometerType ===
                         'Weight'
                           ? '#03266d'
                           : '#3E7FFF'
@@ -694,14 +694,14 @@
           <mat-expansion-panel class="panel-no-padding my-4" expanded="true" #expansionPanel4>
             <mat-expansion-panel-header (click)="expandPanel(expansionPanel4, $event)">
               <div class="font-size-12 d-flex align-items-center width-perc-40">
-                @if (poView == 'orderWise') {
+                @if (poView === 'orderWise') {
                   <div class="text-left fw-bold title-text me-2" style="white-space: nowrap">
                     {{ isExport ? "SOs" : "POs" }} Not in Container ({{
                     getFilteredPOs()?.length
                     }})
                   </div>
                 }
-                @if (poView == 'productWise') {
+                @if (poView === 'productWise') {
                   <div class="text-left fw-bold w-100 title-text me-2"
                     style="white-space: nowrap">
                     Products Not in Container Overview
@@ -714,7 +714,7 @@
                 </div>
               </mat-expansion-panel-header>
               <ng-template matExpansionPanelContent>
-                @if (poView == 'orderWise') {
+                @if (poView === 'orderWise') {
                   <div class="process-table table-padding">
                     <table>
                       <thead>
@@ -866,7 +866,7 @@
                     </table>
                   </div>
                 }
-                @if (poView == 'productWise') {
+                @if (poView === 'productWise') {
                   <div class="process-table">
                     <table>
                       <thead>
@@ -991,7 +991,7 @@
                                 </td>
                   <td [ngStyle]="{
                       color:
-                        product?.productDetails.skuOdometer?.odometerType ==
+                        product?.productDetails.skuOdometer?.odometerType ===
                         'Weight'
                           ? '#03266d'
                           : '#3E7FFF'
@@ -1030,14 +1030,14 @@
               <mat-expansion-panel class="panel-no-padding mt-4" expanded="true" #expansionPanel3>
                 <mat-expansion-panel-header (click)="expandPanel(expansionPanel5, $event)">
                   <mat-panel-description>
-                    @if (poView == 'orderWise') {
+                    @if (poView === 'orderWise') {
                       <div class="text-center w-100 title-text">
                         Quotations in Container ({{
                         containerQuotations?.controls?.length
                         }})
                       </div>
                     }
-                    @if (poView == 'productWise') {
+                    @if (poView === 'productWise') {
                       <div class="w-100 title-text">
                         Products in Container ({{ containerQuotations?.controls?.length }})
                       </div>
@@ -1045,7 +1045,7 @@
                   </mat-panel-description>
                 </mat-expansion-panel-header>
                 <ng-template matExpansionPanelContent>
-                  @if (poView == 'orderWise') {
+                  @if (poView === 'orderWise') {
                     <div class="process-table table-padding">
                       <table>
                         <thead>
@@ -1129,7 +1129,7 @@
                   <td [ngStyle]="{
                       color:
                         quotation.get('quotationListView').value?.odometer
-                          ?.odometerType == 'Weight'
+                          ?.odometerType === 'Weight'
                           ? '#03266d'
                           : '#3E7FFF'
                     }">
@@ -1174,7 +1174,7 @@
                       </table>
                     </div>
                   }
-                  @if (poView == 'productWise') {
+                  @if (poView === 'productWise') {
                     <div class="process-table">
                       <table>
                         <thead>
@@ -1306,7 +1306,7 @@
                                   </td>
                   <td [ngStyle]="{
                       color:
-                        item.value?.productDetails.skuOdometer?.odometerType ==
+                        item.value?.productDetails.skuOdometer?.odometerType ===
                         'Weight'
                           ? '#03266d'
                           : '#3E7FFF'
@@ -1343,12 +1343,12 @@
                 <mat-expansion-panel class="panel-no-padding my-4" expanded="true" #expansionPanel6>
                   <mat-expansion-panel-header (click)="expandPanel(expansionPanel6, $event)">
                     <div class="font-size-12 d-flex align-items-center width-perc-40">
-                      @if (poView == 'orderWise') {
+                      @if (poView === 'orderWise') {
                         <div class="text-left title-text me-2" style="white-space: nowrap">
                           Quotations Not in Container ({{ getFilteredQuotations()?.length }})
                         </div>
                       }
-                      @if (poView == 'productWise') {
+                      @if (poView === 'productWise') {
                         <div class="text-left w-100 title-text me-2" style="white-space: nowrap">
                           Products Not in Container Overview
                         </div>
@@ -1360,7 +1360,7 @@
                       </div>
                     </mat-expansion-panel-header>
                     <ng-template matExpansionPanelContent>
-                      @if (poView == 'orderWise') {
+                      @if (poView === 'orderWise') {
                         <div class="process-table table-padding">
                           <table>
                             <thead>
@@ -1498,7 +1498,7 @@
                           </table>
                         </div>
                       }
-                      @if (poView == 'productWise') {
+                      @if (poView === 'productWise') {
                         <div class="process-table">
                           <table>
                             <thead>
@@ -1614,7 +1614,7 @@
                                       </td>
                   <td [ngStyle]="{
                       color:
-                        product?.productDetails.skuOdometer?.odometerType ==
+                        product?.productDetails.skuOdometer?.odometerType ===
                         'Weight'
                           ? '#03266d'
                           : '#3E7FFF'

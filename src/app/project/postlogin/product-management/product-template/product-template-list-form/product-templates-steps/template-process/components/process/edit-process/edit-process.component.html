@@ -136,7 +136,7 @@
                   </div>
                 </div>
                 @if (usedToggle.value == true) {
-                  @if (templateProcessMaterialType.value == 'LOG_SHEET') {
+                  @if (templateProcessMaterialType.value === 'LOG_SHEET') {
                     <div class="d-flex  align-items-center  font-size-12">
                       <div class="text-black me-2" style="white-space: pre; font-weight: 400; ">Total Units</div>
                       <div style="max-width: fit-content" class="d-flex align-items-center">
@@ -286,15 +286,15 @@
                                 }
                               </div>
                             </th>
-                            <th [attr.colspan]="templateProcessMaterialType.value == 'LOG_SHEET' ? 2 : 1" class="p-0">
+                            <th [attr.colspan]="templateProcessMaterialType.value === 'LOG_SHEET' ? 2 : 1" class="p-0">
                               <div class="text-center ">
                                 <span>USED @if (templateProcessMaterialType.value
-                                  != 'LOG_SHEET') {
+                                  !== 'LOG_SHEET') {
                                   <span> % </span>
                                 } </span>
 
                               </div>
-                              @if (templateProcessMaterialType.value == 'LOG_SHEET') {
+                              @if (templateProcessMaterialType.value === 'LOG_SHEET') {
                                 <div
                                   class="d-flex align-items-center justify-content-between">
                                   <div class="b-light w-50 text-center">
@@ -312,15 +312,15 @@
                                 </div>
                               }
                             </th>
-                            <th [attr.colspan]="templateProcessMaterialType.value == 'LOG_SHEET' ? 2 : 1" class="p-0">
+                            <th [attr.colspan]="templateProcessMaterialType.value === 'LOG_SHEET' ? 2 : 1" class="p-0">
                               <div class="text-center ">
                                 <span>Waste @if (templateProcessMaterialType.value
-                                  != 'LOG_SHEET') {
+                                  !== 'LOG_SHEET') {
                                   <span> %  </span>
                                 } </span>
 
                               </div>
-                              @if (templateProcessMaterialType.value == 'LOG_SHEET') {
+                              @if (templateProcessMaterialType.value === 'LOG_SHEET') {
                                 <div
                                   class="d-flex align-items-center justify-content-between">
                                   <div class="b-light w-50 text-center">
@@ -397,11 +397,11 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            @if (templateProcessMaterialType.value == 'LOG_SHEET') {
+                            @if (templateProcessMaterialType.value === 'LOG_SHEET') {
                               <td></td>
                             }
                             <td></td>
-                            @if (templateProcessMaterialType.value == 'LOG_SHEET') {
+                            @if (templateProcessMaterialType.value === 'LOG_SHEET') {
                               <td></td>
                             }
                             <td></td>
@@ -473,7 +473,7 @@
                           'blur-bg': !usedToggle.value
                         }" [formControl]="getAttribute(i, 'usedPercent')" />
                                   </td>
-                                  @if (templateProcessMaterialType.value == 'LOG_SHEET') {
+                                  @if (templateProcessMaterialType.value === 'LOG_SHEET') {
                                     <td>
                                       <input class="text-end" [ngClass]="{ 'blur-bg': !usedToggle.value }" (change)="calculateValues()"
                                         type="string" [formControl]="getAttributeValue(i, 'usedWeight')" />
@@ -483,7 +483,7 @@
                                       <input class="text-end" [ngClass]="{ 'blur-bg': !usedToggle.value }" (change)="calculateValues()"
                                         type="number" min="0" [formControl]="getAttribute(i, 'wastePercent')" />
                                       </td>
-                                      @if (templateProcessMaterialType.value == 'LOG_SHEET') {
+                                      @if (templateProcessMaterialType.value === 'LOG_SHEET') {
                                         <td>
                                           <input class="text-end" [ngClass]="{ 'blur-bg': !usedToggle.value }" (change)="calculateValues()"
                                             type="string" [formControl]="getAttributeValue(i, 'wasteWeight')" />

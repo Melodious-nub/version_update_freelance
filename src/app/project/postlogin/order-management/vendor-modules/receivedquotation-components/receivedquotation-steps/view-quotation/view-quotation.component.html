@@ -25,14 +25,14 @@
                 </div>
               }
             </div>
-            @if (importLocalType.value == 'CONTAINER') {
+            @if (importLocalType.value === 'CONTAINER') {
               <div class="col-12 col-md-2">
                 <dadyin-select [optionArr]="containerService.incoTermsList" label="Inco terms"
                   formControlName="incoTermId" optionLabel="description" optionValue="id">
                 </dadyin-select>
               </div>
             }
-            @if (importLocalType.value == 'LOCAL') {
+            @if (importLocalType.value === 'LOCAL') {
               <div class="col-12 col-md-2">
               <dadyin-select [optionArr]="[
                   { id: 'DELIVERY', description: 'DELIVERY' },
@@ -42,11 +42,11 @@
               </div>
             }
             <div class="col-12 col-md-1 d-flex">
-              <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'LOCAL'
+              <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="importLocalType.value === 'LOCAL'
               ? 'assets/img/icons/location-on.png'
               : 'assets/img/icons/location-off.png'">
               </dadyin-button>
-              <dadyin-button (clicked)="toggleType('CONTAINER')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'CONTAINER'
+              <dadyin-button (clicked)="toggleType('CONTAINER')" theme="borderless-primary" type="image" [typeval]="importLocalType.value === 'CONTAINER'
               ? 'assets/img/icons/anchor_on.png'
               : 'assets/img/icons/anchor_off.png'">
               </dadyin-button>
@@ -72,7 +72,7 @@
                 label="Port of Departure" formControlName="departurePortId" optionLabel="description" optionValue="id">
               </dadyin-select>
             </div>
-            @if (importLocalType.value != 'LOCAL') {
+            @if (importLocalType.value !== 'LOCAL') {
               <div class="col-12 col-md-2">
                 <dadyin-input [isDisabled]="!isEditable" inputType="text" formControlName="shipper" label="Shipping via">
                 </dadyin-input>
@@ -84,7 +84,7 @@
               <dadyin-input inputType="text" formControlName="requiredByDate" label="Sales Person">
               </dadyin-input>
             </div>
-            @if (importLocalType.value != 'LOCAL') {
+            @if (importLocalType.value !== 'LOCAL') {
               <div class="col-12 col-md-2">
               <dadyin-select [optionArr]="[
                   { id: 'PALLET', name: 'PALLET' },

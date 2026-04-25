@@ -255,7 +255,7 @@
               [ngStyle]="{
                 color:
                   containerForm.get('filledOdometer').get('odometerType')
-                    .value == 'Weight'
+                    .value === 'Weight'
                     ? '#03266d'
                     : '#3E7FFF'
               }"
@@ -283,7 +283,7 @@
                             style="min-width: 100px"
             [ngStyle]="{
               color:
-                containerForm.get('filledOdometer').get('odometerType').value ==
+                containerForm.get('filledOdometer').get('odometerType').value ===
                 'Weight'
                   ? '#03266d'
                   : '#3E7FFF'
@@ -306,14 +306,14 @@
                               <button
                                 (click)="poView = 'productWise'"
                                 class="width-perc-50"
-                                [ngClass]="{ active: poView == 'productWise' }"
+                                [ngClass]="{ active: poView === 'productWise' }"
                                 >
                                 Product Wise
                               </button>
                               <button
                                 (click)="poView = 'orderWise'"
                                 class="width-perc-50"
-                                [ngClass]="{ active: poView == 'orderWise' }"
+                                [ngClass]="{ active: poView === 'orderWise' }"
                                 >
                                 Order Wise
                               </button>
@@ -432,7 +432,7 @@
                         <div class="title-text">Unloading Details</div>
                       </div>
 
-                      @if (poView == 'orderWise') {
+                      @if (poView === 'orderWise') {
                         <div class="process-table">
                           <table>
                             <thead>
@@ -473,7 +473,7 @@
                         p
                           .get('purchaseOrderDetail')
                           .get('odometer')
-                          .get('odometerType').value == 'Weight'
+                          .get('odometerType').value === 'Weight'
                           ? '#03266d'
                           : '#3E7FFF'
                     }"
@@ -736,7 +736,7 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td>
-                                                                  @if (p.get('loadingType').value == 'MIXED') {
+                                                                  @if (p.get('loadingType').value === 'MIXED') {
                                                                     <select
                             style="
                               background: transparent;
@@ -772,12 +772,12 @@
                                                                     type="number"
                           [ngStyle]="{
                             'border-bottom':
-                              pallet.get('loadingType').value == 'FLOOR'
+                              pallet.get('loadingType').value === 'FLOOR'
                                 ? 'none'
                                 : 'solid black 1px'
                           }"
                           [readonly]="
-                            pallet.get('loadingType').value == 'FLOOR'
+                            pallet.get('loadingType').value === 'FLOOR'
                           "
                                                                     (change)="calculateValues()"
                                                                     formControlName="rowNumber"
@@ -789,13 +789,13 @@
                                                                       type="number"
                           [ngStyle]="{
                             'border-bottom':
-                              pallet.get('loadingType').value == 'FLOOR'
+                              pallet.get('loadingType').value === 'FLOOR'
                                 ? 'none'
                                 : 'solid black 1px'
                           }"
                                                                       (change)="calculateValues()"
                           [readonly]="
-                            pallet.get('loadingType').value == 'FLOOR'
+                            pallet.get('loadingType').value === 'FLOOR'
                           "
                                                                       formControlName="columnNumber"
                                                                       />
@@ -830,7 +830,7 @@
                                                       </div>
                                                     }
 
-                                                    @if (poView == 'productWise') {
+                                                    @if (poView === 'productWise') {
                                                       <div class="process-table">
                                                         <table>
                                                           <thead>
@@ -1016,7 +1016,7 @@
                                                                                   <th>SINGLE BOXES</th>
                                                                                   <th>BOXES/PALLET</th>
                                                                                   @if (
-                                                                                    containerproduct.get('loadingType').value == 'MIXED'
+                                                                                    containerproduct.get('loadingType').value === 'MIXED'
                                                                                     ) {
                                                                                     <th
                                                                                     ></th>
@@ -1024,7 +1024,7 @@
                                                                                   <th>WH/LOCATION</th>
                                                                                   <th>NOTE</th>
                                                                                   @if (
-                                                                                    containerproduct.get('loadingType').value != 'MIXED'
+                                                                                    containerproduct.get('loadingType').value !== 'MIXED'
                                                                                     ) {
                                                                                     <th
                                                                                     ></th>
@@ -1087,7 +1087,7 @@
                                                                                             {{ pallet.value.numberOfItems }}
                                                                                           </td>
                                                                                           @if (
-                                                                                            containerproduct.get('loadingType').value == 'MIXED'
+                                                                                            containerproduct.get('loadingType').value === 'MIXED'
                                                                                             ) {
                                                                                             <td
                                                                                               >
@@ -1125,7 +1125,7 @@
                                                                                               {{ pallet.value.note }}
                                                                                             </td>
                                                                                             @if (
-                                                                                              containerproduct.get('loadingType').value != 'MIXED'
+                                                                                              containerproduct.get('loadingType').value !== 'MIXED'
                                                                                               ) {
                                                                                               <td
                                                                                               ></td>

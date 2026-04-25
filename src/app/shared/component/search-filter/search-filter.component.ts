@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Subject, Subscription, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { MatIconButton } from '@angular/material/button';
@@ -16,7 +16,7 @@ import { MatIcon } from '@angular/material/icon';
         MatIconButton
     ]
 })
-export class SearchFilterComponent implements OnInit {
+export class SearchFilterComponent implements OnInit, OnDestroy {
     @Input() searchControl =new UntypedFormControl();
     @Input() advSearchConfig;
     @Input() placeholder: string = 'Type to search here';

@@ -27,7 +27,7 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
 })
 export class QuotationListComponent implements OnInit {
   @Input() single = false;
-  @Input('customerId') customerId: any = null;
+  @Input() customerId: any = null;
   uomSetting = false;
   public preferredUoms: any[];
   public preferForm: UntypedFormGroup = this.formService.createPreferUomForm();

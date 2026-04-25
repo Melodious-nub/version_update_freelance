@@ -5,7 +5,7 @@ import {
   Output,
   EventEmitter,
   ChangeDetectorRef,
-  HostListener,
+  HostListener, OnDestroy,
 } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -49,7 +49,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
         OrderTransactionPackagesComponent
     ]
 })
-export class CreateBillComponent implements OnInit {
+export class CreateBillComponent implements OnInit, OnDestroy {
   currentBusinessAccount: any;
   htmlContent: any;
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

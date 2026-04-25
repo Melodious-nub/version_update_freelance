@@ -5,7 +5,7 @@ import {
   EventEmitter,
   Input,
   OnInit,
-  Output,
+  Output, OnChanges,
 } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
@@ -36,7 +36,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
         ExtendedModule
     ]
 })
-export class EditProcessComponent implements OnInit {
+export class EditProcessComponent implements OnInit, OnChanges {
   @Input() process: any;
   @Input() templateForm: any;
   @Input() index: number = 0;

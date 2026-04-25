@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Observable, debounceTime } from 'rxjs';
 import { FormsService } from '../../../../../../../../../../service/forms.service';
-import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectorRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectorRef, OnChanges } from '@angular/core';
 import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -28,7 +28,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
         ExtendedModule
     ]
 })
-export class RawMaterialProcessComponent implements OnInit {
+export class RawMaterialProcessComponent implements OnInit, OnChanges {
   @Input() templateForm: any;
   @Input() index: number = 0;
   @Input() isExpandAll: boolean;

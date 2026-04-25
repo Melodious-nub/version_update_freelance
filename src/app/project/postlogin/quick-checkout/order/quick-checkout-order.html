@@ -1,6 +1,6 @@
 <div [formGroup]="orderForm" class="app-container  "
-  [ngStyle]="{'width': viewType=='flyer' ? 'unset' : '' }">
-  @if (viewType=='flyer') {
+  [ngStyle]="{'width': viewType==='flyer' ? 'unset' : '' }">
+  @if (viewType==='flyer') {
     <div style="overflow-x: auto; text-wrap: nowrap"
       class="height-40 d-flex align-items-center justify-content-between b-light bg-primary top-header b-round"
       >
@@ -37,7 +37,7 @@
       </div>
     }
 
-    @if (viewType=='normal') {
+    @if (viewType==='normal') {
       <div class="wizard-bar-container">
         <div class="wizard-heading">
           <dadyin-button routerLink="/home/quick-checkout" [theme]="'borderless-primary'" type="icon"
@@ -65,22 +65,22 @@
             matTooltip="{{orderForm?.value.audit?.lastModifiedDate | date :'short'}}">
             STATUS : {{orderForm?.value?.status}}
           </div>
-          @if (this.orderId && orderForm?.value.status=='DRAFT') {
+          @if (this.orderId && orderForm?.value.status==='DRAFT') {
             <dadyin-button type="image"
               [typeval]="'assets/img/icons/Delete Trash.svg'" [theme]="'danger-light'" (clicked)="confirmDeleteOrder()">
             </dadyin-button>
           }
-          @if (orderForm?.value.status!='CONFIRMED' && orderForm?.value.status!='PLACED' && orderForm?.value.status!='COMPLETED') {
+          @if (orderForm?.value.status!=='CONFIRMED' && orderForm?.value.status!=='PLACED' && orderForm?.value.status!=='COMPLETED') {
             <dadyin-button
               label="Save Draft" (clicked)="saveDraftOrder()" [theme]="'secondary'">
             </dadyin-button>
           }
-          @if (orderForm?.value.status!='DRAFT') {
+          @if (orderForm?.value.status!=='DRAFT') {
             <dadyin-button label="Close" routerLink="/home/quick-checkout"
               [theme]="'secondary'">
             </dadyin-button>
           }
-          @if ((orderForm?.value.status!='CONFIRMED' &&  orderForm?.value.status!='PLACED' && orderForm?.value.status!='COMPLETED')) {
+          @if ((orderForm?.value.status!=='CONFIRMED' &&  orderForm?.value.status!=='PLACED' && orderForm?.value.status!=='COMPLETED')) {
             <dadyin-button
               [theme]="'primary'" label="Place Order" (clicked)="confirmPlaceOrder()">
             </dadyin-button>
@@ -89,7 +89,7 @@
       </div>
     }
 
-    @if (viewType=='normal') {
+    @if (viewType==='normal') {
       <div cdkDrag class="uom-config-section">
         <button (click)="$event.stopPropagation();uomSetting=!uomSetting" class="btn bg-primary-light title-text">
           UOM Setting
@@ -120,9 +120,9 @@
       </div>
     }
 
-    @if (viewType=='normal') {
+    @if (viewType==='normal') {
       <dadyin-tab
-        [disabled]="orderForm.value.status!='PLACED' && orderForm.value.status!='CONFIRMED'" (actionClick)="actions($event)"
+        [disabled]="orderForm.value.status!=='PLACED' && orderForm.value.status!=='CONFIRMED'" (actionClick)="actions($event)"
       [action]="mainTab" [currentIndex]="currentMainIndex"></dadyin-tab>
     }
     @if (currentMainIndex == 0) {
@@ -134,32 +134,32 @@
               <div class="d-flex align-items-center pe-1">
                 <div class="title-text fw-bold">Products In Order</div>
               </div>
-              @if (viewType=='normal') {
+              @if (viewType==='normal') {
                 <div style="border: solid 1px; height: 25px" class="mx-1"></div>
               }
-              @if (viewType=='normal') {
+              @if (viewType==='normal') {
                 <div class="d-flex"
                   [matTooltip]="(currentBusinessAccountDetail?.businessLines?.includes('RETAILER') ? 'This feature is not available for retailers.' : '')">
               <dadyin-button (clicked)="toggleType('LOCAL')" [theme]="
-                  importLocalType.value == 'LOCAL'
+                  importLocalType.value === 'LOCAL'
                     ? 'primary'
                     : 'borderless-primary'
                 " type="icon" typeval="location_on">
                   </dadyin-button>
               <dadyin-button (clicked)="toggleType('CONTAINER')" [theme]="
-                  importLocalType.value == 'CONTAINER'
+                  importLocalType.value === 'CONTAINER'
                     ? 'primary'
                     : 'borderless-primary'
                 " type="icon" typeval="anchor">
                   </dadyin-button>
                 </div>
               }
-              @if (viewType=='normal') {
+              @if (viewType==='normal') {
                 <div class="mx-2 title-text" style="white-space: nowrap">
                   Select Vendor
                 </div>
               }
-              @if (viewType=='normal') {
+              @if (viewType==='normal') {
                 <div class="d-flex align-items-center font-size-14 width-140">
                   <!-- <select
                   [matTooltipPosition]="'after'"
@@ -198,7 +198,7 @@
                 bindLabel="relationAccountName"></dadyin-searchable-select>
               </div>
             }
-            @if (!['SKU']?.includes(buyingType?.value) && viewType=='normal') {
+            @if (!['SKU']?.includes(buyingType?.value) && viewType==='normal') {
               <div
                 class="d-flex align-items-center font-size-14">
                 <div class="mx-2 title-text">Incoterm</div>
@@ -229,7 +229,7 @@
                 </select>
               </div>
             }
-            @if (viewType=='flyer') {
+            @if (viewType==='flyer') {
               <div class="d-flex align-items-center w-100 justify-content-end">
                 <div class="title-text my-2">
                   <dadyin-button (clicked)="confirmCheckout()" label="Place order" [theme]="'primary'">
@@ -237,7 +237,7 @@
                 </div>
               </div>
             }
-            @if (viewType=='normal') {
+            @if (viewType==='normal') {
               <div class="d-flex align-items-center font-size-14">
                 <div class="mx-2 title-text">Buying Type</div>
                 <select
@@ -245,7 +245,7 @@
                   (change)="calculateOrderDetail(orderForm.getRawValue());onChangeBuyingType()"
                   formControlName="buyingType" class="bg-white b-round">
                   <option [value]="null" disabled>Select Buying Type</option>
-                  @if (importLocalType.value=='LOCAL') {
+                  @if (importLocalType.value==='LOCAL') {
                     @for (orderType of  buyingTypeListLocal; track orderType) {
                       <option
                         [matTooltip]="(productPackages?.controls?.length>0 ? 'Please remove products from order to change buying type' : '')"
@@ -254,7 +254,7 @@
                       </option>
                     }
                   }
-                  @if (importLocalType.value=='CONTAINER') {
+                  @if (importLocalType.value==='CONTAINER') {
                     @for (orderType of  buyingTypeListContainer; track orderType) {
                       <option
                         [matTooltip]="(productPackages?.controls?.length>0 ? 'Please remove products from order to change buying type' : '')"
@@ -277,7 +277,7 @@
               [typeval]="'shopping_cart'"></dadyin-button>
               <span>{{productPackages?.controls?.length ?? '-'}}</span>
             </div>
-            @if (buyingType?.value=='PALLET') {
+            @if (buyingType?.value==='PALLET') {
               <div>
                 <b>Pallet</b><br />
                 <span>{{productPackages?.controls?.length}}</span>
@@ -328,7 +328,7 @@
                 <b> {{'-'}}</b>
               }
             </div>
-            @if (importLocalType?.value=='LOCAL' && deliveryPickup?.value=='DELIVERY') {
+            @if (importLocalType?.value==='LOCAL' && deliveryPickup?.value==='DELIVERY') {
               <div class="mt-2 w-100" style="max-width: 350px; min-width: 250px"
                 >
                 <dadyin-map-autocomplete [label]="'Delivery Address'"
@@ -360,7 +360,7 @@
               </div>
             }
           </div>
-          @if (viewType=='normal') {
+          @if (viewType==='normal') {
             <div class="mt-1">
               <div class="process-table b-light quickcheckout-table"
                 [ngStyle]="{'max-height': isEditable ? '200px' : 'unset'}">
@@ -457,7 +457,7 @@
                               class="width-50"
                             ></div> -->
                             <span class="d-flex align-items-center justify-content-center me-1"
-                              [ngClass]="{'self-product':getOwner(product.value?.productDetails?.audit)=='S','third-product':getOwner(product.value?.productDetails?.audit)=='T','master-product':getOwner(product.value?.productDetails?.audit)=='M'}">
+                              [ngClass]="{'self-product':getOwner(product.value?.productDetails?.audit)==='S','third-product':getOwner(product.value?.productDetails?.audit)==='T','master-product':getOwner(product.value?.productDetails?.audit)==='M'}">
                               {{getOwner(product.value?.productDetails?.audit)}}
                             </span>
                           <section container="body" placement="top" [ngbTooltip]="tooltipinfo" style="
@@ -606,7 +606,7 @@
         @if (isEditable) {
           <div style="margin-bottom:50px;" class="b-dark b-round">
             <div class="d-flex align-items-center bg-white b-round overflow-auto px-2">
-              @if (viewType=='normal') {
+              @if (viewType==='normal') {
                 <div class="d-flex align-items-center b-round">
                   <dadyin-button [isDisabled]="this.productSearchRequest.pageIndex==0" type="icon"
                     [typeval]="'navigate_before'" [theme]="'borderless-primary'"
@@ -633,7 +633,7 @@
                   [theme]="'borderless-primary'"></dadyin-button>&nbsp;
                 </div>
               }
-              @if (viewType=='normal') {
+              @if (viewType==='normal') {
                 <div class="d-flex align-items-center mx-1" style="margin-left: -7px !important">
                   @if (!toggle) {
                     <dadyin-button matTooltip="Switch to grid view" theme="borderless-primary" class="mx-1"
@@ -656,7 +656,7 @@
                     (clicked)="clearSearch();inp.value=null"></dadyin-button>
                   </div>
                 </div>
-                @if (viewType=='normal') {
+                @if (viewType==='normal') {
                   <div>
                     <dadyin-button type="icon" class="mx-1" (clicked)="downloadProducts()" [typeval]="'print'"
                       [theme]="'borderless-primary'">
@@ -676,30 +676,30 @@
                       [theme]="'borderless-primary'">
                     </dadyin-button>
                   }
-                  @if (!productSearchRequest.isFavourite && viewType=='normal') {
+                  @if (!productSearchRequest.isFavourite && viewType==='normal') {
                     <dadyin-button type="icon"
                       [typeval]="'favorite_outline'" [theme]="'borderless-primary'" (clicked)="filterFav(true)"
                     matTooltip="View Favourite products"></dadyin-button>
                   }
-                  @if (productSearchRequest.isFavourite && viewType=='normal') {
+                  @if (productSearchRequest.isFavourite && viewType==='normal') {
                     <dadyin-button type="icon"
                       [typeval]="'favorite'" [theme]="'borderless-primary'" (clicked)="filterFav(false)"
                     matTooltip="View Favourite products"></dadyin-button>
                   }
-                  @if (viewType=='normal') {
-                    <div matTooltip="{{ownershipTag=='S' ? 'Exclude Self Products' : 'Include Self Products'}}"
-                      class="self-product mx-1 text-center" [ngClass]="{'b-primary-all':ownershipTag=='S'}"
+                  @if (viewType==='normal') {
+                    <div matTooltip="{{ownershipTag==='S' ? 'Exclude Self Products' : 'Include Self Products'}}"
+                      class="self-product mx-1 text-center" [ngClass]="{'b-primary-all':ownershipTag==='S'}"
                       (click)="filterProductByOwnership('S')">
                       S
                     </div>
                     <div
-                      matTooltip="{{ownershipTag=='T' ? 'View only Selected Vendor Products' : 'Compare with other vendors'}}"
-                      class="third-product mx-1 text-center" [ngClass]="{'b-primary-all':ownershipTag=='T'}"
+                      matTooltip="{{ownershipTag==='T' ? 'View only Selected Vendor Products' : 'Compare with other vendors'}}"
+                      class="third-product mx-1 text-center" [ngClass]="{'b-primary-all':ownershipTag==='T'}"
                       (click)="filterProductByOwnership('T')">
                       T
                     </div>
-                    <div matTooltip="{{ownershipTag=='M' ? 'Exclude Master Products' : 'Include Master Products'}}"
-                      class="master-product mx-1 text-center" [ngClass]="{'b-primary-all':ownershipTag=='M'}"
+                    <div matTooltip="{{ownershipTag==='M' ? 'Exclude Master Products' : 'Include Master Products'}}"
+                      class="master-product mx-1 text-center" [ngClass]="{'b-primary-all':ownershipTag==='M'}"
                       (click)="filterProductByOwnership('M')">
                       M
                     </div>
@@ -716,7 +716,7 @@
                     </div> -->
                   }
                 </div>
-                @if (viewType=='normal') {
+                @if (viewType==='normal') {
                   <div class="b-round b-light mx-3 px-1 d-flex align-items-center bg-white">
                     @if (currentBusinessAccountDetail?.businessLines?.includes('RETAILER') || currentBusinessAccountDetail?.businessLines?.includes('DISTRIBUTOR')) {
                       <select
@@ -940,7 +940,7 @@
                                     @if (isNotAvailableInTopList(product)) {
                                       <tr
                                         [ngStyle]="{'opacity':hideAddToOrder(product?.productDetails?.audit) ? '0.8' : '1'}"
-                                        [ngClass]="{'self-product-row':getOwner(product?.productDetails?.audit)=='S','third-product-row':getOwner(product?.productDetails?.audit)=='T','master-product-row':getOwner(product?.productDetails?.audit)=='M'}">
+                                        [ngClass]="{'self-product-row':getOwner(product?.productDetails?.audit)==='S','third-product-row':getOwner(product?.productDetails?.audit)==='T','master-product-row':getOwner(product?.productDetails?.audit)==='M'}">
                                         <td>
                                           <ng-template #customtooltip appendTo="body">
                                             <div class="row customtooltip">
@@ -949,7 +949,7 @@
                                                   <b> Owner: </b>
                                                 </label>
                                                 <span>{{product?.productDetails?.auditBusinessAccountName}}</span>
-                                                @if (getOwner(product?.productDetails?.audit)=='S') {
+                                                @if (getOwner(product?.productDetails?.audit)==='S') {
                                                   <label> <b> Created Date:
                                                   </b></label><span>{{product?.productDetails?.audit.createdDate
                                                 | date:'MM-dd-yyyy'}}</span>
@@ -968,7 +968,7 @@
                                             <section class="d-flex align-items-center">
                                               <span [ngbTooltip]="customtooltip" placement="top" container="body"
                                                 class="d-flex align-items-center justify-content-center"
-                                                [ngClass]="{'self-product':getOwner(product?.productDetails?.audit)=='S','third-product':getOwner(product?.productDetails?.audit)=='T','master-product':getOwner(product?.productDetails?.audit)=='M'}">
+                                                [ngClass]="{'self-product':getOwner(product?.productDetails?.audit)==='S','third-product':getOwner(product?.productDetails?.audit)==='T','master-product':getOwner(product?.productDetails?.audit)==='M'}">
                                                 {{getOwner(product?.productDetails?.audit)}}
                                               </span>
                                   <div placement="top" container="body" [ngbTooltip]="tooltipinfo1" style="

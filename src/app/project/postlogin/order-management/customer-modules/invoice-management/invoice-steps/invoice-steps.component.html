@@ -110,7 +110,7 @@
         >
       </dadyin-button>
       @if (
-        invoiceForm.get('status').value == 'DRAFT' &&
+        invoiceForm.get('status').value === 'DRAFT' &&
         invoiceForm.get('id').value
         ) {
         <dadyin-button
@@ -131,10 +131,10 @@
       </dadyin-button>
       @if (
         !invoiceForm?.value?.isQuickCheckout &&
-        invoiceForm?.value.status != 'CONFIRMED' &&
-        invoiceForm?.value.status != 'PLACED' &&
-        invoiceForm?.value.status != 'COMPLETED' &&
-        invoiceForm?.value.status != 'REJECTED'
+        invoiceForm?.value.status !== 'CONFIRMED' &&
+        invoiceForm?.value.status !== 'PLACED' &&
+        invoiceForm?.value.status !== 'COMPLETED' &&
+        invoiceForm?.value.status !== 'REJECTED'
         ) {
         <dadyin-button
           matTooltip="Save this in Draft"
@@ -147,10 +147,10 @@
       }
       @if (
         !invoiceForm?.value?.isQuickCheckout &&
-        invoiceForm?.value.status != 'CONFIRMED' &&
-        invoiceForm?.value.status != 'PLACED' &&
-        invoiceForm?.value.status != 'COMPLETED' &&
-        invoiceForm?.value.status != 'REJECTED'
+        invoiceForm?.value.status !== 'CONFIRMED' &&
+        invoiceForm?.value.status !== 'PLACED' &&
+        invoiceForm?.value.status !== 'COMPLETED' &&
+        invoiceForm?.value.status !== 'REJECTED'
         ) {
         <dadyin-button
           matTooltip="Place Order"

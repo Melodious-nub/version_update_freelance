@@ -21,8 +21,8 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
 })
 export class AccountDetailsComponent implements OnInit {
 
-  @Input('isCustomer') isCustomer: any;
-  @Input('vendorForm') vendorForm: any;
+  @Input() isCustomer: any;
+  @Input() vendorForm: any;
 
   constructor(
     public toastr: ToastrService,

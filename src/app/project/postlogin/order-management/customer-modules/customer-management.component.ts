@@ -55,8 +55,8 @@ export class CustomerManagementComponent implements OnInit {
       index: 3,
     },
   ];
-  @Input('single') single = false;
-  @Input('customerId') customerId: any = null;
+  @Input() single = false;
+  @Input() customerId: any = null;
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {

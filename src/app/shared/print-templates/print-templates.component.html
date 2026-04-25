@@ -1,4 +1,4 @@
-@if (printService?.data?.type=='unloadingsheet') {
+@if (printService?.data?.type==='unloadingsheet') {
   <app-unloading-sheet [data]="printService.data"></app-unloading-sheet>
 }
 <div id="htmlContentToPrint" [innerHTML]="printService.data"></div>

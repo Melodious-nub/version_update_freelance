@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Pipe,Output,EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Pipe,Output,EventEmitter, OnDestroy } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -29,7 +29,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
         MatIcon
     ]
 })
-export class DocumentsDetailsComponent implements OnInit {
+export class DocumentsDetailsComponent implements OnInit, OnDestroy {
   imgUrl=environment.imgUrl
   @Input() isExport: any;
   expanded:any[]=[]

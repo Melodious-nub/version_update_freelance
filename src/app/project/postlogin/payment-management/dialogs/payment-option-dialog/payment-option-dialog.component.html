@@ -4,7 +4,7 @@
   </div>
   <div class="mar-top-15">
     <div class="row">
-      @if (data.name == 'Paypal' || data.name == 'Venmo') {
+      @if (data.name === 'Paypal' || data.name === 'Venmo') {
         <div class="row mar-top-10" >
           <div class="col-12">
             <div class="attribute one attr-b" >
@@ -34,7 +34,7 @@
                 </div>
               </div>
             }
-            @if (data.name == 'Bank Account') {
+            @if (data.name === 'Bank Account') {
               <div class="row mar-top-10" >
                 <div class="col-6">
                   <div class="attribute one attr-b"  >

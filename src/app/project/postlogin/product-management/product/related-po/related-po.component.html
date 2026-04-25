@@ -126,7 +126,7 @@
                 item of tierPricingQuickCheckout?.controls; track
                 item; let i = $index) {
                 <div [formGroup]="item" class="d-flex flex-wrap">
-                  @if (item?.value.skuType != 'TRUCK') {
+                  @if (item?.value.skuType !== 'TRUCK') {
                     <div style="white-space: nowrap"
                       class="bg-light d-flex flex-column" style="row-gap: 2px; padding-left: 2px">
                       <div style="padding-left: 5px"

@@ -16,7 +16,7 @@
       </div>
       <div style="width: 15%;text-align: end;">
         <dadyin-button
-          [label]="status == 'COMPLETED' ? 'Save Changes' : 'Confirm'"
+          [label]="status === 'COMPLETED' ? 'Save Changes' : 'Confirm'"
           [theme]="'primary'"
           (clicked)="mergePallet()"
         ></dadyin-button>
@@ -117,7 +117,7 @@
               <tr>
                 <td>
                   <input
-                    [disabled]="status == 'COMPLETED'"
+                    [disabled]="status === 'COMPLETED'"
                     [(ngModel)]="item.isSelected"
                     type="checkbox"
                     />

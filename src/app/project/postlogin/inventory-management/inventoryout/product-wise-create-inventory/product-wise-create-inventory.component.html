@@ -141,14 +141,14 @@
                                         />
                                       </td>
                                       <td>
-                                        @if (detail.get('status').value == 'DRAFT') {
+                                        @if (detail.get('status').value === 'DRAFT') {
                                           <dadyin-button
                                             (clicked)="detail.get('status').setValue('COMPLETED')"
                                             [theme]="'primary'"
                                             label="Confirm"
                                           ></dadyin-button>
                                         }
-                                        @if (detail.get('status').value == 'COMPLETED') {
+                                        @if (detail.get('status').value === 'COMPLETED') {
                                           <span>{{
                                             detail.get("status").value
                                           }}</span>

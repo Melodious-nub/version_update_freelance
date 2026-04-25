@@ -16,7 +16,7 @@
       </div>
       <div style="width: 15%;text-align: end;">
         <dadyin-button
-          [label]="status=='COMPLETED'?'Save Changes':'Confirm'"
+          [label]="status==='COMPLETED'?'Save Changes':'Confirm'"
           [theme]="'primary'"
           (clicked)="mergePallet()"
         ></dadyin-button>
@@ -140,49 +140,49 @@
                 [formGroup]="item"
                 >
                 <td>
-                  <input [readonly]="status=='COMPLETED'" formControlName="palletNumber" type="text" />
+                  <input [readonly]="status==='COMPLETED'" formControlName="palletNumber" type="text" />
                 </td>
                 <td>
-                  <input [readonly]="status=='COMPLETED'" formControlName="location" type="text" />
+                  <input [readonly]="status==='COMPLETED'" formControlName="location" type="text" />
                 </td>
                 <td>
                   <input
                     (change)="calculate()"
-                    [readonly]="status=='COMPLETED'" formControlName="rowNumber"
+                    [readonly]="status==='COMPLETED'" formControlName="rowNumber"
                     type="number"
                     />
                   </td>
                   <td>
                     <input
                       (change)="calculate()"
-                      [readonly]="status=='COMPLETED'" formControlName="columnNumber"
+                      [readonly]="status==='COMPLETED'" formControlName="columnNumber"
                       type="number"
                       />
                     </td>
                     <td>
                       <input
                         (change)="calculate()"
-                        [readonly]="status=='COMPLETED'" formControlName="singleBoxNumber"
+                        [readonly]="status==='COMPLETED'" formControlName="singleBoxNumber"
                         type="number"
                         />
                       </td>
                       <td>
-                        <input type="text" [readonly]="status=='COMPLETED'" formControlName="numberOfItems"  />
+                        <input type="text" [readonly]="status==='COMPLETED'" formControlName="numberOfItems"  />
                       </td>
                       <td>
                         <input type="text" readonly [value]="purchaseOrderId" />
                       </td>
                       <td>
-                        <input type="text" [readonly]="status=='COMPLETED'" />
+                        <input type="text" [readonly]="status==='COMPLETED'" />
                       </td>
                       <td>
-                        <input [readonly]="status=='COMPLETED'" formControlName="dockNumber" type="text" />
+                        <input [readonly]="status==='COMPLETED'" formControlName="dockNumber" type="text" />
                       </td>
                       <td>
-                        <input [readonly]="status=='COMPLETED'" formControlName="handlingInstructions" type="text" />
+                        <input [readonly]="status==='COMPLETED'" formControlName="handlingInstructions" type="text" />
                       </td>
                       <td>
-                        <input [readonly]="status=='COMPLETED'" formControlName="notes" type="text" />
+                        <input [readonly]="status==='COMPLETED'" formControlName="notes" type="text" />
                       </td>
                     </tr>
                   }

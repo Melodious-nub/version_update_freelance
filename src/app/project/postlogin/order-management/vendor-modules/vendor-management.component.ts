@@ -28,8 +28,8 @@ import { NgClass } from '@angular/common';
     ]
 })
 export class VendorManagementComponent implements OnInit {
-  @Input('single') single = false;
-  @Input('vendorId') vendorId = false;
+  @Input() single = false;
+  @Input() vendorId = false;
   currentStepIndex = 0;
   tabs: Array<any> = [
     {

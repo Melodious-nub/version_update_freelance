@@ -43,7 +43,7 @@
             'min-width': getMinWidth(col),
             'max-width': getMaxWidth(col)
           }" *matCellDef="let row; let rowIndex = index">
-            @if (col.name == 'PRODUCT DETAILS') {
+            @if (col.name === 'PRODUCT DETAILS') {
               <div class="d-flex align-items-center ">
                 @if (row?.isQuickCheckoutEligible) {
                   <dadyin-button (mouseenter)="$event.stopPropagation()"

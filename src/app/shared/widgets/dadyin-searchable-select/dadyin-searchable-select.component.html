@@ -4,12 +4,12 @@
     [searchable]="true" [clearable]="clearable" class="custom {{ class }}" [placeholder]="placeholder" [items]="fullItems"
     labelForId="yesno" [bindValue]="bindValue" [bindLabel]="bindLabel">
     <ng-template ng-label-tmp let-item="item">
-      @if (item?.businessCategory && optionTag == 'businessCategory') {
+      @if (item?.businessCategory && optionTag === 'businessCategory') {
         <span style="padding: 3px" class="mx-1"
         [ngClass]="{
-          'self-product': item?.businessCategory[0] == 'C',
-          'third-product': item?.businessCategory[0] == 'L',
-          'master-product': item?.businessCategory[0] == 'P'
+          'self-product': item?.businessCategory[0] === 'C',
+          'third-product': item?.businessCategory[0] === 'L',
+          'master-product': item?.businessCategory[0] === 'P'
         }">
           {{ item?.businessCategory[0] }}
         </span>
@@ -18,11 +18,11 @@
     </ng-template>
     <ng-template ng-option-tmp let-item="item" let-index="index">
       <div [matTooltip]="returnAddress(item)" matTooltipPosition="right" class="ng-option-label">
-        @if (optionTag == 'businessCategory') {
+        @if (optionTag === 'businessCategory') {
 <span style="padding: 3px" class="mx-1" [ngClass]="{
-            'self-product': item?.businessCategory[0] == 'C',
-            'third-product': item?.businessCategory[0] == 'L',
-            'master-product': item?.businessCategory[0] == 'P'
+            'self-product': item?.businessCategory[0] === 'C',
+            'third-product': item?.businessCategory[0] === 'L',
+            'master-product': item?.businessCategory[0] === 'P'
           }">
             {{ item?.businessCategory[0] }}
           </span>

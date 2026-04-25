@@ -40,7 +40,7 @@
       <dadyin-button matTooltip="Download" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/download.png'">
       </dadyin-button>
       @if (
-        recvQuotationForm.get('status').value == 'DRAFT' && recvQuotationForm.get('id').value
+        recvQuotationForm.get('status').value === 'DRAFT' && recvQuotationForm.get('id').value
         ) {
         <dadyin-button matTooltip="Delete" (clicked)="confirmDelete()" [theme]="'borderless-default'" type="image"
           [typeval]="'assets/img/icons/delete.png'">

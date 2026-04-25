@@ -9,10 +9,10 @@
       <div class="attribute tabular-sheet col-3 mx-1" style="    width: inherit;">
         <div class="attribute-input bg-white">
           <div class="toggle width-perc-100">
-            <button (click)="changeView('productWise')" class="width-perc-50" [ngClass]="{active: poView=='productWise'}">
+            <button (click)="changeView('productWise')" class="width-perc-50" [ngClass]="{active: poView==='productWise'}">
               Product
             Wise </button>
-            <button (click)="changeView('orderWise')" class="width-perc-50" [ngClass]="{active:poView=='orderWise'}"> Order
+            <button (click)="changeView('orderWise')" class="width-perc-50" [ngClass]="{active:poView==='orderWise'}"> Order
               Wise
             </button>
           </div>
@@ -23,9 +23,9 @@
     </div>
   </div>
 </div>
-@if (poView=='productWise') {
+@if (poView==='productWise') {
   <app-inventoryin-product-wise></app-inventoryin-product-wise>
 }
-@if (poView=='orderWise') {
+@if (poView==='orderWise') {
   <app-inventoryin-order-wise></app-inventoryin-order-wise>
 }

@@ -35,7 +35,7 @@
     <div class="d-flex justify-content-end align-items-center">
       @if (
         quotationForm.get('id').value &&
-        quotationForm?.value.status != 'DRAFT'
+        quotationForm?.value.status !== 'DRAFT'
         ) {
         <dadyin-button matTooltip="Share Link for Customer" (clicked)="shareQuotation()" matTooltip="Share" [theme]="''" type="image"
           [typeval]="'assets/nicons/share.png'">
@@ -51,7 +51,7 @@
       </dadyin-button>
       <dadyin-button (clicked)="generatePdf(false)" matTooltip="Download" [theme]="''" type="image" [typeval]="'assets/nicons/download.png'">
       </dadyin-button>
-      @if (quotationForm.get('status').value == 'DRAFT' && quotationForm.get('id').value) {
+      @if (quotationForm.get('status').value === 'DRAFT' && quotationForm.get('id').value) {
         <dadyin-button matTooltip="Delete"
           (clicked)="confirmDelete()" [theme]="''" type="image"
           [typeval]="'assets/img/icons/delete.png'">
@@ -60,7 +60,7 @@
       <dadyin-button matTooltip="Email Transaction (Regular or Tier)" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/mail.png'">
       </dadyin-button>
       @if (
-        quotationForm?.value.status == null || quotationForm?.value.status == 'DRAFT'
+        quotationForm?.value.status == null || quotationForm?.value.status === 'DRAFT'
         ) {
         <dadyin-button matTooltip="Save this in Draft" (clicked)="saveQuotation('DRAFT')" [theme]="''" type="image"
           [typeval]="'assets/nicons/save.png'">

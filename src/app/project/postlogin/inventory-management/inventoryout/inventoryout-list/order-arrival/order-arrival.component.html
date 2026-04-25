@@ -16,14 +16,14 @@
             <button
               (click)="changeView('productWise')"
               class="width-perc-50"
-              [ngClass]="{ active: poView == 'productWise' }"
+              [ngClass]="{ active: poView === 'productWise' }"
               >
               Product Wise
             </button>
             <button
               (click)="changeView('orderWise')"
               class="width-perc-50"
-              [ngClass]="{ active: poView == 'orderWise' }"
+              [ngClass]="{ active: poView === 'orderWise' }"
               >
               Order Wise
             </button>
@@ -34,9 +34,9 @@
     <div class="col-md-1 d-flex justify-content-end align-items-center align-items-center"></div>
   </div>
 </div>
-@if (poView == 'productWise') {
+@if (poView === 'productWise') {
   <app-inventoryout-product-wise></app-inventoryout-product-wise>
 }
-@if (poView == 'orderWise') {
+@if (poView === 'orderWise') {
   <app-inventoryout-order-wise></app-inventoryout-order-wise>
 }

@@ -13,10 +13,10 @@
       </div>
       <div class="d-flex align-items-center">
         <div class="status" [ngClass]="{
-           'status-sent': templateForm?.value?.status == 'SENT',
-           'status-draft': templateForm?.value?.status == 'DRAFT',
-           'status-confirmed': templateForm?.value?.status == 'CONFIRMED',
-            'status-rejected': templateForm?.value?.status == 'REJECTED'
+           'status-sent': templateForm?.value?.status === 'SENT',
+           'status-draft': templateForm?.value?.status === 'DRAFT',
+           'status-confirmed': templateForm?.value?.status === 'CONFIRMED',
+            'status-rejected': templateForm?.value?.status === 'REJECTED'
          }">{{ templateForm?.value?.status }}</div>
         <span class="font-size-16 over-text mx-2 border-l-light">{{
           this.templateForm.value?.templateCode
@@ -36,14 +36,14 @@
           type="image" [typeval]="'assets/nicons/delete.png'">
         </dadyin-button>
       }
-      @if (templateForm.get('status').value != 'PUBLISHED') {
+      @if (templateForm.get('status').value !== 'PUBLISHED') {
         <dadyin-button matTooltip="Save as Draft" (clicked)="onClickSave(true)" [theme]="'borderless-primary'"
           [isDisabled]="!this.apiService.finalSave" type="image"
           [typeval]="'assets/nicons/save.png'">
         </dadyin-button>
       }
       <dadyin-button [isDisabled]="!this.apiService.finalSave"
-        [matTooltip]="templateForm.get('status').value != 'PUBLISHED' ? 'Publish' : 'Publish Changes'"
+        [matTooltip]="templateForm.get('status').value !== 'PUBLISHED' ? 'Publish' : 'Publish Changes'"
         (clicked)="onClickSave(false)" [theme]="'borderless-primary'" type="image"
         [typeval]="'assets/nicons/place.png'">
       </dadyin-button>

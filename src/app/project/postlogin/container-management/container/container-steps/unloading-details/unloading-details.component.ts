@@ -4,7 +4,7 @@ import {
   Input,
   OnInit,
   Output,
-  Pipe,
+  Pipe, OnDestroy,
 } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -51,7 +51,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
         SlicePipe
     ]
 })
-export class UnloadingDetailsComponent implements OnInit {
+export class UnloadingDetailsComponent implements OnInit, OnDestroy {
   poView: any = 'orderWise';
   expanded: any[] = [];
   @Input() containerForm: UntypedFormGroup;

@@ -40,8 +40,8 @@
         </div>
       }
       @if (
-        inventoryForm.value.status != 'DRAFT' &&
-        inventoryForm.value.status != 'COMPLETED'
+        inventoryForm.value.status !== 'DRAFT' &&
+        inventoryForm.value.status !== 'COMPLETED'
         ) {
         <div
           >
@@ -55,7 +55,7 @@
           </dadyin-button>
         </div>
       }
-      @if (inventoryForm.value.status == 'DRAFT') {
+      @if (inventoryForm.value.status === 'DRAFT') {
         <div>
           <dadyin-button
             [theme]="'primary'"
@@ -71,7 +71,7 @@
           </dadyin-button>
         </div>
       }
-      @if (inventoryForm.value.status == 'COMPLETED') {
+      @if (inventoryForm.value.status === 'COMPLETED') {
         <div>
           <dadyin-button
             [theme]="'primary'"

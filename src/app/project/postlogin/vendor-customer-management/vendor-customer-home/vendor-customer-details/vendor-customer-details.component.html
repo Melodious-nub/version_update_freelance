@@ -321,37 +321,37 @@
                                 </ng-container>
 
                                 <ng-container formGroupName="relationAccountDetail">
-                                  @if (addressCountry.value!='India' || addressCountry.value!='US') {
+                                  @if (addressCountry.value!=='India' || addressCountry.value!=='US') {
                                     <div class="col-2">
                                       <dadyin-input inputType="string" formControlName="taxId" label="Tax Id" [isClearable]="false">
                                       </dadyin-input>
                                     </div>
                                   }
-                                  @if (addressCountry.value=='India') {
+                                  @if (addressCountry.value==='India') {
                                     <div class="col-2">
                                       <dadyin-input inputType="string" formControlName="gst" label="GST" [isClearable]="false">
                                       </dadyin-input>
                                     </div>
                                   }
-                                  @if (addressCountry.value=='India') {
+                                  @if (addressCountry.value==='India') {
                                     <div class="col-2">
                                       <dadyin-input inputType="string" formControlName="panCard" label="Pan Card" [isClearable]="false">
                                       </dadyin-input>
                                     </div>
                                   }
-                                  @if (addressCountry.value=='United States') {
+                                  @if (addressCountry.value==='United States') {
                                     <div class="col-2">
                                       <dadyin-input inputType="string" formControlName="einNumber" label="EIN Number" [isClearable]="false">
                                       </dadyin-input>
                                     </div>
                                   }
-                                  @if (addressCountry.value=='United States') {
+                                  @if (addressCountry.value==='United States') {
                                     <div class="col-2">
                                       <dadyin-input inputType="string" formControlName="ssnNumber" label="SSN Number" [isClearable]="false">
                                       </dadyin-input>
                                     </div>
                                   }
-                                  @if (addressCountry.value=='United States') {
+                                  @if (addressCountry.value==='United States') {
                                     <div class="col-2">
                                       <dadyin-input inputType="string" formControlName="itinNumber" label="ITIN Number" [isClearable]="false">
                                       </dadyin-input>

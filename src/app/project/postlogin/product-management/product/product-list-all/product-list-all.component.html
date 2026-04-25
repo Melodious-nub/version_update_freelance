@@ -179,8 +179,8 @@
                       <td class="px-1 text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{
                       item.invoiceTransactionId }}</td>
                       <td class="px-1 text-center">
-                        <span class="b-round" [ngClass]="item.inventoryDirection == 'IN' ? 'price-text' : 'danger-text'">
-                          {{ item.inventoryDirection=='IN' ? '+' : '-' }} {{ item.newQuantityAdded }}
+                        <span class="b-round" [ngClass]="item.inventoryDirection === 'IN' ? 'price-text' : 'danger-text'">
+                          {{ item.inventoryDirection==='IN' ? '+' : '-' }} {{ item.newQuantityAdded }}
                         </span>
                       </td>
                       <td class="px-1 text-center">{{ item.beforeQuantity }}</td>

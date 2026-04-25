@@ -88,8 +88,8 @@
         @if (
           isEdit &&
           !isSelfRfq &&
-          rfqForm?.value.status != 'CONFIRMED' &&
-          rfqForm?.value.status != 'REJECTED'
+          rfqForm?.value.status !== 'CONFIRMED' &&
+          rfqForm?.value.status !== 'REJECTED'
           ) {
           <dadyin-button
             (clicked)="rejectRfq()"
@@ -111,7 +111,7 @@
         *ngIf="rfqForm?.value.status == null || rfqForm?.value.status == 'DRAFT'" matTooltip="Save this in Draft"
         [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/save.png'">
       </dadyin-button> -->
-      @if (isEdit && !isSelfRfq && rfqForm?.value.status != 'REJECTED') {
+      @if (isEdit && !isSelfRfq && rfqForm?.value.status !== 'REJECTED') {
         <dadyin-button
           (clicked)="convertToQuote()"
           matTooltip="Convert to Quote"
@@ -124,8 +124,8 @@
       @if (
         isEdit &&
         !isSelfRfq &&
-        rfqForm?.value.status != 'CONFIRMED' &&
-        rfqForm?.value.status != 'REJECTED'
+        rfqForm?.value.status !== 'CONFIRMED' &&
+        rfqForm?.value.status !== 'REJECTED'
         ) {
         <dadyin-button
           (clicked)="confirmRfq()"

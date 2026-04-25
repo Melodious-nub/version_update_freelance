@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, Pipe } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Pipe, OnDestroy } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -38,7 +38,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
         SlicePipe
     ]
 })
-export class ExpensesDetailsComponent implements OnInit {
+export class ExpensesDetailsComponent implements OnInit, OnDestroy {
   @Input() isExport: any;
   expanded:any[]=[]
   @Input() componentUoms: any;

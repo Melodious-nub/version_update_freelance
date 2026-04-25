@@ -284,7 +284,7 @@
                     >
                     <div
                       class="d-flex align-items-center p-3 b-light"
-                      [ngClass]="{ 'bg-light': selectedPaymentMethod == 'CARD' }"
+                      [ngClass]="{ 'bg-light': selectedPaymentMethod === 'CARD' }"
                       >
                       <i class="title-text font-size-14 material-icon mx-1"
                         >payments
@@ -295,7 +295,7 @@
                     </div>
                     <div
                       class="d-flex align-items-center p-3 b-light bg-disable"
-                      [ngClass]="{ 'bg-light': selectedPaymentMethod == 'ACH' }"
+                      [ngClass]="{ 'bg-light': selectedPaymentMethod === 'ACH' }"
                       >
                       <i class="title-text font-size-14 material-icon mx-1"
                         >currency_exchange
@@ -304,7 +304,7 @@
                     </div>
                     <div
                       class="d-flex align-items-center p-3 b-light bg-disable"
-                      [ngClass]="{ 'bg-light': selectedPaymentMethod == 'WIRE' }"
+                      [ngClass]="{ 'bg-light': selectedPaymentMethod === 'WIRE' }"
                       >
                       <i class="title-text font-size-14 material-icon mx-1"
                         >payments
@@ -314,7 +314,7 @@
                     <div
                       class="d-flex align-items-center p-3 b-light bg-disable"
                 [ngClass]="{
-                  'bg-light': selectedPaymentMethod == 'NETBANKING'
+                  'bg-light': selectedPaymentMethod === 'NETBANKING'
                 }"
                       >
                       <i class="title-text font-size-14 material-icon mx-1"
@@ -324,7 +324,7 @@
                     </div>
                     <div
                       class="d-flex align-items-center p-3 b-light bg-disable"
-                      [ngClass]="{ 'bg-light': selectedPaymentMethod == 'CC' }"
+                      [ngClass]="{ 'bg-light': selectedPaymentMethod === 'CC' }"
                       >
                       <i class="title-text font-size-14 material-icon mx-1"
                         >payments
@@ -334,7 +334,7 @@
                     <div
                       class="d-flex align-items-center p-3 b-light bg-disable"
                 [ngClass]="{
-                  'bg-light': selectedPaymentMethod == 'CHECKPRINT'
+                  'bg-light': selectedPaymentMethod === 'CHECKPRINT'
                 }"
                       >
                       <i class="title-text font-size-14 material-icon mx-1"

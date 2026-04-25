@@ -31,14 +31,14 @@
               }
             </div>
 
-            @if (importLocalType.value == 'CONTAINER') {
+            @if (importLocalType.value === 'CONTAINER') {
               <div class="col-12 col-md-2">
                 <dadyin-select [optionArr]="containerService.incoTermsList" [emptyOption]="'Select Inco Terms'"
                   label="Inco Terms" formControlName="incoTermId" optionLabel="description" optionValue="id">
                 </dadyin-select>
               </div>
             }
-            @if (importLocalType.value == 'LOCAL') {
+            @if (importLocalType.value === 'LOCAL') {
               <div class="col-8 col-md-2">
               <dadyin-select [optionArr]="[
                   { id: 'DELIVERY', description: 'DELIVERY' },
@@ -50,13 +50,13 @@
 
             <div class="col-4 col-md-1 d-flex">
               <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="
-                  importLocalType.value == 'LOCAL'
+                  importLocalType.value === 'LOCAL'
                     ? 'assets/img/icons/location-on.png'
                     : 'assets/img/icons/location-off.png'
                 ">
               </dadyin-button>
               <dadyin-button (clicked)="toggleType('CONTAINER')" theme="borderless-primary" type="image" [typeval]="
-                  importLocalType.value == 'CONTAINER'
+                  importLocalType.value === 'CONTAINER'
                     ? 'assets/img/icons/anchor_on.png'
                     : 'assets/img/icons/anchor_off.png'
                 ">
@@ -87,7 +87,7 @@
                 </div>
               </div>
             </div>
-            @if (importLocalType.value != 'LOCAL') {
+            @if (importLocalType.value !== 'LOCAL') {
               <div class="col-12 col-md-2">
                 <dadyin-select [emptyOption]="'Select Departure Port'" [optionArr]="containerService.portsList"
                   label="Port of Departure" formControlName="departurePortId" optionLabel="description" optionValue="id">
@@ -107,7 +107,7 @@
                 [emptyOption]="'Sales Manager'">
               </dadyin-select>
             </div>
-            @if (importLocalType.value != 'LOCAL') {
+            @if (importLocalType.value !== 'LOCAL') {
               <div class="col-12 col-md-2">
               <dadyin-select [optionArr]="[
                   { id: 'PALLET', name: 'PALLET' },
@@ -137,7 +137,7 @@
 
             <div class="col-12 col-md-2">
               @if (
-                receivedPoForm.get('fulfilmentType').value == 'CONTAINER'
+                receivedPoForm.get('fulfilmentType').value === 'CONTAINER'
                 ) {
                 <div class="attribute one w-100">
                   <div class="attribute-select justify-content-around w-100 title-text">
@@ -160,7 +160,7 @@
             </div>
             <div class="col-12 col-md-2">
               @if (
-                receivedPoForm.get('fulfilmentType').value == 'CONTAINER'
+                receivedPoForm.get('fulfilmentType').value === 'CONTAINER'
                 ) {
                 <div class="attribute one w-100">
                   <div class="attribute-select justify-content-around w-100 title-text">
@@ -373,17 +373,17 @@
                                   businessAccountService.getOwnerEnhanced(
                                     item?.audit,
                                     item?.productMetaBusinessAccountId
-                                  ) == 'S',
+                                  ) === 'S',
                                 'third-product':
                                   businessAccountService.getOwnerEnhanced(
                                     item?.audit,
                                     item?.productMetaBusinessAccountId
-                                  ) == 'T',
+                                  ) === 'T',
                                 'master-product':
                                   businessAccountService.getOwnerEnhanced(
                                     item?.audit,
                                     item?.productMetaBusinessAccountId
-                                  ) == 'M'
+                                  ) === 'M'
                               }">
                                     ({{
                                     businessAccountService.getOwnerEnhanced(
@@ -415,7 +415,7 @@
                                   productPackage
                                     .get('productDetails')
                                     .get('productMetaBusinessAccountId').value
-                                ) == 'S',
+                                ) === 'S',
                               'third-product':
                                 businessAccountService.getOwnerEnhanced(
                                   productPackage
@@ -424,7 +424,7 @@
                                   productPackage
                                     .get('productDetails')
                                     .get('productMetaBusinessAccountId').value
-                                ) == 'T',
+                                ) === 'T',
                               'master-product':
                                 businessAccountService.getOwnerEnhanced(
                                   productPackage
@@ -433,7 +433,7 @@
                                   productPackage
                                     .get('productDetails')
                                     .get('productMetaBusinessAccountId').value
-                                ) == 'M'
+                                ) === 'M'
                             }">
                                 ({{
                                 businessAccountService.getOwnerEnhanced(
@@ -581,13 +581,13 @@
                             }
                             @if (
                               i + 1 == productPackages?.controls.length &&
-                              this.status.value != 'CONFIRMED'
+                              this.status.value !== 'CONFIRMED'
                               ) {
                               <dadyin-button (clicked)="addProductPackage()" [theme]="'borderless-primary'" type="icon"
                                 [typeval]="'add_circle_outline'">
                               </dadyin-button>
                             }
-                            @if (this.status.value != 'CONFIRMED') {
+                            @if (this.status.value !== 'CONFIRMED') {
                               <dadyin-button (clicked)="deleteProductPackage(i)"
                                 [theme]="'borderless-danger'" type="icon" [typeval]="'delete_outline'">
                               </dadyin-button>

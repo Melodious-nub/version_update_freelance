@@ -4,7 +4,7 @@ import {
   OnInit,
   Output,
   EventEmitter,
-  HostListener,
+  HostListener, OnDestroy,
 } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -40,7 +40,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
         OrderTransactionPackagesComponent
     ]
 })
-export class ViewQuotationComponent implements OnInit {
+export class ViewQuotationComponent implements OnInit, OnDestroy {
     public buyingTypeList: any[] = [
     { name: 'SKU', value: 'SKU' },
     { name: 'Truck Load', value: 'TRUCK' },

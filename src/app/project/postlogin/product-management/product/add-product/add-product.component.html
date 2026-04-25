@@ -372,7 +372,7 @@
                             @if (
                               !preferredCustomerId?.value ||
                               preferredCustomerId?.value == null ||
-                              preferredCustomerId?.value == 'null'
+                              preferredCustomerId?.value === 'null'
                               ) {
                               <div class="d-flex check">
                                 <input type="checkbox" (change)="getCalculatedValues()" formControlName="isCustomizable" />
@@ -1610,7 +1610,7 @@
                               </div>
                             </div>
                             <dadyin-button class="mx-1" (clicked)="addAdditionalCost()" type="image" [theme]="'borderless-primary'"
-                              [typeval]="'assets/nicons/add-white.png'" [isDisabled]="additionalCostType.value == ''">
+                              [typeval]="'assets/nicons/add-white.png'" [isDisabled]="additionalCostType.value === ''">
                             </dadyin-button>
                           </ng-container>
                         </div>

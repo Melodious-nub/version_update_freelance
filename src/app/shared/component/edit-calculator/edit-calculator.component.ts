@@ -5,7 +5,7 @@ import {
   Output,
   EventEmitter,
   AfterViewChecked,
-  ChangeDetectorRef,
+  ChangeDetectorRef, OnDestroy,
 } from '@angular/core';
 import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -54,7 +54,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
         GridModule
     ]
 })
-export class EditCalculatorComponent implements OnInit {
+export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChecked {
   private _processCalculatorForm: UntypedFormGroup;
   @Input() public set processCalculatorForm(processCalculatorForm: UntypedFormGroup) {
     this._processCalculatorForm = processCalculatorForm;

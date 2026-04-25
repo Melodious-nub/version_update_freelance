@@ -24,14 +24,14 @@
                 </div>
               }
             </div>
-            @if (importLocalType.value == 'CONTAINER') {
+            @if (importLocalType.value === 'CONTAINER') {
               <div class="col-12 col-md-2">
                 <dadyin-select [optionArr]="containerService.incoTermsList" label="Inco terms"
                   formControlName="incoTermId" optionLabel="description" optionValue="id">
                 </dadyin-select>
               </div>
             }
-            @if (importLocalType.value == 'LOCAL') {
+            @if (importLocalType.value === 'LOCAL') {
               <div class="col-12 col-md-2">
               <dadyin-select [optionArr]="[
                   { id: 'DELIVERY', description: 'DELIVERY' },
@@ -41,11 +41,11 @@
               </div>
             }
             <div class="col-12 col-md-1 px-0 d-flex">
-              <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'LOCAL'
+              <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="importLocalType.value === 'LOCAL'
               ? 'assets/img/icons/location-on.png'
               : 'assets/img/icons/location-off.png'">
               </dadyin-button>
-              <dadyin-button (clicked)="toggleType('CONTAINER')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'CONTAINER'
+              <dadyin-button (clicked)="toggleType('CONTAINER')" theme="borderless-primary" type="image" [typeval]="importLocalType.value === 'CONTAINER'
               ? 'assets/img/icons/anchor_on.png'
               : 'assets/img/icons/anchor_off.png'">
               </dadyin-button>
@@ -70,7 +70,7 @@
               </dadyin-select>
             </div>
 
-            @if (importLocalType.value != 'LOCAL') {
+            @if (importLocalType.value !== 'LOCAL') {
               <div class="col-12 col-md-2 ps-0">
                 <dadyin-select [optionArr]="containerService.portsList" label="Port of Departure"
                   formControlName="departurePortId" optionLabel="description" optionValue="id">

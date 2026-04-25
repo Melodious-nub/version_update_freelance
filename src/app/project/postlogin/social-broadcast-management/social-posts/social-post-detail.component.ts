@@ -1,6 +1,6 @@
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { debounceTime, distinctUntilChanged, finalize, switchMap } from 'rxjs/operators';
 import { first, Observable, of } from 'rxjs';
@@ -43,7 +43,7 @@ type ProductImageTile = {
     styleUrls: ['./social-post-detail.component.scss'],
     imports: [SpinnerOverlayComponent, NgClass, ExtendedModule, DadyinButtonComponent, MatTabGroup, MatTab, MatTabLabel, MatTabContent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, MatTooltip, DadyinSearchSelectNewComponent, CKEditorModule, MatIcon, DadyinSelectComponent, TimePickerComponent, NgTemplateOutlet, TitleCasePipe, DatePipe]
 })
-export class SocialPostDetailComponent implements OnInit {
+export class SocialPostDetailComponent implements OnInit, OnDestroy {
     public Editor = ClassicEditor;
     public editorConfig = {
         toolbar: [

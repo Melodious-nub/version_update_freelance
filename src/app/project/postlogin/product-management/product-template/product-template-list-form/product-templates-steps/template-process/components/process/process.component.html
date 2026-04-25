@@ -21,7 +21,7 @@
             ?.get('process')
             ?.get('isLayerPercentageCalculated')?.value == false" (click)="setTemplateProcessMaterialType('LOG_SHEET')"
             class="width-perc-50 h-25 font-size-12"
-            [ngClass]="{ active: templateProcessMaterialType.value == 'LOG_SHEET' }">
+            [ngClass]="{ active: templateProcessMaterialType.value === 'LOG_SHEET' }">
             Log Sheet
           </button>
           <button [disabled]="
@@ -30,7 +30,7 @@
             ?.get('process')
             ?.get('isLayerPercentageCalculated')?.value == false"
             (click)="setTemplateProcessMaterialType('FIXED_MATERIAL')" class="width-perc-50 h-25 font-size-12"
-            [ngClass]="{ active: templateProcessMaterialType.value == 'FIXED_MATERIAL' }">
+            [ngClass]="{ active: templateProcessMaterialType.value === 'FIXED_MATERIAL' }">
             Fixed Material
           </button>
         </div>

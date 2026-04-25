@@ -26,7 +26,7 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     ]
 })
 export class BillListComponent implements OnInit {
-  @Input('single') single = false;
+  @Input() single = false;
   billList: any[];
   public searchText: string;
   public pageConfig: any = {

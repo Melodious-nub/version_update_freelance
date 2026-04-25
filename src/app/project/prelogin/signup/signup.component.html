@@ -1,7 +1,7 @@
 <div class="signin-form">
   <div class="heading">Sign up as {{businessLines}}</div>
   <form name="form" class="form w-100" [formGroup]="signupGroup">
-    @if (inviteType != 'EMPLOYEE') {
+    @if (inviteType !== 'EMPLOYEE') {
       <div class="row" formGroupName="userDTO">
         <dadyin-input
           class="rounded"

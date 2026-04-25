@@ -51,7 +51,7 @@
             </span>
           }
 
-          @if (paymentStatus != 'COMPLETED') {
+          @if (paymentStatus !== 'COMPLETED') {
             <dadyin-button
               [isDisabled]="!paymentEnabled"
               label="Pay now"
@@ -68,8 +68,8 @@
     </div>
 
     @if (
-      importLocalType == 'LOCAL' &&
-      deliveryPickup == 'DELIVERY' &&
+      importLocalType === 'LOCAL' &&
+      deliveryPickup === 'DELIVERY' &&
       deliveryAddressValue
       ) {
       <div
@@ -90,7 +90,7 @@
         </div>
       }
 
-      @if (this.paymentStatus == 'COMPLETED') {
+      @if (this.paymentStatus === 'COMPLETED') {
         <div
           class="p-3 w-100 title-text font-size-16 mt-2 price-text"
           >
@@ -98,7 +98,7 @@
         </div>
       }
 
-      @if (this.paymentStatus != 'COMPLETED') {
+      @if (this.paymentStatus !== 'COMPLETED') {
         @if (this.paymentEnabled != true) {
           <div
             class="p-3 w-100 title-text font-size-14 mt-2 danger-text"
@@ -123,14 +123,14 @@
                 >
                 <div
                   class="d-flex align-items-center p-3 b-light"
-                  [ngClass]="{ 'bg-light': selectedPaymentMethod == 'CARD' }"
+                  [ngClass]="{ 'bg-light': selectedPaymentMethod === 'CARD' }"
                   >
                   <i class="title-text font-size-14 material-icon mx-1">payments </i>
                   <div class="font-size-14 title-text">Credit Card/Debit Card</div>
                 </div>
                 <div
                   class="d-flex align-items-center p-3 b-light bg-disable"
-                  [ngClass]="{ 'bg-light': selectedPaymentMethod == 'ACH' }"
+                  [ngClass]="{ 'bg-light': selectedPaymentMethod === 'ACH' }"
                   >
                   <i class="title-text font-size-14 material-icon mx-1"
                     >currency_exchange
@@ -139,28 +139,28 @@
                 </div>
                 <div
                   class="d-flex align-items-center p-3 b-light bg-disable"
-                  [ngClass]="{ 'bg-light': selectedPaymentMethod == 'WIRE' }"
+                  [ngClass]="{ 'bg-light': selectedPaymentMethod === 'WIRE' }"
                   >
                   <i class="title-text font-size-14 material-icon mx-1">payments </i>
                   <div class="font-size-14 title-text">Wire Transfer</div>
                 </div>
                 <div
                   class="d-flex align-items-center p-3 b-light bg-disable"
-                  [ngClass]="{ 'bg-light': selectedPaymentMethod == 'NETBANKING' }"
+                  [ngClass]="{ 'bg-light': selectedPaymentMethod === 'NETBANKING' }"
                   >
                   <i class="title-text font-size-14 material-icon mx-1">payments </i>
                   <div class="font-size-14 title-text">Net Banking</div>
                 </div>
                 <div
                   class="d-flex align-items-center p-3 b-light bg-disable"
-                  [ngClass]="{ 'bg-light': selectedPaymentMethod == 'CC' }"
+                  [ngClass]="{ 'bg-light': selectedPaymentMethod === 'CC' }"
                   >
                   <i class="title-text font-size-14 material-icon mx-1">payments </i>
                   <div class="font-size-14 title-text">CC</div>
                 </div>
                 <div
                   class="d-flex align-items-center p-3 b-light bg-disable"
-                  [ngClass]="{ 'bg-light': selectedPaymentMethod == 'CHECKPRINT' }"
+                  [ngClass]="{ 'bg-light': selectedPaymentMethod === 'CHECKPRINT' }"
                   >
                   <i class="title-text font-size-14 material-icon mx-1">payments </i>
                   <div class="font-size-14 title-text">Check Print</div>

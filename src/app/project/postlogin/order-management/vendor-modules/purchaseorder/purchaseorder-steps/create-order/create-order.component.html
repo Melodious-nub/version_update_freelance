@@ -23,7 +23,7 @@
                 </div>
               }
             </div>
-            @if (importLocalType.value == 'CONTAINER') {
+            @if (importLocalType.value === 'CONTAINER') {
               <div class="col-12 col-md-2">
                 <dadyin-select [isDisabled]="!isEditable" [optionArr]="containerService.incoTermsList"
                   [emptyOption]="'Select Inco Terms'" label="Inco Terms" formControlName="incoTermId"
@@ -31,7 +31,7 @@
                 </dadyin-select>
               </div>
             }
-            @if (importLocalType.value == 'LOCAL') {
+            @if (importLocalType.value === 'LOCAL') {
               <div class="col-8 col-md-2">
               <dadyin-select [isDisabled]="!isEditable" [optionArr]="[
                   { id: 'DELIVERY', description: 'DELIVERY' },
@@ -42,11 +42,11 @@
             }
 
             <div class="col-md-1 col-4 d-flex">
-              <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'LOCAL'
+              <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="importLocalType.value === 'LOCAL'
                 ? 'assets/img/icons/location-on.png'
                 : 'assets/img/icons/location-off.png'">
               </dadyin-button>
-              <dadyin-button (clicked)="toggleType('CONTAINER')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'CONTAINER'
+              <dadyin-button (clicked)="toggleType('CONTAINER')" theme="borderless-primary" type="image" [typeval]="importLocalType.value === 'CONTAINER'
                 ? 'assets/img/icons/anchor_on.png'
                 : 'assets/img/icons/anchor_off.png'">
               </dadyin-button>
@@ -88,14 +88,14 @@
                 formControlName="purchaseManagerId" optionLabel="firstName" optionValue="id">
               </dadyin-select>
             </div>
-            @if (importLocalType.value != 'LOCAL') {
+            @if (importLocalType.value !== 'LOCAL') {
               <div class="col-12 col-md-2">
                 <dadyin-input [isDisabled]="!isEditable" inputType="text" label="Dadyin Points"
                   formControlName="dadyInPoints">
                 </dadyin-input>
               </div>
             }
-            @if (importLocalType.value != 'LOCAL') {
+            @if (importLocalType.value !== 'LOCAL') {
               <div class="col-12 col-md-2">
               <dadyin-select [isDisabled]="!isEditable" [optionArr]="[
                   { id: 'PALLET', name: 'PALLET' },

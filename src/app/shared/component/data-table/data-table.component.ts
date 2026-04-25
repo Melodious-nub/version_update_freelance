@@ -5,7 +5,7 @@ import {
   Input,
   OnInit,
   Output,
-  ViewChild,
+  ViewChild, AfterViewInit, OnChanges,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
@@ -61,7 +61,7 @@ import { NgStyle, NgClass, SlicePipe, DatePipe } from '@angular/common';
         NumberFormatterPipe
     ]
 })
-export class DataTableComponent implements OnInit {
+export class DataTableComponent implements OnInit, AfterViewInit, OnChanges {
   initialSelection = [];
   allowMultiSelect = true;
   selection = new SelectionModel<any>(

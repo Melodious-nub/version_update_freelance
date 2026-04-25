@@ -37,7 +37,7 @@
               }
             </div>
 
-            @if (importLocalType.value == 'CONTAINER') {
+            @if (importLocalType.value === 'CONTAINER') {
               <div
                 class="col-12 col-md-2"
                 >
@@ -52,7 +52,7 @@
                 </dadyin-select>
               </div>
             }
-            @if (importLocalType.value == 'LOCAL') {
+            @if (importLocalType.value === 'LOCAL') {
               <div
                 class="col-12 col-md-2"
                 >
@@ -69,7 +69,7 @@
                 </dadyin-select>
               </div>
             }
-            @if (importLocalType.value != 'LOCAL') {
+            @if (importLocalType.value !== 'LOCAL') {
               <div
                 class="col-12 col-md-2"
                 >
@@ -92,7 +92,7 @@
               <dadyin-button
                 (clicked)="toggleType('LOCAL')"
                 [theme]="
-                  importLocalType.value == 'LOCAL'
+                  importLocalType.value === 'LOCAL'
                     ? 'primary'
                     : 'borderless-primary'
                 "
@@ -104,7 +104,7 @@
               <dadyin-button
                 (clicked)="toggleType('CONTAINER')"
                 [theme]="
-                  importLocalType.value == 'CONTAINER'
+                  importLocalType.value === 'CONTAINER'
                     ? 'primary'
                     : 'borderless-primary'
                 "
@@ -159,7 +159,7 @@
           </div>
 
           <div class="row">
-            @if (importLocalType.value != 'LOCAL') {
+            @if (importLocalType.value !== 'LOCAL') {
               <div
                 class="col-12 col-md-2"
                 >
@@ -202,7 +202,7 @@
               </dadyin-select>
             </div>
             <div class="col-12 col-md-2">
-              @if (invoiceForm.get('fulfilmentType').value == 'CONTAINER') {
+              @if (invoiceForm.get('fulfilmentType').value === 'CONTAINER') {
                 <div class="attribute one w-100">
                   <div
                     class="attribute-select justify-content-around w-100 title-text"
@@ -228,7 +228,7 @@
               }
             </div>
             <div class="col-12 col-md-2">
-              @if (invoiceForm.get('fulfilmentType').value == 'CONTAINER') {
+              @if (invoiceForm.get('fulfilmentType').value === 'CONTAINER') {
                 <div class="attribute one w-100">
                   <div
                     class="attribute-select justify-content-around w-100 title-text"

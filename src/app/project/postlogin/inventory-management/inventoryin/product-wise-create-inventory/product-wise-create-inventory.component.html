@@ -135,10 +135,10 @@
                                         />
                                       </td>
                                       <td>
-                                        @if (detail.get('status').value=='DRAFT') {
+                                        @if (detail.get('status').value==='DRAFT') {
                                           <dadyin-button (clicked)="detail.get('status').setValue('COMPLETED')" [theme]="'primary'" label="Confirm"></dadyin-button>
                                         }
-                                        @if (detail.get('status').value=='COMPLETED') {
+                                        @if (detail.get('status').value==='COMPLETED') {
                                           <span>{{detail.get('status').value}}</span>
                                         }
                                       </td>
@@ -223,34 +223,34 @@
                                     @if (detail.get('productId').value == productId) {
                                       <tr>
                                         <td>
-                                          <input [readonly]="detail.get('status').value=='COMPLETED'" formControlName="palletNumber" type="text" />
+                                          <input [readonly]="detail.get('status').value==='COMPLETED'" formControlName="palletNumber" type="text" />
                                         </td>
                                         <td>
-                                          <input [readonly]="detail.get('status').value=='COMPLETED'" formControlName="location" type="text" />
+                                          <input [readonly]="detail.get('status').value==='COMPLETED'" formControlName="location" type="text" />
                                         </td>
                                         <td>
-                                          <input [readonly]="detail.get('status').value=='COMPLETED'"
+                                          <input [readonly]="detail.get('status').value==='COMPLETED'"
                                             (change)="calculate()"
                                             formControlName="rowNumber"
                                             type="number"
                                             />
                                           </td>
                                           <td>
-                                            <input [readonly]="detail.get('status').value=='COMPLETED'"
+                                            <input [readonly]="detail.get('status').value==='COMPLETED'"
                                               (change)="calculate()"
                                               formControlName="columnNumber"
                                               type="number"
                                               />
                                             </td>
                                             <td>
-                                              <input [readonly]="detail.get('status').value=='COMPLETED'"
+                                              <input [readonly]="detail.get('status').value==='COMPLETED'"
                                                 (change)="calculate()"
                                                 formControlName="singleBoxNumber"
                                                 type="number"
                                                 />
                                               </td>
                                               <td>
-                                                <input [readonly]="detail.get('status').value=='COMPLETED'" type="text" formControlName="numberOfItems" />
+                                                <input [readonly]="detail.get('status').value==='COMPLETED'" type="text" formControlName="numberOfItems" />
                                               </td>
                                               <td>
                                                 <input
@@ -260,16 +260,16 @@
                                                   />
                                                 </td>
                                                 <td>
-                                                  <input [readonly]="detail.get('status').value=='COMPLETED'" type="text" />
+                                                  <input [readonly]="detail.get('status').value==='COMPLETED'" type="text" />
                                                 </td>
                                                 <td>
-                                                  <input [readonly]="detail.get('status').value=='COMPLETED'" formControlName="dockNumber" type="text" />
+                                                  <input [readonly]="detail.get('status').value==='COMPLETED'" formControlName="dockNumber" type="text" />
                                                 </td>
                                                 <td>
-                                                  <input [readonly]="detail.get('status').value=='COMPLETED'" formControlName="handlingInstructions" type="text" />
+                                                  <input [readonly]="detail.get('status').value==='COMPLETED'" formControlName="handlingInstructions" type="text" />
                                                 </td>
                                                 <td>
-                                                  <input [readonly]="detail.get('status').value=='COMPLETED'" formControlName="notes" type="text" />
+                                                  <input [readonly]="detail.get('status').value==='COMPLETED'" formControlName="notes" type="text" />
                                                 </td>
                                               </tr>
                                             }

@@ -34,9 +34,9 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class WarehouseDetailsComponent implements OnInit {
-  @Input('vendorForm') vendorForm: any;
-  @Input('isCustomer') isCustomer: any;
-  @Input('countries') countries: any;
+  @Input() vendorForm: any;
+  @Input() isCustomer: any;
+  @Input() countries: any;
   constructor(
     public toastr: ToastrService,
     public customerService: ApiService,

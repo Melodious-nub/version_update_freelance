@@ -28,12 +28,12 @@
             [theme]="'primary'"
           ></dadyin-button>
         }
-        @if (relationAcceptedStatus == 'PENDING') {
+        @if (relationAcceptedStatus === 'PENDING') {
           <div class="status">
             {{ relationAcceptedStatus }}
           </div>
         }
-        @if (reverseRelation?.value?.relationAcceptedStatus == 'PENDING') {
+        @if (reverseRelation?.value?.relationAcceptedStatus === 'PENDING') {
           <div
             class="status"
             >
@@ -41,7 +41,7 @@
           </div>
         }
         <div class="b-round bg-primary d-flex text-white align-items-center p-1" [formGroup]="vendorForm">
-          @if (verifiedStatus.value == 'NONE' || !verifiedStatus.value) {
+          @if (verifiedStatus.value === 'NONE' || !verifiedStatus.value) {
             <input
               type="checkbox"
               formControlName="sendInvite"
@@ -57,7 +57,7 @@
 
         @if (
           checkInviteDate(inviteCreatedDate?.value) &&
-          inviteStatus?.value == 'SENT'
+          inviteStatus?.value === 'SENT'
           ) {
           <dadyin-button
             [matTooltip]="'Previous Status: ' + inviteStatus?.value"
@@ -66,7 +66,7 @@
             [theme]="'primary'"
           ></dadyin-button>
         }
-        @if (relationAcceptedStatus.value == 'PENDING') {
+        @if (relationAcceptedStatus.value === 'PENDING') {
           <dadyin-button
             label="Accept"
             [matTooltip]="'Accept Relation'"
@@ -75,7 +75,7 @@
             >
           </dadyin-button>
         }
-        @if (relationAcceptedStatus.value == 'PENDING') {
+        @if (relationAcceptedStatus.value === 'PENDING') {
           <dadyin-button
             label="Reject"
             [matTooltip]="'Reject Relation'"
@@ -91,7 +91,7 @@
           [typeval]="'delete_outline'"
           >
         </dadyin-button>
-        @if (relationAcceptedStatus.value != 'REJECTED') {
+        @if (relationAcceptedStatus.value !== 'REJECTED') {
           <dadyin-button
             label="Save"
             (clicked)="saveCustomer()"

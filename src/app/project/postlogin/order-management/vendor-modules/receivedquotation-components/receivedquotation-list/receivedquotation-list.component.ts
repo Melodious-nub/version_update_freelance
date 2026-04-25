@@ -25,8 +25,8 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     ]
 })
 export class ReceivedquotationListComponent implements OnInit {
-  @Input('single') single = false;
-  @Input('vendorId') vendorId = null;
+  @Input() single = false;
+  @Input() vendorId = null;
   uomSetting = false;
   public preferredUoms: any[];
   public preferForm: UntypedFormGroup = this.formService.createPreferUomForm();

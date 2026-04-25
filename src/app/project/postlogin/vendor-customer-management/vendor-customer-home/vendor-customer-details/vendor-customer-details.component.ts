@@ -122,13 +122,13 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
       });
   }
 
-  @Input('vendorForm') vendorForm: UntypedFormGroup;
-  @Input('isCustomer') isCustomer: any;
+  @Input() vendorForm: UntypedFormGroup;
+  @Input() isCustomer: any;
   public industrySubTypes: any;
-  @Input('countries') countries: any;
-  @Output('emitBusinessAccountSelected')
+  @Input() countries: any;
+  @Output()
   emitBusinessAccountSelected: EventEmitter<any> = new EventEmitter();
-  @Output('emitClearBusinessAccount')
+  @Output()
   emitClearBusinessAccount: EventEmitter<any> = new EventEmitter();
   @ViewChild(BusinessEntityConfigurationComponent) businessEntityConfigComponent: BusinessEntityConfigurationComponent;
 

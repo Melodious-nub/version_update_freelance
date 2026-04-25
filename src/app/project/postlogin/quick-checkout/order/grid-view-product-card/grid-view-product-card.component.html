@@ -422,9 +422,9 @@
                               label="View Detail"
                               [theme]="'primary'"
           [ngClass]="{
-            'self-product': getOwner(product?.productDetails?.audit) == 'S',
-            'third-product': getOwner(product?.productDetails?.audit) == 'T',
-            'master-product': getOwner(product?.productDetails?.audit) == 'M'
+            'self-product': getOwner(product?.productDetails?.audit) === 'S',
+            'third-product': getOwner(product?.productDetails?.audit) === 'T',
+            'master-product': getOwner(product?.productDetails?.audit) === 'M'
           }"
                               >
                               {{ getOwner(product?.productDetails?.audit) }}
@@ -641,7 +641,7 @@
                             </label>
                             <span>{{ product?.productDetails?.auditBusinessAccountName }}</span>
                           </div>
-                          @if (getOwner(product?.productDetails?.audit) == 'S') {
+                          @if (getOwner(product?.productDetails?.audit) === 'S') {
                             <div class="col-12">
                               <label> <b> Created Date: </b></label
                               ><span>{{

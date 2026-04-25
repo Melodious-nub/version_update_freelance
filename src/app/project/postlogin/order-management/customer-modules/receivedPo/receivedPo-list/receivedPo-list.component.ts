@@ -89,7 +89,7 @@ export class ReceivedPoListComponent implements OnInit {
   pageIndex: any = 0;
   pageS = 20;
   sortQuery: any = 'audit.lastModifiedDate,desc';
-  @Input('customerId') customerId: any = null;
+  @Input() customerId: any = null;
   @Input() single = false;
 
   public pageConfig: any = {
