@@ -1,2 +1,0 @@
-export const RAW_MATERIAL_TEMPLATE_ID = 1
-export const PACKAGING_TEMPLATE_ID = 2
