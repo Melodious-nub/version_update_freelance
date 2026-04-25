@@ -35,11 +35,11 @@
           <div class="bg-light" style="height: 300px; position: relative">
             @if (productDetail?.productImageFileNames) {
               <section>
-                <swiper navigation="true" pagination="true" slidesPerView="1">
+                <swiper-container navigation="true" pagination="true" slides-per-view="1">
                   @for (
                     file of productDetail?.productImageFileNames; track
                     file; let i = $index) {
-                    <ng-template swiperSlide>
+                    <swiper-slide>
                       <img
                         style="cursor: zoom-in; object-fit: contain"
                       (click)="
@@ -50,9 +50,9 @@
                         [src]="imgUrl + file"
                         alt=""
                         />
-                      </ng-template>
+                      </swiper-slide>
                     }
-                  </swiper>
+                  </swiper-container>
                 </section>
               }
             </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -7,11 +7,11 @@ import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
 import { TokenService } from 'src/app/service/token.service';
 import { PricecompareDialogComponent } from 'src/app/shared/component/pricecompare-dialog/pricecompare-dialog.component';
-import { SwiperOptions } from 'swiper';
+import { SwiperOptions } from 'swiper/types';
 import { OrderManagementService } from '../../postlogin/order-management/service/order-management.service';
 import { environment } from 'src/environments/environment';
 import { BusinessAccountService } from '../../postlogin/business-account/business-account.service';
-import { SwiperModule } from 'swiper/angular';
+
 import { MatIcon } from '@angular/material/icon';
 import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
 
@@ -20,14 +20,16 @@ import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dad
     templateUrl: './landing.component.html',
     styleUrls: ['./landing.component.scss'],
     standalone: true,
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
     RouterLink,
     DadyinButtonComponent,
-    MatIcon,
-    SwiperModule
+    MatIcon
 ],
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent implements OnInit, AfterViewInit {
+  @ViewChild('swiperLanding') swiperLanding?: ElementRef;
+  @ViewChild('swiperLanding2') swiperLanding2?: ElementRef;
   productsList = [];
   industryTypeId = this.fb.control(null);
   productSearchRequest: any = {};
@@ -60,6 +62,17 @@ export class LandingComponent implements OnInit {
     public OrderManagementService: OrderManagementService,
     public businessAccountService: BusinessAccountService
   ) {}
+
+  ngAfterViewInit() {
+    [this.swiperLanding, this.swiperLanding2].forEach(swiper => {
+      if (swiper) {
+        const swiperEl = swiper.nativeElement;
+        Object.assign(swiperEl, this.swiperConfig);
+        swiperEl.navigation = true;
+        swiperEl.initialize();
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.apiService.Get_Industry_Types();

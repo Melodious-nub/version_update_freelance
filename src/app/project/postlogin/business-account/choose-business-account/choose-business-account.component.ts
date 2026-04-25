@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -11,8 +11,8 @@ import { ChooseBusinessAccountService } from './choose-business-account.service'
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { QcmobileDialogComponent } from 'src/app/shared/dialogs/qcmobile/qcmobile-dialog.component';
-import { SwiperOptions } from 'swiper';
-import { SwiperComponent, SwiperModule } from 'swiper/angular';
+
+
 import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { NgClass } from '@angular/common';
@@ -22,14 +22,14 @@ import { NgClass } from '@angular/common';
     templateUrl: './choose-business-account.html',
     styleUrls: ['./choose-business-account.scss'],
     standalone: true,
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
     NgClass,
     ExtendedModule,
-    DadyinButtonComponent,
-    SwiperModule
+    DadyinButtonComponent
 ],
 })
-export class ChooseBusinessAccountComponent implements OnInit {
+export class ChooseBusinessAccountComponent implements OnInit, AfterViewInit {
   public imgUrl = environment.imgUrl;
   public businessAccountGroup: UntypedFormGroup;
   public submitted = false;
@@ -38,13 +38,16 @@ export class ChooseBusinessAccountComponent implements OnInit {
   public userName: string = '';
   public user: UserAccount | null = null;
 
-  @ViewChild('swiperR', { static: false }) swiperR?: SwiperComponent;
+  @ViewChild('swiperR') swiperR?: ElementRef;
   activeIndex = 0;
-  swiperConfig: SwiperOptions = {
+  swiperConfig: any = {
     spaceBetween: 15,
     navigation: false,
     loop: true,
-    autoplay: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false
+    },
     breakpoints: {
       0: {
         slidesPerView: 1,
@@ -54,18 +57,7 @@ export class ChooseBusinessAccountComponent implements OnInit {
         slidesPerView: 1,
         spaceBetween: 10,
       },
-    },
-    on: {
-      slideChange: () => {
-        if (
-          this.swiperR.swiperRef?.activeIndex ||
-          this.swiperR.swiperRef?.activeIndex == 0
-        ) {
-          const index = this.swiperR.swiperRef?.activeIndex;
-          this.activeIndex = index;
-        }
-      },
-    },
+    }
   };
 
   constructor(
@@ -78,6 +70,25 @@ export class ChooseBusinessAccountComponent implements OnInit {
   ) {
     this.user = this.authService.$currentUser.value;
     this.userName = this.user?.email ?? 'Unknown';
+  }
+
+  ngAfterViewInit() {
+    if (this.swiperR) {
+      const swiperEl = this.swiperR.nativeElement;
+      Object.assign(swiperEl, this.swiperConfig);
+      
+      swiperEl.addEventListener('swiperslidechange', (event: any) => {
+        this.activeIndex = event.detail[0].realIndex;
+      });
+
+      swiperEl.initialize();
+    }
+  }
+
+  goToSlide(index: number) {
+    if (this.swiperR) {
+      this.swiperR.nativeElement.swiper.slideToLoop(index);
+    }
   }
 
   ngOnInit(): void {

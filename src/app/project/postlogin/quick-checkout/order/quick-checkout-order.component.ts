@@ -6,6 +6,8 @@ import {
   OnInit,
   ViewChild,
   OnDestroy,
+  AfterViewInit,
+  CUSTOM_ELEMENTS_SCHEMA,
 } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -35,13 +37,13 @@ import { BusinessAccountService } from '../../business-account/business-account.
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm/confirm-dialog.component';
 import { QcProductDetailComponent } from '../qc-product-detail/qc-product-detail.component';
 import { PaymentService } from 'src/app/service/payment.service';
-import { SwiperOptions } from 'swiper';
+
 import { TermsDialogComponent } from 'src/app/shared/dialogs/terms/terms-dialog.component';
 import { Location, NgStyle, NgClass, TitleCasePipe, DatePipe, AsyncPipe } from '@angular/common';
 import { NumberFormatterPipe } from '../../../../shared/pipes/number-formatter.pipe';
 import { PaymentComponent } from '../../order-management/vendor-modules/purchaseorder/purchaseorder-steps/payment/payment.component';
 import { GridViewProductCardComponent } from './grid-view-product-card/grid-view-product-card.component';
-import { SwiperModule } from 'swiper/angular';
+
 import { MatIcon } from '@angular/material/icon';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { DadyinSelectComponent } from '../../../../shared/widgets/dadyin-select/dadyin-select.component';
@@ -58,6 +60,7 @@ import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
     templateUrl: './quick-checkout-order.html',
     styleUrls: ['./quick-checkout-order.scss'],
     standalone: true,
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -74,7 +77,6 @@ import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
     DadyinSelectComponent,
     NgbTooltip,
     MatIcon,
-    SwiperModule,
     GridViewProductCardComponent,
     PaymentComponent,
     TitleCasePipe,
@@ -82,13 +84,14 @@ import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
     NumberFormatterPipe
 ],
 })
-export class QuickCheckoutOrderComponent implements OnInit, OnDestroy {
+export class QuickCheckoutOrderComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild('swiperOrder') swiperOrder?: ElementRef;
   cartView = false;
   htmlContent: any;
   allTierPricingDetails: any;
   private destroy$ = new Subject<void>();
 
-  swiperConfig: SwiperOptions = {
+  swiperConfig: any = {
     spaceBetween: 10,
     navigation: false,
     breakpoints: {
@@ -286,6 +289,14 @@ export class QuickCheckoutOrderComponent implements OnInit, OnDestroy {
 
     const currentDate = new Date();
     this.orderForm.get('date').patchValue(currentDate.toISOString().split('T')[0]);
+  }
+
+  ngAfterViewInit() {
+    if (this.swiperOrder) {
+      const swiperEl = this.swiperOrder.nativeElement;
+      Object.assign(swiperEl, this.swiperConfig);
+      swiperEl.initialize();
+    }
   }
 
   ngOnDestroy() {

@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { SwiperOptions } from 'swiper';
-import { SwiperComponent, SwiperModule } from 'swiper/angular';
+
+
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { NgClass } from '@angular/common';
 
@@ -10,21 +10,24 @@ import { NgClass } from '@angular/common';
     templateUrl: './prelogin.component.html',
     styleUrls: ['./prelogin.component.scss'],
     standalone: true,
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
     RouterOutlet,
     NgClass,
-    ExtendedModule,
-    SwiperModule
+    ExtendedModule
 ],
 })
-export class PreloginComponent implements OnInit {
-  @ViewChild('swiperR', { static: false }) swiperR?: SwiperComponent;
+export class PreloginComponent implements OnInit, AfterViewInit {
+  @ViewChild('swiperR', { static: false }) swiperR?: ElementRef;
   activeIndex = 0;
-  swiperConfig: SwiperOptions = {
+  swiperConfig: any = {
     spaceBetween: 15,
     navigation: false,
     loop: true,
-    autoplay: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false
+    },
     breakpoints: {
       0: {
         slidesPerView: 1,
@@ -34,24 +37,26 @@ export class PreloginComponent implements OnInit {
         slidesPerView: 1,
         spaceBetween: 10,
       },
-    },
-    on: {
-      slideChange: () => {
-        if (
-          this.swiperR.swiperRef?.activeIndex ||
-          this.swiperR.swiperRef?.activeIndex == 0
-        ) {
-          const index = this.swiperR.swiperRef?.activeIndex;
-          this.activeIndex = index;
-        }
-      },
-    },
+    }
   };
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
+  ngAfterViewInit() {
+    if (this.swiperR) {
+      const swiperEl = this.swiperR.nativeElement;
+      Object.assign(swiperEl, this.swiperConfig);
+
+      swiperEl.addEventListener('swiperslidechange', (event: any) => {
+        this.activeIndex = event.detail[0].realIndex;
+      });
+
+      swiperEl.initialize();
+    }
+  }
+
   goToSlide(index: number) {
-    this.swiperR.swiperRef.slideTo(index);
+    this.swiperR?.nativeElement.swiper.slideTo(index);
   }
 }

@@ -9,8 +9,7 @@ import { BusinessAccountService } from '../../postlogin/business-account/busines
 import { MatDialog } from '@angular/material/dialog';
 import { LOCALSTORAGEKEYS } from 'src/app/shared/constant';
 import { first } from 'rxjs';
-import { SwiperComponent } from 'swiper/angular';
-import { SwiperOptions } from 'swiper';
+
 import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { DadyinCheckBoxComponent } from '../../../shared/widgets/dadyin-checkbox/dadyin-checkbox.component';
 import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyin-input.component';
@@ -28,37 +27,13 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     ],
 })
 export class SigninComponent implements OnInit {
-  @ViewChild('swiperR', { static: false }) swiperR?: SwiperComponent;
+
   public signinGroup: UntypedFormGroup;
   public submitted = false;
   private signup: SignupUser;
   public inviteLink: any;
   user: any;
-  activeIndex = 0;
-  swiperConfig: SwiperOptions = {
-    spaceBetween: 15,
-    navigation: false,
-    loop: true,
-    autoplay: true,
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-        spaceBetween: 10,
-      },
-      720: {
-        slidesPerView: 1,
-        spaceBetween: 10,
-      },
-    },
-    on: {
-      slideChange: () => {
-        if (this.swiperR.swiperRef?.activeIndex || this.swiperR.swiperRef?.activeIndex==0) {
-          const index = this.swiperR.swiperRef?.activeIndex;
-          this.activeIndex = index;
-        }
-      },
-    },
-  };
+
   constructor(
     private router: Router,
     public dialog: MatDialog,
@@ -102,9 +77,7 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  goToSlide(index: number) {
-    this.swiperR.swiperRef.slideTo(index);
-  }
+
 
   onSubmit() {
     this.submitted = true;

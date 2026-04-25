@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
@@ -19,7 +19,7 @@ import { NumberFormatterPipe } from '../../../../shared/pipes/number-formatter.p
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatIcon } from '@angular/material/icon';
-import { SwiperModule } from 'swiper/angular';
+
 import { NgClass } from '@angular/common';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
 import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
@@ -29,12 +29,12 @@ import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/
     templateUrl: './qc-product-detail.component.html',
     styleUrls: ['./qc-product-detail.component.scss'],
     standalone: true,
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
     DadyinButtonComponent,
     MatExpansionPanel,
     MatExpansionPanelHeader,
     MatExpansionPanelTitle,
-    SwiperModule,
     MatIcon,
     FormsModule,
     ReactiveFormsModule,

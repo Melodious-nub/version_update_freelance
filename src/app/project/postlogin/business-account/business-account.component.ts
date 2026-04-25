@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -9,8 +9,8 @@ import { AuthService } from 'src/app/service/auth.service';
 import { TokenService } from 'src/app/service/token.service';
 import { BusinessRegistrationFormsService } from './services/business-registration-forms.service';
 import { BusinessAccountService } from './business-account.service';
-import { SwiperOptions } from 'swiper';
-import { SwiperComponent, SwiperModule } from 'swiper/angular';
+
+
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { NgClass } from '@angular/common';
@@ -23,6 +23,7 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     templateUrl: './business-account.html',
     styleUrls: ['./business-account.scss'],
     standalone: true,
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -32,18 +33,20 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     NgSelectModule,
     DadyinButtonComponent,
     NgClass,
-    ExtendedModule,
-    SwiperModule
+    ExtendedModule
 ],
 })
-export class BusinessAccountComponent implements OnInit {
-  @ViewChild('swiperR', { static: false }) swiperR?: SwiperComponent;
+export class BusinessAccountComponent implements OnInit, AfterViewInit {
+  @ViewChild('swiperR') swiperR?: ElementRef;
   activeIndex = 0;
-  swiperConfig: SwiperOptions = {
+  swiperConfig: any = {
     spaceBetween: 15,
     navigation: false,
     loop: true,
-    autoplay: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false
+    },
     breakpoints: {
       0: {
         slidesPerView: 1,
@@ -53,18 +56,7 @@ export class BusinessAccountComponent implements OnInit {
         slidesPerView: 1,
         spaceBetween: 10,
       },
-    },
-    on: {
-      slideChange: () => {
-        if (
-          this.swiperR.swiperRef?.activeIndex ||
-          this.swiperR.swiperRef?.activeIndex == 0
-        ) {
-          const index = this.swiperR.swiperRef?.activeIndex;
-          this.activeIndex = index;
-        }
-      },
-    },
+    }
   };
 
   public businessAccountForm: UntypedFormGroup;
@@ -87,6 +79,25 @@ export class BusinessAccountComponent implements OnInit {
     private toastr: ToastrService,
     private tokenService: TokenService
   ) {}
+
+  ngAfterViewInit() {
+    if (this.swiperR) {
+      const swiperEl = this.swiperR.nativeElement;
+      Object.assign(swiperEl, this.swiperConfig);
+      
+      swiperEl.addEventListener('swiperslidechange', (event: any) => {
+        this.activeIndex = event.detail[0].realIndex;
+      });
+
+      swiperEl.initialize();
+    }
+  }
+
+  goToSlide(index: number) {
+    if (this.swiperR) {
+      this.swiperR.nativeElement.swiper.slideToLoop(index);
+    }
+  }
 
   ngOnInit(): void {
     this.businessAccountForm = this.businessFormService.createBusinessForm();

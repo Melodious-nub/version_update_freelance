@@ -1249,11 +1249,11 @@
                         @if (!toggle) {
                           @if (this.authService.isHandset) {
                             <div class="px-2 my-1 mb-5">
-                              <swiper [config]="swiperConfig">
+                              <swiper-container #swiperOrder init="false">
                                 @for (product of productsList; track product; let i = $index) {
                                   @if ((cartView && showHideButtonLabel(product)) || !cartView) {
                                     @if (isNotAvailableInTopList(product)) {
-                                      <ng-template swiperSlide>
+                                      <swiper-slide>
                                         <app-grid-view-product-card [allTierPricingDetails]="allTierPricingDetails"
                                           [rating]="getRating(product?.productDetails?.productCode)" [product]="product" [i]="i"
                                           [buyingType]="buyingType" [ownerValue]="getOwner(product?.productDetails?.audit)"
@@ -1268,11 +1268,11 @@
                                           (setQuantityevent)="setQuantity($event.quantity,$event.i)"
                                           (changeQuantityevent)="changeQuantity($event.event,i,false)"
                                         (addProductToOrderevent)="addProductToOrder(product)"></app-grid-view-product-card>
-                                      </ng-template>
+                                      </swiper-slide>
                                     }
                                   }
                                 }
-                              </swiper>
+                              </swiper-container>
                               @if (productsList?.length==0) {
                                 <div class="d-flex align-items-center justify-content-center">
                                   No Products Found

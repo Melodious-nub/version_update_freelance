@@ -131,8 +131,8 @@
               (click)="goToSlide(slide)"></button>
             }
           </div>
-          <swiper class="swiper-login" #swiperR autoplay [config]="swiperConfig">
-            <ng-template swiperSlide>
+          <swiper-container class="swiper-login" #swiperR init="false">
+            <swiper-slide>
               <div class="tab">For Retailers</div>
               <div class="tab-content">
                 <h4>
@@ -141,8 +141,8 @@
                 </h4>
               </div>
               <img width="100%" class="img-slide" [src]="'assets/img/For Retailer.png'" alt="..." />
-            </ng-template>
-            <ng-template swiperSlide>
+            </swiper-slide>
+            <swiper-slide>
               <div class="tab">For Wholesaler/Distributors</div>
               <div class="tab-content">
                 <h4>
@@ -151,8 +151,8 @@
                 </h4>
               </div>
               <img width="100%" class="img-slide" [src]="'assets/img/Distributor.png'" alt="..." />
-            </ng-template>
-            <ng-template swiperSlide>
+            </swiper-slide>
+            <swiper-slide>
               <div class="tab">For Importer-Exporter</div>
               <div class="tab-content">
                 <h4>
@@ -161,8 +161,8 @@
                 </h4>
               </div>
               <img width="100%" class="img-slide" [src]="'assets/img/For Importer-Exporter.png'" alt="..." />
-            </ng-template>
-            <ng-template swiperSlide>
+            </swiper-slide>
+            <swiper-slide>
               <div class="tab">For Manufacturers</div>
               <div class="tab-content">
                 <h4>
@@ -171,8 +171,8 @@
                 </h4>
               </div>
               <img width="100%" class="img-slide" [src]="'assets/img/For Manufacturer.png'" alt="..." />
-            </ng-template>
-          </swiper>
+            </swiper-slide>
+          </swiper-container>
         </div>
       </div>
     </div>

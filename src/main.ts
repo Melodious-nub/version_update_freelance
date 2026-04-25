@@ -12,6 +12,10 @@ import { provideToastr } from 'ngx-toastr';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 import { AppInitService } from './app/app-init.service';
+import { register } from 'swiper/element/bundle';
+
+// Register Swiper custom elements
+register();
 
 // APP INITIALIZATION
 export function StartupServiceFactory(appInitService: AppInitService) {

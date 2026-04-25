@@ -14,14 +14,14 @@ import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgClass, DatePipe } from '@angular/common';
-import { SwiperModule } from 'swiper/angular';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 @Component({
     selector: 'app-grid-view-product-card',
     templateUrl: './grid-view-product-card.component.html',
     styleUrls: ['./grid-view-product-card.component.scss'],
     standalone: true,
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-    SwiperModule,
     MatTooltipModule,
     NgClass,
     ExtendedModule,

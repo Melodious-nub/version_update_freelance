@@ -1,12 +1,10 @@
 <div style="height: 100%" class="card text-left b-light">
   <div class="img p-1 text-center" style="height: 200px">
-    <swiper class="swiper-img" [pagination]="true" navigation="true">
+    <swiper-container class="swiper-img" pagination="true" navigation="true">
       @for (
         url of product?.productDetails?.productImageFileNames; track
         url; let j = $index) {
-        <ng-template
-          swiperSlide
-          >
+        <swiper-slide>
           <img
             class="cursor-zoom"
           (click)="
@@ -17,9 +15,9 @@
             width="100%"
             alt=""
             />
-          </ng-template>
+          </swiper-slide>
         }
-      </swiper>
+      </swiper-container>
     </div>
     <div style="height: 50px" class="d-flex align-items-center px-2 mt-2">
       <div class="w-100">

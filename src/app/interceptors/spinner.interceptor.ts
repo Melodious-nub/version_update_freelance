@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { finalize, Observable, timeout, catchError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SpinnerOverlayService } from '../service/spinner-overlay.service';
 
 @Injectable()
@@ -19,18 +19,18 @@ export class SpinnerInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
-    this.spinnerOverlayService.show();
-
-    return next.handle(req).pipe(
-      // Add a safety timeout of 10 seconds to ensure the spinner never hangs indefinitely
-      timeout(10000),
-      catchError((error) => {
-        // Pass error through, finalize will handle the hide()
-        throw error;
-      }),
-      finalize(() => {
+    return new Observable<HttpEvent<any>>((observer) => {
+      this.spinnerOverlayService.show();
+      const subscription = next.handle(req).subscribe({
+        next: (event) => observer.next(event),
+        error: (err) => observer.error(err),
+        complete: () => observer.complete(),
+      });
+      
+      return () => {
+        subscription.unsubscribe();
         this.spinnerOverlayService.hide();
-      })
-    );
+      };
+    });
   }
 }
