@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "node-terminal",
+            "name": "Start Local",
+            "request": "launch",
+            "command": "npm run start --  --configuration local",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

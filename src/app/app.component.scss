@@ -1,0 +1,18 @@
+.main-app {
+  background: var(--secondary-light);
+  overflow-y: overlay;
+  position: relative;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-right: 25px;
+  padding-left: 25px;
+  height: 25px;
+  background-color: var(--secondary-light);
+  border-top: 1px solid var(--border-color);
+  z-index: 1000;
+  white-space:nowrap;
+}

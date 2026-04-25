@@ -1,0 +1,904 @@
+{
+  "purchaseOrder": {
+    "id": 820,
+    "audit": {
+      "createdDate": "2025-07-22T13:24:39Z",
+      "createdById": "1",
+      "createdByName": "Test Admin 1",
+      "createdByUserName": "test_admin@dadyin.com",
+      "lastModifiedDate": "2025-07-22T13:24:43Z",
+      "lastModifiedById": "1",
+      "lastModifiedByName": "Test Admin 1",
+      "lastModifiedByUserName": "test_admin@dadyin.com",
+      "businessAccountId": 305
+    },
+    "transactionId": "D_PO00305-000001",
+    "isReceiving": false,
+    "buyingType": "SKU",
+    "discountPercentage": 0,
+    "discountCost": {
+      "attributeValue": 0,
+      "userConversionUom": "USD"
+    },
+    "discountType": null,
+    "salesTaxPercentage": 0,
+    "salesTaxCost": {
+      "attributeValue": 0,
+      "userConversionUom": "USD"
+    },
+    "salesTaxType": null,
+    "requestFrom": {
+      "id": 305,
+      "name": "Frontline Export",
+      "firstName": "Bhumi",
+      "lastName": "Patel"
+    },
+    "requestTo": {
+      "id": 301,
+      "name": "Dayana Polyplast Inc",
+      "firstName": "Milan",
+      "lastName": "Patel"
+    },
+    "deliveryAddress": null,
+    "requiredByDate": "2025-08-15",
+    "expectedByDate": "2025-08-20",
+    "returnDate": null,
+    "dadyInPoints": null,
+    "importLocalType": "LOCAL",
+    "deliveryPickup": "DELIVERY",
+    "reminderCount": null,
+    "odometer": {
+      "value": 459,
+      "odometerType": "WEIGHT"
+    },
+    "palletTypeInformation": null,
+    "noteDescription": null,
+    "isRead": false,
+    "isVendorRead": false,
+    "isCustomerRead": true,
+    "isQuickCheckout": true,
+    "cost": {
+      "attributeValue": 325.5,
+      "userConversionUom": "USD"
+    },
+    "deliveryCost": {
+      "attributeValue": 50,
+      "userConversionUom": "USD"
+    },
+    "deliveryCostInputByUser": false,
+    "totalCost": {
+      "attributeValue": 375.5,
+      "userConversionUom": "USD"
+    },
+    "weight": {
+      "attributeValue": 98.742,
+      "userConversionUom": "kg"
+    },
+    "volume": {
+      "attributeValue": 0.214746,
+      "userConversionUom": "m^3"
+    },
+    "referenceOrder": null,
+    "editTillDate": null,
+    "date": "2025-07-22",
+    "shipper": null,
+    "quantity": null,
+    "totalSku": 21,
+    "isCreatedFromPDF": null,
+    "isFileSaved": null,
+    "fileName": null,
+    "coversionRefNumber": null,
+    "convertedType": null,
+    "sendEmailOnUpdate": null,
+    "transactionReferenceNumber": null,
+    "isFirstEmailSent": null,
+    "customNote": null,
+    "status": "DRAFT",
+    "productPackages": [
+      {
+        "id": 1469,
+        "quantity": 21,
+        "loadingType": "FLOOR",
+        "isCustomized": false,
+        "cost": {
+          "attributeValue": 15.5,
+          "userConversionUom": "USD"
+        },
+        "isCostInputByUser": false,
+        "totalCost": {
+          "attributeValue": 325.5,
+          "userConversionUom": "USD"
+        },
+        "weight": {
+          "attributeValue": 4.702,
+          "userConversionUom": "kg"
+        },
+        "totalWeight": {
+          "attributeValue": 98.742,
+          "userConversionUom": "kg"
+        },
+        "volume": {
+          "attributeValue": 10226,
+          "userConversionUom": "cm^3"
+        },
+        "totalVolume": {
+          "attributeValue": 214746,
+          "userConversionUom": "cm^3"
+        },
+        "metricCost": {
+          "attributeValue": 3296.469587,
+          "userConversionUom": "USD/mt"
+        },
+        "productDetails": {
+          "id": 1760,
+          "considerCost": {
+            "attributeValue": 0.0212,
+            "userConversionUom": "USD"
+          },
+          "cost": {
+            "attributeValue": 0.0212,
+            "userConversionUom": "USD"
+          },
+          "weight": {
+            "attributeValue": 10.78,
+            "userConversionUom": "gm"
+          },
+          "density": {
+            "attributeValue": 982200,
+            "userConversionUom": "gm/m^3"
+          },
+          "volume": {
+            "attributeValue": 0.032979,
+            "userConversionUom": "m^3"
+          },
+          "surfaceArea": {
+            "attributeValue": 0.289354,
+            "userConversionUom": "m^2"
+          },
+          "metricCost": {
+            "attributeValue": 1966.604824,
+            "userConversionUom": "USD/mt"
+          },
+          "isSelfProduct": true,
+          "skuCost": {
+            "attributeValue": 8.845,
+            "userConversionUom": "USD"
+          },
+          "considerSkuCost": {
+            "attributeValue": 7.75,
+            "userConversionUom": "USD"
+          },
+          "skuPrice": {
+            "attributeValue": 15.5,
+            "userConversionUom": "USD"
+          },
+          "status": "PUBLISHED",
+          "skuWeight": {
+            "attributeValue": 4.702,
+            "userConversionUom": "kg"
+          },
+          "skuVolume": {
+            "attributeValue": 10226,
+            "userConversionUom": "cm^3"
+          },
+          "skuMetricCost": {
+            "attributeValue": 1.648235,
+            "userConversionUom": "USD/kg"
+          },
+          "productMetaId": 1131,
+          "preferredCustomerId": null,
+          "skuPackageId": 2975,
+          "productCode": "DT-6B254",
+          "description": "1/6 Black Bags (12 Bottles) 400 Pcs",
+          "exportDescription": null,
+          "upcCode": "027132995264",
+          "eanCode": null,
+          "rating": null,
+          "isCustomizable": true,
+          "isSaleable": true,
+          "isFavourite": null,
+          "isRawMaterial": null,
+          "isSupplies": null,
+          "isPackagingMaterial": null,
+          "isProductOfProcess": false,
+          "numberOfItems": 400,
+          "numberOfProducts": 400,
+          "numberInPallet": 168,
+          "skuPackageContent": "UNIT",
+          "qoh": 0,
+          "productTypeId": 303,
+          "productCategoryId": null,
+          "productSubTypeId": 307,
+          "productTemplateId": 301,
+          "productTemplateName": "W-cut Templates ",
+          "productTemplateCode": "W-cut",
+          "productTypeDescription": "T-Shirt Bags ",
+          "productSubTypeDescription": "HDPE Bags (T-Shirt Bags) ",
+          "productTemplateDescription": "Temp for All W-cut bags ",
+          "skuPackageType": "BOX",
+          "odometer": {
+            "value": 0,
+            "odometerType": "VOLUME"
+          },
+          "skuOdometer": {
+            "value": 459,
+            "odometerType": "WEIGHT"
+          },
+          "productImageFileName": "1722941455780_BLACK THANK YOU BAG.png,1727780137045_ALL BAGS DIMENSIONS (58).png,1722941455783_DSC_0382-removebg-preview.png",
+          "audit": {
+            "createdDate": "2025-02-25T21:37:21Z",
+            "createdById": "301",
+            "createdByName": null,
+            "createdByUserName": "pragnesh@dayanapolyplast.com",
+            "lastModifiedDate": "2025-03-15T17:46:02Z",
+            "lastModifiedById": "1",
+            "lastModifiedByName": "Test Admin 1",
+            "lastModifiedByUserName": "test_admin@dadyin.com",
+            "businessAccountId": 301
+          },
+          "auditBusinessAccountName": "Dayana Polyplast Inc",
+          "skuFirstMinimumQuantity": 1,
+          "skuFirstMaximumQuantity": 5,
+          "skuFirstSkuType": "SKU",
+          "skuSecondMinimumQuantity": 6,
+          "skuSecondMaximumQuantity": 20,
+          "skuSecondSkuType": "SKU",
+          "skuThirdMinimumQuantity": 21,
+          "skuThirdMaximumQuantity": null,
+          "skuThirdSkuType": "SKU",
+          "palletSkuType": "PALLET",
+          "palletMqo": null,
+          "truckSkuType": "TRUCK",
+          "truckMqo": null,
+          "containerSkuType": "CONTAINER",
+          "containerMqo": 638,
+          "skuFirstTier": {
+            "attributeValue": 19.5,
+            "userConversionUom": "USD"
+          },
+          "skuSecondTier": {
+            "attributeValue": 17.5,
+            "userConversionUom": "USD"
+          },
+          "skuThirdTier": {
+            "attributeValue": 15.5,
+            "userConversionUom": "USD"
+          },
+          "palletTier": {
+            "attributeValue": 13,
+            "userConversionUom": "USD"
+          },
+          "truckTier": {
+            "attributeValue": 12,
+            "userConversionUom": "USD"
+          },
+          "containerTier": {
+            "attributeValue": 10.25,
+            "userConversionUom": "USD"
+          },
+          "isQuickCheckoutEligible": true,
+          "isPalletAvailable": true,
+          "productImageFileNames": null,
+          "isNoGenericPurchase": false,
+          "unitName": "Bags",
+          "productMetaBusinessAccountId": 301,
+          "productBusinessAccountId": 301,
+          "qohList": null,
+          "productKeyword": null,
+          "productCategoryIdList": "#81#",
+          "metaTitle": null,
+          "metaDescription": null,
+          "metaName": null
+        },
+        "packageCustomAttributeValues": [],
+        "sortOrder": null,
+        "deliveryDays": null,
+        "skuCost": {
+          "attributeValue": 15.5,
+          "userConversionUom": "USD"
+        },
+        "unitCost": {
+          "attributeValue": 0.03875,
+          "userConversionUom": "USD"
+        },
+        "unitQuantities": 8400,
+        "skuQuantities": 21,
+        "unitWeight": {
+          "attributeValue": 0.011755,
+          "userConversionUom": "kg"
+        },
+        "skuWeight": {
+          "attributeValue": 4.702,
+          "userConversionUom": "kg"
+        },
+        "unitVolume": {
+          "attributeValue": 25.565,
+          "userConversionUom": "cm^3"
+        },
+        "skuVolume": {
+          "attributeValue": 10226,
+          "userConversionUom": "cm^3"
+        },
+        "productId": 1760,
+        "packageId": 2975
+      }
+    ],
+    "buddyAccounts": [],
+    "messages": [],
+    "fulfilmentType": null,
+    "isNewContainer": null,
+    "exporterBusinessId": null,
+    "remainingPaymentCost": {
+      "attributeValue": 375.5,
+      "userConversionUom": "USD"
+    },
+    "paymentStatus": "PENDING",
+    "paymentEnabled": false,
+    "requireNewInvoicePdf": false,
+    "incoTermId": null,
+    "departurePortId": null,
+    "arrivalPortId": null,
+    "containerTypeId": null,
+    "noteTemplate": null,
+    "paymentTermId": null,
+    "contactId": null,
+    "salesManagerId": null,
+    "purchaseManagerId": null,
+    "referenceContainerId": null,
+    "media_urls": [
+      {
+        "id": 1648,
+        "fileType": "PO_INVOICE",
+        "rfquotation": null,
+        "media_url": "1756373084467_2025-08-28_09-24-44Z.pdf"
+      }
+    ],
+    "isUpdated": false,
+    "payments": []
+  },
+  "testScenarios": [
+    {
+      "name": "Create New Purchase Order",
+      "description": "Test creating a new purchase order with all required fields",
+      "data": {
+        "requestTo": {
+          "id": 301,
+          "name": "Dayana Polyplast Inc"
+        },
+        "buyingType": "SKU",
+        "importLocalType": "LOCAL",
+        "deliveryPickup": "DELIVERY",
+        "requiredByDate": "2025-08-15",
+        "expectedByDate": "2025-08-20",
+        "date": "2025-07-22",
+        "productPackages": [
+          {
+            "productId": 1760,
+            "quantity": 21,
+            "productDetails": {
+              "description": "1/6 Black Bags (12 Bottles) 400 Pcs",
+              "productCode": "DT-6B254"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Create Container Purchase Order",
+      "description": "Test creating a container purchase order",
+      "data": {
+        "requestTo": {
+          "id": 301,
+          "name": "Dayana Polyplast Inc"
+        },
+        "buyingType": "CONTAINER_40_FT_HQ",
+        "importLocalType": "CONTAINER",
+        "incoTermId": 1,
+        "departurePortId": 1,
+        "requiredByDate": "2025-08-15",
+        "expectedByDate": "2025-08-20",
+        "date": "2025-07-22",
+        "dadyInPoints": 100,
+        "loadingTypeId": "FLOOR",
+        "productPackages": [
+          {
+            "productId": 1760,
+            "quantity": 1,
+            "productDetails": {
+              "description": "1/6 Black Bags (12 Bottles) 400 Pcs",
+              "productCode": "DT-6B254"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Edit Existing Purchase Order",
+      "description": "Test editing an existing purchase order",
+      "data": {
+        "id": 820,
+        "transactionId": "D_PO00305-000001",
+        "status": "DRAFT",
+        "requestTo": {
+          "id": 301,
+          "name": "Dayana Polyplast Inc"
+        },
+        "buyingType": "SKU",
+        "importLocalType": "LOCAL",
+        "deliveryPickup": "DELIVERY",
+        "requiredByDate": "2025-08-15",
+        "expectedByDate": "2025-08-20",
+        "date": "2025-07-22",
+        "productPackages": [
+          {
+            "id": 1469,
+            "productId": 1760,
+            "quantity": 25,
+            "productDetails": {
+              "description": "1/6 Black Bags (12 Bottles) 400 Pcs",
+              "productCode": "DT-6B254"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Create Purchase Order - Provided Payload 2025-10-30",
+      "description": "Create PO with explicit fields and two product packages as provided",
+      "data": {
+        "shippingDate": null,
+        "expiryDate": "2025-11-14",
+        "purchaseManagerId": null,
+        "purchaseOrderTemplateId": null,
+        "totalSku": 2,
+        "isUpdated": false,
+        "isReceiving": false,
+        "customNote": "just for testing quick note",
+        "transactionReferenceNumber": null,
+        "discountType": "COST",
+        "salesTaxType": "PERCENTAGE",
+        "audit": null,
+        "paymentEnabled": false,
+        "id": null,
+        "buyingType": "SKU",
+        "qoh": null,
+        "contactId": null,
+        "debugInformation": null,
+        "status": "DRAFT",
+        "purchaseOrderId": null,
+        "saleOrderStatus": null,
+        "saleOrderFromId": null,
+        "saleOrderToId": null,
+        "saleOrderTransactionId": null,
+        "transactionId": null,
+        "isQuickCheckout": null,
+        "remainingPaymentCost": {
+          "attributeValue": null,
+          "userConversionUom": null
+        },
+        "media_urls": null,
+        "media_url_ids": [],
+        "requestFrom": {
+          "id": 864,
+          "debugInformation": null,
+          "businessLines": null,
+          "relationAccounts": null,
+          "branchDetails": null,
+          "code": null,
+          "externalId": null,
+          "businessLogo": null,
+          "companyStamp": null,
+          "digitalStamp": null,
+          "isSystemAccount": null,
+          "type": null,
+          "roleName": null,
+          "fromInvite": false,
+          "inviteId": null,
+          "name": null,
+          "firstName": null,
+          "lastName": null,
+          "language": null,
+          "currency": null,
+          "currency2nd": null,
+          "gst": null,
+          "primaryContact": null,
+          "hibernateLazyInitializer": null
+        },
+        "requestTo": {
+          "id": 305,
+          "debugInformation": null,
+          "businessLines": null,
+          "relationAccounts": null,
+          "branchDetails": null,
+          "code": null,
+          "externalId": null,
+          "businessLogo": null,
+          "companyStamp": null,
+          "digitalStamp": null,
+          "isSystemAccount": null,
+          "type": null,
+          "roleName": null,
+          "fromInvite": false,
+          "inviteId": null,
+          "name": null,
+          "firstName": null,
+          "lastName": null,
+          "language": null,
+          "currency": null,
+          "currency2nd": null,
+          "gst": null,
+          "primaryContact": null,
+          "hibernateLazyInitializer": null
+        },
+        "requiredByDate": "2025-11-15",
+        "returnDate": null,
+        "importLocalType": "LOCAL",
+        "referenceContainerId": null,
+        "isCreateNewContainer": false,
+        "exporterBusinessId": null,
+        "deliveryPickup": "DELIVERY",
+        "reminderCount": null,
+        "odometer": {
+          "value": 482,
+          "odometerType": "WEIGHT"
+        },
+        "incoTermId": null,
+        "arrivalPortId": null,
+        "departurePortId": 8,
+        "containerTypeId": null,
+        "dadyInPoints": null,
+        "containerTypeDescription": null,
+        "noteId": null,
+        "noteTemplate": null,
+        "noteDescription": null,
+        "isRead": false,
+        "fulfilmentType": null,
+        "cost": {
+          "attributeValue": 106.5,
+          "userConversionUom": "USD"
+        },
+        "totalCost": {
+          "attributeValue": 146.075,
+          "userConversionUom": "USD"
+        },
+        "metricCost": {
+          "attributeValue": null,
+          "userConversionUom": null
+        },
+        "weight": {
+          "attributeValue": 26.18,
+          "userConversionUom": "kg"
+        },
+        "volume": {
+          "attributeValue": 54266,
+          "userConversionUom": "cm^3"
+        },
+        "buddyAccounts": null,
+        "productPackages": [
+          {
+            "id": null,
+            "audit": null,
+            "skuPackageType": null,
+            "isReceiving": false,
+            "deliveryDays": null,
+            "isCustomized": null,
+            "isNoGenericPurchase": null,
+            "skuQuantities": 1,
+            "unitQuantities": 1000,
+            "quantity": 1,
+            "qoh": null,
+            "loadingType": null,
+            "isCostInputByUser": null,
+            "cost": {
+              "attributeValue": 84.75,
+              "userConversionUom": "USD"
+            },
+            "totalCost": {
+              "attributeValue": 84.75,
+              "userConversionUom": "USD"
+            },
+            "weight": {
+              "attributeValue": 16.68,
+              "userConversionUom": "kg"
+            },
+            "totalWeight": {
+              "attributeValue": 16.68,
+              "userConversionUom": "kg"
+            },
+            "volume": {
+              "attributeValue": 35396,
+              "userConversionUom": "cm^3"
+            },
+            "totalVolume": {
+              "attributeValue": 35396,
+              "userConversionUom": "cm^3"
+            },
+            "metricCost": {
+              "attributeValue": "5080.94",
+              "userConversionUom": "USD/mt"
+            },
+            "productDetails": {
+              "skuFirstTier": {
+                "attributeValue": 110,
+                "userConversionUom": "USD"
+              },
+              "skuSecondTier": {
+                "attributeValue": 85,
+                "userConversionUom": "USD"
+              },
+              "skuThirdTier": {
+                "attributeValue": 76.5,
+                "userConversionUom": "USD"
+              },
+              "id": 2448,
+              "audit": {
+                "createdDate": "2025-10-01T06:01:07Z",
+                "createdById": "304",
+                "createdByName": null,
+                "createdByUserName": "office@frontlineexport.com",
+                "lastModifiedDate": "2025-10-01T06:07:50Z",
+                "lastModifiedById": "304",
+                "lastModifiedByName": null,
+                "lastModifiedByUserName": "office@frontlineexport.com",
+                "businessAccountId": 305
+              },
+              "debugInformation": null,
+              "preferredCustomerId": null,
+              "cost": {
+                "attributeValue": 0.055,
+                "userConversionUom": "USD"
+              },
+              "weight": {
+                "attributeValue": 16.03,
+                "userConversionUom": "gm"
+              },
+              "density": {
+                "attributeValue": 7696,
+                "userConversionUom": "gm/m^3"
+              },
+              "volume": {
+                "attributeValue": 0.028341,
+                "userConversionUom": "m^3"
+              },
+              "surfaceArea": {
+                "attributeValue": 0.0846,
+                "userConversionUom": "m^2"
+              },
+              "metricCost": {
+                "attributeValue": 3431.06675,
+                "userConversionUom": "USD/mt"
+              },
+              "skuCost": {
+                "attributeValue": 55.4,
+                "userConversionUom": "USD"
+              },
+              "skuWeight": {
+                "attributeValue": 16.68,
+                "userConversionUom": "kg"
+              },
+              "skuVolume": {
+                "attributeValue": 35396,
+                "userConversionUom": "cm^3"
+              },
+              "skuMetricCost": {
+                "attributeValue": 0.003297,
+                "userConversionUom": "USD/gm"
+              },
+              "palletTypeInformation": null,
+              "productMetaId": 1488,
+              "skuPackageId": 4429,
+              "productCode": "RTL-25R35DR",
+              "description": "ROTIKAA LAMINATED 35 Oz - 25 Big Durum Wheat Roti– Easy-to-Use Open Top with Durable Bottom Seal / 1000 Pcs",
+              "exportDescription": "Plastic Pouches",
+              "upcCode": "",
+              "eanCode": null,
+              "rating": null,
+              "isCustomizable": false,
+              "isSaleable": true,
+              "isFavourite": null,
+              "isRawMaterial": null,
+              "isSupplies": null,
+              "isPackagingMaterial": null,
+              "isProductOfProcess": false,
+              "isSelfProduct": true,
+              "numberOfItems": 1000,
+              "numberOfProducts": 1000,
+              "numberInPallet": 0,
+              "skuPackageContent": "UNIT",
+              "qoh": 0,
+              "productTypeId": 348,
+              "productSubTypeId": 430,
+              "productTemplateId": 332,
+              "productTemplateName": "Laminated Pouch - Template",
+              "productTemplateCode": "Laminated Pouch - Template",
+              "productTypeDescription": "Laminated Ziplock Pouch",
+              "productSubTypeDescription": "Rotikaa LDPE Ziplock Pouch",
+              "productTemplateDescription": "Laminated Pouch - Template",
+              "productMetaBusinessAccountId": 305,
+              "productBusinessAccountId": 305,
+              "skuPackageType": "BOX",
+              "odometer": { "value": 0, "odometerType": "VOLUME" },
+              "skuOdometer": { "value": 471, "odometerType": "WEIGHT" },
+              "productImageFileName": "1759298437394_Durum Wheat Roti.jpeg",
+              "considerCost": { "attributeValue": 0.055, "userConversionUom": "USD" },
+              "considerSkuCost": { "attributeValue": 55, "userConversionUom": "USD" },
+              "skuPrice": { "attributeValue": 84.615385, "userConversionUom": "USD" },
+              "status": "PUBLISHED",
+              "auditBusinessAccountName": "Frontline Export",
+              "skuFirstMinimumQuantity": 1,
+              "skuFirstMaximumQuantity": 5,
+              "skuFirstSkuType": "SKU",
+              "skuSecondMinimumQuantity": 6,
+              "skuSecondMaximumQuantity": 20,
+              "skuSecondSkuType": "SKU",
+              "skuThirdMinimumQuantity": 21,
+              "skuThirdMaximumQuantity": null,
+              "skuThirdSkuType": "SKU",
+              "palletSkuType": "PALLET",
+              "palletMqo": null,
+              "truckSkuType": "TRUCK",
+              "truckMqo": null,
+              "containerSkuType": "CONTAINER",
+              "containerMqo": 50,
+              "palletTier": { "attributeValue": 70.75, "userConversionUom": "USD" },
+              "truckTier": { "attributeValue": 64.75, "userConversionUom": "USD" },
+              "containerTier": { "attributeValue": 61.2, "userConversionUom": "USD" },
+              "isQuickCheckoutEligible": true,
+              "isPalletAvailable": true
+            },
+            "packageCustomAttributeValues": [],
+            "sortOrder": null,
+            "skuCost": { "attributeValue": 84.75, "userConversionUom": "USD" },
+            "considerSkuCost": { "attributeValue": null, "userConversionUom": null },
+            "productId": 2448,
+            "packageId": 4429,
+            "totalSKUs": null
+          },
+          {
+            "id": null,
+            "audit": null,
+            "skuPackageType": null,
+            "isReceiving": false,
+            "deliveryDays": null,
+            "isCustomized": null,
+            "isNoGenericPurchase": null,
+            "skuQuantities": 1,
+            "unitQuantities": 100,
+            "quantity": 1,
+            "qoh": null,
+            "loadingType": null,
+            "isCostInputByUser": null,
+            "cost": { "attributeValue": 21.75, "userConversionUom": "USD" },
+            "totalCost": { "attributeValue": 21.75, "userConversionUom": "USD" },
+            "weight": { "attributeValue": 9.5, "userConversionUom": "kg" },
+            "totalWeight": { "attributeValue": 9.5, "userConversionUom": "kg" },
+            "volume": { "attributeValue": 18870, "userConversionUom": "cm^3" },
+            "totalVolume": { "attributeValue": 18870, "userConversionUom": "cm^3" },
+            "metricCost": { "attributeValue": "2289.48", "userConversionUom": "USD/mt" },
+            "productDetails": {
+              "skuFirstTier": { "attributeValue": 28, "userConversionUom": "USD" },
+              "skuSecondTier": { "attributeValue": 22, "userConversionUom": "USD" },
+              "skuThirdTier": { "attributeValue": 19.5, "userConversionUom": "USD" },
+              "id": 1403,
+              "audit": {
+                "createdDate": "2024-03-14T06:51:37Z",
+                "createdById": "304",
+                "createdByName": null,
+                "createdByUserName": "office@frontlineexport.com",
+                "lastModifiedDate": "2025-08-26T10:44:33Z",
+                "lastModifiedById": "304",
+                "lastModifiedByName": null,
+                "lastModifiedByUserName": "office@frontlineexport.com",
+                "businessAccountId": 305
+              },
+              "debugInformation": null,
+              "preferredCustomerId": null,
+              "cost": { "attributeValue": 0.156, "userConversionUom": "USD" },
+              "weight": { "attributeValue": 95, "userConversionUom": "gm" },
+              "density": { "attributeValue": 0.007696, "userConversionUom": "gm/cm^3" },
+              "volume": { "attributeValue": 0.317253, "userConversionUom": "m^3" },
+              "surfaceArea": { "attributeValue": 13483.829437, "userConversionUom": "cm^2" },
+              "metricCost": { "attributeValue": 1642.105263, "userConversionUom": "USD/mt" },
+              "skuCost": { "attributeValue": 15.6, "userConversionUom": "USD" },
+              "skuWeight": { "attributeValue": 9.5, "userConversionUom": "kg" },
+              "skuVolume": { "attributeValue": 18870, "userConversionUom": "cm^3" },
+              "skuMetricCost": { "attributeValue": 0.001474, "userConversionUom": "USD/gm" },
+              "palletTypeInformation": null,
+              "productMetaId": 940,
+              "skuPackageId": 2132,
+              "productCode": "DG-58B451",
+              "description": "Garbage Bag - 58 gallon (100 Bags/Box)",
+              "exportDescription": null,
+              "upcCode": "027132995837",
+              "eanCode": null,
+              "rating": null,
+              "isCustomizable": true,
+              "isSaleable": true,
+              "isFavourite": null,
+              "isRawMaterial": null,
+              "isSupplies": null,
+              "isPackagingMaterial": null,
+              "isProductOfProcess": false,
+              "isSelfProduct": true,
+              "numberOfItems": 100,
+              "numberOfProducts": 100,
+              "numberInPallet": 0,
+              "skuPackageContent": "UNIT",
+              "qoh": 1150,
+              "productTypeId": 500,
+              "productSubTypeId": 1060,
+              "productTemplateId": 365,
+              "productTemplateName": "Garbage bag template",
+              "productTemplateCode": "Garbage Bag / Trash bag / Contractor Bag",
+              "productTypeDescription": "Garbage Bag - 58 gallon",
+              "productSubTypeDescription": "58 gallon",
+              "productTemplateDescription": "Garbage Bag, Trash bag, Contractor Bag",
+              "productMetaBusinessAccountId": 305,
+              "productBusinessAccountId": 305,
+              "skuPackageType": "BOX",
+              "odometer": { "value": 0, "odometerType": "VOLUME" },
+              "skuOdometer": { "value": 503, "odometerType": "WEIGHT" },
+              "productImageFileName": "1750420877693_58 gallon.png,1725541358351_2.png,1725541241993_Black and White Geometric Page Border Doubled Sided Poster (4).png",
+              "considerCost": { "attributeValue": 0.156, "userConversionUom": "USD" },
+              "considerSkuCost": { "attributeValue": 14, "userConversionUom": "USD" },
+              "skuPrice": { "attributeValue": 21.538462, "userConversionUom": "USD" },
+              "status": "PUBLISHED",
+              "auditBusinessAccountName": "Frontline Export",
+              "skuFirstMinimumQuantity": 1,
+              "skuFirstMaximumQuantity": 5,
+              "skuFirstSkuType": "SKU",
+              "skuSecondMinimumQuantity": 6,
+              "skuSecondMaximumQuantity": 20,
+              "skuSecondSkuType": "SKU",
+              "skuThirdMinimumQuantity": 21,
+              "skuThirdMaximumQuantity": null,
+              "skuThirdSkuType": "SKU",
+              "palletSkuType": "PALLET",
+              "palletMqo": null,
+              "truckSkuType": "TRUCK",
+              "truckMqo": null,
+              "containerSkuType": "CONTAINER",
+              "containerMqo": 110,
+              "palletTier": { "attributeValue": 18, "userConversionUom": "USD" },
+              "truckTier": { "attributeValue": 16.5, "userConversionUom": "USD" },
+              "containerTier": { "attributeValue": 15.6, "userConversionUom": "USD" },
+              "isQuickCheckoutEligible": true,
+              "isPalletAvailable": true
+            },
+            "packageCustomAttributeValues": [],
+            "sortOrder": null,
+            "skuCost": { "attributeValue": 21.75, "userConversionUom": "USD" },
+            "considerSkuCost": { "attributeValue": null, "userConversionUom": null },
+            "productId": 1403,
+            "packageId": 2132,
+            "totalSKUs": null
+          }
+        ],
+        "editTillDate": "2025-11-06",
+        "expectedByDate": "2025-12-14",
+        "date": "2025-10-30",
+        "shipper": "6789",
+        "quantity": 1,
+        "discountCost": { "attributeValue": 15, "userConversionUom": "USD" },
+        "discountPercentage": 14.08,
+        "salesTaxPercentage": 5,
+        "salesTaxCost": { "attributeValue": 4.575, "userConversionUom": "USD" },
+        "deliveryCostInputByUser": false,
+        "deliveryCost": { "attributeValue": 50, "userConversionUom": "USD" },
+        "rfQuotationId": null,
+        "contactName": null,
+        "contactPhone": null,
+        "palletTypeInformation": null,
+        "paymentStatus": null,
+        "paymentTermId": 2,
+        "referenceOrder": {
+          "rfQuotationId": null,
+          "quotationId": null,
+          "purchaseOrderId": null,
+          "saleOrderId": null
+        },
+        "loadingTypeId": "FLOOR"
+      }
+    }
+  ]
+}

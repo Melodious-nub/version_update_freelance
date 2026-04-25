@@ -1,0 +1,1065 @@
+<div class="app-container">
+  <app-spinner-overlay
+    *ngIf="isLoading"
+    class="spinner-overlay"
+  ></app-spinner-overlay>
+
+  <div
+    class="wizard-bar-container d-flex align-items-center justify-content-between"
+  >
+    <div class="d-flex">
+      <div style="display: flex; align-items: center; gap: 10px">
+        <img
+          src="assets/nicons/back.png"
+          alt="Back"
+          style="
+            height: 30px;
+            width: 30px;
+            object-fit: contain;
+            border-radius: 8px;
+            cursor: pointer;
+          "
+          (click)="goBack()"
+        />
+        <div
+          class="content-title"
+          style="
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding-right: 10px;
+            border-right: 1px solid #d5e7fa;
+            height: 100%;
+            align-content: center;
+          "
+        >
+          Create Campaign
+        </div>
+        <div
+          class="bg-[#E5EFFD] text-[#0065F4]"
+          style="
+            padding-right: 10px;
+            border-right: 1px solid #d5e7fa;
+            height: 100%;
+            align-content: center;
+          "
+        >
+          <span
+            style="
+              font-size: 0.8rem;
+              padding: 5px 20px;
+              border-radius: 50px;
+              background: #e5effd;
+              color: #0065f4;
+            "
+          >
+            Draft
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form [formGroup]="campaignForm" (ngSubmit)="onSubmit()">
+    <mat-expansion-panel class="panel" expanded="true">
+      <mat-expansion-panel-header>
+        <mat-panel-description>
+          <div class="w-100 title-text">Campaign Briefs</div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="row p-0">
+        <div class="col-md-6 col-12" style="margin-top: 20px">
+          <div class="row">
+            <div class="col-md-6 col-12 mb-3">
+              <dadyin-input
+                inputType="string"
+                label="Campaign Name"
+                [isClearable]="false"
+                formControlName="name"
+              ></dadyin-input>
+            </div>
+
+            <div class="col-md-5 col-12 mb-3">
+              <div class="campaign-type-row">
+                <label
+                  class="campaign-type-option"
+                  [class.active]="campaignForm.value.type === 'Personalised'"
+                >
+                  <input
+                    type="checkbox"
+                    name="campaignType"
+                    [checked]="campaignForm.value.type === 'Personalised'"
+                    (change)="onCampaignTypeChange('Personalised')"
+                  />
+                  <span>Personalised</span>
+                </label>
+
+                <label
+                  class="campaign-type-option"
+                  [class.active]="campaignForm.value.type === 'Interval'"
+                >
+                  <input
+                    type="checkbox"
+                    name="campaignType"
+                    [checked]="campaignForm.value.type === 'Interval'"
+                    (change)="onCampaignTypeChange('Interval')"
+                  />
+                  <span>Interval</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="col-md-1 col-12 mb-3 d-flex" style="margin-top: 7px">
+              <img
+                src="assets/nicons/info.png"
+                alt="Info"
+                class="campaign-info-icon campaign-info-icon--small"
+                [matTooltip]="campaignTooltip"
+                matTooltipPosition="above"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-12 mb-3">
+              <dadyin-select
+                formControlName="postType"
+                label="Post type"
+                [emptyOption]="'Select'"
+                [optionArr]="postTypeOptions"
+                optionLabel="label"
+                optionValue="value"
+              ></dadyin-select>
+            </div>
+
+            <div class="col-md-5 col-12 mb-3">
+              <ng-container *ngIf="campaignForm.value.type === 'Personalised'">
+                <div class="campaign-type-row">
+                  <label
+                    class="campaign-type-option"
+                    [class.active]="campaignForm.value.audience === 'Product'"
+                  >
+                    <input
+                      type="checkbox"
+                      name="audience"
+                      [checked]="campaignForm.value.audience === 'Product'"
+                      (change)="
+                        campaignForm.patchValue({ audience: 'Product' })
+                      "
+                    />
+                    <span>Product</span>
+                  </label>
+
+                  <label
+                    class="campaign-type-option"
+                    [class.active]="campaignForm.value.audience === 'Retail'"
+                  >
+                    <input
+                      type="checkbox"
+                      name="audience"
+                      [checked]="campaignForm.value.audience === 'Retail'"
+                      (change)="campaignForm.patchValue({ audience: 'Retail' })"
+                    />
+                    <span>Retail</span>
+                  </label>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3 col-12 mb-3">
+              <dadyin-select
+                formControlName="intervalType"
+                label="Interval Type"
+                [emptyOption]="'Select'"
+                [optionArr]="intervalTypeOptions"
+                optionLabel="label"
+                optionValue="value"
+              ></dadyin-select>
+            </div>
+            <div class="col-md-3 col-12 mb-3">
+              <dadyin-input
+                inputType="date"
+                label="Start Date"
+                [isClearable]="false"
+                formControlName="startDate"
+                [minDate]="todayForInput"
+              ></dadyin-input>
+            </div>
+            <div class="col-md-3 col-12 mb-3">
+              <dadyin-input
+                inputType="date"
+                label="End Date"
+                [isClearable]="false"
+                formControlName="endDate"
+                [minDate]="startDateForInput"
+              ></dadyin-input>
+            </div>
+            <div class="col-md-3 col-12 mb-3">
+              <app-time-picker
+                formControlName="publicationTime"
+                label="Campaign Time"
+                [placeholder]="'Select time'"
+                [format]="12"
+                [minutesGap]="5"
+              ></app-time-picker>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 col-12 mb-3">
+              <div
+                class="product-select-wrapper"
+                [class.has-product]="hasSelectedProduct"
+              >
+                <ng-container
+                  *ngIf="campaignForm.value.type === 'Personalised'"
+                >
+                  <dadyin-searchable-select
+                    [class]="''"
+                    [label]="
+                      campaignForm.value.audience === 'Retail'
+                        ? 'Existing Retailer service'
+                        : 'Existing Product'
+                    "
+                    [maxSelectedItems]="3"
+                    [fullItems]="productsForDropdown"
+                    [bindValue]="'id'"
+                    [bindLabel]="'description'"
+                    [control]="productControl"
+                    [isDisabled]="!!productControl?.value"
+                    placeholder="Select"
+                    (changed)="onProductSearch($event)"
+                  ></dadyin-searchable-select>
+
+                  <button
+                    *ngIf="productControl?.value"
+                    type="button"
+                    class="edit-icon-btn"
+                    (click)="onProductEdit($event)"
+                  >
+                    <img
+                      src="assets/nicons/edit-pen.png"
+                      alt="Edit"
+                      style="height: 18px; width: 18px"
+                    />
+                  </button>
+                </ng-container>
+
+                <ng-container *ngIf="campaignForm.value.type === 'Interval'">
+                  <dadyin-search-select-new
+                    [label]="'Select Products (' + productSelectionCount + '/' + maxProductSelection + ')'
+                    "
+                    [typeahead]="true"
+                    [maxSelectedItems]="maxProductSelection"
+                    [showSelectedBox]="false"
+                    [fullItems]="productsForDropdown"
+                    [selectedItems]="productControl"
+                    (search)="onProductSearch($event)"
+                  ></dadyin-search-select-new>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="row mb-3"
+            *ngIf="campaignForm.value.type === 'Personalised'"
+          >
+            <div class="col-12">
+              <div class="table-wrapper">
+                <table class="customer-table">
+                  <thead>
+                    <tr>
+                      <th>
+                        <div class="th-content">
+                          <input
+                            type="checkbox"
+                            [disabled]="!purchaseHasRows"
+                            [checked]="purchaseMasterAllSelected"
+                            [indeterminate]="purchaseMasterIndeterminate"
+                            (change)="
+                              togglePurchaseMasterAll(
+                                $any($event.target).checked
+                              )
+                            "
+                          />
+                          <span>Customer Name ({{ purchaseSelectedCount + '/' + (purchaseRows.length || 0) }})</span>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="th-content">
+                          <input
+                            type="checkbox"
+                            [disabled]="
+                              !purchaseHasRows || !purchaseHasAnyWhatsapp
+                            "
+                            [checked]="purchaseWhatsappAllSelected"
+                            [indeterminate]="purchaseWhatsappIndeterminate"
+                            (change)="
+                              togglePurchaseWhatsappAll(
+                                $any($event.target).checked
+                              )
+                            "
+                          />
+                          <img
+                            src="assets/nicons/whatsapp%201.png"
+                            alt="WhatsApp"
+                            style="
+                              height: 24px;
+                              width: 24px;
+                              object-fit: contain;
+                            "
+                          />
+                          WhatsApp
+                        </div>
+                      </th>
+                      <th>
+                        <div class="th-content">
+                          <input
+                            type="checkbox"
+                            [disabled]="
+                              !purchaseHasRows || !purchaseHasAnyEmail
+                            "
+                            [checked]="purchaseEmailAllSelected"
+                            [indeterminate]="purchaseEmailIndeterminate"
+                            (change)="
+                              togglePurchaseEmailAll(
+                                $any($event.target).checked
+                              )
+                            "
+                          />
+                          <img
+                            src="assets/nicons/email.png"
+                            alt="Email"
+                            style="
+                              height: 24px;
+                              width: 24px;
+                              object-fit: contain;
+                            "
+                          />
+                          Email ID
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody *ngIf="purchaseRows.length > 0">
+                    <tr *ngFor="let customer of purchaseRows; let i = index">
+                      <td>
+                        <div class="td-content">
+                          <input
+                            type="checkbox"
+                            [value]="customer.customerName || customer.name"
+                            [checked]="purchaseNameSelection[i]"
+                            (change)="
+                              togglePurchaseNameRow(
+                                i,
+                                $any($event.target).checked
+                              )
+                            "
+                          />
+                          <span>{{
+                            customer.customerName || customer.name
+                          }}</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="td-content">
+                          <ng-container
+                            *ngIf="
+                              customerHasWhatsapp(customer);
+                              else noWhatsapp
+                            "
+                          >
+                            <input
+                              type="checkbox"
+                              [value]="customerWhatsappDisplay(customer)"
+                              [checked]="purchaseWhatsappSelection[i]"
+                              (change)="
+                                togglePurchaseWhatsappRow(
+                                  i,
+                                  $any($event.target).checked
+                                )
+                              "
+                            />
+                            <span>{{ customerWhatsappDisplay(customer) }}</span>
+                          </ng-container>
+                          <ng-template #noWhatsapp>
+                            <span class="text-muted">N/A</span>
+                          </ng-template>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="td-content">
+                          <ng-container
+                            *ngIf="customerHasEmail(customer); else noEmail"
+                          >
+                            <input
+                              type="checkbox"
+                              [value]="customerEmailDisplay(customer)"
+                              [checked]="purchaseEmailSelection[i]"
+                              (change)="
+                                togglePurchaseEmailRow(
+                                  i,
+                                  $any($event.target).checked
+                                )
+                              "
+                            />
+                            <span>{{ customerEmailDisplay(customer) }}</span>
+                          </ng-container>
+                          <ng-template #noEmail>
+                            <span class="text-muted">N/A</span>
+                          </ng-template>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="purchaseRows.length === 0">
+                    <tr>
+                      <td colspan="3" class="text-center">No data found</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-12">
+          <div class="row post-details-top-row" style="align-items: stretch">
+            <div class="col-12">
+              <div
+                class="form-group"
+                style="display: flex; flex-direction: column"
+              >
+                <div class="d-flex align-items-center justify-content-between" style="margin-bottom: 6px;">
+                  <label class="font-weight-bold m-0">Prompt</label>
+                  <div *ngIf="!isPersonalisedRetail"
+                    style="font-size: 12px; color: #6b7280; display: flex; gap: 8px; align-items: center;">
+                    <div>Minimum 10 characters required.</div>
+                    <div>({{ (campaignForm.get('prompt')?.value || '').trim().length }} characters)</div>
+                  </div>
+                </div>
+
+                <div
+                  class="prompt-wrapper"
+                  style="position: relative"
+                >
+                  <textarea
+                    class="form-control prompt-textarea--compact"
+                    formControlName="prompt"
+                    rows="4"
+                    [readonly]="isPersonalisedRetail"
+                    [attr.tabindex]="isPersonalisedRetail ? -1 : 0"
+                    [placeholder]="
+                      isPersonalisedRetail
+                        ? 'You cannot generate the image in Retail, as PDF will be published.'
+                        : 'Write a prompt to generate/Refine the Post Image ...'
+                    "
+                    style="
+                      padding-bottom: 60px;
+                      font-size: 14px;
+                      border: 1px solid #e0e7ef;
+                      border-radius: 8px;
+                    "
+                  ></textarea>
+
+                  <input
+                    #refFileInput
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    [disabled]="isPersonalisedRetail"
+                    style="display: none"
+                    (change)="onReferenceFilesSelected($event)"
+                  />
+
+                  <div class="prompt-overlay-controls">
+                    <div
+                      class="attachments-preview mt-2"
+                      *ngIf="selectedAttachments?.length"
+                    >
+                      <div
+                        class="attachment"
+                        *ngFor="let att of selectedAttachments; let ai = index"
+                      >
+                        <img [src]="att.url" [alt]="att.name" />
+                        <button
+                          type="button"
+                          class="remove-attachment"
+                          (click)="removeAttachment(ai)"
+                        >
+                          x
+                        </button>
+                      </div>
+                    </div>
+
+                    <button
+                      *ngIf="
+                        (selectedAttachments?.length || 0) < maxAttachments
+                      "
+                      type="button"
+                      class="btn btn-outline-secondary upload-btn-inside"
+                      [disabled]="isLoading || isPersonalisedRetail"
+                      (click)="openFilePicker()"
+                    >
+                      <img
+                        src="assets/nicons/Upload.png"
+                        alt="Upload"
+                        style="
+                          height: 15px;
+                          width: 15px;
+                          margin-right: 5px;
+                          object-fit: contain;
+                          margin-bottom: 3px;
+                        "
+                      />
+                      Upload Reference Images
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="align-items: flex-start;" *ngIf="!isPersonalisedRetail">
+            <div class="col-12" style="display: flex; flex-direction: column;">
+              <div class="d-flex align-items-center justify-content-between">
+                <label class="font-weight-bold m-0">Product Images</label>
+                <div class="text-muted" style="font-size: 12px;">
+                  Selected: {{ selectedProductImagesCount }}/{{ productSelectionCount }}
+                </div>
+              </div>
+
+              <ng-container *ngIf="pagedProductImages && pagedProductImages.length > 0; else noProductImages">
+                <div class="d-flex gap-2 align-items-start" style="height: 100%; margin-top: 0;">
+                  <button type="button" class="product-images-slider-btn" style="align-self: center;"
+                    *ngIf="hasProductImagesSlider" (click)="prevProductImagesPage()"
+                    [disabled]="productImagesPageIndex === 0">
+                    <img src="assets/nicons/arrow_right.png" alt="Previous"
+                      style="width:18px; height:18px; object-fit:contain;" />
+                  </button>
+
+                  <div class="d-flex gap-2 product-images-strip">
+                    <div *ngFor="let img of pagedProductImages"
+                      (click)="toggleProductImageSelection(img)"
+                      [ngClass]="{'selected-image': isProductImageSelected(img)}"
+                      class="bg-light b-radius-10 position-relative generated-image-container"
+                      style="width: 140px; height: 140px; cursor: pointer; border: 2px solid transparent;">
+
+                      <div style="position: absolute; top: 8px; left: 8px; z-index: 2;">
+                        <input type="checkbox" [checked]="isProductImageSelected(img)"
+                          style="width: 24px; height: 24px; accent-color: #1976d2; pointer-events: none;" />
+                      </div>
+
+                      <div style="position: absolute; top: 8px; right: 8px; z-index: 2; max-width: 140px;">
+                        <span class="product-image-badge" [title]="img.productLabel">{{ img.productLabel }}</span>
+                      </div>
+
+                      <div *ngIf="img.imageTotal && img.imageTotal > 1"
+                        style="position: absolute; bottom: 8px; right: 8px; z-index: 2;">
+                        <span class="product-image-count">{{ img.imageIndex }}/{{ img.imageTotal }}</span>
+                      </div>
+
+                      <div class="w-100 h-100">
+                        <img *ngIf="img && img.url" [src]="img.url" alt="Product Image"
+                          style="width: 100%; height: 100%; object-fit: contain;" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="button" class="product-images-slider-btn" style="align-self: center;"
+                    *ngIf="hasProductImagesSlider" (click)="nextProductImagesPage()"
+                    [disabled]="!canNextProductImagesPage">
+                    <img src="assets/nicons/arrow_left.png" alt="Next"
+                      style="width:18px; height:18px; object-fit:contain; transform: rotate(180deg);" />
+                  </button>
+                </div>
+              </ng-container>
+
+              <ng-template #noProductImages>
+                <div style="display: flex; height: 100%; gap:5px">
+                  <div
+                    style="border: 2px solid #d5e7fa; border-radius: 16px; width: 140px; height: 140px; display: flex; flex-direction: column; background: #ffffff; align-items: center; justify-content: center;">
+                    <img src="assets/nicons/ai-sparkle.png" alt="Product images placeholder"
+                      style="width: 40px; height: 40px; opacity: 0.18; margin-bottom: 18px; margin: 0 auto;" />
+                    <div style="color: #a3adc2; font-size: 0.8rem; text-align: center;">Select products<br>to view images</div>
+                  </div>
+                  <div
+                    style="border: 2px solid #d5e7fa; border-radius: 16px; width: 140px; height: 140px; display: flex; flex-direction: column; background: #ffffff; align-items: center; justify-content: center;">
+                    <img src="assets/nicons/ai-sparkle.png" alt="Product images placeholder"
+                      style="width: 40px; height: 40px; opacity: 0.18; margin-bottom: 18px; margin: 0 auto;" />
+                    <div style="color: #a3adc2; font-size: 0.8rem; text-align: center;">Select products<br>to view images</div>
+                  </div>
+                  <div
+                    style="border: 2px solid #d5e7fa; border-radius: 16px; width: 140px; height: 140px; display: flex; flex-direction: column; background: #ffffff; align-items: center; justify-content: center;">
+                    <img src="assets/nicons/ai-sparkle.png" alt="Product images placeholder"
+                      style="width: 40px; height: 40px; opacity: 0.18; margin-bottom: 18px; margin: 0 auto;" />
+                    <div style="color: #a3adc2; font-size: 0.8rem; text-align: center;">Select products<br>to view images</div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <button
+                type="submit"
+                class="btn btn-primary w-100 my-2"
+                style="font-weight: 600; font-size: 16px; border-radius: 8px"
+                [disabled]="isLoading || (!isPersonalisedRetail && ((campaignForm.get('prompt')?.value || '').trim().length < 10))"
+              >
+                <img
+                  src="assets/nicons/ai-icon.png"
+                  alt="Upload"
+                  style="
+                    height: 15px;
+                    width: 15px;
+                    margin-right: 5px;
+                    object-fit: contain;
+                    margin-bottom: 3px;
+                  "
+                />
+                {{
+                  campaignForm.value.audience === "Retail"
+                    ? "Generate Content"
+                    : "Generate Campaign"
+                }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <label class="font-weight-bold">Campaign Description</label>
+          <ckeditor
+            [editor]="Editor"
+            [config]="editorConfig"
+            formControlName="campaignDescription"
+          ></ckeditor>
+        </div>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="panel mt-3" expanded="true">
+      <mat-expansion-panel-header>
+        <mat-panel-description>
+          <div class="w-100 title-text">Campaign Post</div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="row p-0">
+        <div
+          class="col-md-3 col-12"
+          style="display: flex; flex-direction: column"
+        >
+          <label class="font-weight-bold">Campaign Post</label>
+          <div
+            class="post-image-preview"
+            style="flex-grow: 1; max-height: 300px"
+          >
+            <div
+              class="imgContainer d-flex align-items-center justify-content-center"
+              style="
+                height: 100%;
+                width: 100%;
+                border-radius: 10px;
+                overflow: hidden;
+                position: relative;
+              "
+            >
+
+              <ng-container
+                *ngIf="campaignPostPreviewUrl; else maybePdfOrEmpty"
+              >
+                <img
+                  [src]="campaignPostPreviewUrl"
+                  alt="Campaign Post"
+                  style="width: 100%; height: 100%; object-fit: contain"
+                />
+                <button
+                  *ngIf="hasMultipleGeneratedCampaignImages"
+                  type="button"
+                  class="final-post-slider-btn final-post-slider-btn--left"
+                  (click)="prevCampaignPostImage()"
+                  [disabled]="isLoading"
+                  aria-label="Previous image"
+                >
+                  <img src="assets/nicons/arrow_right.png" alt="Previous" style="width:18px; height:18px; object-fit:contain;" />
+                </button>
+
+                <button
+                  *ngIf="hasMultipleGeneratedCampaignImages"
+                  type="button"
+                  class="final-post-slider-btn final-post-slider-btn--right"
+                  (click)="nextCampaignPostImage()"
+                  [disabled]="isLoading"
+                  aria-label="Next image"
+                >
+                  <img src="assets/nicons/arrow_left.png" alt="Next" style="width:18px; height:18px; object-fit:contain; transform: rotate(180deg);" />
+                </button>
+              </ng-container>
+
+              <ng-template #maybePdfOrEmpty>
+                <ng-container
+                  *ngIf="
+                    isPersonalisedRetail && purchasePdfUrl;
+                    else noCampaignPost
+                  "
+                >
+                  <div
+                    class="pdf-preview-indicator d-flex align-items-center"
+                    role="button"
+                    (click)="openCampaignPdf()"
+                    style="cursor: pointer; padding: 12px; gap: 12px"
+                    title="Open PDF in new tab"
+                  >
+                    <img
+                      src="assets/nicons/pdf.png"
+                      alt="PDF"
+                      style="height: 48px; width: auto"
+                    />
+                    <div style="text-align: left">
+                      <div style="font-weight: 600">PDF Report Available</div>
+                      <div
+                        style="
+                          font-size: 12px;
+                          color: #6b7280;
+                          max-width: 240px;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          white-space: nowrap;
+                        "
+                      >
+                        {{ purchasePdfUrl }}
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-template>
+
+              <ng-template #noCampaignPost>
+                <span class="text-muted">[Campaign Post Image]</span>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-5 col-12"
+          style="display: flex; flex-direction: column"
+        >
+          <label class="font-weight-bold">Final Description</label>
+          <div
+            class="form-control final-description-render"
+            [innerHTML]="campaignForm.get('campaignDescription')?.value || ''"
+            style="
+              flex-grow: 1;
+              border: 1px solid #e0e7ef;
+              border-radius: 8px;
+              min-height: 120px;
+              overflow: auto;
+              background: #fff;
+              max-height: 345px;
+              margin-bottom: 0 !important;
+            "
+          ></div>
+        </div>
+
+        <div class="col-md-4 col-12">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              justify-content: space-between;
+            "
+          >
+            <div class="row" style="margin-top: 0px">
+              <div class="col-12">
+                <label
+                  class="font-weight-bold"
+                  *ngIf="
+                    campaignForm.value.type === 'Personalised';
+                    else sharingOnLabel
+                  "
+                  >Sharing To</label
+                >
+                <ng-template #sharingOnLabel>
+                  <label class="font-weight-bold">Sharing On</label>
+                </ng-template>
+
+                <ng-container
+                  *ngIf="
+                    campaignForm.value.type === 'Personalised';
+                    else sharingOnInterval
+                  "
+                >
+                  <div class="table-wrapper table-wrapper--preview">
+                    <table class="customer-table customer-table--preview">
+                      <thead>
+                        <tr
+                          style="
+                            background-color: #f8f9fa;
+                            border-bottom: 1px solid #e9ecef;
+                          "
+                        >
+                          <th
+                            style="
+                              padding: 12px 16px;
+                              font-weight: 500;
+                              font-size: 14px;
+                              color: #495057;
+                              text-align: left;
+                              border-bottom: 1px solid #dee2e6;
+                              width: 70%;
+                              min-width: 200px;
+                            "
+                          >
+                            <div
+                              class="th-content"
+                              style="
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                              "
+                            >
+                              <span>Customer Name</span>
+                            </div>
+                          </th>
+                          <th
+                            style="
+                              padding: 12px 16px;
+                              font-weight: 500;
+                              font-size: 14px;
+                              color: #495057;
+                              text-align: center;
+                              border-bottom: 1px solid #dee2e6;
+                              width: 15%;
+                              min-width: 60px;
+                            "
+                          >
+                            <div
+                              class="th-content"
+                              style="
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 8px;
+                              "
+                            >
+                              <img
+                                src="assets/nicons/whatsapp%201.png"
+                                alt="WhatsApp"
+                                style="
+                                  height: 20px;
+                                  width: 20px;
+                                  object-fit: contain;
+                                "
+                              />
+                            </div>
+                          </th>
+                          <th
+                            style="
+                              padding: 12px 16px;
+                              font-weight: 500;
+                              font-size: 14px;
+                              color: #495057;
+                              text-align: center;
+                              border-bottom: 1px solid #dee2e6;
+                              width: 15%;
+                              min-width: 60px;
+                            "
+                          >
+                            <div
+                              class="th-content"
+                              style="
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 8px;
+                              "
+                            >
+                              <img
+                                src="assets/nicons/email.png"
+                                alt="Email"
+                                style="
+                                  height: 20px;
+                                  width: 20px;
+                                  object-fit: contain;
+                                "
+                              />
+                            </div>
+                          </th>
+                        </tr>
+                      </thead>
+
+                      <tbody *ngIf="purchaseRows.length > 0">
+                        <tr
+                          *ngFor="let customer of purchaseRows; let i = index"
+                          style="border-bottom: 1px solid #e9ecef"
+                        >
+                          <td
+                            style="
+                              padding: 12px 16px;
+                              text-align: left;
+                              width: 70%;
+                            "
+                          >
+                            <div
+                              class="td-content"
+                              style="
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                              "
+                            >
+                              <input
+                                type="checkbox"
+                                disabled
+                                [checked]="purchaseNameSelection[i]"
+                              />
+                              <span>{{
+                                customer.customerName || customer.name
+                              }}</span>
+                            </div>
+                          </td>
+                          <td
+                            style="
+                              padding: 12px 16px;
+                              text-align: center;
+                              width: 15%;
+                            "
+                          >
+                            <div
+                              class="td-content"
+                              style="
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 8px;
+                              "
+                            >
+                              <input
+                                type="checkbox"
+                                disabled
+                                [checked]="purchaseWhatsappSelection[i]"
+                              />
+                            </div>
+                          </td>
+                          <td
+                            style="
+                              padding: 12px 16px;
+                              text-align: center;
+                              width: 15%;
+                            "
+                          >
+                            <div
+                              class="td-content"
+                              style="
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 8px;
+                              "
+                            >
+                              <input
+                                type="checkbox"
+                                disabled
+                                [checked]="purchaseEmailSelection[i]"
+                              />
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tbody *ngIf="purchaseRows.length === 0">
+                        <tr>
+                          <td
+                            colspan="3"
+                            class="text-center"
+                            style="padding: 24px 16px; color: #6c757d"
+                          >
+                            No data found
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-container>
+
+                <ng-template #sharingOnInterval>
+                  <div style="margin-top: 10px">
+                    <div
+                      class="sharing-platforms"
+                      *ngIf="connectedSocialPlatforms.length; else noPlatforms"
+                    >
+                      <div
+                        class="sharing-platform"
+                        *ngFor="let p of connectedSocialPlatforms"
+                      >
+                        <img [src]="p.icon" [alt]="p.name" />
+                        <span>{{ p.name }}</span>
+                      </div>
+                    </div>
+
+                    <ng-template #noPlatforms>
+                      <div class="text-muted" style="font-size: 12px">
+                        No connected platforms
+                      </div>
+                    </ng-template>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-12 d-flex" style="gap: 10px">
+                <button
+                  type="button"
+                  class="btn"
+                  style="
+                    flex: 1;
+                    background: #ffeaea;
+                    color: #e74c3c;
+                    font-weight: 600;
+                    border-radius: 8px;
+                  "
+                  [disabled]="isLoading"
+                  (click)="onDiscard()"
+                >
+                  <img
+                    src="assets/nicons/delete-square.png"
+                    style="height: 18px; width: 18px; margin-right: 8px"
+                  />
+                  Discard
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="
+                    flex: 1;
+                    font-weight: 600;
+                    font-size: 16px;
+                    border-radius: 8px;
+                  "
+                  [disabled]="isLoading"
+                  (click)="onPublish()"
+                >
+                  <img
+                    src="
+                      assets/nicons/Send.png"
+                    style="height: 20px; width: 20px; margin-right: 8px"
+                  />
+                  Publish
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </form>
+</div>

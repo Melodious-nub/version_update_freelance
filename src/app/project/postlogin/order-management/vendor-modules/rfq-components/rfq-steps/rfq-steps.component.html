@@ -1,0 +1,94 @@
+<div class="app-container  ">
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button (clicked)="navigate('/home/order-management/vendor?currentStepIndex=2')"
+        [theme]="'borderless-primary'" type="image" [typeval]="'assets/img/icons/ArrowLeftCircle.png'">
+      </dadyin-button>
+      <ng-container *ngIf="rfqForm.getRawValue()?.id">
+        <div class="font-size-16 text-black fw-bold">
+          <label>{{ requestToName }}</label>
+        </div>
+        <span class="text-dark"> | </span>
+        <div class="status font-size-12">{{ rfqForm.getRawValue()?.status }}</div>
+      </ng-container>
+      <ng-container *ngIf="!rfqForm.getRawValue()?.id">
+        <div class="content-title text-light">
+          <label>Create RFQ</label>
+        </div>
+      </ng-container>
+      <span class="text-dark" *ngIf="rfqForm.getRawValue()?.id"> | </span>
+      <div class="content-info text-dark">
+        <div class="d-flex align-items-center" *ngIf="rfqForm.getRawValue()?.transactionId">
+          <div>
+            <b>{{ rfqForm.getRawValue()?.transactionId }}</b> <br>
+            <span class="font-size-10"> ( {{ rfqForm.getRawValue()?.audit?.createdDate | date : "medium" }} )
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+      <dadyin-button matTooltip="Print" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/print.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Copy Transaction (Option to get different transactions which need to copy)"  [theme]="'disabled'" type="image"
+        [typeval]="'assets/nicons/refresh.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Copy this Transaction" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/copy.png'">
+      </dadyin-button>
+      <!-- <dadyin-button matTooltip="Download Tier/QC Quote" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/cart.png'">
+      </dadyin-button> -->
+      <dadyin-button matTooltip="Download" (clicked)="generatePdf()" [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/download.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Delete" *ngIf="
+         rfqForm.get('status').value == 'DRAFT' && rfqForm.get('id').value
+        " (clicked)="confirmDelete()" [theme]="'borderless-danger'" type="image"
+        [typeval]="'assets/img/icons/delete.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Email Transaction (Regular or Tier)" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/mail.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Save this in Draft" *ngIf="
+      rfqForm?.value.status == null || rfqForm?.value.status == 'DRAFT'
+    " (clicked)="saveRfq('DRAFT')" [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/save.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Send RFQ" (clicked)="saveRfq('SENT')" [theme]="'borderless-default'" type="image"
+        [typeval]="'assets/nicons/place.png'">
+      </dadyin-button>
+    </div>
+  </div>
+  <div cdkDrag class="uom-config-section">
+    <button (click)="uomSetting = !uomSetting" class="btn bg-primary-light title-text">
+      UOM Setting
+    </button>
+    <div class="card uom-card" *ngIf="uomSetting">
+      <div class="prefer-uom-grid align-items-center" *ngIf="componentUoms.controls?.length > 0">
+        <div [formGroup]="item" *ngFor="let item of componentUoms.controls; let i = index"
+          class="my-2 attribute one b-none w-100">
+          <div class="attribute-input justify-content-around w-100 title-text">
+            <div class="text-uppercase">
+              {{ item.get("attributeName").value }}
+            </div>
+            <select (change)="calculateValues()" formControlName="userConversionUom">
+              <ng-container *ngFor="
+                  let uom of uomService.getUoms(
+                    item.get('attributeTypeId').value
+                  )
+                ">
+                <option [value]="uom.description">
+                  {{ uom?.description }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-tab-group class="mat-steps">
+    <mat-tab label="RFQ">
+      <app-create-rfq (generatePdf)="generatePdf()" [componentUoms]="componentUoms" (calculate)="calculateValues()"
+        (patchEditData)="patchEditData($event, true)" [rfqForm]="rfqForm"></app-create-rfq>
+    </mat-tab>
+  </mat-tab-group>
+</div>

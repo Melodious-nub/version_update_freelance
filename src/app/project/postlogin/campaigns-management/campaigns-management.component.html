@@ -1,0 +1,76 @@
+<div class="header-wrapper my-2">
+  <div class="d-flex align-items-center mb-2">
+    <dadyin-button
+      [theme]="activeTab === 'campaigns' ? 'primary' : 'default'"
+      label="Campaigns"
+      class="me-2"
+      (clicked)="showCampaignsList()"
+    ></dadyin-button>
+    <dadyin-button
+      [theme]="activeTab === 'upcoming' ? 'primary' : 'default'"
+      label="Upcoming campaigns"
+      (clicked)="showUpcomingList()"
+      class="me-2"
+    ></dadyin-button>
+  </div>
+  <div class="row mx-auto w-100">
+    <div class="col-md-6 col-12 px-0">
+      <div class="d-flex w-100 align-items-center">
+        <div class="filters d-flex w-100 align-items-center">
+          <search-filter
+            [searchControl]="searchControl"
+            style="width: 100%"
+            (inputChange)="onInput($event)"
+            [placeholder]="'Search based on Campaign name, Type, Status'"
+          ></search-filter>
+        </div>
+
+        <div class="ms-2">
+          <app-campaign-filter-box
+            [mode]="showUpcoming ? 'interval' : 'status'"
+            (filtersApplied)="onFiltersApplied($event)"
+          ></app-campaign-filter-box>
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-md-6 col-12 px-0 d-flex justify-content-end align-items-center"
+      *ngIf="!showUpcoming"
+    >
+      <div class="action-btns">
+        <dadyin-button
+          *ngIf="!showUpcoming"
+          [theme]="'primary'"
+          label="Create Campaign"
+          (clicked)="createCampaign()"
+        ></dadyin-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-wrapper mt-2">
+  <ng-container *ngIf="!showUpcoming">
+    <data-table
+      [data]="filtered"
+      [headers]="headers"
+      [pageConfig]="pageConfig"
+      (pageChange)="pageChange($event)"
+      [actions]="tableActions"
+      (editData)="viewCampaign($event.data)"
+    >
+    </data-table>
+  </ng-container>
+
+  <ng-container *ngIf="showUpcoming">
+    <data-table
+      [data]="upcomingFiltered"
+      [headers]="upcomingHeaders"
+      [pageConfig]="pageConfig"
+      (pageChange)="pageChange($event)"
+      [actions]="tableActions"
+      (editData)="viewCampaign($event.data)"
+    >
+    </data-table>
+  </ng-container>
+</div>

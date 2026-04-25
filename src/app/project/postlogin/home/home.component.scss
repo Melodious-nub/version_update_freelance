@@ -1,0 +1,58 @@
+.rounded-circle {
+    width: 23px;
+    height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30% !important;
+}
+
+.Pills {
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    padding: 0.8rem !important;
+    min-width: 150px;
+    min-height: 100px;
+}
+
+.bg-secondary {
+    border-radius: 10px;
+}
+
+.bg-light {
+    border-radius: 10px;
+}
+
+td {
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.rounded-img {
+    border-radius: 50%;
+}
+
+thead {
+    height: 40px;
+}
+
+.material-icon {
+    cursor: pointer;
+}
+
+.cust {
+    text-wrap: nowrap;
+    overflow: auto;
+    column-gap: 5px;
+}
+
+.Inactive {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #f6f2f2;
+}

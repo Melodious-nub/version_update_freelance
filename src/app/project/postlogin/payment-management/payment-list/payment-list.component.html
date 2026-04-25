@@ -1,0 +1,65 @@
+<mat-tab-group class="mat-steps">
+  <mat-tab label="All">
+    <div class="row">
+      <div class="header-wrapper ">
+        <div class="row d-flex justify-content-end align-items-center">
+          <div class="col-md-8">
+            <div
+              class="filters d-flex align-items-center justify-content-between"
+            >
+              <search-filter
+                class="w-100"
+                (inputChange)="onInput($event)"
+                [placeholder]="'Search Enquiries based on name & code'"
+              ></search-filter>
+              <div
+                class="d-flex text-nowrap w-100 align-items-center mx-1 b-light b-round font-size-12 justify-content-between"
+              >
+                <div class="mx-2">
+                  <div class="text-dark">Time Interval</div>
+                  <div class="primary-text">This Week</div>
+                </div>
+                <div class="mx-2">
+                  <div class="text-dark">Total Payable</div>
+                  <div class="success-text">This Week</div>
+                </div>
+                <div class="mx-2">
+                  <div class="text-dark">Unpaid</div>
+                  <div class="danger-text">This Week</div>
+                </div>
+                <div class="mx-2">
+                  <div class="text-dark">Partial Paid</div>
+                  <div class="danger-text">This Week</div>
+                </div>
+                <div class="mx-2">
+                  <div class="text-dark">Overdue</div>
+                  <div class="danger-text">This Week</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-md-4 d-flex justify-content-end align-items-center align-items-center"
+          >
+            <dadyin-button
+              [theme]="'primary'"
+              label="Make Payment"
+              (clicked)="makePayment()"
+            >
+            </dadyin-button>
+          </div>
+        </div>
+      </div>
+      <div class="content-wrapper ">
+        <data-table
+          [data]="paymentList"
+          [headers]="headers"
+          [searchTerm]="searchText"
+          [pageConfig]="pageConfig"
+          (sortChange)="sort($event)"
+          [actions]="tabelActions"
+          (pageChange)="pageChange($event)"
+        >
+        </data-table>
+      </div></div></mat-tab
+></mat-tab-group>

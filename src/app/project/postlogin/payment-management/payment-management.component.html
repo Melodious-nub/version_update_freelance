@@ -1,0 +1,392 @@
+<div class="app-container  ">
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button
+        class="header-icon"
+        [theme]="'borderless-default'"
+        type="icon"
+        [typeval]="'arrow_circle_left'"
+        (clicked)="navigate('/home/payment-management')"
+      >
+      </dadyin-button>
+      <div class="content-title">
+        <label>- : </label>
+      </div>
+      <div class="content-info"></div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+      <dadyin-button
+        label="Pay now"
+        (clicked)="initialize()"
+        [theme]="'primary'"
+      >
+      </dadyin-button>
+    </div>
+  </div>
+
+  <div cdkDrag class="uom-config-section">
+    <button
+      (click)="uomSetting = !uomSetting"
+      class="btn bg-primary-light title-text"
+    >
+      UOM Setting
+    </button>
+    <div class="card uom-card" *ngIf="uomSetting">
+      <div
+        class="prefer-uom-grid align-items-center"
+        *ngIf="componentUoms.controls?.length > 0"
+      >
+        <div
+          [formGroup]="item"
+          *ngFor="let item of componentUoms.controls; let i = index"
+          class="my-2 attribute one b-none w-100"
+        >
+          <div class="attribute-input justify-content-around w-100 title-text">
+            <div class="text-uppercase">
+              {{ item.get("attributeName").value }}
+            </div>
+            <select
+              (change)="calculateValues()"
+              formControlName="userConversionUom"
+            >
+              <ng-container
+                *ngFor="
+                  let uom of uomService.getUoms(
+                    item.get('attributeTypeId').value
+                  )
+                "
+              >
+                <option [value]="uom.description">
+                  {{ uom?.description }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-tab-group
+    [selectedIndex]="currentMainIndex"
+    (selectedIndexChange)="changeMainTab($event)"
+    class="mat-steps"
+  >
+    <mat-tab label="Bills">
+      <ng-container *ngIf="currentMainIndex == 0">
+        <form>
+          <mat-expansion-panel
+            class="panel-no-padding mt-1"
+            expanded="true"
+            #expansionPanel3
+          >
+            <mat-expansion-panel-header
+              (click)="expandPanel(expansionPanel3, $event)"
+            >
+              <mat-panel-description>
+                <div class="w-100 title-text">Pending Payment Details</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <ng-template matExpansionPanelContent>
+              <div class="row p-3">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-md-3 col-12 my-3">
+                      <dadyin-searchable-select
+                        class="w-100"
+                        label="Select Business"
+                        [control]="businessId"
+                        [fullItems]="[]"
+                        bindValue="relationAccountId"
+                        bindLabel="relationAccountName"
+                      ></dadyin-searchable-select>
+                    </div>
+                    <div class="col-md-4 col-12 my-3">
+                      <div
+                        class="overflow-auto d-flex w-100 align-items-center text-nowrap mx-1 b-light bg-light b-round font-size-12 justify-content-between"
+                      >
+                        <div class="mx-2">
+                          <div class="text-dark">Time Interval</div>
+                          <div class="primary-text">This Week</div>
+                        </div>
+                        <div class="mx-2">
+                          <div class="text-dark">Total Payable</div>
+                          <div class="success-text">This Week</div>
+                        </div>
+                        <div class="mx-2">
+                          <div class="text-dark">Unpaid</div>
+                          <div class="danger-text">This Week</div>
+                        </div>
+                        <div class="mx-2">
+                          <div class="text-dark">Partial Paid</div>
+                          <div class="danger-text">This Week</div>
+                        </div>
+                        <div class="mx-2">
+                          <div class="text-dark">Overdue</div>
+                          <div class="danger-text">This Week</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-12 my-3"></div>
+                    <div class="col-md-2 col-12 my-3">
+                      <dadyin-searchable-select
+                        class="w-100"
+                        label="CREDIT MEMO"
+                        [control]="businessId"
+                        [fullItems]="[]"
+                        bindValue="relationAccountId"
+                        bindLabel="relationAccountName"
+                      ></dadyin-searchable-select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="process-table striped">
+                <table>
+                  <thead>
+                    <tr class="b-light">
+                      <th
+                        class="width-80"
+                        style="padding-left: 20px !important"
+                      >
+                        Select
+                      </th>
+                      <th>Due Date</th>
+                      <th>Invoice#</th>
+                      <th>Order Value</th>
+                      <th>Amount Due</th>
+                      <th>Sales Person</th>
+                      <th>Net Terms</th>
+                      <th>Status</th>
+                      <th>Paying Now</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container
+                      *ngFor="let invoice of invoicesList; let i = index"
+                    >
+                      <tr class="b-light">
+                        <td style="padding-left: 20px !important">
+                          <section class="width-18 height-18">
+                            <input
+                              [(ngModel)]="invoice.isSelected"
+                              style="height: 20px !important"
+                              type="checkbox"
+                              [ngModelOptions]="{ standalone: true }"
+                            />
+                          </section>
+                        </td>
+                        <td>
+                          {{ invoice.requiredByDate | date : "medium" }}
+                        </td>
+                        <td>
+                          {{ invoice.transactionId }}
+                        </td>
+
+                        <td>
+                          {{
+                            invoice.totalCost?.attributeValue
+                              | currency : "USD" : "symbol" : "1.2-2"
+                          }}
+                        </td>
+                        <td>
+                          {{
+                            invoice.remainingPaymentCost?.attributeValue
+                              | currency : "USD" : "symbol" : "1.2-2"
+                          }}
+                        </td>
+                        <td>
+                          {{ invoice.salesPersonName }}
+                        </td>
+                        <td>
+                          {{ invoice.paymentTermDescription }}
+                        </td>
+                        <td>
+                          <div class="bg-light b-round status">
+                            {{ invoice.status }}
+                          </div>
+                        </td>
+                        <td style="width: unset">
+                          <input
+                            type="text"
+                            [(ngModel)]="invoice.amountToPay"
+                            placeholder="Paying Now"
+                            (input)="invoice.amountToPay = $event.target.value"
+                            [ngModelOptions]="{ standalone: true }"
+                          />
+                        </td>
+                      </tr>
+                    </ng-container>
+
+                    <!-- Add more rows as needed -->
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel
+            class="panel-no-padding mt-1"
+            expanded="true"
+            #expansionPanel4
+          >
+            <mat-expansion-panel-header
+              (click)="expandPanel(expansionPanel4, $event)"
+            >
+              <mat-panel-description>
+                <div class="w-100 title-text">Payment History</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <ng-template matExpansionPanelContent>
+              <div class="process-table striped">
+                <table>
+                  <thead>
+                    <tr class="b-light">
+                      <th style="padding-left: 20px !important; width: unset">
+                        Paid On
+                      </th>
+                      <th>PO#</th>
+                      <th>Bill#</th>
+                      <th>Amount Paid</th>
+                      <th>Payment By</th>
+                      <th>Payment Method</th>
+                      <th>Payment Status</th>
+                      <th>Payment Ref.</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="b-light"></tr>
+
+                    <!-- Add more rows as needed -->
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
+        </form>
+      </ng-container>
+    </mat-tab>
+
+    <mat-tab disabled label="Payment">
+      <ng-container *ngIf="currentMainIndex == 1">
+        <div
+          style="padding: 5px 10px 5px 20px"
+          class="title-text font-size-14 mt-2"
+          *ngIf="showPayNowButton"
+        >
+          Choose Payment Method
+        </div>
+
+        <div class="row mx-auto" [ngClass]="showPayNowButton ? 'my-3' : ''">
+          <div class="col-12 col-md-4 p-0">
+            <div
+              class="b-round"
+              [ngClass]="{ 'b-light': showPayNowButton }"
+              *ngIf="showPayNowButton"
+            >
+              <div
+                class="d-flex align-items-center p-3 b-light"
+                [ngClass]="{ 'bg-light': selectedPaymentMethod == 'CARD' }"
+              >
+                <i class="title-text font-size-14 material-icon mx-1"
+                  >payments
+                </i>
+                <div class="font-size-14 title-text">
+                  Credit Card/Debit Card
+                </div>
+              </div>
+              <div
+                class="d-flex align-items-center p-3 b-light bg-disable"
+                [ngClass]="{ 'bg-light': selectedPaymentMethod == 'ACH' }"
+              >
+                <i class="title-text font-size-14 material-icon mx-1"
+                  >currency_exchange
+                </i>
+                <div class="font-size-14 title-text">ACH</div>
+              </div>
+              <div
+                class="d-flex align-items-center p-3 b-light bg-disable"
+                [ngClass]="{ 'bg-light': selectedPaymentMethod == 'WIRE' }"
+              >
+                <i class="title-text font-size-14 material-icon mx-1"
+                  >payments
+                </i>
+                <div class="font-size-14 title-text">Wire Transfer</div>
+              </div>
+              <div
+                class="d-flex align-items-center p-3 b-light bg-disable"
+                [ngClass]="{
+                  'bg-light': selectedPaymentMethod == 'NETBANKING'
+                }"
+              >
+                <i class="title-text font-size-14 material-icon mx-1"
+                  >payments
+                </i>
+                <div class="font-size-14 title-text">Net Banking</div>
+              </div>
+              <div
+                class="d-flex align-items-center p-3 b-light bg-disable"
+                [ngClass]="{ 'bg-light': selectedPaymentMethod == 'CC' }"
+              >
+                <i class="title-text font-size-14 material-icon mx-1"
+                  >payments
+                </i>
+                <div class="font-size-14 title-text">CC</div>
+              </div>
+              <div
+                class="d-flex align-items-center p-3 b-light bg-disable"
+                [ngClass]="{
+                  'bg-light': selectedPaymentMethod == 'CHECKPRINT'
+                }"
+              >
+                <i class="title-text font-size-14 material-icon mx-1"
+                  >payments
+                </i>
+                <div class="font-size-14 title-text">Check Print</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-8">
+            <div
+              style="overflow: auto; max-height: 60vh"
+              [ngClass]="{ 'b-light': showPayNowButton }"
+              class="p-2 b-round"
+            >
+              <form id="payment-form">
+                <div id="link-authentication-element">
+                  <!--Stripe.js injects the Link Authentication Element-->
+                </div>
+                <div id="payment-element">
+                  <!--Stripe.js injects the Payment Element-->
+                </div>
+                <div
+                  class="d-flex justify-content-end align-items-center"
+                  [ngClass]="{ 'd-none': !showPayNowButton }"
+                >
+                  <button
+                    class="btn btn-primary my-2 b-none bg-primary btn-sm"
+                    (click)="handleSubmit($event)"
+                    id="submit"
+                  >
+                    <div class="spinner hidden" id="spinner"></div>
+                    <span id="button-text">Pay now</span>
+                  </button>
+                </div>
+
+                <div
+                  id="payment-message"
+                  style="color: red"
+                  class="hidden"
+                ></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,0 +1,18 @@
+<mat-tab-group class="mat-steps" [selectedIndex]="currentMainIndex" (selectedIndexChange)="changeMainTab($event)">
+  <mat-tab *ngFor="let link of mainTab">
+    <ng-template mat-tab-label>
+      <span [matBadge]="link.badge" [matBadgeHidden]="link.badge === 0" [matBadgeOverlap]=false>{{link.title}}</span>
+    </ng-template>
+    <ng-template matTabContent>
+      <ng-container *ngIf="currentMainIndex == 0">
+        <app-order-arrival></app-order-arrival>
+      </ng-container>
+      <ng-container *ngIf="currentMainIndex == 1">
+        <app-added-to-inventory></app-added-to-inventory>
+      </ng-container>
+      <ng-container *ngIf="currentMainIndex == 2">
+        <app-container-in></app-container-in>
+      </ng-container>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

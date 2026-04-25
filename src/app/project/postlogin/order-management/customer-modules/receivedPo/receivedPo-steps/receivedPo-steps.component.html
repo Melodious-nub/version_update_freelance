@@ -1,0 +1,187 @@
+<div class="app-container  ">
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button (clicked)="navigate('/home/order-management/customer?currentStepIndex=2')"
+        [theme]="'borderless-primary'" type="image" [typeval]="'assets/img/icons/ArrowLeftCircle.png'">
+      </dadyin-button>
+      <ng-container *ngIf="receivedPoForm.getRawValue()?.id">
+        <div class="font-size-16 text-black fw-bold">
+          <label>{{ purchaseOrderFromName }} - ({{ isSelfPO ? "Self" : "Received" }})</label>
+        </div>
+        <span class="text-dark"> | </span>
+        <div class="status font-size-12">{{ receivedPoForm.getRawValue()?.status }}</div>
+      </ng-container>
+      <ng-container *ngIf="!receivedPoForm.getRawValue()?.id">
+        <div class="content-title text-light">
+          <label>Create Purchase Order</label>
+        </div>
+      </ng-container>
+      <span class="text-dark" *ngIf="receivedPoForm.getRawValue()?.id"> | </span>
+      <div class="content-info text-dark">
+        <div class="d-flex align-items-center" *ngIf="receivedPoForm.getRawValue()?.transactionId">
+          <div>
+            <b class="text-black">{{ receivedPoForm.getRawValue()?.transactionId }}</b> <br>
+            <span class="font-size-10"> ( {{ receivedPoForm.getRawValue()?.audit?.createdDate | date : "medium" }} )
+            </span>
+          </div>
+          <div class="text-dark fw-bold bg-warning p-1 b-round text-dark mx-2"
+            *ngIf="receivedPoForm.getRawValue()?.isQuickCheckout">
+            QC Order
+          </div>
+        </div>
+      </div>
+    </div>
+    <div></div>
+
+
+    <div class="d-flex justify-content-end align-items-center">
+      <ng-container *ngIf="receivedPoForm.get('id').value">
+        <div class="d-flex flex-column me-2">
+          <div style="line-height: 1.2;" class="font-size-10 text-light">
+            Payment
+          </div>
+          <div style="line-height: 1;" class="font-size-12 text-primary">
+            Enabled
+          </div>
+        </div>
+
+        <mat-slide-toggle [formControl]="receivedPoForm.get('paymentEnabled')"
+          (change)="paymentToggle($event)"></mat-slide-toggle>
+        <div class="mx-2 text-light"> | </div>
+        <ng-container *ngIf="
+          receivedPoForm.get('id').value &&
+          receivedPoForm?.getRawValue().status != 'DRAFT'
+        " [formGroup]="receivedPoForm">
+          <div class="d-flex mx-2 flex-column" *ngIf="receivedPoForm.get('paymentStatus').value">
+            <div class=" me-3 font-size-10 text-black" style="line-height: 1.4;">
+              Payment Status :
+            </div>
+            <div class="font-size-8" style="line-height: 1;"
+              [style.color]="(receivedPoForm.get('paymentStatus').value || 'Pending') === 'PENDING' ? 'red' : ''">
+              {{
+              receivedPoForm.get("paymentStatus").value
+              ? receivedPoForm.get("paymentStatus").value
+              : "Pending"
+              }}
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="
+            receivedPoForm.get('id').value &&
+            receivedPoForm?.getRawValue().status != 'DRAFT'
+          " [formGroup]="receivedPoForm">
+          <div class="attribute one mx-2" style="min-width: 120px">
+
+            <div class="attribute-select">
+              <select class="bg-white" [formControl]="paymentStatusControl" (change)="onUpdateStatus()">
+                <option *ngFor="let item of ['COMPLETED', 'PENDING']" [value]="item">
+                  {{ item }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </ng-container>
+
+
+        <dadyin-button matTooltip="Record Payment" *ngIf="
+            receivedPoForm.get('id').value &&
+            receivedPoForm?.getRawValue().status != 'DRAFT'
+          " (clicked)="recordPayment()" [theme]="'borderless-primary'" type="image"
+          [typeval]="'assets/nicons/pay.png'">
+        </dadyin-button>
+      </ng-container>
+      <div class="mx-2 text-light" *ngIf="
+      receivedPoForm.get('id').value &&
+      receivedPoForm?.getRawValue().status != 'DRAFT'
+    ">
+        |
+      </div>
+      <dadyin-button matTooltip="Copy" matTooltip="Copy" [theme]="'disabled'" type="image"
+        [typeval]="'assets/nicons/copy.png'">
+      </dadyin-button>
+      <!-- <dadyin-button matTooltip="Download Tier/QC Quote" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/cart.png'">
+      </dadyin-button> -->
+      <dadyin-button matTooltip="Download" (clicked)="generatePdf()" [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/download.png'">
+      </dadyin-button>
+      <div class="mx-2 text-light">
+        |
+      </div>
+
+      <dadyin-button *ngIf="
+          receivedPoForm.get('id').value &&
+          receivedPoForm?.getRawValue().status != 'CONFIRMED'
+        " [theme]="'borderless-default'" type="image" matTooltip="Delete" [typeval]="'assets/img/icons/delete.png'"
+        (clicked)="deletePo()">
+      </dadyin-button>
+      <dadyin-button matTooltip="Email Transaction (Regular or Tier)" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/mail.png'">
+      </dadyin-button>
+
+      <dadyin-button *ngIf="
+          !receivedPoForm.get('id').value &&
+          receivedPoForm?.getRawValue().status != 'CONFIRMED'
+        " (clicked)="savePo('CONFIRMED')" [theme]="'borderless-default'" type="image"
+        [typeval]="'assets/nicons/place.png'" [tooltip]="'Confirmed this Transaction'">
+      </dadyin-button>
+      <dadyin-button *ngIf="
+          isSelfPO &&
+          receivedPoForm.get('id').value &&
+          receivedPoForm?.getRawValue().status != 'CONFIRMED'
+        " (clicked)="savePo('CONFIRMED')" [theme]="'borderless-default'" type="image"
+        [typeval]="'assets/nicons/place.png'" [tooltip]="'Update this Transaction'">
+      </dadyin-button>
+      <dadyin-button *ngIf="
+          receivedPoForm.get('status').value == 'PLACED' &&
+          receivedPoForm?.getRawValue().status != 'CONFIRMED'
+        " (clicked)="confirmRejection()" [theme]="'borderless-danger'" type="image"
+        [typeval]="'assets/nicons/delete.png'" [tooltip]="'Reject this transaction'">
+      </dadyin-button>
+      <dadyin-button *ngIf="
+          receivedPoForm?.getRawValue().status == null ||
+          receivedPoForm?.getRawValue().status == 'DRAFT'
+        " (clicked)="savePo('DRAFT')" [theme]="'borderless-default'" type="image" typeval="assets/nicons/save.png"
+        [tooltip]="'Save This in Draft'">
+      </dadyin-button>
+      <dadyin-button *ngIf="receivedPoForm.get('status').value == 'PLACED'" (clicked)="confirmPo()"
+        [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/place.png'" [tooltip]="'Confirmed this Transaction'">
+      </dadyin-button>
+      <dadyin-button *ngIf="receivedPoForm?.getRawValue().id" (clicked)="savePo(null, true)"
+        [theme]="'borderless-default'" [tooltip]="'Save this transaction'" type="image" [typeval]="'assets/nicons/save.png'">
+      </dadyin-button>
+    </div>
+  </div>
+  <div cdkDrag class="uom-config-section">
+    <button (click)="$event.stopPropagation(); uomSetting = !uomSetting" class="btn bg-primary-light title-text">
+      UOM Setting
+    </button>
+    <div (click)="$event.stopPropagation()" class="card uom-card" *ngIf="uomSetting">
+      <div style="margin: 15px" class="prefer-uom-grid align-items-center" *ngIf="componentUoms.controls?.length > 0">
+        <div [formGroup]="item" *ngFor="let item of componentUoms.controls; let i = index"
+          class="my-2 attribute one b-none w-100">
+          <div class="attribute-input justify-content-around w-100 title-text">
+            <div class="text-uppercase">
+              {{ item.get("attributeName").value }}
+            </div>
+            <select (change)="calculateValues()" formControlName="userConversionUom">
+              <ng-container *ngFor="
+                  let uom of uomService.getUoms(
+                    item.get('attributeTypeId').value
+                  )
+                ">
+                <option [value]="uom.description">
+                  {{ uom?.description }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-tab-group class="mat-steps">
+    <mat-tab label="Received PO">
+      <app-create-order (generatePdf)="generatePdf()" [isSelfPO]="isSelfPO" [componentUoms]="componentUoms"
+        (calculate)="calculateValues()" (patchEditData)="patchEditData($event, true)"
+        [receivedPoForm]="receivedPoForm"></app-create-order>
+    </mat-tab>
+  </mat-tab-group>
+</div>

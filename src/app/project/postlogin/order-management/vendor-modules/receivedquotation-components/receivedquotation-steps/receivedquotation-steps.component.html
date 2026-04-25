@@ -1,0 +1,87 @@
+<div class="app-container  ">
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button (clicked)="navigate('/home/order-management/vendor?currentStepIndex=1')"
+        [theme]="'borderless-primary'" type="image" [typeval]="'assets/img/icons/ArrowLeftCircle.png'">
+      </dadyin-button>
+      <ng-container *ngIf="recvQuotationForm?.value?.id">
+        <div class="font-size-16 text-black fw-bold">
+          <label>{{ recvQuotationForm?.value?.requestFrom?.name }}</label>
+        </div>
+        <span class="text-dark"> | </span>
+        <div class="status font-size-12">{{ recvQuotationForm?.value?.status }}</div>
+      </ng-container>
+      <ng-container *ngIf="!recvQuotationForm?.value?.id">
+        <div class="content-title text-light">
+          <label>Received Quotation</label>
+        </div>
+      </ng-container>
+      <span class="text-dark" *ngIf="recvQuotationForm?.value?.id"> | </span>
+      <div class="content-info text-dark">
+        <div class="d-flex align-items-center" *ngIf="recvQuotationForm?.value?.transactionId">
+          <div>
+            <b>{{ recvQuotationForm?.value?.transactionId }}</b> <br>
+            <span class="font-size-10"> ( {{ recvQuotationForm?.value?.audit?.createdDate | date : "medium" }} )
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+      <dadyin-button matTooltip="Copy " [theme]="'disabled'" type="image" [typeval]="'assets/nicons/copy.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Download Tier/QC Quote" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/cart.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Download" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/download.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Delete" *ngIf="
+      recvQuotationForm.get('status').value == 'DRAFT' && recvQuotationForm.get('id').value
+    " (clicked)="confirmDelete()" [theme]="'borderless-default'" type="image"
+        [typeval]="'assets/img/icons/delete.png'">
+      </dadyin-button>
+      <dadyin-button matTooltip="Email Transaction (Regular or Tier)" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/mail.png'">
+      </dadyin-button>
+      <dadyin-button (clicked)="rejectQuotation()" [theme]="'borderless-danger'" type="image"
+        [typeval]="'assets/img/icons/delete.png'">
+      </dadyin-button>
+      <dadyin-button (clicked)="convertToPO()" [tooltip]="'Convert to PO'" matTooltip="Download"
+        [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/refresh.png'">
+      </dadyin-button>
+    </div>
+  </div>
+  <div class="uom-config-section">
+    <button (click)="$event.stopPropagation(); uomSetting = !uomSetting" class="btn bg-primary-light title-text">
+      UOM Setting
+    </button>
+    <div (click)="$event.stopPropagation()" class="card uom-card" *ngIf="uomSetting">
+      <div style="margin: 15px" class="prefer-uom-grid align-items-center" *ngIf="componentUoms.controls?.length > 0">
+        <div [formGroup]="item" *ngFor="let item of componentUoms.controls; let i = index"
+          class="my-2 attribute one b-none w-100">
+          <div class="attribute-input justify-content-around w-100 title-text">
+            <div class="text-uppercase">
+              {{ item.get("attributeName").value }}
+            </div>
+            <select (change)="calculateQuotationValues()" formControlName="userConversionUom">
+              <ng-container *ngFor="
+                  let uom of uomService.getUoms(
+                    item.get('attributeTypeId').value
+                  )
+                ">
+                <option [value]="uom.description">
+                  {{ uom?.description }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-tab-group class="mat-steps">
+    <mat-tab label="Received Quotation">
+      <app-view-quotation [recvQuotationForm]="recvQuotationForm"></app-view-quotation>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,0 +1,50 @@
+<div [formGroup]="wasteOptionform" class="dialog-container">
+  <i class="material-icon" mat-dialog-close>close</i>
+
+  <div class="dialog-card-header">
+    <h3>Add Waste Calculations Option</h3>
+  </div>
+  <div class="b-light my-2">
+    <input formControlName="name" type="text" class="b-light w-100" placeholder="Enter Name ">
+  </div>
+  <div class="b-light my-2">
+    <input [(ngModel)]="formulaValue" [ngModelOptions]="{standalone: true}" (change)="setFormula()" type="text"
+      class="b-light w-100" placeholder="Field for formula">
+  </div>
+
+  <div class="b-light p-1">
+    <div class="toolbar text-center title-text">
+      Add Option
+    </div>
+    <div class="row">
+      <div class="col-6 text-center title-text">
+        Cost add on
+      </div>
+      <div class="col-6 text-center title-text">
+        density
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <input (focus)="formula(wasteOptionform?.get('costFormula'))"
+          (input)="formula(wasteOptionform?.get('costFormula'))"  formControlName="costFormula" type="text"
+          class="b-light" placeholder="Formula">
+      </div>
+      <div class="col-6">
+        <input (focus)="formula(wasteOptionform?.get('densityFormula'))"
+          (input)="formula(wasteOptionform?.get('densityFormula'))"  formControlName="densityFormula" type="text"
+          class="b-light" placeholder="Formula">
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center my-3">
+    <div class="mx-1">
+      <button class="btn btn-sm b-light title-text" mat-dialog-close>Remove</button>
+    </div>
+    <div class="mx-1">
+      <button class="btn btn-sm  bg-primary text-white" (click)="addProcessCalculatorOptionForm()">Add</button>
+    </div>
+  </div>
+
+</div>

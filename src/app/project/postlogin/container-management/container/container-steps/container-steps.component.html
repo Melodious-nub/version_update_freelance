@@ -1,0 +1,157 @@
+<section>
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button
+        (clicked)="navigateToHome()"
+        class="header-icon"
+        [theme]="'borderless-default'"
+        type="icon"
+        [typeval]="'arrow_circle_left'"
+      >
+      </dadyin-button>
+      <div class="content-title">
+        <label>{{ containerOrderToName }}</label>
+      </div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+      <dadyin-button
+        *ngIf="containerId"
+        (clicked)="confirmDelete()"
+        [theme]="'borderless-danger'"
+        type="icon"
+        [typeval]="'delete_outline'"
+      >
+      </dadyin-button>
+
+      <dadyin-button
+        [theme]="'secondary'"
+        label="Save as Draft"
+        (clicked)="onClickSave('DRAFT')"
+      >
+      </dadyin-button>
+      <dadyin-button
+        [typeval]="'save'"
+        [type]="'icon'"
+        [theme]="'primary'"
+        matToolTip="Save"
+        (clicked)="onClickSave('PLACED')"
+      >
+      </dadyin-button>
+    </div>
+  </div>
+
+  <div cdkDrag class="uom-config-section">
+    <button
+      (click)="$event.stopPropagation(); uomSetting = !uomSetting"
+      class="btn bg-primary-light title-text"
+    >
+      UOM Setting
+    </button>
+    <div
+      (click)="$event.stopPropagation()"
+      class="card uom-card"
+      *ngIf="uomSetting"
+    >
+      <div
+        class="prefer-uom-grid align-items-center"
+        *ngIf="componentUoms.controls?.length > 0"
+      >
+        <div
+          [formGroup]="item"
+          *ngFor="let item of componentUoms.controls; let i = index"
+          class="my-2 attribute one b-none w-100"
+        >
+          <div class="attribute-input justify-content-around w-100 title-text">
+            <div class="text-uppercase">
+              {{ item.get("attributeName").value }}
+            </div>
+            <select
+              (change)="
+                onGlobalUomChange(item.get('userConversionUom').value, true)
+              "
+              formControlName="userConversionUom"
+            >
+              <ng-container
+                *ngFor="
+                  let uom of uomService.getUoms(
+                    item.get('attributeTypeId').value
+                  )
+                "
+              >
+                <option [value]="uom.description">
+                  {{ uom?.description }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-tab-group class="mat-steps" [(selectedIndex)]="currentStepIndex">
+    <mat-tab [label]="isQuotation ? 'Container Quote' : 'Order details'">
+      <app-order-details
+        [isExport]="isExport"
+        [isQuotation]="isQuotation"
+        [componentUoms]="componentUoms"
+        (calculate)="getCalculatedValues()"
+        *ngIf="
+          currentStepIndex === 0 &&
+          currentBusinessAccount &&
+          (purchaseOrdersListLoaded || quotationsListLoaded)
+        "
+        [purchaseOrdersList]="purchaseOrdersList"
+        [quotationsList]="quotationsList"
+        [currentBusinessAccount]="currentBusinessAccount"
+        [containerForm]="containerForm"
+      ></app-order-details>
+    </mat-tab>
+    <ng-container *ngIf="!isQuotation">
+      <mat-tab label="Container Info">
+        <app-container-info
+          [isExport]="isExport"
+          [componentUoms]="componentUoms"
+          (calculate)="getCalculatedValues()"
+          *ngIf="currentStepIndex === 1 && currentBusinessAccount"
+          [currentBusinessAccount]="currentBusinessAccount"
+          [containerForm]="containerForm"
+        ></app-container-info>
+      </mat-tab>
+      <mat-tab label="{{ isExport ? 'Loading' : 'Unloading' }}">
+        <app-unloading-details
+          [isExport]="isExport"
+          [componentUoms]="componentUoms"
+          (calculate)="getCalculatedValues()"
+          *ngIf="currentStepIndex === 2 && currentBusinessAccount"
+          [currentBusinessAccount]="currentBusinessAccount"
+          [containerForm]="containerForm"
+        ></app-unloading-details>
+      </mat-tab>
+      <mat-tab label="Expenses">
+        <app-expenses-details
+          [isExport]="isExport"
+          [componentUoms]="componentUoms"
+          (calculate)="getCalculatedValues()"
+          *ngIf="currentStepIndex === 3 && currentBusinessAccount"
+          [currentBusinessAccount]="currentBusinessAccount"
+          [containerForm]="containerForm"
+        ></app-expenses-details>
+      </mat-tab>
+      <mat-tab label="Documents">
+        <app-documents-details
+          [isExport]="isExport"
+          (calculate)="getCalculatedValues()"
+          *ngIf="currentStepIndex === 4 && currentBusinessAccount"
+          [currentBusinessAccount]="currentBusinessAccount"
+          [containerForm]="containerForm"
+        ></app-documents-details>
+      </mat-tab>
+    </ng-container>
+
+    <!-- <mat-tab label="print">
+        <app-unloading-sheet></app-unloading-sheet>
+      </mat-tab> -->
+  </mat-tab-group>
+</section>

@@ -1,0 +1,29 @@
+<div class="dialog-container">
+  <i class="material-icon" mat-dialog-close>close</i>
+  <div class="dialog-content">
+    <div class="dialog-title mb-2">Raw Material Price</div>
+    <div class="dialog-body">
+      <div class="d-flex align-items-center justify-content-between">
+        <textarea
+          type="text"
+          class="w-100 b-light b-round p-2"
+          placeholder="Enter Prompt"
+          [(ngModel)]="prompt"
+          [ngModelOptions]="{ standalone: true }"
+        ></textarea>
+      </div>
+      <div class="my-1 text-center w-100">
+        <dadyin-button
+          [theme]="'primary'"
+          [size]="'small'"
+          [label]="'Get Price'"
+          (clicked)="refreshRawMaterialPricing()"
+        >
+        </dadyin-button>
+      </div>
+      <div *ngIf="rawMaterial" class="b-light b-round p-2">
+        {{rawMaterial}}
+      </div>
+    </div>
+  </div>
+</div>

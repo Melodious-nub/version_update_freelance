@@ -1,0 +1,270 @@
+<div>
+  <div
+    class="toolbar mt-2 b-round px-2 d-flex align-items-center font-size-14 b-light b-round height-40"
+  >
+    <div
+      class="d-flex align-items-center w-100 justify-content-between overflow-auto"
+    >
+      <div class="title-text">
+        <b> Grand Total : </b>
+        <input
+          *ngIf="purchaseOrderForm.getRawValue()?.totalCost?.attributeValue"
+          class="price-text font-size-14"
+          [formControl]="
+            purchaseOrderForm.get('totalCost').get('attributeValue')
+          "
+        />
+        <span class="mx-1">
+          <b>
+            {{ purchaseOrderForm.getRawValue()?.totalCost?.userConversionUom }}
+          </b>
+        </span>
+        <b
+          *ngIf="
+            purchaseOrderForm.getRawValue()?.remainingPaymentCost
+              ?.attributeValue
+          "
+        >
+          | Remaining Payment :
+        </b>
+        <ng-container
+          *ngIf="
+            purchaseOrderForm.getRawValue()?.remainingPaymentCost
+              ?.attributeValue
+          "
+        >
+          <input
+            class="price-text font-size-14"
+            [formControl]="
+              purchaseOrderForm
+                .get('remainingPaymentCost')
+                .get('attributeValue')
+            "
+          />
+
+          <span class="mx-1">
+            <b>
+              {{
+                purchaseOrderForm.getRawValue()?.remainingPaymentCost
+                  ?.userConversionUom
+              }}
+            </b>
+          </span>
+        </ng-container>
+
+        <dadyin-button
+          *ngIf="paymentStatus != 'COMPLETED'"
+          [isDisabled]="!paymentEnabled"
+          label="Pay now"
+          [theme]="'primary'"
+          (clicked)="initiateStripePayment()"
+        >
+        </dadyin-button>
+      </div>
+      <div class="font-size-14 status height-30 fw-bold">
+        Payment Status: {{ paymentStatus ?? "PENDING" }}
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="
+      importLocalType == 'LOCAL' &&
+      deliveryPickup == 'DELIVERY' &&
+      deliveryAddressValue
+    "
+    class="d-flex my-2 bg-light b-light py-2"
+  >
+    <div class="d-flex align-items-center width-perc-70">
+      <div class="title-text mx-1">Delivery Address :</div>
+      <div class="mx-1 width-perc-30">
+        <input
+          class="b-light w-100"
+          type="text"
+          readonly
+          [value]="deliveryAddressValue"
+          disabled
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="p-3 w-100 title-text font-size-16 mt-2 price-text"
+    *ngIf="this.paymentStatus == 'COMPLETED'"
+  >
+    Payment is received Successfully.
+  </div>
+
+  <ng-container *ngIf="this.paymentStatus != 'COMPLETED'">
+    <div
+      class="p-3 w-100 title-text font-size-14 mt-2 danger-text"
+      *ngIf="this.paymentEnabled != true"
+    >
+      Vendor will contact you for payment once the order is confirmed.
+    </div>
+
+    <div
+      style="padding: 5px 10px 5px 20px"
+      class="title-text font-size-14 mt-2"
+      *ngIf="showPayNowButton"
+    >
+      Choose Payment Method
+    </div>
+
+    <div class="row mx-auto" [ngClass]="showPayNowButton ? 'my-3' : ''">
+      <div class="col-12 col-md-4 p-0">
+        <div
+          class="b-round"
+          [ngClass]="{ 'b-light': showPayNowButton }"
+          *ngIf="showPayNowButton"
+        >
+          <div
+            class="d-flex align-items-center p-3 b-light"
+            [ngClass]="{ 'bg-light': selectedPaymentMethod == 'CARD' }"
+          >
+            <i class="title-text font-size-14 material-icon mx-1">payments </i>
+            <div class="font-size-14 title-text">Credit Card/Debit Card</div>
+          </div>
+          <div
+            class="d-flex align-items-center p-3 b-light bg-disable"
+            [ngClass]="{ 'bg-light': selectedPaymentMethod == 'ACH' }"
+          >
+            <i class="title-text font-size-14 material-icon mx-1"
+              >currency_exchange
+            </i>
+            <div class="font-size-14 title-text">ACH</div>
+          </div>
+          <div
+            class="d-flex align-items-center p-3 b-light bg-disable"
+            [ngClass]="{ 'bg-light': selectedPaymentMethod == 'WIRE' }"
+          >
+            <i class="title-text font-size-14 material-icon mx-1">payments </i>
+            <div class="font-size-14 title-text">Wire Transfer</div>
+          </div>
+          <div
+            class="d-flex align-items-center p-3 b-light bg-disable"
+            [ngClass]="{ 'bg-light': selectedPaymentMethod == 'NETBANKING' }"
+          >
+            <i class="title-text font-size-14 material-icon mx-1">payments </i>
+            <div class="font-size-14 title-text">Net Banking</div>
+          </div>
+          <div
+            class="d-flex align-items-center p-3 b-light bg-disable"
+            [ngClass]="{ 'bg-light': selectedPaymentMethod == 'CC' }"
+          >
+            <i class="title-text font-size-14 material-icon mx-1">payments </i>
+            <div class="font-size-14 title-text">CC</div>
+          </div>
+          <div
+            class="d-flex align-items-center p-3 b-light bg-disable"
+            [ngClass]="{ 'bg-light': selectedPaymentMethod == 'CHECKPRINT' }"
+          >
+            <i class="title-text font-size-14 material-icon mx-1">payments </i>
+            <div class="font-size-14 title-text">Check Print</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-8">
+        <div [ngClass]="{ 'b-light': showPayNowButton }" class="p-2 b-round">
+          <form id="payment-form">
+            <div id="link-authentication-element">
+              <!--Stripe.js injects the Link Authentication Element-->
+            </div>
+            <div id="payment-element">
+              <!--Stripe.js injects the Payment Element-->
+            </div>
+            <div
+              class="d-flex justify-content-end align-items-center"
+              [ngClass]="{ 'd-none': !showPayNowButton }"
+            >
+              <button
+                class="btn btn-primary my-2 b-none bg-primary btn-sm"
+                (click)="handleSubmit($event)"
+                id="submit"
+              >
+                <div class="spinner hidden" id="spinner"></div>
+                <span id="button-text">Pay now</span>
+              </button>
+            </div>
+
+            <div id="payment-message" style="color: red" class="hidden"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- <div class="credit-memo-details my-2">
+        <div class="title-text">
+          Credit Memo
+        </div>
+        <div class="bg-white my-2 b-light d-flex align-items-center p-2">
+          <div class="email-form form-floating  mx-1">
+            <input type="password" class="bg-white b-light" id="floatingInput" placeholder="Enter here">
+          </div>
+          <dadyin-button [isDisabled]="true" [theme]="'primary'" label="Apply">
+          </dadyin-button>
+        </div>
+      </div> -->
+
+  <div class="my-2">
+    <div class="title-text my-2 fw-bold">Payment Overview</div>
+    <div class="process-table b-light">
+      <table id="example" class="table-striped">
+        <thead class="working">
+          <tr>
+            <th>SR&nbsp;&nbsp;#</th>
+            <th>PAID ON</th>
+            <th>STATUS</th>
+            <th>EMAIL</th>
+            <th>AMOUNT</th>
+            <th style="width: unset">PAYMENT ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let item of paymentOverview; let i = index">
+            <tr>
+              <td class="text-center">{{ i + 1 }}.</td>
+              <td>{{ item?.createdDate | date : "medium" }}</td>
+              <td>{{ item?.status }}</td>
+              <td>{{ item?.receiptEmail }}</td>
+              <td>{{ item?.amount }} {{ item?.currency }}</td>
+              <td>{{ item?.paymentId }}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- <div class="my-2">
+        <div class="title-text my-2">PAYMENT HISTORY</div>
+        <div class="process-table b-light">
+          <table id="example" class="table-striped">
+            <thead class="working">
+              <tr>
+                <th>SR&nbsp;&nbsp;#</th>
+                <th>PAYMENT BY</th>
+                <th>PAID</th>
+                <th>PAYMENT METHOD</th>
+                <th>DATE & TIME</th>
+                <th>STATUS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div> -->
+</div>

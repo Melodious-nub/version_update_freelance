@@ -1,0 +1,26 @@
+<div class="app-container  ">
+  <mat-tab-group class="mat-steps">
+    <mat-tab label="Category">
+      <div class="row my-2 text-right">
+        <dadyin-button
+          (clicked)="AddCategory()"
+          [theme]="'primary'"
+          label="Add Category"
+        >
+        </dadyin-button>
+      </div>
+      <div class="row">
+        <data-table
+          [data]="categoryList"
+          [headers]="categoryheaders"
+          [pageConfig]="pageConfig"
+          (editData)="onCategoryEditClick($event)"
+          [actions]="tableActions"
+          (pageChange)="pageChange($event)"
+          (actionClick)="onCategoryActionClick($event)"
+        >
+        </data-table>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

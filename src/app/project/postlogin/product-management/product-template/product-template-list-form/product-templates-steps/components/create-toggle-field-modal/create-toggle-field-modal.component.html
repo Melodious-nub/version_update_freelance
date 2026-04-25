@@ -1,0 +1,62 @@
+<div class="dialog-container">
+ <i class="material-icon" mat-dialog-close>close</i>
+
+  <div class="dialog-card-header">
+    <h3>Create Toggle Field</h3>
+  </div>
+
+  <div class="card-body">
+    <div class="header-options">
+      <div class="options">
+        <label for="">{{data.attributeName.value}}</label>
+        <div class="btns">
+          <button class="active">{{attributeValueExpression.at(0)?.value?.choice || 'Option 1'}}</button>
+          <button>{{attributeValueExpression.at(1)?.value?.choice || 'Option 2'}}</button>
+        </div>
+      </div>
+      <!-- <div class="uom">
+        <label>Select UOM</label>
+        <select>
+          <option [value]="'Number'"
+                  *ngFor="let uom of data.attributeType.availableUOMs">
+            {{uom.description}}
+          </option>
+        </select>
+      </div> -->
+    </div>
+
+    <div class="fields">
+      <label for=""
+             style="margin-bottom: 0!important; font-size: 12px;">Toggle Fields for</label>
+      <input type="text"
+             [formControl]="data.attributeName"
+             class="selected-value" />
+
+      <ul>
+        <li *ngFor="let attribute of attributeValueExpression.controls">
+          <div class="option"
+               [formGroup]="attribute">
+            <input type="text"
+                   formControlName="choice"
+                   placeholder="Option 1" />
+            <div class="group">
+              <input type="text"
+                     formControlName="attributeValueExpression"
+                     placeholder="Formula" />
+              <input  type="checkbox" formControlName="selected" />
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="dialog-buttons">
+      <button class="secondry"
+              (click)="onCancel()"
+              mat-dialog-close>Cancel</button>
+      <button class="primary"
+              (click)="onConfirm()">Confirm</button>
+    </div>
+  </div>
+</div>

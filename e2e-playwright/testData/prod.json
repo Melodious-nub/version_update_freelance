@@ -1,0 +1,64 @@
+{
+    "URL": "https://www.dadyin.com/#/signin",
+    "login": {
+        "username": "baburgn12@gmail.com",
+        "password": "Celerio@3535"
+    },
+    "invalidlogin":{
+        "username": "invalid@gmail.com",
+        "password": "incorrect"
+    },
+    "productDetails":{
+        "productCode": "12",
+        "productDescription":"Plastic Film for testing",
+        "upcCode":"",
+        "eanCode":"",
+        "skuType":"UNIT",        
+        "unitCount":"3",
+        "unitName":"box",
+        "selectProductType":"T-Shirt Bags ",
+        "selectProductSubType": "HDPE Bags (T-Shirt Bags) ",
+        "purchaseDescription":"Testing Purpose",
+        "choosePreferedVendor":"Dayana Polyplast Inc",
+        "customProductFor":"",
+        "saleable":"true",
+        "markasFavorite":"true",
+        "isaRawMaterial":"true",
+        "isaSupplies":"true",
+        "isaPackaging":"true",
+        "isCustomizable":"true",
+        "displayInQuickCheckout":"true",
+        "productAttributes":
+        {
+            "productAttributes":"true",
+            "GSM":"0.000000",
+            "GSMUnit":"gm/m^2",
+            "Net Cost":"0.000000",
+            "Net Cost Unit":"USD"
+        },
+        "inventory":"true",
+        "inventoryType":"UNIT",
+        "openingInventory":"10",
+        "inventoryLocation":"Warehouse 1",
+        "addedBy":"Milan",
+        "addedOn":"2023-10-01",
+        "showLiveInventory":"true",
+        "greaterThanQty":"",
+        "custominventoryType":"UNIT",
+        "packageAttributes":"true",
+        "mqs":"456",
+        "mqo":"457",
+        "stackable":"true",
+        "unitBuyerMargin":"40",
+        "unitBuyerDecimal":"0.25",
+        "skuBuyerMargin":"50",
+        "skuBuyerDecimal":"0.25",
+        "palletBuyerMargin":"60",
+        "palletBuyerDecimal":"0.25",
+        "containerBuyerMargin":"70",
+        "containerBuyerDecimal":"0.25",
+        "addKeywordInput":"mfr",
+        "templateCost":" 1326.148 USD/mt",
+        "templateDenisty":"1037590.000 gm/m^3"
+    }
+}

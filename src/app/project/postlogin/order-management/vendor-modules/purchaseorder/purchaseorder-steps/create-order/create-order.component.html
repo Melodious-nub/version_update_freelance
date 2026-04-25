@@ -1,0 +1,211 @@
+<form [formGroup]="purchaseOrderForm">
+  <mat-expansion-panel expanded="true" #expansionPanel1>
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel1, $event)">
+      <mat-panel-description>
+        <div class="w-100 title-text">Purchase Order Details</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div class="row">
+        <div class="col-md-9 col-12">
+          <div class="row">
+            <div class="col-md-4 col-12 map-grid">
+              <dadyin-searchable-select class="w-100" label="Select Vendor" [control]="vendorId"
+                (changed)="onChangeVendor()" [fullItems]="businessAccountService.vendorList"
+                bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
+              <dadyin-button (clicked)="openMap(1)" (click)="$event.stopPropagation()" [theme]="'borderless-primary'"
+                type="image" [typeval]="'assets/img/icons/address.png'">
+              </dadyin-button>
+              <div *ngIf="map1" class="tooltip-white b-light shadow-sm">
+                {{ requestToAddress }}
+              </div>
+            </div>
+            <div class="col-12 col-md-2" *ngIf="importLocalType.value == 'CONTAINER'">
+              <dadyin-select [isDisabled]="!isEditable" [optionArr]="containerService.incoTermsList"
+                [emptyOption]="'Select Inco Terms'" label="Inco Terms" formControlName="incoTermId"
+                optionLabel="description" optionValue="id">
+              </dadyin-select>
+            </div>
+            <div class="col-8 col-md-2" *ngIf="importLocalType.value == 'LOCAL'">
+              <dadyin-select [isDisabled]="!isEditable" [optionArr]="[
+                  { id: 'DELIVERY', description: 'DELIVERY' },
+                  { id: 'PICKUP', description: 'PICKUP' }
+                ]" label="Delivery Type" formControlName="deliveryPickup" optionLabel="description" optionValue="id">
+              </dadyin-select>
+            </div>
+
+            <div class="col-md-1 col-4 d-flex">
+              <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'LOCAL'
+                ? 'assets/img/icons/location-on.png'
+                : 'assets/img/icons/location-off.png'">
+              </dadyin-button>
+              <dadyin-button (clicked)="toggleType('CONTAINER')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'CONTAINER'
+                ? 'assets/img/icons/anchor_on.png'
+                : 'assets/img/icons/anchor_off.png'">
+              </dadyin-button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-2">
+              <dadyin-input [minDate]="minRequiredDate" [isDisabled]="!isEditable" inputType="date"
+                formControlName="requiredByDate" label="Required Date">
+              </dadyin-input>
+            </div>
+            <div class="col-12 col-md-2">
+              <dadyin-input [isDisabled]="!isEditable" inputType="date" formControlName="expectedByDate"
+                label="Expected Ship Date">
+              </dadyin-input>
+            </div>
+            <div class="col-12 col-md-2">
+              <dadyin-select [isDisabled]="!isEditable" [emptyOption]="'Select Buying Type'"
+                [optionArr]="buyingTypeList" label="Buying Type" formControlName="buyingType" optionLabel="name"
+                optionValue="value">
+              </dadyin-select>
+            </div>
+            <div class="col-12 col-md-2">
+              <dadyin-select [isDisabled]="!isEditable" [emptyOption]="'Select Departure Port'"
+                [optionArr]="containerService.portsList" label="Port of Departure" formControlName="departurePortId"
+                optionLabel="description" optionValue="id">
+              </dadyin-select>
+            </div>
+            <div class="col-12 col-md-2">
+              <dadyin-input [isDisabled]="!isEditable" inputType="text" formControlName="shipper" label="Shipping via">
+              </dadyin-input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-2">
+              <dadyin-select [isDisabled]="!isEditable" [emptyOption]="'Select Purchase Manager'"
+                [optionArr]="containerService.employeesList" label="Purchase manager"
+                formControlName="purchaseManagerId" optionLabel="firstName" optionValue="id">
+              </dadyin-select>
+            </div>
+            <div class="col-12 col-md-2" *ngIf="importLocalType.value != 'LOCAL'">
+              <dadyin-input [isDisabled]="!isEditable" inputType="text" label="Dadyin Points"
+                formControlName="dadyInPoints">
+              </dadyin-input>
+            </div>
+            <div class="col-12 col-md-2" *ngIf="importLocalType.value != 'LOCAL'">
+              <dadyin-select [isDisabled]="!isEditable" [optionArr]="[
+                  { id: 'PALLET', name: 'PALLET' },
+                  { id: 'FLOOR', name: 'FLOOR' },
+                  { id: 'MIXED', name: 'MIXED' }
+                ]" label="Loading Type" formControlName="loadingTypeId" optionLabel="name" optionValue="id"
+                [emptyOption]="'Select Loading Type'">
+              </dadyin-select>
+            </div>
+            <div class="col-12 col-md-2">
+              <dadyin-select [emptyOption]="'Select Payment Terms'" formControlName="paymentTermId"
+                [optionArr]="containerService.paymentTermsList" label="Payment Terms" optionLabel="description"
+                optionValue="id">
+              </dadyin-select>
+            </div>
+
+            <div class="col-12 col-md-2">
+              <dadyin-select formControlName="purchaseOrderTemplateId" [optionArr]="[]" label="PO Temp"
+                optionLabel="description" optionValue="id">
+              </dadyin-select>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-3 col-12">
+          <div class="row">
+            <div class="col-6">
+              <dadyin-input [isDisabled]="true" inputType="text" formControlName="transactionId" label="PO #">
+              </dadyin-input>
+            </div>
+
+            <div class="col-6">
+              <dadyin-input [isDisabled]="!isEditable" inputType="date" formControlName="date" label="Date">
+              </dadyin-input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <dadyin-input [isDisabled]="!isEditable" inputType="date" formControlName="expiryDate" label="Expires on">
+              </dadyin-input>
+            </div>
+            <div class="col-6">
+              <div class="attribute attr-b">
+                <label>Ref. Quotation#</label>
+                <input [matAutocomplete]="quotationAuto" #quotationinput (input)="getQuotationsList($event)" />
+              </div>
+              <mat-autocomplete autoActiveFirstOption #quotationAuto="matAutocomplete">
+                <mat-option *ngFor="let quotation of quotationsList" (click)="
+                    quotationinput.value = quotation.transactionId;
+                    onSelectQuotation(quotation)
+                  ">
+                  {{ quotation?.transactionId }}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+
+          </div>
+          <div class="row">
+
+
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+  <div class="py-2 d-flex align-items-center overflow-auto text-nowrap" style="column-gap: 5px">
+    <div class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
+      <i class="mat-icon text-primary">pending_actions</i>
+      <div class="text-dark font-size-14 mx-1">Prev. Orders</div>
+    </div>
+    <div (click)="onClickMyCategory()" class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
+      <i class="mat-icon text-primary">grid_view</i>
+      <div class="text-dark font-size-14 mx-1">My Category</div>
+    </div>
+
+    <div (click)="onClickMyFavourite()" class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
+      <i class="mat-icon text-primary">favorite</i>
+      <div class="text-dark font-size-14 mx-1">My Favourite</div>
+    </div>
+
+    <!-- <div [formGroup]="productAttributeSetControl">
+      <dadyin-select class="mb-0 bg-light" formControlName="descriptionId" [optionArr]="productAttributeSets"
+        labelBackground="bg-light" label="Select Product Attribute Set" optionLabel="description" optionValue="id">
+      </dadyin-select>
+    </div>
+    <div>
+      <dadyin-button type="icon" class="mx-1" (clicked)="printPdf()" [typeval]="'print'" [theme]="'borderless-default'">
+      </dadyin-button>
+    </div> -->
+  </div>
+
+  <mat-expansion-panel class="panel-no-padding mt-1" expanded="true" #expansionPanel3>
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
+      <mat-panel-description>
+        <div class="w-100 title-text">
+          Product Details
+          <span *ngIf="productPackages?.controls?.length">
+            ({{ productPackages?.controls?.length }})</span>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <section>
+        <app-order-transaction-packages [displayedColumns]="[          
+          'pkgs',
+          'qoh',
+          'qtyReq',
+          'metricCost',
+          'weight',
+          'volume',
+          'skuPrice',        
+          'subTotal',
+          'action'
+          ]" [orderFile]="poFile" [isEditable]="isEditable" [orderForm]="purchaseOrderForm"
+          (getProducts)="getProductsList($event)" (generatePoFromPdf)="generatePoFromPdf($event)"
+          (calculate)="calculateValues()" [productsList]="productsList" [productPackages]="productPackages"
+          [type]="'purchaseorder'"></app-order-transaction-packages>
+      </section>
+    </ng-template>
+  </mat-expansion-panel>
+</form>

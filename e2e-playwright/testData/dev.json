@@ -1,0 +1,12 @@
+{
+    "URL": "https://dev.dadyin.com/#/signin",
+    "login": {
+        "username": "test_admin@dadyin.com",
+        "password": "admin@",
+        "businessAccount": "Dayana Polyplast Inc"
+    },
+    "invalidlogin":{
+        "username": "invalid@gmail.com",
+        "password": "incorrect"
+    }
+}

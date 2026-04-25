@@ -1,0 +1,225 @@
+<div class="app-container">
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button
+        (clicked)="navigate('/home/order-management/vendor?currentStepIndex=3')"
+        [theme]="'borderless-primary'"
+        type="image"
+        [typeval]="'assets/img/icons/ArrowLeftCircle.png'"
+      >
+      </dadyin-button>
+
+      <ng-container *ngIf="billForm.getRawValue()?.id">
+        <div class="font-size-16 text-black fw-bold">
+          <label>{{ requestToName }}</label>
+        </div>
+        <span class="text-dark"> | </span>
+        <div class="status font-size-12">
+          {{ billForm.getRawValue()?.status }}
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!billForm.getRawValue()?.id">
+        <div class="content-title text-light">
+          <label>Create Bill</label>
+        </div>
+      </ng-container>
+
+      <span class="text-dark" *ngIf="billForm.getRawValue()?.id"> | </span>
+      <div class="content-info text-dark">
+        <div
+          class="d-flex align-items-center"
+          *ngIf="billForm.getRawValue()?.transactionId"
+        >
+          <div>
+            <b class="text-black">{{
+              billForm.getRawValue()?.transactionId
+            }}</b>
+            <br />
+            <span class="font-size-10">
+              (
+              {{ billForm.getRawValue()?.audit?.createdDate | date : "medium" }}
+              )
+            </span>
+          </div>
+          <div>
+            <span class="text-dark mx-2"> | </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div></div>
+
+    <div class="d-flex justify-content-end align-items-center">
+      <div
+        class="d-flex flex-column"
+        *ngIf="billForm.get('paymentStatus').value"
+      >
+        <div class="me-3 font-size-12 text-black" style="line-height: 1.4">
+          Payment Status :
+        </div>
+        <div
+          class="font-size-10"
+          style="line-height: 1"
+          [style.color]="
+            (billForm.get('paymentStatus').value || 'Pending') === 'PENDING'
+              ? 'red'
+              : ''
+          "
+        >
+          {{
+            billForm.get("paymentStatus").value
+              ? billForm.get("paymentStatus").value
+              : "Pending"
+          }}
+        </div>
+      </div>
+      <dadyin-button
+        matTooltip="Pay"
+        (clicked)="openPaymentDialog()"
+        [theme]="'borderless-default'"
+        type="image"
+        [typeval]="'assets/nicons/pay.png'"
+      >
+      </dadyin-button>
+      <div class="mx-2 text-light">|</div>
+      <dadyin-button
+        matTooltip="Share"
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/share.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/refresh.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Copy this Transaction"
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/copy.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Download"
+        [theme]="'borderless-disabled'"
+        type="image"
+        [typeval]="'assets/nicons/download.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Delete"
+        *ngIf="
+          billForm.get('status').value == 'DRAFT' && billForm.get('id').value
+        "
+        (clicked)="confirmDelete()"
+        [theme]="'borderless-default'"
+        type="image"
+        [typeval]="'assets/img/icons/delete.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Email Transaction (Regular or Tier)"
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/mail.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Save this in Draft"
+        *ngIf="
+          !billForm?.value?.isQuickCheckout &&
+          billForm?.value.status != 'CONFIRMED' &&
+          billForm?.value.status != 'PLACED' &&
+          billForm?.value.status != 'COMPLETED' &&
+          billForm?.value.status != 'REJECTED'
+        "
+        (clicked)="saveBill(true)"
+        [theme]="'borderless-default'"
+        type="image"
+        [typeval]="'assets/nicons/save.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Place Order"
+        *ngIf="
+          !billForm?.value?.isQuickCheckout &&
+          billForm?.value.status != 'CONFIRMED' &&
+          billForm?.value.status != 'PLACED' &&
+          billForm?.value.status != 'COMPLETED' &&
+          billForm?.value.status != 'REJECTED'
+        "
+        (clicked)="saveBill(false)"
+        [theme]="'borderless-default'"
+        type="image"
+        [typeval]="'assets/nicons/place.png'"
+      >
+      </dadyin-button>
+      <!-- <dadyin-button matTooltip="Refresh Updated Purchase order information" *ngIf="billForm.getRawValue().id"
+        (clicked)="savePo('PLACED', true)" [theme]="'borderless-default'" type="image"
+        [typeval]="'assets/nicons/refresh.png'">
+      </dadyin-button> -->
+      <dadyin-button
+        matTooltip="Notify"
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/notify.png'"
+      >
+      </dadyin-button>
+    </div>
+  </div>
+  <div cdkDrag class="uom-config-section">
+    <button
+      (click)="uomSetting = !uomSetting"
+      class="btn bg-primary-light title-text"
+    >
+      UOM Setting
+    </button>
+    <div class="card uom-card" *ngIf="uomSetting">
+      <div
+        class="prefer-uom-grid align-items-center"
+        *ngIf="componentUoms.controls?.length > 0"
+      >
+        <div
+          [formGroup]="item"
+          *ngFor="let item of componentUoms.controls; let i = index"
+          class="my-2 attribute one b-none w-100"
+        >
+          <div class="attribute-input justify-content-around w-100 title-text">
+            <div class="text-uppercase">
+              {{ item.get("attributeName").value }}
+            </div>
+            <select
+              (change)="calculateValues()"
+              formControlName="userConversionUom"
+            >
+              <ng-container
+                *ngFor="
+                  let uom of uomService.getUoms(
+                    item.get('attributeTypeId').value
+                  )
+                "
+              >
+                <option [value]="uom.description">
+                  {{ uom?.description }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-tab-group class="mat-steps">
+    <mat-tab label="Create Bill">
+      <app-create-bill
+        [componentUoms]="componentUoms"
+        (calculate)="calculateValues()"
+        (patchEditData)="patchEditData($event, true)"
+        [billForm]="billForm"
+      ></app-create-bill>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,0 +1,1479 @@
+<form>
+  <mat-expansion-panel expanded="true" #expansionPanel1>
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel1, $event)">
+      <mat-panel-description>
+        <div class="w-100 title-text">Order Details</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div [formGroup]="containerForm">
+        <div class="input-order">
+          <div class="inp">
+            <div class="attribute one">
+              <label for="">Total Orders</label>
+              <div class="attribute-input">
+                <input
+                  disabled
+                  formControlName="totalOrders"
+                  type="text"
+                  placeholder="Enter your value"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="inp">
+            <div class="attribute one">
+              <label for="">Total SKUs</label>
+              <div class="attribute-input">
+                <input
+                  disabled
+                  formControlName="totalSKUs"
+                  type="text"
+                  placeholder="Enter your value"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="inp">
+            <div>
+              <div class="attribute one">
+                <label for="">Total Weight</label>
+                <div class="attribute-input" formGroupName="weight">
+                  <input
+                    disabled
+                    min="0"
+                    formControlName="attributeValue"
+                    type="number"
+                    placeholder="Enter your value"
+                  />
+                  <select
+                    disabled
+                    formControlName="userConversionUom"
+                    id="NetWtUnit"
+                  >
+                    <ng-container
+                      *ngFor="let uom of uomService?.availableNetWeightUoms"
+                    >
+                      <option [value]="uom.description">
+                        {{ uom?.description }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="inp">
+            <div>
+              <div class="attribute one">
+                <label for="">Total Volume</label>
+                <div class="attribute-input" formGroupName="volume">
+                  <input
+                    disabled
+                    min="0"
+                    formControlName="attributeValue"
+                    type="number"
+                    placeholder="Enter your value"
+                  />
+                  <select
+                    disabled
+                    formControlName="userConversionUom"
+                    id="NetWtUnit"
+                  >
+                    <ng-container
+                      *ngFor="let uom of uomService?.availableNormalVolumeUoms"
+                    >
+                      <option [value]="uom.description">
+                        {{ uom?.description }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="inp">
+            <dadyin-input
+              inputType="text"
+              isDisabled="true"
+              formControlName="totalUnits"
+              label="Total Units"
+            >
+            </dadyin-input>
+          </div>
+          <div class="inp">
+            <dadyin-select
+              [optionArr]="[
+                { id: 'PALLET', name: 'PALLET' },
+                { id: 'FLOOR', name: 'FLOOR' },
+                { id: 'MIXED', name: 'MIXED' }
+              ]"
+              label="Loading Type"
+              formControlName="loadingType"
+              optionLabel="name"
+              optionValue="id"
+              [emptyOption]="'Select Loading Type'"
+            >
+            </dadyin-select>
+          </div>
+          <div class="inp">
+            <div *ngIf="!isExport" formGroupName="importCost">
+              <div class="attribute one">
+                <label for="">Orders value</label>
+                <div class="attribute-input">
+                  <input
+                    disabled
+                    min="0"
+                    formControlName="attributeValue"
+                    type="number"
+                    placeholder="Enter your value"
+                  />
+                  <select
+                    disabled
+                    formControlName="userConversionUom"
+                    id="cost"
+                  >
+                    <ng-container
+                      *ngFor="let uom of uomService?.availableCostUoms"
+                    >
+                      <option [value]="uom.description">
+                        {{ uom?.description }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="isExport" formGroupName="exportCost">
+              <div class="attribute one">
+                <label for="">Order value</label>
+                <div class="attribute-input">
+                  <input
+                    disabled
+                    min="0"
+                    formControlName="attributeValue"
+                    type="number"
+                    placeholder="Enter your value"
+                  />
+                  <select
+                    disabled
+                    formControlName="userConversionUom"
+                    id="cost"
+                  >
+                    <ng-container
+                      *ngFor="let uom of uomService?.availableCostUoms"
+                    >
+                      <option [value]="uom.description">
+                        {{ uom?.description }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="inp">
+            <div *ngIf="!isExport" formGroupName="importCost">
+              <div class="attribute one">
+                <label for="">Total Cost</label>
+                <div class="attribute-input">
+                  <input
+                    disabled
+                    min="0"
+                    formControlName="attributeValue"
+                    type="number"
+                    placeholder="Enter your value"
+                  />
+                  <select
+                    disabled
+                    formControlName="userConversionUom"
+                    id="cost"
+                  >
+                    <ng-container
+                      *ngFor="let uom of uomService?.availableCostUoms"
+                    >
+                      <option [value]="uom.description">
+                        {{ uom?.description }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="isExport" formGroupName="exportCost">
+              <div class="attribute one">
+                <label for="">Total Cost</label>
+                <div class="attribute-input">
+                  <input
+                    disabled
+                    min="0"
+                    formControlName="attributeValue"
+                    type="number"
+                    placeholder="Enter your value"
+                  />
+                  <select
+                    disabled
+                    formControlName="userConversionUom"
+                    id="cost"
+                  >
+                    <ng-container
+                      *ngFor="let uom of uomService?.availableCostUoms"
+                    >
+                      <option [value]="uom.description">
+                        {{ uom?.description }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    class="panel-no-padding mt-4"
+    expanded="true"
+    #expansionPanel2
+  >
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel2, $event)">
+      <mat-panel-description>
+        <div
+          style="
+            position: absolute;
+            left: 1%;
+            display: flex;
+            align-items: center;
+          "
+        >
+          <div class="title-text">Order Overview</div>
+          <div class="primary-text font-size-12 d-flex mx-3">
+            Filled Odometer:
+            <div
+              class="bg-white mar-left-2"
+              style="min-width: 100px"
+              [ngStyle]="{
+                color:
+                  containerForm.get('filledOdometer').get('odometerType')
+                    .value == 'Weight'
+                    ? '#03266d'
+                    : '#3E7FFF'
+              }"
+            >
+              {{
+                containerForm.get("filledOdometer").get("odometerType").value
+                  | slice : 0 : 1
+              }}{{ containerForm.get("filledOdometer").get("value").value }}
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="primary-text font-size-12"
+          style="
+            position: absolute;
+            right: 2%;
+            display: flex;
+            align-items: center;
+          "
+        >
+          Remaining Odometer:
+          <div
+            class="bg-white mar-left-2"
+            style="min-width: 100px"
+            [ngStyle]="{
+              color:
+                containerForm.get('filledOdometer').get('odometerType').value ==
+                'Weight'
+                  ? '#03266d'
+                  : '#3E7FFF'
+            }"
+          >
+            {{
+              containerForm.get("remainingOdometer").get("odometerType").value
+                | slice : 0 : 1
+            }}{{ containerForm.get("remainingOdometer").get("value").value }}
+          </div>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div class="row align-items-center bg-light py-2">
+        <div class="attribute tabular-sheet col-3 mx-1">
+          <div class="attribute-input bg-white">
+            <div class="toggle width-perc-100">
+              <button
+                (click)="poView = 'productWise'"
+                class="width-perc-50"
+                [ngClass]="{ active: poView == 'productWise' }"
+              >
+                Product Wise
+              </button>
+              <button
+                (click)="poView = 'orderWise'"
+                class="width-perc-50"
+                [ngClass]="{ active: poView == 'orderWise' }"
+              >
+                Order Wise
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="d-flex">
+            <div class="title-text">Weight</div>
+            <div class="fill-line">
+              <div [style.width]="getWeightWidth()" class="progress-line"></div>
+            </div>
+          </div>
+          <div class="d-flex mt-2">
+            <div class="title-text">Volume</div>
+            <div class="fill-line">
+              <div [style.width]="getVolumeWidth()" class="progress-line"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="attribute one">
+            <div class="attribute-input bg-white">
+              <div style="width: 60%; padding-left: 2%">
+                {{ containerForm.get("weight").get("attributeValue").value }}
+                <span
+                  *ngIf="
+                    containerForm.get('weight').get('attributeValue').value
+                  "
+                >
+                  /
+                </span>
+                {{
+                  containerForm
+                    .get("containerTypeInformation")
+                    .get("weight")
+                    .get("attributeValue").value
+                }}
+              </div>
+              <select
+                [formControl]="
+                  containerForm
+                    .get('containerTypeInformation')
+                    .get('weight')
+                    .get('userConversionUom')
+                "
+                style="width: 40%"
+                id="NetWtUnit"
+              >
+                <ng-container
+                  *ngFor="let uom of uomService?.availableNetWeightUoms"
+                >
+                  <option [value]="uom.description">
+                    {{ uom?.description }}
+                  </option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+          <div class="attribute one mt-2">
+            <div class="attribute-input bg-white">
+              <div style="width: 60%; padding-left: 2%">
+                {{ containerForm.get("volume").get("attributeValue").value }}
+                <span
+                  *ngIf="
+                    containerForm.get('volume').get('attributeValue').value
+                  "
+                >
+                  /
+                </span>
+                {{
+                  containerForm
+                    .get("containerTypeInformation")
+                    .get("volume")
+                    .get("attributeValue").value
+                }}
+              </div>
+              <select
+                [formControl]="
+                  containerForm
+                    .get('containerTypeInformation')
+                    .get('volume')
+                    .get('userConversionUom')
+                "
+                style="width: 40%"
+              >
+                <ng-container
+                  *ngFor="let uom of uomService?.availableNormalVolumeUoms"
+                >
+                  <option [value]="uom.description">
+                    {{ uom?.description }}
+                  </option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-1 text-right">
+          <dadyin-button
+            [theme]="'borderless-primary'"
+            (clicked)="printReport()"
+            type="icon"
+            [typeval]="'print'"
+            height="33px"
+          >
+          </dadyin-button>
+          <dadyin-button
+            [theme]="'borderless-primary'"
+            type="icon"
+            [typeval]="'download'"
+            height="33px"
+          >
+          </dadyin-button>
+        </div>
+      </div>
+      <div class="toolbar">
+        <div class="title-text">Unloading Details</div>
+      </div>
+
+      <div *ngIf="poView == 'orderWise'" class="process-table">
+        <table>
+          <thead>
+            <tr>
+              <th style="padding-left: 20px">SR #</th>
+              <th>PO#/SO#</th>
+              <th>TOTAL SKUS</th>
+              <th>WEIGHT ({{ getUomByName("weight") }})</th>
+              <th>VOL ({{ getUomByName("volume") }})</th>
+              <th style="width: 150px">LOADING TYPE</th>
+              <th *ngIf="isExport">QTY ORDERED</th>
+              <th>QTY LOADED</th>
+              <th *ngIf="!isExport">QTY RECEIVED</th>
+              <th colspan="6">NOTES</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container
+              *ngFor="let p of containerOrders?.controls; let i = index"
+            >
+              <tr [formGroup]="p">
+                <td style="padding-left: 20px">{{ i + 1 }}.</td>
+                <td formGroupName="purchaseOrderDetail" class="d-flex">
+                  <input
+                    readonly
+                    type="text"
+                    formControlName="transactionId"
+                    min="0"
+                  />
+                  <span
+                    class="bg-light d-flex px-2 align-items-center"
+                    style="border: none"
+                    [ngStyle]="{
+                      color:
+                        p
+                          .get('purchaseOrderDetail')
+                          .get('odometer')
+                          .get('odometerType').value == 'Weight'
+                          ? '#03266d'
+                          : '#3E7FFF'
+                    }"
+                  >
+                    {{
+                      p
+                        .get("purchaseOrderDetail")
+                        .get("odometer")
+                        .get("odometerType").value | slice : 0 : 1
+                    }}{{
+                      p.get("purchaseOrderDetail").get("odometer").get("value")
+                        .value
+                    }}
+                  </span>
+                </td>
+                <td>
+                  <input
+                    readonly
+                    type="text"
+                    formControlName="totalSKUs"
+                    min="0"
+                  />
+                </td>
+                <td formGroupName="weight">
+                  <input
+                    readonly
+                    type="text"
+                    formControlName="attributeValue"
+                    min="0"
+                  />
+                </td>
+                <td formGroupName="volume">
+                  <input
+                    readonly
+                    type="text"
+                    formControlName="attributeValue"
+                    min="0"
+                  />
+                </td>
+                <td>
+                  <select
+                    (change)="calculateValues()"
+                    formControlName="loadingType"
+                  >
+                    <option [value]="null">Select Loading Type</option>
+                    <ng-container
+                      *ngFor="
+                        let loadingType of [
+                          { id: 'PALLET', name: 'PALLET' },
+                          { id: 'FLOOR', name: 'FLOOR' },
+                          { id: 'MIXED', name: 'MIXED' }
+                        ]
+                      "
+                    >
+                      <option [value]="loadingType.id">
+                        {{ loadingType?.name }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </td>
+                <td *ngIf="isExport">
+                  <input
+                    type="number"
+                    disabled
+                    formControlName="quantityOrdered"
+                    min="0"
+                  />
+                </td>
+                <td>
+                  <input
+                    [ngClass]="{ 'bg-grey': !isExport }"
+                    (change)="calculateValues()"
+                    [readonly]="!isExport"
+                    type="number"
+                    formControlName="quantityLoaded"
+                    min="0"
+                  />
+                </td>
+                <td *ngIf="!isExport">
+                  <input
+                    type="number"
+                    (change)="calculateValues()"
+                    formControlName="quantityReceived"
+                    min="0"
+                  />
+                </td>
+                <td colspan="6">
+                  <input type="text" formControlName="note" min="0" />
+                </td>
+                <td>
+                  <dadyin-button
+                    *ngIf="
+                      p.get('purchaseOrderDetail').get('expanded').value ==
+                        false && getContainerProducts(i)?.controls?.length > 0
+                    "
+                    (clicked)="
+                      p
+                        .get('purchaseOrderDetail')
+                        .get('expanded')
+                        .setValue(true)
+                    "
+                    [theme]="'borderless-primary'"
+                    type="icon"
+                    [typeval]="'expand_more'"
+                  >
+                  </dadyin-button>
+                  <dadyin-button
+                    *ngIf="
+                      p.get('purchaseOrderDetail').get('expanded').value == true
+                    "
+                    (clicked)="
+                      p
+                        .get('purchaseOrderDetail')
+                        .get('expanded')
+                        .setValue(false)
+                    "
+                    [theme]="'borderless-primary'"
+                    type="icon"
+                    [typeval]="'expand_less'"
+                  >
+                  </dadyin-button>
+                </td>
+              </tr>
+              <ng-container
+                *ngIf="
+                  p.get('purchaseOrderDetail').get('expanded').value == true
+                "
+              >
+                <tr class="t-head b-top b-right-left">
+                  <th class="cell-white"></th>
+                  <th style="padding-left: 7px" colspan="2">PRODUCT CODE</th>
+                  <th>QTY ORDERED</th>
+                  <th>QTY {{ isExport ? "LOADED" : "RECEIVED" }}</th>
+                  <th style="width: 150px">LOADING TYPE</th>
+                  <th colspan="3" style="text-align: center">
+                    (LOCATION IN CONTAINER)
+                  </th>
+                  <th>PALLET#</th>
+                  <th>ROW</th>
+                  <th>COLUMN</th>
+                  <th>SINGLE BOXES</th>
+                  <th>BOXES/PALLET</th>
+                  <th>WH/LOCATION</th>
+                </tr>
+                <ng-container
+                  *ngFor="
+                    let containerproduct of getContainerProducts(i)?.controls;
+                    let j = index
+                  "
+                >
+                  <tr
+                    [ngStyle]="{
+                      'border-bottom':
+                        j == getContainerProducts(i)?.controls?.length - 1
+                          ? ''
+                          : 'solid 1px white'
+                    }"
+                    class="bg-grey b-right-left"
+                    [ngClass]="{
+                      'b-bottom':
+                        j == getContainerProducts(i)?.controls?.length - 1 &&
+                        getOrderPalletInformations(i, j)?.controls?.length == 0
+                    }"
+                    [formGroup]="containerproduct"
+                  >
+                    <td class="cell-white"></td>
+                    <td style="padding-left: 7px" colspan="2">
+                      <span *ngIf="k == 0">
+                        {{ containerproduct.value.productId }}
+                      </span>
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        disabled
+                        class="width-perc-70"
+                        [formControl]="containerproduct.get('quantityOrdered')"
+                        min="0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        *ngIf="!isExport"
+                        class="input-rowNumber"
+                        type="number"
+                        (change)="calculateValues()"
+                        [formControl]="containerproduct.get('quantityReceived')"
+                        min="0"
+                      />
+                      <input
+                        *ngIf="isExport"
+                        class="input-rowNumber"
+                        type="number"
+                        (change)="calculateValues()"
+                        [formControl]="containerproduct.get('quantityLoaded')"
+                        min="0"
+                      />
+                    </td>
+
+                    <td></td>
+                    <td class="col-80">
+                      <input
+                        class="input-rowNumber"
+                        type="number"
+                        [formControl]="containerproduct.get('locationX')"
+                        min="0"
+                      />
+                    </td>
+                    <td class="col-80">
+                      <input
+                        class="input-rowNumber"
+                        type="number"
+                        [formControl]="containerproduct.get('locationY')"
+                        min="0"
+                      />
+                    </td>
+                    <td class="col-80">
+                      <input
+                        class="input-rowNumber"
+                        type="number"
+                        [formControl]="containerproduct.get('locationZ')"
+                        min="0"
+                      />
+                    </td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <ng-container
+                    *ngIf="
+                      getOrderPalletInformations(i, j)?.controls?.length > 0
+                    "
+                  >
+                    <tr
+                      class="bg-lightgrey b-right-left"
+                      [ngStyle]="{
+                        'border-bottom':
+                          getOrderPalletInformations(i, j)?.controls?.length ==
+                          k + 1
+                            ? ''
+                            : 'solid 1px white'
+                      }"
+                      [ngClass]="{
+                        'b-bottom':
+                          k ==
+                          getOrderPalletInformations(i, j)?.controls?.length - 1
+                      }"
+                      [formGroup]="pallet"
+                      *ngFor="
+                        let pallet of getOrderPalletInformations(i, j)
+                          ?.controls;
+                        let k = index
+                      "
+                    >
+                      <td class="cell-white"></td>
+                      <td style="padding-left: 7px" colspan="2"></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <ng-container
+                          *ngIf="p.get('loadingType').value == 'MIXED'"
+                        >
+                          <select
+                            style="
+                              background: transparent;
+                              border: solid 1px #c2b8b8 !important;
+                            "
+                            (change)="calculateValues()"
+                            formControlName="loadingType"
+                          >
+                            <option [value]="null">Select Loading Type</option>
+                            <ng-container
+                              *ngFor="
+                                let loadingType of [
+                                  { id: 'PALLET', name: 'PALLET' },
+                                  { id: 'FLOOR', name: 'FLOOR' }
+                                ]
+                              "
+                            >
+                              <option [value]="loadingType.id">
+                                {{ loadingType?.name }}
+                              </option>
+                            </ng-container>
+                          </select>
+                        </ng-container>
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        {{ pallet.value.palletNumber }}
+                      </td>
+                      <td>
+                        <input
+                          class="input-rowNumber"
+                          type="number"
+                          [ngStyle]="{
+                            'border-bottom':
+                              pallet.get('loadingType').value == 'FLOOR'
+                                ? 'none'
+                                : 'solid black 1px'
+                          }"
+                          [readonly]="
+                            pallet.get('loadingType').value == 'FLOOR'
+                          "
+                          (change)="calculateValues()"
+                          formControlName="rowNumber"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          class="input-rowNumber"
+                          type="number"
+                          [ngStyle]="{
+                            'border-bottom':
+                              pallet.get('loadingType').value == 'FLOOR'
+                                ? 'none'
+                                : 'solid black 1px'
+                          }"
+                          (change)="calculateValues()"
+                          [readonly]="
+                            pallet.get('loadingType').value == 'FLOOR'
+                          "
+                          formControlName="columnNumber"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          class="input-rowNumber"
+                          type="number"
+                          (change)="calculateValues()"
+                          formControlName="singleBoxNumber"
+                        />
+                      </td>
+                      <td>
+                        {{ pallet.value.numberOfItems }}
+                      </td>
+                      <td>
+                        <input
+                          class="input-rowNumber"
+                          type="text"
+                          (change)="calculateValues()"
+                          formControlName="location"
+                        />
+                      </td>
+                    </tr>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="poView == 'productWise'" class="process-table">
+        <table>
+          <thead>
+            <tr class="t-head-light">
+              <th style="padding-left: 20px">SR #</th>
+              <th>PRODUCT #</th>
+              <th>PO#/SO#</th>
+              <th>WEIGHT ({{ getUomByName("weight") }})</th>
+              <th>VOL ({{ getUomByName("volume") }})</th>
+              <th colspan="3" style="text-align: center">LOCATION</th>
+              <th style="width: 150px">LOADING TYPE</th>
+              <th *ngIf="isExport">QTY ORDERED</th>
+              <th *ngIf="isExport">QTY LOADED</th>
+              <th *ngIf="!isExport">QTY LOADED</th>
+              <th *ngIf="!isExport">QTY RECEIVED</th>
+              <th>NOTES</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container
+              *ngFor="let p of containerOrders?.controls; let i = index"
+            >
+              <ng-container
+                *ngFor="
+                  let containerproduct of getContainerProducts(i)?.controls;
+                  let j = index
+                "
+              >
+                <tr [formGroup]="containerproduct">
+                  <td style="padding-left: 20px">{{ j + 1 }}.</td>
+                  <td>
+                    <div>
+                      {{ containerproduct.get("productId").value }}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{
+                        p.get("purchaseOrderDetail").get("transactionId").value
+                      }}
+                    </div>
+                  </td>
+                  <td formGroupName="weight">
+                    <div>
+                      {{
+                        containerproduct.get("weight").get("attributeValue")
+                          .value
+                      }}
+                    </div>
+                  </td>
+                  <td formGroupName="volume">
+                    <div>
+                      {{
+                        containerproduct.get("volume").get("attributeValue")
+                          .value
+                      }}
+                    </div>
+                  </td>
+                  <td class="col-80">
+                    <input
+                      type="number"
+                      [formControl]="containerproduct.get('locationX')"
+                      min="0"
+                    />
+                  </td>
+                  <td class="col-80">
+                    <input
+                      type="number"
+                      [formControl]="containerproduct.get('locationY')"
+                      min="0"
+                    />
+                  </td>
+                  <td class="col-80">
+                    <input
+                      type="number"
+                      [formControl]="containerproduct.get('locationZ')"
+                      min="0"
+                    />
+                  </td>
+                  <td>
+                    <select
+                      (change)="calculateValues()"
+                      formControlName="loadingType"
+                    >
+                      <option [value]="null">Select Loading Type</option>
+                      <ng-container
+                        *ngFor="
+                          let loadingtype of [
+                            { id: 'PALLET', name: 'PALLET' },
+                            { id: 'FLOOR', name: 'FLOOR' },
+                            { id: 'MIXED', name: 'MIXED' }
+                          ]
+                        "
+                      >
+                        <option [value]="loadingtype.id">
+                          {{ loadingtype?.name }}
+                        </option>
+                      </ng-container>
+                    </select>
+                  </td>
+
+                  <td *ngIf="isExport">
+                    <input
+                      disabled
+                      type="number"
+                      formControlName="quantityOrdered"
+                      min="0"
+                    />
+                  </td>
+                  <td *ngIf="isExport">
+                    <input
+                      type="number"
+                      (change)="calculateValues()"
+                      formControlName="quantityLoaded"
+                      min="0"
+                    />
+                  </td>
+                  <td *ngIf="!isExport">
+                    <input
+                      type="number"
+                      disabled
+                      formControlName="quantityLoaded"
+                      min="0"
+                    />
+                  </td>
+                  <td *ngIf="!isExport">
+                    <input
+                      type="number"
+                      (change)="calculateValues()"
+                      formControlName="quantityReceived"
+                      min="0"
+                    />
+                  </td>
+                  <td>
+                    <input type="text" formControlName="note" />
+                  </td>
+                  <td>
+                    <dadyin-button
+                      *ngIf="
+                        containerproduct.get('expanded').value == false &&
+                        getOrderPalletInformations(i, j)?.controls?.length > 0
+                      "
+                      (clicked)="
+                        containerproduct.get('expanded').setValue(true)
+                      "
+                      [theme]="'borderless-primary'"
+                      type="icon"
+                      [typeval]="'expand_more'"
+                    >
+                    </dadyin-button>
+                    <dadyin-button
+                      *ngIf="containerproduct.get('expanded').value == true"
+                      (clicked)="
+                        containerproduct.get('expanded').setValue(false)
+                      "
+                      [theme]="'borderless-primary'"
+                      type="icon"
+                      [typeval]="'expand_less'"
+                    >
+                    </dadyin-button>
+                  </td>
+                </tr>
+                <ng-container
+                  *ngIf="containerproduct.get('expanded').value == true"
+                >
+                  <tr class="b-top b-right-left t-head">
+                    <th class="cell-white"></th>
+                    <th style="padding-left: 7px"></th>
+                    <th>PALLET#</th>
+                    <th>PO#</th>
+                    <th>ROW</th>
+                    <th>COLUMN</th>
+                    <th>SINGLE BOXES</th>
+                    <th>BOXES/PALLET</th>
+                    <th
+                      *ngIf="
+                        containerproduct.get('loadingType').value == 'MIXED'
+                      "
+                    ></th>
+                    <th>WH/LOCATION</th>
+                    <th>NOTE</th>
+                    <th
+                      *ngIf="
+                        containerproduct.get('loadingType').value != 'MIXED'
+                      "
+                    ></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  <tr
+                    class="b-right-left bg-lightgrey"
+                    [ngStyle]="{
+                      'border-bottom':
+                        getOrderPalletInformations(i, j)?.controls?.length ==
+                        k + 1
+                          ? ''
+                          : 'solid 1px white'
+                    }"
+                    [ngClass]="{
+                      'b-bottom':
+                        k ==
+                        getOrderPalletInformations(i, j)?.controls?.length - 1
+                    }"
+                    *ngFor="
+                      let pallet of getOrderPalletInformations(i, j)?.controls;
+                      let k = index
+                    "
+                    [formGroup]="pallet"
+                  >
+                    <td class="cell-white"></td>
+                    <td style="padding-left: 7px"></td>
+                    <td>
+                      {{ pallet.value.palletNumber }}
+                    </td>
+                    <td>
+                      {{ p.get("purchaseOrderDetail").value?.id }}
+                    </td>
+                    <td>
+                      <input
+                        class="input-rowNumber"
+                        type="text"
+                        (change)="calculateValues()"
+                        formControlName="rowNumber"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        class="input-rowNumber"
+                        type="text"
+                        (change)="calculateValues()"
+                        formControlName="columnNumber"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        class="input-rowNumber"
+                        type="text"
+                        (change)="calculateValues()"
+                        formControlName="singleBoxNumber"
+                      />
+                    </td>
+                    <td>
+                      {{ pallet.value.numberOfItems }}
+                    </td>
+                    <td
+                      *ngIf="
+                        containerproduct.get('loadingType').value == 'MIXED'
+                      "
+                    >
+                      <select
+                        style="
+                          background: transparent;
+                          border: solid 1px #c2b8b8 !important;
+                        "
+                        (change)="calculateValues()"
+                        formControlName="loadingType"
+                      >
+                        <option [value]="null">Select Loading Type</option>
+                        <ng-container
+                          *ngFor="
+                            let loadingType of [
+                              { id: 'PALLET', name: 'PALLET' },
+                              { id: 'FLOOR', name: 'FLOOR' }
+                            ]
+                          "
+                        >
+                          <option [value]="loadingType.id">
+                            {{ loadingType?.name }}
+                          </option>
+                        </ng-container>
+                      </select>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="input-rowNumber"
+                        formControlName="location"
+                      />
+                    </td>
+                    <td>
+                      {{ pallet.value.note }}
+                    </td>
+                    <td
+                      *ngIf="
+                        containerproduct.get('loadingType').value != 'MIXED'
+                      "
+                    ></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    class="panel-no-padding mt-4"
+    expanded="true"
+    #expansionPanel4
+  >
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel4, $event)">
+      <div class="grid-1">
+        <div class="text-left title-text">Unloading Workers Details</div>
+        <div class="d-flex justify-content-evenly font-size-12">
+          <span class="primary-text"
+            >Workers : {{ labourExpenses.controls?.length }}
+          </span>
+          <span class="primary-text">Total : MISSING</span>
+        </div>
+      </div>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div class="process-table">
+        <table>
+          <thead>
+            <tr>
+              <th style="padding-left: 20px">SR#</th>
+              <th colspan="2">SERVICE</th>
+              <th>NAME</th>
+              <th>USD/HR</th>
+              <th colspan="1">WORKING HOURS</th>
+              <th colspan="2">PHONE NUMBER</th>
+              <th colspan="2">
+                PAYMENT AMOUNT ({{
+                  isExport
+                    ? getUomByName("exportCost")
+                    : getUomByName("importCost")
+                }})
+              </th>
+              <th>PAYMENT STATUS</th>
+              <th colspan="2">RATING</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="getFilteredLabourExpenses()?.length == 0">
+              <td style="padding-left: 20px"></td>
+              <td colspan="2"></td>
+              <td></td>
+              <td></td>
+              <td colspan="1"></td>
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+              <td></td>
+              <td colspan="2"></td>
+              <td>
+                <dadyin-button
+                  (clicked)="addInLabourExpense()"
+                  [theme]="'borderless-primary'"
+                  type="icon"
+                  [typeval]="'add_circle_outline'"
+                ></dadyin-button>
+              </td>
+            </tr>
+            <ng-container
+              *ngFor="
+                let labourExpense of labourExpenses?.controls;
+                let i = index
+              "
+              [formGroup]="labourExpense"
+            >
+              <tr
+                *ngIf="
+                  labourExpense.get('addedByBusinessAccountId').value ==
+                  this.currentBusinessAccount?.id
+                "
+              >
+                <td style="padding-left: 20px">
+                  {{
+                    getFilteredLabourExpenses()?.length -
+                      (labourExpenses.controls?.length - i) +
+                      1
+                  }}.
+                </td>
+                <td colspan="2">
+                  <select
+                    (change)="labourExpense.get('amountPayableTo')?.reset()"
+                    formControlName="containerExpenseTypeId"
+                  >
+                    <option value="null" disabled selected>
+                      Select Expense Type
+                    </option>
+                    <ng-container
+                      *ngFor="
+                        let type of filterExpenseTypes(
+                          containerService.expenseTypes,
+                          i
+                        )
+                      "
+                    >
+                      <option [value]="type.id">{{ type.description }}</option>
+                    </ng-container>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [readonly]="
+                      !labourExpense.get('containerExpenseTypeId').value
+                    "
+                    formControlName="amountPayableTo"
+                    (change)="labourExpense.get('amountPayable')?.reset()"
+                    (change)="
+                      onSelectServiceProvider(
+                        $event.target.value,
+                        labourExpense
+                      )
+                    "
+                    [matAutocomplete]="auto"
+                    class="example-input"
+                  />
+                  <mat-autocomplete
+                    autoActiveFirstOption
+                    #auto="matAutocomplete"
+                  >
+                    <mat-option
+                      (click)="
+                        onSelectServiceProvider(
+                          type.amountPayableTo,
+                          labourExpense
+                        )
+                      "
+                      *ngFor="
+                        let type of filterLabourList(
+                          containerService.labourList,
+                          labourExpense.get('containerExpenseTypeId').value
+                        )
+                      "
+                      [value]="type.amountPayableTo"
+                    >
+                      {{ type.amountPayableTo }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </td>
+                <td formGroupName="hourlyRate">
+                  <input
+                    formControlName="attributeValue"
+                    type="number"
+                    min="0"
+                  />
+                </td>
+                <td colspan="1">
+                  <input type="text" min="0" />
+                </td>
+                <td colspan="2">
+                  <input formControlName="phone" type="text" min="0" />
+                </td>
+                <td colspan="2" formGroupName="cost">
+                  <input
+                    (change)="calculate.emit()"
+                    formControlName="attributeValue"
+                    type="number"
+                    min="0"
+                  />
+                </td>
+                <td>
+                  <select (change)="calculate.emit()" formControlName="status">
+                    <option value="PAID">PAID</option>
+                    <option value="UNPAID">UNPAID</option>
+                  </select>
+                </td>
+                <td colspan="2">
+                  <span
+                    *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                    (click)="rate(star, labourExpense)"
+                  >
+                    <mat-icon
+                      class="star-icon-size"
+                      *ngIf="star <= labourExpense.get('rating').value"
+                      >star</mat-icon
+                    >
+                    <mat-icon
+                      class="star-icon-size"
+                      *ngIf="star > labourExpense.get('rating').value"
+                      >star_outline
+                    </mat-icon>
+                  </span>
+                </td>
+                <td>
+                  <dadyin-button
+                    (clicked)="removeInLabourExpense(i)"
+                    [theme]="'borderless-danger'"
+                    type="icon"
+                    [typeval]="'delete_outline'"
+                  >
+                  </dadyin-button>
+                  <dadyin-button
+                    *ngIf="labourExpenses?.controls.length == i + 1"
+                    (clicked)="addInLabourExpense()"
+                    [theme]="'borderless-primary'"
+                    type="icon"
+                    [typeval]="'add_circle_outline'"
+                  >
+                  </dadyin-button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    class="panel-no-padding mt-4"
+    expanded="true"
+    #expansionPanel5
+  >
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel5, $event)">
+      <div class="grid-1">
+        <div class="text-left title-text">Material Required For Unloading</div>
+        <div class="d-flex justify-content-evenly font-size-12">
+          <span class="primary-text"
+            >Materials : {{ getFilteredUnloadingMaterialExpenses()?.length }}
+          </span>
+          <span class="primary-text">Total : MISSING</span>
+        </div>
+      </div>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div class="process-table">
+        <table>
+          <thead>
+            <tr>
+              <th style="padding-left: 20px">SR#</th>
+              <th colspan="2">MATERIAL</th>
+              <th>QTY NEEDED</th>
+              <th>QOH</th>
+              <th>QTY USED</th>
+              <th colspan="3">
+                MATERIAL COST ({{
+                  isExport
+                    ? getUomByName("exportCost")
+                    : getUomByName("importCost")
+                }})
+              </th>
+              <th colspan="5">NOTE</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="getFilteredUnloadingMaterialExpenses()?.length == 0">
+              <td style="padding-left: 20px"></td>
+              <td colspan="2"></td>
+              <td></td>
+              <td></td>
+
+              <td colspan="3"></td>
+              <td colspan="5"></td>
+              <td>
+                <dadyin-button
+                  (clicked)="addInUnloadingMaterialExpense()"
+                  [theme]="'borderless-primary'"
+                  type="icon"
+                  [typeval]="'add_circle_outline'"
+                >
+                </dadyin-button>
+              </td>
+            </tr>
+
+            <ng-container
+              *ngFor="
+                let unloadingMaterialExpense of unloadingMaterialExpenses.controls;
+                let i = index
+              "
+              [formGroup]="unloadingMaterialExpense"
+            >
+              <tr
+                *ngIf="
+                  unloadingMaterialExpense.get('addedByBusinessAccountId')
+                    .value == this.currentBusinessAccount?.id
+                "
+              >
+                <td style="padding-left: 20px">
+                  {{
+                    getFilteredUnloadingMaterialExpenses()?.length -
+                      (unloadingMaterialExpenses.controls?.length - i) +
+                      1
+                  }}.
+                </td>
+                <td colspan="2">
+                  <select formControlName="productId">
+                    <option value="null" disabled selected>
+                      Select Material
+                    </option>
+                    <ng-container
+                      *ngFor="let material of containerService.materialList"
+                    >
+                      <option [value]="material.id">
+                        {{ material.description }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </td>
+                <td>
+                  <input formControlName="quantity" type="number" min="0" />
+                </td>
+                <td>
+                  <input formControlName="quantityUsed" type="number" min="0" />
+                </td>
+                <td colspan="3" formGroupName="cost">
+                  <input
+                    formControlName="attributeValue"
+                    type="number"
+                    min="0"
+                  />
+                </td>
+                <td colspan="5">
+                  <input formControlName="note" type="text" />
+                </td>
+                <td>
+                  <dadyin-button
+                    (clicked)="removeInUnloadingMaterialExpense(i)"
+                    [theme]="'borderless-danger'"
+                    type="icon"
+                    [typeval]="'delete_outline'"
+                  >
+                  </dadyin-button>
+                  <dadyin-button
+                    *ngIf="unloadingMaterialExpenses?.controls?.length == i + 1"
+                    (clicked)="addInUnloadingMaterialExpense()"
+                    [theme]="'borderless-primary'"
+                    type="icon"
+                    [typeval]="'add_circle_outline'"
+                  >
+                  </dadyin-button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+</form>

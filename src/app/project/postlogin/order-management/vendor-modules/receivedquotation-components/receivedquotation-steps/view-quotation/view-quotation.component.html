@@ -1,0 +1,176 @@
+<form [formGroup]="recvQuotationForm">
+  <mat-expansion-panel expanded="true" #expansionPanel1>
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel1, $event)">
+      <mat-panel-description>
+        <div class="w-100 title-text">RECV QUOTATION DETAILS</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <div class="row">
+        <div class="col-12 col-md-9">
+          <div class="row">
+            <div class="col-12 col-md-4 map-grid" formGroupName="requestTo">
+              <div class="w-100">
+                <dadyin-select [optionArr]="businessAccountService.vendorList" label="Quotation By" formControlName="id"
+                  optionLabel="relationAccountName" optionValue="relationAccountId">
+                </dadyin-select>
+              </div>
+              <dadyin-button (clicked)="openMap(2)" (click)="$event.stopPropagation()" [theme]="'borderless-primary'"
+                type="image" [typeval]="'assets/img/icons/address.png'">
+              </dadyin-button>
+              <div *ngIf="map2" class="tooltip-white b-light shadow-sm">
+                {{ requestToAddress }}
+              </div>
+            </div>
+            <div class="col-12 col-md-2" *ngIf="importLocalType.value == 'CONTAINER'">
+              <dadyin-select [optionArr]="containerService.incoTermsList" label="Inco terms"
+                formControlName="incoTermId" optionLabel="description" optionValue="id">
+              </dadyin-select>
+            </div>
+            <div class="col-12 col-md-2" *ngIf="importLocalType.value == 'LOCAL'">
+              <dadyin-select [optionArr]="[
+                  { id: 'DELIVERY', description: 'DELIVERY' },
+                  { id: 'PICKUP', description: 'PICKUP' }
+                ]" label="Delivery Type" formControlName="deliveryPickup" optionLabel="description" optionValue="id">
+              </dadyin-select>
+            </div>
+            <div class="col-12 col-md-1 d-flex">
+              <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'LOCAL'
+              ? 'assets/img/icons/location-on.png'
+              : 'assets/img/icons/location-off.png'">
+              </dadyin-button>
+              <dadyin-button (clicked)="toggleType('CONTAINER')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'CONTAINER'
+              ? 'assets/img/icons/anchor_on.png'
+              : 'assets/img/icons/anchor_off.png'">
+              </dadyin-button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-2">
+              <dadyin-input inputType="date" formControlName="requiredByDate" label="Req. By Date">
+              </dadyin-input>
+            </div>
+            <div class="col-12 col-md-2">
+              <dadyin-input inputType="date" formControlName="shippingDate" label="Shipping Date">
+              </dadyin-input>
+            </div>
+            <div class="col-12 col-md-2">
+              <dadyin-select [emptyOption]="'Select Buying Type'" formControlName="buyingType"
+                [optionArr]="buyingTypeList" label="Buying Type" optionLabel="name" optionValue="value">
+              </dadyin-select>
+            </div>
+            <div class="col-12 col-md-2">
+              <dadyin-select [emptyOption]="'Select Departure Port'" [optionArr]="containerService.portsList"
+                label="Port of Departure" formControlName="departurePortId" optionLabel="description" optionValue="id">
+              </dadyin-select>
+            </div>
+            <div class="col-12 col-md-2" *ngIf="importLocalType.value != 'LOCAL'">
+              <dadyin-input [isDisabled]="!isEditable" inputType="text" formControlName="shipper" label="Shipping via">
+              </dadyin-input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-2">
+              <dadyin-input inputType="text" formControlName="requiredByDate" label="Sales Person">
+              </dadyin-input>
+            </div>
+            <div class="col-12 col-md-2" *ngIf="importLocalType.value != 'LOCAL'">
+              <dadyin-select [optionArr]="[
+                  { id: 'PALLET', name: 'PALLET' },
+                  { id: 'FLOOR', name: 'FLOOR' },
+                  { id: 'MIXED', name: 'MIXED' }
+                ]" label="Loading Type" formControlName="loadingTypeId" optionLabel="name" optionValue="id"
+                [emptyOption]="'Select Loading Type'">
+              </dadyin-select>
+            </div>
+            <div class="col-12 col-md-2">
+              <dadyin-select [emptyOption]="'Select Payment Term'" formControlName="paymentTermId"
+                [optionArr]="containerService.paymentTermsList" label="Payment Terms" optionLabel="description"
+                optionValue="id">
+              </dadyin-select>
+            </div>
+
+            <!-- <div class="col-12 col-md-2">
+              <div class="attribute tabular-sheet mx-1">
+                <div class="attribute-input bg-white">
+                  <div>
+                    Negotiable
+                  </div>
+                  <div class="toggle mx-1">
+                    <button class="width-perc-50" style="min-width:unset !important">
+                      Y </button>
+                    <button class="width-perc-50" style="min-width:unset !important"> N
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-12 col-md-3">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <dadyin-input inputType="date" formControlName="date" label="Date">
+              </dadyin-input>
+            </div>
+            <div class="col-12 col-md-6">
+              <dadyin-input inputType="text" formControlName="quotationId" label="RFQ#">
+              </dadyin-input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <dadyin-input inputType="date" formControlName="date" label="Quotation Expires on">
+              </dadyin-input>
+            </div>
+            <div class="col-12 col-md-6">
+              <dadyin-input inputType="text" label="External Ref No"
+                formControlName="transactionReferenceNumber"></dadyin-input>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <div class="my-1 d-flex align-items-center" style="column-gap: 5px">
+    <div class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
+      <i class="mat-icon text-primary mx-1">pending_actions</i>
+      <div class="text-dark font-size-14">Prev. Orders</div>
+    </div>
+    <div class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
+      <i class="mat-icon text-primary mx-1">favorite_outline</i>
+      <div class="text-dark font-size-14">My Favourite</div>
+    </div>
+  </div>
+
+  <mat-expansion-panel class="panel-no-padding" expanded="true" #expansionPanel3>
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
+      <mat-panel-description>
+        <div class="w-100 title-text">Product Details</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <section>
+        <app-order-transaction-packages [displayedColumns]="[
+               'qoh',
+               'qtyReq',
+            'weight',
+            'volume',
+            'pkgs',
+            'skuPrice',
+           
+            'subTotal',
+          
+           
+          ]" [orderFile]="quotationFile" [isEditable]="false" [orderForm]="recvQuotationForm"
+          (getProducts)="getProductsList($event)" (calculate)="calculateValues($event)"
+          (generatePoFromPdf)="generatePoFromPdf($event)" [productsList]="productsList"
+          [productPackages]="productPackages" [type]="'rcvquotation'"></app-order-transaction-packages>
+      </section>
+    </ng-template>
+  </mat-expansion-panel>
+</form>

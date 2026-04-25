@@ -1,0 +1,17 @@
+.businessaccount-card {
+  background: white;
+  border-radius: 10px;
+  border: solid 1px var(--primary-light);
+  margin-bottom: 10px;
+  padding: 14px;
+}
+
+.selected {
+  border: solid 2px var(--primary-color);
+}
+
+.card-list {
+  height: 400px;
+  overflow: auto;
+  margin-bottom: 50px;
+}

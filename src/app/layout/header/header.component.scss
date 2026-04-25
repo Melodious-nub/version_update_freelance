@@ -1,0 +1,211 @@
+.sidebar-slider {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  bottom: 0;
+
+  transform: translateX(100%);
+  transition: ease-in-out 300ms transform;
+  width: 295px;
+  border: 2px solid var(--border-color-1);
+  z-index: 1000;
+
+  .sidebar-close {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+.sidebar-slider.sidebar-slide-in { 
+  transform: translateX(0%);
+  transition: ease-in-out 600ms transform;
+}
+
+.sidebar-content {
+  height: 100%;
+
+  .user-profile {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    width: 100%;
+    border-bottom: 2px solid var(--border-color-1);
+    padding: 10px;
+
+    .profile-img {
+      width: 50px;
+      height: 40px;
+      border: 2px solid var(--border-color-1);
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-txt {
+      width: 100%;
+
+      h6 {
+        font-weight: 500;
+        font-size: 14px;
+        color: var(--primary-color);
+        margin-bottom: 0;
+      }
+
+      span {
+        font-size: 10px;
+        color: var(--profile-text);
+      }
+
+      .account-below-txt {
+        display: flex;
+        margin-top: 8px;
+
+        p {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 20px;
+          color: var(--primary-color);
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .profile-content {
+    width: 100%;
+
+    .action-itm {
+      padding: 5px;
+      cursor: pointer;
+      width: 100%;
+      color:var(--text-dark);
+      span {
+        text-decoration: none;
+        width: 100%;
+        color: black;
+        font-weight: 500;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .profile-actions {
+    border-top: 2px solid var(--border-color-1);
+    position: fixed;
+    bottom: 25px;
+    width: 100%;
+
+    .action-itm {
+      padding: 8px;
+      cursor: pointer;
+      width: 100%;
+
+      img {
+        margin-left: 10px;
+        height: 18px;
+        width: 18px;
+      }
+
+      span {
+        text-decoration: none;
+        width: 100%;
+        color: var(--primary-color);
+        font-weight: 500;
+        margin-left: 10px;
+      }
+    }
+
+    .action-itm:hover {
+      background-color: var(--background-hover);
+    }
+  }
+}
+
+.end {
+  // align-items: flex-end;
+  display: inline-block;
+}
+
+.toggle-menu-item {
+  color: white;
+}
+
+.notification-card {
+  position: absolute;
+  right: 5%;
+  top: 50px;
+  background-color: white;
+  width: 80vw;
+  max-width: 310px;
+  z-index: 1000;
+  overflow-y: auto;
+  border-radius: 10px;
+  .head {
+    height: 40px;
+  }
+
+  .body {
+    height: 50vh;
+  }
+}
+
+.wa-button {
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.active {
+  border: solid 1px var(--primary-color);
+  color: var(--primary-color);
+}
+
+.hr {
+  background-color: var(--primary-light);
+  height: 1px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.vr-divide {
+  background-color: var(--primary-light);
+  height: 75%;
+  width: 1px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.sidenav-container {
+  height: 100vh;
+  position: relative;
+}
+
+.sidenav {
+  width: 250px;
+}
+
+.mat-drawer-content {
+  background: var(--secondary-light);
+  overflow: hidden;
+}
+
+.sidenav .sidebar-logo {
+  display: flex;
+  align-items: center;
+  padding: 0px 0px;
+  cursor: pointer;
+  height: 65px;
+  width: 65px;
+
+  .brand-name {
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 10px;
+    white-space: nowrap;
+  }
+}

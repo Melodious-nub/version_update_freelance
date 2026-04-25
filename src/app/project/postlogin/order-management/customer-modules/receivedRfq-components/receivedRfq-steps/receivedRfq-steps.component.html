@@ -1,0 +1,191 @@
+<div class="app-container">
+  <div class="wizard-bar-container">
+    <div class="wizard-heading">
+      <dadyin-button
+        (clicked)="
+          navigate('/home/order-management/customer?currentStepIndex=0')
+        "
+        [theme]="'borderless-primary'"
+        type="image"
+        [typeval]="'assets/img/icons/ArrowLeftCircle.png'"
+      >
+      </dadyin-button>
+      <ng-container *ngIf="rfqForm.getRawValue()?.id">
+        <div class="font-size-16 text-black fw-bold">
+          <label
+            >{{ rfqToName }} - ({{ isSelfRfq ? "Self" : "Received" }})</label
+          >
+        </div>
+        <span class="text-dark"> | </span>
+        <div class="status font-size-12">
+          {{ rfqForm.getRawValue()?.status }}
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!rfqForm.getRawValue()?.id">
+        <div class="content-title text-light">
+          <label>Create RFQ</label>
+        </div>
+      </ng-container>
+      <span class="text-dark" *ngIf="rfqForm.getRawValue()?.id"> | </span>
+      <div class="content-info text-dark">
+        <div
+          class="d-flex align-items-center"
+          *ngIf="rfqForm.getRawValue()?.transactionId"
+        >
+          <div>
+            <b class="text-black">{{ rfqForm.getRawValue()?.transactionId }}</b>
+            <br />
+            <span class="font-size-10">
+              (
+              {{
+                rfqForm.getRawValue()?.audit?.createdDate | date : "medium"
+              }}
+              )
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div></div>
+    <div class="d-flex justify-content-end align-items-center">
+      <dadyin-button
+        [theme]="'disabled'"
+        matTooltip="Print"
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/print.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        [theme]="'disabled'"
+        matTooltip="Copy"
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/copy.png'"
+      >
+      </dadyin-button>
+
+      <dadyin-button
+        [theme]="'disabled'"
+        matTooltip="Download Tier/QC Quote"
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/cart.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        [theme]="'borderless-default'"
+        (clicked)="generatePdf()"
+        matTooltip="Download"
+        type="image"
+        [typeval]="'assets/nicons/download.png'"
+      >
+      </dadyin-button>
+      <div class="mx-2 text-light">|</div>
+      <dadyin-button
+        *ngIf="
+          isEdit &&
+          !isSelfRfq &&
+          rfqForm?.value.status != 'CONFIRMED' &&
+          rfqForm?.value.status != 'REJECTED'
+        "
+        (clicked)="rejectRfq()"
+        matTooltip="Reject"
+        [theme]="'borderless-danger'"
+        type="image"
+        [typeval]="'assets/nicons/delete.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        matTooltip="Email Transaction (Regular or Tier)"
+        [theme]="'disabled'"
+        type="image"
+        [typeval]="'assets/nicons/mail.png'"
+      >
+      </dadyin-button>
+      <!-- <dadyin-button (clicked)="saveRfq('DRAFT')"
+        *ngIf="rfqForm?.value.status == null || rfqForm?.value.status == 'DRAFT'" matTooltip="Save this in Draft"
+        [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/save.png'">
+      </dadyin-button> -->
+      <dadyin-button
+        *ngIf="isEdit && !isSelfRfq && rfqForm?.value.status != 'REJECTED'"
+        (clicked)="convertToQuote()"
+        matTooltip="Convert to Quote"
+        [theme]="'borderless-default'"
+        type="image"
+        [typeval]="'assets/nicons/refresh.png'"
+      >
+      </dadyin-button>
+      <dadyin-button
+        *ngIf="
+          isEdit &&
+          !isSelfRfq &&
+          rfqForm?.value.status != 'CONFIRMED' &&
+          rfqForm?.value.status != 'REJECTED'
+        "
+        (clicked)="confirmRfq()"
+        matTooltip="Confirm RFQ"
+        [theme]="'borderless-default'"
+        type="image"
+        [typeval]="'assets/nicons/place.png'"
+      >
+      </dadyin-button>
+
+      <!-- <dadyin-button *ngIf="!isEdit && isSelfRfq" (clicked)="saveRfq('SENT')" matTooltip="Send RFQ"
+        [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/place.png'">
+      </dadyin-button> -->
+    </div>
+  </div>
+  <div cdkDrag class="uom-config-section">
+    <button
+      (click)="uomSetting = !uomSetting"
+      class="btn bg-primary-light title-text"
+    >
+      UOM Setting
+    </button>
+    <div class="card uom-card" *ngIf="uomSetting">
+      <div
+        class="prefer-uom-grid align-items-center"
+        *ngIf="componentUoms.controls?.length > 0"
+      >
+        <div
+          [formGroup]="item"
+          *ngFor="let item of componentUoms.controls; let i = index"
+          class="my-2 attribute one b-none w-100"
+        >
+          <div class="attribute-input justify-content-around w-100 title-text">
+            <div class="text-uppercase">
+              {{ item.get("attributeName").value }}
+            </div>
+            <select
+              (change)="calculateValues()"
+              formControlName="userConversionUom"
+            >
+              <ng-container
+                *ngFor="
+                  let uom of uomService.getUoms(
+                    item.get('attributeTypeId').value
+                  )
+                "
+              >
+                <option [value]="uom.description">
+                  {{ uom?.description }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-tab-group class="mat-steps" (selectedTabChange)="onChangeTab($event)">
+    <mat-tab label="Rec. Enquiry">
+      <app-view-rfq
+        [isSelfRfq]="isSelfRfq"
+        (calculate)="calculateValues($event)"
+        [componentUoms]="componentUoms"
+        [rfqForm]="rfqForm"
+      ></app-view-rfq>
+    </mat-tab>
+  </mat-tab-group>
+</div>
