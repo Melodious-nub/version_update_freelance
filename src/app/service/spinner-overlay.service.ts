@@ -7,11 +7,11 @@ import { BehaviorSubject, delay } from 'rxjs';
 export class SpinnerOverlayService {
   private activeRequests = 0;
   private readonly loadingSubject = new BehaviorSubject<boolean>(false);
-  
+
   /** Observable representing the current loading state */
   public readonly isLoading$ = this.loadingSubject.asObservable().pipe(delay(0));
 
-  constructor() {}
+  constructor() { }
 
   /**
    * Shows the global spinner. Increments the request counter.
@@ -21,12 +21,12 @@ export class SpinnerOverlayService {
     if (this.activeRequests === 1) {
       this.loadingSubject.next(true);
 
-      // Failsafe: if the loader is still showing after 35s, force a reset
+      // Failsafe: if the loader is still showing after 10s, force a reset
       setTimeout(() => {
         if (this.loadingSubject.value) {
           this.reset();
         }
-      }, 30000);
+      }, 10000);
     }
   }
 
@@ -37,7 +37,7 @@ export class SpinnerOverlayService {
     if (this.activeRequests > 0) {
       this.activeRequests--;
     }
-    
+
     if (this.activeRequests === 0) {
       this.loadingSubject.next(false);
     }

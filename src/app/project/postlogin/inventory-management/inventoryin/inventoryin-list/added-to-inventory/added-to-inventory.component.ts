@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-added-to-inventory',
+    selector: 'app-inventoryin-added-to-inventory',
     templateUrl: './added-to-inventory.component.html',
     styleUrls: ['./added-to-inventory.component.scss'],
     standalone: true
 })
-export class AddedToInventoryComponent implements OnInit {
+export class InventoryinAddedToInventoryComponent implements OnInit {
 
   constructor() { }
 

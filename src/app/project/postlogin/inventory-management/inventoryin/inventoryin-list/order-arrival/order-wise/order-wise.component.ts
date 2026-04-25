@@ -6,7 +6,7 @@ import { DateScrollComponent } from '../../../../../../../shared/component/date-
 
 
 @Component({
-    selector: 'app-order-wise',
+    selector: 'app-inventoryin-order-wise',
     templateUrl: './order-wise.component.html',
     styleUrls: ['./order-wise.component.scss'],
     standalone: true,
@@ -15,7 +15,7 @@ import { DateScrollComponent } from '../../../../../../../shared/component/date-
     DataTableComponent
 ],
 })
-export class OrderWiseComponent implements OnInit {
+export class InventoryinOrderWiseComponent implements OnInit {
   list = [];
   public filterValue: string;
   startDate = new Date();

@@ -1,7 +1,7 @@
 <!--   <mat-tab-group class="mat-steps mt-2" [(selectedIndex)]="currentStepIndex">
 <mat-tab label="Product Calculator" class="p-1">
-  <app-product [templateForm]="templateForm" [productTemplateCalculator]="productTemplateCalculator" *ngIf="currentStepIndex == 0">
-  </app-product>
+  <app-product-calculator [templateForm]="templateForm" [productTemplateCalculator]="productTemplateCalculator" *ngIf="currentStepIndex == 0">
+  </app-product-calculator>
 </mat-tab>
 <mat-tab label="Package Calculator" class="p-1">
   <app-package  [templateForm]="templateForm"  [productTemplateCalculator]="productTemplateCalculator" *ngIf="currentStepIndex == 1">
@@ -28,8 +28,8 @@
       </div>
     </div>
     @if (calculatorType.value === 'product') {
-      <app-product [templateForm]="templateForm" [productTemplateCalculator]="productTemplateCalculator">
-      </app-product>
+      <app-product-calculator [templateForm]="templateForm" [productTemplateCalculator]="productTemplateCalculator">
+      </app-product-calculator>
     }
     @if (calculatorType.value === 'package') {
       <app-package [templateForm]="templateForm" [productTemplateCalculator]="productTemplateCalculator">

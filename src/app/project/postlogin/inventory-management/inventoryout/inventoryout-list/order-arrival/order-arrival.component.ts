@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { OrderWiseComponent } from './order-wise/order-wise.component';
-import { ProductWiseComponent } from './product-wise/product-wise.component';
+import { InventoryoutOrderWiseComponent } from './order-wise/order-wise.component';
+import { InventoryoutProductWiseComponent } from './product-wise/product-wise.component';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { NgClass } from '@angular/common';
 import { SearchFilterComponent } from '../../../../../../shared/component/search-filter/search-filter.component';
 
 
 @Component({
-    selector: 'app-order-arrival',
+    selector: 'app-inventoryout-order-arrival',
     templateUrl: './order-arrival.component.html',
     styleUrls: ['./order-arrival.component.scss'],
     standalone: true,
-    imports: [SearchFilterComponent, NgClass, ExtendedModule, ProductWiseComponent, OrderWiseComponent]
+    imports: [SearchFilterComponent, NgClass, ExtendedModule, InventoryoutProductWiseComponent, InventoryoutOrderWiseComponent]
 })
-export class OrderArrivalComponent implements OnInit {
+export class InventoryoutOrderArrivalComponent implements OnInit {
   poView='orderWise'
 
   constructor(public route:ActivatedRoute,public router:Router) { }

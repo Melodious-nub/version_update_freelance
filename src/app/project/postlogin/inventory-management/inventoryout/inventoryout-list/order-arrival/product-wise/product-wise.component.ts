@@ -5,13 +5,13 @@ import { DataTableComponent } from '../../../../../../../shared/component/data-t
 import { DateScrollComponent } from '../../../../../../../shared/component/date-scroll/date-scroll.component';
 
 @Component({
-    selector: 'app-product-wise',
+    selector: 'app-inventoryout-product-wise',
     templateUrl: './product-wise.component.html',
     styleUrls: ['./product-wise.component.scss'],
     standalone: true,
     imports: [DateScrollComponent, DataTableComponent]
 })
-export class ProductWiseComponent implements OnInit {
+export class InventoryoutProductWiseComponent implements OnInit {
 
   list = []
   public filterValue: string;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-    selector: 'app-product',
+    selector: 'app-inventoryin',
     templateUrl: './inventoryin.component.html',
     styleUrls: ['./inventoryin.component.scss'],
     standalone: true,

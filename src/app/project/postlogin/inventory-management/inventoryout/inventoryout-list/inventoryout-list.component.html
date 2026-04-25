@@ -6,13 +6,13 @@
       </ng-template>
       <ng-template matTabContent>
         @if (currentMainIndex == 0) {
-          <app-order-arrival></app-order-arrival>
+          <app-inventoryout-order-arrival></app-inventoryout-order-arrival>
         }
         @if (currentMainIndex == 1) {
-          <app-added-to-inventory></app-added-to-inventory>
+          <app-inventoryout-added-to-inventory></app-inventoryout-added-to-inventory>
         }
         @if (currentMainIndex == 2) {
-          <app-container-in></app-container-in>
+          <app-inventoryout-container-in></app-inventoryout-container-in>
         }
       </ng-template>
     </mat-tab>

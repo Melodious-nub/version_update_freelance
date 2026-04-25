@@ -23,7 +23,7 @@ import { NgStyle, NgClass } from '@angular/common';
 import { DadyinButtonComponent } from '../../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
-    selector: 'app-product',
+    selector: 'app-product-calculator',
     templateUrl: './product.component.html',
     styleUrls: ['./product.component.scss'],
     standalone: true,

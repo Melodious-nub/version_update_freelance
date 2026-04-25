@@ -7,9 +7,9 @@ import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
 import { UomService } from 'src/app/service/uom.service';
 import { InventoryoutmanagementService } from '../service/inventoryout-management.service';
-import { ContainerInComponent } from './container-in/container-in.component';
-import { AddedToInventoryComponent } from './added-to-inventory/added-to-inventory.component';
-import { OrderArrivalComponent } from './order-arrival/order-arrival.component';
+import { InventoryoutContainerInComponent } from './container-in/container-in.component';
+import { InventoryoutAddedToInventoryComponent } from './added-to-inventory/added-to-inventory.component';
+import { InventoryoutOrderArrivalComponent } from './order-arrival/order-arrival.component';
 import { MatBadge } from '@angular/material/badge';
 
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
@@ -25,9 +25,9 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     MatTabLabel,
     MatBadge,
     MatTabContent,
-    OrderArrivalComponent,
-    AddedToInventoryComponent,
-    ContainerInComponent
+    InventoryoutOrderArrivalComponent,
+    InventoryoutAddedToInventoryComponent,
+    InventoryoutContainerInComponent
 ],
 })
 export class InventoryoutListComponent implements OnInit {
