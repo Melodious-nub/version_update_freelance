@@ -24,7 +24,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgIf, NgFor, NgClass, NgStyle } from '@angular/common';
+import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
     selector: 'app-add-package',
@@ -32,30 +32,28 @@ import { NgIf, NgFor, NgClass, NgStyle } from '@angular/common';
     styleUrls: ['./add-package.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        DadyinButtonComponent,
-        NgFor,
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        NgbTooltip,
-        MatTooltip,
-        NgClass,
-        ExtendedModule,
-        RouterLink,
-        DadyinSearchableSelectComponent,
-        MatIcon,
-        CdkDropList,
-        CdkDrag,
-        NgStyle,
-        MatAutocompleteTrigger,
-        MatAutocomplete,
-        MatOption,
-        SortFormArrayPipe_1,
-        NumberFormatterPipe,
-    ],
+    DadyinButtonComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    NgbTooltip,
+    MatTooltip,
+    NgClass,
+    ExtendedModule,
+    RouterLink,
+    DadyinSearchableSelectComponent,
+    MatIcon,
+    CdkDropList,
+    CdkDrag,
+    NgStyle,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption,
+    SortFormArrayPipe_1,
+    NumberFormatterPipe
+],
 })
 export class AddPackageComponent implements OnInit {
   @Input() productForm: UntypedFormGroup;
@@ -678,7 +676,7 @@ export class AddPackageComponent implements OnInit {
   get isPackageAttributes() {
     return this.productForm.get('isPackageAttributes');
   }
-  trackByFn(index) {
+  trackByFn(index, item) {
     return index;
   }
 

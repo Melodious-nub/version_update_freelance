@@ -1,13 +1,13 @@
 <!--   <mat-tab-group class="mat-steps mt-2" [(selectedIndex)]="currentStepIndex">
-    <mat-tab label="Product Calculator" class="p-1">
-      <app-product [templateForm]="templateForm" [productTemplateCalculator]="productTemplateCalculator" *ngIf="currentStepIndex == 0">
-      </app-product>
-    </mat-tab>
-    <mat-tab label="Package Calculator" class="p-1">
-      <app-package  [templateForm]="templateForm"  [productTemplateCalculator]="productTemplateCalculator" *ngIf="currentStepIndex == 1">
-      </app-package>
-    </mat-tab>
-  </mat-tab-group> -->
+<mat-tab label="Product Calculator" class="p-1">
+  <app-product [templateForm]="templateForm" [productTemplateCalculator]="productTemplateCalculator" *ngIf="currentStepIndex == 0">
+  </app-product>
+</mat-tab>
+<mat-tab label="Package Calculator" class="p-1">
+  <app-package  [templateForm]="templateForm"  [productTemplateCalculator]="productTemplateCalculator" *ngIf="currentStepIndex == 1">
+  </app-package>
+</mat-tab>
+</mat-tab-group> -->
 
 
 <div class="container_body">
@@ -27,13 +27,13 @@
 
       </div>
     </div>
-    <ng-container *ngIf="calculatorType.value === 'product'">
+    @if (calculatorType.value === 'product') {
       <app-product [templateForm]="templateForm" [productTemplateCalculator]="productTemplateCalculator">
       </app-product>
-    </ng-container>
-    <ng-container *ngIf="calculatorType.value === 'package'">
+    }
+    @if (calculatorType.value === 'package') {
       <app-package [templateForm]="templateForm" [productTemplateCalculator]="productTemplateCalculator">
       </app-package>
-    </ng-container>
+    }
   </section>
 </div>

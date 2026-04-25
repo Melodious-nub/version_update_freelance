@@ -16,10 +16,10 @@
       </div>
       <div style="width: 15%;text-align: end;">
         <dadyin-button
-        [label]="status == 'COMPLETED' ? 'Save Changes' : 'Confirm'"
-        [theme]="'primary'"
-        (clicked)="mergePallet()"
-      ></dadyin-button>
+          [label]="status == 'COMPLETED' ? 'Save Changes' : 'Confirm'"
+          [theme]="'primary'"
+          (clicked)="mergePallet()"
+        ></dadyin-button>
       </div>
     </div>
     <div class="content-title width-perc-5">
@@ -113,87 +113,89 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of data.dbPalletInventories">
-              <td>
-                <input
-                  [disabled]="status == 'COMPLETED'"
-                  [(ngModel)]="item.isSelected"
-                  type="checkbox"
-                />
-              </td>
-              <td>
-                <input [value]="item.palletNumber" disabled type="text" />
-              </td>
-              <td>
-                <input [value]="item.location" disabled type="text" />
-              </td>
-              <td>
-                <input [value]="item.rowNumber" disabled type="text" />
-              </td>
-              <td>
-                <input [value]="item.columnNumber" disabled type="text" />
-              </td>
-              <td>
-                <input [value]="item.singleBoxNumber" disabled type="text" />
-              </td>
-              <td>
-                <input disabled type="text" />
-              </td>
-              <td>
-                <input disabled type="text" />
-              </td>
-              <td>
-                <input disabled type="text" />
-              </td>
-              <td>
-                <input [value]="item.dockNumber" disabled type="text" />
-              </td>
-              <td>
-                <input
-                  [value]="item.handlingInstructions"
-                  disabled
-                  type="text"
-                />
-              </td>
-              <td>
-                <input [value]="item.notes" disabled type="text" />
-              </td>
-            </tr>
-          </tbody>
-          <tfoot></tfoot>
-        </table>
-        <div class="d-flex my-5 justify-content-between">
-          <div></div>
-          <div>
-           
+            @for (item of data.dbPalletInventories; track item) {
+              <tr>
+                <td>
+                  <input
+                    [disabled]="status == 'COMPLETED'"
+                    [(ngModel)]="item.isSelected"
+                    type="checkbox"
+                    />
+                  </td>
+                  <td>
+                    <input [value]="item.palletNumber" disabled type="text" />
+                  </td>
+                  <td>
+                    <input [value]="item.location" disabled type="text" />
+                  </td>
+                  <td>
+                    <input [value]="item.rowNumber" disabled type="text" />
+                  </td>
+                  <td>
+                    <input [value]="item.columnNumber" disabled type="text" />
+                  </td>
+                  <td>
+                    <input [value]="item.singleBoxNumber" disabled type="text" />
+                  </td>
+                  <td>
+                    <input disabled type="text" />
+                  </td>
+                  <td>
+                    <input disabled type="text" />
+                  </td>
+                  <td>
+                    <input disabled type="text" />
+                  </td>
+                  <td>
+                    <input [value]="item.dockNumber" disabled type="text" />
+                  </td>
+                  <td>
+                    <input
+                      [value]="item.handlingInstructions"
+                      disabled
+                      type="text"
+                      />
+                    </td>
+                    <td>
+                      <input [value]="item.notes" disabled type="text" />
+                    </td>
+                  </tr>
+                }
+              </tbody>
+              <tfoot></tfoot>
+            </table>
+            <div class="d-flex my-5 justify-content-between">
+              <div></div>
+              <div>
+
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <br /><br /><br />
+      <div class="row">
+        <div class="col-6">
+          <div class="toolbar title-text">Inventory Ledger</div>
+          <data-table
+            [data]="palletDetails?.completedOrders"
+            [headers]="inventoryLedgerHeader"
+            [searchTerm]="filterValue"
+            [pageConfig]="pageConfig"
+            [actions]="tabelActions"
+            >
+          </data-table>
+        </div>
+        <div class="col-6">
+          <div class="toolbar title-text">Inventory Arriving</div>
+          <data-table
+            [data]="palletDetails?.incomingOrders"
+            [headers]="inventoryArrivingHeader"
+            [searchTerm]="filterValue"
+            [pageConfig]="pageConfig"
+            [actions]="tabelActions"
+            >
+          </data-table>
+        </div>
+      </div>
     </div>
-  </div>
-  <br /><br /><br />
-  <div class="row">
-    <div class="col-6">
-      <div class="toolbar title-text">Inventory Ledger</div>
-      <data-table
-        [data]="palletDetails?.completedOrders"
-        [headers]="inventoryLedgerHeader"
-        [searchTerm]="filterValue"
-        [pageConfig]="pageConfig"
-        [actions]="tabelActions"
-      >
-      </data-table>
-    </div>
-    <div class="col-6">
-      <div class="toolbar title-text">Inventory Arriving</div>
-      <data-table
-        [data]="palletDetails?.incomingOrders"
-        [headers]="inventoryArrivingHeader"
-        [searchTerm]="filterValue"
-        [pageConfig]="pageConfig"
-        [actions]="tabelActions"
-      >
-      </data-table>
-    </div>
-  </div>
-</div>

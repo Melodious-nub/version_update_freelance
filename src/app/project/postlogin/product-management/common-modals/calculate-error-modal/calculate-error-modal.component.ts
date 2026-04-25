@@ -9,13 +9,13 @@ import { FormsService } from 'src/app/service/forms.service';
 import { SortFormArrayPipe } from '../../../../../shared/pipes/sort-formarray-sortorder.pipe';
 import { MatIcon } from '@angular/material/icon';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgIf, NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 @Component({
     selector: 'app-calculate-error-modal',
     templateUrl: './calculate-error-modal.component.html',
     styleUrls: ['./calculate-error-modal.component.scss'],
     standalone: true,
-    imports: [MatDialogClose, NgIf, NgFor, FormsModule, ReactiveFormsModule, NgClass, ExtendedModule, MatIcon, SortFormArrayPipe]
+    imports: [MatDialogClose, FormsModule, ReactiveFormsModule, NgClass, ExtendedModule, MatIcon, SortFormArrayPipe]
 })
 export class CalculateErrorModalComponent implements OnInit {
   productForm = this.formsService.createProductForm()

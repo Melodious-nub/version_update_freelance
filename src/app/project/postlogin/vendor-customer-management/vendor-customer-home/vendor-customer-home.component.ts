@@ -17,7 +17,7 @@ import { CustomerManagementComponent } from '../../order-management/customer-mod
 import { WarehouseDetailsComponent } from '../shared/warehouse-details/warehouse-details.component';
 import { DadyinTabComponent } from '../../../../shared/widgets/dadyin-tab/dadyin-tab.component';
 import { MatTooltip } from '@angular/material/tooltip';
-import { NgIf } from '@angular/common';
+
 import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
 @Component({
     selector: 'app-vendor-customer-home',
@@ -25,17 +25,16 @@ import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/
     styleUrls: ['./vendor-customer-home.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        NgIf,
-        MatTooltip,
-        FormsModule,
-        ReactiveFormsModule,
-        DadyinTabComponent,
-        VendorDetailsComponent,
-        WarehouseDetailsComponent,
-        CustomerManagementComponent,
-        VendorManagementComponent,
-    ],
+    DadyinButtonComponent,
+    MatTooltip,
+    FormsModule,
+    ReactiveFormsModule,
+    DadyinTabComponent,
+    VendorDetailsComponent,
+    WarehouseDetailsComponent,
+    CustomerManagementComponent,
+    VendorManagementComponent
+],
 })
 export class AddEditVendorComponent implements OnInit {
   public currentMainIndex: number = 0;

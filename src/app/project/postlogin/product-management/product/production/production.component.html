@@ -4,68 +4,73 @@
     <div class="d-flex align-items-center gap-2 width-perc-40">
       <input type="text" class="w-100" placeholder="Search/Type Production Process"
         (input)="onSearchChange($event.target.value)">
-      <dadyin-button type="image" heightImage="20px" widthImage="20px" [typeval]="'assets/nicons/search-normal.png'"
+        <dadyin-button type="image" heightImage="20px" widthImage="20px" [typeval]="'assets/nicons/search-normal.png'"
         [theme]="'borderless-white'"></dadyin-button>
+      </div>
+      <div>
+        <dadyin-button label="Add New Batch" (clicked)="getProductionDetails()" [theme]="'primary'"></dadyin-button>
+      </div>
     </div>
-    <div>
-      <dadyin-button label="Add New Batch" (clicked)="getProductionDetails()" [theme]="'primary'"></dadyin-button>
+
+    <div class="mt-3">
+      <div class="process-table ">
+        <table id="example" class="table-striped" style="width: 100%">
+          <thead class="custom-header">
+            <tr>
+              <th>Sr no.</th>
+              <th>Batch #</th>
+              <th>Date & Time</th>
+              <th>Grade</th>
+              <th>Color</th>
+              <th>{{productForm.get('unitName').value || 'Pcs'}}</th>
+              <th>Size</th>
+              <th>Length</th>
+              <th>Width</th>
+              <th>Weight</th>
+              <th>End Cut Weight</th>
+              <th>Supervisor</th>
+              <th>Shift</th>
+              <th>Action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            @for (log of productionLogs; track log; let index = $index) {
+              <tr>
+                <td>{{ index + 1 }}.</td>
+                <td>{{ log?.logNumber || '--' }}</td>
+                <td>{{ log?.logDate | date: 'MM/dd/yyyy HH:mm a' }}</td>
+                <td>{{ log?.grade || '-' }}</td>
+                <td>{{ log?.color || '-' }}</td>
+                <td>{{ log?.billetPcs || '-' }}</td>
+                <td>{{ log?.billetSize || '-' }}</td>
+                <td>{{ log?.billetLength || '-' }}</td>
+                <td>{{ log?.billetWidth || '-' }}</td>
+                <td>{{ log?.billetWeight || '-' }}</td>
+                <td>{{ log?.endCutWeight || '-' }}</td>
+                <td>{{ log?.supervisor || '-' }}</td>
+                <td>{{ log?.shift || '-' }}</td>
+                <td>
+                  <dadyin-button type="image" heightImage="20px" widthImage="20px" [typeval]="'assets/nicons/edit-pen.png'" [theme]="'borderless-primary'"
+                    (clicked)="editBatch(log)">
+                  </dadyin-button>
+                </td>
+              </tr>
+            }
+            @if (!productionLogs?.length) {
+              <tr>
+                <td colspan="14" class="text-center py-3">No production logs found</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
+
+    @if (totalLogs) {
+      <mat-paginator [length]="totalLogs" [pageSize]="pageSize" [pageIndex]="currentPage"
+        [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
+      </mat-paginator>
+    }
+
   </div>
-
-  <div class="mt-3">
-    <div class="process-table ">
-      <table id="example" class="table-striped" style="width: 100%">
-        <thead class="custom-header">
-          <tr>
-            <th>Sr no.</th>
-            <th>Batch #</th>
-            <th>Date & Time</th>
-            <th>Grade</th>
-            <th>Color</th>
-            <th>{{productForm.get('unitName').value || 'Pcs'}}</th>
-            <th>Size</th>
-            <th>Length</th>
-            <th>Width</th>
-            <th>Weight</th>
-            <th>End Cut Weight</th>
-            <th>Supervisor</th>
-            <th>Shift</th>
-            <th>Action</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let log of productionLogs; let index = index">
-            <td>{{ index + 1 }}.</td>
-            <td>{{ log?.logNumber || '--' }}</td>
-            <td>{{ log?.logDate | date: 'MM/dd/yyyy HH:mm a' }}</td>
-            <td>{{ log?.grade || '-' }}</td>
-            <td>{{ log?.color || '-' }}</td>
-            <td>{{ log?.billetPcs || '-' }}</td>
-            <td>{{ log?.billetSize || '-' }}</td>
-            <td>{{ log?.billetLength || '-' }}</td>
-            <td>{{ log?.billetWidth || '-' }}</td>
-            <td>{{ log?.billetWeight || '-' }}</td>
-            <td>{{ log?.endCutWeight || '-' }}</td>
-            <td>{{ log?.supervisor || '-' }}</td>
-            <td>{{ log?.shift || '-' }}</td>
-            <td>
-              <dadyin-button type="image" heightImage="20px" widthImage="20px" [typeval]="'assets/nicons/edit-pen.png'" [theme]="'borderless-primary'"
-                (clicked)="editBatch(log)">
-              </dadyin-button>
-            </td>
-
-          </tr>
-          <tr *ngIf="!productionLogs?.length">
-            <td colspan="14" class="text-center py-3">No production logs found</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <mat-paginator *ngIf="totalLogs" [length]="totalLogs" [pageSize]="pageSize" [pageIndex]="currentPage"
-    [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
-  </mat-paginator>
-
-</div>

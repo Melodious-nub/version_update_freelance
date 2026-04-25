@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 import { NumberFormatterPipe } from '../../pipes/number-formatter.pipe';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
-import { NgIf, NgFor, NgStyle } from '@angular/common';
+import { NgStyle } from '@angular/common';
 
 @Component({
     selector: 'app-three-scene',
@@ -17,15 +17,13 @@ import { NgIf, NgFor, NgStyle } from '@angular/common';
     styleUrls: ['./three-scene.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        CdkDropList,
-        NgFor,
-        CdkDrag,
-        NgbTooltip,
-        NgStyle,
-        ExtendedModule,
-        NumberFormatterPipe,
-    ],
+    CdkDropList,
+    CdkDrag,
+    NgbTooltip,
+    NgStyle,
+    ExtendedModule,
+    NumberFormatterPipe
+],
 })
 export class ThreeSceneComponent implements OnInit {
   @Input() containerData: any; // Input to dynamically pass JSON data

@@ -44,475 +44,500 @@
                       productForm.get('productMeta').get('productCode').touched,
                     'bg-disable': parentProductMetaId.value
                   }" formControlName="productCode" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-8">
+              <div class="attribute one attr-b">
+                <label for="">Product Description</label>
+                <div class="attribute-input" formGroupName="productMeta">
+                  <textarea rows="2" type="text" formControlName="description"></textarea>
+                  <img class="cursor-pointer" src="assets/nicons/ai.png" alt="AI" (click)="onAIClick()" />
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="col-8">
-            <div class="attribute one attr-b">
-              <label for="">Product Description</label>
-              <div class="attribute-input" formGroupName="productMeta">
-                <textarea rows="2" type="text" formControlName="description"></textarea>
-                <img class="cursor-pointer" src="assets/nicons/ai.png" alt="AI" (click)="onAIClick()" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row" formGroupName="productMeta">
-          <div class="col-md-4 col-12">
-            <dadyin-input inputType="text" formControlName="metaTitle" label="Product Name"
+          <div class="row" formGroupName="productMeta">
+            <div class="col-md-4 col-12">
+              <dadyin-input inputType="text" formControlName="metaTitle" label="Product Name"
               placeholder="Enter Product Name"></dadyin-input>
-          </div>
-          <div class="col-md-4 col-12">
-            <dadyin-input inputType="text" formControlName="metaKeyword" label="Product SEO Keywords"
+            </div>
+            <div class="col-md-4 col-12">
+              <dadyin-input inputType="text" formControlName="metaKeyword" label="Product SEO Keywords"
               placeholder="Product seo keywords"></dadyin-input>
-          </div>
+            </div>
 
-          <div class="col-md-4 col-12">
-            <div class="attribute one attr-b">
-              <label for="">Product SEO Description</label>
-              <div class="attribute-input">
-                <textarea rows="2" type="text" formControlName="metaDescription"></textarea>
+            <div class="col-md-4 col-12">
+              <div class="attribute one attr-b">
+                <label for="">Product SEO Description</label>
+                <div class="attribute-input">
+                  <textarea rows="2" type="text" formControlName="metaDescription"></textarea>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 col-12">
-            <dadyin-searchable-select label="Select Product Type" placeholder="Search for Product Type"
-              (changed)="onProductTypeChange()" [control]="productForm.get('productTypeId')"
+          <div class="row">
+            <div class="col-md-4 col-12">
+              <dadyin-searchable-select label="Select Product Type" placeholder="Search for Product Type"
+                (changed)="onProductTypeChange()" [control]="productForm.get('productTypeId')"
               [fullItems]="apiService.productTypes"></dadyin-searchable-select>
-          </div>
+            </div>
 
-          <div class="col-md-4 col-12">
-            <dadyin-searchable-select label="Select Product Sub Type" placeholder="Search for Product Sub Type"
-              (changed)="onProductSubTypeChange()" [control]="productForm.get('productSubTypeId')"
+            <div class="col-md-4 col-12">
+              <dadyin-searchable-select label="Select Product Sub Type" placeholder="Search for Product Sub Type"
+                (changed)="onProductSubTypeChange()" [control]="productForm.get('productSubTypeId')"
               [fullItems]="productService.productSubTypes"></dadyin-searchable-select>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class="col-md-2 col-12">
-            <div class="attribute one attr-b">
-              <label for="">UPC Code</label>
-              <div class="attribute-input">
-                <input type="text" formControlName="upcCode" />
-              </div>
             </div>
           </div>
 
-          <div class="col-md-2 col-12">
-            <div class="attribute one attr-b">
-              <label for="">EAN Code</label>
-              <div class="attribute-input">
-                <input type="text" formControlName="eanCode" />
+
+          <div class="row">
+            <div class="col-md-2 col-12">
+              <div class="attribute one attr-b">
+                <label for="">UPC Code</label>
+                <div class="attribute-input">
+                  <input type="text" formControlName="upcCode" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-4 col-12">
-            <div class="attribute one attr-b">
-              <label for="">Unit Name*</label>
-              <div class="attribute-input">
+            <div class="col-md-2 col-12">
+              <div class="attribute one attr-b">
+                <label for="">EAN Code</label>
+                <div class="attribute-input">
+                  <input type="text" formControlName="eanCode" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-12">
+              <div class="attribute one attr-b">
+                <label for="">Unit Name*</label>
+                <div class="attribute-input">
                 <input type="text" [ngClass]="{
                     'b-red':
                       productForm.get('unitName').invalid &&
                       productForm.get('unitName').touched
                   }" formControlName="unitName" />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-md-2 col-12">
-            <div class="attribute one attr-b">
-              <label for="">SKU Type</label>
-              <div class="attribute-select">
-                <select (change)="getCalculatedValues()" formControlName="skuName">
-                  <option [disabled]="isSKUTypeDisable()" [value]="null">
-                    None
-                  </option>
-                  <option [disabled]="isSKUTypeDisable()" *ngFor="let sku of apiService?.skuTypes" [value]="sku.id">
-                    {{ sku?.description }}
-                  </option>
-                </select>
+              <div class="col-md-2 col-12">
+                <div class="attribute one attr-b">
+                  <label for="">SKU Type</label>
+                  <div class="attribute-select">
+                    <select (change)="getCalculatedValues()" formControlName="skuName">
+                      <option [disabled]="isSKUTypeDisable()" [value]="null">
+                        None
+                      </option>
+                      @for (sku of apiService?.skuTypes; track sku) {
+                        <option [disabled]="isSKUTypeDisable()" [value]="sku.id">
+                          {{ sku?.description }}
+                        </option>
+                      }
+                    </select>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-md-2 col-12">
-            <div class="attribute one attr-b">
-              <label for="">{{ productForm.get("unitName").value ?? "Unit Count" }}/{{
-                productForm.get("skuName").value ?? "SKU"
-                }}</label>
-              <div class="attribute-input">
-                <input (change)="getCalculatedValues()" [disabled]="isSKUTypeDisable() || disableForThirdPartyProduct"
-                  type="number" formControlName="unitCount" />
+              <div class="col-md-2 col-12">
+                <div class="attribute one attr-b">
+                  <label for="">{{ productForm.get("unitName").value ?? "Unit Count" }}/{{
+                    productForm.get("skuName").value ?? "SKU"
+                  }}</label>
+                  <div class="attribute-input">
+                    <input (change)="getCalculatedValues()" [disabled]="isSKUTypeDisable() || disableForThirdPartyProduct"
+                      type="number" formControlName="unitCount" />
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="col-md-12 col-12">
-            <div class="attribute one attr-b">
-              <label for="">Purchase Description</label>
-              <div class="attribute-input">
-                <input type="text" formControlName="purchaseDescription" />
+              <div class="row">
+                <div class="col-md-12 col-12">
+                  <div class="attribute one attr-b">
+                    <label for="">Purchase Description</label>
+                    <div class="attribute-input">
+                      <input type="text" formControlName="purchaseDescription" />
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
 
         <div class="row mb-1" [ngClass]="{
             'd-none': productInformationValues.controls.length == 0
           }">
-          <div [formGroup]="information" *ngFor="
-              let information of productInformationValues.controls;
-              let i = index
-            " class="col-3 my-2 d-flex align-items-center">
-            <div class="attribute one ">
-              <label for="" class="label-special">
-                {{ information.get("description").value }}</label>
-              <div class="attribute-input">
-                <input type="text" formControlName="attributeValue" placeholder="Enter your value" />
+                @for (
+                  information of productInformationValues.controls; track
+                  information; let i = $index) {
+                  <div [formGroup]="information" class="col-3 my-2 d-flex align-items-center">
+                    <div class="attribute one ">
+                      <label for="" class="label-special">
+                      {{ information.get("description").value }}</label>
+                      <div class="attribute-input">
+                        <input type="text" formControlName="attributeValue" placeholder="Enter your value" />
+                      </div>
+                    </div>
+                    <dadyin-button (clicked)="removeProductInformationValues(i)" matTooltip="Delete"
+                      [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'" type="image">
+                    </dadyin-button>
+                  </div>
+                }
               </div>
             </div>
-            <dadyin-button (clicked)="removeProductInformationValues(i)" matTooltip="Delete"
-              [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'" type="image">
-            </dadyin-button>
-          </div>
-        </div>
-      </div>
 
-      <div (cdkDropListDropped)="onDrop($event)" cdkDropList class="col-3">
-        <div class="example-list d-flex align-items-center w-100 gap-2">
-          <div class="image-box-sm w-50 b-light d-flex align-items-center justify-content-center primary-text">
-            <label for="">Product Image</label>
-            <input (change)="imageselected($event)" type="file" multiple="true" style="display: none !important"
-              #fileinp accept=".jpg, .jpeg, .png" />
-            <div (click)="fileinp.click()" class="text-center cursor">
-              <mat-icon class="upload primary-text">upload</mat-icon>
-              <div class="mx-4 text-light fs-12">Upload Product Image</div>
-              <img src="assets/nicons/ai.png" (click)="aiImageGeneration();$event.stopPropagation()" class="ai-img"
-                alt="" />
-            </div>
-          </div>
-          <ng-container *ngFor="
-                    let img of images?.controls;
-                    let j = index;
-                    trackBy: trackByFn
-                ">
-            <ng-container *ngIf="images?.controls?.length > 0 && j === 0">
-              <div cdkDrag (cdkDragStarted)="onImageDragStart()" (cdkDragEnded)="onImageDragEnd()"
-                *ngIf="!this.isThirdPartyProductMeta || !img.get('isHide').value" class="image-box-sm w-50  b-light"
-                [ngStyle]="j === 0 ? { border: '2px solid green' } : {}">
-                <img [matTooltip]="j === 0 ? 'This will be Featured image' : ''" height="100%" width="100%"
-                  [src]="imgUrl + img.get('fileName').value" alt=""
-                  (click)="onImageClick($event, images?.controls, j)" />
+            <div (cdkDropListDropped)="onDrop($event)" cdkDropList class="col-3">
+              <div class="example-list d-flex align-items-center w-100 gap-2">
+                <div class="image-box-sm w-50 b-light d-flex align-items-center justify-content-center primary-text">
+                  <label for="">Product Image</label>
+                  <input (change)="imageselected($event)" type="file" multiple="true" style="display: none !important"
+                    #fileinp accept=".jpg, .jpeg, .png" />
+                    <div (click)="fileinp.click()" class="text-center cursor">
+                      <mat-icon class="upload primary-text">upload</mat-icon>
+                      <div class="mx-4 text-light fs-12">Upload Product Image</div>
+                      <img src="assets/nicons/ai.png" (click)="aiImageGeneration();$event.stopPropagation()" class="ai-img"
+                        alt="" />
+                      </div>
+                    </div>
+                    @for (
+                      img of images?.controls; track trackByFn(j,
+                      img); let j = $index) {
+                      @if (images?.controls?.length > 0 && j === 0) {
+                        @if (!this.isThirdPartyProductMeta || !img.get('isHide').value) {
+                          <div cdkDrag (cdkDragStarted)="onImageDragStart()" (cdkDragEnded)="onImageDragEnd()"
+                            class="image-box-sm w-50  b-light"
+                            [ngStyle]="j === 0 ? { border: '2px solid green' } : {}">
+                            <img [matTooltip]="j === 0 ? 'This will be Featured image' : ''" height="100%" width="100%"
+                              [src]="imgUrl + img.get('fileName').value" alt=""
+                              (click)="onImageClick($event, images?.controls, j)" />
+                              <div class="cross-box-sm">
+                                <dadyin-button [widthImage]="'20px'" [heightImage]="'20px'" width="20px" height="20px" type="image"
+                                  (clicked)="removeImage(j)" [theme]="'borderless-primary'"
+                                [typeval]="'assets/nicons/delete.png'"></dadyin-button>
+                              </div>
+                              @if (!img.get('isHide').value) {
+                                <mat-icon (click)="hideImage(true, j)" class="hide-image-sm text-primary"
+                                  >visibility
+                                </mat-icon>
+                              }
+                              @if (img.get('isHide').value) {
+                                <mat-icon (click)="hideImage(false, j)" class="hide-image-sm"
+                                  >visibility_off
+                                </mat-icon>
+                              }
+                            </div>
+                          }
+                        }
+                      }
+                    </div>
 
-                <div class="cross-box-sm">
-                  <dadyin-button [widthImage]="'20px'" [heightImage]="'20px'" width="20px" height="20px" type="image"
-                    (clicked)="removeImage(j)" [theme]="'borderless-primary'"
-                    [typeval]="'assets/nicons/delete.png'"></dadyin-button>
-                </div>
+                    <div class="d-flex overflow-auto gap-1">
+                      @for (
+                        img of images?.controls; track trackByFn(j,
+                        img); let j = $index) {
+                        @if (images?.controls?.length > 1 && j !== 0) {
+                          @if (!this.isThirdPartyProductMeta || !img.get('isHide').value) {
+                            <div cdkDrag (cdkDragStarted)="onImageDragStart()" (cdkDragEnded)="onImageDragEnd()"
+                              class="image-box-sm my-2 b-light"
+                              [ngStyle]="j === 0 ? { border: '2px solid green' } : {}">
+                              <img [matTooltip]="j === 0 ? 'This will be Featured image' : ''" height="100%" width="100%"
+                                [src]="imgUrl + img.get('fileName').value" alt=""
+                                (click)="onImageClick($event, images?.controls, j)" />
+                                <div class="cross-box-sm">
+                                  <dadyin-button [widthImage]="'20px'" [heightImage]="'20px'" width="20px" height="20px" type="image"
+                                    (clicked)="removeImage(j)" [theme]="'borderless-primary'"
+                                  [typeval]="'assets/nicons/delete.png'"></dadyin-button>
+                                </div>
+                                @if (!img.get('isHide').value) {
+                                  <mat-icon (click)="hideImage(true, j)" class="hide-image-sm text-primary"
+                                    >visibility
+                                  </mat-icon>
+                                }
+                                @if (img.get('isHide').value) {
+                                  <mat-icon (click)="hideImage(false, j)" class="hide-image-sm"
+                                    >visibility_off
+                                  </mat-icon>
+                                }
+                              </div>
+                            }
+                          }
+                        }
+                      </div>
 
-                <mat-icon (click)="hideImage(true, j)" class="hide-image-sm text-primary"
-                  *ngIf="!img.get('isHide').value">visibility
-                </mat-icon>
-                <mat-icon (click)="hideImage(false, j)" class="hide-image-sm"
-                  *ngIf="img.get('isHide').value">visibility_off
-                </mat-icon>
-              </div>
-            </ng-container>
-          </ng-container>
-        </div>
+                    </div>
 
-        <div class="d-flex overflow-auto gap-1">
-          <ng-container *ngFor="
-            let img of images?.controls;
-            let j = index;
-            trackBy: trackByFn
-            ">
-            <ng-container *ngIf="images?.controls?.length > 1 && j !== 0">
-              <div cdkDrag (cdkDragStarted)="onImageDragStart()" (cdkDragEnded)="onImageDragEnd()"
-                *ngIf="!this.isThirdPartyProductMeta || !img.get('isHide').value" class="image-box-sm my-2 b-light"
-                [ngStyle]="j === 0 ? { border: '2px solid green' } : {}">
-                <img [matTooltip]="j === 0 ? 'This will be Featured image' : ''" height="100%" width="100%"
-                  [src]="imgUrl + img.get('fileName').value" alt=""
-                  (click)="onImageClick($event, images?.controls, j)" />
-                <div class="cross-box-sm">
-                  <dadyin-button [widthImage]="'20px'" [heightImage]="'20px'" width="20px" height="20px" type="image"
-                    (clicked)="removeImage(j)" [theme]="'borderless-primary'"
-                    [typeval]="'assets/nicons/delete.png'"></dadyin-button>
-                </div>
+                  </div>
+                </mat-expansion-panel>
 
-                <mat-icon (click)="hideImage(true, j)" class="hide-image-sm text-primary"
-                  *ngIf="!img.get('isHide').value">visibility
-                </mat-icon>
-                <mat-icon (click)="hideImage(false, j)" class="hide-image-sm"
-                  *ngIf="img.get('isHide').value">visibility_off
-                </mat-icon>
-              </div>
-            </ng-container>
-          </ng-container>
-        </div>
-
-      </div>
-
-    </div>
-  </mat-expansion-panel>
-
-  <mat-expansion-panel expanded="true" #expansionPanel2>
-    <mat-expansion-panel-header (click)="expandPanel(expansionPanel2, $event)">
-      <mat-panel-description>
-        <div class="toolbar grid-1 font-size-12">
-          <div class="d-flex align-items-center">
-            <div class="title-text width-100 text-left">Other Details</div>
-            <mat-icon class="text-light">visibility_off</mat-icon>
-            <span class="mx-2 font-size-12 fw-400 border-l-light">
-              This Section will always be Private
-            </span>
-          </div>
-          <div class="options"></div>
-        </div>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <div class="row mt-2">
-      <div class="col-12">
-        <div class="row">
-          <div class="col-3 d-flex align-items-center">
-            <div class="attribute tabular-sheet attr-b w-100">
-              <div class="attribute-input">
-                <div class="toggle w-100">
+                <mat-expansion-panel expanded="true" #expansionPanel2>
+                  <mat-expansion-panel-header (click)="expandPanel(expansionPanel2, $event)">
+                    <mat-panel-description>
+                      <div class="toolbar grid-1 font-size-12">
+                        <div class="d-flex align-items-center">
+                          <div class="title-text width-100 text-left">Other Details</div>
+                          <mat-icon class="text-light">visibility_off</mat-icon>
+                          <span class="mx-2 font-size-12 fw-400 border-l-light">
+                            This Section will always be Private
+                          </span>
+                        </div>
+                        <div class="options"></div>
+                      </div>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div class="row mt-2">
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-3 d-flex align-items-center">
+                          <div class="attribute tabular-sheet attr-b w-100">
+                            <div class="attribute-input">
+                              <div class="toggle w-100">
                   <button class="w-50" (click)="productForm.get('isSaleable').setValue(true)" [ngClass]="{
                       active: productForm.get('isSaleable').value == true
                     }">
-                    Saleable
-                  </button>
+                                  Saleable
+                                </button>
                   <button class="w-50" (click)="productForm.get('isSaleable').setValue(false)" [ngClass]="{
                       active: productForm.get('isSaleable').value == false
                     }">
-                    Non-Saleable
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-3 d-flex align-items-center">
-            <div class="add-remove-container d-flex w-100">
-              <dadyin-searchable-select class="w-100" label="Choose Preferred Vendor" placeholder="Search for Vendor "
-                [control]="productForm.get('preferredVendorId')" [fullItems]="businessAccountService?.vendorList"
-                bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
-            </div>
-          </div>
-          <div class="col-3 d-flex align-items-center">
-            <div class="add-remove-container d-flex w-100">
-              <dadyin-searchable-select class="w-100" label="Custom Product For" placeholder="Select Customer"
-                [control]="preferredCustomerId" [fullItems]="businessAccountService.customerList" [clearable]="true"
-                bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
+                                  Non-Saleable
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-3 d-flex align-items-center">
+                          <div class="add-remove-container d-flex w-100">
+                            <dadyin-searchable-select class="w-100" label="Choose Preferred Vendor" placeholder="Search for Vendor "
+                              [control]="productForm.get('preferredVendorId')" [fullItems]="businessAccountService?.vendorList"
+                            bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
+                          </div>
+                        </div>
+                        <div class="col-3 d-flex align-items-center">
+                          <div class="add-remove-container d-flex w-100">
+                            <dadyin-searchable-select class="w-100" label="Custom Product For" placeholder="Select Customer"
+                              [control]="preferredCustomerId" [fullItems]="businessAccountService.customerList" [clearable]="true"
+                            bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
 
-            </div>
-          </div>
+                          </div>
+                        </div>
 
-          <div class="col-3 d-flex align-items-center">
-            <div class="d-flex check attr-b">
+                        <div class="col-3 d-flex align-items-center">
+                          <div class="d-flex check attr-b">
               <input type="checkbox" formControlName="isVendorProduct" id="isVendor" (change)="
                 !productForm.get('isVendorProduct').value &&
                   productForm.get('vendorProductBusinessId').reset()
               " />
-              <span class="text-nowrap">Is Vendor Product</span>
-            </div>
-            <div class="d-flex align-items-start w-100 px-2">
-              <dadyin-searchable-select class="w-100" label="Search Vendor"
-                [control]="productForm.get('vendorProductBusinessId')" [fullItems]="businessAccountService?.vendorList"
-                bindValue="relationAccountId" bindLabel="relationAccountName"
-                [required]="productForm.get('isVendorProduct').value"
-                [isDisabled]="!productForm.get('isVendorProduct').value">
-              </dadyin-searchable-select>
-              <div *ngIf="
-                productForm.get('isVendorProduct').value &&
-                productForm.get('vendorProductBusinessId').invalid &&
-                productForm.get('vendorProductBusinessId').touched
-              " class="text-danger mx-2 font-size-11">
-                Vendor is required
-              </div>
-            </div>
-          </div>
+                              <span class="text-nowrap">Is Vendor Product</span>
+                            </div>
+                            <div class="d-flex align-items-start w-100 px-2">
+                              <dadyin-searchable-select class="w-100" label="Search Vendor"
+                                [control]="productForm.get('vendorProductBusinessId')" [fullItems]="businessAccountService?.vendorList"
+                                bindValue="relationAccountId" bindLabel="relationAccountName"
+                                [required]="productForm.get('isVendorProduct').value"
+                                [isDisabled]="!productForm.get('isVendorProduct').value">
+                              </dadyin-searchable-select>
+                              @if (
+                                productForm.get('isVendorProduct').value &&
+                                productForm.get('vendorProductBusinessId').invalid &&
+                                productForm.get('vendorProductBusinessId').touched
+                                ) {
+                                <div class="text-danger mx-2 font-size-11">
+                                  Vendor is required
+                                </div>
+                              }
+                            </div>
+                          </div>
 
-        </div>
-        <div class="row attr-b">
-          <div class="col-9 d-flex align-items-center justify-content-between">
-            <div class="d-flex check">
-              <input type="checkbox" formControlName="isFavourite" id="isFavourite" />
-              <span>Mark as Favourite</span>
-            </div>
-            <div class="d-flex check">
-              <input type="checkbox" formControlName="isRawMaterial" id="isRawMaterial" />
-              <span>Is a Raw Material</span>
-            </div>
-            <div class="d-flex check">
-              <input type="checkbox" formControlName="isSupplies" id="isSupplies" />
-              <span>Is a Supplies</span>
-            </div>
-            <div class="d-flex check">
-              <input type="checkbox" formControlName="isPackagingMaterial" id="isPackagingMaterial" />
-              <span>Is a Package</span>
-            </div>
+                        </div>
+                        <div class="row attr-b">
+                          <div class="col-9 d-flex align-items-center justify-content-between">
+                            <div class="d-flex check">
+                              <input type="checkbox" formControlName="isFavourite" id="isFavourite" />
+                              <span>Mark as Favourite</span>
+                            </div>
+                            <div class="d-flex check">
+                              <input type="checkbox" formControlName="isRawMaterial" id="isRawMaterial" />
+                              <span>Is a Raw Material</span>
+                            </div>
+                            <div class="d-flex check">
+                              <input type="checkbox" formControlName="isSupplies" id="isSupplies" />
+                              <span>Is a Supplies</span>
+                            </div>
+                            <div class="d-flex check">
+                              <input type="checkbox" formControlName="isPackagingMaterial" id="isPackagingMaterial" />
+                              <span>Is a Package</span>
+                            </div>
 
-            <div class="d-flex check" *ngIf="
-                !preferredCustomerId?.value ||
-                preferredCustomerId?.value == null ||
-                preferredCustomerId?.value == 'null'
-              ">
-              <input type="checkbox" (change)="getCalculatedValues()" formControlName="isCustomizable" />
-              <span>Is Customizable</span>
-            </div>
-            <div class="d-flex check">
-              <input formControlName="isNoGenericPurchase" type="checkbox" />
-              <span>No Generic Purchase</span>
-            </div>
-          </div>
-          <div class="col-3 d-flex align-items-center">
-            <div class="attribute one w-100 px-2">
-              <label for="">Patent Number</label>
-              <div class="attribute-input">
-                <input [readonly]="!productForm.get('isPatentedProduct').value" formControlName="patentNumber"
-                  type="text" />
-              </div>
-            </div>
-            <div class="d-flex check  w-100 px-2">
-              <input formControlName="isPatentedProduct" type="checkbox" id="isPatentedProduct" />
-              <span>Patented Product</span>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-2">
-          <div class="col-3">
-            <div class="d-flex check">
-              <input type="checkbox" (change)="getCalculatedValues()" formControlName="isQuickCheckoutEligible" />
-              <span>Display in Quick Checkout</span>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="d-flex check">
-              <input type="checkbox" [disabled]="createdBy === 'M'" formControlName="isDadyInQuickCheckoutEligible" />
-              <span>Display in Dadyin Quick Checkout</span>
-            </div>
-          </div>
-          <div class="col-3 d-flex justify-content-end align-items-start">
-            <div class="d-flex check">
-              <input type="checkbox" formControlName="hasExpiry" (change)="onHasExpiryChange()" />
-              <span>Product have Expiration Date</span>
-            </div>
-          </div>
-          <div class="col-3 d-flex align-items-center justify-content-start">
-            <div class=" w-50">
+                            @if (
+                              !preferredCustomerId?.value ||
+                              preferredCustomerId?.value == null ||
+                              preferredCustomerId?.value == 'null'
+                              ) {
+                              <div class="d-flex check">
+                                <input type="checkbox" (change)="getCalculatedValues()" formControlName="isCustomizable" />
+                                <span>Is Customizable</span>
+                              </div>
+                            }
+                            <div class="d-flex check">
+                              <input formControlName="isNoGenericPurchase" type="checkbox" />
+                              <span>No Generic Purchase</span>
+                            </div>
+                          </div>
+                          <div class="col-3 d-flex align-items-center">
+                            <div class="attribute one w-100 px-2">
+                              <label for="">Patent Number</label>
+                              <div class="attribute-input">
+                                <input [readonly]="!productForm.get('isPatentedProduct').value" formControlName="patentNumber"
+                                  type="text" />
+                                </div>
+                              </div>
+                              <div class="d-flex check  w-100 px-2">
+                                <input formControlName="isPatentedProduct" type="checkbox" id="isPatentedProduct" />
+                                <span>Patented Product</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mt-2">
+                            <div class="col-3">
+                              <div class="d-flex check">
+                                <input type="checkbox" (change)="getCalculatedValues()" formControlName="isQuickCheckoutEligible" />
+                                <span>Display in Quick Checkout</span>
+                              </div>
+                            </div>
+                            <div class="col-3">
+                              <div class="d-flex check">
+                                <input type="checkbox" [disabled]="createdBy === 'M'" formControlName="isDadyInQuickCheckoutEligible" />
+                                <span>Display in Dadyin Quick Checkout</span>
+                              </div>
+                            </div>
+                            <div class="col-3 d-flex justify-content-end align-items-start">
+                              <div class="d-flex check">
+                                <input type="checkbox" formControlName="hasExpiry" (change)="onHasExpiryChange()" />
+                                <span>Product have Expiration Date</span>
+                              </div>
+                            </div>
+                            <div class="col-3 d-flex align-items-center justify-content-start">
+                              <div class=" w-50">
 
 
-              <dadyin-searchable-select [label]="'Expires On (Min)'" [placeholder]="'Select minimum expiry'"
-                [control]="productForm.get('minimumExpiry')" [fullItems]="expiryMonthsString"
-                [isDisabled]="!productForm.get('hasExpiry').value" bindValue="id"
-                bindLabel="description"></dadyin-searchable-select>
-              <div *ngIf="productForm.get('minimumExpiry').invalid && productForm.get('minimumExpiry').touched"
-                class="text-danger ms-2 small text-nowrap">
-                <span *ngIf="productForm.get('minimumExpiry').errors?.['required']">Minimum expiry is required</span>
-                <span
-                  *ngIf="productForm.get('minimumExpiry').errors?.['expiryValidation']">{{productForm.get('minimumExpiry').errors?.['expiryValidation']}}</span>
-              </div>
-            </div>
-            <div class=" w-50 px-2">
+                                <dadyin-searchable-select [label]="'Expires On (Min)'" [placeholder]="'Select minimum expiry'"
+                                  [control]="productForm.get('minimumExpiry')" [fullItems]="expiryMonthsString"
+                                  [isDisabled]="!productForm.get('hasExpiry').value" bindValue="id"
+                                bindLabel="description"></dadyin-searchable-select>
+                                @if (productForm.get('minimumExpiry').invalid && productForm.get('minimumExpiry').touched) {
+                                  <div
+                                    class="text-danger ms-2 small text-nowrap">
+                                    @if (productForm.get('minimumExpiry').errors?.['required']) {
+                                      <span>Minimum expiry is required</span>
+                                    }
+                                    @if (productForm.get('minimumExpiry').errors?.['expiryValidation']) {
+                                      <span
+                                      >{{productForm.get('minimumExpiry').errors?.['expiryValidation']}}</span>
+                                    }
+                                  </div>
+                                }
+                              </div>
+                              <div class=" w-50 px-2">
 
-              <dadyin-searchable-select [label]="'Expires On (Min)'" [placeholder]="'Select minimum expiry'"
-                [control]="productForm.get('maximumExpiry')" [fullItems]="expiryMonthsString"
-                [isDisabled]="!productForm.get('hasExpiry').value" bindValue="id"
-                bindLabel="description"></dadyin-searchable-select>
-              <div *ngIf="productForm.get('maximumExpiry').invalid && productForm.get('maximumExpiry').touched"
-                class="text-danger small  ms-2 text-nowrap">
-                <span *ngIf="productForm.get('maximumExpiry').errors?.['required']">Maximum expiry is required</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </mat-expansion-panel>
+                                <dadyin-searchable-select [label]="'Expires On (Min)'" [placeholder]="'Select minimum expiry'"
+                                  [control]="productForm.get('maximumExpiry')" [fullItems]="expiryMonthsString"
+                                  [isDisabled]="!productForm.get('hasExpiry').value" bindValue="id"
+                                bindLabel="description"></dadyin-searchable-select>
+                                @if (productForm.get('maximumExpiry').invalid && productForm.get('maximumExpiry').touched) {
+                                  <div
+                                    class="text-danger small  ms-2 text-nowrap">
+                                    @if (productForm.get('maximumExpiry').errors?.['required']) {
+                                      <span>Maximum expiry is required</span>
+                                    }
+                                  </div>
+                                }
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
 
-  <mat-expansion-panel *ngIf="isInventoryListed.value == true" expanded="true" #expansionPanel3>
-    <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
-      <mat-panel-description>
-        <div class="toolbar d-flex justify-content-between w-100 font-size-12">
-          <div class="d-flex align-items-center title-text">
-            <div class="title-text text-left me-3">Inventory</div>
-            <mat-icon class="text-primary" (click)="
+                    @if (isInventoryListed.value == true) {
+                      <mat-expansion-panel expanded="true" #expansionPanel3>
+                        <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
+                          <mat-panel-description>
+                            <div class="toolbar d-flex justify-content-between w-100 font-size-12">
+                              <div class="d-flex align-items-center title-text">
+                                <div class="title-text text-left me-3">Inventory</div>
+                                @if (
+                                  productForm.get('inventoryDetail').get('showInventory').value
+                                  ) {
+<mat-icon class="text-primary" (click)="
                 toggleFlag(
                   productForm.get('inventoryDetail').get('showInventory')
                 )
-              " *ngIf="
-                productForm.get('inventoryDetail').get('showInventory').value
               ">visibility</mat-icon>
-            <mat-icon class="text-light" (click)="
+                                }
+                                @if (
+                                  !productForm.get('inventoryDetail').get('showInventory').value
+                                  ) {
+<mat-icon class="text-light" (click)="
                 toggleFlag(
                   productForm.get('inventoryDetail').get('showInventory')
                 )
-              " *ngIf="
-                !productForm.get('inventoryDetail').get('showInventory').value
               ">visibility_off</mat-icon>
-            <span class="ms-2 text-light font-size-12 fw-400 border-l-light">
-              | &nbsp;&nbsp; You can not enable/disable inventory once you create transactions
-              for this product
-            </span>
-          </div>
-          <div class="title-text">
-            <span class="title-text text-light fw-400"> QOH : </span>
-
-            {{
-            productForm.get("inventoryDetail").get("liveInventoryValue").value
-            }}
-          </div>
-        </div>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <div formGroupName="inventoryDetail" class="row mt-2">
-      <div class="row">
-        <div class="col-md-2 col-12">
-          <div class="attribute one attr-b">
-            <label for="">Opening Inventory</label>
-            <div class="attribute-input">
-              <input formControlName="openingInventory" min="0" type="number" placeholder="Enter your value" />
-              <select formControlName="inventoryType" style="min-width: unset">
-                <option value="UNIT">UNIT</option>
-                <option value="BOX">BOX</option>
-                <option value="BUNDLE">BUNDLE</option>
-                <option value="PALLET">PALLET</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2 col-12">
-          <div class="attribute one attr-b">
-            <label for="">Inventory Location</label>
-            <div class="attribute-input">
-
-              <input formControlName="inventoryLocation" type="text" />
-            </div>
-          </div>
-        </div>
-        <div class="col-md-1 col-12">
-          <div class="attribute one attr-b">
-            <label for="">Added By</label>
-            <div class="attribute-input">
-              <input formControlName="inventoryAddedBy" type="text" />
-            </div>
-          </div>
-        </div>
-        <div class="col-2">
-          <dadyin-input inputType="date" formControlName="inventoryAddedOn" label="Added On">
-          </dadyin-input>
-        </div>
-        <div class="col-3">
-          <div class="attribute tabular-sheet attr-b w-100">
-            <div class="attribute-input w-100">
-              <div class="toggle w-100" style="padding: 2px;">
+                                }
+                                <span class="ms-2 text-light font-size-12 fw-400 border-l-light">
+                                  | &nbsp;&nbsp; You can not enable/disable inventory once you create transactions
+                                  for this product
+                                </span>
+                              </div>
+                              <div class="title-text">
+                                <span class="title-text text-light fw-400"> QOH : </span>
+                                {{
+                                productForm.get("inventoryDetail").get("liveInventoryValue").value
+                                }}
+                              </div>
+                            </div>
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div formGroupName="inventoryDetail" class="row mt-2">
+                          <div class="row">
+                            <div class="col-md-2 col-12">
+                              <div class="attribute one attr-b">
+                                <label for="">Opening Inventory</label>
+                                <div class="attribute-input">
+                                  <input formControlName="openingInventory" min="0" type="number" placeholder="Enter your value" />
+                                  <select formControlName="inventoryType" style="min-width: unset">
+                                    <option value="UNIT">UNIT</option>
+                                    <option value="BOX">BOX</option>
+                                    <option value="BUNDLE">BUNDLE</option>
+                                    <option value="PALLET">PALLET</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-2 col-12">
+                              <div class="attribute one attr-b">
+                                <label for="">Inventory Location</label>
+                                <div class="attribute-input">
+                                  <input formControlName="inventoryLocation" type="text" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-1 col-12">
+                              <div class="attribute one attr-b">
+                                <label for="">Added By</label>
+                                <div class="attribute-input">
+                                  <input formControlName="inventoryAddedBy" type="text" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-2">
+                              <dadyin-input inputType="date" formControlName="inventoryAddedOn" label="Added On">
+                              </dadyin-input>
+                            </div>
+                            <div class="col-3">
+                              <div class="attribute tabular-sheet attr-b w-100">
+                                <div class="attribute-input w-100">
+                                  <div class="toggle w-100" style="padding: 2px;">
                 <button (click)="
                     productForm
                       .get('inventoryDetail')
@@ -524,8 +549,8 @@
                         .get('inventoryDetail')
                         .get('showLiveInventory').value == true
                   }">
-                  Show Live Inventory
-                </button>
+                                      Show Live Inventory
+                                    </button>
                 <button (click)="
                     productForm
                       .get('inventoryDetail')
@@ -537,291 +562,298 @@
                         .get('inventoryDetail')
                         .get('showLiveInventory').value == false
                   }">
-                  Show greater than
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2 col-12">
-          <div class="attribute one attr-b">
-            <label for="">Greater than qty</label>
-            <div class="attribute-input">
-              <input min="0" type="number" formControlName="customInventoryValue" placeholder="Enter your value" />
-              <select formControlName="customInventoryType" style="min-width: unset">
-                <option value="UNIT">UNIT</option>
-                <option value="BOX">BOX</option>
-                <option value="BUNDLE">BUNDLE</option>
-                <option value="PALLET">PALLET</option>
-              </select>
-            </div>
-          </div>
-        </div>
+                                      Show greater than
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-2 col-12">
+                              <div class="attribute one attr-b">
+                                <label for="">Greater than qty</label>
+                                <div class="attribute-input">
+                                  <input min="0" type="number" formControlName="customInventoryValue" placeholder="Enter your value" />
+                                  <select formControlName="customInventoryType" style="min-width: unset">
+                                    <option value="UNIT">UNIT</option>
+                                    <option value="BOX">BOX</option>
+                                    <option value="BUNDLE">BUNDLE</option>
+                                    <option value="PALLET">PALLET</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="b-light w-100"></div>
+                        <div class="row">
+                          <div class="mt-3"> <b> Adjust Inventory </b></div>
+                          <div class="col-md-12 d-flex align-items-center justify-content-start mt-3">
+                            <div class="attribute one w-100 ">
+                              <label for="">QOH</label>
+                              <div class="attribute-input">
+                                <input disabled type="text" formControlName="qoh" />
+                              </div>
+                            </div>
+                            <div class="attribute one w-100 mx-2 ">
+                              <label for="">Adjust Inventory (NEW QOH)</label>
+                              <div class="attribute-input">
+                                <input type="text" formControlName="adjustInventory" />
+                              </div>
+                            </div>
+                            <div class="attribute one w-100 mx-2 ">
+                              <label for="">Adjusted By</label>
+                              <div class="attribute-input">
+                                <input type="text" [value]="this.userDetail.name" disabled readonly />
+                              </div>
+                            </div>
+                            <!-- <div class="attribute one w-100 mx-2 ">
+                            <label for="">QOH After Adjusted</label>
+                            <div class="attribute-input">
+                              <input type="text" formControlName="qohAfterAdjustment" />
+                            </div>
+                          </div> -->
+                          <dadyin-button [theme]="'secondary'" (clicked)="adjustInventory()" label="Adjust Inventory">
+                          </dadyin-button>
+                          <dadyin-button [theme]="'primary'" (clicked)="viewLedger(true)" label="View Adjustment ledger">
+                          </dadyin-button>
+                          <dadyin-button [theme]="'primary'" (clicked)="viewLedger(false)" label="View ledger">
+                          </dadyin-button>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                  }
+                  @if (isImportExportable.value == true) {
+                    <mat-expansion-panel expanded="true" #expansionPanel4>
+                      <mat-expansion-panel-header (click)="expandPanel(expansionPanel4, $event)">
+                        <mat-panel-description>
+                          <div class="toolbar grid-2 font-size-12">
+                            <div class="title-text d-flex align-items-center">
+                              Import/Export Description
+                              <mat-icon class="text-light ms-2">visibility_off</mat-icon>
+                            </div>
+                            <div class="options w-100 d-flex justify-content-end align-items-center">
+                              <div class="attribute one h-30">
+                                <div class="attribute-input h-30">
+                                  <input placeholder="Type new field to add" type="text" class="h-30" />
+                                </div>
+                              </div>
+                              <div>
+                                <select id="pAttribute" class="width-perc-100 b-round h-30 mx-1 text-dark" [formControl]="colSpace">
+                                  <option value="" selected>Field Space</option>
+                                  <option value="25">25</option>
+                                  <option value="50">50</option>
+                                  <option value="75">75</option>
+                                  <option value="100">100</option>
+                                </select>
+                              </div>
+                              <div>
+                                <dadyin-button type="image" [theme]="'borderless-primary'" [isDisabled]="productInfoLabel.invalid"
+                                  [typeval]="'assets/nicons/add-white.png'">
+                                </dadyin-button>
+                              </div>
+                            </div>
+                          </div>
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="row mt-2" formGroupName="exportDetail">
+                        <div class="col-md-2 col-12">
+                          <dadyin-input inputType="text" formControlName="hsnIndiaCode" label="HSN Code (IND)">
+                          </dadyin-input>
+                        </div>
+                        <div class="col-md-2 col-12">
+                          <dadyin-input inputType="text" formControlName="hsnUsaCode" label="HSN Code (USA)">
+                          </dadyin-input>
+                        </div>
+                        <div class="col-md-4 col-12">
+                          <div class="attribute one attr-b">
+                            <label for="">Export Description</label>
+                            <div class="attribute-input">
+                              <input type="text" formControlName="exportDescription" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-2 col-12">
+                          <div class="attribute one attr-b">
+                            <label for="">Odometer of Product(SKU)</label>
+                            <div class="attribute-input">
+                              <input [formControl]="skuOdometerControl?.get('value')" type="text" disabled />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-2 col-12">
+                          <div class="attribute one attr-b">
+                            <label for="">Odometer Type</label>
+                            <div class="attribute-input">
+                              <input disabled [formControl]="skuOdometerControl?.get('odometerType')" type="text" />
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="col-md-2">
+                        <dadyin-searchable-select label="From Port" placeholder="From Port"></dadyin-searchable-select>
+                      </div>
+                      <div class="col-md-2">
+                        <dadyin-searchable-select label="To Port" placeholder="To Port"></dadyin-searchable-select>
+                      </div>
+                      <div class="col-md-2 col-12">
+                        <div class="attribute one attr-b  px-1">
+                          <label for="">Import Duty</label>
+                          <div class="attribute-input">
+                            <input type="text" />
+                            <img src="assets/nicons/ai.png" class="ai-img" alt="" />
+                          </div>
+                        </div>
+                      </div> -->
+                    </div>
+                    <hr />
+                    <!-- <div class="row">
+                    <div class="col-md-12 attr-b">
+                      <div class="d-flex align-items-center justify-content-start">
+                        <div class="title-text">20 Ft container</div>
+                        <span class="border-l-light text-light m-2"
+                          >DDP Cost/Sku: <span class="text-black fw-500">$16</span>
+                        </span>
+                        <span class="border-l-light text-light"
+                          >FOB Cost/Sku: <span class="text-black fw-500">$9.25</span></span
+                          >
+                        </div>
+                      </div>
+                      <div class="col-md-2 col-12">
+                        <dadyin-input inputType="text" label="SKU/20ft"> </dadyin-input>
+                      </div>
+                      <div class="col-md-3 col-12">
+                        <dadyin-input inputType="text" label="Vesel Sea Freight Cost">
+                        </dadyin-input>
+                      </div>
+                      <div class="col-md-2 col-12">
+                        <dadyin-input inputType="text" label="Import Duty Amount">
+                        </dadyin-input>
+                      </div>
+                      <div class="col-md-1 col-12">
+                        <dadyin-input inputType="text" label="Local Cost"> </dadyin-input>
+                      </div>
+                      <div class="col-md-2 col-12">
+                        <dadyin-input inputType="text" label="Additional Cost"> </dadyin-input>
+                      </div>
+                      <div class="col-md-1 col-12">
+                        <div class="attribute one attr-b">
+                          <label for="">DDP Cost</label>
+                          <div class="attribute-input">
+                            <input disabled type="text" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-1 col-12">
+                        <div class="attribute one attr-b">
+                          <label for="">FOB Cost</label>
+                          <div class="attribute-input">
+                            <input disabled type="text" />
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+                  </mat-expansion-panel>
+                }
 
-      </div>
-    </div>
-    <div class="b-light w-100"></div>
-    <div class="row">
-      <div class="mt-3"> <b> Adjust Inventory </b></div>
-      <div class="col-md-12 d-flex align-items-center justify-content-start mt-3">
-        <div class="attribute one w-100 ">
-          <label for="">QOH</label>
-          <div class="attribute-input">
-            <input disabled type="text" formControlName="qoh" />
-          </div>
-        </div>
-        <div class="attribute one w-100 mx-2 ">
-          <label for="">Adjust Inventory (NEW QOH)</label>
-          <div class="attribute-input">
-            <input type="text" formControlName="adjustInventory" />
-          </div>
-        </div>
+                @if (isProductAttributes.value == true) {
+                  <mat-expansion-panel class="panel-no-padding mar-top-30" expanded="true"
+                    #expansionPanel55>
+                    <mat-expansion-panel-header class="bg-primary-light" (click)="expandPanel(expansionPanel55, $event)">
+                      <div class="w-100 bg-primary-light d-flex font-size-12 justify-content-between">
+                        <div class="options title-text d-flex align-items-center">
+                          <div class="d-flex check">
+                            <input type="checkbox" id="issku" />
+                            <span>SKU</span>
+                          </div>
+                          <div class="ms-3" style="width: 250px">
+                            <b><span style="white-space: nowrap" class="text-light">Product Unit :</span>
+                            {{ productForm.get("unitName").value }}
+                          </b>
+                        </div>
+                      </div>
+                      <div class="options fw-bold title-text d-flex align-items-center mx-1">
+                        <div>
+                          <span class="text-light"> Wt/Unit :</span>
+                          {{
+                          productForm.get("weight").get("attributeValue").value
+                          | numberFormatter : 3
+                          }}
+                          {{ productForm.get("weight").get("userConversionUom").value }}
+                        </div>
+                        <div class="ms-3 border-l-light px-1">
+                          <span class="text-light"> Cost/Unit : </span>
+                          {{
+                          productForm.get("cost").get("attributeValue").value
+                          | numberFormatter : 3
+                          }}
+                          {{ productForm.get("cost").get("userConversionUom").value }}
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel-header>
+                </mat-expansion-panel>
+              }
 
-        <div class="attribute one w-100 mx-2 ">
-          <label for="">Adjusted By</label>
-          <div class="attribute-input">
-            <input type="text" [value]="this.userDetail.name" disabled readonly />
-          </div>
-        </div>
-        <!-- <div class="attribute one w-100 mx-2 ">
-          <label for="">QOH After Adjusted</label>
-          <div class="attribute-input">
-            <input type="text" formControlName="qohAfterAdjustment" />
-          </div>
-        </div> -->
-        <dadyin-button [theme]="'secondary'" (clicked)="adjustInventory()" label="Adjust Inventory">
-        </dadyin-button>
-        <dadyin-button [theme]="'primary'" (clicked)="viewLedger(true)" label="View Adjustment ledger">
-        </dadyin-button>
-        <dadyin-button [theme]="'primary'" (clicked)="viewLedger(false)" label="View ledger">
-        </dadyin-button>
-      </div>
-    </div>
-  </mat-expansion-panel>
-  <mat-expansion-panel *ngIf="isImportExportable.value == true" expanded="true" #expansionPanel4>
-    <mat-expansion-panel-header (click)="expandPanel(expansionPanel4, $event)">
-      <mat-panel-description>
-        <div class="toolbar grid-2 font-size-12">
-          <div class="title-text d-flex align-items-center">
-            Import/Export Description
-            <mat-icon class="text-light ms-2">visibility_off</mat-icon>
-          </div>
-          <div class="options w-100 d-flex justify-content-end align-items-center">
-            <div class="attribute one h-30">
-              <div class="attribute-input h-30">
-                <input placeholder="Type new field to add" type="text" class="h-30" />
-              </div>
-            </div>
-            <div>
-              <select id="pAttribute" class="width-perc-100 b-round h-30 mx-1 text-dark" [formControl]="colSpace">
-                <option value="" selected>Field Space</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="75">75</option>
-                <option value="100">100</option>
-              </select>
-            </div>
-            <div>
-              <dadyin-button type="image" [theme]="'borderless-primary'" [isDisabled]="productInfoLabel.invalid"
-                [typeval]="'assets/nicons/add-white.png'">
-              </dadyin-button>
-            </div>
-          </div>
-        </div>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <div class="row mt-2" formGroupName="exportDetail">
-      <div class="col-md-2 col-12">
-        <dadyin-input inputType="text" formControlName="hsnIndiaCode" label="HSN Code (IND)">
-        </dadyin-input>
-      </div>
-      <div class="col-md-2 col-12">
-        <dadyin-input inputType="text" formControlName="hsnUsaCode" label="HSN Code (USA)">
-        </dadyin-input>
-      </div>
-      <div class="col-md-4 col-12">
-        <div class="attribute one attr-b">
-          <label for="">Export Description</label>
-          <div class="attribute-input">
-            <input type="text" formControlName="exportDescription" />
-          </div>
-        </div>
-      </div>
-      <div class="col-md-2 col-12">
-        <div class="attribute one attr-b">
-          <label for="">Odometer of Product(SKU)</label>
-          <div class="attribute-input">
-            <input [formControl]="skuOdometerControl?.get('value')" type="text" disabled />
-          </div>
-        </div>
-      </div>
-      <div class="col-md-2 col-12">
-        <div class="attribute one attr-b">
-          <label for="">Odometer Type</label>
-          <div class="attribute-input">
-            <input disabled [formControl]="skuOdometerControl?.get('odometerType')" type="text" />
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="col-md-2">
-        <dadyin-searchable-select label="From Port" placeholder="From Port"></dadyin-searchable-select>
-      </div>
-      <div class="col-md-2">
-        <dadyin-searchable-select label="To Port" placeholder="To Port"></dadyin-searchable-select>
-      </div>
-      <div class="col-md-2 col-12">
-        <div class="attribute one attr-b  px-1">
-          <label for="">Import Duty</label>
-          <div class="attribute-input">
-            <input type="text" />
-            <img src="assets/nicons/ai.png" class="ai-img" alt="" />
-          </div>
-        </div>
-      </div> -->
-    </div>
-    <hr />
-    <!-- <div class="row">
-      <div class="col-md-12 attr-b">
-        <div class="d-flex align-items-center justify-content-start">
-          <div class="title-text">20 Ft container</div>
-          <span class="border-l-light text-light m-2"
-            >DDP Cost/Sku: <span class="text-black fw-500">$16</span>
-          </span>
-          <span class="border-l-light text-light"
-            >FOB Cost/Sku: <span class="text-black fw-500">$9.25</span></span
-          >
-        </div>
-      </div>
-      <div class="col-md-2 col-12">
-        <dadyin-input inputType="text" label="SKU/20ft"> </dadyin-input>
-      </div>
-      <div class="col-md-3 col-12">
-        <dadyin-input inputType="text" label="Vesel Sea Freight Cost">
-        </dadyin-input>
-      </div>
-      <div class="col-md-2 col-12">
-        <dadyin-input inputType="text" label="Import Duty Amount">
-        </dadyin-input>
-      </div>
-      <div class="col-md-1 col-12">
-        <dadyin-input inputType="text" label="Local Cost"> </dadyin-input>
-      </div>
-      <div class="col-md-2 col-12">
-        <dadyin-input inputType="text" label="Additional Cost"> </dadyin-input>
-      </div>
-      <div class="col-md-1 col-12">
-        <div class="attribute one attr-b">
-          <label for="">DDP Cost</label>
-          <div class="attribute-input">
-            <input disabled type="text" />
-          </div>
-        </div>
-      </div>
-      <div class="col-md-1 col-12">
-        <div class="attribute one attr-b">
-          <label for="">FOB Cost</label>
-          <div class="attribute-input">
-            <input disabled type="text" />
-          </div>
-        </div>
-      </div>
-    </div> -->
-  </mat-expansion-panel>
-
-  <mat-expansion-panel *ngIf="isProductAttributes.value == true" class="panel-no-padding mar-top-30" expanded="true"
-    #expansionPanel55>
-    <mat-expansion-panel-header class="bg-primary-light" (click)="expandPanel(expansionPanel55, $event)">
-      <div class="w-100 bg-primary-light d-flex font-size-12 justify-content-between">
-        <div class="options title-text d-flex align-items-center">
-          <div class="d-flex check">
-            <input type="checkbox" id="issku" />
-            <span>SKU</span>
-          </div>
-          <div class="ms-3" style="width: 250px">
-            <b><span style="white-space: nowrap" class="text-light">Product Unit :</span>
-              {{ productForm.get("unitName").value }}
-            </b>
-          </div>
-        </div>
-        <div class="options fw-bold title-text d-flex align-items-center mx-1">
-          <div>
-            <span class="text-light"> Wt/Unit :</span>
-            {{
-            productForm.get("weight").get("attributeValue").value
-            | numberFormatter : 3
-            }}
-            {{ productForm.get("weight").get("userConversionUom").value }}
-          </div>
-          <div class="ms-3 border-l-light px-1">
-            <span class="text-light"> Cost/Unit : </span>
-            {{
-            productForm.get("cost").get("attributeValue").value
-            | numberFormatter : 3
-            }}
-            {{ productForm.get("cost").get("userConversionUom").value }}
-          </div>
-        </div>
-      </div>
-    </mat-expansion-panel-header>
-  </mat-expansion-panel>
-
-  <mat-expansion-panel *ngIf="isProductAttributes.value == true" class="panel-no-padding mar-top-30" expanded="true"
-    #expansionPanel5>
-    <mat-expansion-panel-header class="bg-primary-light" (click)="expandPanel(expansionPanel5, $event)">
-      <div class="w-100 bg-primary-light d-flex font-size-12 justify-content-between">
-        <div class="options title-text d-flex align-items-center">
-          Product Attributes
-          <mat-icon class="text-light ms-3" *ngIf="!productForm.get('showProductAttributeValues').value" (click)="
+              @if (isProductAttributes.value == true) {
+                <mat-expansion-panel class="panel-no-padding mar-top-30" expanded="true"
+                  #expansionPanel5>
+                  <mat-expansion-panel-header class="bg-primary-light" (click)="expandPanel(expansionPanel5, $event)">
+                    <div class="w-100 bg-primary-light d-flex font-size-12 justify-content-between">
+                      <div class="options title-text d-flex align-items-center">
+                        Product Attributes
+                        @if (!productForm.get('showProductAttributeValues').value) {
+<mat-icon class="text-light ms-3" (click)="
               toggleGlobalAttributes(
                 productAttributeValues.controls,
                 productForm.get('showProductAttributeValues')
               )
             ">visibility_off</mat-icon>
-          <mat-icon class="text-primary ms-3" *ngIf="productForm.get('showProductAttributeValues').value" (click)="
+                        }
+                        @if (productForm.get('showProductAttributeValues').value) {
+<mat-icon class="text-primary ms-3" (click)="
               toggleGlobalAttributes(
                 productAttributeValues.controls,
                 productForm.get('showProductAttributeValues')
               )
             ">visibility</mat-icon>
-        </div>
-        <div class="options title-text d-flex align-items-center">
-          <div class="width-perc-50 h-30">
-            <dadyin-searchable-select placeholder="Select existing attribute to add" [control]="pAttribute"
-              [fullItems]="apiService.allAttributes" [bindValue]="null"
-              bindLabel="description"></dadyin-searchable-select>
-          </div>
-          <div>
-            <select id="pAttribute" class="width-perc-100 b-round mx-1 text-dark h-30" [formControl]="colSpace">
-              <option value="" selected>Field Space</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="75">75</option>
-              <option value="100">100</option>
-            </select>
-          </div>
+                        }
+                      </div>
+                      <div class="options title-text d-flex align-items-center">
+                        <div class="width-perc-50 h-30">
+                          <dadyin-searchable-select placeholder="Select existing attribute to add" [control]="pAttribute"
+                            [fullItems]="apiService.allAttributes" [bindValue]="null"
+                          bindLabel="description"></dadyin-searchable-select>
+                        </div>
+                        <div>
+                          <select id="pAttribute" class="width-perc-100 b-round mx-1 text-dark h-30" [formControl]="colSpace">
+                            <option value="" selected>Field Space</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="75">75</option>
+                            <option value="100">100</option>
+                          </select>
+                        </div>
           <dadyin-button class="mx-2" [isDisabled]="
               !pAttribute?.value ||
               !colSpace.value ||
               disableForThirdPartyProduct
             " (clicked)="addExistingAttribute()" type="image" [theme]="'borderless-primary'"
-            [typeval]="'assets/nicons/add-white.png'">
-          </dadyin-button>
-          <!--  <dadyin-button
-          (clicked)="openAttributeDialog()"
-          [theme]="'borderless-primary'"
-          class="bg-white sort-btn"
-          type="icon"
-          [typeval]="'sort'"
-        >
-        </dadyin-button> -->
-        </div>
-      </div>
-    </mat-expansion-panel-header>
-    <!--    <div class="grid-3 toolbar padding-bar height-40 font-size-12">
-      <div>
-        <div class="text-left title-text d-flex align-items-center attr-b">
-           <mat-icon
+                          [typeval]="'assets/nicons/add-white.png'">
+                        </dadyin-button>
+                        <!--  <dadyin-button
+                        (clicked)="openAttributeDialog()"
+                        [theme]="'borderless-primary'"
+                        class="bg-white sort-btn"
+                        type="icon"
+                        [typeval]="'sort'"
+                        >
+                      </dadyin-button> -->
+                    </div>
+                  </div>
+                </mat-expansion-panel-header>
+                <!--    <div class="grid-3 toolbar padding-bar height-40 font-size-12">
+                <div>
+                  <div class="text-left title-text d-flex align-items-center attr-b">
+                    <mat-icon
             (click)="
               toggleGlobalAttributes(
                 productAttributeValues.controls,
@@ -831,15 +863,15 @@
             [ngClass]="{
               disabled: !productForm.get('showProductAttributeValues').value
             }"
-            class="primary bg-light title-text public_icon"
-          >
-            {{
-              productForm.get("showProductAttributeValues").value
-                ? "public"
-                : "public_off"
-            }}
-          </mat-icon> 
-          <dadyin-button
+                      class="primary bg-light title-text public_icon"
+                      >
+                      {{
+                      productForm.get("showProductAttributeValues").value
+                      ? "public"
+                      : "public_off"
+                      }}
+                    </mat-icon>
+                    <dadyin-button
             (clicked)="
               toggleGlobalAttributes(
                 productAttributeValues.controls,
@@ -850,226 +882,236 @@
                 ? 'public'
                 : 'public_off'
             "
-            type="icon"
-          >
-          </dadyin-button> 
-
-          <b> Product Attributes </b>
-
-          <div class="mx-2" style="border-left: solid 1px; padding-left: 10px">
+                      type="icon"
+                      >
+                    </dadyin-button>
+                    <b> Product Attributes </b>
+                    <div class="mx-2" style="border-left: solid 1px; padding-left: 10px">
             <a target="_blank" [routerLink]="
                 '/home/product-management/product-template/edit/' +
                 this.apiService?.productTemplateForCalculation?.value?.id
               ">
-              {{
-              this.apiService?.productTemplateForCalculation?.value
-              ?.templateName
-              }}
-              <span *ngIf="
+                        {{
+                        this.apiService?.productTemplateForCalculation?.value
+                        ?.templateName
+                        }}
+                @if (this.apiService?.productTemplateForCalculation?.value
+                ?.productTemplateCalculator?.description) {
+                <span>({{
                   this.apiService?.productTemplateForCalculation?.value
-                    ?.productTemplateCalculator?.description
-                ">({{
-                this.apiService?.productTemplateForCalculation?.value
-                ?.productTemplateCalculator?.description
-                }})
-              </span>
-            </a>
-          </div>
-
-              <mat-icon class="text-light ms-3"
-                *ngIf="!productForm.get('showProductAttributeValues').value"
-                 (click)=" toggleGlobalAttributes(
-                productAttributeValues.controls,
-                productForm.get('showProductAttributeValues')
-              )"
-                  >visibility_off</mat-icon>
-                    <mat-icon class="text-light ms-3"
-                *ngIf="productForm.get('showProductAttributeValues').value"
-                 (click)=" toggleGlobalAttributes(
-                productAttributeValues.controls,
-                productForm.get('showProductAttributeValues')
-              )"
-                  >visibility</mat-icon>
-
-
-
-          <dadyin-button
-            (clicked)="syncProductTemplate()"
-            matTooltip="Refresh Updated Product Template  information"
-            [typeval]="'sync'"
-            [theme]="'borderless-primary'"
-            type="icon"
-          >
-          </dadyin-button>
-          <dadyin-button
-            (clicked)="showErrorDialog()"
-            matTooltip="Check for Errors"
-            [typeval]="'error'"
-            [theme]="'borderless-primary'"
-            type="icon"
-          >
-          </dadyin-button> 
-        </div>
-      </div>
-
-   
-    </div>  -->
-
-    <section class="card px-2" style="border-radius: 0px !important">
-      <ul class="attribute-groups">
-        <li class="attribute-group">
-          <div class="d-flex w-100">
-            <div class="row w-100" *ngIf="productAttributeValues.controls?.length > 0">
-              <ng-container [formGroup]="item" *ngFor="
-                  let item of productAttributeValues.controls | sortFormArray;
-                  let i = index;
-                  trackBy: trackByFn
-                ">
-                <ng-container *ngIf="
-                    !labelTypeAttributeIds.includes(
-                      item.get('attributeId').value
-                    )
-                  ">
-                  <ng-container *ngIf="
-                      !['Toggle', 'Dropdown', 'Label'].includes(
-                        getAttributeTypeObjectById(
-                          this.getAttributeObjectById(
-                            item?.get('attributeId').value
-                          )?.attributeTypeId
-                        )?.description
-                      )
-                    ">
+                  ?.productTemplateCalculator?.description
+                  }})
+                </span>
+              }
+                      </a>
+                    </div>
+                    @if (!productForm.get('showProductAttributeValues').value) {
+                      <mat-icon class="text-light ms-3"
+                   (click)=" toggleGlobalAttributes(
+                  productAttributeValues.controls,
+                  productForm.get('showProductAttributeValues')
+                )"
+                      >visibility_off</mat-icon>
+                    }
+                    @if (productForm.get('showProductAttributeValues').value) {
+                      <mat-icon class="text-light ms-3"
+                   (click)=" toggleGlobalAttributes(
+                  productAttributeValues.controls,
+                  productForm.get('showProductAttributeValues')
+                )"
+                      >visibility</mat-icon>
+                    }
+                    <dadyin-button
+                      (clicked)="syncProductTemplate()"
+                      matTooltip="Refresh Updated Product Template  information"
+                      [typeval]="'sync'"
+                      [theme]="'borderless-primary'"
+                      type="icon"
+                      >
+                    </dadyin-button>
+                    <dadyin-button
+                      (clicked)="showErrorDialog()"
+                      matTooltip="Check for Errors"
+                      [typeval]="'error'"
+                      [theme]="'borderless-primary'"
+                      type="icon"
+                      >
+                    </dadyin-button>
+                  </div>
+                </div>
+              </div>  -->
+              <section class="card px-2" style="border-radius: 0px !important">
+                <ul class="attribute-groups">
+                  <li class="attribute-group">
+                    <div class="d-flex w-100">
+                      @if (productAttributeValues.controls?.length > 0) {
+                        <div class="row w-100">
+                          @for (
+                            item of productAttributeValues.controls | sortFormArray; track trackByFn(i,
+                            item); let i = $index) {
+                            <ng-container [formGroup]="item">
+                              @if (
+                                !labelTypeAttributeIds.includes(
+                                item.get('attributeId').value
+                                )
+                                ) {
+                                @if (
+                                  !['Toggle', 'Dropdown', 'Label'].includes(
+                                  getAttributeTypeObjectById(
+                                  this.getAttributeObjectById(
+                                  item?.get('attributeId').value
+                                  )?.attributeTypeId
+                                  )?.description
+                                  )
+                                  ) {
                     <div [ngClass]="{
                         'width-perc-25': item?.get('colSpace').value == 25,
                         'width-perc-50': item?.get('colSpace').value == 50,
                         'width-perc-75': item?.get('colSpace').value == 75,
                         'width-perc-100': item?.get('colSpace').value == 100
                       }" class="d-flex align-items-top">
-                      <div class="attribute one attr-b d-flex align-items-center w-100" style="width: fit-content">
+                                    <div class="attribute one attr-b d-flex align-items-center w-100" style="width: fit-content">
                         <label [ngClass]="{
                             'c-red': errorKeys?.includes(getDescription(item))
                           }" for="">
-                          {{
-                          this.getAttributeObjectById(
-                          item?.get("attributeId").value
-                          )?.description
-                          }}</label>
-                        <div class="attribute-input w-100">
-                          <ng-container *ngIf="
-                              isNotFixAttribute(item?.get('attributeId').value)
-                            ">
-                            <mat-icon *ngIf="!item?.get('isHidden').value" (click)="toggleVisibility(item, true)"
-                              class="public text-primary border-r-light">
-                              visibility
-                            </mat-icon>
-                            <mat-icon *ngIf="item?.get('isHidden').value" (click)="toggleVisibility(item, false)"
-                              class="public_off border-r-light">
-                              visibility_off
-                            </mat-icon>
-                          </ng-container>
-                          <ng-container *ngIf="
-                              !isNotFixAttribute(item?.get('attributeId').value)
-                            " class="border-r-light">
-                            <mat-icon class="public_off">
-                              visibility_off
-                            </mat-icon>
-                          </ng-container>
-
-                          <input (change)="changeValue(item)" type="text" formControlName="attributeValue"
-                            placeholder="Enter your value" />
-                          <mat-icon *ngIf="item?.get('isUserInput').value" (click)="toggleLock(item, false)"
-                            class="lock">
-                            lock
-                          </mat-icon>
-                          <mat-icon *ngIf="!item?.get('isUserInput').value" (click)="toggleLock(item, true)"
-                            class="lock_open">
-                            lock_open
-                          </mat-icon>
-                          <ng-container *ngIf="
-                              getAttributeTypeObjectById(
-                                this.getAttributeObjectById(
-                                  item?.get('attributeId').value
-                                )?.attributeTypeId
-                              )?.availableUOMs?.length > 0
-                            ">
-                            <select tabindex="-1" *ngIf="
-                                !['Number', 'String'].includes(
-                                  getAttributeTypeObjectById(
-                                    getAttributeObjectById(
-                                      item?.get('attributeId').value
-                                    )?.attributeTypeId
-                                  )?.description
-                                )
-                              " (change)="changeValue()" formControlName="userConversionUom" id="userConversionUom">
-                              <option [value]="uom.description" *ngFor="
-                                  let uom of getAttributeTypeObjectById(
+                                        {{
+                                        this.getAttributeObjectById(
+                                        item?.get("attributeId").value
+                                        )?.description
+                                      }}</label>
+                                      <div class="attribute-input w-100">
+                                        @if (
+                                          isNotFixAttribute(item?.get('attributeId').value)
+                                          ) {
+                                          @if (!item?.get('isHidden').value) {
+                                            <mat-icon (click)="toggleVisibility(item, true)"
+                                              class="public text-primary border-r-light">
+                                              visibility
+                                            </mat-icon>
+                                          }
+                                          @if (item?.get('isHidden').value) {
+                                            <mat-icon (click)="toggleVisibility(item, false)"
+                                              class="public_off border-r-light">
+                                              visibility_off
+                                            </mat-icon>
+                                          }
+                                        }
+                                        @if (
+                                          !isNotFixAttribute(item?.get('attributeId').value)
+                                          ) {
+                                          <ng-container class="border-r-light">
+                                            <mat-icon class="public_off">
+                                              visibility_off
+                                            </mat-icon>
+                                          </ng-container>
+                                        }
+                                        <input (change)="changeValue(item)" type="text" formControlName="attributeValue"
+                                          placeholder="Enter your value" />
+                                          @if (item?.get('isUserInput').value) {
+                                            <mat-icon (click)="toggleLock(item, false)"
+                                              class="lock">
+                                              lock
+                                            </mat-icon>
+                                          }
+                                          @if (!item?.get('isUserInput').value) {
+                                            <mat-icon (click)="toggleLock(item, true)"
+                                              class="lock_open">
+                                              lock_open
+                                            </mat-icon>
+                                          }
+                                          @if (
+                                            getAttributeTypeObjectById(
+                                            this.getAttributeObjectById(
+                                            item?.get('attributeId').value
+                                            )?.attributeTypeId
+                                            )?.availableUOMs?.length > 0
+                                            ) {
+                                            @if (
+                                              !['Number', 'String'].includes(
+                                              getAttributeTypeObjectById(
+                                              getAttributeObjectById(
+                                              item?.get('attributeId').value
+                                              )?.attributeTypeId
+                                              )?.description
+                                              )
+                                              ) {
+                                              <select tabindex="-1" (change)="changeValue()" formControlName="userConversionUom" id="userConversionUom">
+                                                @for (
+                                                  uom of getAttributeTypeObjectById(
+                                                  this.getAttributeObjectById(
+                                                  item?.get('attributeId').value
+                                                  )?.attributeTypeId,
+                                                  item?.get('userConversionUom')
+                                                  )?.availableUOMs
+                                                  ; track
+                                                  uom) {
+                                                  <option [value]="uom.description">
+                                                    {{ uom?.description }}
+                                                  </option>
+                                                }
+                                              </select>
+                                            }
+                                          }
+                                          @if (
+                                            ['Number', 'String'].includes(
+                                            getAttributeTypeObjectById(
+                                            getAttributeObjectById(
+                                            item?.get('attributeId').value
+                                            )?.attributeTypeId
+                                            )?.description
+                                            )
+                                            ) {
+                                            <div class="uom-label">
+                                              {{ item?.get("userConversionUom").value ?? "" }}
+                                            </div>
+                                          }
+                                        </div>
+                                      </div>
+                                      <dadyin-button (clicked)="removeProductCalculatorAttribute(i)" matTooltip="Delete"
+                                        [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'"
+                                      type="image"></dadyin-button>
+                                    </div>
+                                  }
+                                  @if (
+                                    ['Toggle'].includes(
+                                    getAttributeTypeObjectById(
                                     this.getAttributeObjectById(
-                                      item?.get('attributeId').value
-                                    )?.attributeTypeId,
-                                    item?.get('userConversionUom')
-                                  )?.availableUOMs
-                                ">
-                                {{ uom?.description }}
-                              </option>
-                            </select>
-                          </ng-container>
-
-                          <ng-container *ngIf="
-                              ['Number', 'String'].includes(
-                                getAttributeTypeObjectById(
-                                  getAttributeObjectById(
                                     item?.get('attributeId').value
-                                  )?.attributeTypeId
-                                )?.description
-                              )
-                            ">
-                            <div class="uom-label">
-                              {{ item?.get("userConversionUom").value ?? "" }}
-                            </div>
-                          </ng-container>
-                        </div>
-                      </div>
-                      <dadyin-button (clicked)="removeProductCalculatorAttribute(i)" matTooltip="Delete"
-                        [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'"
-                        type="image"></dadyin-button>
-                    </div>
-                  </ng-container>
-                  <ng-container *ngIf="
-                      ['Toggle'].includes(
-                        getAttributeTypeObjectById(
-                          this.getAttributeObjectById(
-                            item?.get('attributeId').value
-                          )?.attributeTypeId
-                        )?.description
-                      )
-                    ">
+                                    )?.attributeTypeId
+                                    )?.description
+                                    )
+                                    ) {
                     <div [ngClass]="{
                         'width-perc-25': item.get('colSpace').value == 25,
                         'width-perc-50': item.get('colSpace').value == 50,
                         'width-perc-75': item.get('colSpace').value == 75,
                         'width-perc-100': item.get('colSpace').value == 100
                       }" class="d-flex align-items-top">
-                      <div class="attribute tabular-sheet attr-b w-100">
-                        <div class="attribute-input w-100">
-                          <ng-container *ngIf="
-                              isNotFixAttribute(item?.get('attributeId').value)
-                            ">
-                            <mat-icon *ngIf="!item?.get('isHidden').value" (click)="toggleVisibility(item, true)"
-                              class="public text-primary border-r-light">
-                              visibility
-                            </mat-icon>
-                            <mat-icon *ngIf="item?.get('isHidden').value" (click)="toggleVisibility(item, false)"
-                              class="public_off border-r-light">
-                              visibility_off
-                            </mat-icon>
-                          </ng-container>
-                          <ng-container *ngIf="
-                              !isNotFixAttribute(item?.get('attributeId').value)
-                            ">
-                            <mat-icon class="public_off border-r-light">
-                              visibility_off
-                            </mat-icon>
-                          </ng-container>
+                                      <div class="attribute tabular-sheet attr-b w-100">
+                                        <div class="attribute-input w-100">
+                                          @if (
+                                            isNotFixAttribute(item?.get('attributeId').value)
+                                            ) {
+                                            @if (!item?.get('isHidden').value) {
+                                              <mat-icon (click)="toggleVisibility(item, true)"
+                                                class="public text-primary border-r-light">
+                                                visibility
+                                              </mat-icon>
+                                            }
+                                            @if (item?.get('isHidden').value) {
+                                              <mat-icon (click)="toggleVisibility(item, false)"
+                                                class="public_off border-r-light">
+                                                visibility_off
+                                              </mat-icon>
+                                            }
+                                          }
+                                          @if (
+                                            !isNotFixAttribute(item?.get('attributeId').value)
+                                            ) {
+                                            <mat-icon class="public_off border-r-light">
+                                              visibility_off
+                                            </mat-icon>
+                                          }
                           <input class="w-100" [ngClass]="{
                               'c-red': errorKeys?.includes(getDescription(item))
                             }" (change)="changeValue(item)" type="text" [value]="
@@ -1077,155 +1119,164 @@
                                 item?.get('attributeId').value
                               )?.description
                             " readonly />
-                          <mat-icon *ngIf="item?.get('isUserInput').value" (click)="toggleLock(item, false)"
-                            class="lock">
-                            lock
-                          </mat-icon>
-                          <mat-icon *ngIf="!item?.get('isUserInput').value" (click)="toggleLock(item, true)"
-                            class="lock_open">
-                            lock_open
-                          </mat-icon>
-                          <div class="toggle">
+                                            @if (item?.get('isUserInput').value) {
+                                              <mat-icon (click)="toggleLock(item, false)"
+                                                class="lock">
+                                                lock
+                                              </mat-icon>
+                                            }
+                                            @if (!item?.get('isUserInput').value) {
+                                              <mat-icon (click)="toggleLock(item, true)"
+                                                class="lock_open">
+                                                lock_open
+                                              </mat-icon>
+                                            }
+                                            <div class="toggle">
                             <button [ngClass]="{
                                 active:
                                   getArray(
                                     item.get('attributeValueExpression').value
                                   )[0]?.selected == true
                               }" (click)="toggleAttribute(item, 0)">
-                              {{
-                              getArray(
-                              item.get("attributeValueExpression").value
-                              )[0]?.choice
-                              }}
-                            </button>
+                                                {{
+                                                getArray(
+                                                item.get("attributeValueExpression").value
+                                                )[0]?.choice
+                                                }}
+                                              </button>
                             <button [ngClass]="{
                                 active:
                                   getArray(
                                     item.get('attributeValueExpression').value
                                   )[1]?.selected == true
                               }" (click)="toggleAttribute(item, 1)">
-                              {{
-                              getArray(
-                              item.get("attributeValueExpression").value
-                              )[1]?.choice
-                              }}
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                      <dadyin-button (clicked)="removeProductCalculatorAttribute(i)" matTooltip="Delete"
-                        [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'"
-                        type="image"></dadyin-button>
-                    </div>
-                  </ng-container>
-                  <ng-container *ngIf="
-                      ['Dropdown'].includes(
-                        getAttributeTypeObjectById(
-                          this.getAttributeObjectById(
-                            item?.get('attributeId').value
-                          )?.attributeTypeId
-                        )?.description
-                      )
-                    ">
+                                                {{
+                                                getArray(
+                                                item.get("attributeValueExpression").value
+                                                )[1]?.choice
+                                                }}
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <dadyin-button (clicked)="removeProductCalculatorAttribute(i)" matTooltip="Delete"
+                                          [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'"
+                                        type="image"></dadyin-button>
+                                      </div>
+                                    }
+                                    @if (
+                                      ['Dropdown'].includes(
+                                      getAttributeTypeObjectById(
+                                      this.getAttributeObjectById(
+                                      item?.get('attributeId').value
+                                      )?.attributeTypeId
+                                      )?.description
+                                      )
+                                      ) {
                     <div [ngClass]="{
                         'width-perc-25': item.get('colSpace').value == 25,
                         'width-perc-50': item.get('colSpace').value == 50,
                         'width-perc-75': item.get('colSpace').value == 75,
                         'width-perc-100': item.get('colSpace').value == 100
                       }" class="d-flex align-items-top">
-                      <div class="attribute one attr-b w-100">
+                                        <div class="attribute one attr-b w-100">
                         <label [ngClass]="{
                             'c-red': errorKeys?.includes(getDescription(item))
                           }" for="">
-                          {{
-                          this.getAttributeObjectById(
-                          item?.get("attributeId").value
-                          )?.description
-                          }}</label>
-                        <div class="attribute-input w-100">
-                          <mat-icon (click)="editDropdownAttribute(item)" class="public_off">
-                            edit_note
-                          </mat-icon>
-                          <!-- <mat-icon (click)="onDragClickAttribute(i)" class="more_vert">more_vert</mat-icon> -->
-                          <ng-container *ngIf="
-                              isNotFixAttribute(item?.get('attributeId').value)
-                            ">
-                            <mat-icon *ngIf="!item?.get('isHidden').value" (click)="toggleVisibility(item, true)"
-                              class="public text-primary">
-                              visibility
-                            </mat-icon>
-                            <mat-icon *ngIf="item?.get('isHidden').value" (click)="toggleVisibility(item, false)"
-                              class="public_off">
-                              visibility_off
-                            </mat-icon>
-                          </ng-container>
-                          <ng-container *ngIf="
-                              !isNotFixAttribute(item?.get('attributeId').value)
-                            ">
-                            <mat-icon class="public_off">
-                              visibility_off
-                            </mat-icon>
-                          </ng-container>
-                          <select formControlName="attributeValue" (change)="changeValue(item)"
-                            class="width-perc-100 bg-white">
-                            <option *ngFor="
-                                let opt of getArray(
-                                  item.get('attributeValueExpression').value
-                                )
-                              " [value]="opt.choice">
-                              {{ opt?.choice }}
-                            </option>
-                          </select>
-                        </div>
-                      </div>
-                      <dadyin-button (clicked)="removeProductCalculatorAttribute(i)" matTooltip="Delete"
-                        [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'"
-                        type="image"></dadyin-button>
-                    </div>
-                  </ng-container>
-                  <ng-container *ngIf="
-                      ['Label'].includes(
-                        getAttributeTypeObjectById(
-                          this.getAttributeObjectById(
-                            item?.get('attributeId').value
-                          )?.attributeTypeId
-                        )?.description
-                      )
-                    ">
-                    <div class="d-flex align-items-top">
-                      <div class="attribute w-100 b-all  min-h-label b-round p-1  attr-b relative d-flex flex-wrap "
-                        style="column-gap: 5px;">
+                                            {{
+                                            this.getAttributeObjectById(
+                                            item?.get("attributeId").value
+                                            )?.description
+                                          }}</label>
+                                          <div class="attribute-input w-100">
+                                            <mat-icon (click)="editDropdownAttribute(item)" class="public_off">
+                                              edit_note
+                                            </mat-icon>
+                                            <!-- <mat-icon (click)="onDragClickAttribute(i)" class="more_vert">more_vert</mat-icon> -->
+                                            @if (
+                                              isNotFixAttribute(item?.get('attributeId').value)
+                                              ) {
+                                              @if (!item?.get('isHidden').value) {
+                                                <mat-icon (click)="toggleVisibility(item, true)"
+                                                  class="public text-primary">
+                                                  visibility
+                                                </mat-icon>
+                                              }
+                                              @if (item?.get('isHidden').value) {
+                                                <mat-icon (click)="toggleVisibility(item, false)"
+                                                  class="public_off">
+                                                  visibility_off
+                                                </mat-icon>
+                                              }
+                                            }
+                                            @if (
+                                              !isNotFixAttribute(item?.get('attributeId').value)
+                                              ) {
+                                              <mat-icon class="public_off">
+                                                visibility_off
+                                              </mat-icon>
+                                            }
+                                            <select formControlName="attributeValue" (change)="changeValue(item)"
+                                              class="width-perc-100 bg-white">
+                                              @for (
+                                                opt of getArray(
+                                                item.get('attributeValueExpression').value
+                                                )
+                                                ; track
+                                                opt) {
+                                                <option [value]="opt.choice">
+                                                  {{ opt?.choice }}
+                                                </option>
+                                              }
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <dadyin-button (clicked)="removeProductCalculatorAttribute(i)" matTooltip="Delete"
+                                          [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'"
+                                        type="image"></dadyin-button>
+                                      </div>
+                                    }
+                                    @if (
+                                      ['Label'].includes(
+                                      getAttributeTypeObjectById(
+                                      this.getAttributeObjectById(
+                                      item?.get('attributeId').value
+                                      )?.attributeTypeId
+                                      )?.description
+                                      )
+                                      ) {
+                                      <div class="d-flex align-items-top">
+                                        <div class="attribute w-100 b-all  min-h-label b-round p-1  attr-b relative d-flex flex-wrap "
+                                          style="column-gap: 5px;">
                         <label class="labeltype-attribute" style="position: absolute;top: -10px;left: 10px;" [ngClass]="{
                             'c-red': errorKeys?.includes(getDescription(item))
                           }">
-                          {{
-                          this.getAttributeObjectById(
-                          item?.get("attributeId").value
-                          )?.description
-                          }}
-                        </label>
-
-                        <ng-container [formGroup]="attr" *ngFor="
-                            let attr of filterAttributeForLabel(
-                              productAttributeValues
-                            ) | sortFormArray;
-                            let m = index;
-                            trackBy: trackByFn
-                          ">
-                          <ng-container *ngIf="
-                              getArrayIds(
-                                item.get('attributeValueExpression').value
-                              ).includes(attr.get('attributeId').value)
-                            ">
-                            <ng-container *ngIf="
-                                !['Toggle', 'Dropdown', 'Label'].includes(
-                                  getAttributeTypeObjectById(
-                                    this.getAttributeObjectById(
-                                      attr?.get('attributeId').value
-                                    )?.attributeTypeId
-                                  )?.description
-                                )
-                              ">
+                                            {{
+                                            this.getAttributeObjectById(
+                                            item?.get("attributeId").value
+                                            )?.description
+                                            }}
+                                          </label>
+                                          @for (
+                                            attr of filterAttributeForLabel(
+                                            productAttributeValues
+                                            ) | sortFormArray; track trackByFn(m,
+                                            attr); let m = $index) {
+                                            <ng-container [formGroup]="attr">
+                                              @if (
+                                                getArrayIds(
+                                                item.get('attributeValueExpression').value
+                                                ).includes(attr.get('attributeId').value)
+                                                ) {
+                                                @if (
+                                                  !['Toggle', 'Dropdown', 'Label'].includes(
+                                                  getAttributeTypeObjectById(
+                                                  this.getAttributeObjectById(
+                                                  attr?.get('attributeId').value
+                                                  )?.attributeTypeId
+                                                  )?.description
+                                                  )
+                                                  ) {
                               <div [ngClass]="{
                                   'width-perc-25':
                                     attr?.get('colSpace').value == 25,
@@ -1236,109 +1287,120 @@
                                   'width-perc-100':
                                     attr?.get('colSpace').value == 100
                                 }" class="mt-3">
-                                <div class="attribute one attr-b w-100">
+                                                    <div class="attribute one attr-b w-100">
                                   <label for="" [ngClass]="{
                                       'c-red': errorKeys?.includes(
                                         getDescription(attr)
                                       )
                                     }">
-                                    {{
-                                    this.getAttributeObjectById(
-                                    attr?.get("attributeId").value
-                                    )?.description
-                                    }}</label>
-                                  <div class="attribute-input">
-                                    <ng-container *ngIf="
-                                        isNotFixAttribute(
-                                          attr?.get('attributeId').value
-                                        )
-                                      ">
-                                      <mat-icon *ngIf="!attr?.get('isHidden').value"
-                                        (click)="toggleVisibility(attr, true)" class="public text-primary">visibility
-                                      </mat-icon>
-                                      <mat-icon *ngIf="attr?.get('isHidden').value"
-                                        (click)="toggleVisibility(attr, false)" class="public_off">
-                                        visibility_off
-                                      </mat-icon>
-                                    </ng-container>
-                                    <ng-container *ngIf="
-                                        !isNotFixAttribute(
-                                          attr?.get('attributeId').value
-                                        )
-                                      ">
-                                      <mat-icon class="public_off">
-                                        visibility_off
-                                      </mat-icon>
-                                    </ng-container>
-                                    <input class="w-100" type="text" (change)="changeValue(attr)"
-                                      formControlName="attributeValue" placeholder="Enter your value" />
-                                    <mat-icon *ngIf="attr?.get('isUserInput').value" (click)="toggleLock(attr, false)"
-                                      class="lock">
-                                      lock
-                                    </mat-icon>
-                                    <mat-icon *ngIf="!attr?.get('isUserInput').value" (click)="toggleLock(attr, true)"
-                                      class="lock_open">
-                                      lock_open
-                                    </mat-icon>
-                                    <ng-container *ngIf="
-                                        getAttributeTypeObjectById(
-                                          this.getAttributeObjectById(
-                                            attr?.get('attributeId').value
-                                          )?.attributeTypeId
-                                        )?.availableUOMs?.length > 0
-                                      ">
-                                      <select class="w-100" tabindex="-1" *ngIf="
-                                          !['Number', 'String'].includes(
-                                            getAttributeTypeObjectById(
-                                              getAttributeObjectById(
-                                                attr?.get('attributeId').value
-                                              )?.attributeTypeId
-                                            ).description
-                                          )
-                                        " formControlName="userConversionUom" id="userConversionUom">
-                                        <option [value]="uom.description" *ngFor="
-                                            let uom of getAttributeTypeObjectById(
-                                              this.getAttributeObjectById(
-                                                attr?.get('attributeId').value
-                                              )?.attributeTypeId,
-                                              attr?.get('userConversionUom')
-                                            ).availableUOMs
-                                          ">
-                                          {{ uom?.description }}
-                                        </option>
-                                      </select>
-                                    </ng-container>
-
-                                    <ng-container *ngIf="
-                                        ['Number', 'String'].includes(
-                                          getAttributeTypeObjectById(
-                                            getAttributeObjectById(
-                                              attr?.get('attributeId').value
-                                            )?.attributeTypeId
-                                          ).description
-                                        )
-                                      ">
-                                      <div class="uom-label">
-                                        {{
-                                        attr?.get("userConversionUom").value ??
-                                        ""
-                                        }}
-                                      </div>
-                                    </ng-container>
-                                  </div>
-                                </div>
-                              </div>
-                            </ng-container>
-
-                            <ng-container *ngIf="
-                                ['Toggle'].includes(
-                                  getAttributeTypeObjectById(
-                                    this.getAttributeObjectById(
-                                      attr?.get('attributeId').value
-                                    )?.attributeTypeId
-                                  )?.description
-                                )
-                              ">
+                                                        {{
+                                                        this.getAttributeObjectById(
+                                                        attr?.get("attributeId").value
+                                                        )?.description
+                                                      }}</label>
+                                                      <div class="attribute-input">
+                                                        @if (
+                                                          isNotFixAttribute(
+                                                          attr?.get('attributeId').value
+                                                          )
+                                                          ) {
+                                                          @if (!attr?.get('isHidden').value) {
+                                                            <mat-icon
+                                                              (click)="toggleVisibility(attr, true)" class="public text-primary">visibility
+                                                            </mat-icon>
+                                                          }
+                                                          @if (attr?.get('isHidden').value) {
+                                                            <mat-icon
+                                                              (click)="toggleVisibility(attr, false)" class="public_off">
+                                                              visibility_off
+                                                            </mat-icon>
+                                                          }
+                                                        }
+                                                        @if (
+                                                          !isNotFixAttribute(
+                                                          attr?.get('attributeId').value
+                                                          )
+                                                          ) {
+                                                          <mat-icon class="public_off">
+                                                            visibility_off
+                                                          </mat-icon>
+                                                        }
+                                                        <input class="w-100" type="text" (change)="changeValue(attr)"
+                                                          formControlName="attributeValue" placeholder="Enter your value" />
+                                                          @if (attr?.get('isUserInput').value) {
+                                                            <mat-icon (click)="toggleLock(attr, false)"
+                                                              class="lock">
+                                                              lock
+                                                            </mat-icon>
+                                                          }
+                                                          @if (!attr?.get('isUserInput').value) {
+                                                            <mat-icon (click)="toggleLock(attr, true)"
+                                                              class="lock_open">
+                                                              lock_open
+                                                            </mat-icon>
+                                                          }
+                                                          @if (
+                                                            getAttributeTypeObjectById(
+                                                            this.getAttributeObjectById(
+                                                            attr?.get('attributeId').value
+                                                            )?.attributeTypeId
+                                                            )?.availableUOMs?.length > 0
+                                                            ) {
+                                                            @if (
+                                                              !['Number', 'String'].includes(
+                                                              getAttributeTypeObjectById(
+                                                              getAttributeObjectById(
+                                                              attr?.get('attributeId').value
+                                                              )?.attributeTypeId
+                                                              ).description
+                                                              )
+                                                              ) {
+                                                              <select class="w-100" tabindex="-1" formControlName="userConversionUom" id="userConversionUom">
+                                                                @for (
+                                                                  uom of getAttributeTypeObjectById(
+                                                                  this.getAttributeObjectById(
+                                                                  attr?.get('attributeId').value
+                                                                  )?.attributeTypeId,
+                                                                  attr?.get('userConversionUom')
+                                                                  ).availableUOMs
+                                                                  ; track
+                                                                  uom) {
+                                                                  <option [value]="uom.description">
+                                                                    {{ uom?.description }}
+                                                                  </option>
+                                                                }
+                                                              </select>
+                                                            }
+                                                          }
+                                                          @if (
+                                                            ['Number', 'String'].includes(
+                                                            getAttributeTypeObjectById(
+                                                            getAttributeObjectById(
+                                                            attr?.get('attributeId').value
+                                                            )?.attributeTypeId
+                                                            ).description
+                                                            )
+                                                            ) {
+                                                            <div class="uom-label">
+                                                              {{
+                                                              attr?.get("userConversionUom").value ??
+                                                              ""
+                                                              }}
+                                                            </div>
+                                                          }
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  }
+                                                  @if (
+                                                    ['Toggle'].includes(
+                                                    getAttributeTypeObjectById(
+                                                    this.getAttributeObjectById(
+                                                    attr?.get('attributeId').value
+                                                    )?.attributeTypeId
+                                                    )?.description
+                                                    )
+                                                    ) {
                               <div [ngClass]="{
                                   'width-perc-25':
                                     attr?.get('colSpace').value == 25,
@@ -1349,21 +1411,25 @@
                                   'width-perc-100':
                                     attr?.get('colSpace').value == 100
                                 }" class="mt-3">
-                                <div class="attribute tabular-sheet attr-b">
-                                  <div class="attribute-input">
-                                    <ng-container *ngIf="
-                                        isNotFixAttribute(
-                                          attr?.get('attributeId').value
-                                        )
-                                      ">
-                                      <mat-icon *ngIf="!attr?.get('isHidden').value"
-                                        (click)="toggleVisibility(attr, true)" class="public text-primary">visibility
-                                      </mat-icon>
-                                      <mat-icon *ngIf="attr?.get('isHidden').value"
-                                        (click)="toggleVisibility(attr, false)" class="public_off">
-                                        visibility_off
-                                      </mat-icon>
-                                    </ng-container>
+                                                      <div class="attribute tabular-sheet attr-b">
+                                                        <div class="attribute-input">
+                                                          @if (
+                                                            isNotFixAttribute(
+                                                            attr?.get('attributeId').value
+                                                            )
+                                                            ) {
+                                                            @if (!attr?.get('isHidden').value) {
+                                                              <mat-icon
+                                                                (click)="toggleVisibility(attr, true)" class="public text-primary">visibility
+                                                              </mat-icon>
+                                                            }
+                                                            @if (attr?.get('isHidden').value) {
+                                                              <mat-icon
+                                                                (click)="toggleVisibility(attr, false)" class="public_off">
+                                                                visibility_off
+                                                              </mat-icon>
+                                                            }
+                                                          }
                                     <input [ngClass]="{
                                         'c-red': errorKeys?.includes(
                                           getDescription(attr)
@@ -1373,15 +1439,19 @@
                                           attr?.get('attributeId').value
                                         )?.description
                                       " readonly />
-                                    <mat-icon *ngIf="attr?.get('isUserInput').value" (click)="toggleLock(attr, false)"
-                                      class="lock">
-                                      lock
-                                    </mat-icon>
-                                    <mat-icon *ngIf="!attr?.get('isUserInput').value" (click)="toggleLock(attr, true)"
-                                      class="lock_open">
-                                      lock_open
-                                    </mat-icon>
-                                    <div class="toggle">
+                                                            @if (attr?.get('isUserInput').value) {
+                                                              <mat-icon (click)="toggleLock(attr, false)"
+                                                                class="lock">
+                                                                lock
+                                                              </mat-icon>
+                                                            }
+                                                            @if (!attr?.get('isUserInput').value) {
+                                                              <mat-icon (click)="toggleLock(attr, true)"
+                                                                class="lock_open">
+                                                                lock_open
+                                                              </mat-icon>
+                                                            }
+                                                            <div class="toggle">
                                       <button (click)="toggleAttribute(attr, 0)" [ngClass]="{
                                           active:
                                             getArray(
@@ -1389,13 +1459,13 @@
                                                 .value
                                             )[0].selected == true
                                         }">
-                                        {{
-                                        getArray(
-                                        attr.get("attributeValueExpression")
-                                        .value
-                                        )[0]?.choice
-                                        }}
-                                      </button>
+                                                                {{
+                                                                getArray(
+                                                                attr.get("attributeValueExpression")
+                                                                .value
+                                                                )[0]?.choice
+                                                                }}
+                                                              </button>
                                       <button (click)="toggleAttribute(attr, 1)" [ngClass]="{
                                           active:
                                             getArray(
@@ -1403,28 +1473,27 @@
                                                 .value
                                             )[1].selected == true
                                         }">
-                                        {{
-                                        getArray(
-                                        attr.get("attributeValueExpression")
-                                        .value
-                                        )[1]?.choice
-                                        }}
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </ng-container>
-
-                            <ng-container *ngIf="
-                                ['Dropdown'].includes(
-                                  getAttributeTypeObjectById(
-                                    this.getAttributeObjectById(
-                                      attr?.get('attributeId').value
-                                    )?.attributeTypeId
-                                  )?.description
-                                )
-                              ">
+                                                                {{
+                                                                getArray(
+                                                                attr.get("attributeValueExpression")
+                                                                .value
+                                                                )[1]?.choice
+                                                                }}
+                                                              </button>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    }
+                                                    @if (
+                                                      ['Dropdown'].includes(
+                                                      getAttributeTypeObjectById(
+                                                      this.getAttributeObjectById(
+                                                      attr?.get('attributeId').value
+                                                      )?.attributeTypeId
+                                                      )?.description
+                                                      )
+                                                      ) {
                               <div [ngClass]="{
                                   'width-perc-25':
                                     attr?.get('colSpace').value == 25,
@@ -1435,393 +1504,401 @@
                                   'width-perc-100':
                                     attr?.get('colSpace').value == 100
                                 }" class="mt-3">
-                                <div class="attribute one">
+                                                        <div class="attribute one">
                                   <label for="" [ngClass]="{
                                       'c-red': errorKeys?.includes(
                                         getDescription(attr)
                                       )
                                     }">
-                                    {{
-                                    this.getAttributeObjectById(
-                                    attr?.get("attributeId").value
-                                    )?.description
-                                    }}</label>
-                                  <mat-icon (click)="editDropdownAttribute(item)" class="public_off">
-                                    edit_note
-                                  </mat-icon>
-                                  <div class="attribute-input">
-                                    <select formControlName="attributeValue" (change)="changeValue(attr)"
-                                      class="width-perc-100 bg-white">
-                                      <option *ngFor="
-                                          let opt of getArray(
-                                            attr.get('attributeValueExpression')
-                                              .value
-                                          )
-                                        " [value]="opt.choice">
-                                        {{ opt?.choice }}
-                                      </option>
-                                    </select>
-                                  </div>
+                                                            {{
+                                                            this.getAttributeObjectById(
+                                                            attr?.get("attributeId").value
+                                                            )?.description
+                                                          }}</label>
+                                                          <mat-icon (click)="editDropdownAttribute(item)" class="public_off">
+                                                            edit_note
+                                                          </mat-icon>
+                                                          <div class="attribute-input">
+                                                            <select formControlName="attributeValue" (change)="changeValue(attr)"
+                                                              class="width-perc-100 bg-white">
+                                                              @for (
+                                                                opt of getArray(
+                                                                attr.get('attributeValueExpression')
+                                                                .value
+                                                                )
+                                                                ; track
+                                                                opt) {
+                                                                <option [value]="opt.choice">
+                                                                  {{ opt?.choice }}
+                                                                </option>
+                                                              }
+                                                            </select>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    }
+                                                  }
+                                                </ng-container>
+                                              }
+                                            </div>
+                                            <dadyin-button class="mt-2" (clicked)="removeProductCalculatorAttribute(i)" matTooltip="Delete"
+                                              [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'"
+                                            type="image"></dadyin-button>
+                                          </div>
+                                        }
+                                      }
+                                    </ng-container>
+                                  }
                                 </div>
-                              </div>
-                            </ng-container>
-                          </ng-container>
-                        </ng-container>
-                      </div>
-                      <dadyin-button class="mt-2" (clicked)="removeProductCalculatorAttribute(i)" matTooltip="Delete"
-                        [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'"
-                        type="image"></dadyin-button>
-                    </div>
+                              }
+                            </div>
+                          </li>
+                        </ul>
+                      </section>
+                    </mat-expansion-panel>
+                  }
 
-                  </ng-container>
-                </ng-container>
-              </ng-container>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </section>
-  </mat-expansion-panel>
+                  <!--   unit expense -->
 
-  <!--   unit expense -->
-
-  <mat-expansion-panel *ngIf="isAdvanceProduct.value == true" class="panel-no-padding mar-top-30" expanded="true"
-    #expansionPanel6>
-    <mat-expansion-panel-header class="bg-primary-light" (click)="expandPanel(expansionPanel6, $event)">
-      <div class="w-100 bg-primary-light d-flex font-size-12 justify-content-between">
-        <div class="options title-text d-flex align-items-center">
-          Unit Expenses
-        </div>
-      </div>
-    </mat-expansion-panel-header>
-
-    <!-- <mat-expansion-panel expanded="true" #expansionPanel6> -->
-    <div class="bg-light">
-      <!-- <mat-panel-description> -->
-      <div class="toolbar bg-light d-flex justify-content-between font-size-12 w-100">
-        <div class="title-text text-light d-flex align-items-center ms-2">
-          <!--   <dadyin-button
-                  (clicked)="toggleFlag(productForm.get('showAdditionalCosts'))"
-                  theme="borderless-default"
-                  type="icon"
+                  @if (isAdvanceProduct.value == true) {
+                    <mat-expansion-panel class="panel-no-padding mar-top-30" expanded="true"
+                      #expansionPanel6>
+                      <mat-expansion-panel-header class="bg-primary-light" (click)="expandPanel(expansionPanel6, $event)">
+                        <div class="w-100 bg-primary-light d-flex font-size-12 justify-content-between">
+                          <div class="options title-text d-flex align-items-center">
+                            Unit Expenses
+                          </div>
+                        </div>
+                      </mat-expansion-panel-header>
+                      <!-- <mat-expansion-panel expanded="true" #expansionPanel6> -->
+                      <div class="bg-light">
+                        <!-- <mat-panel-description> -->
+                        <div class="toolbar bg-light d-flex justify-content-between font-size-12 w-100">
+                          <div class="title-text text-light d-flex align-items-center ms-2">
+                            <!--   <dadyin-button
+                            (clicked)="toggleFlag(productForm.get('showAdditionalCosts'))"
+                            theme="borderless-default"
+                            type="icon"
                   typeval="  {{
                     productForm.get('showAdditionalCosts').value
                       ? 'public'
                       : 'public_off'
                   }}"
-                ></dadyin-button> -->
-          Additional Costs
-          <mat-icon class="text-light ms-3" *ngIf="!productForm.get('showAdditionalCosts').value"
-            (click)="toggleFlag(productForm.get('showAdditionalCosts'))">visibility_off</mat-icon>
-          <mat-icon class="text-light ms-3" *ngIf="productForm.get('showAdditionalCosts').value"
-            (click)="toggleFlag(productForm.get('showAdditionalCosts'))">visibility</mat-icon>
-        </div>
-        <div class="options d-flex justify-content-end align-items-center">
-          <ng-container>
-            <div class="attribute one m-0">
-              <div class="attribute-input">
-                <select [formControl]="additionalCostType" id="additionalCostType" class="width-perc-100 h-30 bg-white">
-                  <option value="" disabled>Select additional Cost</option>
-                  <ng-container *ngFor="let item of productService.additionalCostValues">
-                    <option [value]="item.id">
-                      {{ item?.description }}
-                    </option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-            <dadyin-button class="mx-1" (clicked)="addAdditionalCost()" type="image" [theme]="'borderless-primary'"
-              [typeval]="'assets/nicons/add-white.png'" [isDisabled]="additionalCostType.value == ''">
-            </dadyin-button>
-          </ng-container>
-        </div>
-      </div>
-      <!--  </mat-panel-description> -->
-    </div>
-    <section>
-      <div class="row px-2 my-3">
-        <div class="col-md-4" [formGroup]="additionalCost" *ngFor="
-        let additionalCost of additionalCosts.controls;
-        let i = index;
-        trackBy: trackByFn
-      ">
-          <div class="d-flex align-items-center attr-b w-100">
-            <div class="w-100">
-              <div class="attribute one">
-                <label for="">Select Additional Cost</label>
-                <div class="attribute-select">
+                          ></dadyin-button> -->
+                          Additional Costs
+                          @if (!productForm.get('showAdditionalCosts').value) {
+                            <mat-icon class="text-light ms-3"
+                            (click)="toggleFlag(productForm.get('showAdditionalCosts'))">visibility_off</mat-icon>
+                          }
+                          @if (productForm.get('showAdditionalCosts').value) {
+                            <mat-icon class="text-light ms-3"
+                            (click)="toggleFlag(productForm.get('showAdditionalCosts'))">visibility</mat-icon>
+                          }
+                        </div>
+                        <div class="options d-flex justify-content-end align-items-center">
+                          <ng-container>
+                            <div class="attribute one m-0">
+                              <div class="attribute-input">
+                                <select [formControl]="additionalCostType" id="additionalCostType" class="width-perc-100 h-30 bg-white">
+                                  <option value="" disabled>Select additional Cost</option>
+                                  @for (item of productService.additionalCostValues; track item) {
+                                    <option [value]="item.id">
+                                      {{ item?.description }}
+                                    </option>
+                                  }
+                                </select>
+                              </div>
+                            </div>
+                            <dadyin-button class="mx-1" (clicked)="addAdditionalCost()" type="image" [theme]="'borderless-primary'"
+                              [typeval]="'assets/nicons/add-white.png'" [isDisabled]="additionalCostType.value == ''">
+                            </dadyin-button>
+                          </ng-container>
+                        </div>
+                      </div>
+                    <!--  </mat-panel-description> -->
+                  </div>
+                  <section>
+                    <div class="row px-2 my-3">
+                      @for (
+                        additionalCost of additionalCosts.controls; track trackByFn(i,
+                        additionalCost); let i = $index) {
+                        <div class="col-md-4" [formGroup]="additionalCost">
+                          <div class="d-flex align-items-center attr-b w-100">
+                            <div class="w-100">
+                              <div class="attribute one">
+                                <label for="">Select Additional Cost</label>
+                                <div class="attribute-select">
                   <select (change)="
                       changeAdditionalCostTypeValue($event, additionalCost)
                     " formControlName="description">
-                    <ng-container *ngFor="
-                        let item of getAdditionalCostTypes(
-                          additionalCost.get('costName').value
-                        )
-                      ">
-                      <option [value]="item.description">
-                        {{ item?.description }}
-                      </option>
-                    </ng-container>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="mx-1 w-100">
-              <div class="attribute one m-0 w-100">
-                <div class="attribute-input">
-                  <input (change)="changeValue()" type="text" formControlName="attributeValue"
-                    placeholder="Enter your value" />
-                  <select (change)="changeValue()" formControlName="userConversionUom" id="userConversionUom">
-                    <ng-container *ngFor="let item of uomService?.availableAllMetricUOM">
-                      <option [value]="item.description">
-                        {{ item?.description }}
-                      </option>
-                    </ng-container>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="mx-1">
-              <dadyin-button [theme]="'borderless-danger'" type="image" [typeval]="'assets/nicons/delete.png'"
-                (clicked)="removeAdditionalCost(i)">
-              </dadyin-button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 px-2">
-          <div class="d-flex check w-100 attr-b pt-3">
-            <span>Is there any Extra Expenses associated with this Product
-              Unit??</span>
-            <div class="d-flex align-items-center ms-3">
-              <input (change)="clearExtraExpense(true)" formControlName="isExtraExpense" type="radio" [value]="true"
-                id="yes" class="mx-2" />
-              <label for="yes"> Yes </label>
-              <input type="radio" (change)="clearExtraExpense(false)" formControlName="isExtraExpense" [value]="false"
-                id="no" class="mx-2" />
-              <label for="no"> No </label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- </mat-expansion-panel> -->
-
-    <ng-container>
-      <!--  <mat-expansion-panel expanded="true" #expansionPanel7> -->
-      <div class="bg-light">
-        <!--  <mat-panel-description> -->
-        <div class="toolbar grid-6 bg-light font-size-12">
-          <div class="text-center text-light ms-2 title-text d-flex align-items-center">
-
-            Extra Expenses
-
-            <mat-icon class="text-light ms-3" *ngIf="!isExtraExpense" (click)="clearExtraExpense(true); toggleFlag(
+                                    @for (
+                                      item of getAdditionalCostTypes(
+                                      additionalCost.get('costName').value
+                                      )
+                                      ; track
+                                      item) {
+                                      <option [value]="item.description">
+                                        {{ item?.description }}
+                                      </option>
+                                    }
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="mx-1 w-100">
+                              <div class="attribute one m-0 w-100">
+                                <div class="attribute-input">
+                                  <input (change)="changeValue()" type="text" formControlName="attributeValue"
+                                    placeholder="Enter your value" />
+                                    <select (change)="changeValue()" formControlName="userConversionUom" id="userConversionUom">
+                                      @for (item of uomService?.availableAllMetricUOM; track item) {
+                                        <option [value]="item.description">
+                                          {{ item?.description }}
+                                        </option>
+                                      }
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="mx-1">
+                                <dadyin-button [theme]="'borderless-danger'" type="image" [typeval]="'assets/nicons/delete.png'"
+                                  (clicked)="removeAdditionalCost(i)">
+                                </dadyin-button>
+                              </div>
+                            </div>
+                          </div>
+                        }
+                        <div class="col-md-12 px-2">
+                          <div class="d-flex check w-100 attr-b pt-3">
+                            <span>Is there any Extra Expenses associated with this Product
+                            Unit??</span>
+                            <div class="d-flex align-items-center ms-3">
+                              <input (change)="clearExtraExpense(true)" formControlName="isExtraExpense" type="radio" [value]="true"
+                                id="yes" class="mx-2" />
+                                <label for="yes"> Yes </label>
+                                <input type="radio" (change)="clearExtraExpense(false)" formControlName="isExtraExpense" [value]="false"
+                                  id="no" class="mx-2" />
+                                  <label for="no"> No </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                      <!-- </mat-expansion-panel> -->
+                      <ng-container>
+                        <!--  <mat-expansion-panel expanded="true" #expansionPanel7> -->
+                        <div class="bg-light">
+                          <!--  <mat-panel-description> -->
+                          <div class="toolbar grid-6 bg-light font-size-12">
+                            <div class="text-center text-light ms-2 title-text d-flex align-items-center">
+                              Extra Expenses
+                              @if (!isExtraExpense) {
+<mat-icon class="text-light ms-3" (click)="clearExtraExpense(true); toggleFlag(
                 productForm.get('productExpense').get('showExpenses')
               )">visibility_off</mat-icon>
-            <mat-icon class="text-primary ms-3" *ngIf="isExtraExpense" (click)="clearExtraExpense(false);toggleFlag(
+                              }
+                              @if (isExtraExpense) {
+<mat-icon class="text-primary ms-3" (click)="clearExtraExpense(false);toggleFlag(
                 productForm.get('productExpense').get('showExpenses')
               )">visibility</mat-icon>
-
-          </div>
-          <div class="d-flex justify-content-end align-items-center mx-2">
-            <div style="column-gap: 20px" class="justify-content-around d-flex  font-size-12">
-              <div class="subtt">
-                <span class="text-light">EXTRA EXPENSE/UNIT </span>
-
-                <span class="price-text">
-                  {{
-                  productForm
-                  .get("productExpense")
-                  .get("cost")
-                  .get("attributeValue").value
-                  }}
-                  {{
-                  productForm
-                  .get("productExpense")
-                  .get("cost")
-                  .get("userConversionUom").value
-                  }}
-                </span>
-              </div>
-
-              <div class="subtt">
-                <span class="text-light">WT/UNIT </span>
-                <span>
-                  {{
-                  productForm
-                  .get("productExpense")
-                  .get("weight")
-                  .get("attributeValue").value
-                  }}
-                  {{
-                  productForm
-                  .get("productExpense")
-                  .get("weight")
-                  .get("userConversionUom").value
-                  }}
-                </span>
-              </div>
-              <div class="subtt">
-                <span class="text-light">MATERIAL COST/UNIT </span>
-                <span>
-                  {{
-                  productForm
-                  .get("productExpense")
-                  .get("materialCost")
-                  .get("attributeValue").value
-                  }}
-                  {{
-                  productForm
-                  .get("productExpense")
-                  .get("materialCost")
-                  .get("userConversionUom").value
-                  }}
-                </span>
-              </div>
-              <div class="subtt">
-                <span class="text-light">CONVERSION COST/UNIT </span>
-                <span>
-                  {{
-                  productForm
-                  .get("productExpense")
-                  .get("conversionCost")
-                  .get("attributeValue").value
-                  }}
-                  {{
-                  productForm
-                  .get("productExpense")
-                  .get("conversionCost")
-                  .get("userConversionUom").value
-                  }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- </mat-panel-description>-->
-      </div>
-      <ng-container *ngIf="productForm.get('isExtraExpense').value == true">
-        <div class="mx-2 attr-b my-3">
-          <div class="title-text text-light fw-400 attr-b " style="font-weight: 400">
-            Material Cost
-          </div>
-          <div [formGroup]="expense" *ngFor="
-              let expense of productExpenseValues?.controls;
-              let k = index;
-              trackBy: trackByFn
-            " class="d-flex my-3 justify-content-between align-items-center w-100 gap-2">
-            <div>
-              <div class="d-flex align-items-center">
+                              }
+                            </div>
+                            <div class="d-flex justify-content-end align-items-center mx-2">
+                              <div style="column-gap: 20px" class="justify-content-around d-flex  font-size-12">
+                                <div class="subtt">
+                                  <span class="text-light">EXTRA EXPENSE/UNIT </span>
+                                  <span class="price-text">
+                                    {{
+                                    productForm
+                                    .get("productExpense")
+                                    .get("cost")
+                                    .get("attributeValue").value
+                                    }}
+                                    {{
+                                    productForm
+                                    .get("productExpense")
+                                    .get("cost")
+                                    .get("userConversionUom").value
+                                    }}
+                                  </span>
+                                </div>
+                                <div class="subtt">
+                                  <span class="text-light">WT/UNIT </span>
+                                  <span>
+                                    {{
+                                    productForm
+                                    .get("productExpense")
+                                    .get("weight")
+                                    .get("attributeValue").value
+                                    }}
+                                    {{
+                                    productForm
+                                    .get("productExpense")
+                                    .get("weight")
+                                    .get("userConversionUom").value
+                                    }}
+                                  </span>
+                                </div>
+                                <div class="subtt">
+                                  <span class="text-light">MATERIAL COST/UNIT </span>
+                                  <span>
+                                    {{
+                                    productForm
+                                    .get("productExpense")
+                                    .get("materialCost")
+                                    .get("attributeValue").value
+                                    }}
+                                    {{
+                                    productForm
+                                    .get("productExpense")
+                                    .get("materialCost")
+                                    .get("userConversionUom").value
+                                    }}
+                                  </span>
+                                </div>
+                                <div class="subtt">
+                                  <span class="text-light">CONVERSION COST/UNIT </span>
+                                  <span>
+                                    {{
+                                    productForm
+                                    .get("productExpense")
+                                    .get("conversionCost")
+                                    .get("attributeValue").value
+                                    }}
+                                    {{
+                                    productForm
+                                    .get("productExpense")
+                                    .get("conversionCost")
+                                    .get("userConversionUom").value
+                                    }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <!-- </mat-panel-description>-->
+                      </div>
+                      @if (productForm.get('isExtraExpense').value == true) {
+                        <div class="mx-2 attr-b my-3">
+                          <div class="title-text text-light fw-400 attr-b " style="font-weight: 400">
+                            Material Cost
+                          </div>
+                          @for (
+                            expense of productExpenseValues?.controls; track trackByFn(k,
+                            expense); let k = $index) {
+                            <div [formGroup]="expense" class="d-flex my-3 justify-content-between align-items-center w-100 gap-2">
+                              <div>
+                                <div class="d-flex align-items-center">
                 <input formControlName="isProduct" (change)="
                     toggleProductMaterialCost(
                       $event,
                       expense.get('expenseDescription')
                     )
                   " type="checkbox" id="isProduct" />
-                <span class="mx-1 font-size-12" style="width: max-content">
-                  is Product</span>
-              </div>
-            </div>
-            <ng-container *ngIf="expense.get('isProduct').value == true; else other">
-              <div class="w-100">
-                <dadyin-searchable-select [marginBottom]="false" placeholder="Product Type" label="Product Type"
-                  [control]="expense.get('productTypeId')" (changed)="onProductTypeExpenseChange(expense)"
-                  [fullItems]="apiService.productTypes" bindValue="id"
-                  bindLabel="description"></dadyin-searchable-select>
-              </div>
-              <div class="w-100 b-round">
-                <div class="attribute attribute-input">
-                  <label>Product Code</label>
-                  <input placeholder="Search Product Code/Description" [matAutocomplete]="auto"
-                    (input)="Get_All_Product_List_IsPackage($event)"
-                    [formControl]="expense.get('expenseProductCode')" />
-                </div>
-
+                                    <span class="mx-1 font-size-12" style="width: max-content">
+                                    is Product</span>
+                                  </div>
+                                </div>
+                                @if (expense.get('isProduct').value == true) {
+                                  <div class="w-100">
+                                    <dadyin-searchable-select [marginBottom]="false" placeholder="Product Type" label="Product Type"
+                                      [control]="expense.get('productTypeId')" (changed)="onProductTypeExpenseChange(expense)"
+                                      [fullItems]="apiService.productTypes" bindValue="id"
+                                    bindLabel="description"></dadyin-searchable-select>
+                                  </div>
+                                  <div class="w-100 b-round">
+                                    <div class="attribute attribute-input">
+                                      <label>Product Code</label>
+                                      <input placeholder="Search Product Code/Description" [matAutocomplete]="auto"
+                                        (input)="Get_All_Product_List_IsPackage($event)"
+                                        [formControl]="expense.get('expenseProductCode')" />
+                                      </div>
                 <mat-autocomplete (optionSelected)="
                     onProductCodeExpenseChange($event.option.value, expense)
                   " autoActiveFirstOption #auto="matAutocomplete">
-                  <mat-option [value]="item" *ngFor="let item of getFilteredProductsList(expense)">
-                    {{ item.productCode }} ({{ item.description }})
-                  </mat-option>
-                </mat-autocomplete>
-              </div>
-            </ng-container>
-            <ng-template #other>
-              <div class="w-100">
-                <div class="attribute one">
-                  <label for="">Product Type</label>
-                  <div class="attribute-input">
-                    <input disabled type="text" />
-                  </div>
-                </div>
-              </div>
-              <div class="w-100">
-                <div class="attribute one">
-                  <label for="">Product Code</label>
-                  <div class="attribute-input">
-                    <input disabled type="text" />
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-            <div class="w-100">
-              <div class="attribute one">
-                <label for="">Material/Product Name</label>
-                <div class="attribute-input">
-                  <input formControlName="expenseDescription" [readonly]="expense.get('isProduct').value == true"
-                    type="text" />
-                </div>
-              </div>
-            </div>
-            <div class="w-100">
-              <div class="attribute one">
-                <label for="">Net Wt/Unit</label>
-                <div class="attribute-input">
+                                        @for (item of getFilteredProductsList(expense); track item) {
+                                          <mat-option [value]="item">
+                                            {{ item.productCode }} ({{ item.description }})
+                                          </mat-option>
+                                        }
+                                      </mat-autocomplete>
+                                    </div>
+                                  } @else {
+                                    <div class="w-100">
+                                      <div class="attribute one">
+                                        <label for="">Product Type</label>
+                                        <div class="attribute-input">
+                                          <input disabled type="text" />
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="w-100">
+                                      <div class="attribute one">
+                                        <label for="">Product Code</label>
+                                        <div class="attribute-input">
+                                          <input disabled type="text" />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  }
+                                  <div class="w-100">
+                                    <div class="attribute one">
+                                      <label for="">Material/Product Name</label>
+                                      <div class="attribute-input">
+                                        <input formControlName="expenseDescription" [readonly]="expense.get('isProduct').value == true"
+                                          type="text" />
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="w-100">
+                                      <div class="attribute one">
+                                        <label for="">Net Wt/Unit</label>
+                                        <div class="attribute-input">
                   <input [ngClass]="{
                       'b-red': expense.get('weight').get('attributeValue')
                         .invalid
                     }" min="0" (change)="changeValue()" [formControl]="expense.get('weight').get('attributeValue')"
-                    type="number" placeholder="Enter your value" />
+                                            type="number" placeholder="Enter your value" />
                   <select tabindex="-1" [ngClass]="{
                       'b-red': expense.get('weight').get('userConversionUom')
                         .invalid
                     }" (change)="changeValue()" [formControl]="
                       expense.get('weight').get('userConversionUom')
                     " id="NetWtUnit">
-                    <ng-container *ngFor="let item of uomService?.availableNetWeightUoms">
-                      <option [value]="item.description">
-                        {{ item?.description }}
-                      </option>
-                    </ng-container>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="w-100">
-              <div class="attribute one">
-                <label for="">Cost/Unit</label>
-                <div class="attribute-input">
+                                              @for (item of uomService?.availableNetWeightUoms; track item) {
+                                                <option [value]="item.description">
+                                                  {{ item?.description }}
+                                                </option>
+                                              }
+                                            </select>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="w-100">
+                                        <div class="attribute one">
+                                          <label for="">Cost/Unit</label>
+                                          <div class="attribute-input">
                   <input min="0" [ngClass]="{
                       'b-red': expense.get('cost').get('attributeValue').invalid
                     }" [formControl]="expense.get('cost').get('attributeValue')" type="number"
-                    placeholder="Enter your value" />
+                                              placeholder="Enter your value" />
                   <select tabindex="-1" (change)="changeValue()" [ngClass]="{
                       'b-red': expense.get('cost').get('userConversionUom')
                         .invalid
                     }" [formControl]="expense.get('cost').get('userConversionUom')" id="CostUnit">
-                    <ng-container *ngFor="let item of uomService?.availableCostUoms">
-                      <option disabled [value]="item.description">
-                        {{ item?.description }}
-                      </option>
-                    </ng-container>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <!--  <div>
-                  <div class="attribute one">
-                    <label for="">Adjusted Cost/Unit</label>
-                    <div class="attribute-input">
+                                                @for (item of uomService?.availableCostUoms; track item) {
+                                                  <option disabled [value]="item.description">
+                                                    {{ item?.description }}
+                                                  </option>
+                                                }
+                                              </select>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <!--  <div>
+                                        <div class="attribute one">
+                                          <label for="">Adjusted Cost/Unit</label>
+                                          <div class="attribute-input">
                       <input min="0" (change)="changeValue(expense)" [ngClass]="{
                           'b-red': expense
                             .get('adjustedCost')
@@ -1836,60 +1913,61 @@
                         }" [formControl]="
                           expense.get('adjustedCost').get('userConversionUom')
                         " id="CostUnit">
-                        <ng-container *ngFor="let item of uomService?.availableCostUoms">
-                          <option disabled [value]="item.description">
-                            {{ item?.description }}
-                          </option>
-                        </ng-container>
-                      </select>
-                    </div>
-                  </div>
-                </div> -->
-            <!--  <div>
-                  <div class="d-flex align-items-center">
-                    <input formControlName="includeExpense" type="checkbox" id="includeExpense" />
-                    <span class="mx-1 font-size-12" style="width: max-content">
-                      Include Expense</span>
-                  </div>
-                </div> -->
-            <div class="d-flex align-items-center">
-              <dadyin-button [theme]="'borderless-danger'" type="icon" [typeval]="'delete_outline'"
-                (clicked)="removeProductExpense(k)">
-              </dadyin-button>
-              <dadyin-button type="image" [theme]="'borderless-primary'" [typeval]="'assets/nicons/add-white.png'"
-                (clicked)="addProductExpense()"></dadyin-button>
-            </div>
-          </div>
-        </div>
-
-        <div class="mx-2 attr-b my-3">
-          <div class="title-text text-light fw-400 attr-b " style="font-weight: 400">
-            Conversion cost
-            <dadyin-button type="image" [theme]="'borderless-primary'" [typeval]="'assets/nicons/add-white.png'"
-              (clicked)="addProductExpenseConversionType()" *ngIf="productExpenseConversionTypes?.length < 1">
-            </dadyin-button>
-          </div>
-          <div class="row">
-            <div class="col-md-4 my-1 d-flex justify-content-start" [formGroup]="productExpenseConversionType" *ngFor="
-                let productExpenseConversionType of productExpenseConversionTypes?.controls;
-                let m = index;
-                trackBy: trackByFn
-              ">
-              <div class="w-100 d-flex align-items-center">
-                <div class="attribute w-100 one">
-                  <div class="attribute-input">
+                                                <ng-container *ngFor="let item of uomService?.availableCostUoms">
+                                                  <option disabled [value]="item.description">
+                                                    {{ item?.description }}
+                                                  </option>
+                                                </ng-container>
+                                              </select>
+                                            </div>
+                                          </div>
+                                        </div> -->
+                                        <!--  <div>
+                                        <div class="d-flex align-items-center">
+                                          <input formControlName="includeExpense" type="checkbox" id="includeExpense" />
+                                          <span class="mx-1 font-size-12" style="width: max-content">
+                                          Include Expense</span>
+                                        </div>
+                                      </div> -->
+                                      <div class="d-flex align-items-center">
+                                        <dadyin-button [theme]="'borderless-danger'" type="icon" [typeval]="'delete_outline'"
+                                          (clicked)="removeProductExpense(k)">
+                                        </dadyin-button>
+                                        <dadyin-button type="image" [theme]="'borderless-primary'" [typeval]="'assets/nicons/add-white.png'"
+                                        (clicked)="addProductExpense()"></dadyin-button>
+                                      </div>
+                                    </div>
+                                  }
+                                </div>
+                                <div class="mx-2 attr-b my-3">
+                                  <div class="title-text text-light fw-400 attr-b " style="font-weight: 400">
+                                    Conversion cost
+                                    @if (productExpenseConversionTypes?.length < 1) {
+                                      <dadyin-button type="image" [theme]="'borderless-primary'" [typeval]="'assets/nicons/add-white.png'"
+                                        (clicked)="addProductExpenseConversionType()">
+                                      </dadyin-button>
+                                    }
+                                  </div>
+                                  <div class="row">
+                                    @for (
+                                      productExpenseConversionType of productExpenseConversionTypes?.controls; track trackByFn(m,
+                                      productExpenseConversionType); let m = $index) {
+                                      <div class="col-md-4 my-1 d-flex justify-content-start" [formGroup]="productExpenseConversionType">
+                                        <div class="w-100 d-flex align-items-center">
+                                          <div class="attribute w-100 one">
+                                            <div class="attribute-input">
                     <select tabindex="-1" [ngClass]="{
                       'b-red':
                         productExpenseConversionType.get('conversionTypeId')
                           .invalid
                     }" formControlName="conversionTypeId" id="conversionTypeId" style="width: 100%; background: white">
-                      <option selected [value]="null">Select Type</option>
-                      <ng-container *ngFor="let item of this.apiService.conversionTypes">
-                        <option [value]="item.id">
-                          {{ item?.description }}
-                        </option>
-                      </ng-container>
-                    </select>
+                                                <option selected [value]="null">Select Type</option>
+                                                @for (item of this.apiService.conversionTypes; track item) {
+                                                  <option [value]="item.id">
+                                                    {{ item?.description }}
+                                                  </option>
+                                                }
+                                              </select>
                     <input (change)="changeValue()" [ngClass]="{
                       'b-red': productExpenseConversionType
                         .get('cost')
@@ -1908,26 +1986,30 @@
                         .get('cost')
                         .get('userConversionUom')
                     " id="CostUnit">
-                      <ng-container *ngFor="let item of uomService?.availableCostUoms">
-                        <option [value]="item.description">
-                          {{ item?.description }}
-                        </option>
-                      </ng-container>
-                    </select>
-                  </div>
-                </div>
-                <dadyin-button (clicked)="removeProductExpenseConversionType(m)" matTooltip="Delete"
-                  [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'" type="image"></dadyin-button>
-                <dadyin-button *ngIf="m == (productExpenseConversionTypes?.length - 1)" type="image"
-                  [theme]="'borderless-primary'" [typeval]="'assets/nicons/add-white.png'"
-                  (clicked)="addProductExpenseConversionType()">
-                </dadyin-button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ng-container>
-      <!-- </mat-expansion-panel> -->
-    </ng-container>
-  </mat-expansion-panel>
-</form>
+                                                  @for (item of uomService?.availableCostUoms; track item) {
+                                                    <option [value]="item.description">
+                                                      {{ item?.description }}
+                                                    </option>
+                                                  }
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <dadyin-button (clicked)="removeProductExpenseConversionType(m)" matTooltip="Delete"
+                                            [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'" type="image"></dadyin-button>
+                                            @if (m == (productExpenseConversionTypes?.length - 1)) {
+                                              <dadyin-button type="image"
+                                                [theme]="'borderless-primary'" [typeval]="'assets/nicons/add-white.png'"
+                                                (clicked)="addProductExpenseConversionType()">
+                                              </dadyin-button>
+                                            }
+                                          </div>
+                                        </div>
+                                      }
+                                    </div>
+                                  </div>
+                                }
+                              <!-- </mat-expansion-panel> -->
+                            </ng-container>
+                          </mat-expansion-panel>
+                        }
+                      </form>

@@ -18,7 +18,7 @@ import { OrderFormsService } from '../../../../service/order-forms.service';
 import { ApiService } from 'src/app/service/api.service';
 import { OrderTransactionPackagesComponent } from '../../../../../../../shared/component/order-transaction-packages/order-transaction-packages.component';
 import { DadyinInputComponent } from '../../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
-import { NgIf } from '@angular/common';
+
 import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { DadyinSelectComponent } from '../../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
@@ -29,18 +29,17 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     styleUrls: ['./view-quotation.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatExpansionPanelContent,
-        DadyinSelectComponent,
-        DadyinButtonComponent,
-        NgIf,
-        DadyinInputComponent,
-        OrderTransactionPackagesComponent,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatExpansionPanelContent,
+    DadyinSelectComponent,
+    DadyinButtonComponent,
+    DadyinInputComponent,
+    OrderTransactionPackagesComponent
+],
 })
 export class ViewQuotationComponent implements OnInit {
     public buyingTypeList: any[] = [

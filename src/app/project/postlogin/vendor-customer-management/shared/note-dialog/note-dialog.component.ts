@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgIf, NgFor, SlicePipe, DatePipe } from '@angular/common';
+import { SlicePipe, DatePipe } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
 export type NoteReminderDialogType = 'note' | 'reminder';
@@ -22,17 +22,15 @@ export type NoteReminderDialogType = 'note' | 'reminder';
     styleUrls: ['./note-dialog.component.scss'],
     standalone: true,
     imports: [
-        MatIconModule,
-        NgIf,
-        DadyinButtonComponent,
-        MatTooltipModule,
-        MatExpansionModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgFor,
-        SlicePipe,
-        DatePipe,
-    ],
+    MatIconModule,
+    DadyinButtonComponent,
+    MatTooltipModule,
+    MatExpansionModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SlicePipe,
+    DatePipe
+],
 })
 export class NoteDialogComponent implements OnInit {
   noteForm = this.vendorFormService.noteForm();

@@ -3,7 +3,7 @@ import { InventoryinmanagementService } from '../../../service/inventoryin-manag
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { DataTableComponent } from '../../../../../../../shared/component/data-table/data-table.component';
 import { DateScrollComponent } from '../../../../../../../shared/component/date-scroll/date-scroll.component';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-order-wise',
@@ -11,10 +11,9 @@ import { NgIf } from '@angular/common';
     styleUrls: ['./order-wise.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        DateScrollComponent,
-        DataTableComponent,
-    ],
+    DateScrollComponent,
+    DataTableComponent
+],
 })
 export class OrderWiseComponent implements OnInit {
   list = [];

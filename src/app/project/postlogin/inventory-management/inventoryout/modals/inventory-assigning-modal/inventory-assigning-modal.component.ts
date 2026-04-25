@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogClose } from '@angul
 import { ApiService } from 'src/app/service/api.service';
 import { InventoryoutmanagementService } from '../../service/inventoryout-management.service';
 import { DataTableComponent } from '../../../../../../shared/component/data-table/data-table.component';
-import { NgFor } from '@angular/common';
+
 import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { MatIcon } from '@angular/material/icon';
 
@@ -14,13 +14,12 @@ import { MatIcon } from '@angular/material/icon';
     styleUrls: ['./inventory-assigning-modal.component.scss'],
     standalone: true,
     imports: [
-        MatDialogClose,
-        MatIcon,
-        DadyinButtonComponent,
-        NgFor,
-        FormsModule,
-        DataTableComponent,
-    ],
+    MatDialogClose,
+    MatIcon,
+    DadyinButtonComponent,
+    FormsModule,
+    DataTableComponent
+],
 })
 export class InventoryAssigningModalComponent implements OnInit {
   inventoryDetailsData: any;

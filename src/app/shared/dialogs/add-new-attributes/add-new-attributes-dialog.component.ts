@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { MatSelectChange, MatSelect } from '@angular/material/select';
 import { MatButton } from '@angular/material/button';
 import { MatOption } from '@angular/material/core';
-import { NgFor } from '@angular/common';
+
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 
 @Component({
@@ -13,16 +13,15 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
     styleUrls: ['./add-new-attributes-dialog.component.scss'],
     standalone: true,
     imports: [
-        MatDialogTitle,
-        MatFormField,
-        MatLabel,
-        MatSelect,
-        NgFor,
-        MatOption,
-        MatDialogActions,
-        MatButton,
-        MatDialogClose,
-    ],
+    MatDialogTitle,
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    MatOption,
+    MatDialogActions,
+    MatButton,
+    MatDialogClose
+],
 })
 export class AddNewAttributesDialogComponent {
   selectedValue: string;

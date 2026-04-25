@@ -12,7 +12,7 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { SearchFilterComponent } from '../../../../../shared/component/search-filter/search-filter.component';
 import { MatBadge } from '@angular/material/badge';
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
@@ -21,20 +21,18 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     styleUrls: ['./product-template-list.component.scss'],
     standalone: true,
     imports: [
-        MatTabGroup,
-        NgFor,
-        MatTab,
-        MatTabLabel,
-        MatBadge,
-        MatTabContent,
-        NgIf,
-        SearchFilterComponent,
-        CdkDrag,
-        FormsModule,
-        ReactiveFormsModule,
-        DadyinButtonComponent,
-        DataTableComponent,
-    ],
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatBadge,
+    MatTabContent,
+    SearchFilterComponent,
+    CdkDrag,
+    FormsModule,
+    ReactiveFormsModule,
+    DadyinButtonComponent,
+    DataTableComponent
+],
 })
 export class ProductTemplateListComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

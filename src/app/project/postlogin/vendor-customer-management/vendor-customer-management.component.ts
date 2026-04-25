@@ -27,7 +27,7 @@ import { DataTableComponent as DataTableComponent_1 } from '../../../shared/comp
 import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { SearchFilterComponent } from '../../../shared/component/search-filter/search-filter.component';
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
-import { NgIf, NgFor, NgClass, SlicePipe } from '@angular/common';
+import { NgClass, SlicePipe } from '@angular/common';
 
 @Component({
     selector: 'app-vendor-customer-management',
@@ -35,23 +35,21 @@ import { NgIf, NgFor, NgClass, SlicePipe } from '@angular/common';
     styleUrls: ['./vendor-customer-management.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        MatTabGroup,
-        NgFor,
-        MatTab,
-        MatTabLabel,
-        MatTabContent,
-        SearchFilterComponent,
-        DadyinButtonComponent,
-        DataTableComponent_1,
-        LeadFilterBoxComponent,
-        NgSelectModule,
-        FormsModule,
-        MatTooltip,
-        NgClass,
-        ExtendedModule,
-        SlicePipe,
-    ],
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatTabContent,
+    SearchFilterComponent,
+    DadyinButtonComponent,
+    DataTableComponent_1,
+    LeadFilterBoxComponent,
+    NgSelectModule,
+    FormsModule,
+    MatTooltip,
+    NgClass,
+    ExtendedModule,
+    SlicePipe
+],
 })
 export class VendorCustomerManagementComponent implements OnInit {
   @ViewChild(DataTableComponent) dataTable!: DataTableComponent;

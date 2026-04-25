@@ -1,11 +1,10 @@
-<ng-container *ngIf="data">
+@if (data) {
   <mat-expansion-panel expanded="true">
     <mat-expansion-panel-header>
       <mat-panel-description>
         <div class="title-text">Template Information</div>
       </mat-panel-description>
     </mat-expansion-panel-header>
-
     <div class="row ">
       <div class="col-8">
         <div class="row">
@@ -53,509 +52,463 @@
       </div>
     </div>
   </mat-expansion-panel>
-
-
-
-  <ng-container *ngIf="data.templateProcessType=='PROCESS'">
+  @if (data.templateProcessType=='PROCESS') {
     <div class="header-light justify-content-start">
       <div class="primary-text font-size-12 ">
         <strong>Template Cost : </strong> <span class="price-text">
-          {{data?.templateCost?.attributeValue}} {{data?.templateCost?.userConversionUom}} </span>
-      </div>
-      <div class="primary-text font-size-12 mx-2">
-        <strong>Template Density : </strong> <span class="price-text">
-          {{data?.templateDensity?.attributeValue}} {{data?.templateDensity?.userConversionUom}} </span>
-      </div>
+      {{data?.templateCost?.attributeValue}} {{data?.templateCost?.userConversionUom}} </span>
     </div>
-    <ng-container *ngFor="let process of data?.templateProcesses;let i = index">
-
-
-
-
-
-      <mat-expansion-panel class="panel-no-padding" expanded="true" #mep="matExpansionPanel">
-        <mat-expansion-panel-header>
-          <div (click)="mep.expanded = !mep.expanded" class="panel-header p-0">
-            <div class="title-text">
-              <span>Process {{ i + 1 }}</span>
+    <div class="primary-text font-size-12 mx-2">
+      <strong>Template Density : </strong> <span class="price-text">
+    {{data?.templateDensity?.attributeValue}} {{data?.templateDensity?.userConversionUom}} </span>
+  </div>
+</div>
+@for (process of data?.templateProcesses; track process; let i = $index) {
+  <mat-expansion-panel class="panel-no-padding" expanded="true" #mep="matExpansionPanel">
+    <mat-expansion-panel-header>
+      <div (click)="mep.expanded = !mep.expanded" class="panel-header p-0">
+        <div class="title-text">
+          <span>Process {{ i + 1 }}</span>
+        </div>
+        <div class="process-input-output">
+          <div class="input" style="border-right: 1px solid var(--text-light);">
+            <input type="text" readonly [value]="process.process.description" />
+          </div>
+          <div class="output">
+            <input type="text" readonly [value]="process.process.productOfProcess.productMeta.description" />
+            <input type="text" readonly
+              [value]="getDescriptionFromProductTypeId(process.process.productOfProcess.productTypeId)" />
             </div>
-
-            <div class="process-input-output">
-              <div class="input" style="border-right: 1px solid var(--text-light);">
-                <input type="text" readonly [value]="process.process.description" />
+          </div>
+          <div class="process-calculation">
+            <div class="units justify-content-end">
+              <div class="currency-value">
+                <span class="text-black">{{
+                  process.process.productOfProcess?.metricCost?.userConversionUom
+                }}</span>
+                <span>{{ process.process.productOfProcess?.metricCost?.attributeValue }}</span>
               </div>
-              <div class="output">
-                <input type="text" readonly [value]="process.process.productOfProcess.productMeta.description" />
-                <input type="text" readonly
-                  [value]="getDescriptionFromProductTypeId(process.process.productOfProcess.productTypeId)" />
+              <div class="unit-value">
+                <span class="text-black">{{
+                  process.process.productOfProcess?.metricCostSecondary?.userConversionUom
+                }}</span>
+                <span>{{ process.process.productOfProcess?.metricCostSecondary?.attributeValue }}</span>
               </div>
             </div>
-
-            <div class="process-calculation">
-              <div class="units justify-content-end">
-                <div class="currency-value">
-                  <span class="text-black">{{
-                    process.process.productOfProcess?.metricCost?.userConversionUom
-                    }}</span>
-                  <span>{{ process.process.productOfProcess?.metricCost?.attributeValue }}</span>
+          </div>
+        </div>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <section class="section-card  material-cost-calculation py-2">
+          <div class="d-flex align-items-center justify-content-between font-size-12 py-2">
+            <div class="d-flex align-items-center justify-content-start">
+              <div class=" d-flex align-items-center mx-2 ">
+                <b class="title-text">Material Cost Calculation</b>
+              </div>
+            </div>
+            <div class="d-flex  align-items-center justify-content-end font-size-12">
+              <div class="units justify-content-end d-flex me-3">
+                <div >
+                  <div class="text-black h-20 align-content-center">
+                    {{ process.process.productOfProcess?.density?.userConversionUom }}
+                  </div>
+                  <div class="primary-text">
+                    {{ process.process.productOfProcess?.density?.attributeValue }}
+                  </div>
                 </div>
-                <div class="unit-value">
-                  <span class="text-black">{{
-                    process.process.productOfProcess?.metricCostSecondary?.userConversionUom
-                    }}</span>
-                  <span>{{ process.process.productOfProcess?.metricCostSecondary?.attributeValue }}</span>
+                <div class="mx-2">
+                  <div class="text-black h-20 align-content-center">
+                    {{ process.process.materialMetricCost?.userConversionUom }}
+                  </div>
+                  <div class="price-text">
+                    {{ process.process.materialMetricCost?.attributeValue }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </mat-expansion-panel-header>
-
-        <ng-template matExpansionPanelContent>
-          <section class="section-card  material-cost-calculation py-2">
-            <div class="d-flex align-items-center justify-content-between font-size-12 py-2">
-              <div class="d-flex align-items-center justify-content-start">
-                <div class=" d-flex align-items-center mx-2 ">
-                  <b class="title-text">Material Cost Calculation</b>
-                </div>
-              </div>
-              <div class="d-flex  align-items-center justify-content-end font-size-12">
-                <div class="units justify-content-end d-flex me-3">
-                  <div >
-                    <div class="text-black h-20 align-content-center">
-                      {{ process.process.productOfProcess?.density?.userConversionUom }}
-                    </div>
-                    <div class="primary-text">
-                      {{ process.process.productOfProcess?.density?.attributeValue }}
-                    </div>
-                  </div>
-                  <div class="mx-2">
-                    <div class="text-black h-20 align-content-center">
-                      {{ process.process.materialMetricCost?.userConversionUom }}
-                    </div>
-                    <div class="price-text">
-                      {{ process.process.materialMetricCost?.attributeValue }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <ng-container>
-              <div class="process-table">
-                <!-- Material Cost -->
-                <table>
-                  <thead>
-                    <tr style="background-color: var(--secondary-light);">
-                      <th style="padding-left: 20px">Sr.</th>
-                      <th>Product Type</th>
-                      <th>Product</th>
-                      <th>
-                        <div class="group">
-                          <span>Price </span>
-                        </div>
-                      </th>
-                      <th>
-                        <div class="group">
-                          <span>Density </span>
-                        </div>
-                      </th>
-                      <th>
-                        <div class="group">
-                          <span>%USED </span>
-                        </div>
-                      </th>
-                      <th>
-                        <div class="group">
-                          <span>%Waste </span>
-                        </div>
-                      </th>
-                      <th>
-                        <div class="group">
-                          <span>AVG. Density </span>
-                        </div>
-                      </th>
-                      <th>
-                        <div class="group">
-                          <span>Cost Addon </span>
-                        </div>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <ng-container *ngFor="let p of process.process.processProducts; let j = index">
-                      <tr>
-                        <td style="padding-left: 20px">{{ j + 1 }}.</td>
-                        <td>
-                          <div>{{ p?.subProductTypeName }}</div>
-                        </td>
-                        <td>
-                          <div>{{ p?.subProductName }}</div>
-                        </td>
-                        <td>
-                          <div class="text-end price-text">
-                            {{ p?.cost?.attributeValue }} {{ p?.cost?.userConversionUom }}
-                          </div>
-                        </td>
-                        <td>
-                          <div class="text-end">
-                            {{ p?.density?.attributeValue }} {{ p?.density?.userConversionUom }}
-                          </div>
-                        </td>
-                        <td>
-                          <div class="text-primary text-end">
-                            {{ p?.usedPercent }}
-                          </div>
-                        </td>
-                        <td>
-                          <div class="text-end">
-                            {{ p?.wastePercent }}
-                          </div>
-                        </td>
-                        <td>
-                          <div class="text-end">
-                            {{ p?.subProductDensity?.attributeValue }} {{ p?.subProductDensity?.userConversionUom }}
-                          </div>
-                        </td>
-                        <td>
-                          <div class="text-end">
-                            {{ p?.subProductMetricCost?.attributeValue }} {{ p?.subProductMetricCost?.userConversionUom
-                            }}
-                          </div>
-                        </td>
-                      </tr>
-                    </ng-container>
-                  </tbody>
-                </table>
-              </div>
-            </ng-container>
-          </section>
-          <section class="section-card conversion-cost-calculation my-2">
-            <div class="header" style="display: flex !important;">
-              <div class="title">
-                <span class="me-3 text-black">Conversion Cost</span>
-              </div>
-              <div class="optional-values">
-                <div class="units justify-content-end">
-                  <div class="currency-value">
-                    <span class="text-black">
-                      {{ process.process.conversionMetricCost?.userConversionUom }}
-                    </span>
-                    <span>
-                      {{ process.process.conversionMetricCost?.attributeValue }}
-                    </span>
-                  </div>
-                  <div class="unit-value">
-                    <span class="text-black">
-                      {{ process.process.conversionMetricCostSecondary?.userConversionUom }}
-                    </span>
-                    <span>
-                      {{ process.process.conversionMetricCostSecondary?.attributeValue }}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Conversion Cost -->
-            <section class="conversionCost p-2  d-flex flex-wrap align-items-center">
-              <ng-container *ngFor="let item of process.process.processConversionTypes; let j = index">
-                <div class="d-flex align-items-center" [attr.data-index]="j">
-                  <div class="b-light b-round d-flex align-items-center">
-                    <select name="conversionTypeId" class="conversion-cost b-round" [value]="item.conversionTypeId"
-                      disabled>
-                      <ng-container *ngFor="let type of this.apiService.conversionTypes">
-                        <option [value]="type.id">{{ type.description }}</option>
-                      </ng-container>
-                    </select>
-                    <input type="number" class="currency" readonly [value]="item.metricCost?.attributeValue" />
-                    <input type="text" class="unit b-round" readonly [value]="item.metricCost?.userConversionUom" />
-                  </div>
-                </div>
-              </ng-container>
-
-            </section>
-          </section>
-        </ng-template>
-      </mat-expansion-panel>
-
-
-
-
-    </ng-container>
-  </ng-container>
-
-  <ng-container *ngIf="data.templateProcessType=='RAW_MATERIAL'">
-    <div class="header-light">
-      <div class="primary-text font-size-14 ">
-        <strong>Total Material Cost : </strong> <span class="price-text"> $
-          {{data?.rawMaterialProcess?.productOfProcess.metricCost.attributeValue}} </span>
-      </div>
-    </div>
-
-    <ng-container>
-
-      <mat-expansion-panel class="panel-no-padding" expanded="true" #mep="matExpansionPanel">
-        <mat-expansion-panel-header>
-          <div class="d-flex justify-content-between w-100  p-0">
-            <div class="title-text">
-              <span>Raw Material Details</span>
-            </div>
-            <div></div>
-            <div class="d-flex align-items-center title-text">
-              <div class="mx-2"><b>Cost: </b> </div>
-              <div class="currency-value mx-2">
-                <span>{{ data?.rawMaterialProcess?.materialMetricCost?.attributeValue}}</span>
-                <span>{{data?.rawMaterialProcess?.materialMetricCost?.userConversionUom}}</span>
-              </div>
-              <div class="unit-value mx-2">
-                <span>{{data?.rawMaterialProcess?.materialMetricCostSecondary?.attributeValue}}</span>
-                <span>{{data?.rawMaterialProcess?.materialMetricCostSecondary?.userConversionUom}}</span>
-              </div>
-            </div>
-          </div>
-        </mat-expansion-panel-header>
-
-        <ng-template matExpansionPanelContent>
-          <section class="section-card material-cost-calculation">
-            <div class="header">
-              <div class="title">
-                <span class="title-text">Material Cost Calculation</span>
-              </div>
-              <div class="optional-values">
-                <div class="units">
-                  <span class="mx-3 title-text">Density:</span>
-                  <div class="currency-value">
-                    <span> {{data?.rawMaterialProcess?.productOfProcess?.density?.userConversionUom}}</span>
-                    <span>{{data?.rawMaterialProcess?.productOfProcess?.density?.attributeValue}}</span>
-                  </div>
-                  <div class="unit-value">
-                    <span> {{data?.rawMaterialProcess?.productOfProcess?.densitySecondary?.userConversionUom}}</span>
-                    <span>{{data?.rawMaterialProcess?.productOfProcess?.densitySecondary?.attributeValue}}</span>
-                  </div>
-                </div>
-                <div class="units">
-                  <span class="mx-3 title-text">Cost:</span>
-                  <div class="currency-value">
-                    <span>{{data?.rawMaterialProcess?.materialMetricCost?.userConversionUom}}</span>
-                    <span>{{data?.rawMaterialProcess?.materialMetricCost?.attributeValue}}</span>
-                  </div>
-                  <div class="unit-value">
-                    <span>{{data?.rawMaterialProcess?.materialMetricCostSecondary?.userConversionUom}}</span>
-                    <span>{{data?.rawMaterialProcess?.materialMetricCostSecondary?.attributeValue}}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
+          <ng-container>
             <div class="process-table">
+              <!-- Material Cost -->
               <table>
                 <thead>
-                  <tr>
-
-                    <th style="padding-left:20px;">Sr.</th>
+                  <tr style="background-color: var(--secondary-light);">
+                    <th style="padding-left: 20px">Sr.</th>
                     <th>Product Type</th>
                     <th>Product</th>
                     <th>
                       <div class="group">
-                        <span>Price</span>
-
+                        <span>Price </span>
                       </div>
                     </th>
                     <th>
                       <div class="group">
-                        <span>Density</span>
-
-                      </div>
-                    </th>
-                    <th>%USED (100.00%)</th>
-                    <th>%Waste</th>
-                    <th>
-                      <div class="group">
-                        <span>AVG. Density</span>
-
+                        <span>Density </span>
                       </div>
                     </th>
                     <th>
                       <div class="group">
-                        <span>Cost Addon</span>
-
+                        <span>%USED </span>
                       </div>
                     </th>
-
+                    <th>
+                      <div class="group">
+                        <span>%Waste </span>
+                      </div>
+                    </th>
+                    <th>
+                      <div class="group">
+                        <span>AVG. Density </span>
+                      </div>
+                    </th>
+                    <th>
+                      <div class="group">
+                        <span>Cost Addon </span>
+                      </div>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <ng-container *ngFor="let p of data?.rawMaterialProcess?.processProducts;let j =index;">
+                  @for (p of process.process.processProducts; track p; let j = $index) {
                     <tr>
-                      <td style="padding-left:20px;">{{j+1}}.</td>
-                      <!-- <td class="product__img">
-                        <img class="product-img" src="assets/img/icons/Image.svg" alt="" />
-                        <div class="display__product__img">
-                          <img
-                            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
-                            alt="" />
-                        </div>
-                      </td> -->
+                      <td style="padding-left: 20px">{{ j + 1 }}.</td>
                       <td>
-                        <div name="id">
-                          {{p?.subProductTypeName}}
-
+                        <div>{{ p?.subProductTypeName }}</div>
+                      </td>
+                      <td>
+                        <div>{{ p?.subProductName }}</div>
+                      </td>
+                      <td>
+                        <div class="text-end price-text">
+                          {{ p?.cost?.attributeValue }} {{ p?.cost?.userConversionUom }}
                         </div>
                       </td>
                       <td>
-                        <div>
-                          {{p?.subProductName}}
+                        <div class="text-end">
+                          {{ p?.density?.attributeValue }} {{ p?.density?.userConversionUom }}
                         </div>
                       </td>
                       <td>
-                        <div>
-                          {{p?.cost?.attributeValue}} {{p?.cost?.userConversionUom}}
+                        <div class="text-primary text-end">
+                          {{ p?.usedPercent }}
                         </div>
                       </td>
                       <td>
-                        <div>
-                          {{p.density.attributeValue}} {{p.density.userConversionUom}}
+                        <div class="text-end">
+                          {{ p?.wastePercent }}
                         </div>
                       </td>
                       <td>
-                        <div>
-                          {{p.usedPercent}}
+                        <div class="text-end">
+                          {{ p?.subProductDensity?.attributeValue }} {{ p?.subProductDensity?.userConversionUom }}
                         </div>
                       </td>
                       <td>
-                        <div>
-                          {{p.wastePercent}}
+                        <div class="text-end">
+                          {{ p?.subProductMetricCost?.attributeValue }} {{ p?.subProductMetricCost?.userConversionUom
+                          }}
                         </div>
                       </td>
-                      <td>
-                        <div>
-                          {{p.subProductDensity.attributeValue}} {{p.subProductDensity.userConversionUom}}
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{p.subProductMetricCost.attributeValue}} {{p.subProductMetricCost.userConversionUom}}
-                        </div>
-                      </td>
-
                     </tr>
-                  </ng-container>
+                  }
                 </tbody>
               </table>
             </div>
-
-          </section>
-          <section class="section-card conversion-cost-calculation">
-            <div class="header">
-              <div class="title">
-                <span>Conversion Cost Calculation</span>
-              </div>
-
-              <div class="optional-values">
-                <div class="units">
-                  <div class="currency-value">
-                    <span>{{data?.rawMaterialProcess?.conversionMetricCost.userConversionUom}}</span>
-                    <span>{{data?.rawMaterialProcess?.conversionMetricCost.attributeValue}}</span>
-
-                  </div>
-                  <div class="unit-value">
-                    <span>{{data?.rawMaterialProcess?.conversionMetricCostSecondary.userConversionUom}}</span>
-                    <span>{{data?.rawMaterialProcess?.conversionMetricCostSecondary.attributeValue}}</span>
-
-                  </div>
+          </ng-container>
+        </section>
+        <section class="section-card conversion-cost-calculation my-2">
+          <div class="header" style="display: flex !important;">
+            <div class="title">
+              <span class="me-3 text-black">Conversion Cost</span>
+            </div>
+            <div class="optional-values">
+              <div class="units justify-content-end">
+                <div class="currency-value">
+                  <span class="text-black">
+                    {{ process.process.conversionMetricCost?.userConversionUom }}
+                  </span>
+                  <span>
+                    {{ process.process.conversionMetricCost?.attributeValue }}
+                  </span>
+                </div>
+                <div class="unit-value">
+                  <span class="text-black">
+                    {{ process.process.conversionMetricCostSecondary?.userConversionUom }}
+                  </span>
+                  <span>
+                    {{ process.process.conversionMetricCostSecondary?.attributeValue }}
+                  </span>
                 </div>
               </div>
             </div>
-
-
-            <section class="conversionCost">
-              <ul>
-                <ng-container>
-                  <li *ngFor="let item of data?.rawMaterialProcess?.processConversionTypes">
-                    <div class="cnvrsn-frm">
-                      <select [value]="item.conversionTypeId" class="conversion-cost bg-light">
-                        <ng-container *ngFor="let type of this.apiService.conversionTypes">
-                          <option disabled [value]="type.id">{{ type.description }}</option>
-                        </ng-container>
-                      </select>
-                      <input type="number" readonly class="currency" [value]="item.metricCost?.attributeValue" />
-                      <input type="number" readonly class="currency bg-light"
-                        [value]="item.metricCost?.userConversionUom" />
+          </div>
+          <!-- Conversion Cost -->
+          <section class="conversionCost p-2  d-flex flex-wrap align-items-center">
+            @for (item of process.process.processConversionTypes; track item; let j = $index) {
+              <div class="d-flex align-items-center" [attr.data-index]="j">
+                <div class="b-light b-round d-flex align-items-center">
+                  <select name="conversionTypeId" class="conversion-cost b-round" [value]="item.conversionTypeId"
+                    disabled>
+                    @for (type of this.apiService.conversionTypes; track type) {
+                      <option [value]="type.id">{{ type.description }}</option>
+                    }
+                  </select>
+                  <input type="number" class="currency" readonly [value]="item.metricCost?.attributeValue" />
+                  <input type="text" class="unit b-round" readonly [value]="item.metricCost?.userConversionUom" />
+                </div>
+              </div>
+            }
+          </section>
+        </section>
+      </ng-template>
+    </mat-expansion-panel>
+  }
+}
+@if (data.templateProcessType=='RAW_MATERIAL') {
+  <div class="header-light">
+    <div class="primary-text font-size-14 ">
+      <strong>Total Material Cost : </strong> <span class="price-text"> $
+    {{data?.rawMaterialProcess?.productOfProcess.metricCost.attributeValue}} </span>
+  </div>
+</div>
+<ng-container>
+  <mat-expansion-panel class="panel-no-padding" expanded="true" #mep="matExpansionPanel">
+    <mat-expansion-panel-header>
+      <div class="d-flex justify-content-between w-100  p-0">
+        <div class="title-text">
+          <span>Raw Material Details</span>
+        </div>
+        <div></div>
+        <div class="d-flex align-items-center title-text">
+          <div class="mx-2"><b>Cost: </b> </div>
+          <div class="currency-value mx-2">
+            <span>{{ data?.rawMaterialProcess?.materialMetricCost?.attributeValue}}</span>
+            <span>{{data?.rawMaterialProcess?.materialMetricCost?.userConversionUom}}</span>
+          </div>
+          <div class="unit-value mx-2">
+            <span>{{data?.rawMaterialProcess?.materialMetricCostSecondary?.attributeValue}}</span>
+            <span>{{data?.rawMaterialProcess?.materialMetricCostSecondary?.userConversionUom}}</span>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <section class="section-card material-cost-calculation">
+        <div class="header">
+          <div class="title">
+            <span class="title-text">Material Cost Calculation</span>
+          </div>
+          <div class="optional-values">
+            <div class="units">
+              <span class="mx-3 title-text">Density:</span>
+              <div class="currency-value">
+                <span> {{data?.rawMaterialProcess?.productOfProcess?.density?.userConversionUom}}</span>
+                <span>{{data?.rawMaterialProcess?.productOfProcess?.density?.attributeValue}}</span>
+              </div>
+              <div class="unit-value">
+                <span> {{data?.rawMaterialProcess?.productOfProcess?.densitySecondary?.userConversionUom}}</span>
+                <span>{{data?.rawMaterialProcess?.productOfProcess?.densitySecondary?.attributeValue}}</span>
+              </div>
+            </div>
+            <div class="units">
+              <span class="mx-3 title-text">Cost:</span>
+              <div class="currency-value">
+                <span>{{data?.rawMaterialProcess?.materialMetricCost?.userConversionUom}}</span>
+                <span>{{data?.rawMaterialProcess?.materialMetricCost?.attributeValue}}</span>
+              </div>
+              <div class="unit-value">
+                <span>{{data?.rawMaterialProcess?.materialMetricCostSecondary?.userConversionUom}}</span>
+                <span>{{data?.rawMaterialProcess?.materialMetricCostSecondary?.attributeValue}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="process-table">
+          <table>
+            <thead>
+              <tr>
+                <th style="padding-left:20px;">Sr.</th>
+                <th>Product Type</th>
+                <th>Product</th>
+                <th>
+                  <div class="group">
+                    <span>Price</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="group">
+                    <span>Density</span>
+                  </div>
+                </th>
+                <th>%USED (100.00%)</th>
+                <th>%Waste</th>
+                <th>
+                  <div class="group">
+                    <span>AVG. Density</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="group">
+                    <span>Cost Addon</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (p of data?.rawMaterialProcess?.processProducts; track p; let j = $index) {
+                <tr>
+                  <td style="padding-left:20px;">{{j+1}}.</td>
+                  <!-- <td class="product__img">
+                  <img class="product-img" src="assets/img/icons/Image.svg" alt="" />
+                  <div class="display__product__img">
+                    <img
+                      src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
+                      alt="" />
+                    </div>
+                  </td> -->
+                  <td>
+                    <div name="id">
+                      {{p?.subProductTypeName}}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{p?.subProductName}}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{p?.cost?.attributeValue}} {{p?.cost?.userConversionUom}}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{p.density.attributeValue}} {{p.density.userConversionUom}}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{p.usedPercent}}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{p.wastePercent}}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{p.subProductDensity.attributeValue}} {{p.subProductDensity.userConversionUom}}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{p.subProductMetricCost.attributeValue}} {{p.subProductMetricCost.userConversionUom}}
+                    </div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="section-card conversion-cost-calculation">
+        <div class="header">
+          <div class="title">
+            <span>Conversion Cost Calculation</span>
+          </div>
+          <div class="optional-values">
+            <div class="units">
+              <div class="currency-value">
+                <span>{{data?.rawMaterialProcess?.conversionMetricCost.userConversionUom}}</span>
+                <span>{{data?.rawMaterialProcess?.conversionMetricCost.attributeValue}}</span>
+              </div>
+              <div class="unit-value">
+                <span>{{data?.rawMaterialProcess?.conversionMetricCostSecondary.userConversionUom}}</span>
+                <span>{{data?.rawMaterialProcess?.conversionMetricCostSecondary.attributeValue}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section class="conversionCost">
+          <ul>
+            <ng-container>
+              @for (item of data?.rawMaterialProcess?.processConversionTypes; track item) {
+                <li>
+                  <div class="cnvrsn-frm">
+                    <select [value]="item.conversionTypeId" class="conversion-cost bg-light">
+                      @for (type of this.apiService.conversionTypes; track type) {
+                        <option disabled [value]="type.id">{{ type.description }}</option>
+                      }
+                    </select>
+                    <input type="number" readonly class="currency" [value]="item.metricCost?.attributeValue" />
+                    <input type="number" readonly class="currency bg-light"
+                      [value]="item.metricCost?.userConversionUom" />
                     </div>
                   </li>
-                </ng-container>
-              </ul>
-            </section>
+                }
+              </ng-container>
+            </ul>
+          </section>
+        </section>
+      </ng-template>
+    </mat-expansion-panel>
+  </ng-container>
+}
+@if (data.templateProcessType=='FIXED') {
+  <div class="header-light">
+    <div class="primary-text font-size-14">
+      <strong>Total Fixed Cost : </strong> <span class="price-text"> $
+    {{data?.rawMaterialProcess?.productOfProcess.metricCost.attributeValue}} </span>
+  </div>
+</div>
+<mat-expansion-panel [expanded]="true" class="mt-2" #mep1="matExpansionPanel">
+  <mat-expansion-panel-header>
+    <div class="panel-header p-0 " (click)="mep1.expanded = !mep1.expanded">
+      <div class="title-text">
+        <span>Material Cost</span>
+      </div>
+    </div>
+  </mat-expansion-panel-header>
+  <ng-template matExpansionPanelContent>
+    <section>
+      <div class="width-perc-20 my-1">
+        <div class="attribute one d-flex">
+          <label for=""> Material cost</label>
+          @if (data.fixedProcess.materialMetricCost) {
+            <input class="width-perc-80" [value]="data.fixedProcess.materialMetricCost?.attributeValue"
+              readonly type="text" />
+          }
+          <input type="text" readonly class="currency width-perc-20"
+            [value]="data.fixedProcess.materialMetricCost?.userConversionUom" />
+          </div>
+        </div>
+      </section>
+    </ng-template>
+  </mat-expansion-panel>
+  <mat-expansion-panel [expanded]="true" class="mt-2" #mep2="matExpansionPanel">
+    <mat-expansion-panel-header>
+      <div class="panel-header p-0" (click)="mep2.expanded = !mep2.expanded">
+        <div class="title-text">
+          <span>Conversion Cost</span>
+        </div>
+      </div>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <section>
+        <div class="width-perc-20 my-1">
+          <div class="attribute one d-flex">
+            <label for=""> Conversion cost</label>
+            <input class="width-perc-80" [value]="data.fixedProcess.conversionMetricCost?.attributeValue" readonly
+              type="text" />
+              <input type="text" class="width-perc-20 currency" readonly
+                [value]="data.fixedProcess.conversionMetricCost?.userConversionUom" />
+              </div>
+            </div>
           </section>
         </ng-template>
       </mat-expansion-panel>
-
-    </ng-container>
-  </ng-container>
-
-  <ng-container *ngIf="data.templateProcessType=='FIXED'">
-    <div class="header-light">
-      <div class="primary-text font-size-14">
-        <strong>Total Fixed Cost : </strong> <span class="price-text"> $
-          {{data?.rawMaterialProcess?.productOfProcess.metricCost.attributeValue}} </span>
-      </div>
-    </div>
-
-    <mat-expansion-panel [expanded]="true" class="mt-2" #mep1="matExpansionPanel">
-      <mat-expansion-panel-header>
-        <div class="panel-header p-0 " (click)="mep1.expanded = !mep1.expanded">
-          <div class="title-text">
-            <span>Material Cost</span>
-          </div>
-        </div>
-      </mat-expansion-panel-header>
-
-      <ng-template matExpansionPanelContent>
-        <section>
-          <div class="width-perc-20 my-1">
-            <div class="attribute one d-flex">
-              <label for=""> Material cost</label>
-              <input *ngIf="" class="width-perc-80" [value]="data.fixedProcess.materialMetricCost?.attributeValue"
-                readonly type="text" />
-              <input type="text" readonly class="currency width-perc-20"
-                [value]="data.fixedProcess.materialMetricCost?.userConversionUom" />
-            </div>
-          </div>
-        </section>
-      </ng-template>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel [expanded]="true" class="mt-2" #mep2="matExpansionPanel">
-      <mat-expansion-panel-header>
-        <div class="panel-header p-0" (click)="mep2.expanded = !mep2.expanded">
-          <div class="title-text">
-            <span>Conversion Cost</span>
-          </div>
-        </div>
-      </mat-expansion-panel-header>
-
-      <ng-template matExpansionPanelContent>
-        <section>
-          <div class="width-perc-20 my-1">
-            <div class="attribute one d-flex">
-              <label for=""> Conversion cost</label>
-              <input class="width-perc-80" [value]="data.fixedProcess.conversionMetricCost?.attributeValue" readonly
-                type="text" />
-              <input type="text" class="width-perc-20 currency" readonly
-                [value]="data.fixedProcess.conversionMetricCost?.userConversionUom" />
-            </div>
-          </div>
-        </section>
-      </ng-template>
-    </mat-expansion-panel>
-  </ng-container>
-
-  <ng-container *ngIf="data.templateProcessType=='NONE'">
-
-  </ng-container>
-
-
-
-</ng-container>
+    }
+    @if (data.templateProcessType=='NONE') {
+    }
+  }

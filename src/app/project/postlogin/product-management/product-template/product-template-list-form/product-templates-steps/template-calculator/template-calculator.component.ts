@@ -8,19 +8,18 @@ import { FormsService } from 'src/app/service/forms.service';
 import { ProductTemplateService } from '../../../service/product-template.service';
 import { PackageComponent } from './tabs/package/package.component';
 import { ProductComponent } from './tabs/product/product.component';
-import { NgIf } from '@angular/common';
+
 @Component({
     selector: 'template-calculator',
     templateUrl: './template-calculator.component.html',
     styleUrls: ['./template-calculator.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        NgIf,
-        ProductComponent,
-        PackageComponent,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    ProductComponent,
+    PackageComponent
+],
 })
 export class TemplateCalculatorComponent implements OnInit {
 

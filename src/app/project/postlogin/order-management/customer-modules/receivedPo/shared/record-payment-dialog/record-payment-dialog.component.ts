@@ -8,7 +8,7 @@ import { first } from 'rxjs';
 import { payment } from 'src/app/shared/constant';
 import { UomService } from 'src/app/service/uom.service';
 import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'app-record-payment-dialog',
@@ -16,11 +16,10 @@ import { NgFor } from '@angular/common';
     styleUrls: ['./record-payment-dialog.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        NgFor,
-        DadyinButtonComponent,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    DadyinButtonComponent
+],
 })
 export class RecordPaymentDialog implements OnInit {
   paymentRecordForm: UntypedFormGroup;

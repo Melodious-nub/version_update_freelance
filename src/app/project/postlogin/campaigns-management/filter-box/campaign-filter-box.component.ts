@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgIf } from '@angular/common';
+
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
@@ -9,7 +9,7 @@ import { MatIcon } from '@angular/material/icon';
     templateUrl: './campaign-filter-box.component.html',
     styleUrls: ['./campaign-filter-box.component.scss'],
     standalone: true,
-    imports: [MatIcon, NgIf, DadyinButtonComponent, FormsModule, ReactiveFormsModule]
+    imports: [MatIcon, DadyinButtonComponent, FormsModule, ReactiveFormsModule]
 })
 export class CampaignFilterBoxComponent implements OnInit {
   @Output() filtersApplied = new EventEmitter<any>();

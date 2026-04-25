@@ -2,7 +2,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChildren, QueryList, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { SocialProfilesApiService } from '../service/social-profiles-api.service';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
-import { Location, NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgClass, NgTemplateOutlet } from '@angular/common';
+import { Location, NgClass, NgTemplateOutlet } from '@angular/common';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -41,7 +41,7 @@ type ProductImageTile = {
     templateUrl: './social-post-create.component.html',
     styleUrls: ['./social-post-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, SpinnerOverlayComponent, DadyinButtonComponent, MatTabGroup, NgFor, MatTab, MatTabLabel, NgSwitch, NgSwitchCase, NgSwitchDefault, MatTabContent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, DadyinSelectComponent, DadyinSearchSelectNewComponent, CKEditorModule, NgClass, ExtendedModule, MatIcon, TimePickerComponent, NgTemplateOutlet]
+    imports: [SpinnerOverlayComponent, DadyinButtonComponent, MatTabGroup, MatTab, MatTabLabel, MatTabContent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, DadyinSelectComponent, DadyinSearchSelectNewComponent, CKEditorModule, NgClass, ExtendedModule, MatIcon, TimePickerComponent, NgTemplateOutlet]
 })
 export class SocialPostCreateComponent implements OnInit, AfterViewInit, OnDestroy {
     public Editor = ClassicEditor;

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, forwardRef } from '@angular/core';
 import { UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { NgFor } from '@angular/common';
+
 import { MatRadioGroup, MatRadioButton } from '@angular/material/radio';
 import { MatLabel } from '@angular/material/form-field';
 
@@ -12,7 +12,7 @@ import { MatLabel } from '@angular/material/form-field';
         { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DadyinRadioButtonComponent) },
     ],
     standalone: true,
-    imports: [MatLabel, MatRadioGroup, NgFor, MatRadioButton]
+    imports: [MatLabel, MatRadioGroup, MatRadioButton]
 })
 export class DadyinRadioButtonComponent implements OnInit {
 

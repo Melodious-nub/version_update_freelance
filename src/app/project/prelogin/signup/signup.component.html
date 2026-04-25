@@ -1,25 +1,27 @@
 <div class="signin-form">
   <div class="heading">Sign up as {{businessLines}}</div>
   <form name="form" class="form w-100" [formGroup]="signupGroup">
-    <div *ngIf="inviteType != 'EMPLOYEE'" class="row" formGroupName="userDTO">
-      <dadyin-input
-        class="rounded"
-        fontSize="14px"
-        labelBackground="#f8f9fa" 
-        height="50px"
-        inputType="string"
-        formControlName="name"
-        label="Business Name"
-        [isClearable]="false"
-        placeholder="Business name"
-      >
-      </dadyin-input>
-    </div>
+    @if (inviteType != 'EMPLOYEE') {
+      <div class="row" formGroupName="userDTO">
+        <dadyin-input
+          class="rounded"
+          fontSize="14px"
+          labelBackground="#f8f9fa"
+          height="50px"
+          inputType="string"
+          formControlName="name"
+          label="Business Name"
+          [isClearable]="false"
+          placeholder="Business name"
+          >
+        </dadyin-input>
+      </div>
+    }
     <div class="row" formGroupName="userDTO">
       <div class="col-6 col-md-12">
         <dadyin-input
           class="rounded"
-          labelBackground="#f8f9fa" 
+          labelBackground="#f8f9fa"
           fontSize="14px"
           height="50px"
           inputType="string"
@@ -27,7 +29,7 @@
           label="First Name"
           [isClearable]="false"
           placeholder="First Name"
-        >
+          >
         </dadyin-input>
       </div>
 
@@ -41,7 +43,7 @@
           label="Last Name"
           [isClearable]="false"
           placeholder="Last Name"
-        >
+          >
         </dadyin-input>
       </div>
     </div>
@@ -57,7 +59,7 @@
         [isClearable]="false"
         placeholder="Email"
         [isDisabled]="inviteType"
-      >
+        >
       </dadyin-input>
     </div>
     <div class="row mar-top-10" formGroupName="userDTO">
@@ -71,7 +73,7 @@
         [isClearable]="false"
         placeholder="Password"
         inputType="password"
-      >
+        >
       </dadyin-input>
     </div>
     <div class="row mar-top-10" formGroupName="userDTO">
@@ -84,13 +86,15 @@
         label="Confirm Password"
         [isClearable]="false"
         placeholder="Confirm Password"
-      >
+        >
       </dadyin-input>
     </div>
 
-    <div class="row mar-top-10" *ngIf="isPasswordMisMatched">
-      <small class="danger-text">Both password should match</small>
-    </div>
+    @if (isPasswordMisMatched) {
+      <div class="row mar-top-10">
+        <small class="danger-text">Both password should match</small>
+      </div>
+    }
     <div class="row mar-top-15">
       <div class="col-md-12">
         <dadyin-button
@@ -114,7 +118,7 @@
       fontSize="14px"
       label="Sign in"
       [theme]="'secondary'"
-    >
+      >
     </dadyin-button>
   </div>
 </div>

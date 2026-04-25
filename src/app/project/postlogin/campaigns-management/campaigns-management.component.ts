@@ -3,7 +3,7 @@ import { UntypedFormControl } from '@angular/forms';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { CampaignsApiService } from './service/campaigns-api.service';
 import { DataTableComponent } from '../../../shared/component/data-table/data-table.component';
-import { NgIf } from '@angular/common';
+
 import { CampaignFilterBoxComponent } from './filter-box/campaign-filter-box.component';
 import { SearchFilterComponent } from '../../../shared/component/search-filter/search-filter.component';
 import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
@@ -41,12 +41,11 @@ interface CampaignApiItem {
     styleUrls: ['./campaigns-management.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        SearchFilterComponent,
-        CampaignFilterBoxComponent,
-        NgIf,
-        DataTableComponent,
-    ],
+    DadyinButtonComponent,
+    SearchFilterComponent,
+    CampaignFilterBoxComponent,
+    DataTableComponent
+],
 })
 export class CampaignsManagementComponent implements OnInit {
   searchControl = new UntypedFormControl('');

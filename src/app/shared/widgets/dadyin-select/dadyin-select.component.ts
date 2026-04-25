@@ -2,7 +2,7 @@ import { ControlContainer, UntypedFormControl, NG_VALUE_ACCESSOR, ControlValueAc
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { CommonService } from 'src/app/service/common.service';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgIf, NgClass, NgStyle, NgFor } from '@angular/common';
+import { NgClass, NgStyle } from '@angular/common';
 
 
 @Component({
@@ -18,14 +18,12 @@ import { NgIf, NgClass, NgStyle, NgFor } from '@angular/common';
     ],
     standalone: true,
     imports: [
-        NgIf,
-        FormsModule,
-        NgClass,
-        ExtendedModule,
-        NgStyle,
-        ReactiveFormsModule,
-        NgFor,
-    ],
+    FormsModule,
+    NgClass,
+    ExtendedModule,
+    NgStyle,
+    ReactiveFormsModule
+],
 })
 export class DadyinSelectComponent implements ControlValueAccessor, OnInit {
     @Input() height: string | null = null;

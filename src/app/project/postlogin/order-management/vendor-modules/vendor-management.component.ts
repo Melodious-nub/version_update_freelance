@@ -7,7 +7,7 @@ import { RfqListComponent } from './rfq-components/rfq-list/rfq-list.component';
 import { MatBadge } from '@angular/material/badge';
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-vendor-management',
@@ -15,20 +15,18 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
     styleUrls: ['./vendor-management.component.scss'],
     standalone: true,
     imports: [
-        NgClass,
-        ExtendedModule,
-        MatTabGroup,
-        NgFor,
-        MatTab,
-        MatTabLabel,
-        MatBadge,
-        MatTabContent,
-        NgIf,
-        RfqListComponent,
-        ReceivedquotationListComponent,
-        PurchaseorderListComponent,
-        BillListComponent,
-    ],
+    NgClass,
+    ExtendedModule,
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatBadge,
+    MatTabContent,
+    RfqListComponent,
+    ReceivedquotationListComponent,
+    PurchaseorderListComponent,
+    BillListComponent
+],
 })
 export class VendorManagementComponent implements OnInit {
   @Input('single') single = false;

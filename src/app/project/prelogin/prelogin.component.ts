@@ -3,7 +3,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { SwiperOptions } from 'swiper';
 import { SwiperComponent, SwiperModule } from 'swiper/angular';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-prelogin',
@@ -11,12 +11,11 @@ import { NgFor, NgClass } from '@angular/common';
     styleUrls: ['./prelogin.component.scss'],
     standalone: true,
     imports: [
-        RouterOutlet,
-        NgFor,
-        NgClass,
-        ExtendedModule,
-        SwiperModule,
-    ],
+    RouterOutlet,
+    NgClass,
+    ExtendedModule,
+    SwiperModule
+],
 })
 export class PreloginComponent implements OnInit {
   @ViewChild('swiperR', { static: false }) swiperR?: SwiperComponent;

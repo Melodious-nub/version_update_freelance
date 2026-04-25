@@ -1,417 +1,421 @@
 <mat-sidenav-container class="sidenav-container">
   <!-- Sidebar -->
-  <mat-sidenav
-    *ngIf="userDetail"
-    #sidenav
-    mode="over"
-    (closedStart)="toggleSidebar(false)"
-    [opened]="isExpanded"
-    class="sidenav"
-  >
-    <div class="sidebar-logo bg-white">
-      <img src="../../../assets/nicons/Dadyinlogo.png" alt="Logo" />
-      <span class="brand-name">Dadyin</span>
-    </div>
-    <sidebar-layout
-      [isExpanded]="isExpanded"
-      (toggleSidebar)="toggleSidebar($event)"
-      [label]="true"
-    ></sidebar-layout>
-  </mat-sidenav>
+  @if (userDetail) {
+    <mat-sidenav
+      #sidenav
+      mode="over"
+      (closedStart)="toggleSidebar(false)"
+      [opened]="isExpanded"
+      class="sidenav"
+      >
+      <div class="sidebar-logo bg-white">
+        <img src="../../../assets/nicons/Dadyinlogo.png" alt="Logo" />
+        <span class="brand-name">Dadyin</span>
+      </div>
+      <sidebar-layout
+        [isExpanded]="isExpanded"
+        (toggleSidebar)="toggleSidebar($event)"
+        [label]="true"
+      ></sidebar-layout>
+    </mat-sidenav>
+  }
 
   <!-- Main content -->
   <mat-sidenav-content>
     <!-- Fixed Full-Width Navbar -->
-    <div
-      *ngIf="userDetail"
-      class="d-flex align-items-center text-nowrap overflow"
-      style="height: 65px; overflow-y: hidden"
-    >
+    @if (userDetail) {
       <div
-        style="min-width: 100px; max-width: 100px"
-        class="pt-2 d-flex cursor align-items-center fw-bold justify-content-center bg-white"
-        (click)="toggleSidebar(!this.isExpanded)"
-      >
-        <img
-          src="../../../assets/nicons/Dadyinlogo.png"
-          width="58px"
-          alt="Logo"
-        />
-      </div>
-      <div
-        class="mt-2 d-flex align-items-center mx-3 w-100 h-100 b-bottom-light"
-      >
-        <div class="text-dark font-size-16">
-          <b>{{ selectedmenu?.label }} </b>
-        </div>
-        <div class="vr-divide mx-2 my-2"></div>
-        <div class="d-flex align-items-center justify-content-between">
-          <ng-container *ngFor="let option of selectedmenu?.childs">
-            <div
-              *ngIf="
-                option.role?.includes(
+        class="d-flex align-items-center text-nowrap overflow"
+        style="height: 65px; overflow-y: hidden"
+        >
+        <div
+          style="min-width: 100px; max-width: 100px"
+          class="pt-2 d-flex cursor align-items-center fw-bold justify-content-center bg-white"
+          (click)="toggleSidebar(!this.isExpanded)"
+          >
+          <img
+            src="../../../assets/nicons/Dadyinlogo.png"
+            width="58px"
+            alt="Logo"
+            />
+          </div>
+          <div
+            class="mt-2 d-flex align-items-center mx-3 w-100 h-100 b-bottom-light"
+            >
+            <div class="text-dark font-size-16">
+              <b>{{ selectedmenu?.label }} </b>
+            </div>
+            <div class="vr-divide mx-2 my-2"></div>
+            <div class="d-flex align-items-center justify-content-between">
+              @for (option of selectedmenu?.childs; track option) {
+                @if (
+                  option.role?.includes(
                   tokenService?.getRoleInBusinessAccountIdToken()
-                )
-              "
+                  )
+                  ) {
+                  <div
               [ngClass]="{
                 active: isRouteActive(option.path)
               }"
-              class="mx-1 p-2 b-round b-all bg-white"
-            >
-              <a
+                    class="mx-1 p-2 b-round b-all bg-white"
+                    >
+                    <a
                 [ngClass]="{
                   active: isRouteActive(option.path)
                 }"
-                class="text-decoration-none b-none text-dark font-size-14 fw-bold"
-                #rla="routerLinkActive"
-                [routerLink]="option.path"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: false }"
-                (click)="navigateChild(option)"
-                >{{ option.label }}</a
-              >
-            </div>
-          </ng-container>
-        </div>
-      </div>
-      <div
-        class="mt-2 d-flex align-items-center fw-bold w-100 justify-content-end"
-      >
-        <div class="d-flex align-items-center justify-content-between">
-          <div class="d-flex align-items-center" style="column-gap: 10px">
-            <div class="d-md-block d-none bg-white b-round px-1">
-              <div class="d-flex align-items-center justify-content-between">
-                <div class="p-2 mx-1">
-                  <div>
-                    <img width="14px" src="../../../assets/nicons/Dollar.png" />
-                    USD
-                  </div>
-                  <div class="hr"></div>
-                  <div>
-                    <img width="14px" src="../../../assets/nicons/Dollar.png" />
-                    {{ currencyDetail.lang }}
-                  </div>
-                </div>
-                <div class="p-2 mx-1">
-                  <div>
-                    <img width="14px" src="../../../assets/nicons/Dollar.png" />
-                    {{ currencyDetail?.currency }}
-                  </div>
-                  <div class="hr"></div>
-                  <div>
-                    {{
-                      currencyDetail?.currencyrate
-                        | currency : currencyDetail?.currency
-                    }}
-                    &nbsp;/$
-                  </div>
-                </div>
-                <div class="p-2 mx-1">
-                  <div>
-                    <img width="14px" src="../../../assets/nicons/INR.png" />
-                    {{ currencyDetail?.currency2nd }}
-                  </div>
-                  <div class="hr"></div>
-                  <div>
-                    {{
-                      currencyDetail?.currency2ndrate
-                        | currency : currencyDetail?.currency2nd
-                    }}
-                    &nbsp;/$
-                  </div>
-                </div>
+                      class="text-decoration-none b-none text-dark font-size-14 fw-bold"
+                      #rla="routerLinkActive"
+                      [routerLink]="option.path"
+                      routerLinkActive="active"
+                      [routerLinkActiveOptions]="{ exact: false }"
+                      (click)="navigateChild(option)"
+                      >{{ option.label }}</a
+                      >
+                    </div>
+                  }
+                }
               </div>
             </div>
-            <div class="vr-divide"></div>
             <div
-              class="bg-white b-round p-2 d-flex align-items-center justify-content-between"
-            >
-              <div
-                class="header-logo d-flex align-items-center justify-content-between"
+              class="mt-2 d-flex align-items-center fw-bold w-100 justify-content-end"
               >
-                <div>
-                  <img
-                    onError="this.src='../../../../../assets/img/business_logo.png'"
-                    [src]="imgUrl + logoimage"
-                    alt="Brand Logo"
-                    width="60px"
-                    height="50px"
-                    class="headerlogo b-round"
-                  />
-                </div>
-                <div class="mx-2">
-                  <b> {{ userDetail?.name }} </b>
-                  <br />
-                  <span class="text-primary">{{
-                    userDetail?.branchDetails[0]?.name
-                  }}</span>
-                </div>
-              </div>
-              <ng-container
-                *ngIf="
-                  this.tokenService.getRoleInBusinessAccountIdToken() != 'CRM'
-                "
-              >
-                <button
-                  [matBadge]="unreadNotificationsList?.length"
-                  [matBadgeHidden]="unreadNotificationsList?.length < 1"
-                  matBadgeOverlap="false"
-                  class="notification bg-white b-none mx-3 p-0"
-                >
-                  <img
-                    src="../../../assets/nicons/Notification no bg.png"
-                    width="20px"
-                    (click)="$event.stopPropagation(); toggleNotification(true)"
-                    alt=""
-                  />
-                </button>
-              </ng-container>
-
-              <button
-                class="b-none bg-primary text-white round width-30 height-30 mx-1"
-                (click)="onClickSidebar()"
-              >
-                <div class="profile-img">
-                  {{ firstName?.charAt(0).toUpperCase()
-                  }}{{ lastName?.charAt(0).toUpperCase() }}
-                </div>
-              </button>
-
-              <div
-                *ngIf="notification"
-                class="notification-card b-light shadow-sm"
-              >
-                <div
-                  class="d-flex align-items-center justify-content-between p-1 bg-light b-light head"
-                >
-                  <div class="title-text"><b>Notifications</b></div>
-                  <div>
-                    <dadyin-button
-                      [theme]="'borderless-primary'"
-                      type="icon"
-                      typeval="close"
-                      (clicked)="toggleNotification(false)"
-                    >
-                    </dadyin-button>
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center" style="column-gap: 10px">
+                  <div class="d-md-block d-none bg-white b-round px-1">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="p-2 mx-1">
+                        <div>
+                          <img width="14px" src="../../../assets/nicons/Dollar.png" />
+                          USD
+                        </div>
+                        <div class="hr"></div>
+                        <div>
+                          <img width="14px" src="../../../assets/nicons/Dollar.png" />
+                          {{ currencyDetail.lang }}
+                        </div>
+                      </div>
+                      <div class="p-2 mx-1">
+                        <div>
+                          <img width="14px" src="../../../assets/nicons/Dollar.png" />
+                          {{ currencyDetail?.currency }}
+                        </div>
+                        <div class="hr"></div>
+                        <div>
+                          {{
+                          currencyDetail?.currencyrate
+                          | currency : currencyDetail?.currency
+                          }}
+                          &nbsp;/$
+                        </div>
+                      </div>
+                      <div class="p-2 mx-1">
+                        <div>
+                          <img width="14px" src="../../../assets/nicons/INR.png" />
+                          {{ currencyDetail?.currency2nd }}
+                        </div>
+                        <div class="hr"></div>
+                        <div>
+                          {{
+                          currencyDetail?.currency2ndrate
+                          | currency : currencyDetail?.currency2nd
+                          }}
+                          &nbsp;/$
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="body">
-                  <p
-                    class="primary-text text-center m-0 border-bottom"
-                    *ngIf="unreadNotificationsList?.length == 0"
-                  >
-                    No Unread Notifications
-                  </p>
+                  <div class="vr-divide"></div>
                   <div
-                    [ngClass]="{ 'bg-light': !notification?.is_seen }"
+                    class="bg-white b-round p-2 d-flex align-items-center justify-content-between"
+                    >
+                    <div
+                      class="header-logo d-flex align-items-center justify-content-between"
+                      >
+                      <div>
+                        <img
+                          onError="this.src='../../../../../assets/img/business_logo.png'"
+                          [src]="imgUrl + logoimage"
+                          alt="Brand Logo"
+                          width="60px"
+                          height="50px"
+                          class="headerlogo b-round"
+                          />
+                        </div>
+                        <div class="mx-2">
+                          <b> {{ userDetail?.name }} </b>
+                          <br />
+                          <span class="text-primary">{{
+                            userDetail?.branchDetails[0]?.name
+                          }}</span>
+                        </div>
+                      </div>
+                      @if (
+                        this.tokenService.getRoleInBusinessAccountIdToken() != 'CRM'
+                        ) {
+                        <button
+                          [matBadge]="unreadNotificationsList?.length"
+                          [matBadgeHidden]="unreadNotificationsList?.length < 1"
+                          matBadgeOverlap="false"
+                          class="notification bg-white b-none mx-3 p-0"
+                          >
+                          <img
+                            src="../../../assets/nicons/Notification no bg.png"
+                            width="20px"
+                            (click)="$event.stopPropagation(); toggleNotification(true)"
+                            alt=""
+                            />
+                          </button>
+                        }
+                        <button
+                          class="b-none bg-primary text-white round width-30 height-30 mx-1"
+                          (click)="onClickSidebar()"
+                          >
+                          <div class="profile-img">
+                            {{ firstName?.charAt(0).toUpperCase()
+                            }}{{ lastName?.charAt(0).toUpperCase() }}
+                          </div>
+                        </button>
+                        @if (notification) {
+                          <div
+                            class="notification-card b-light shadow-sm"
+                            >
+                            <div
+                              class="d-flex align-items-center justify-content-between p-1 bg-light b-light head"
+                              >
+                              <div class="title-text"><b>Notifications</b></div>
+                              <div>
+                                <dadyin-button
+                                  [theme]="'borderless-primary'"
+                                  type="icon"
+                                  typeval="close"
+                                  (clicked)="toggleNotification(false)"
+                                  >
+                                </dadyin-button>
+                              </div>
+                            </div>
+                            <div class="body">
+                              @if (unreadNotificationsList?.length == 0) {
+                                <p
+                                  class="primary-text text-center m-0 border-bottom"
+                                  >
+                                  No Unread Notifications
+                                </p>
+                              }
+                              @for (notification of unreadNotificationsList; track notification) {
+                                <div
+                                  [ngClass]="{ 'bg-light': !notification?.is_seen }"
                     [matTooltip]="
                       notification?.is_seen ? '' : 'Mark as Read & View'
                     "
-                    *ngFor="let notification of unreadNotificationsList"
-                    class="d-flex align-items-center b-light p-1 cursor"
-                  >
-                    <div>
-                      <dadyin-button
-                        [theme]="'borderless-primary'"
-                        type="icon"
-                        typeval="subtitles"
-                      >
-                      </dadyin-button>
-                    </div>
-                    <div class="w-100 text-left ms-2 text-ellipse">
-                      <div
-                        class="text-ellipse"
-                        (click)="onClickNotification(notification);$event.stopPropagation()"
-                      >
-                        <div class="title-text">
-                          <b>{{ notification?.subject }}</b>
-                        </div>
-                        <div class="text-ellipse">
-                          {{ notification?.notification }}
-                        </div>
-                      </div>
-                      <div
-                        class="d-flex align-items-center justify-content-between"
-                      >
-                        <div class="text-dark">
-                          <small>
-                            {{ notification?.sent_at | date : "medium" }}
-                          </small>
-                        </div>
-                        <div>
-                          <i
-                            class="material-icon"
-                            *ngIf="notification?.is_seen"
-                            matTooltip="Mark as Unread"
-                            (click)="markAsUnreadNotification(notification);$event.stopPropagation()"
-                            >check_circle</i
-                          >
-                        </div>
+                                  class="d-flex align-items-center b-light p-1 cursor"
+                                  >
+                                  <div>
+                                    <dadyin-button
+                                      [theme]="'borderless-primary'"
+                                      type="icon"
+                                      typeval="subtitles"
+                                      >
+                                    </dadyin-button>
+                                  </div>
+                                  <div class="w-100 text-left ms-2 text-ellipse">
+                                    <div
+                                      class="text-ellipse"
+                                      (click)="onClickNotification(notification);$event.stopPropagation()"
+                                      >
+                                      <div class="title-text">
+                                        <b>{{ notification?.subject }}</b>
+                                      </div>
+                                      <div class="text-ellipse">
+                                        {{ notification?.notification }}
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="d-flex align-items-center justify-content-between"
+                                      >
+                                      <div class="text-dark">
+                                        <small>
+                                          {{ notification?.sent_at | date : "medium" }}
+                                        </small>
+                                      </div>
+                                      <div>
+                                        @if (notification?.is_seen) {
+                                          <i
+                                            class="material-icon"
+                                            matTooltip="Mark as Unread"
+                                            (click)="markAsUnreadNotification(notification);$event.stopPropagation()"
+                                            >check_circle</i
+                                            >
+                                        }
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              }
+                              @for (notification of notificationsList; track notification) {
+                                <div
+                                  [ngClass]="{ 'bg-light': !notification?.is_seen }"
+                                  class="d-flex align-items-center b-light p-1 cursor"
+                                  >
+                                  <div>
+                                    <dadyin-button
+                                      [theme]="'borderless-primary'"
+                                      type="icon"
+                                      typeval="subtitles"
+                                      (clicked)="toggleNotification(false);$event.stopPropagation()"
+                                      >
+                                    </dadyin-button>
+                                  </div>
+                                  <div
+                                    class="w-100 text-left ms-2 text-ellipse"
+                      [matTooltip]="
+                        notification?.is_seen ? '' : 'Mark as Read & View'
+                      "
+                                    >
+                                    <div (click)="onClickNotification(notification);$event.stopPropagation()">
+                                      <div class="title-text">
+                                        <b>{{ notification?.subject }}</b>
+                                      </div>
+                                      <div class="text-ellipse">
+                                        {{ notification?.notification }}
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="d-flex align-items-center justify-content-between"
+                                      >
+                                      <div class="primary-text">
+                                        <small>
+                                          {{ notification?.sent_at | date : "medium" }}
+                                        </small>
+                                      </div>
+                                      <div>
+                                        @if (notification?.is_seen) {
+                                          <dadyin-button
+                                            [theme]="'borderless-primary'"
+                                            type="icon"
+                                            typeval="check_circle"
+                                            matTooltip="Mark as Unread"
+                                            (clicked)="markAsUnreadNotification(notification);$event.stopPropagation()"
+                                            >
+                                          </dadyin-button>
+                                        }
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              }
+                            </div>
+                          </div>
+                        }
                       </div>
                     </div>
                   </div>
                   <div
-                    [ngClass]="{ 'bg-light': !notification?.is_seen }"
-                    *ngFor="let notification of notificationsList"
-                    class="d-flex align-items-center b-light p-1 cursor"
-                  >
-                    <div>
-                      <dadyin-button
-                        [theme]="'borderless-primary'"
-                        type="icon"
-                        typeval="subtitles"
-                        (clicked)="toggleNotification(false);$event.stopPropagation()"
-                      >
-                      </dadyin-button>
-                    </div>
-                    <div
-                      class="w-100 text-left ms-2 text-ellipse"
-                      [matTooltip]="
-                        notification?.is_seen ? '' : 'Mark as Read & View'
-                      "
+                    appendTo="body"
+                    class="sidebar-slider bg-white"
+                    [class.sidebar-slide-in]="sidebarShow"
                     >
-                      <div (click)="onClickNotification(notification);$event.stopPropagation()">
-                        <div class="title-text">
-                          <b>{{ notification?.subject }}</b>
+                    <div class="sidebar-content">
+                      <div class="user-profile">
+                        <div class="profile-img">
+                          {{ firstName?.charAt(0).toUpperCase()
+                          }}{{ lastName?.charAt(0).toUpperCase() }}
                         </div>
-                        <div class="text-ellipse">
-                          {{ notification?.notification }}
+                        <div class="profile-txt">
+                          <div class="font-size-14 fw-bold">{{ userDetail?.name }}</div>
+                          <div class="font-size-12">
+                            {{ userDetail?.branchDetails[0]?.name }}
+                          </div>
+                          <div class="font-size-12">
+                            {{ userDetail?.primaryContact?.email }}
+                          </div>
                         </div>
                       </div>
-
-                      <div
-                        class="d-flex align-items-center justify-content-between"
-                      >
-                        <div class="primary-text">
-                          <small>
-                            {{ notification?.sent_at | date : "medium" }}
-                          </small>
-                        </div>
-                        <div>
-                          <dadyin-button
-                            *ngIf="notification?.is_seen"
-                            [theme]="'borderless-primary'"
-                            type="icon"
-                            typeval="check_circle"
-                             matTooltip="Mark as Unread"
-                            (clicked)="markAsUnreadNotification(notification);$event.stopPropagation()"
+                      <!-- <div class="d-md-none d-block">
+                      <div class="currency-info">
+                        <button>
+                          <label>USD</label>
+                          <div class="hr"></div>
+                          <label>{{ currencyDetail.lang }}</label>
+                        </button>
+                        <button class="INR w-100">
+                          {{ currencyDetail?.currency }}
+                          {{
+                          currencyDetail?.currencyrate
+                          | currency : currencyDetail?.currency
+                          }}
+                          <div></div>
+                          <small class="price-text"> &nbsp;PER USD</small>
+                        </button>
+                        <button class="USD w-100">
+                          {{ currencyDetail?.currency2nd }}
+                          {{
+                          currencyDetail?.currency2ndrate
+                          | currency : currencyDetail?.currency2nd
+                          }}
+                          <div></div>
+                          <small class="price-text"> &nbsp;PER USD</small>
+                        </button>
+                      </div>
+                    </div> -->
+                    <div class="profile-content">
+                      @if (
+                        this.tokenService.getRoleInBusinessAccountIdToken() != 'CRM'
+                        ) {
+                        <div
+                          class="action-itm"
+                          (click)="onClickBusinessRegistration()"
                           >
-                          </dadyin-button>
+                          <span>Business Registration</span>
+                        </div>
+                      }
+                      <div class="action-itm" (click)="createNewBusinessAccount()">
+                        <span>Create new Business Account</span>
+                      </div>
+                      <div class="action-itm" (click)="onClickToSwitchAccount()">
+                        <span>Switch Business account</span>
+                      </div>
+                      <div class="action-itm" (click)="onClickChangePassword()">
+                        <span>Change Password</span>
+                      </div>
+                    </div>
+                    <div class="profile-actions">
+                      <div class="action-itm" (click)="onClickLogout()">
+                        <i class="material-icon">logout</i> <span>Log Out</span>
+                      </div>
+                      @if (
+                        this.tokenService.getRoleInBusinessAccountIdToken() != 'CRM'
+                        ) {
+                        <div
+                          class="action-itm"
+                          (click)="onInviteClick()"
+                          >
+                          <i class="material-icon">person_add</i
+                            ><span>Invite To Platform</span>
+                          </div>
+                        }
+                        <div class="action-itm" routerLink="/about-us">
+                          <i class="material-icon">info</i><span>About Us</span>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div
-          appendTo="body"
-          class="sidebar-slider bg-white"
-          [class.sidebar-slide-in]="sidebarShow"
-        >
-          <div class="sidebar-content">
-            <div class="user-profile">
-              <div class="profile-img">
-                {{ firstName?.charAt(0).toUpperCase()
-                }}{{ lastName?.charAt(0).toUpperCase() }}
-              </div>
-              <div class="profile-txt">
-                <div class="font-size-14 fw-bold">{{ userDetail?.name }}</div>
-                <div class="font-size-12">
-                  {{ userDetail?.branchDetails[0]?.name }}
-                </div>
-                <div class="font-size-12">
-                  {{ userDetail?.primaryContact?.email }}
-                </div>
-              </div>
-            </div>
-            <!-- <div class="d-md-none d-block">
-              <div class="currency-info">
-                <button>
-                  <label>USD</label>
-                  <div class="hr"></div>
-                  <label>{{ currencyDetail.lang }}</label>
-                </button>
-                <button class="INR w-100">
-                  {{ currencyDetail?.currency }}
-                  {{
-                    currencyDetail?.currencyrate
-                      | currency : currencyDetail?.currency
-                  }}
-                  <div></div>
-                  <small class="price-text"> &nbsp;PER USD</small>
-                </button>
-                <button class="USD w-100">
-                  {{ currencyDetail?.currency2nd }}
-                  {{
-                    currencyDetail?.currency2ndrate
-                      | currency : currencyDetail?.currency2nd
-                  }}
-                  <div></div>
-                  <small class="price-text"> &nbsp;PER USD</small>
-                </button>
-              </div>
-            </div> -->
+            }
 
-            <div class="profile-content">
-              <div
-                *ngIf="
-                  this.tokenService.getRoleInBusinessAccountIdToken() != 'CRM'
-                "
-                class="action-itm"
-                (click)="onClickBusinessRegistration()"
-              >
-                <span>Business Registration</span>
+            <!-- Page content -->
+            <div class="main-content d-flex" style="height: 95vh">
+              <div class="bg-white">
+                <sidebar-layout
+                  [flyerMode]="isFlyerMode"
+                  [isExpanded]="isExpanded"
+                  (toggleSidebar)="toggleSidebar($event)"
+                  [label]="false"
+                ></sidebar-layout>
               </div>
-              <div class="action-itm" (click)="createNewBusinessAccount()">
-                <span>Create new Business Account</span>
-              </div>
-
-              <div class="action-itm" (click)="onClickToSwitchAccount()">
-                <span>Switch Business account</span>
-              </div>
-              <div class="action-itm" (click)="onClickChangePassword()">
-                <span>Change Password</span>
+              <div class="w-100  px-2 mt-2" style="overflow-x: auto; overflow-y: hidden">
+                <router-outlet></router-outlet>
               </div>
             </div>
-            <div class="profile-actions">
-              <div class="action-itm" (click)="onClickLogout()">
-                <i class="material-icon">logout</i> <span>Log Out</span>
-              </div>
-              <div
-                *ngIf="
-                  this.tokenService.getRoleInBusinessAccountIdToken() != 'CRM'
-                "
-                class="action-itm"
-                (click)="onInviteClick()"
-              >
-                <i class="material-icon">person_add</i
-                ><span>Invite To Platform</span>
-              </div>
-              <div class="action-itm" routerLink="/about-us">
-                <i class="material-icon">info</i><span>About Us</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Page content -->
-    <div class="main-content d-flex" style="height: 95vh">
-      <div class="bg-white">
-        <sidebar-layout
-          [flyerMode]="isFlyerMode"
-          [isExpanded]="isExpanded"
-          (toggleSidebar)="toggleSidebar($event)"
-          [label]="false"
-        ></sidebar-layout>
-      </div>
-      <div class="w-100  px-2 mt-2" style="overflow-x: auto; overflow-y: hidden">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+          </mat-sidenav-content>
+        </mat-sidenav-container>

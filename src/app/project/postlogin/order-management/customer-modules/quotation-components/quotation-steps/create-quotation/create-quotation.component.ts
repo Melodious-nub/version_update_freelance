@@ -25,7 +25,7 @@ import { MatOption } from '@angular/material/core';
 import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
 import { DadyinInputComponent } from '../../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
 import { DadyinSelectComponent } from '../../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
-import { NgIf, NgFor } from '@angular/common';
+
 import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { DadyinSearchableSelectComponent } from '../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
@@ -36,23 +36,21 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     styleUrls: ['./create-quotation.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatExpansionPanelContent,
-        DadyinSearchableSelectComponent,
-        DadyinButtonComponent,
-        NgIf,
-        DadyinSelectComponent,
-        DadyinInputComponent,
-        MatAutocompleteTrigger,
-        MatAutocomplete,
-        NgFor,
-        MatOption,
-        OrderTransactionPackagesComponent,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatExpansionPanelContent,
+    DadyinSearchableSelectComponent,
+    DadyinButtonComponent,
+    DadyinSelectComponent,
+    DadyinInputComponent,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption,
+    OrderTransactionPackagesComponent
+],
 })
 export class CreateQuotationComponent implements OnInit, AfterViewInit {
   tierPriceView = false;

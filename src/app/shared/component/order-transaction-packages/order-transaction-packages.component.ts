@@ -15,7 +15,7 @@ import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { MatOption } from '@angular/material/core';
 import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
 import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
-import { NgIf, NgFor, NgClass, DecimalPipe } from '@angular/common';
+import { NgClass, DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'app-order-transaction-packages',
@@ -23,22 +23,20 @@ import { NgIf, NgFor, NgClass, DecimalPipe } from '@angular/common';
     styleUrls: ['./order-transaction-packages.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        DadyinButtonComponent,
-        NgFor,
-        FormsModule,
-        ReactiveFormsModule,
-        MatAutocompleteTrigger,
-        MatAutocomplete,
-        MatOption,
-        NgClass,
-        ExtendedModule,
-        NgbTooltip,
-        MatTooltip,
-        DadyinSelectComponent,
-        DecimalPipe,
-        NumberFormatterPipe,
-    ],
+    DadyinButtonComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption,
+    NgClass,
+    ExtendedModule,
+    NgbTooltip,
+    MatTooltip,
+    DadyinSelectComponent,
+    DecimalPipe,
+    NumberFormatterPipe
+],
 })
 export class OrderTransactionPackagesComponent implements OnInit {
   @Input() tierPriceView: boolean = false;

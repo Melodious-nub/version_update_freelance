@@ -19,7 +19,7 @@ import { ContainerInfoComponent } from './container-info/container-info.componen
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
 import { CdkDrag } from '@angular/cdk/drag-drop';
-import { NgIf, NgFor } from '@angular/common';
+
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 @Component({
     selector: 'app-container-steps',
@@ -27,20 +27,18 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     styleUrls: ['./container-steps.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        NgIf,
-        CdkDrag,
-        NgFor,
-        FormsModule,
-        ReactiveFormsModule,
-        MatTabGroup,
-        MatTab,
-        OrderDetailsComponent,
-        ContainerInfoComponent,
-        UnloadingDetailsComponent,
-        ExpensesDetailsComponent,
-        DocumentsDetailsComponent,
-    ],
+    DadyinButtonComponent,
+    CdkDrag,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTabGroup,
+    MatTab,
+    OrderDetailsComponent,
+    ContainerInfoComponent,
+    UnloadingDetailsComponent,
+    ExpensesDetailsComponent,
+    DocumentsDetailsComponent
+],
 })
 export class ContainerStepsComponent implements OnInit {
   // ************* Variable Declarations *************

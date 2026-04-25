@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { MatButton } from '@angular/material/button';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'qcmobile-dialog',
@@ -13,11 +13,10 @@ import { NgIf } from '@angular/common';
     styleUrls: ['./qcmobile-dialog.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        MatDialogTitle,
-        MatDialogActions,
-        MatButton,
-    ],
+    MatDialogTitle,
+    MatDialogActions,
+    MatButton
+],
 })
 export class QcmobileDialogComponent {
   constructor(

@@ -6,7 +6,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { InventoryAssigningModalComponent } from '../modals/inventory-assigning-modal/inventory-assigning-modal.component';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmationDialogComponent } from '../../../product-management/product-template/product-template-list-form/product-templates-steps/template-process/components/process/edit-process/components/select-process-name/confirmation-dialog/confirmation-dialog.component';
-import { Location, NgFor, NgIf } from '@angular/common';
+import { Location } from '@angular/common';
 import { DataTableComponent } from '../../../../../shared/component/data-table/data-table.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 import { MatIcon } from '@angular/material/icon';
@@ -17,18 +17,16 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     styleUrls: ['./product-wise-create-inventory.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        MatIcon,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatExpansionPanelContent,
-        NgFor,
-        FormsModule,
-        ReactiveFormsModule,
-        NgIf,
-        DataTableComponent,
-    ],
+    DadyinButtonComponent,
+    MatIcon,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatExpansionPanelContent,
+    FormsModule,
+    ReactiveFormsModule,
+    DataTableComponent
+],
 })
 export class ProductWiseCreateInventoryComponent implements OnInit {
   productId: any;

@@ -14,20 +14,18 @@ import { BusinessAccountService } from '../../postlogin/business-account/busines
 import { SwiperModule } from 'swiper/angular';
 import { MatIcon } from '@angular/material/icon';
 import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgIf, NgFor } from '@angular/common';
+
 @Component({
     selector: 'app-landing',
     templateUrl: './landing.component.html',
     styleUrls: ['./landing.component.scss'],
     standalone: true,
     imports: [
-        RouterLink,
-        NgIf,
-        DadyinButtonComponent,
-        MatIcon,
-        SwiperModule,
-        NgFor,
-    ],
+    RouterLink,
+    DadyinButtonComponent,
+    MatIcon,
+    SwiperModule
+],
 })
 export class LandingComponent implements OnInit {
   productsList = [];

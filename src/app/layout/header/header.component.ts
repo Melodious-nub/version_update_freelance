@@ -17,7 +17,7 @@ import { DadyinButtonComponent } from '../../shared/widgets/dadyin-button/dadyin
 import { MatBadge } from '@angular/material/badge';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { SideBarComponent } from '../side-bar/side-bar.component';
-import { NgIf, NgFor, NgClass, CurrencyPipe, DatePipe } from '@angular/common';
+import { NgClass, CurrencyPipe, DatePipe } from '@angular/common';
 import { MatSidenavContainer, MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 
 @Component({
@@ -26,23 +26,21 @@ import { MatSidenavContainer, MatSidenav, MatSidenavContent } from '@angular/mat
     styleUrls: ['./header.component.scss'],
     standalone: true,
     imports: [
-        MatSidenavContainer,
-        NgIf,
-        MatSidenav,
-        SideBarComponent,
-        MatSidenavContent,
-        NgFor,
-        ExtendedModule,
-        NgClass,
-        RouterLinkActive,
-        RouterLink,
-        MatBadge,
-        DadyinButtonComponent,
-        MatTooltip,
-        RouterOutlet,
-        CurrencyPipe,
-        DatePipe,
-    ],
+    MatSidenavContainer,
+    MatSidenav,
+    SideBarComponent,
+    MatSidenavContent,
+    ExtendedModule,
+    NgClass,
+    RouterLinkActive,
+    RouterLink,
+    MatBadge,
+    DadyinButtonComponent,
+    MatTooltip,
+    RouterOutlet,
+    CurrencyPipe,
+    DatePipe
+],
 })
 export class HeaderComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

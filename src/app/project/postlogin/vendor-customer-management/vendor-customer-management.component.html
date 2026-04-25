@@ -1,8 +1,8 @@
 <div>
-  <ng-container *ngIf="isCustomer">
+  @if (isCustomer) {
     <mat-tab-group class="mat-steps" [selectedIndex]="customerTabSelectedIndex"
       (selectedIndexChange)="changeMainTab($event)">
-      <ng-container *ngFor="let link of mainTabCustomers; let j = index">
+      @for (link of mainTabCustomers; track link; let j = $index) {
         <mat-tab [disabled]="
             !link.role?.includes(
               tokenService?.getRoleInBusinessAccountIdToken()
@@ -10,19 +10,21 @@
           ">
           <ng-template mat-tab-label>
             <span>{{ link.label }}
-              <span *ngIf="j == customerTabSelectedIndex && pageConfig.totalElements">({{ pageConfig?.totalElements
+              @if (j == customerTabSelectedIndex && pageConfig.totalElements) {
+                <span>({{ pageConfig?.totalElements
                 }})</span>
+              }
             </span>
           </ng-template>
           <ng-template matTabContent>
-            <ng-container *ngIf="currentMainIndex == 0">
+            @if (currentMainIndex == 0) {
               <ng-container>
                 <div class="header-wrapper my-2">
                   <div class="row mx-auto">
                     <div class="col-md-6 col-12 px-0">
                       <div class="filters">
                         <search-filter (inputChange)="onInput($event)"
-                          [placeholder]="'Search Based On Code/Name'"></search-filter>
+                        [placeholder]="'Search Based On Code/Name'"></search-filter>
                       </div>
                     </div>
                     <div
@@ -32,130 +34,137 @@
                           (clicked)="navigateByLink(customerAddUrl)">
                         </dadyin-button>
                         <!-- <dadyin-button [theme]="'primary'" label="Generate PDF JSON"
-                          (clicked)="generatePdfWithAddressFromJson()">
-                        </dadyin-button> -->
-                      </div>
+                        (clicked)="generatePdfWithAddressFromJson()">
+                      </dadyin-button> -->
                     </div>
                   </div>
                 </div>
-                <div class="content-wrapper mt-2">
-                  <data-table [data]="lcpDetails" [headers]="headers" [searchTerm]="filterValue"
-                    [pageConfig]="pageConfig" (editData)="editRecord($event)" (sortChange)="sort($event)"
-                    (pageChange)="pageChange($event)" [actions]="tableActions" (actionClick)="onActionClick($event)"
-                    (rowChange)="onEdit($event)">
-                  </data-table>
-                </div>
-              </ng-container>
+              </div>
+              <div class="content-wrapper mt-2">
+                <data-table [data]="lcpDetails" [headers]="headers" [searchTerm]="filterValue"
+                  [pageConfig]="pageConfig" (editData)="editRecord($event)" (sortChange)="sort($event)"
+                  (pageChange)="pageChange($event)" [actions]="tableActions" (actionClick)="onActionClick($event)"
+                  (rowChange)="onEdit($event)">
+                </data-table>
+              </div>
             </ng-container>
-            <ng-container *ngIf="currentMainIndex == 1">
-              <ng-container>
-                <div class="header-wrapper my-2">
-                  <div class="row mx-auto">
-                    <div class="col-md-6 col-12 px-0">
-                      <div class="filters">
+          }
+          @if (currentMainIndex == 1) {
+            <ng-container>
+              <div class="header-wrapper my-2">
+                <div class="row mx-auto">
+                  <div class="col-md-6 col-12 px-0">
+                    <div class="filters">
                         <search-filter (inputChange)="onInput($event)" [placeholder]="
                             'Search Based On Customer Code/Customer Name'
                           "></search-filter>
-                      </div>
-                    </div>
-                    <div
-                      class="col-md-6 col-12 px-0 d-flex justify-content-end align-items-center align-items-center px-0">
-                      <!-- <div *ngIf="bulkAssignmentIds?.length > 0" class="action-btns">
-                        <dadyin-button [theme]="'primary'" label="Generate PDF" (clicked)="generatePdfWithAddress()">
-                        </dadyin-button>
-                      </div> -->
-                      <div class="action-btns">
-                        <dadyin-button [theme]="'primary'" label="Add Customer"
-                          (clicked)="navigateByLink(customerAddUrl)">
-                        </dadyin-button>
-                        <dadyin-button [theme]="'primary'" label="Business Entity Config"
-                          (clicked)="openBusinessEntityConfiguration()">
-                        </dadyin-button>
-
-                      </div>
                     </div>
                   </div>
+                  <div
+                    class="col-md-6 col-12 px-0 d-flex justify-content-end align-items-center align-items-center px-0">
+                    <!-- <div *ngIf="bulkAssignmentIds?.length > 0" class="action-btns">
+                    <dadyin-button [theme]="'primary'" label="Generate PDF" (clicked)="generatePdfWithAddress()">
+                    </dadyin-button>
+                  </div> -->
+                  <div class="action-btns">
+                    <dadyin-button [theme]="'primary'" label="Add Customer"
+                      (clicked)="navigateByLink(customerAddUrl)">
+                    </dadyin-button>
+                    <dadyin-button [theme]="'primary'" label="Business Entity Config"
+                      (clicked)="openBusinessEntityConfiguration()">
+                    </dadyin-button>
+                  </div>
                 </div>
-                <div class="content-wrapper mt-2">
-                  <data-table [data]="customerDetails" [headers]="headers" [searchTerm]="filterValue"
-                    [pageConfig]="pageConfig" (editData)="editRecord($event)" (sortChange)="sort($event)"
-                    (pageChange)="pageChange($event)" [actions]="tableActionCustomers"
-                    (actionClick)="onActionClick($event)" (rowChange)="onEdit($event)"
-                    (rowSelection)="onRowSelection($event)">
-                  </data-table>
-                </div>
-              </ng-container>
-            </ng-container>
-            <ng-container *ngIf="currentMainIndex == 2">
-              <ng-container>
-                <div class="lead-sub-tabs mb-3">
-                  <button *ngFor="let tab of leadSubTabs" type="button" class="lead-sub-tab-btn"
-                    [class.active]="currentLeadTabIndex === tab.index" (click)="changeLeadSubTab(tab.index)">
-                    {{ tab.label }}
-                  </button>
-                </div>
-                <div class="header-wrapper my-2">
-                  <div class="row mx-auto">
-                    <div class="col-md-6 col-12 px-0 my-1">
-                      <div class="filters d-flex w-100 align-items-center">
+              </div>
+            </div>
+            <div class="content-wrapper mt-2">
+              <data-table [data]="customerDetails" [headers]="headers" [searchTerm]="filterValue"
+                [pageConfig]="pageConfig" (editData)="editRecord($event)" (sortChange)="sort($event)"
+                (pageChange)="pageChange($event)" [actions]="tableActionCustomers"
+                (actionClick)="onActionClick($event)" (rowChange)="onEdit($event)"
+                (rowSelection)="onRowSelection($event)">
+              </data-table>
+            </div>
+          </ng-container>
+        }
+        @if (currentMainIndex == 2) {
+          <ng-container>
+            <div class="lead-sub-tabs mb-3">
+              @for (tab of leadSubTabs; track tab) {
+                <button type="button" class="lead-sub-tab-btn"
+                  [class.active]="currentLeadTabIndex === tab.index" (click)="changeLeadSubTab(tab.index)">
+                  {{ tab.label }}
+                </button>
+              }
+            </div>
+            <div class="header-wrapper my-2">
+              <div class="row mx-auto">
+                <div class="col-md-6 col-12 px-0 my-1">
+                  <div class="filters d-flex w-100 align-items-center">
                         <search-filter style="width: 100%" (inputChange)="onInput($event)" [placeholder]="
                             'Search Based On Customer Code/Customer Name'
                           "></search-filter>
-
-                        <app-lead-filter-box (emitFilterLeads)="filterLeads($event)"></app-lead-filter-box>
-                        <div *ngIf="bulkAssignmentIds?.length > 0" class="text-center mx-2 font-size-10"
-                          style="line-height: 1.2">
-                          Selected
-                          <span class="text-primary" *ngIf="bulkAssignmentIds?.length > 0">({{ bulkAssignmentIds?.length
-                            }})</span>
-                        </div>
-                        <!-- <div *ngIf="bulkAssignmentIds?.length > 0" class="action-btns">
-                          <dadyin-button [theme]="'primary'" label="Generate PDF" (clicked)="generatePdfWithAddress()">
-                          </dadyin-button>
-                        </div> -->
+                    <app-lead-filter-box (emitFilterLeads)="filterLeads($event)"></app-lead-filter-box>
+                    @if (bulkAssignmentIds?.length > 0) {
+                      <div class="text-center mx-2 font-size-10"
+                        style="line-height: 1.2">
+                        Selected
+                        @if (bulkAssignmentIds?.length > 0) {
+                          <span class="text-primary">({{ bulkAssignmentIds?.length
+                          }})</span>
+                        }
                       </div>
-                    </div>
-                    <div class="col-md-6 px-0 col-12 d-flex justify-content-start align-items-center">
-                      <div class="w-100 d-flex align-items-center" *ngIf="
-                          this.tokenService.getRoleInBusinessAccountIdToken() !=
-                          'CRM'
-                        ">
-                        <ng-select [(ngModel)]="salesRepIds" [multiple]="true" [searchable]="true" [clearable]="false"
-                          class="custom custom-multiple-table w-100 mx-2" placeholder="Select Sales Rep."
-                          [items]="businessAccountService.salesRepList" labelForId="yesno" bindValue="id"
-                          bindLabel="firstName">
-                          <ng-template ng-multi-label-tmp let-items="items">
-                            <ng-container *ngIf="items.length <= 3">
-                              <div *ngFor="let item of items | slice : 0 : 3" class="ng-value"
-                                style="margin-right: 3px !important">
-                                <span [matTooltip]="item.firstName" class="ng-value-label">
-                                  {{ item.firstName }}
-                                </span>
-                              </div>
-                            </ng-container>
-
-                            <div *ngIf="items.length > 3" class="ng-value">
-                              <span class="ng-value-label">{{
-                                items.length
-                                }}</span>
+                    }
+                    <!-- <div *ngIf="bulkAssignmentIds?.length > 0" class="action-btns">
+                    <dadyin-button [theme]="'primary'" label="Generate PDF" (clicked)="generatePdfWithAddress()">
+                    </dadyin-button>
+                  </div> -->
+                </div>
+              </div>
+              <div class="col-md-6 px-0 col-12 d-flex justify-content-start align-items-center">
+                @if (
+                  this.tokenService.getRoleInBusinessAccountIdToken() !=
+                  'CRM'
+                  ) {
+                  <div class="w-100 d-flex align-items-center">
+                    <ng-select [(ngModel)]="salesRepIds" [multiple]="true" [searchable]="true" [clearable]="false"
+                      class="custom custom-multiple-table w-100 mx-2" placeholder="Select Sales Rep."
+                      [items]="businessAccountService.salesRepList" labelForId="yesno" bindValue="id"
+                      bindLabel="firstName">
+                      <ng-template ng-multi-label-tmp let-items="items">
+                        @if (items.length <= 3) {
+                          @for (item of items | slice : 0 : 3; track item) {
+                            <div class="ng-value"
+                              style="margin-right: 3px !important">
+                              <span [matTooltip]="item.firstName" class="ng-value-label">
+                                {{ item.firstName }}
+                              </span>
                             </div>
-                          </ng-template>
-                          <ng-template ng-label-tmp let-item="item" let-clear="clear">
-                            <span [matTooltip]="item.email" class="ng-value-label">
-                              {{ item.firstName }}
-                            </span>
-                            <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
-                          </ng-template>
-
-                          <ng-template ng-option-tmp let-item="item">
-                            <span [matTooltip]="item.email" class="ng-value-label">
-                              {{ item.firstName }}
-                            </span>
-                          </ng-template>
-                        </ng-select>
-                        <div class="attribute tabular-sheet">
-                          <div class="attribute-input">
-                            <div class="toggle mx-2 bg-white height-30">
+                          }
+                        }
+                        @if (items.length > 3) {
+                          <div class="ng-value">
+                            <span class="ng-value-label">{{
+                              items.length
+                            }}</span>
+                          </div>
+                        }
+                      </ng-template>
+                      <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                        <span [matTooltip]="item.email" class="ng-value-label">
+                          {{ item.firstName }}
+                        </span>
+                        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                      </ng-template>
+                      <ng-template ng-option-tmp let-item="item">
+                        <span [matTooltip]="item.email" class="ng-value-label">
+                          {{ item.firstName }}
+                        </span>
+                      </ng-template>
+                    </ng-select>
+                    <div class="attribute tabular-sheet">
+                      <div class="attribute-input">
+                        <div class="toggle mx-2 bg-white height-30">
                               <button style="
                                   min-width: unset;
                                   border-bottom-left-radius: 10px;
@@ -168,8 +177,8 @@
                                   bulkAssignmentIds?.length == 0 ||
                                   salesRepIds?.length == 0
                                 " (click)="assignLeads()">
-                                Assign
-                              </button>
+                            Assign
+                          </button>
                               <button style="min-width: unset" class="bg-secondary text-primary height-28" [ngClass]="{
                                   disabled:
                                     bulkAssignmentIds?.length == 0 ||
@@ -178,69 +187,111 @@
                                   bulkAssignmentIds?.length == 0 ||
                                   salesRepIds?.length == 0
                                 " (click)="unassignLeads()">
-                                Unassign
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="attribute">
-                          <div class="attribute-select">
-                            <label>Assign Status</label>
-                            <select style="max-width: 150px" class="b-light w-100 b-round"
-                              [(ngModel)]="relationStatusId" placeholder="Select Status"
-                              (change)="assignRelationStatus()">
-                              <option [value]="null" disabled>Select Status</option>
-                              <option [disabled]="bulkAssignmentIds?.length == 0"
-                                *ngFor="let item of apiService.allRelationStatuses" [value]="item.id">
-                                {{ item.description }}
-                              </option>
-                            </select>
-                          </div>
+                            Unassign
+                          </button>
                         </div>
                       </div>
-                      <div class="d-flex w-100 align-items-center justify-content-end">
-
-
+                    </div>
+                    <div class="attribute">
+                      <div class="attribute-select">
+                        <label>Assign Status</label>
+                        <select style="max-width: 150px" class="b-light w-100 b-round"
+                          [(ngModel)]="relationStatusId" placeholder="Select Status"
+                          (change)="assignRelationStatus()">
+                          <option [value]="null" disabled>Select Status</option>
+                          @for (item of apiService.allRelationStatuses; track item) {
+                            <option [disabled]="bulkAssignmentIds?.length == 0"
+                              [value]="item.id">
+                              {{ item.description }}
+                            </option>
+                          }
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                }
+                <div class="d-flex w-100 align-items-center justify-content-end">
                         <!-- <dadyin-button *ngIf="
                           this.tokenService.getRoleInBusinessAccountIdToken() !=
                           'CRM'
                         " [theme]="'secondary'" label="Bulk Add" class="mx-1" (clicked)="openLeadsBulkAddDialog()">
-                        </dadyin-button> -->
-                        <dadyin-button [theme]="'primary'" label="Add Lead" class="mx-1 height-28"
-                          (clicked)="navigateByLink(leadAddUrl)">
-                        </dadyin-button>
-                        <dadyin-button [theme]="'primary'" label="Business Entity Config" class="mx-1 height-28"
-                          (clicked)="openBusinessEntityConfiguration()">
-                        </dadyin-button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="content-wrapper mt-2">
-                  <ng-container *ngIf="!edit">
-                    <data-table [data]="leadDetails" [headers]="headers" [searchTerm]="filterValue"
-                      [pageConfig]="pageConfig" (editData)="editRecord($event)" (sortChange)="sort($event)"
-                      (pageChange)="pageChange($event)" (rowChange)="onEdit($event)" [actions]="tableActionLeads"
-                      (actionClick)="onActionClick($event)" (rowSelection)="onRowSelection($event)">
-                    </data-table>
-                  </ng-container>
-                </div>
-              </ng-container>
-            </ng-container>
-            <ng-container *ngIf="currentMainIndex == 3">
-              <ng-container>
-                <div class="header-wrapper my-2">
-                  <div class="row mx-auto">
-                    <div class="col-6 px-0">
-                      <div class="filters">
+                </dadyin-button> -->
+                <dadyin-button [theme]="'primary'" label="Add Lead" class="mx-1 height-28"
+                  (clicked)="navigateByLink(leadAddUrl)">
+                </dadyin-button>
+                <dadyin-button [theme]="'primary'" label="Business Entity Config" class="mx-1 height-28"
+                  (clicked)="openBusinessEntityConfiguration()">
+                </dadyin-button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-wrapper mt-2">
+          @if (!edit) {
+            <data-table [data]="leadDetails" [headers]="headers" [searchTerm]="filterValue"
+              [pageConfig]="pageConfig" (editData)="editRecord($event)" (sortChange)="sort($event)"
+              (pageChange)="pageChange($event)" (rowChange)="onEdit($event)" [actions]="tableActionLeads"
+              (actionClick)="onActionClick($event)" (rowSelection)="onRowSelection($event)">
+            </data-table>
+          }
+        </div>
+      </ng-container>
+    }
+    @if (currentMainIndex == 3) {
+      <ng-container>
+        <div class="header-wrapper my-2">
+          <div class="row mx-auto">
+            <div class="col-6 px-0">
+              <div class="filters">
                         <search-filter (inputChange)="onInput($event)" [placeholder]="
                             'Search Based On Customer Code/Customer Name'
                           "></search-filter>
-                      </div>
-                    </div>
-                    <div class="col-6 px-0 d-flex justify-content-end align-items-center align-items-center">
-                      <dadyin-button [theme]="'primary'" label="Add Prospect"
-                        (clicked)="navigateByLink(prospectAddUrl)">
+              </div>
+            </div>
+            <div class="col-6 px-0 d-flex justify-content-end align-items-center align-items-center">
+              <dadyin-button [theme]="'primary'" label="Add Prospect"
+                (clicked)="navigateByLink(prospectAddUrl)">
+              </dadyin-button>
+              <dadyin-button [theme]="'primary'" label="Business Entity Config"
+                (clicked)="openBusinessEntityConfiguration()">
+              </dadyin-button>
+            </div>
+          </div>
+        </div>
+        <div class="content-wrapper mt-2">
+          <data-table [data]="prospectDetails" [headers]="headers" [searchTerm]="filterValue"
+            [pageConfig]="pageConfig" (editData)="editRecord($event)" (rowChange)="onEdit($event)"
+            (sortChange)="sort($event)" (pageChange)="pageChange($event)" [actions]="tableActionProspects"
+            (actionClick)="onActionClick($event)">
+          </data-table>
+        </div>
+      </ng-container>
+    }
+  </ng-template>
+</mat-tab>
+}
+</mat-tab-group>
+}
+@if (!isCustomer) {
+  <mat-tab-group class="mat-steps">
+    @for (link of mainTabVendors; track link) {
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span>{{ link.label }}</span>
+        </ng-template>
+        <ng-template matTabContent>
+          @if (currentMainIndex == 0) {
+            <ng-container>
+              <div class="header-wrapper my-2">
+                <div class="row mx-auto">
+                  <div class="col-6 px-0">
+                      <search-filter (inputChange)="onInput($event)" [placeholder]="
+                          'Search Based On Vendor Code/Vendor Name'
+                        "></search-filter>
+                  </div>
+                  <div class="col-6 px-0 d-flex justify-content-end align-items-center align-items-center">
+                    <div class="action-btns">
+                      <dadyin-button [theme]="'primary'" label="Add Vendor" (clicked)="navigateByLink(vendorAddUrl)">
                       </dadyin-button>
                       <dadyin-button [theme]="'primary'" label="Business Entity Config"
                         (clicked)="openBusinessEntityConfiguration()">
@@ -248,60 +299,19 @@
                     </div>
                   </div>
                 </div>
-                <div class="content-wrapper mt-2">
-                  <data-table [data]="prospectDetails" [headers]="headers" [searchTerm]="filterValue"
-                    [pageConfig]="pageConfig" (editData)="editRecord($event)" (rowChange)="onEdit($event)"
-                    (sortChange)="sort($event)" (pageChange)="pageChange($event)" [actions]="tableActionProspects"
-                    (actionClick)="onActionClick($event)">
-                  </data-table>
-                </div>
-              </ng-container>
+              </div>
+              <div class="content-wrapper mt-2">
+                <data-table [data]="vendorDetails" [headers]="headers" [searchTerm]="filterValue"
+                  [pageConfig]="pageConfig" (editData)="editRecord($event)" (sortChange)="sort($event)"
+                  (pageChange)="pageChange($event)" [actions]="tableActionsVendor"
+                  (actionClick)="onActionClick($event)">
+                </data-table>
+              </div>
             </ng-container>
-          </ng-template>
-        </mat-tab>
-      </ng-container>
-    </mat-tab-group>
-  </ng-container>
-  <ng-container *ngIf="!isCustomer">
-    <mat-tab-group class="mat-steps">
-      <ng-container *ngFor="let link of mainTabVendors">
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <span>{{ link.label }}</span>
-          </ng-template>
-          <ng-template matTabContent>
-            <ng-container *ngIf="currentMainIndex == 0">
-              <ng-container>
-                <div class="header-wrapper my-2">
-                  <div class="row mx-auto">
-                    <div class="col-6 px-0">
-                      <search-filter (inputChange)="onInput($event)" [placeholder]="
-                          'Search Based On Vendor Code/Vendor Name'
-                        "></search-filter>
-                    </div>
-                    <div class="col-6 px-0 d-flex justify-content-end align-items-center align-items-center">
-                      <div class="action-btns">
-                        <dadyin-button [theme]="'primary'" label="Add Vendor" (clicked)="navigateByLink(vendorAddUrl)">
-                        </dadyin-button>
-                        <dadyin-button [theme]="'primary'" label="Business Entity Config"
-                          (clicked)="openBusinessEntityConfiguration()">
-                        </dadyin-button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="content-wrapper mt-2">
-                  <data-table [data]="vendorDetails" [headers]="headers" [searchTerm]="filterValue"
-                    [pageConfig]="pageConfig" (editData)="editRecord($event)" (sortChange)="sort($event)"
-                    (pageChange)="pageChange($event)" [actions]="tableActionsVendor"
-                    (actionClick)="onActionClick($event)">
-                  </data-table>
-                </div>
-              </ng-container>
-            </ng-container>
-          </ng-template>
-        </mat-tab>
-      </ng-container>
-    </mat-tab-group>
-  </ng-container>
+          }
+        </ng-template>
+      </mat-tab>
+    }
+  </mat-tab-group>
+}
 </div>

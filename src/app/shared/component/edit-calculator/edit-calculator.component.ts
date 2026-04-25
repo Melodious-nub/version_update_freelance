@@ -35,7 +35,7 @@ import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { MatInput } from '@angular/material/input';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { NgIf, NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'app-edit-calculator',
@@ -43,19 +43,17 @@ import { NgIf, NgFor } from '@angular/common';
     styleUrls: ['./edit-calculator.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        MatInput,
-        MatSelect,
-        MatOption,
-        NgFor,
-        DadyinButtonComponent,
-        MatButton,
-        GridModule,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatSelect,
+    MatOption,
+    DadyinButtonComponent,
+    MatButton,
+    GridModule
+],
 })
 export class EditCalculatorComponent implements OnInit {
   private _processCalculatorForm: UntypedFormGroup;

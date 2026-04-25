@@ -1,134 +1,143 @@
 <div style="position: relative">
   <label for="" class="label-search"
     >{{ label }} ({{ selectedItems?.value?.length }})</label
-  >
-  <div class="selected p-2">
-    <div class="attribute b-none inner-box">
-      <ng-container *ngIf="typeahead">
-        <ng-container *ngIf="addTag">
+    >
+    <div class="selected p-2">
+      <div class="attribute b-none inner-box">
+        @if (typeahead) {
+          @if (addTag) {
+            <ng-select
+              [maxSelectedItems]="maxSelectedItems"
+              (change)="onChange()"
+              (search)="searchText.next($event)"
+              class="search-select"
+              [addTag]="addTagFn"
+              [closeOnSelect]="true"
+              [hideSelected]="true"
+              appendTo="body"
+              [multiple]="true"
+              [items]="fullItems"
+              [disabled]="disabled"
+              [formControl]="selectedItems"
+              placeholder="Select"
+              [bindValue]="bindValue"
+              bindLabel="description"
+              [minTermLength]="1"
+              [clearable]="false"
+              >
+              <ng-template ng-option-tmp let-item="item" let-index="index">
+                <div>
+                  {{ item?.description ?? item }}
+                  @if (optionTag) {
+                    <span> ({{ item[optionTag] }})</span>
+                  }
+                </div>
+              </ng-template>
+            </ng-select>
+          }
+          @if (!addTag) {
+            <ng-select
+              [maxSelectedItems]="maxSelectedItems"
+              (change)="onChange()"
+              class="search-select"
+              [typeahead]="searchText"
+              [closeOnSelect]="true"
+              [hideSelected]="true"
+              appendTo="body"
+              [multiple]="true"
+              [items]="fullItems"
+              [disabled]="disabled"
+              [formControl]="selectedItems"
+              placeholder="Select"
+              [bindValue]="bindValue"
+              bindLabel="description"
+              [minTermLength]="1"
+              [clearable]="false"
+              >
+              <ng-template ng-option-tmp let-item="item" let-index="index">
+                <div>
+                  {{ item?.description ?? item }}
+                  @if (optionTag) {
+                    <span> ({{ item[optionTag] }})</span>
+                  }
+                </div>
+              </ng-template>
+            </ng-select>
+          }
+        }
+        @if (!typeahead) {
           <ng-select
             [maxSelectedItems]="maxSelectedItems"
             (change)="onChange()"
-            (search)="searchText.next($event)"
             class="search-select"
-            [addTag]="addTagFn"
+            [minTermLength]="1"
+            [searchable]="true"
             [closeOnSelect]="true"
             [hideSelected]="true"
             appendTo="body"
             [multiple]="true"
             [items]="fullItems"
-            [disabled]="disabled"
             [formControl]="selectedItems"
+            [disabled]="disabled"
             placeholder="Select"
-            [bindValue]="bindValue"
             bindLabel="description"
-            [minTermLength]="1"
+            [bindValue]="bindValue"
             [clearable]="false"
-          >
+            >
             <ng-template ng-option-tmp let-item="item" let-index="index">
               <div>
                 {{ item?.description ?? item }}
-                <span *ngIf="optionTag"> ({{ item[optionTag] }})</span>
+                @if (optionTag) {
+                  <span> ({{ item[optionTag] }})</span>
+                }
               </div>
             </ng-template>
           </ng-select>
-        </ng-container>
-        <ng-container *ngIf="!addTag">
-          <ng-select
-            [maxSelectedItems]="maxSelectedItems"
-            (change)="onChange()"
-            class="search-select"
-            [typeahead]="searchText"
-            [closeOnSelect]="true"
-            [hideSelected]="true"
-            appendTo="body"
-            [multiple]="true"
-            [items]="fullItems"
-            [disabled]="disabled"
-            [formControl]="selectedItems"
-            placeholder="Select"
-            [bindValue]="bindValue"
-            bindLabel="description"
-            [minTermLength]="1"
-            [clearable]="false"
-          >
-            <ng-template ng-option-tmp let-item="item" let-index="index">
+        }
+      </div>
+
+      <div class="d-flex flex-wrap w-100 selection-area-custom">
+        @if (typeahead) {
+          @for (item of selectedItems.value; track item; let i = $index) {
+            <div
+              [ngClass]="{ 'b-primary-all': highlightItems?.includes(item) }"
+              (click)="onItemClick(item)"
+              class="value bg-light b-all primary-text px-1"
+              >
               <div>
                 {{ item?.description ?? item }}
-                <span *ngIf="optionTag"> ({{ item[optionTag] }})</span>
               </div>
-            </ng-template>
-          </ng-select>
-        </ng-container>
-      </ng-container>
-      <ng-container *ngIf="!typeahead">
-        <ng-select
-          [maxSelectedItems]="maxSelectedItems"
-          (change)="onChange()"
-          class="search-select"
-          [minTermLength]="1"
-          [searchable]="true"
-          [closeOnSelect]="true"
-          [hideSelected]="true"
-          appendTo="body"
-          [multiple]="true"
-          [items]="fullItems"
-          [formControl]="selectedItems"
-          [disabled]="disabled"
-          placeholder="Select"
-          bindLabel="description"
-          [bindValue]="bindValue"
-          [clearable]="false"
-        >
-          <ng-template ng-option-tmp let-item="item" let-index="index">
-            <div>
-              {{ item?.description ?? item }}
-              <span *ngIf="optionTag"> ({{ item[optionTag] }})</span>
+              @if (!disabled) {
+                <i
+                  class="mx-1 material-icon"
+                  (click)="remove(item, i)"
+                  >cancel_outline
+                </i>
+              }
             </div>
-          </ng-template>
-        </ng-select>
-      </ng-container>
+          }
+        }
+        @if (!typeahead) {
+          @for (item of selectedItems.value; track item; let i = $index) {
+            <div
+              [ngClass]="{ 'b-primary-all': highlightItems?.includes(item) }"
+              (click)="onItemClick(item)"
+              class="value bg-light b-all primary-text px-1"
+              >
+              <div>
+                {{ getName(item) ?? item }}
+              </div>
+              @if (!disabled) {
+                <i
+                  class="mx-1 material-icon"
+                  (click)="remove(item, i)"
+                  >cancel_outline
+                </i>
+              }
+            </div>
+          }
+        }
+      </div>
     </div>
-
-    <div class="d-flex flex-wrap w-100 selection-area-custom">
-      <ng-container *ngIf="typeahead">
-        <div
-          [ngClass]="{ 'b-primary-all': highlightItems?.includes(item) }"
-          (click)="onItemClick(item)"
-          class="value bg-light b-all primary-text px-1"
-          *ngFor="let item of selectedItems.value; let i = index"
-        >
-          <div>
-            {{ item?.description ?? item }}
-          </div>
-          <i
-            class="mx-1 material-icon"
-            *ngIf="!disabled"
-            (click)="remove(item, i)"
-            >cancel_outline
-          </i>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="!typeahead">
-        <div
-          [ngClass]="{ 'b-primary-all': highlightItems?.includes(item) }"
-          (click)="onItemClick(item)"
-          class="value bg-light b-all primary-text px-1"
-          *ngFor="let item of selectedItems.value; let i = index"
-        >
-          <div>
-            {{ getName(item) ?? item }}
-          </div>
-
-          <i
-            class="mx-1 material-icon"
-            *ngIf="!disabled"
-            (click)="remove(item, i)"
-            >cancel_outline
-          </i>
-        </div>
-      </ng-container>
-    </div>
+    <br />
   </div>
-  <br />
-</div>

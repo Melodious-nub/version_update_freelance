@@ -8,16 +8,16 @@
       <div class="input">
         <select id="type" [formControl]="subProductType" >
           <option disabled selected> Select Product Type</option>
-          <ng-container *ngFor="let p of apiService.productTypes">
+          @for (p of apiService.productTypes; track p) {
             <option [value]="p.id">{{ p.description }}</option>
-          </ng-container>
+          }
         </select>
       </div>
-     </div>
     </div>
-    </div>
+  </div>
+</div>
 
-    <div class="dialog-buttons">
-      <button class="secondry" mat-button mat-dialog-close>Cancel</button>
-      <button class="primary" mat-button (click)="onClose()" cdkFocusInitial>Save</button>
-    </div>
+<div class="dialog-buttons">
+  <button class="secondry" mat-button mat-dialog-close>Cancel</button>
+  <button class="primary" mat-button (click)="onClose()" cdkFocusInitial>Save</button>
+</div>

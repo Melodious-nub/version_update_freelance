@@ -2,7 +2,7 @@
 import { Component, OnInit, Input, forwardRef, ChangeDetectorRef, AfterContentChecked, OnChanges, SimpleChanges } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, UntypedFormControl, ControlContainer } from '@angular/forms';
 import { CommonService } from 'src/app/service/common.service';
-import { NgIf } from '@angular/common';
+
 
 
 
@@ -14,7 +14,7 @@ import { NgIf } from '@angular/common';
         { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => TimePickerComponent), multi: true },
     ],
     standalone: true,
-    imports: [NgIf]
+    imports: []
 })
 export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterContentChecked, OnChanges {
 

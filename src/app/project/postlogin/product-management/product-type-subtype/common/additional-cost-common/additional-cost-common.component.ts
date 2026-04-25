@@ -5,7 +5,7 @@ import { UomService } from 'src/app/service/uom.service';
 import { ProductManagementService } from '../../../service/product-management.service';
 import { ProductTypeFormService } from '../../service/product-type-form.service';
 import { MatOption } from '@angular/material/core';
-import { NgFor, NgIf } from '@angular/common';
+
 import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
 
@@ -15,15 +15,13 @@ import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autoc
     styleUrls: ['./additional-cost-common.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        MatAutocompleteTrigger,
-        ReactiveFormsModule,
-        DadyinButtonComponent,
-        MatAutocomplete,
-        NgFor,
-        NgIf,
-        MatOption,
-    ],
+    FormsModule,
+    MatAutocompleteTrigger,
+    ReactiveFormsModule,
+    DadyinButtonComponent,
+    MatAutocomplete,
+    MatOption
+],
 })
 export class AdditionalCostCommonComponent implements OnInit {
   @Input() additionalCosts: UntypedFormArray;

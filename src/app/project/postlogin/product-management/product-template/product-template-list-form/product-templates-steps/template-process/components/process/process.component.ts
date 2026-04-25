@@ -9,7 +9,7 @@ import { EditProcessComponent } from './edit-process/edit-process.component';
 import { ProcessListComponent } from './process-list/process-list.component';
 import { DadyinButtonComponent } from '../../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgIf, NgClass, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-create-process',
@@ -17,14 +17,12 @@ import { NgIf, NgClass, NgFor } from '@angular/common';
     styleUrls: ['./process.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        NgClass,
-        ExtendedModule,
-        DadyinButtonComponent,
-        ProcessListComponent,
-        NgFor,
-        EditProcessComponent,
-    ],
+    NgClass,
+    ExtendedModule,
+    DadyinButtonComponent,
+    ProcessListComponent,
+    EditProcessComponent
+],
 })
 export class ProcessComponent implements OnInit {
   // ************* Variable Declarations *************

@@ -6,7 +6,7 @@ import { FormsService } from 'src/app/service/forms.service';
 import { WasteOptionModalComponent } from '../waste-option-modal/waste-option-modal.component';
 import { DadyinButtonComponent } from '../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgStyle, NgFor, NgClass } from '@angular/common';
+import { NgStyle, NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-process-waste-modal',
@@ -14,15 +14,14 @@ import { NgStyle, NgFor, NgClass } from '@angular/common';
     styleUrls: ['./process-waste-modal.component.scss'],
     standalone: true,
     imports: [
-        MatDialogClose,
-        FormsModule,
-        ReactiveFormsModule,
-        NgStyle,
-        ExtendedModule,
-        NgFor,
-        NgClass,
-        DadyinButtonComponent,
-    ],
+    MatDialogClose,
+    FormsModule,
+    ReactiveFormsModule,
+    NgStyle,
+    ExtendedModule,
+    NgClass,
+    DadyinButtonComponent
+],
 })
 export class ProcessWasteModalComponent implements OnInit {
   calculateOptionForm: UntypedFormGroup = this.formsService.calculateOptionsForm();

@@ -27,62 +27,67 @@
                 [theme]="'borderless-primary'"
                 type="icon"
                 typeval="map"
-              >
+                >
               </dadyin-button>
 
-              <div *ngIf="map2" class="tooltip-white b-light shadow-sm">
-                {{ requestToAddress }}
-              </div>
+              @if (map2) {
+                <div class="tooltip-white b-light shadow-sm">
+                  {{ requestToAddress }}
+                </div>
+              }
             </div>
 
-            <div
-              class="col-12 col-md-2"
-              *ngIf="importLocalType.value == 'CONTAINER'"
-            >
-              <dadyin-select
-                [optionArr]="containerService.incoTermsList"
-                [emptyOption]="'Select Inco Terms'"
-                label="Inco Terms"
-                formControlName="incoTermId"
-                optionLabel="description"
-                optionValue="id"
-              >
-              </dadyin-select>
-            </div>
-            <div
-              class="col-12 col-md-2"
-              *ngIf="importLocalType.value == 'LOCAL'"
-            >
-              <dadyin-select
+            @if (importLocalType.value == 'CONTAINER') {
+              <div
+                class="col-12 col-md-2"
+                >
+                <dadyin-select
+                  [optionArr]="containerService.incoTermsList"
+                  [emptyOption]="'Select Inco Terms'"
+                  label="Inco Terms"
+                  formControlName="incoTermId"
+                  optionLabel="description"
+                  optionValue="id"
+                  >
+                </dadyin-select>
+              </div>
+            }
+            @if (importLocalType.value == 'LOCAL') {
+              <div
+                class="col-12 col-md-2"
+                >
+                <dadyin-select
                 [optionArr]="[
                   { id: 'DELIVERY', description: 'DELIVERY' },
                   { id: 'PICKUP', description: 'PICKUP' }
                 ]"
-                label="Delivery Type"
-                formControlName="deliveryPickup"
-                optionLabel="description"
-                optionValue="id"
-              >
-              </dadyin-select>
-            </div>
-            <div
-              class="col-12 col-md-2"
-              *ngIf="importLocalType.value != 'LOCAL'"
-            >
-              <dadyin-select
+                  label="Delivery Type"
+                  formControlName="deliveryPickup"
+                  optionLabel="description"
+                  optionValue="id"
+                  >
+                </dadyin-select>
+              </div>
+            }
+            @if (importLocalType.value != 'LOCAL') {
+              <div
+                class="col-12 col-md-2"
+                >
+                <dadyin-select
                 [optionArr]="[
                   { id: 'PALLET', name: 'PALLET' },
                   { id: 'FLOOR', name: 'FLOOR' },
                   { id: 'MIXED', name: 'MIXED' }
                 ]"
-                label="Loading Type"
-                formControlName="loadingTypeId"
-                optionLabel="name"
-                optionValue="id"
-                [emptyOption]="'Select Loading Type'"
-              >
-              </dadyin-select>
-            </div>
+                  label="Loading Type"
+                  formControlName="loadingTypeId"
+                  optionLabel="name"
+                  optionValue="id"
+                  [emptyOption]="'Select Loading Type'"
+                  >
+                </dadyin-select>
+              </div>
+            }
             <div class="col-12 col-md-1 d-flex">
               <dadyin-button
                 (clicked)="toggleType('LOCAL')"
@@ -93,7 +98,7 @@
                 "
                 type="icon"
                 typeval="location_on"
-              >
+                >
               </dadyin-button>
 
               <dadyin-button
@@ -105,7 +110,7 @@
                 "
                 type="icon"
                 typeval="anchor"
-              >
+                >
               </dadyin-button>
             </div>
           </div>
@@ -119,7 +124,7 @@
                 optionLabel="firstName"
                 optionValue="id"
                 [emptyOption]="'Sales Manager'"
-              >
+                >
               </dadyin-select>
             </div>
             <div class="col-12 col-md-2">
@@ -127,7 +132,7 @@
                 inputType="date"
                 formControlName="expectedByDate"
                 label="Expected Ship Date"
-              >
+                >
               </dadyin-input>
             </div>
             <div class="col-12 col-md-2">
@@ -135,7 +140,7 @@
                 inputType="text"
                 formControlName="shipper"
                 label="Ship via"
-              >
+                >
               </dadyin-input>
             </div>
             <div class="col-12 col-md-2">
@@ -146,7 +151,7 @@
                 label="Payment Terms"
                 optionLabel="description"
                 optionValue="id"
-              >
+                >
               </dadyin-select>
             </div>
 
@@ -154,30 +159,31 @@
           </div>
 
           <div class="row">
-            <div
-              class="col-12 col-md-2"
-              *ngIf="importLocalType.value != 'LOCAL'"
-            >
-              <dadyin-select
-                [emptyOption]="'Select Departure Port'"
-                [optionArr]="containerService.portsList"
-                label="Port of Departure"
-                formControlName="departurePortId"
-                optionLabel="description"
-                optionValue="id"
-              >
-              </dadyin-select>
-            </div>
+            @if (importLocalType.value != 'LOCAL') {
+              <div
+                class="col-12 col-md-2"
+                >
+                <dadyin-select
+                  [emptyOption]="'Select Departure Port'"
+                  [optionArr]="containerService.portsList"
+                  label="Port of Departure"
+                  formControlName="departurePortId"
+                  optionLabel="description"
+                  optionValue="id"
+                  >
+                </dadyin-select>
+              </div>
+            }
             <div class="col-12 col-md-2">
               <div class="attribute one attr-b">
                 <label>Buying Type</label>
                 <div>
                   <select class="w-100" formControlName="buyingType">
-                    <ng-container *ngFor="let buyingType of buyingTypeList">
+                    @for (buyingType of buyingTypeList; track buyingType) {
                       <option [value]="buyingType.value">
                         {{ buyingType.name }}
                       </option>
-                    </ng-container>
+                    }
                   </select>
                 </div>
               </div>
@@ -192,62 +198,56 @@
                 formControlName="fulfilmentType"
                 optionLabel="description"
                 optionValue="id"
-              >
+                >
               </dadyin-select>
             </div>
             <div class="col-12 col-md-2">
-              <ng-container
-                *ngIf="invoiceForm.get('fulfilmentType').value == 'CONTAINER'"
-              >
+              @if (invoiceForm.get('fulfilmentType').value == 'CONTAINER') {
                 <div class="attribute one w-100">
                   <div
                     class="attribute-select justify-content-around w-100 title-text"
-                  >
+                    >
                     <label>Container Reference</label>
                     <select
                       class="w-100"
                       formControlName="referenceContainerId"
-                    >
+                      >
                       <option [value]="null">Container Reference</option>
                       <option [value]="'NEW'">+ Create New Container</option>
-                      <ng-container
-                        *ngFor="
-                          let container of containerService.containersList
-                        "
-                      >
+                      @for (
+                        container of containerService.containersList
+                        ; track
+                        container) {
                         <option [value]="container.id">
                           {{ container?.containerTypeDescription }}
                         </option>
-                      </ng-container>
+                      }
                     </select>
                   </div>
                 </div>
-              </ng-container>
+              }
             </div>
             <div class="col-12 col-md-2">
-              <ng-container
-                *ngIf="invoiceForm.get('fulfilmentType').value == 'CONTAINER'"
-              >
+              @if (invoiceForm.get('fulfilmentType').value == 'CONTAINER') {
                 <div class="attribute one w-100">
                   <div
                     class="attribute-select justify-content-around w-100 title-text"
-                  >
+                    >
                     <label>Select Importer</label>
                     <select class="w-100" formControlName="exporterBusinessId">
                       <option [value]="null">Select Importer</option>
-                      <ng-container
-                        *ngFor="
-                          let vendor of businessAccountService.exportersVendorList
-                        "
-                      >
+                      @for (
+                        vendor of businessAccountService.exportersVendorList
+                        ; track
+                        vendor) {
                         <option [value]="vendor?.relationAccountId">
                           {{ vendor?.relationAccountName }}
                         </option>
-                      </ng-container>
+                      }
                     </select>
                   </div>
                 </div>
-              </ng-container>
+              }
             </div>
             <div class="col-12 col-md-2"></div>
           </div>
@@ -260,7 +260,7 @@
                 inputType="date"
                 formControlName="date"
                 label="Date"
-              >
+                >
               </dadyin-input>
             </div>
           </div>
@@ -270,7 +270,7 @@
                 inputType="date"
                 formControlName="requiredByDate"
                 label="Required By Date"
-              >
+                >
               </dadyin-input>
             </div>
             <div class="col-12 col-md-6">
@@ -278,7 +278,7 @@
                 inputType="date"
                 formControlName="editTillDate"
                 label="Edit Till Date"
-              >
+                >
               </dadyin-input>
             </div>
             <div class="col-12 col-md-6">
@@ -296,54 +296,56 @@
   <div class="py-2 d-flex align-items-center" style="column-gap: 5px">
     <div
       class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor"
-    >
+      >
       <img
         src="assets/nicons/previous.png"
         alt="Prev. Orders"
         style="width: 20px; height: 20px"
-      />
-      <div class="text-dark font-size-14 mx-1">Prev. Orders</div>
-    </div>
-    <div
-      class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor"
-    >
-      <img
-        src="assets/nicons/overview.png"
-        alt="My Category"
-        style="width: 20px; height: 20px"
-      />
-      <div class="text-dark font-size-14 mx-1">My Category</div>
-    </div>
-    <div
-      class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor"
-    >
-      <img
-        src="assets/nicons/Fav.png"
-        alt="Favourite"
-        style="width: 20px; height: 20px"
-      />
-      <div class="text-dark font-size-14 mx-1">My Favourite</div>
-    </div>
-  </div>
-  <mat-expansion-panel
-    class="panel-no-padding mt-1"
-    expanded="true"
-    #expansionPanel3
-  >
-    <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
-      <mat-panel-description>
-        <div class="w-100 title-text">
-          Product Details
-          <span *ngIf="productPackages?.controls?.length">
-            ({{ productPackages?.controls?.length }})</span
-          >
+        />
+        <div class="text-dark font-size-14 mx-1">Prev. Orders</div>
+      </div>
+      <div
+        class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor"
+        >
+        <img
+          src="assets/nicons/overview.png"
+          alt="My Category"
+          style="width: 20px; height: 20px"
+          />
+          <div class="text-dark font-size-14 mx-1">My Category</div>
         </div>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+        <div
+          class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor"
+          >
+          <img
+            src="assets/nicons/Fav.png"
+            alt="Favourite"
+            style="width: 20px; height: 20px"
+            />
+            <div class="text-dark font-size-14 mx-1">My Favourite</div>
+          </div>
+        </div>
+        <mat-expansion-panel
+          class="panel-no-padding mt-1"
+          expanded="true"
+          #expansionPanel3
+          >
+          <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
+            <mat-panel-description>
+              <div class="w-100 title-text">
+                Product Details
+                @if (productPackages?.controls?.length) {
+                  <span>
+                    ({{ productPackages?.controls?.length }})</span
+                    >
+                }
+              </div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
 
-    <ng-template matExpansionPanelContent>
-      <section>
-        <app-order-transaction-packages
+          <ng-template matExpansionPanelContent>
+            <section>
+              <app-order-transaction-packages
           [displayedColumns]="[
             'pkgs',
             'qoh',
@@ -355,17 +357,17 @@
             'subTotal',          
             'action'
           ]"
-          [isEditable]="isEditable"
-          [orderFile]="invoiceFile"
-          [orderForm]="invoiceForm"
-          (getProducts)="getProductsList($event)"
-          (generatePoFromPdf)="generateInvoiceFromPdf($event)"
-          (calculate)="calculateValues()"
-          [productsList]="productsList"
-          [productPackages]="productPackages"
-          [type]="'invoice'"
-        ></app-order-transaction-packages>
-      </section>
-    </ng-template>
-  </mat-expansion-panel>
-</form>
+                [isEditable]="isEditable"
+                [orderFile]="invoiceFile"
+                [orderForm]="invoiceForm"
+                (getProducts)="getProductsList($event)"
+                (generatePoFromPdf)="generateInvoiceFromPdf($event)"
+                (calculate)="calculateValues()"
+                [productsList]="productsList"
+                [productPackages]="productPackages"
+                [type]="'invoice'"
+              ></app-order-transaction-packages>
+            </section>
+          </ng-template>
+        </mat-expansion-panel>
+      </form>

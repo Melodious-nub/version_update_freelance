@@ -24,7 +24,7 @@ import { environment } from 'src/environments/environment';
 import { PaymentService } from 'src/app/service/payment.service';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgIf, NgClass, NgFor, DatePipe } from '@angular/common';
+import { NgClass, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-payment',
@@ -32,15 +32,13 @@ import { NgIf, NgClass, NgFor, DatePipe } from '@angular/common';
     styleUrls: ['./payment.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        DadyinButtonComponent,
-        NgClass,
-        ExtendedModule,
-        NgFor,
-        DatePipe,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    DadyinButtonComponent,
+    NgClass,
+    ExtendedModule,
+    DatePipe
+],
 })
 export class PaymentComponent implements OnInit {
   showPayNowButton = false;

@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-dadyin-card-slider',
     templateUrl: './dadyin-card-slider.component.html',
     styleUrls: ['./dadyin-card-slider.component.scss'],
     standalone: true,
-    imports: [NgIf]
+    imports: []
 })
 export class DadyinCardSliderComponent implements OnInit {
 

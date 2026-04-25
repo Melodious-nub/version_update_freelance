@@ -7,13 +7,13 @@ import { SortFormArrayPipe } from 'src/app/shared/pipes/sort-formarray-sortorder
 import { SortFormArrayPipe as SortFormArrayPipe_1 } from '../../../../../../../../shared/pipes/sort-formarray-sortorder.pipe';
 import { MatIcon } from '@angular/material/icon';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgFor, NgStyle } from '@angular/common';
+import { NgStyle } from '@angular/common';
 @Component({
     selector: 'app-attribute-value-modal',
     templateUrl: './attribute-value-modal.component.html',
     styleUrls: ['./attribute-value-modal.component.scss'],
     standalone: true,
-    imports: [MatDialogClose, CdkDropList, NgFor, NgStyle, ExtendedModule, CdkDrag, MatIcon, SortFormArrayPipe_1]
+    imports: [MatDialogClose, CdkDropList, NgStyle, ExtendedModule, CdkDrag, MatIcon, SortFormArrayPipe_1]
 })
 export class AttributeValueModalComponent implements OnInit {
   public attributeValue = []

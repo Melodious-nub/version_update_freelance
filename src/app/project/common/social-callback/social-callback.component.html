@@ -16,14 +16,19 @@
       {{ status | titlecase }}
     </div>
 
-    <div class="message" *ngIf="isSuccess">
-      You're all set — your account was connected successfully.
-    </div>
-    <div class="message" *ngIf="!isSuccess">
-      <ng-container *ngIf="message; else genericError">{{ message }}</ng-container>
-      <ng-template #genericError>
-        There was a problem connecting. Please try again or return to the app.
-      </ng-template>
-    </div>
+    @if (isSuccess) {
+      <div class="message">
+        You're all set — your account was connected successfully.
+      </div>
+    }
+    @if (!isSuccess) {
+      <div class="message">
+        @if (message) {
+          {{ message }}
+        } @else {
+          There was a problem connecting. Please try again or return to the app.
+        }
+      </div>
+    }
   </div>
 </div>

@@ -34,7 +34,7 @@ import { MatOption } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
-import { NgIf, NgFor, NgClass, SlicePipe } from '@angular/common';
+import { NgClass, SlicePipe } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatExpansionModule } from '@angular/material/expansion';
 
@@ -44,28 +44,26 @@ import { MatExpansionModule } from '@angular/material/expansion';
     styleUrls: ['./vendor-customer-details.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionModule,
-        MatAutocompleteModule,
-        NgIf,
-        MatButtonModule,
-        MatTooltipModule,
-        MatIconModule,
-        NgFor,
-        MatOption,
-        DadyinInputComponent,
-        DadyinSelectComponent,
-        NgSelectModule,
-        NgClass,
-        ExtendedModule,
-        DadyinMapAutoCompleteComponent,
-        MatDialogClose,
-        DadyinSearchSelectNewComponent,
-        DadyinButtonComponent,
-        BusinessEntityConfigurationComponent,
-        SlicePipe,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatOption,
+    DadyinInputComponent,
+    DadyinSelectComponent,
+    NgSelectModule,
+    NgClass,
+    ExtendedModule,
+    DadyinMapAutoCompleteComponent,
+    MatDialogClose,
+    DadyinSearchSelectNewComponent,
+    DadyinButtonComponent,
+    BusinessEntityConfigurationComponent,
+    SlicePipe
+],
 })
 export class VendorDetailsComponent implements OnInit, OnChanges {
   public imgUrl = environment.imgUrl;

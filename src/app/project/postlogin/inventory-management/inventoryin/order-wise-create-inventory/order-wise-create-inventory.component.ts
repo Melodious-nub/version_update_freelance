@@ -10,7 +10,7 @@ import { ConfirmationDialogComponent } from '../../../product-management/product
 import { DadyinSelectComponent } from '../../../../../shared/widgets/dadyin-select/dadyin-select.component';
 import { DadyinInputComponent } from '../../../../../shared/widgets/dadyin-input/dadyin-input.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatIcon } from '@angular/material/icon';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
@@ -20,19 +20,17 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     styleUrls: ['./order-wise-create-inventory.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        MatIcon,
-        NgIf,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatExpansionPanelContent,
-        FormsModule,
-        ReactiveFormsModule,
-        DadyinInputComponent,
-        DadyinSelectComponent,
-        NgFor,
-    ],
+    DadyinButtonComponent,
+    MatIcon,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatExpansionPanelContent,
+    FormsModule,
+    ReactiveFormsModule,
+    DadyinInputComponent,
+    DadyinSelectComponent
+],
 })
 export class OrderWiseCreateInventoryComponent implements OnInit {
   id = '';

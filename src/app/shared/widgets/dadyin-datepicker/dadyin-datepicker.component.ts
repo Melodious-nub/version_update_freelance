@@ -8,7 +8,7 @@ import { MatDatepickerInputEvent, MatDatepickerInput, MatDatepickerToggle, MatDa
 import { CommonService } from 'src/app/service/common.service';
 import { MatButton } from '@angular/material/button';
 import { MatInput } from '@angular/material/input';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatHint, MatSuffix, MatError } from '@angular/material/form-field';
 
 export const MY_FORMATS = {
@@ -33,7 +33,7 @@ export const MY_FORMATS = {
         { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
     ],
     standalone: true,
-    imports: [MatFormField, MatLabel, NgIf, MatInput, FormsModule, MatDatepickerInput, ReactiveFormsModule, MatHint, MatDatepickerToggle, MatSuffix, MatDatepicker, MatDatepickerActions, MatButton, MatDatepickerCancel, MatDatepickerApply, MatError]
+    imports: [MatFormField, MatLabel, MatInput, FormsModule, MatDatepickerInput, ReactiveFormsModule, MatHint, MatDatepickerToggle, MatSuffix, MatDatepicker, MatDatepickerActions, MatButton, MatDatepickerCancel, MatDatepickerApply, MatError]
 })
 export class DadyinDatePickerComponent implements OnInit, ControlValueAccessor, AfterContentChecked {
 

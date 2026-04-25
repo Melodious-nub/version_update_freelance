@@ -83,73 +83,69 @@
       </thead>
       <tbody>
 
-        <ng-container *ngFor="let containerOrder of data?.containerForm?.containerOrders;let i=index;">
-          <ng-container *ngFor="let containerProduct of containerOrder?.containerProducts;let j=index;">
-          <tr>
-            <td style="padding-left:21px;"> {{i+1}}. </td>
-            <td>
-              <div>DT-123 {{containerProduct?.productId}}</div>
-            </td>
-            <td colspan="7" class="bg-light">
-              <div class="bg-light">1/6 Beige Thank you bags</div>
-            </td>
-          </tr>
-          <tr  *ngFor="let pallet of containerProduct.orderPalletInformations;let k=index;">
-            <td style="padding-left:21px;"> </td>
-            <td>
-              <div>{{pallet?.palletNumber}}</div>
-            </td>
-            <td>
-              <div>{{containerOrder?.purchaseOrderDetail?.transactionId}}</div>
-            </td>
-            <td>
-              <div>{{pallet?.location}}</div>
-            </td>
-            <td>
-              <div>{{pallet?.location}}</div>
-            </td>
-            <td>
-              <div>{{pallet?.rowNumber}}</div>
-            </td>
-            <td>
-              <div>{{pallet?.columnNumber}}</div>
-            </td>
-            <td>
-              <div>{{pallet?.singleBoxNumber}}</div>
-            </td>
-            <td>
-              <div>{{pallet?.note}}</div>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding-left:21px;"> </td>
-            <td>
-
-            </td>
-            <td>
-
-            </td>
-            <td>
-
-            </td>
-            <td>
-
-            </td>
-            <td>
-
-            </td>
-            <td >
-              <div style="text-align:right;"> <b>SKUS </b></div>
-            </td>
-            <td>
-              <div class="bg-light"> <b>345</b></div>
-            </td>
-            <td>
-
-            </td>
-          </tr>
-        </ng-container>
-        </ng-container>
+        @for (containerOrder of data?.containerForm?.containerOrders; track containerOrder; let i = $index) {
+          @for (containerProduct of containerOrder?.containerProducts; track containerProduct; let j = $index) {
+            <tr>
+              <td style="padding-left:21px;"> {{i+1}}. </td>
+              <td>
+                <div>DT-123 {{containerProduct?.productId}}</div>
+              </td>
+              <td colspan="7" class="bg-light">
+                <div class="bg-light">1/6 Beige Thank you bags</div>
+              </td>
+            </tr>
+            @for (pallet of containerProduct.orderPalletInformations; track pallet; let k = $index) {
+              <tr >
+                <td style="padding-left:21px;"> </td>
+                <td>
+                  <div>{{pallet?.palletNumber}}</div>
+                </td>
+                <td>
+                  <div>{{containerOrder?.purchaseOrderDetail?.transactionId}}</div>
+                </td>
+                <td>
+                  <div>{{pallet?.location}}</div>
+                </td>
+                <td>
+                  <div>{{pallet?.location}}</div>
+                </td>
+                <td>
+                  <div>{{pallet?.rowNumber}}</div>
+                </td>
+                <td>
+                  <div>{{pallet?.columnNumber}}</div>
+                </td>
+                <td>
+                  <div>{{pallet?.singleBoxNumber}}</div>
+                </td>
+                <td>
+                  <div>{{pallet?.note}}</div>
+                </td>
+              </tr>
+            }
+            <tr>
+              <td style="padding-left:21px;"> </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td >
+                <div style="text-align:right;"> <b>SKUS </b></div>
+              </td>
+              <td>
+                <div class="bg-light"> <b>345</b></div>
+              </td>
+              <td>
+              </td>
+            </tr>
+          }
+        }
         <tr></tr>
         <tr>
           <td style="padding-left:21px;"> </td>
@@ -249,24 +245,26 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let unloadingMaterialExpense of  data?.containerForm?.containerExpense?.unloadingMaterialExpenses;let i=index;">
-          <td style="padding-left:21px;"> {{i + 1}}.</td>
-          <td>
-            <div>{{unloadingMaterialExpense?.productId}}</div>
-          </td>
-          <td>
-            <div>{{unloadingMaterialExpense?.quantity}}</div>
-          </td>
-          <td>
-            <div>{{unloadingMaterialExpense?.productId}}</div>
-          </td>
-          <td>
-            <div>{{unloadingMaterialExpense?.quantityUsed}}</div>
-          </td>
-          <td>
-            <div>{{unloadingMaterialExpense?.note}}</div>
-          </td>
-        </tr>
+        @for (unloadingMaterialExpense of  data?.containerForm?.containerExpense?.unloadingMaterialExpenses; track unloadingMaterialExpense; let i = $index) {
+          <tr>
+            <td style="padding-left:21px;"> {{i + 1}}.</td>
+            <td>
+              <div>{{unloadingMaterialExpense?.productId}}</div>
+            </td>
+            <td>
+              <div>{{unloadingMaterialExpense?.quantity}}</div>
+            </td>
+            <td>
+              <div>{{unloadingMaterialExpense?.productId}}</div>
+            </td>
+            <td>
+              <div>{{unloadingMaterialExpense?.quantityUsed}}</div>
+            </td>
+            <td>
+              <div>{{unloadingMaterialExpense?.note}}</div>
+            </td>
+          </tr>
+        }
       </tbody>
     </table>
   </div>
@@ -301,13 +299,13 @@
   </table>
 </div>
 
-<ng-container *ngFor="let containerOrder of data?.containerForm?.containerOrders;let i=index;">
-  <ng-container *ngFor="let containerProduct of containerOrder?.containerProducts;let j=index;">
-    <ng-container *ngFor="let pallet of containerProduct?.orderPalletInformations;let k=index;">
+@for (containerOrder of data?.containerForm?.containerOrders; track containerOrder; let i = $index) {
+  @for (containerProduct of containerOrder?.containerProducts; track containerProduct; let j = $index) {
+    @for (pallet of containerProduct?.orderPalletInformations; track pallet; let k = $index) {
       <div class=" my-2  pallet-label p-5" >
         <div class="row font-size-35">
           <div class="col-10">
-           {{pallet?.palletNumber}}
+            {{pallet?.palletNumber}}
           </div>
           <div class="col-2">
             03
@@ -370,6 +368,6 @@
           </div>
         </div>
       </div>
-    </ng-container>
-  </ng-container>
-</ng-container>
+    }
+  }
+}

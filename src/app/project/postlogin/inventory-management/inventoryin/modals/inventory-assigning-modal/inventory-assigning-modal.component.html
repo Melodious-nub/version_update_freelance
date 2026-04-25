@@ -6,28 +6,28 @@
   </div>
   <div class="d-flex my-1">
     <div class="content-title width-perc-5">
-            <mat-icon>
-                keyboard_double_arrow_left
-            </mat-icon>
+      <mat-icon>
+        keyboard_double_arrow_left
+      </mat-icon>
     </div>
     <div class="content-title mx-1  width-perc-90 d-flex justify-content-between" >
-       <div class="text-center" style="width: 85%;">
+      <div class="text-center" style="width: 85%;">
         <label style="font-weight:bolder;" class="title-text font-size-16">{{ inventoryDetailsData.productCode }}</label>
-       </div>
-        <div style="width: 15%;text-align: end;">
-          <dadyin-button
-            [label]="status=='COMPLETED'?'Save Changes':'Confirm'"
-            [theme]="'primary'"
-            (clicked)="mergePallet()"
-          ></dadyin-button>
-        </div>
+      </div>
+      <div style="width: 15%;text-align: end;">
+        <dadyin-button
+          [label]="status=='COMPLETED'?'Save Changes':'Confirm'"
+          [theme]="'primary'"
+          (clicked)="mergePallet()"
+        ></dadyin-button>
+      </div>
     </div>
     <div class="content-title  width-perc-5">
-       <mat-icon>
-            keyboard_double_arrow_right
-        </mat-icon>
+      <mat-icon>
+        keyboard_double_arrow_right
+      </mat-icon>
     </div>
-</div>
+  </div>
   <div class="inventorydetails">
     <div class="d-flex justify-content-around bg-light">
       <div class="text-center p-2">
@@ -94,129 +94,130 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              *ngFor="
-                let item of palletDetails?.palletInventories;
-                let i = index
-              "
-            >
-              <td>
-                <input [value]="item.palletNumber" disabled type="text" />
-              </td>
-              <td>
-                <input [value]="item.location" disabled type="text" />
-              </td>
-              <td>
-                <input [value]="item.rowNumber" disabled type="text" />
-              </td>
-              <td>
-                <input [value]="item.columnNumber" disabled type="text" />
-              </td>
-              <td>
-                <input [value]="item.singleBoxNumber" disabled type="text" />
-              </td>
-              <td>
-                <input disabled type="text" />
-              </td>
-              <td>
-                <input disabled type="text" />
-              </td>
-              <td>
-                <input disabled type="text" />
-              </td>
-              <td>
-                <input [value]="item.dockNumber" disabled type="text" />
-              </td>
-              <td>
-                <input [value]="item.handlingInstructions" disabled type="text" />
-              </td>
-              <td>
-                <input [value]="item.notes" disabled type="text" />
-              </td>
-            </tr>
+            @for (
+              item of palletDetails?.palletInventories; track
+              item; let i = $index) {
+              <tr
+                >
+                <td>
+                  <input [value]="item.palletNumber" disabled type="text" />
+                </td>
+                <td>
+                  <input [value]="item.location" disabled type="text" />
+                </td>
+                <td>
+                  <input [value]="item.rowNumber" disabled type="text" />
+                </td>
+                <td>
+                  <input [value]="item.columnNumber" disabled type="text" />
+                </td>
+                <td>
+                  <input [value]="item.singleBoxNumber" disabled type="text" />
+                </td>
+                <td>
+                  <input disabled type="text" />
+                </td>
+                <td>
+                  <input disabled type="text" />
+                </td>
+                <td>
+                  <input disabled type="text" />
+                </td>
+                <td>
+                  <input [value]="item.dockNumber" disabled type="text" />
+                </td>
+                <td>
+                  <input [value]="item.handlingInstructions" disabled type="text" />
+                </td>
+                <td>
+                  <input [value]="item.notes" disabled type="text" />
+                </td>
+              </tr>
+            }
 
-            <tr
-              *ngFor="let item of palletInventories.controls; let i = index"
-              [formGroup]="item"
-            >
-              <td>
-                <input [readonly]="status=='COMPLETED'" formControlName="palletNumber" type="text" />
-              </td>
-              <td>
-                <input [readonly]="status=='COMPLETED'" formControlName="location" type="text" />
-              </td>
-              <td>
-                <input
-                  (change)="calculate()"
-                  [readonly]="status=='COMPLETED'" formControlName="rowNumber"
-                  type="number"
-                />
-              </td>
-              <td>
-                <input
-                  (change)="calculate()"
-                  [readonly]="status=='COMPLETED'" formControlName="columnNumber"
-                  type="number"
-                />
-              </td>
-              <td>
-                <input
-                  (change)="calculate()"
-                  [readonly]="status=='COMPLETED'" formControlName="singleBoxNumber"
-                  type="number"
-                />
-              </td>
-              <td>
-                <input type="text" [readonly]="status=='COMPLETED'" formControlName="numberOfItems"  />
-              </td>
-              <td>
-                <input type="text" readonly [value]="purchaseOrderId" />
-              </td>
-              <td>
-                <input type="text" [readonly]="status=='COMPLETED'" />
-              </td>
-              <td>
-                <input [readonly]="status=='COMPLETED'" formControlName="dockNumber" type="text" />
-              </td>
-              <td>
-                <input [readonly]="status=='COMPLETED'" formControlName="handlingInstructions" type="text" />
-              </td>
-              <td>
-                <input [readonly]="status=='COMPLETED'" formControlName="notes" type="text" />
-              </td>
-            </tr>
-          </tbody>
-          <tfoot></tfoot>
-        </table>
-        <div class="d-flex my-5 justify-content-between">
-          <div></div>
+            @for (item of palletInventories.controls; track item; let i = $index) {
+              <tr
+                [formGroup]="item"
+                >
+                <td>
+                  <input [readonly]="status=='COMPLETED'" formControlName="palletNumber" type="text" />
+                </td>
+                <td>
+                  <input [readonly]="status=='COMPLETED'" formControlName="location" type="text" />
+                </td>
+                <td>
+                  <input
+                    (change)="calculate()"
+                    [readonly]="status=='COMPLETED'" formControlName="rowNumber"
+                    type="number"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      (change)="calculate()"
+                      [readonly]="status=='COMPLETED'" formControlName="columnNumber"
+                      type="number"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        (change)="calculate()"
+                        [readonly]="status=='COMPLETED'" formControlName="singleBoxNumber"
+                        type="number"
+                        />
+                      </td>
+                      <td>
+                        <input type="text" [readonly]="status=='COMPLETED'" formControlName="numberOfItems"  />
+                      </td>
+                      <td>
+                        <input type="text" readonly [value]="purchaseOrderId" />
+                      </td>
+                      <td>
+                        <input type="text" [readonly]="status=='COMPLETED'" />
+                      </td>
+                      <td>
+                        <input [readonly]="status=='COMPLETED'" formControlName="dockNumber" type="text" />
+                      </td>
+                      <td>
+                        <input [readonly]="status=='COMPLETED'" formControlName="handlingInstructions" type="text" />
+                      </td>
+                      <td>
+                        <input [readonly]="status=='COMPLETED'" formControlName="notes" type="text" />
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+                <tfoot></tfoot>
+              </table>
+              <div class="d-flex my-5 justify-content-between">
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br /><br /><br />
+        <div class="row">
+          <div class="col-6">
+            <div class="toolbar title-text"> Inventory Ledger</div>
+            <data-table
+              [data]="palletDetails?.completedOrders"
+              [headers]="inventoryLedgerHeader"
+              [searchTerm]="filterValue"
+              [pageConfig]="pageConfig"
+              [actions]="tabelActions"
+              >
+            </data-table>
+          </div>
+          <div class="col-6">
+            <div class="toolbar title-text"> Inventory Arriving</div>
+            <data-table
+              [data]="palletDetails?.incomingOrders"
+              [headers]="inventoryArrivingHeader"
+              [searchTerm]="filterValue"
+              [pageConfig]="pageConfig"
+              [actions]="tabelActions"
+              >
+            </data-table>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <br /><br /><br />
-  <div class="row">
-    <div class="col-6">
-      <div class="toolbar title-text"> Inventory Ledger</div>
-      <data-table
-        [data]="palletDetails?.completedOrders"
-        [headers]="inventoryLedgerHeader"
-        [searchTerm]="filterValue"
-        [pageConfig]="pageConfig"
-        [actions]="tabelActions"
-      >
-      </data-table>
-    </div>
-    <div class="col-6">
-      <div class="toolbar title-text"> Inventory Arriving</div>
-      <data-table
-        [data]="palletDetails?.incomingOrders"
-        [headers]="inventoryArrivingHeader"
-        [searchTerm]="filterValue"
-        [pageConfig]="pageConfig"
-        [actions]="tabelActions"
-      >
-      </data-table>
-    </div>
-  </div>
-</div>

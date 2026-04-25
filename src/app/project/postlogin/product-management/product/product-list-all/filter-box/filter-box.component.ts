@@ -4,7 +4,7 @@ import { BusinessAccountService } from 'src/app/project/postlogin/business-accou
 import { TokenService } from 'src/app/service/token.service';
 import { ProductManagementService } from '../../../service/product-management.service';
 import { Subject, debounceTime, distinctUntilChanged, fromEvent, switchMap, tap } from 'rxjs';
-import { DatePipe, NgIf, NgFor } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatExpansionPanelDescription } from '@angular/material/expansion';
 import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
@@ -15,7 +15,7 @@ import { MatIcon } from '@angular/material/icon';
     templateUrl: './filter-box.component.html',
     styleUrls: ['./filter-box.component.scss'],
     standalone: true,
-    imports: [MatIcon, NgIf, DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatExpansionPanelDescription, NgFor, MatCheckbox],
+    imports: [MatIcon, DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatExpansionPanelDescription, MatCheckbox],
     providers: [DatePipe]
 })
 export class FilterBoxComponent implements OnInit {

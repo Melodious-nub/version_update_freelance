@@ -45,36 +45,36 @@
           </tr>
         </thead>
         <tbody class='text-center'>
-          <tr *ngFor="
-                    let processproduct of newProcessProducts.controls;
-                    let i = index;
-                  ">
-
-            <td class="border text-center">
-              {{getAttribute(processproduct, 'productTypeId').value}}
-            </td>
-            <td class="border text-center">
-              {{getAttribute(processproduct, 'subProductId').value}}
-            </td>
-            <td class="border text-center">
-              {{getAttributeValue(processproduct, 'subProductMetricCost').value}}
-            </td>
-            <td class="border text-center">
-              {{getAttributeValue(processproduct, 'subProductDensity').value}}
-            </td>
-            <td class="border text-center">
-              {{getAttribute(processproduct, 'usedPercent').value}}
-            </td>
-            <td class="border text-center">
-              {{getAttribute(processproduct, 'wastePercent').value}}
-            </td>
-            <td class="border text-center">
-              {{getAttributeValue(processproduct, 'density').value}}
-            </td>
-            <td class="border text-center">
-              {{getAttributeValue(processproduct, 'metricCost').value}}
-            </td>
-          </tr>
+          @for (
+            processproduct of newProcessProducts.controls; track
+            processproduct; let i = $index) {
+            <tr>
+              <td class="border text-center">
+                {{getAttribute(processproduct, 'productTypeId').value}}
+              </td>
+              <td class="border text-center">
+                {{getAttribute(processproduct, 'subProductId').value}}
+              </td>
+              <td class="border text-center">
+                {{getAttributeValue(processproduct, 'subProductMetricCost').value}}
+              </td>
+              <td class="border text-center">
+                {{getAttributeValue(processproduct, 'subProductDensity').value}}
+              </td>
+              <td class="border text-center">
+                {{getAttribute(processproduct, 'usedPercent').value}}
+              </td>
+              <td class="border text-center">
+                {{getAttribute(processproduct, 'wastePercent').value}}
+              </td>
+              <td class="border text-center">
+                {{getAttributeValue(processproduct, 'density').value}}
+              </td>
+              <td class="border text-center">
+                {{getAttributeValue(processproduct, 'metricCost').value}}
+              </td>
+            </tr>
+          }
 
         </tbody>
       </table>

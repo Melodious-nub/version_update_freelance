@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NotesListComponent } from './notes/notes-list/notes-list.component';
 import { AttributeListComponent } from './product-attributeset/attribute-list/attribute-list.component';
 import { MatBadge } from '@angular/material/badge';
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
@@ -13,16 +13,14 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     styleUrls: ['./order-management.component.scss'],
     standalone: true,
     imports: [
-        MatTabGroup,
-        NgFor,
-        MatTab,
-        MatTabLabel,
-        MatBadge,
-        MatTabContent,
-        NgIf,
-        AttributeListComponent,
-        NotesListComponent,
-    ],
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatBadge,
+    MatTabContent,
+    AttributeListComponent,
+    NotesListComponent
+],
 })
 export class OrderManagementComponent implements OnInit {
   public currentMainIndex: number = 0;

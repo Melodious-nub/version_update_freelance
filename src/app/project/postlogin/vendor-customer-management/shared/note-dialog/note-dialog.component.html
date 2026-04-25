@@ -14,12 +14,14 @@
       <b>{{ data.relationAccountDetail?.assignedSalesId}}</b>
     </div>
   </div>
-  <div class="d-flex align-items-center" *ngIf="isNoteMode">
-    <dadyin-button class="w-100" [theme]="'primary'" [label]="'Onboard Business'"></dadyin-button>
-    <div>
-      <i matTooltip="Suggest Email" class="material-icon mx-1" (click)="suggestEmail()">mail</i>
+  @if (isNoteMode) {
+    <div class="d-flex align-items-center">
+      <dadyin-button class="w-100" [theme]="'primary'" [label]="'Onboard Business'"></dadyin-button>
+      <div>
+        <i matTooltip="Suggest Email" class="material-icon mx-1" (click)="suggestEmail()">mail</i>
+      </div>
     </div>
-  </div>
+  }
 </div>
 <div class="p-2">
   <mat-expansion-panel class="panel-no-padding" expanded="true" [hideToggle]="true" [disabled]="true">
@@ -31,62 +33,68 @@
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
       <!-- Note: create form -->
-      <div class="row p-2" *ngIf="isNoteMode" [formGroup]="noteForm">
-        <div class="col-6">
-          <div class="attribute b-none">
-            <label for="">Note</label>
-            <textarea style="min-height: 28px !important" rows="4" class="b-light w-100" type="text"
+      @if (isNoteMode) {
+        <div class="row p-2" [formGroup]="noteForm">
+          <div class="col-6">
+            <div class="attribute b-none">
+              <label for="">Note</label>
+              <textarea style="min-height: 28px !important" rows="4" class="b-light w-100" type="text"
               formControlName="message"></textarea>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="row">
-            <div class="col-12 mb-2">
-              <div style="width: max-content;" class="bg-light b-round p-2 d-flex align-items-center">
-                <i matTooltip="Upload note" class="material-icon mx-1" (click)="noteImage.click()">image</i>
-                Upload Image
-                <input type="file" #noteImage accept="image/*" (change)="uploadNote($event)" style="display: none" />
-              </div>
-            </div>
-            <div class="col-8 my-2">
-              <div class="attribute b-none">
-                <label for="">Status</label>
-                <select class="b-light w-100" formControlName="relationStatusId">
-                  <option *ngFor="let item of apiService.allRelationStatuses" [value]="item.id">
-                    {{ item.description }}
-                  </option>
-                </select>
-              </div>
-            </div>
-            <div class="col-4 my-2 d-flex align-items-end">
-              <dadyin-button [theme]="'primary'" (clicked)="addNote()" [label]="'Create'"></dadyin-button>
             </div>
           </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-12 mb-2">
+                <div style="width: max-content;" class="bg-light b-round p-2 d-flex align-items-center">
+                  <i matTooltip="Upload note" class="material-icon mx-1" (click)="noteImage.click()">image</i>
+                  Upload Image
+                  <input type="file" #noteImage accept="image/*" (change)="uploadNote($event)" style="display: none" />
+                </div>
+              </div>
+              <div class="col-8 my-2">
+                <div class="attribute b-none">
+                  <label for="">Status</label>
+                  <select class="b-light w-100" formControlName="relationStatusId">
+                    @for (item of apiService.allRelationStatuses; track item) {
+                      <option [value]="item.id">
+                        {{ item.description }}
+                      </option>
+                    }
+                  </select>
+                </div>
+              </div>
+              <div class="col-4 my-2 d-flex align-items-end">
+                <dadyin-button [theme]="'primary'" (clicked)="addNote()" [label]="'Create'"></dadyin-button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      }
       <!-- Reminder: create form (same row layout, different fields) -->
-      <div class="row p-2" *ngIf="isReminderMode" [formGroup]="reminderForm">
-        <div class="col-6">
-          <div class="attribute b-none">
-            <label for="">Details</label>
-            <textarea style="min-height: 28px !important" rows="4" class="b-light w-100" type="text"
+      @if (isReminderMode) {
+        <div class="row p-2" [formGroup]="reminderForm">
+          <div class="col-6">
+            <div class="attribute b-none">
+              <label for="">Details</label>
+              <textarea style="min-height: 28px !important" rows="4" class="b-light w-100" type="text"
               formControlName="reminderDetails"></textarea>
+            </div>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="row">
-            <div class="col-8">
-              <div class="attribute b-none">
-                <label for="">Reminder date and time</label>
-                <input type="datetime-local" class="b-light w-100" [min]="minDateTime" formControlName="reminderTime">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-8">
+                <div class="attribute b-none">
+                  <label for="">Reminder date and time</label>
+                  <input type="datetime-local" class="b-light w-100" [min]="minDateTime" formControlName="reminderTime">
+                </div>
+              </div>
+              <div class="col-4 d-flex align-items-end">
+                <dadyin-button [theme]="'primary'" (clicked)="addReminder()" [label]="'Create'"></dadyin-button>
               </div>
             </div>
-            <div class="col-4 d-flex align-items-end">
-              <dadyin-button [theme]="'primary'" (clicked)="addReminder()" [label]="'Create'"></dadyin-button>
-            </div>
           </div>
         </div>
-      </div>
+      }
     </ng-template>
   </mat-expansion-panel>
 
@@ -111,48 +119,52 @@
             </tr>
           </thead>
           <tbody>
-            <ng-container *ngFor="let item of this.data.notes?.controls || []; let i = index" [formGroup]="item">
-              <tr>
-
-                <td>
-                  <section class="ps-2">{{ item.get("audit").value?.lastModifiedDate | date : "dMMMyy h:mm a" }}</section>
-                </td>
-                <td>
-                  <div class="d-flex b-none justify-content-between align-items-center">
-                    <div class="b-none">
-                      <i *ngIf="item.get('fileName').value" matTooltip="View uploaded Image" class="material-icon mx-1"
-                        (click)="viewImage(item.get('fileName').value)">image</i>
-                      <ng-container *ngIf="!item.expanded">
-                        <section style="overflow: hidden !important; " class="w-100">
-                          {{ item.get("message").value | slice : 0 : 100 }}
-                        </section>
-                        <span class="text-primary" (click)="item.expanded = !item.expanded">...</span>
-                      </ng-container>
+            @for (item of this.data.notes?.controls || []; track item; let i = $index) {
+              <ng-container [formGroup]="item">
+                <tr>
+                  <td>
+                    <section class="ps-2">{{ item.get("audit").value?.lastModifiedDate | date : "dMMMyy h:mm a" }}</section>
+                  </td>
+                  <td>
+                    <div class="d-flex b-none justify-content-between align-items-center">
+                      <div class="b-none">
+                        @if (item.get('fileName').value) {
+                          <i matTooltip="View uploaded Image" class="material-icon mx-1"
+                          (click)="viewImage(item.get('fileName').value)">image</i>
+                        }
+                        @if (!item.expanded) {
+                          <section style="overflow: hidden !important; " class="w-100">
+                            {{ item.get("message").value | slice : 0 : 100 }}
+                          </section>
+                          <span class="text-primary" (click)="item.expanded = !item.expanded">...</span>
+                        }
+                      </div>
+                      <dadyin-button (clicked)="item.expanded = !item.expanded" class="text-primary"
+                        [theme]="'borderless-primary'" [type]="'icon'"
+                        [typeval]="item.expanded ? 'expand_less' : 'expand_more'">
+                      </dadyin-button>
                     </div>
-                    <dadyin-button (clicked)="item.expanded = !item.expanded" class="text-primary"
-                      [theme]="'borderless-primary'" [type]="'icon'"
-                      [typeval]="item.expanded ? 'expand_less' : 'expand_more'">
-                    </dadyin-button>
-                  </div>
-                </td>
-                <td>
-                  <section class="ps-2">{{ getStatusName(item.get("relationStatusId").value) }}</section>
-                </td>
-                <td>
-                  <dadyin-button [theme]="'borderless-danger'" type="image" [typeval]="'assets/img/icons/delete.png'"
+                  </td>
+                  <td>
+                    <section class="ps-2">{{ getStatusName(item.get("relationStatusId").value) }}</section>
+                  </td>
+                  <td>
+                    <dadyin-button [theme]="'borderless-danger'" type="image" [typeval]="'assets/img/icons/delete.png'"
                     (clicked)="deleteNote(i)">delete</dadyin-button>
-                </td>
-              </tr>
-              <tr *ngIf="item.expanded">
-
-                <td class="width-100"></td>
-                <td class="ps-2">
-                  <div class="note" [innerHTML]="this.formatText(item.get('message').value)"></div>
-                </td>
-                <td class="width-100"></td>
-                <td class="width-100"></td>
-              </tr>
-            </ng-container>
+                  </td>
+                </tr>
+                @if (item.expanded) {
+                  <tr>
+                    <td class="width-100"></td>
+                    <td class="ps-2">
+                      <div class="note" [innerHTML]="this.formatText(item.get('message').value)"></div>
+                    </td>
+                    <td class="width-100"></td>
+                    <td class="width-100"></td>
+                  </tr>
+                }
+              </ng-container>
+            }
           </tbody>
         </table>
       </div>
@@ -179,21 +191,22 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of data?.reminders || []; let i = index">
-
-              <td>
-                <section class="ps-2">{{ item?.audit?.lastModifiedDate | date : "dMMMyy h:mm a" : "UTC" }}</section>
-              </td>
-              <td>
-                <section class="ps-2" style="overflow: hidden !important; height: 28px !important;" class="w-100">
-                  {{ item?.reminderDetails }}
-                </section>
-              </td>
-              <td>
-                <section>{{ item?.reminderTime | date : "dMMMyy h:mm a" : "UTC" }}</section>
-              </td>
-              <td></td>
-            </tr>
+            @for (item of data?.reminders || []; track item; let i = $index) {
+              <tr>
+                <td>
+                  <section class="ps-2">{{ item?.audit?.lastModifiedDate | date : "dMMMyy h:mm a" : "UTC" }}</section>
+                </td>
+                <td>
+                  <section class="ps-2" style="overflow: hidden !important; height: 28px !important;" class="w-100">
+                    {{ item?.reminderDetails }}
+                  </section>
+                </td>
+                <td>
+                  <section>{{ item?.reminderTime | date : "dMMMyy h:mm a" : "UTC" }}</section>
+                </td>
+                <td></td>
+              </tr>
+            }
           </tbody>
         </table>
       </div>

@@ -32,7 +32,7 @@ import { DadyinSelectComponent } from '../../../../../../../shared/widgets/dadyi
 import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { DadyinInputComponent } from '../../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
 import { DadyinSearchableSelectComponent } from '../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
-import { NgIf, NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
 @Component({
@@ -41,27 +41,25 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     styleUrls: ['./create-order.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatExpansionPanelContent,
-        NgIf,
-        DadyinSearchableSelectComponent,
-        DadyinInputComponent,
-        DadyinButtonComponent,
-        DadyinSelectComponent,
-        NgFor,
-        MatAutocompleteTrigger,
-        MatAutocomplete,
-        MatOption,
-        NgClass,
-        ExtendedModule,
-        MatTooltip,
-        MatIcon,
-        NumberFormatterPipe,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatExpansionPanelContent,
+    DadyinSearchableSelectComponent,
+    DadyinInputComponent,
+    DadyinButtonComponent,
+    DadyinSelectComponent,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption,
+    NgClass,
+    ExtendedModule,
+    MatTooltip,
+    MatIcon,
+    NumberFormatterPipe
+],
 })
 export class CreateOrderComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

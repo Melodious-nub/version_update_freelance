@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgFor } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
     templateUrl: './unloading-sheet.component.html',
     styleUrls: ['./unloading-sheet.component.scss'],
     standalone: true,
-    imports: [FormsModule, NgFor]
+    imports: [FormsModule]
 })
 export class UnloadingSheetComponent implements OnInit {
    @Input() data:any;

@@ -13,27 +13,33 @@
             <div class="col-md-4 col-12 map-grid">
               <dadyin-searchable-select class="w-100" label="Select Vendor" [control]="vendorId"
                 (changed)="onChangeVendor()" [fullItems]="businessAccountService.vendorList"
-                bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
+              bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
               <dadyin-button (clicked)="openMap(1)" (click)="$event.stopPropagation()" [theme]="'borderless-primary'"
                 type="image" [typeval]="'assets/img/icons/address.png'">
               </dadyin-button>
-              <div *ngIf="map1" class="tooltip-white b-light shadow-sm">
-                {{ requestToAddress }}
+              @if (map1) {
+                <div class="tooltip-white b-light shadow-sm">
+                  {{ requestToAddress }}
+                </div>
+              }
+            </div>
+            @if (importLocalType.value == 'CONTAINER') {
+              <div class="col-12 col-md-2">
+                <dadyin-select [isDisabled]="!isEditable" [optionArr]="containerService.incoTermsList"
+                  [emptyOption]="'Select Inco Terms'" label="Inco Terms" formControlName="incoTermId"
+                  optionLabel="description" optionValue="id">
+                </dadyin-select>
               </div>
-            </div>
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value == 'CONTAINER'">
-              <dadyin-select [isDisabled]="!isEditable" [optionArr]="containerService.incoTermsList"
-                [emptyOption]="'Select Inco Terms'" label="Inco Terms" formControlName="incoTermId"
-                optionLabel="description" optionValue="id">
-              </dadyin-select>
-            </div>
-            <div class="col-8 col-md-2" *ngIf="importLocalType.value == 'LOCAL'">
+            }
+            @if (importLocalType.value == 'LOCAL') {
+              <div class="col-8 col-md-2">
               <dadyin-select [isDisabled]="!isEditable" [optionArr]="[
                   { id: 'DELIVERY', description: 'DELIVERY' },
                   { id: 'PICKUP', description: 'PICKUP' }
                 ]" label="Delivery Type" formControlName="deliveryPickup" optionLabel="description" optionValue="id">
-              </dadyin-select>
-            </div>
+                </dadyin-select>
+              </div>
+            }
 
             <div class="col-md-1 col-4 d-flex">
               <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'LOCAL'
@@ -82,20 +88,24 @@
                 formControlName="purchaseManagerId" optionLabel="firstName" optionValue="id">
               </dadyin-select>
             </div>
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value != 'LOCAL'">
-              <dadyin-input [isDisabled]="!isEditable" inputType="text" label="Dadyin Points"
-                formControlName="dadyInPoints">
-              </dadyin-input>
-            </div>
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value != 'LOCAL'">
+            @if (importLocalType.value != 'LOCAL') {
+              <div class="col-12 col-md-2">
+                <dadyin-input [isDisabled]="!isEditable" inputType="text" label="Dadyin Points"
+                  formControlName="dadyInPoints">
+                </dadyin-input>
+              </div>
+            }
+            @if (importLocalType.value != 'LOCAL') {
+              <div class="col-12 col-md-2">
               <dadyin-select [isDisabled]="!isEditable" [optionArr]="[
                   { id: 'PALLET', name: 'PALLET' },
                   { id: 'FLOOR', name: 'FLOOR' },
                   { id: 'MIXED', name: 'MIXED' }
                 ]" label="Loading Type" formControlName="loadingTypeId" optionLabel="name" optionValue="id"
-                [emptyOption]="'Select Loading Type'">
-              </dadyin-select>
-            </div>
+                  [emptyOption]="'Select Loading Type'">
+                </dadyin-select>
+              </div>
+            }
             <div class="col-12 col-md-2">
               <dadyin-select [emptyOption]="'Select Payment Terms'" formControlName="paymentTermId"
                 [optionArr]="containerService.paymentTermsList" label="Payment Terms" optionLabel="description"
@@ -134,12 +144,14 @@
                 <input [matAutocomplete]="quotationAuto" #quotationinput (input)="getQuotationsList($event)" />
               </div>
               <mat-autocomplete autoActiveFirstOption #quotationAuto="matAutocomplete">
-                <mat-option *ngFor="let quotation of quotationsList" (click)="
+                @for (quotation of quotationsList; track quotation) {
+<mat-option (click)="
                     quotationinput.value = quotation.transactionId;
                     onSelectQuotation(quotation)
                   ">
-                  {{ quotation?.transactionId }}
-                </mat-option>
+                    {{ quotation?.transactionId }}
+                  </mat-option>
+                }
               </mat-autocomplete>
             </div>
 
@@ -168,29 +180,31 @@
     </div>
 
     <!-- <div [formGroup]="productAttributeSetControl">
-      <dadyin-select class="mb-0 bg-light" formControlName="descriptionId" [optionArr]="productAttributeSets"
-        labelBackground="bg-light" label="Select Product Attribute Set" optionLabel="description" optionValue="id">
-      </dadyin-select>
-    </div>
-    <div>
-      <dadyin-button type="icon" class="mx-1" (clicked)="printPdf()" [typeval]="'print'" [theme]="'borderless-default'">
-      </dadyin-button>
-    </div> -->
+    <dadyin-select class="mb-0 bg-light" formControlName="descriptionId" [optionArr]="productAttributeSets"
+      labelBackground="bg-light" label="Select Product Attribute Set" optionLabel="description" optionValue="id">
+    </dadyin-select>
   </div>
+  <div>
+    <dadyin-button type="icon" class="mx-1" (clicked)="printPdf()" [typeval]="'print'" [theme]="'borderless-default'">
+    </dadyin-button>
+  </div> -->
+</div>
 
-  <mat-expansion-panel class="panel-no-padding mt-1" expanded="true" #expansionPanel3>
-    <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
-      <mat-panel-description>
-        <div class="w-100 title-text">
-          Product Details
-          <span *ngIf="productPackages?.controls?.length">
-            ({{ productPackages?.controls?.length }})</span>
-        </div>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+<mat-expansion-panel class="panel-no-padding mt-1" expanded="true" #expansionPanel3>
+  <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
+    <mat-panel-description>
+      <div class="w-100 title-text">
+        Product Details
+        @if (productPackages?.controls?.length) {
+          <span>
+          ({{ productPackages?.controls?.length }})</span>
+        }
+      </div>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
 
-    <ng-template matExpansionPanelContent>
-      <section>
+  <ng-template matExpansionPanelContent>
+    <section>
         <app-order-transaction-packages [displayedColumns]="[          
           'pkgs',
           'qoh',
@@ -202,10 +216,10 @@
           'subTotal',
           'action'
           ]" [orderFile]="poFile" [isEditable]="isEditable" [orderForm]="purchaseOrderForm"
-          (getProducts)="getProductsList($event)" (generatePoFromPdf)="generatePoFromPdf($event)"
-          (calculate)="calculateValues()" [productsList]="productsList" [productPackages]="productPackages"
-          [type]="'purchaseorder'"></app-order-transaction-packages>
-      </section>
-    </ng-template>
-  </mat-expansion-panel>
+        (getProducts)="getProductsList($event)" (generatePoFromPdf)="generatePoFromPdf($event)"
+        (calculate)="calculateValues()" [productsList]="productsList" [productPackages]="productPackages"
+      [type]="'purchaseorder'"></app-order-transaction-packages>
+    </section>
+  </ng-template>
+</mat-expansion-panel>
 </form>

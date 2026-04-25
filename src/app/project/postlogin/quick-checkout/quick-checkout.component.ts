@@ -10,7 +10,7 @@ import { CdkDrag } from '@angular/cdk/drag-drop';
 import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { SearchFilterComponent } from '../../../shared/component/search-filter/search-filter.component';
 import { MatBadge } from '@angular/material/badge';
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
@@ -19,20 +19,18 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     styleUrls: ['./quick-checkout.scss'],
     standalone: true,
     imports: [
-        MatTabGroup,
-        NgFor,
-        MatTab,
-        MatTabLabel,
-        MatBadge,
-        MatTabContent,
-        NgIf,
-        SearchFilterComponent,
-        DadyinButtonComponent,
-        CdkDrag,
-        FormsModule,
-        ReactiveFormsModule,
-        DataTableComponent,
-    ],
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatBadge,
+    MatTabContent,
+    SearchFilterComponent,
+    DadyinButtonComponent,
+    CdkDrag,
+    FormsModule,
+    ReactiveFormsModule,
+    DataTableComponent
+],
 })
 export class QuickCheckoutComponent implements OnInit {
   public preferForm: UntypedFormGroup = this.formService.createPreferUomForm();

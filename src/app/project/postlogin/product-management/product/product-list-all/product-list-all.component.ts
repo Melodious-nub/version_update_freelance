@@ -22,7 +22,7 @@ import { CdkDrag } from '@angular/cdk/drag-drop';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { SearchFilterComponent } from '../../../../../shared/component/search-filter/search-filter.component';
 import { MatBadge } from '@angular/material/badge';
-import { NgFor, NgIf, NgClass, DecimalPipe, DatePipe } from '@angular/common';
+import { NgClass, DecimalPipe, DatePipe } from '@angular/common';
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
@@ -31,25 +31,23 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     styleUrls: ['./product-list-all.component.scss'],
     standalone: true,
     imports: [
-        MatTabGroup,
-        NgFor,
-        MatTab,
-        MatTabLabel,
-        MatBadge,
-        MatTabContent,
-        NgIf,
-        SearchFilterComponent,
-        FilterBoxComponent,
-        DadyinButtonComponent,
-        CdkDrag,
-        FormsModule,
-        ReactiveFormsModule,
-        DataTableComponent,
-        NgClass,
-        ExtendedModule,
-        DecimalPipe,
-        DatePipe,
-    ],
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatBadge,
+    MatTabContent,
+    SearchFilterComponent,
+    FilterBoxComponent,
+    DadyinButtonComponent,
+    CdkDrag,
+    FormsModule,
+    ReactiveFormsModule,
+    DataTableComponent,
+    NgClass,
+    ExtendedModule,
+    DecimalPipe,
+    DatePipe
+],
 })
 export class ProductListAllComponent implements OnInit, OnDestroy {
   searchControl = new UntypedFormControl('');

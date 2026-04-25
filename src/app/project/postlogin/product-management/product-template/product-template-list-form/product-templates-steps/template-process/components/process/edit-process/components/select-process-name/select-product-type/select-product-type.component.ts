@@ -3,7 +3,7 @@ import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/f
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { MatButton } from '@angular/material/button';
-import { NgFor } from '@angular/common';
+
 
 
 @Component({
@@ -11,7 +11,7 @@ import { NgFor } from '@angular/common';
     templateUrl: './select-product-type.component.html',
     styleUrls: ['./select-product-type.component.scss'],
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, NgFor, MatButton, MatDialogClose]
+    imports: [FormsModule, ReactiveFormsModule, MatButton, MatDialogClose]
 })
 export class SelectProductTypeComponent implements OnInit {
 

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryListComponent } from './product-categories/category-list/category-list.component';
 import { MatBadge } from '@angular/material/badge';
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
@@ -12,15 +12,13 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     styleUrls: ['./category-management.component.scss'],
     standalone: true,
     imports: [
-        MatTabGroup,
-        NgFor,
-        MatTab,
-        MatTabLabel,
-        MatBadge,
-        MatTabContent,
-        NgIf,
-        CategoryListComponent,
-    ],
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatBadge,
+    MatTabContent,
+    CategoryListComponent
+],
 })
 export class CategoryManagementComponent implements OnInit {
   public currentMainIndex: number = 0;

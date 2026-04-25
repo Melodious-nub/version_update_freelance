@@ -8,14 +8,14 @@ import { UomService } from 'src/app/service/uom.service';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgFor, NgClass, NgStyle, NgIf } from '@angular/common';
+import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
     selector: 'data-table-editable',
     templateUrl: './data-table-editable.component.html',
     styleUrls: ['./data-table-editable.component.scss'],
     standalone: true,
-    imports: [MatTable, MatSort, NgFor, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, NgClass, ExtendedModule, NgStyle, MatCellDef, MatCell, NgIf, FormsModule, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator]
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, NgClass, ExtendedModule, NgStyle, MatCellDef, MatCell, FormsModule, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator]
 })
 export class DataTableEditableComponent implements OnInit {
     imgUrl: any = environment.imgUrl

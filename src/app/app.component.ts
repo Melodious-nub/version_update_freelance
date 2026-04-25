@@ -8,14 +8,14 @@ import { HttpService } from './service/http.service';
 import { PrintTemplatesComponent } from './shared/print-templates/print-templates.component';
 import { SpinnerOverlayService } from './service/spinner-overlay.service';
 import { SpinnerOverlayComponent } from './shared/component/spinner-overlay/spinner-overlay.component';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
-    imports: [RouterOutlet, PrintTemplatesComponent, SpinnerOverlayComponent, NgIf, AsyncPipe],
+    imports: [RouterOutlet, PrintTemplatesComponent, SpinnerOverlayComponent, AsyncPipe],
 })
 export class AppComponent implements OnInit {
   currentRoute: string;

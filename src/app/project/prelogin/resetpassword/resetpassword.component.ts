@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { SignupService } from '../signup.service';
 import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { MatError } from '@angular/material/form-field';
-import { NgIf } from '@angular/common';
+
 import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyin-input.component';
 
 @Component({
@@ -16,13 +16,12 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     styleUrls: ['./resetpassword.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        DadyinInputComponent,
-        NgIf,
-        MatError,
-        DadyinButtonComponent,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    DadyinInputComponent,
+    MatError,
+    DadyinButtonComponent
+],
 })
 export class ResetPasswordComponent implements OnInit {
   public resetPasswordGroup: UntypedFormGroup;

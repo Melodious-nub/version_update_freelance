@@ -1,7 +1,7 @@
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'confirm-dialog',
@@ -9,12 +9,11 @@ import { NgIf } from '@angular/common';
     styleUrls: ['./confirm-dialog.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        MatDialogTitle,
-        MatDialogActions,
-        MatButton,
-        MatDialogClose,
-    ],
+    MatDialogTitle,
+    MatDialogActions,
+    MatButton,
+    MatDialogClose
+],
 })
 export class ConfirmDialogComponent {
   okayButtonText='Yes'

@@ -18,12 +18,14 @@
           [size]="'small'"
           [label]="'Get Price'"
           (clicked)="refreshRawMaterialPricing()"
-        >
+          >
         </dadyin-button>
       </div>
-      <div *ngIf="rawMaterial" class="b-light b-round p-2">
-        {{rawMaterial}}
-      </div>
+      @if (rawMaterial) {
+        <div class="b-light b-round p-2">
+          {{rawMaterial}}
+        </div>
+      }
     </div>
   </div>
 </div>

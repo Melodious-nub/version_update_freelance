@@ -7,7 +7,7 @@ import { ReceivedRfqListComponent } from './receivedRfq-components/receivedRfq-l
 import { MatBadge } from '@angular/material/badge';
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-customer-management',
@@ -15,20 +15,18 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
     styleUrls: ['./customer-management.component.scss'],
     standalone: true,
     imports: [
-        NgClass,
-        ExtendedModule,
-        MatTabGroup,
-        NgFor,
-        MatTab,
-        MatTabLabel,
-        MatBadge,
-        MatTabContent,
-        NgIf,
-        ReceivedRfqListComponent,
-        QuotationListComponent,
-        ReceivedPoListComponent,
-        InvoiceListComponent,
-    ],
+    NgClass,
+    ExtendedModule,
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatBadge,
+    MatTabContent,
+    ReceivedRfqListComponent,
+    QuotationListComponent,
+    ReceivedPoListComponent,
+    InvoiceListComponent
+],
 })
 export class CustomerManagementComponent implements OnInit {
   currentStepIndex = 0;

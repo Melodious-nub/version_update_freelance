@@ -1,5 +1,5 @@
 <div class="dialog-container">
- <i class="material-icon" mat-dialog-close>close</i>
+  <i class="material-icon" mat-dialog-close>close</i>
 
   <div class="dialog-card-header">
     <h3>Create Toggle Field</h3>
@@ -15,48 +15,50 @@
         </div>
       </div>
       <!-- <div class="uom">
-        <label>Select UOM</label>
-        <select>
-          <option [value]="'Number'"
-                  *ngFor="let uom of data.attributeType.availableUOMs">
-            {{uom.description}}
-          </option>
-        </select>
-      </div> -->
-    </div>
+      <label>Select UOM</label>
+      <select>
+        <option [value]="'Number'"
+          *ngFor="let uom of data.attributeType.availableUOMs">
+          {{uom.description}}
+        </option>
+      </select>
+    </div> -->
+  </div>
 
-    <div class="fields">
-      <label for=""
-             style="margin-bottom: 0!important; font-size: 12px;">Toggle Fields for</label>
-      <input type="text"
-             [formControl]="data.attributeName"
-             class="selected-value" />
+  <div class="fields">
+    <label for=""
+    style="margin-bottom: 0!important; font-size: 12px;">Toggle Fields for</label>
+    <input type="text"
+      [formControl]="data.attributeName"
+      class="selected-value" />
 
       <ul>
-        <li *ngFor="let attribute of attributeValueExpression.controls">
-          <div class="option"
-               [formGroup]="attribute">
-            <input type="text"
-                   formControlName="choice"
-                   placeholder="Option 1" />
-            <div class="group">
+        @for (attribute of attributeValueExpression.controls; track attribute) {
+          <li>
+            <div class="option"
+              [formGroup]="attribute">
               <input type="text"
-                     formControlName="attributeValueExpression"
-                     placeholder="Formula" />
-              <input  type="checkbox" formControlName="selected" />
-            </div>
-          </div>
-        </li>
+                formControlName="choice"
+                placeholder="Option 1" />
+                <div class="group">
+                  <input type="text"
+                    formControlName="attributeValueExpression"
+                    placeholder="Formula" />
+                    <input  type="checkbox" formControlName="selected" />
+                  </div>
+                </div>
+              </li>
+            }
 
-      </ul>
-    </div>
+          </ul>
+        </div>
 
-    <div class="dialog-buttons">
-      <button class="secondry"
-              (click)="onCancel()"
-              mat-dialog-close>Cancel</button>
-      <button class="primary"
-              (click)="onConfirm()">Confirm</button>
+        <div class="dialog-buttons">
+          <button class="secondry"
+            (click)="onCancel()"
+          mat-dialog-close>Cancel</button>
+          <button class="primary"
+          (click)="onConfirm()">Confirm</button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>

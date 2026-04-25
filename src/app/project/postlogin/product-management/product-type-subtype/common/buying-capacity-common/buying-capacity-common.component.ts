@@ -4,14 +4,14 @@ import { ToastrService } from 'ngx-toastr';
 import { APPCOMMONHELPERS } from 'src/app/helpers/appcommonhelpers';
 import { ProductTypeFormService } from '../../service/product-type-form.service';
 import { ActivatedRoute } from '@angular/router';
-import { NgIf, NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'app-buying-capacity-common',
     templateUrl: './buying-capacity-common.component.html',
     styleUrls: ['./buying-capacity-common.component.scss'],
     standalone: true,
-    imports: [NgIf, NgFor, FormsModule, ReactiveFormsModule]
+    imports: [FormsModule, ReactiveFormsModule]
 })
 export class BuyingCapacityCommonComponent implements OnInit, OnChanges {
 

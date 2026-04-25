@@ -1,14 +1,16 @@
 <div class="dialog-container text-center p-4" style="overflow: hidden">
-  <h3 mat-dialog-title class="my-2" *ngIf="data && data?.title">
-    {{data?.title}}
-  </h3>
+  @if (data && data?.title) {
+    <h3 mat-dialog-title class="my-2">
+      {{data?.title}}
+    </h3>
+  }
   <div mat-dialog-actions class="justify-content-center">
     <button
       mat-raised-button
       class="qcmobile-btn bg-primary text-white"
       (click)="shareLink()"
       tabindex="-1"
-    >
+      >
       Copy Link
     </button>
     <button
@@ -16,7 +18,7 @@
       class="btn-secondary text-primary bg-secondary"
       (click)="viewProducts()"
       tabindex="-1"
-    >
+      >
       View Products
     </button>
   </div>

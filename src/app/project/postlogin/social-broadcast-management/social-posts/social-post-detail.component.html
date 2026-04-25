@@ -1,512 +1,554 @@
 <div class="app-container">
-    <app-spinner-overlay *ngIf="isLoading" class="spinner-overlay"></app-spinner-overlay>
-    <div class="wizard-bar-container d-flex align-items-center justify-content-between">
-        <div class="d-flex">
-            <div style="display: flex; align-items: center; gap:10px;">
-                <img src="assets/nicons/back.png" alt="Back"
-                    style="height:30px; width:30px; object-fit:contain; border-radius:8px; cursor:pointer; "
-                    (click)="goBack()" />
-                <div class="content-title"
-                    style="font-size:1.2rem; font-weight:600; padding-right: 10px; border-right: 1px solid #D5E7FA; height: 100%; align-content: center;">
-                    {{ postDetails?.post_name || postDetails?.postName || 'N/A' }}
-                </div>
-                <div style="padding-right: 10px; border-right: 1px solid #D5E7FA; height: 100%; align-content: center;">
-                    <span [ngClass]="['status-chip', getStatusChipClass(postDetails?.status)]"
-                        style="font-size:0.8rem; padding:5px 20px; border-radius:50px; display:inline-block;">
-                        {{ postDetails?.status ? (postDetails.status | titlecase) : 'N/A' }}
-                    </span>
-                </div>
+  @if (isLoading) {
+    <app-spinner-overlay class="spinner-overlay"></app-spinner-overlay>
+  }
+  <div class="wizard-bar-container d-flex align-items-center justify-content-between">
+    <div class="d-flex">
+      <div style="display: flex; align-items: center; gap:10px;">
+        <img src="assets/nicons/back.png" alt="Back"
+          style="height:30px; width:30px; object-fit:contain; border-radius:8px; cursor:pointer; "
+          (click)="goBack()" />
+          <div class="content-title"
+            style="font-size:1.2rem; font-weight:600; padding-right: 10px; border-right: 1px solid #D5E7FA; height: 100%; align-content: center;">
+            {{ postDetails?.post_name || postDetails?.postName || 'N/A' }}
+          </div>
+          <div style="padding-right: 10px; border-right: 1px solid #D5E7FA; height: 100%; align-content: center;">
+            <span [ngClass]="['status-chip', getStatusChipClass(postDetails?.status)]"
+              style="font-size:0.8rem; padding:5px 20px; border-radius:50px; display:inline-block;">
+              {{ postDetails?.status ? (postDetails.status | titlecase) : 'N/A' }}
+            </span>
+          </div>
 
-                <div *ngIf="(postDetails?.status || '')?.toString()?.toLowerCase() === 'published'"
-                    style="padding-left:10px; display:flex; flex-direction:column; justify-content:center;">
-                    <div style="color:#1E1E25; font-size:0.85rem; font-weight: 600;">
-                        {{ (uniquePlatformsForDisplay && uniquePlatformsForDisplay.length) ? uniquePlatformsForDisplay.join(' | ') : 'N/A' }}
-                    </div>
-                    <div style="color:#6F7180; font-size:0.75rem;">
-                        {{ postDetails?.publicationDate ? (postDetails?.publicationDate | date:'dd-MMM-yy | hh:mm a') : 'N/A' }}
-                    </div>
-                </div>
+          @if ((postDetails?.status || '')?.toString()?.toLowerCase() === 'published') {
+            <div
+              style="padding-left:10px; display:flex; flex-direction:column; justify-content:center;">
+              <div style="color:#1E1E25; font-size:0.85rem; font-weight: 600;">
+                {{ (uniquePlatformsForDisplay && uniquePlatformsForDisplay.length) ? uniquePlatformsForDisplay.join(' | ') : 'N/A' }}
+              </div>
+              <div style="color:#6F7180; font-size:0.75rem;">
+                {{ postDetails?.publicationDate ? (postDetails?.publicationDate | date:'dd-MMM-yy | hh:mm a') : 'N/A' }}
+              </div>
             </div>
+          }
         </div>
-        <div class="d-flex align-items-center gap-2">
-            <dadyin-button [theme]="'primary'" label="Social Profile" (clicked)="navigateToBusinessRegistration()"></dadyin-button>
-            <img src="assets/nicons/share.png" alt="Share" style="height:32px; width:32px;" />
-            <img src="assets/nicons/cancel.png" alt="Cancel" style="height:32px; width:32px;" />
-            <img src="assets/nicons/approve.png" alt="Approve" style="height:32px; width:32px;" />
-            <img src="assets/nicons/save.png" alt="Save" style="height:32px; width:32px;" />
-            <img src="assets/nicons/place.png" alt="Send" style="height:32px; width:32px;" />
-        </div>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <dadyin-button [theme]="'primary'" label="Social Profile" (clicked)="navigateToBusinessRegistration()"></dadyin-button>
+        <img src="assets/nicons/share.png" alt="Share" style="height:32px; width:32px;" />
+        <img src="assets/nicons/cancel.png" alt="Cancel" style="height:32px; width:32px;" />
+        <img src="assets/nicons/approve.png" alt="Approve" style="height:32px; width:32px;" />
+        <img src="assets/nicons/save.png" alt="Save" style="height:32px; width:32px;" />
+        <img src="assets/nicons/place.png" alt="Send" style="height:32px; width:32px;" />
+      </div>
     </div>
     <div class="tab-with-info">
-        <mat-tab-group class="mat-steps tab-common" [(selectedIndex)]="selectedTabIndex"
-            (selectedTabChange)="onTabChange($event)">
-        <mat-tab *ngFor="let tab of socialTabs" [disableRipple]="true">
+      <mat-tab-group class="mat-steps tab-common" [(selectedIndex)]="selectedTabIndex"
+        (selectedTabChange)="onTabChange($event)">
+        @for (tab of socialTabs; track tab) {
+          <mat-tab [disableRipple]="true">
             <ng-template mat-tab-label>
-                <ng-container [ngSwitch]="tab">
-                    <ng-container *ngSwitchCase="'Instagram'">
-                        <img src="assets/nicons/instagram.png"
-                            style="height:18px;width:18px;vertical-align:middle;margin-right:6px;" />
-                        Instagram
-                    </ng-container>
-                    <ng-container *ngSwitchCase="'Facebook'">
-                        <img src="assets/nicons/facebook.png"
-                            style="height:18px;width:18px;vertical-align:middle;margin-right:6px;" />
-                        Facebook
-                    </ng-container>
-                    <ng-container *ngSwitchCase="'LinkedIn'">
-                        <img src="assets/nicons/linkedin.png"
-                            style="height:18px;width:18px;vertical-align:middle;margin-right:6px;" />
+              @switch (tab) {
+                @case ('Instagram') {
+                  <img src="assets/nicons/instagram.png"
+                    style="height:18px;width:18px;vertical-align:middle;margin-right:6px;" />
+                    Instagram
+                  }
+                  @case ('Facebook') {
+                    <img src="assets/nicons/facebook.png"
+                      style="height:18px;width:18px;vertical-align:middle;margin-right:6px;" />
+                      Facebook
+                    }
+                    @case ('LinkedIn') {
+                      <img src="assets/nicons/linkedin.png"
+                        style="height:18px;width:18px;vertical-align:middle;margin-right:6px;" />
                         LinkedIn
-                    </ng-container>
-                    <ng-container *ngSwitchDefault>
+                      }
+                      @default {
                         {{tab}}
-                    </ng-container>
-                </ng-container>
-            </ng-template>
-            <ng-template matTabContent>
+                      }
+                    }
+                  </ng-template>
+                  <ng-template matTabContent>
                     <ng-template #commonPostForm>
-                        <form [formGroup]="postForm">
-                            <mat-expansion-panel expanded="true">
-                                <mat-expansion-panel-header>
-                                    <mat-panel-description>
-                                        <div class="w-100 title-text">Post Details</div>
-                                    </mat-panel-description>
-                                </mat-expansion-panel-header>
-                                <div class="row p-0 social-post-details">
-                                    <div class="col-lg-6 col-12">
-                                        <div class="row" style="margin-top: 20px;">
-                                            <div class="col-6">
-                                                <dadyin-input inputType="string" label="Post Name" [isClearable]="false"
-                                                    formControlName="postName"
-                                                    [disabled]="isRejected || isPublished || tab !== 'All'"></dadyin-input>
-                                            </div>
-                                            <div class="col-3">
-                                                <dadyin-input inputType="string" label="Post Category"
-                                                    [isClearable]="false" formControlName="postCategory"
-                                                    [disabled]="true"></dadyin-input>
-                                            </div>
-                                            <div [ngClass]="isAutomateCreation ? 'col-2' : 'col-3'">
-                                                <dadyin-input inputType="string" label="Creation Type"
-                                                    [isClearable]="false" formControlName="creationType"
-                                                    [disabled]="true"></dadyin-input>
-                                            </div>
-                                            <div *ngIf="isAutomateCreation" class="col-1 automate-info-icon-col">
-                                                <img src="assets/nicons/info.png" alt="Info" class="automate-info-icon-inline"
-                                                    [matTooltip]="automateTooltip" matTooltipPosition="above" />
-                                            </div>
-                                            <div class="col-12">
-                                                <dadyin-search-select-new
-                                                    [label]="'Product(s) in post (' + productSelectionCount + '/' + maxProductSelection + ')'"
-                                                    [typeahead]="false"
-                                                    [maxSelectedItems]="maxProductSelection"
-                                                    [showSelectedBox]="false"
-                                                    [fullItems]="productsForDropdown"
-                                                    [selectedItems]="productControl"
-                                                    [disabled]="true"
-                                                ></dadyin-search-select-new>
-                                            </div>
-                                            <div class="col-12">
-                                                <label class="font-weight-bold">Product Links</label>
-                                                <div class="product-links-list">
-                                                    <ng-container *ngIf="productLinksForDisplay.length; else noProductLinks">
-                                                        <div class="product-link-row" *ngFor="let link of productLinksForDisplay">
-                                                            <div class="product-link-text">{{ link }}</div>
-                                                            <button type="button" class="btn btn-link p-0 m-0 product-link-copy"
-                                                                (click)="copySingleProductLink(link)">
-                                                                <img src="assets/nicons/copy-square.png" alt="Copy"
-                                                                    style="height:20px;width:20px;" />
-                                                            </button>
-                                                        </div>
-                                                    </ng-container>
-                                                    <ng-template #noProductLinks>
-                                                        <div class="text-muted">N/A</div>
-                                                    </ng-template>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 mt-3">
-                                                    <label class="font-weight-bold">Post Description</label>
-                                                    <ckeditor [editor]="Editor" formControlName="postDescription"
-                                                        [config]="editorConfig"
-                                                        (ready)="onEditorReady($event)">
-                                                    </ckeditor>
-                                            </div>
-                                        </div>
+                      <form [formGroup]="postForm">
+                        <mat-expansion-panel expanded="true">
+                          <mat-expansion-panel-header>
+                            <mat-panel-description>
+                              <div class="w-100 title-text">Post Details</div>
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <div class="row p-0 social-post-details">
+                            <div class="col-lg-6 col-12">
+                              <div class="row" style="margin-top: 20px;">
+                                <div class="col-6">
+                                  <dadyin-input inputType="string" label="Post Name" [isClearable]="false"
+                                    formControlName="postName"
+                                  [disabled]="isRejected || isPublished || tab !== 'All'"></dadyin-input>
+                                </div>
+                                <div class="col-3">
+                                  <dadyin-input inputType="string" label="Post Category"
+                                    [isClearable]="false" formControlName="postCategory"
+                                  [disabled]="true"></dadyin-input>
+                                </div>
+                                <div [ngClass]="isAutomateCreation ? 'col-2' : 'col-3'">
+                                  <dadyin-input inputType="string" label="Creation Type"
+                                    [isClearable]="false" formControlName="creationType"
+                                  [disabled]="true"></dadyin-input>
+                                </div>
+                                @if (isAutomateCreation) {
+                                  <div class="col-1 automate-info-icon-col">
+                                    <img src="assets/nicons/info.png" alt="Info" class="automate-info-icon-inline"
+                                      [matTooltip]="automateTooltip" matTooltipPosition="above" />
                                     </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="row" style="align-items: flex-start;">
-                                            <div class="col-12" style="display: flex; flex-direction: column;">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <label class="font-weight-bold m-0">Product Images</label>
-                                                </div>
-
-                                                <ng-container *ngIf="pagedProductImages && pagedProductImages.length > 0; else noProductImages">
-                                                    <div class="d-flex gap-2 align-items-start" style=" margin-top: 0;">
-                                                        <button type="button" class="product-images-slider-btn" style="align-self: center;"
-                                                            *ngIf="hasProductImagesSlider" (click)="prevProductImagesPage()"
-                                                            [disabled]="productImagesPageIndex === 0">
-                                                            <img src="assets/nicons/arrow_left.png" alt="Previous"
-                                                                style="width:18px; height:18px; object-fit:contain;" />
-                                                        </button>
-
-                                                        <div class="d-flex gap-2 product-images-strip">
-                                                            <div *ngFor="let img of pagedProductImages"
-                                                                class="bg-light b-radius-10 position-relative generated-image-container"
-                                                                style="width: 140px; height: 140px; cursor: default; border: 2px solid #1976d2; box-shadow: 0 0 0 4px rgba(25,118,210,0.06);">
-
-                                                                <div style="position: absolute; top: 8px; right: 8px; z-index: 2; max-width: 140px;">
-                                                                    <span class="product-image-badge" [title]="img.productLabel">{{ img.productLabel }}</span>
-                                                                </div>
-
-                                                                <div *ngIf="img.imageTotal && img.imageTotal > 1"
-                                                                    style="position: absolute; bottom: 8px; right: 8px; z-index: 2;">
-                                                                    <span class="product-image-count">{{ img.imageIndex }}/{{ img.imageTotal }}</span>
-                                                                </div>
-
-                                                                <div class="w-100 h-100">
-                                                                    <img *ngIf="img && img.url" [src]="img.url" alt="Product Image"
-                                                                        style="width: 100%; height: 100%; object-fit: contain; cursor: pointer;"
-                                                                        (click)="showImagePreview(img.url)"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <button type="button" class="product-images-slider-btn" style="align-self: center;"
-                                                            *ngIf="hasProductImagesSlider" (click)="nextProductImagesPage()"
-                                                            [disabled]="!canNextProductImagesPage">
-                                                            <img src="assets/nicons/arrow_left.png" alt="Next"
-                                                                style="width:18px; height:18px; object-fit:contain; transform: rotate(180deg);" />
-                                                        </button>
-                                                    </div>
-                                                </ng-container>
-
-                                                <ng-template #noProductImages>
-                                                    <div style="display: flex; height: 180px; gap:5px">
-                                                        <div
-                                                            style="border: 2px solid #d5e7fa; border-radius: 16px; width: 140px; height: 140px; display: flex; flex-direction: column; background: #ffffff; align-items: center; justify-content: center;">
-                                                            <img src="assets/nicons/ai-sparkle.png" alt="Product images placeholder"
-                                                                style="width: 40px; height: 40px; opacity: 0.18; margin-bottom: 18px; margin: 0 auto;" />
-                                                            <div style="color: #a3adc2; font-size: 0.8rem; text-align: center;">
-                                                                Select products<br>to view images</div>
-                                                        </div>
-                                                        <div
-                                                            style="border: 2px solid #d5e7fa; border-radius: 16px; width: 140px; height: 140px; display: flex; flex-direction: column; background: #ffffff; align-items: center; justify-content: center;">
-                                                            <img src="assets/nicons/ai-sparkle.png" alt="Product images placeholder"
-                                                                style="width: 40px; height: 40px; opacity: 0.18; margin-bottom: 18px; margin: 0 auto;" />
-                                                            <div style="color: #a3adc2; font-size: 0.8rem; text-align: center;">
-                                                                Select products<br>to view images</div>
-                                                        </div>
-                                                        <div
-                                                            style="border: 2px solid #d5e7fa; border-radius: 16px; width: 140px; height: 140px; display: flex; flex-direction: column; background: #ffffff; align-items: center; justify-content: center;">
-                                                            <img src="assets/nicons/ai-sparkle.png" alt="Product images placeholder"
-                                                                style="width: 40px; height: 40px; opacity: 0.18; margin-bottom: 18px; margin: 0 auto;" />
-                                                            <div style="color: #a3adc2; font-size: 0.8rem; text-align: center;">
-                                                                Select products<br>to view images</div>
-                                                        </div>
-                                                    </div>
-                                                </ng-template>
+                                  }
+                                  <div class="col-12">
+                                    <dadyin-search-select-new
+                                      [label]="'Product(s) in post (' + productSelectionCount + '/' + maxProductSelection + ')'"
+                                      [typeahead]="false"
+                                      [maxSelectedItems]="maxProductSelection"
+                                      [showSelectedBox]="false"
+                                      [fullItems]="productsForDropdown"
+                                      [selectedItems]="productControl"
+                                      [disabled]="true"
+                                    ></dadyin-search-select-new>
+                                  </div>
+                                  <div class="col-12">
+                                    <label class="font-weight-bold">Product Links</label>
+                                    <div class="product-links-list">
+                                      @if (productLinksForDisplay.length) {
+                                        @for (link of productLinksForDisplay; track link) {
+                                          <div class="product-link-row">
+                                            <div class="product-link-text">{{ link }}</div>
+                                            <button type="button" class="btn btn-link p-0 m-0 product-link-copy"
+                                              (click)="copySingleProductLink(link)">
+                                              <img src="assets/nicons/copy-square.png" alt="Copy"
+                                                style="height:20px;width:20px;" />
+                                              </button>
                                             </div>
-                                        </div>
-                                        <div class="row post-details-top-row">
-                                            <div class="col-12">
-                                                <div class="form-group" style="display: flex; flex-direction: column;">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <label class="font-weight-bold m-0">Prompt</label>
-                                                        <div style="font-size:12px; color:#6b7280; display:flex; gap:8px; align-items:center;">
+                                          }
+                                        } @else {
+                                          <div class="text-muted">N/A</div>
+                                        }
+                                      </div>
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                      <label class="font-weight-bold">Post Description</label>
+                                      <ckeditor [editor]="Editor" formControlName="postDescription"
+                                        [config]="editorConfig"
+                                        (ready)="onEditorReady($event)">
+                                      </ckeditor>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6">
+                                  <div class="row" style="align-items: flex-start;">
+                                    <div class="col-12" style="display: flex; flex-direction: column;">
+                                      <div class="d-flex align-items-center justify-content-between">
+                                        <label class="font-weight-bold m-0">Product Images</label>
+                                      </div>
+                                      @if (pagedProductImages && pagedProductImages.length > 0) {
+                                        <div class="d-flex gap-2 align-items-start" style=" margin-top: 0;">
+                                          @if (hasProductImagesSlider) {
+                                            <button type="button" class="product-images-slider-btn" style="align-self: center;"
+                                              (click)="prevProductImagesPage()"
+                                              [disabled]="productImagesPageIndex === 0">
+                                              <img src="assets/nicons/arrow_left.png" alt="Previous"
+                                                style="width:18px; height:18px; object-fit:contain;" />
+                                              </button>
+                                            }
+                                            <div class="d-flex gap-2 product-images-strip">
+                                              @for (img of pagedProductImages; track img) {
+                                                <div
+                                                  class="bg-light b-radius-10 position-relative generated-image-container"
+                                                  style="width: 140px; height: 140px; cursor: default; border: 2px solid #1976d2; box-shadow: 0 0 0 4px rgba(25,118,210,0.06);">
+                                                  <div style="position: absolute; top: 8px; right: 8px; z-index: 2; max-width: 140px;">
+                                                    <span class="product-image-badge" [title]="img.productLabel">{{ img.productLabel }}</span>
+                                                  </div>
+                                                  @if (img.imageTotal && img.imageTotal > 1) {
+                                                    <div
+                                                      style="position: absolute; bottom: 8px; right: 8px; z-index: 2;">
+                                                      <span class="product-image-count">{{ img.imageIndex }}/{{ img.imageTotal }}</span>
+                                                    </div>
+                                                  }
+                                                  <div class="w-100 h-100">
+                                                    @if (img && img.url) {
+                                                      <img [src]="img.url" alt="Product Image"
+                                                        style="width: 100%; height: 100%; object-fit: contain; cursor: pointer;"
+                                                        (click)="showImagePreview(img.url)"
+                                                        />
+                                                    }
+                                                  </div>
+                                                </div>
+                                              }
+                                            </div>
+                                            @if (hasProductImagesSlider) {
+                                              <button type="button" class="product-images-slider-btn" style="align-self: center;"
+                                                (click)="nextProductImagesPage()"
+                                                [disabled]="!canNextProductImagesPage">
+                                                <img src="assets/nicons/arrow_left.png" alt="Next"
+                                                  style="width:18px; height:18px; object-fit:contain; transform: rotate(180deg);" />
+                                                </button>
+                                              }
+                                            </div>
+                                          } @else {
+                                            <div style="display: flex; height: 180px; gap:5px">
+                                              <div
+                                                style="border: 2px solid #d5e7fa; border-radius: 16px; width: 140px; height: 140px; display: flex; flex-direction: column; background: #ffffff; align-items: center; justify-content: center;">
+                                                <img src="assets/nicons/ai-sparkle.png" alt="Product images placeholder"
+                                                  style="width: 40px; height: 40px; opacity: 0.18; margin-bottom: 18px; margin: 0 auto;" />
+                                                  <div style="color: #a3adc2; font-size: 0.8rem; text-align: center;">
+                                                    Select products<br>to view images</div>
+                                                  </div>
+                                                  <div
+                                                    style="border: 2px solid #d5e7fa; border-radius: 16px; width: 140px; height: 140px; display: flex; flex-direction: column; background: #ffffff; align-items: center; justify-content: center;">
+                                                    <img src="assets/nicons/ai-sparkle.png" alt="Product images placeholder"
+                                                      style="width: 40px; height: 40px; opacity: 0.18; margin-bottom: 18px; margin: 0 auto;" />
+                                                      <div style="color: #a3adc2; font-size: 0.8rem; text-align: center;">
+                                                        Select products<br>to view images</div>
+                                                      </div>
+                                                      <div
+                                                        style="border: 2px solid #d5e7fa; border-radius: 16px; width: 140px; height: 140px; display: flex; flex-direction: column; background: #ffffff; align-items: center; justify-content: center;">
+                                                        <img src="assets/nicons/ai-sparkle.png" alt="Product images placeholder"
+                                                          style="width: 40px; height: 40px; opacity: 0.18; margin-bottom: 18px; margin: 0 auto;" />
+                                                          <div style="color: #a3adc2; font-size: 0.8rem; text-align: center;">
+                                                            Select products<br>to view images</div>
+                                                          </div>
+                                                        </div>
+                                                      }
+                                                    </div>
+                                                  </div>
+                                                  <div class="row post-details-top-row">
+                                                    <div class="col-12">
+                                                      <div class="form-group" style="display: flex; flex-direction: column;">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                          <label class="font-weight-bold m-0">Prompt</label>
+                                                          <div style="font-size:12px; color:#6b7280; display:flex; gap:8px; align-items:center;">
                                                             <div>Minimum 10 characters required.</div>
                                                             <div>{{ (selectedPrompt || '').trim().length }} characters</div>
+                                                          </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="prompt-wrapper" style="position:relative;">
-                                                        <textarea class="form-control prompt-textarea--compact" rows="4"
+                                                        <div class="prompt-wrapper" style="position:relative;">
+                                                          <textarea class="form-control prompt-textarea--compact" rows="4"
                                                             placeholder="Write a prompt to generate/Refine the Post Image..."
                                                             style="padding-bottom: 60px; font-size: 14px; border: 1px solid #e0e7ef; border-radius: 8px;"
                                                             [value]="selectedPrompt" [readonly]="isRejected || isPublished"
                                                             [attr.tabindex]="(isRejected || isPublished) ? -1 : 0"
-                                                            (input)="onPromptChange($event.target.value)"></textarea>
-
-                                                        <div class=""
+                                                          (input)="onPromptChange($event.target.value)"></textarea>
+                                                          <div class=""
                                                             style="display: flex; flex-direction: column; position: absolute; bottom: 12px; left: 12px; gap: 10px;">
-                                                            <div class="attachments-preview mt-2"
-                                                                *ngIf="selectedAttachments?.length">
-                                                                <div class="attachment"
-                                                                    *ngFor="let att of selectedAttachments; let ai = index">
+                                                            @if (selectedAttachments?.length) {
+                                                              <div class="attachments-preview mt-2"
+                                                                >
+                                                                @for (att of selectedAttachments; track att; let ai = $index) {
+                                                                  <div class="attachment"
+                                                                    >
                                                                     <img [src]="att.url" [alt]="att.name" />
                                                                     <button type="button" class="remove-attachment"
-                                                                        (click)="removeAttachment(ai)">×</button>
-                                                                </div>
-                                                            </div>
-                                                            <button *ngIf="selectedAttachments.length < maxAttachments"
+                                                                    (click)="removeAttachment(ai)">×</button>
+                                                                  </div>
+                                                                }
+                                                              </div>
+                                                            }
+                                                            @if (selectedAttachments.length < maxAttachments) {
+                                                              <button
                                                                 type="button"
                                                                 class="btn btn-outline-secondary upload-btn-inside"
                                                                 [disabled]="isRejected || isPublished" (click)="openFilePicker()">
                                                                 <img src="assets/nicons/Upload.png" alt="Upload"
-                                                                    style="height:15px;width:15px;margin-right:5px;object-fit: contain; margin-bottom: 3px;" />
-                                                                Upload Reference Images
-                                                            </button>
+                                                                  style="height:15px;width:15px;margin-right:5px;object-fit: contain; margin-bottom: 3px;" />
+                                                                  Upload Reference Images
+                                                                </button>
+                                                              }
+                                                            </div>
+                                                          </div>
                                                         </div>
+                                                      </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <button type="button" class="btn btn-primary w-100 my-2"
-                                                    (click)="!(isRejected || isPublished) && generate()" [disabled]="isRejected || isPublished"
-                                                    style="font-weight:600; font-size:16px; border-radius: 8px;">
-                                                    <img src="assets/nicons/ai-icon.png" alt="Upload"
-                                                        style="height:15px;width:15px;margin-right:5px;object-fit: contain; margin-bottom: 3px;" />
-                                                    Generate</button>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-1">
-                                            <div class="col-12">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <label class="font-weight-bold m-0">Generated Results</label>
-                                                    <div style="font-size: 0.75rem; color: #a3adc2; font-weight: 500;">
-                                                        {{currentTabImages.length}}/{{maxGeneratedImages}} images (max {{maxGeneratedImages}})
-                                                    </div>
-                                                </div>
-                                                <input type="file" #generatedImagesFileInput style="display: none;" 
-                                                    accept="image/png, image/jpeg, image/jpg, image/webp" 
-                                                    multiple 
-                                                    (change)="onGeneratedImagesSelected($event)" />
-                                                <div class="d-flex gap-2 align-items-center generated-results-container" style="flex-wrap: nowrap;">
-                                                    <!-- Existing Generated/Uploaded Images -->
-                                                    <div *ngFor="let result of currentTabImages; let i = index" 
-                                                        (click)="selectResult(i)"
-                                                        [ngClass]="{'selected-image': isGeneratedResultSelected(i)}"
-                                                        class="bg-light b-radius-10 position-relative generated-image-container flex-shrink-0"
-                                                        style="width: 140px; height: 140px; cursor: pointer; border: 2px solid transparent;">
-                                                        <div *ngIf="result && result.image" style="position: absolute; top: 8px; left: 8px; z-index: 2;">
-                                                            <input type="checkbox" [checked]="isGeneratedResultSelected(i)"
-                                                                style="width: 20px; height: 20px; accent-color: #1976d2; pointer-events: none;" />
+                                                    <div class="row">
+                                                      <div class="col-12">
+                                                        <button type="button" class="btn btn-primary w-100 my-2"
+                                                          (click)="!(isRejected || isPublished) && generate()" [disabled]="isRejected || isPublished"
+                                                          style="font-weight:600; font-size:16px; border-radius: 8px;">
+                                                          <img src="assets/nicons/ai-icon.png" alt="Upload"
+                                                            style="height:15px;width:15px;margin-right:5px;object-fit: contain; margin-bottom: 3px;" />
+                                                          Generate</button>
                                                         </div>
-                                                        <div *ngIf="(isDraft || isScheduled || isApproved) && result && result.image && result.isManual === true" style="position: absolute; top: 8px; right: 8px; z-index: 2;">
-                                                            <button type="button" class="btn btn-link p-0 m-0"
-                                                                (click)="deleteResult(i); $event.stopPropagation();">
-                                                                <img src="assets/nicons/delete.png" alt="Delete"
-                                                                    style="width: 22px; height: 22px;" />
-                                                            </button>
-                                                        </div>
-                                                        <div class="w-100 h-100">                                                            <img *ngIf="result && result.image" [src]="result.image" alt="Generated Result"
-                                                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;" 
-                                                                (click)="showImagePreview(result.image); $event.stopPropagation();"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <!-- Add Images Box (shown when status is Draft/Scheduled/Approved and < 10 images) -->
-                                                    <div *ngIf="canShowAddImagesBox"
-                                                        (click)="openGeneratedImagesFilePicker()"
-                                                        class="flex-shrink-0 add-images-box"
+                                                      </div>
+                                                      <div class="row mt-1">
+                                                        <div class="col-12">
+                                                          <div class="d-flex align-items-center justify-content-between">
+                                                            <label class="font-weight-bold m-0">Generated Results</label>
+                                                            <div style="font-size: 0.75rem; color: #a3adc2; font-weight: 500;">
+                                                              {{currentTabImages.length}}/{{maxGeneratedImages}} images (max {{maxGeneratedImages}})
+                                                            </div>
+                                                          </div>
+                                                          <input type="file" #generatedImagesFileInput style="display: none;"
+                                                            accept="image/png, image/jpeg, image/jpg, image/webp"
+                                                            multiple
+                                                            (change)="onGeneratedImagesSelected($event)" />
+                                                            <div class="d-flex gap-2 align-items-center generated-results-container" style="flex-wrap: nowrap;">
+                                                              <!-- Existing Generated/Uploaded Images -->
+                                                              @for (result of currentTabImages; track result; let i = $index) {
+                                                                <div
+                                                                  (click)="selectResult(i)"
+                                                                  [ngClass]="{'selected-image': isGeneratedResultSelected(i)}"
+                                                                  class="bg-light b-radius-10 position-relative generated-image-container flex-shrink-0"
+                                                                  style="width: 140px; height: 140px; cursor: pointer; border: 2px solid transparent;">
+                                                                  @if (result && result.image) {
+                                                                    <div style="position: absolute; top: 8px; left: 8px; z-index: 2;">
+                                                                      <input type="checkbox" [checked]="isGeneratedResultSelected(i)"
+                                                                        style="width: 20px; height: 20px; accent-color: #1976d2; pointer-events: none;" />
+                                                                      </div>
+                                                                    }
+                                                                    @if ((isDraft || isScheduled || isApproved) && result && result.image && result.isManual === true) {
+                                                                      <div style="position: absolute; top: 8px; right: 8px; z-index: 2;">
+                                                                        <button type="button" class="btn btn-link p-0 m-0"
+                                                                          (click)="deleteResult(i); $event.stopPropagation();">
+                                                                          <img src="assets/nicons/delete.png" alt="Delete"
+                                                                            style="width: 22px; height: 22px;" />
+                                                                          </button>
+                                                                        </div>
+                                                                      }
+                                                                      <div class="w-100 h-100">                                                            @if (result && result.image) {
+                                                                        <img [src]="result.image" alt="Generated Result"
+                                                                          style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"
+                                                                          (click)="showImagePreview(result.image); $event.stopPropagation();"
+                                                                          />
+                                                                      }
+                                                                    </div>
+                                                                  </div>
+                                                                }
+                                                                <!-- Add Images Box (shown when status is Draft/Scheduled/Approved and < 10 images) -->
+                                                                @if (canShowAddImagesBox) {
+                                                                  <div
+                                                                    (click)="openGeneratedImagesFilePicker()"
+                                                                    class="flex-shrink-0 add-images-box"
                                                         style="border: 2px dashed #0065f4; border-radius: 16px; width: 140px; height: 140px; 
                                                                display: flex; flex-direction: column; background: #f6faff; 
                                                                align-items: center; justify-content: center; cursor: pointer;">
-                                                        <mat-icon style="font-size: 20px; width: 20px; height: 20px; color: #0065f4; opacity: 0.6; margin-bottom: 8px;">upload</mat-icon>
-                                                        <div style="color: #0065f4; font-size: 0.85rem; font-weight: 600; text-align: center;">
-                                                            Tap to add<br>images
+                                                                    <mat-icon style="font-size: 20px; width: 20px; height: 20px; color: #0065f4; opacity: 0.6; margin-bottom: 8px;">upload</mat-icon>
+                                                                    <div style="color: #0065f4; font-size: 0.85rem; font-weight: 600; text-align: center;">
+                                                                      Tap to add<br>images
+                                                                    </div>
+                                                                  </div>
+                                                                }
+                                                              </div>
+                                                            </div>
+                                                          </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </mat-expansion-panel>
-
-                            <mat-expansion-panel expanded="true">
-                                <mat-expansion-panel-header>
-                                    <mat-panel-description>
-                                        <div class="w-100 title-text">Final Publication Details</div>
-                                    </mat-panel-description>
-                                </mat-expansion-panel-header>
-                                <div class="row p-0">
-                                    <div class="col-md-3 col-12" style="display: flex; flex-direction: column;">
-                                        <label class="font-weight-bold">Final Post</label>
-                                        <div class="post-image-preview" style="flex-grow: 1; max-height: 300px;">
-                                            <div class="imgContainer d-flex align-items-center justify-content-center"
-                                                style="height: 100%; width: 100%; border-radius: 10px; overflow: hidden; position: relative;">
-                                                <ng-container
-                                                    *ngIf="selectedResult && selectedResult.image; else noFinalImage">
-                                                    <img [src]="selectedResult.image" alt="Final Post"
-                                                        style="width: 100%; height: 100%; object-fit:contain; cursor: pointer;" 
-                                                        (click)="showImagePreview(selectedResult.image)"
-                                                        />
-
-                                                    <button *ngIf="hasMultipleDisplayedResults" type="button"
-                                                        class="final-post-slider-btn final-post-slider-btn--left"
-                                                        (click)="prevFinalPostImage()" aria-label="Previous image">
-                                                        <img src="assets/nicons/arrow_left.png" alt="Previous"
-                                                            style="width:18px; height:18px; object-fit:contain;" />
-                                                    </button>
-
-                                                    <button *ngIf="hasMultipleDisplayedResults" type="button"
-                                                        class="final-post-slider-btn final-post-slider-btn--right"
-                                                        (click)="nextFinalPostImage()" aria-label="Next image">
-                                                        <img src="assets/nicons/arrow_left.png" alt="Next"
-                                                            style="width:18px; height:18px; object-fit:contain; transform: rotate(180deg);" />
-                                                    </button>
-                                                </ng-container>
-                                                <ng-template #noFinalImage>
-                                                    <span class="text-muted">[Final Post Image]</span>
-                                                </ng-template>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div [ngClass]="tab !== 'All' ? 'col-md-9 col-12' : 'col-md-5 col-12'"
-                                        style="display: flex; flex-direction: column;">
-                                        <label class="font-weight-bold">Final Description</label>
-                                        <div class="form-control final-description-render"
-                                            [innerHTML]="finalDescriptionHtml"
-                                            style="flex-grow: 1; border: 1px solid #e0e7ef; border-radius: 8px; min-height:120px; max-height: 300px; margin-bottom: 0 !important; overflow:auto; background:#fff;" >
-                                        </div>
-                                        <div *ngIf="tab !== 'All' && !isDraft"
-                                            class="mt-3 d-flex align-items-center justify-content-center">
-                                            <button type="button" class="btn btn-primary w-50"
-                                                (click)="savePlatform(tab)"
-                                                [disabled]="isRejected || isPublished || !saveEnabledMap[tab]"
-                                                style="font-weight:600; font-size:16px; border-radius:8px; max-width: 150px; width: 100%;">
-                                                Save
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div *ngIf="tab === 'All'" class="col-md-4 col-12">
-                                        <div class=""
-                                            style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
-                                            <div class="row" style="margin-top: 20px;">
-                                                <div class="col-12 mb-3">
-                                                    <div class="form-group">
-                                                        <label class="font-weight-bold">Publication Platforms</label>
-                                                        <div class="d-flex flex-wrap gap-3">
-                                                            <ng-container
-                                                                *ngFor="let platform of platformsForDisplay; let i = index">
-                                                                <div class="form-check d-flex align-items-center"
-                                                                    style="padding-left: 0px; gap: 5px;">
-                                                                    <input type="checkbox" [id]="'platform-' + i"
-                                                                                [disabled]="isRejected || isPublished || isScheduled"
-                                                                        [checked]="platformsSelectedForDisplay?.includes(platform)"
-                                                                        (change)="onPlatformToggle(platform, $event.target.checked)"
-                                                                        style="width: 24px; height: 24px; accent-color: #1976d2; " />
-                                                                    <label
-                                                                        class="form-check-label d-flex align-items-center"
-                                                                        [for]="'platform-' + i">
-                                                                        <img *ngIf="platformIcon(platform)"
-                                                                            [src]="platformIcon(platform)"
-                                                                            alt="{{platform}}"
-                                                                            style="height:18px;width:18px;margin-right:6px;" />
-                                                                        {{ platformLabel(platform) }}
-                                                                    </label>
+                                                      </div>
+                                                    </mat-expansion-panel>
+                                                    <mat-expansion-panel expanded="true">
+                                                      <mat-expansion-panel-header>
+                                                        <mat-panel-description>
+                                                          <div class="w-100 title-text">Final Publication Details</div>
+                                                        </mat-panel-description>
+                                                      </mat-expansion-panel-header>
+                                                      <div class="row p-0">
+                                                        <div class="col-md-3 col-12" style="display: flex; flex-direction: column;">
+                                                          <label class="font-weight-bold">Final Post</label>
+                                                          <div class="post-image-preview" style="flex-grow: 1; max-height: 300px;">
+                                                            <div class="imgContainer d-flex align-items-center justify-content-center"
+                                                              style="height: 100%; width: 100%; border-radius: 10px; overflow: hidden; position: relative;">
+                                                              @if (selectedResult && selectedResult.image) {
+                                                                <img [src]="selectedResult.image" alt="Final Post"
+                                                                  style="width: 100%; height: 100%; object-fit:contain; cursor: pointer;"
+                                                                  (click)="showImagePreview(selectedResult.image)"
+                                                                  />
+                                                                  @if (hasMultipleDisplayedResults) {
+                                                                    <button type="button"
+                                                                      class="final-post-slider-btn final-post-slider-btn--left"
+                                                                      (click)="prevFinalPostImage()" aria-label="Previous image">
+                                                                      <img src="assets/nicons/arrow_left.png" alt="Previous"
+                                                                        style="width:18px; height:18px; object-fit:contain;" />
+                                                                      </button>
+                                                                    }
+                                                                    @if (hasMultipleDisplayedResults) {
+                                                                      <button type="button"
+                                                                        class="final-post-slider-btn final-post-slider-btn--right"
+                                                                        (click)="nextFinalPostImage()" aria-label="Next image">
+                                                                        <img src="assets/nicons/arrow_left.png" alt="Next"
+                                                                          style="width:18px; height:18px; object-fit:contain; transform: rotate(180deg);" />
+                                                                        </button>
+                                                                      }
+                                                                    } @else {
+                                                                      <span class="text-muted">[Final Post Image]</span>
+                                                                    }
+                                                                  </div>
                                                                 </div>
-                                                            </ng-container>
+                                                              </div>
+                                                              <div [ngClass]="tab !== 'All' ? 'col-md-9 col-12' : 'col-md-5 col-12'"
+                                                                style="display: flex; flex-direction: column;">
+                                                                <label class="font-weight-bold">Final Description</label>
+                                                                <div class="form-control final-description-render"
+                                                                  [innerHTML]="finalDescriptionHtml"
+                                                                  style="flex-grow: 1; border: 1px solid #e0e7ef; border-radius: 8px; min-height:120px; max-height: 300px; margin-bottom: 0 !important; overflow:auto; background:#fff;" >
+                                                                </div>
+                                                                @if (tab !== 'All' && !isDraft) {
+                                                                  <div
+                                                                    class="mt-3 d-flex align-items-center justify-content-center">
+                                                                    <button type="button" class="btn btn-primary w-50"
+                                                                      (click)="savePlatform(tab)"
+                                                                      [disabled]="isRejected || isPublished || !saveEnabledMap[tab]"
+                                                                      style="font-weight:600; font-size:16px; border-radius:8px; max-width: 150px; width: 100%;">
+                                                                      Save
+                                                                    </button>
+                                                                  </div>
+                                                                }
+                                                              </div>
+                                                              @if (tab === 'All') {
+                                                                <div class="col-md-4 col-12">
+                                                                  <div class=""
+                                                                    style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+                                                                    <div class="row" style="margin-top: 20px;">
+                                                                      <div class="col-12 mb-3">
+                                                                        <div class="form-group">
+                                                                          <label class="font-weight-bold">Publication Platforms</label>
+                                                                          <div class="d-flex flex-wrap gap-3">
+                                                                            @for (platform of platformsForDisplay; track platform; let i = $index) {
+                                                                              <div class="form-check d-flex align-items-center"
+                                                                                style="padding-left: 0px; gap: 5px;">
+                                                                                <input type="checkbox" [id]="'platform-' + i"
+                                                                                  [disabled]="isRejected || isPublished || isScheduled"
+                                                                                  [checked]="platformsSelectedForDisplay?.includes(platform)"
+                                                                                  (change)="onPlatformToggle(platform, $event.target.checked)"
+                                                                                  style="width: 24px; height: 24px; accent-color: #1976d2; " />
+                                                                                  <label
+                                                                                    class="form-check-label d-flex align-items-center"
+                                                                                    [for]="'platform-' + i">
+                                                                                    @if (platformIcon(platform)) {
+                                                                                      <img
+                                                                                        [src]="platformIcon(platform)"
+                                                                                        alt="{{platform}}"
+                                                                                        style="height:18px;width:18px;margin-right:6px;" />
+                                                                                    }
+                                                                                    {{ platformLabel(platform) }}
+                                                                                  </label>
+                                                                                </div>
+                                                                              }
+                                                                            </div>
+                                                                          </div>
+                                                                        </div>
+                                                                        <div class="col-12 mb-2 d-flex gap-2 w-full"
+                                                                          style="padding: 0px 12px !important;">
+                                                                          <div class="col-3" style="flex-grow: 1;">
+                                                                            <dadyin-select formControlName="goesLive" label="Goes Live"
+                                                                              [emptyOption]="'Select'" [optionArr]="goesLiveOptions"
+                                                                              optionLabel="label" optionValue="value"
+                                                                              [isDisabled]="isRejected || isPublished">
+                                                                            </dadyin-select>
+                                                                          </div>
+                                                                          <div class="col-3" style="flex-grow: 1;">
+                                                                            <dadyin-input inputType="date"
+                                                                              formControlName="publicationDateTime"
+                                                                              label="Publication Date" [isClearable]="false"
+                                                                              [minDate]="minPublicationDate"
+                                                                              [disabled]="isRejected || isPublished || (postForm.get('goesLive')?.value === 'now' && !isApproved && !isScheduled && !isDraft)">
+                                                                            </dadyin-input>
+                                                                          </div>
+                                                                          <div class="col-3" style="flex-grow: 1;">
+                                                                            <app-time-picker
+                                                                              formControlName="publicationTime"
+                                                                              label="Publication Time"
+                                                                              [isRequired]="false"
+                                                                              [placeholder]="'Select time'"
+                                                                              [format]="12"
+                                                                              [minutesGap]="5"
+                                                                              [disabled]="isRejected || isPublished"
+                                                                              (click)="onPublicationTimeClick()">
+                                                                            </app-time-picker>
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>
+                                                                      @if (!isRejected && !isPublished) {
+                                                                        <div class="col-12 mb-2">
+                                                                          @if (postDetails?.status?.toLowerCase() === 'scheduled') {
+                                                                            <div
+                                                                              class="row">
+                                                                              <div class="col-12 mb-2">
+                                                                                <button type="button"
+                                                                                  class="btn btn-primary w-100 d-flex align-items-center justify-content-center"
+                                                                                  style="font-weight:600;font-size:16px;border-radius:8px;"
+                                                                                  (click)="postForm.get('goesLive')?.value === 'later' ? savePost() : publishNow()">
+                                                                                  @if (postForm.get('goesLive')?.value !== 'later') {
+                                                                                    <img src="assets/nicons/Send.png"
+                                                                                      style="height:20px;width:20px;margin-right:8px;">
+                                                                                  }
+                                                                                  {{ postForm.get('goesLive')?.value === 'later' ? 'Save' : 'Republish Now' }}
+                                                                                </button>
+                                                                              </div>
+                                                                            </div>
+                                                                          }
+                                                                          @if (postDetails?.status?.toLowerCase() !== 'scheduled' && !isApproved) {
+                                                                            <div
+                                                                              class="row">
+                                                                              <div class="col-6 mb-2">
+                                                                                <button type="button"
+                                                                                  class="btn w-100 d-flex align-items-center justify-content-center"
+                                                                                  style="background:#ffeaea;color:#e74c3c;font-weight:600;border-radius:8px;"
+                                                                                  (click)="reject()">
+                                                                                  <img src="assets/nicons/close-square.png"
+                                                                                    style="height:20px;width:20px;margin-right:8px;">Reject
+                                                                                  </button>
+                                                                                </div>
+                                                                                <div class="col-6 mb-2">
+                                                                                  <button type="button"
+                                                                                    class="btn w-100 d-flex align-items-center justify-content-center"
+                                                                                    style="background:#eafbe7;color:#27ae60;font-weight:600;border-radius:8px;"
+                                                                                    (click)="approve()">
+                                                                                    <img src="assets/nicons/approve-square.png"
+                                                                                      style="height:20px;width:20px;margin-right:8px;">Approve
+                                                                                    </button>
+                                                                                  </div>
+                                                                                </div>
+                                                                              }
+                                                                              @if (isApproved) {
+                                                                                <div class="row">
+                                                                                  <div class="col-12 mb-2">
+                                                                                    <button type="button"
+                                                                                      class="btn btn-primary w-100 d-flex align-items-center justify-content-center"
+                                                                                      style="font-weight:600;font-size:16px;border-radius:8px;"
+                                                                                      (click)="postForm.get('goesLive')?.value === 'later' ? savePost() : publishNow()">
+                                                                                      @if (postForm.get('goesLive')?.value !== 'later') {
+                                                                                        <img src="assets/nicons/Send.png"
+                                                                                          style="height:20px;width:20px;margin-right:8px;">
+                                                                                      }
+                                                                                      {{ postForm.get('goesLive')?.value === 'later' ? 'Schedule Later' : 'Publish Now' }}
+                                                                                    </button>
+                                                                                  </div>
+                                                                                </div>
+                                                                              }
+                                                                              @if (postDetails?.status?.toLowerCase() !== 'scheduled' && !isApproved) {
+                                                                                <button
+                                                                                  type="button"
+                                                                                  class="btn btn-primary w-100 d-flex align-items-center justify-content-center mt-2"
+                                                                                  style="font-weight:600;font-size:16px;border-radius:8px;"
+                                                                                  (click)="approveAndPublishNow()">
+                                                                                  <img src="assets/nicons/Send.png"
+                                                                                    style="height:20px;width:20px;margin-right:8px;">Approve and
+                                                                                    Publish Now
+                                                                                  </button>
+                                                                                }
+                                                                              </div>
+                                                                            }
+                                                                          </div>
+                                                                        </div>
+                                                                      }
+                                                                    </div>
+                                                                  </mat-expansion-panel>
+                                                                </form>
+                                                              </ng-template>
+                                                              <ng-container *ngTemplateOutlet="commonPostForm"></ng-container>
+                                                            </ng-template>
+                                                          </mat-tab>
+                                                        }
+                                                      </mat-tab-group>
+                                                    </div>
+                                                    @if (hoveredImageUrl) {
+                                                      <div class="img-hover-overlay" (click)="hoveredImageUrl = null">
+                                                        <div class="img-hover-popup" (click)="$event.stopPropagation()">
+                                                          <img [src]="hoveredImageUrl" alt="Preview" />
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 mb-2 d-flex gap-2 w-full"
-                                                    style="padding: 0px 12px !important;">
-                                                    <div class="col-3" style="flex-grow: 1;">
-                                                        <dadyin-select formControlName="goesLive" label="Goes Live"
-                                                            [emptyOption]="'Select'" [optionArr]="goesLiveOptions"
-                                                            optionLabel="label" optionValue="value"
-                                                            [isDisabled]="isRejected || isPublished">
-                                                        </dadyin-select>
-                                                    </div>
-                                                    <div class="col-3" style="flex-grow: 1;">
-                                                        <dadyin-input inputType="date"
-                                                            formControlName="publicationDateTime"
-                                                            label="Publication Date" [isClearable]="false"
-                                                            [minDate]="minPublicationDate"
-                                                            [disabled]="isRejected || isPublished || (postForm.get('goesLive')?.value === 'now' && !isApproved && !isScheduled && !isDraft)">
-                                                        </dadyin-input>
-                                                    </div>
-                                                    <div class="col-3" style="flex-grow: 1;">
-                                                        <app-time-picker
-                                                            formControlName="publicationTime"
-                                                            label="Publication Time"
-                                                            [isRequired]="false"
-                                                            [placeholder]="'Select time'"
-                                                            [format]="12"
-                                                            [minutesGap]="5"
-                                                            [disabled]="isRejected || isPublished"
-                                                            (click)="onPublicationTimeClick()">
-                                                        </app-time-picker> 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 mb-2" *ngIf="!isRejected && !isPublished">
-                                                    <div *ngIf="postDetails?.status?.toLowerCase() === 'scheduled'"
-                                                        class="row">
-                                                        <div class="col-12 mb-2">
-                                                            <button type="button"
-                                                                class="btn btn-primary w-100 d-flex align-items-center justify-content-center"
-                                                                style="font-weight:600;font-size:16px;border-radius:8px;"
-                                                                (click)="postForm.get('goesLive')?.value === 'later' ? savePost() : publishNow()">
-                                                                <img *ngIf="postForm.get('goesLive')?.value !== 'later'" src="assets/nicons/Send.png"
-                                                                    style="height:20px;width:20px;margin-right:8px;">
-                                                                {{ postForm.get('goesLive')?.value === 'later' ? 'Save' : 'Republish Now' }}
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div *ngIf="postDetails?.status?.toLowerCase() !== 'scheduled' && !isApproved"
-                                                        class="row">
-                                                        <div class="col-6 mb-2">
-                                                            <button type="button"
-                                                                class="btn w-100 d-flex align-items-center justify-content-center"
-                                                                style="background:#ffeaea;color:#e74c3c;font-weight:600;border-radius:8px;"
-                                                                (click)="reject()">
-                                                                <img src="assets/nicons/close-square.png"
-                                                                    style="height:20px;width:20px;margin-right:8px;">Reject
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-6 mb-2">
-                                                            <button type="button"
-                                                                class="btn w-100 d-flex align-items-center justify-content-center"
-                                                                style="background:#eafbe7;color:#27ae60;font-weight:600;border-radius:8px;"
-                                                                (click)="approve()">
-                                                                <img src="assets/nicons/approve-square.png"
-                                                                    style="height:20px;width:20px;margin-right:8px;">Approve
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div *ngIf="isApproved" class="row">
-                                                        <div class="col-12 mb-2">
-                                                            <button type="button"
-                                                                class="btn btn-primary w-100 d-flex align-items-center justify-content-center"
-                                                                style="font-weight:600;font-size:16px;border-radius:8px;"
-                                                                (click)="postForm.get('goesLive')?.value === 'later' ? savePost() : publishNow()">
-                                                                 <img *ngIf="postForm.get('goesLive')?.value !== 'later'" src="assets/nicons/Send.png"
-                                                                    style="height:20px;width:20px;margin-right:8px;">
-                                                                {{ postForm.get('goesLive')?.value === 'later' ? 'Schedule Later' : 'Publish Now' }}
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <button
-                                                        *ngIf="postDetails?.status?.toLowerCase() !== 'scheduled' && !isApproved"
-                                                        type="button"
-                                                        class="btn btn-primary w-100 d-flex align-items-center justify-content-center mt-2"
-                                                        style="font-weight:600;font-size:16px;border-radius:8px;"
-                                                        (click)="approveAndPublishNow()">
-                                                        <img src="assets/nicons/Send.png"
-                                                            style="height:20px;width:20px;margin-right:8px;">Approve and
-                                                        Publish Now
-                                                    </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </mat-expansion-panel>
-                        </form>
-                    </ng-template>
-
-                    <ng-container *ngTemplateOutlet="commonPostForm"></ng-container>
-            </ng-template>
-        </mat-tab>
-        </mat-tab-group>
-    </div>
-    <div class="img-hover-overlay" *ngIf="hoveredImageUrl" (click)="hoveredImageUrl = null">
-        <div class="img-hover-popup" (click)="$event.stopPropagation()">
-            <img [src]="hoveredImageUrl" alt="Preview" />
-        </div>
-    </div>
-</div>
+                                                      </div>
+                                                    }
+                                                  </div>

@@ -2,11 +2,12 @@
     'padding-left': label ? '10px' : '',
     'padding-right': label ? '10px' : ''
   }">
-  <ng-container *ngFor="let menu of sidebarMenus; let i = index">
-    <div class="d-flex align-items-center w-100 justify-content-center" *ngIf="
-        menu.role?.includes(tokenService?.getRoleInBusinessAccountIdToken())
-      ">
-      <ng-container *ngIf="menu.childs?.length > 0">
+  @for (menu of sidebarMenus; track menu; let i = $index) {
+    @if (
+      menu.role?.includes(tokenService?.getRoleInBusinessAccountIdToken())
+      ) {
+      <div class="d-flex align-items-center w-100 justify-content-center">
+        @if (menu.childs?.length > 0) {
         <div [ngClass]="{
             'justify-content-between': label,
             'justify-content-center': !label
@@ -16,74 +17,87 @@
                 ? 'var(--background-menu-selected);'
                 : 'white;'
           }"
-        >
-          <i
-            class="cursor"
-            [matTooltip]="menu.label"
-            [matTooltipPosition]="'right'"
-          >
-            <img
-              *ngIf="!getActiveStatus(menu.path)"
-              src="assets/nicons/{{ menu.icon }}.png"
-              [alt]="menu.label"
-            />
-
-            <img *ngIf="getActiveStatus(menu.path)" src="assets/nicons/{{ menu.icon }} selected.png"
-              [alt]="menu.label" />
-          </i>
-
-          <span class="mx-1 font-size-14 text-nowrap" *ngIf="label" [ngStyle]="{
+            >
+            <i
+              class="cursor"
+              [matTooltip]="menu.label"
+              [matTooltipPosition]="'right'"
+              >
+              @if (!getActiveStatus(menu.path)) {
+                <img
+                  src="assets/nicons/{{ menu.icon }}.png"
+                  [alt]="menu.label"
+                  />
+              }
+              @if (getActiveStatus(menu.path)) {
+                <img src="assets/nicons/{{ menu.icon }} selected.png"
+                  [alt]="menu.label" />
+              }
+            </i>
+            @if (label) {
+<span class="mx-1 font-size-14 text-nowrap" [ngStyle]="{
               color: getActiveStatus(menu.path)
                 ? 'var(--primary-text);'
                 : 'var(--text-dark);'
             }">{{ menu.label }}</span>
-
-          <div class="d-flex justify-content-end align-items-center w-100" *ngIf="menu.childs?.length > 0 && label">
-            <dadyin-button (click)="$event.stopPropagation()" (clicked)="menu.showSubmenu = !menu.showSubmenu"
+            }
+            @if (menu.childs?.length > 0 && label) {
+              <div class="d-flex justify-content-end align-items-center w-100">
+                <dadyin-button (click)="$event.stopPropagation()" (clicked)="menu.showSubmenu = !menu.showSubmenu"
               [theme]="'borderless-primary'" class="b-none" type="icon" [typeval]="
                 menu.showSubmenu ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
               ">
-            </dadyin-button>
+                </dadyin-button>
+              </div>
+            }
           </div>
-        </div>
-      </ng-container>
-
-      <ng-container *ngIf="menu.childs?.length == 0">
+        }
+        @if (menu.childs?.length == 0) {
         <div [ngClass]="{
             'justify-content-start': label,
             'justify-content-center': !label
           }" class="d-flex w-100 align-items-center" (click)="navigate(menu)">
-          <i class="cursor" [matTooltip]="menu.label" [matTooltipPosition]="'right'"
-            [ngClass]="getActiveStatus(menu.path) ? 'active' : ''">
-            <img *ngIf="!getActiveStatus(menu.path)" src="assets/nicons/{{ menu.icon }}.png" [alt]="menu.label" />
-
-            <img *ngIf="getActiveStatus(menu.path)" src="assets/nicons/{{ menu.icon }} selected.png"
-              [alt]="menu.label" />
-          </i>
-          <span class="mx-1 font-size-14 text-nowrap" *ngIf="label" [ngStyle]="{
+            <i class="cursor" [matTooltip]="menu.label" [matTooltipPosition]="'right'"
+              [ngClass]="getActiveStatus(menu.path) ? 'active' : ''">
+              @if (!getActiveStatus(menu.path)) {
+                <img src="assets/nicons/{{ menu.icon }}.png" [alt]="menu.label" />
+              }
+              @if (getActiveStatus(menu.path)) {
+                <img src="assets/nicons/{{ menu.icon }} selected.png"
+                  [alt]="menu.label" />
+              }
+            </i>
+            @if (label) {
+<span class="mx-1 font-size-14 text-nowrap" [ngStyle]="{
               color: getActiveStatus(menu.path)
                 ? 'var(--primary-text);'
                 : 'var(--text-dark);'
             }">{{ menu.label }}</span>
-        </div>
-      </ng-container>
-    </div>
-    <div *ngIf="isExpanded && menu.showSubmenu">
-      <ng-container *ngFor="let submenu of menu.childs">
-        <div class="d-flex align-items-center my-1 w-100" *ngIf="
+            }
+          </div>
+        }
+      </div>
+    }
+    @if (isExpanded && menu.showSubmenu) {
+      <div>
+        @for (submenu of menu.childs; track submenu) {
+          @if (
             submenu.role?.includes(
-              tokenService?.getRoleInBusinessAccountIdToken()
+            tokenService?.getRoleInBusinessAccountIdToken()
             )
-          " (click)="navigateChild(submenu, menu)" [ngStyle]="{
+            ) {
+<div class="d-flex align-items-center my-1 w-100" (click)="navigateChild(submenu, menu)" [ngStyle]="{
             'background-color': getActiveStatus(submenu.path) ? 'var(--background-menu-selected);' : 'transparent'
           }" [ngClass]="{'rounded': true}">
           <span class="mx-1 font-size-14 text-nowrap" [ngStyle]="{
             color: getActiveStatus(submenu.path) ? 'var(--primary-text);' : 'var(--text-dark);'
           }">
-            {{ submenu.label }}
-          </span>
-        </div>
-      </ng-container>
-    </div>
-  </ng-container>
+                {{ submenu.label }}
+              </span>
+            </div>
+          }
+        }
+      </div>
+    }
+  }
 </div>

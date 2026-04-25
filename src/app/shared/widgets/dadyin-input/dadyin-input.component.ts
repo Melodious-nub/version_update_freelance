@@ -12,7 +12,7 @@ import {
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, ControlContainer, UntypedFormControl, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonService } from 'src/app/service/common.service';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgIf, NgClass, NgStyle } from '@angular/common';
+import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
     selector: 'dadyin-input',
@@ -27,13 +27,12 @@ import { NgIf, NgClass, NgStyle } from '@angular/common';
     ],
     standalone: true,
     imports: [
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        NgClass,
-        ExtendedModule,
-        NgStyle,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    NgClass,
+    ExtendedModule,
+    NgStyle
+],
 })
 export class DadyinInputComponent
   implements OnInit, ControlValueAccessor, AfterContentChecked

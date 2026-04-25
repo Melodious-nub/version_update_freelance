@@ -10,14 +10,14 @@ import { DataTableComponent } from '../../../../../shared/component/data-table/d
 import { FilterBoxComponent } from './filter-box/filter-box.component';
 import { SearchFilterComponent } from '../../../../../shared/component/search-filter/search-filter.component';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-social-posts-list',
     templateUrl: './social-posts-list.component.html',
     styleUrls: ['./social-posts-list.component.scss'],
     standalone: true,
-    imports: [NgIf, DadyinButtonComponent, SearchFilterComponent, FilterBoxComponent, DataTableComponent]
+    imports: [DadyinButtonComponent, SearchFilterComponent, FilterBoxComponent, DataTableComponent]
 })
 export class SocialPostsListComponent implements OnInit, OnChanges {
   @Input() productId?: any;

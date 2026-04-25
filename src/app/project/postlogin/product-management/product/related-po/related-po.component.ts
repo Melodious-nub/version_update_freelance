@@ -7,7 +7,7 @@ import { UomService } from 'src/app/service/uom.service';
 import { NumberFormatterPipe } from '../../../../../shared/pipes/number-formatter.pipe';
 import { MatTooltip } from '@angular/material/tooltip';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } from '@angular/material/expansion';
 
 @Component({
@@ -16,17 +16,15 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     styleUrls: ['./related-po.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelContent,
-        NgFor,
-        NgIf,
-        DadyinButtonComponent,
-        MatTooltip,
-        NumberFormatterPipe,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelContent,
+    DadyinButtonComponent,
+    MatTooltip,
+    NumberFormatterPipe
+],
 })
 export class RelatedPoComponent implements OnInit {
   relatedPoDetails: any;

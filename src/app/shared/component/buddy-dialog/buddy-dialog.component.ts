@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { InviteDialogComponent } from '../invite-dialog/invite-dialog.component';
-import { NgFor, NgIf } from '@angular/common';
+
 import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     templateUrl: './buddy-dialog.component.html',
     styleUrls: ['./buddy-dialog.component.scss'],
     standalone: true,
-    imports: [DadyinButtonComponent, NgFor, NgIf]
+    imports: [DadyinButtonComponent]
 })
 export class BuddyDialogComponent implements OnInit {
     public buddyDetails: any[]

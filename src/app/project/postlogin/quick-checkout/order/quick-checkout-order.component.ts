@@ -37,7 +37,7 @@ import { QcProductDetailComponent } from '../qc-product-detail/qc-product-detail
 import { PaymentService } from 'src/app/service/payment.service';
 import { SwiperOptions } from 'swiper';
 import { TermsDialogComponent } from 'src/app/shared/dialogs/terms/terms-dialog.component';
-import { Location, NgStyle, NgIf, NgFor, NgClass, TitleCasePipe, DatePipe, AsyncPipe } from '@angular/common';
+import { Location, NgStyle, NgClass, TitleCasePipe, DatePipe, AsyncPipe } from '@angular/common';
 import { NumberFormatterPipe } from '../../../../shared/pipes/number-formatter.pipe';
 import { PaymentComponent } from '../../order-management/vendor-modules/purchaseorder/purchaseorder-steps/payment/payment.component';
 import { GridViewProductCardComponent } from './grid-view-product-card/grid-view-product-card.component';
@@ -63,12 +63,10 @@ import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
     ReactiveFormsModule,
     NgStyle,
     ExtendedModule,
-    NgIf,
     MatTooltip,
     RouterLink,
     DadyinButtonComponent,
     CdkDrag,
-    NgFor,
     DadyinTabComponent,
     DadyinSearchableSelectComponent,
     NgClass,

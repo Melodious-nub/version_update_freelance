@@ -11,32 +11,42 @@
         <div class="col-12 col-md-9">
           <div class="row">
             <div class="col-12 col-md-6 map-grid" formGroupName="requestFrom">
-              <dadyin-searchable-select (changed)="onChangeCustomer()" *ngIf="isCreatedByMe" class="w-100"
-                label="Select Customer" [control]="customerId" [fullItems]="businessAccountService.customerList"
+              @if (isCreatedByMe) {
+                <dadyin-searchable-select (changed)="onChangeCustomer()" class="w-100"
+                  label="Select Customer" [control]="customerId" [fullItems]="businessAccountService.customerList"
                 bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
-              <dadyin-input *ngIf="!isCreatedByMe" class="w-100" label="Customer" formControlName="name">
-              </dadyin-input>
+              }
+              @if (!isCreatedByMe) {
+                <dadyin-input class="w-100" label="Customer" formControlName="name">
+                </dadyin-input>
+              }
               <dadyin-button (clicked)="openMap(2)" (click)="$event.stopPropagation()" [theme]="'borderless-primary'"
                 type="image" [typeval]="'assets/img/icons/address.png'">
               </dadyin-button>
 
-              <div *ngIf="map2" class="tooltip-white b-light shadow-sm">
-                {{ requestToAddress }}
-              </div>
+              @if (map2) {
+                <div class="tooltip-white b-light shadow-sm">
+                  {{ requestToAddress }}
+                </div>
+              }
             </div>
 
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value == 'CONTAINER'">
-              <dadyin-select [optionArr]="containerService.incoTermsList" [emptyOption]="'Select Inco Terms'"
-                label="Inco Terms" formControlName="incoTermId" optionLabel="description" optionValue="id">
-              </dadyin-select>
-            </div>
-            <div class="col-8 col-md-2" *ngIf="importLocalType.value == 'LOCAL'">
+            @if (importLocalType.value == 'CONTAINER') {
+              <div class="col-12 col-md-2">
+                <dadyin-select [optionArr]="containerService.incoTermsList" [emptyOption]="'Select Inco Terms'"
+                  label="Inco Terms" formControlName="incoTermId" optionLabel="description" optionValue="id">
+                </dadyin-select>
+              </div>
+            }
+            @if (importLocalType.value == 'LOCAL') {
+              <div class="col-8 col-md-2">
               <dadyin-select [optionArr]="[
                   { id: 'DELIVERY', description: 'DELIVERY' },
                   { id: 'PICKUP', description: 'PICKUP' }
                 ]" label="Delivery Type" formControlName="deliveryPickup" optionLabel="description" optionValue="id">
-              </dadyin-select>
-            </div>
+                </dadyin-select>
+              </div>
+            }
 
             <div class="col-4 col-md-1 d-flex">
               <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="
@@ -68,20 +78,22 @@
                 <label>Buying Type</label>
                 <div>
                   <select class="w-100" formControlName="buyingType">
-                    <ng-container *ngFor="let buyingType of buyingTypeList">
+                    @for (buyingType of buyingTypeList; track buyingType) {
                       <option [value]="buyingType.value">
                         {{ buyingType.name }}
                       </option>
-                    </ng-container>
+                    }
                   </select>
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value != 'LOCAL'">
-              <dadyin-select [emptyOption]="'Select Departure Port'" [optionArr]="containerService.portsList"
-                label="Port of Departure" formControlName="departurePortId" optionLabel="description" optionValue="id">
-              </dadyin-select>
-            </div>
+            @if (importLocalType.value != 'LOCAL') {
+              <div class="col-12 col-md-2">
+                <dadyin-select [emptyOption]="'Select Departure Port'" [optionArr]="containerService.portsList"
+                  label="Port of Departure" formControlName="departurePortId" optionLabel="description" optionValue="id">
+                </dadyin-select>
+              </div>
+            }
             <div class="col-12 col-md-2">
               <dadyin-input inputType="text" formControlName="shipper" label="Ship via">
               </dadyin-input>
@@ -95,15 +107,17 @@
                 [emptyOption]="'Sales Manager'">
               </dadyin-select>
             </div>
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value != 'LOCAL'">
+            @if (importLocalType.value != 'LOCAL') {
+              <div class="col-12 col-md-2">
               <dadyin-select [optionArr]="[
                   { id: 'PALLET', name: 'PALLET' },
                   { id: 'FLOOR', name: 'FLOOR' },
                   { id: 'MIXED', name: 'MIXED' }
                 ]" label="Loading Type" formControlName="loadingTypeId" optionLabel="name" optionValue="id"
-                [emptyOption]="'Select Loading Type'">
-              </dadyin-select>
-            </div>
+                  [emptyOption]="'Select Loading Type'">
+                </dadyin-select>
+              </div>
+            }
 
             <div class="col-12 col-md-2">
               <dadyin-select [emptyOption]="'Select Payment Term'" formControlName="paymentTermId"
@@ -122,47 +136,49 @@
             </div>
 
             <div class="col-12 col-md-2">
-              <ng-container *ngIf="
-                  receivedPoForm.get('fulfilmentType').value == 'CONTAINER'
-                ">
+              @if (
+                receivedPoForm.get('fulfilmentType').value == 'CONTAINER'
+                ) {
                 <div class="attribute one w-100">
                   <div class="attribute-select justify-content-around w-100 title-text">
                     <label>Container Reference</label>
                     <select class="w-100" formControlName="referenceContainerId">
                       <option [value]="null">Container Reference</option>
                       <option [value]="'NEW'">+ Create New Container</option>
-                      <ng-container *ngFor="
-                          let container of containerService.containersList
-                        ">
+                      @for (
+                        container of containerService.containersList
+                        ; track
+                        container) {
                         <option [value]="container.id">
                           {{ container?.containerTypeDescription }}
                         </option>
-                      </ng-container>
+                      }
                     </select>
                   </div>
                 </div>
-              </ng-container>
+              }
             </div>
             <div class="col-12 col-md-2">
-              <ng-container *ngIf="
-                  receivedPoForm.get('fulfilmentType').value == 'CONTAINER'
-                ">
+              @if (
+                receivedPoForm.get('fulfilmentType').value == 'CONTAINER'
+                ) {
                 <div class="attribute one w-100">
                   <div class="attribute-select justify-content-around w-100 title-text">
                     <label>Select Importer</label>
                     <select class="w-100" formControlName="exporterBusinessId">
                       <option [value]="null">Select Importer</option>
-                      <ng-container *ngFor="
-                          let vendor of businessAccountService.exportersVendorList
-                        ">
+                      @for (
+                        vendor of businessAccountService.exportersVendorList
+                        ; track
+                        vendor) {
                         <option [value]="vendor?.relationAccountId">
                           {{ vendor?.relationAccountName }}
                         </option>
-                      </ng-container>
+                      }
                     </select>
                   </div>
                 </div>
-              </ng-container>
+              }
             </div>
           </div>
         </div>
@@ -183,41 +199,43 @@
             </div>
             <div class="col-12 col-md-6">
               <dadyin-input inputType="text" label="External Ref No"
-                formControlName="transactionReferenceNumber"></dadyin-input>
+              formControlName="transactionReferenceNumber"></dadyin-input>
             </div>
             <div class="col-12 col-md-6">
               <div class="attribute attr-b">
                 <label>Quotation#</label>
                 <input [disable]="!isEditableCost" [readonly]="!isEditableCost" [formControl]="quotationTransactionId"
                   class="w-100" [matAutocomplete]="quotation" (input)="getQuotationsList($event)" />
+                </div>
+                <mat-autocomplete (optionSelected)="onSelectQuotation($event.option.value)" autoActiveFirstOption
+                  #quotation="matAutocomplete">
+                  @for (quotation of quotationsList; track quotation) {
+                    <mat-option [value]="quotation">
+                      {{ quotation?.transactionId }}
+                    </mat-option>
+                  }
+                </mat-autocomplete>
               </div>
-              <mat-autocomplete (optionSelected)="onSelectQuotation($event.option.value)" autoActiveFirstOption
-                #quotation="matAutocomplete">
-                <mat-option [value]="quotation" *ngFor="let quotation of quotationsList">
-                  {{ quotation?.transactionId }}
-                </mat-option>
-              </mat-autocomplete>
             </div>
           </div>
         </div>
-      </div>
-    </ng-template>
-  </mat-expansion-panel>
+      </ng-template>
+    </mat-expansion-panel>
 
-  <div class="my-2 d-flex align-items-center" style="column-gap: 5px">
-    <div class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
-      <img src="assets/nicons/previous.png" alt="Prev. Orders" style="width: 20px; height: 20px" />
-      <div class="text-dark font-size-14 mx-1">Prev. Orders</div>
-    </div>
-    <div class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
-      <img src="assets/nicons/overview.png" alt="Client Category" style="width: 20px; height: 20px" />
-      <div class="text-dark font-size-14 mx-1">Client Category</div>
-    </div>
-    <div class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
-      <img src="assets/nicons/Fav.png" alt="Favourite" style="width: 20px; height: 20px" />
-      <div class="text-dark font-size-14 mx-1">Client Favourite</div>
-    </div>
-    <!-- <dadyin-button type="image" [theme]="'borderless-default'" [typeval]="'assets/nicons/print.png'" class="mx-1"
+    <div class="my-2 d-flex align-items-center" style="column-gap: 5px">
+      <div class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
+        <img src="assets/nicons/previous.png" alt="Prev. Orders" style="width: 20px; height: 20px" />
+        <div class="text-dark font-size-14 mx-1">Prev. Orders</div>
+      </div>
+      <div class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
+        <img src="assets/nicons/overview.png" alt="Client Category" style="width: 20px; height: 20px" />
+        <div class="text-dark font-size-14 mx-1">Client Category</div>
+      </div>
+      <div class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
+        <img src="assets/nicons/Fav.png" alt="Favourite" style="width: 20px; height: 20px" />
+        <div class="text-dark font-size-14 mx-1">Client Favourite</div>
+      </div>
+      <!-- <dadyin-button type="image" [theme]="'borderless-default'" [typeval]="'assets/nicons/print.png'" class="mx-1"
       (clicked)="printPdf()" [tooltip]="'Download PDF'">
     </dadyin-button> -->
     <div style="margin-left: auto; display: flex; justify-content: flex-end">
@@ -257,24 +275,28 @@
                   <span>QTY Req (SKU)</span>
                 </th>
                 <th class="number-column">
-                  <div *ngIf="
-                      productPackages?.controls[0]
-                        ?.get('metricCost')
-                        .get('userConversionUom').value
-                    ">
-                    {{
+                  @if (
                     productPackages?.controls[0]
-                    ?.get("metricCost")
-                    .get("userConversionUom").value
-                    }}
-                  </div>
-                  <div *ngIf="
-                      !productPackages?.controls[0]
-                        ?.get('metricCost')
-                        .get('userConversionUom').value
-                    ">
-                    Metric Cost
-                  </div>
+                    ?.get('metricCost')
+                    .get('userConversionUom').value
+                    ) {
+                    <div>
+                      {{
+                      productPackages?.controls[0]
+                      ?.get("metricCost")
+                      .get("userConversionUom").value
+                      }}
+                    </div>
+                  }
+                  @if (
+                    !productPackages?.controls[0]
+                    ?.get('metricCost')
+                    .get('userConversionUom').value
+                    ) {
+                    <div>
+                      Metric Cost
+                    </div>
+                  }
                 </th>
                 <th class="weight width-100 number-column">
                   <div class="group">
@@ -321,10 +343,10 @@
               </tr>
             </thead>
             <tbody>
-              <ng-container [formGroup]="productPackage" *ngFor="
-                  let productPackage of productPackages?.controls;
-                  let i = index
-                ">
+              @for (
+                productPackage of productPackages?.controls; track
+                productPackage; let i = $index) {
+                <ng-container [formGroup]="productPackage">
                 <tr [ngClass]="{
                     'b-all-red':
                       (!isSelfProduct(
@@ -335,16 +357,17 @@
                         )) &&
                       isEditable
                   }">
-                  <td style="width: unset !important" colspan="3" class="px-1" formGroupName="productDetails">
-                    <div class="d-flex align-items-center b-none">
-                      <ng-container *ngIf="!productPackage.get('productId').value">
-                        <input [readonly]="!isSelfPO" [ngClass]="{ 'bg-disable': !isSelfPO }"
-                          placeholder="Search for Product Code/Description" [matAutocomplete]="product"
-                          (input)="getProductsList($event)" formControlName="description" />
+                    <td style="width: unset !important" colspan="3" class="px-1" formGroupName="productDetails">
+                      <div class="d-flex align-items-center b-none">
+                        @if (!productPackage.get('productId').value) {
+                          <input [readonly]="!isSelfPO" [ngClass]="{ 'bg-disable': !isSelfPO }"
+                            placeholder="Search for Product Code/Description" [matAutocomplete]="product"
+                            (input)="getProductsList($event)" formControlName="description" />
                         <mat-autocomplete (optionSelected)="
                             onChange($event.option.value, productPackage)
                           " autoActiveFirstOption #product="matAutocomplete">
-                          <mat-option [value]="item" *ngFor="let item of productsList">
+                              @for (item of productsList; track item) {
+                                <mat-option [value]="item">
                             <span style="padding: 3px" class="mx-1" [ngClass]="{
                                 'self-product':
                                   businessAccountService.getOwnerEnhanced(
@@ -362,24 +385,27 @@
                                     item?.productMetaBusinessAccountId
                                   ) == 'M'
                               }">
-                              ({{
-                              businessAccountService.getOwnerEnhanced(
-                              item.audit,
-                              item?.productMetaBusinessAccountId
-                              )
-                              }})
-                            </span>
-                            {{ item.productCode }}
-                            {{ item.description }}
-                          </mat-option>
-                        </mat-autocomplete>
-                      </ng-container>
-                      <ng-container *ngIf="productPackage.get('productId').value">
-                        <dadyin-button *ngIf="productPackage.value.isCustomized"
-                          (clicked)="viewCustomizedDetail(productPackage, i)" type="icon"
-                          [typeval]="'workspace_premium'" [theme]="'borderless-primary'">
-                        </dadyin-button>
-                        <div class="bg-disable text-ellipse">
+                                    ({{
+                                    businessAccountService.getOwnerEnhanced(
+                                    item.audit,
+                                    item?.productMetaBusinessAccountId
+                                    )
+                                    }})
+                                  </span>
+                                  {{ item.productCode }}
+                                  {{ item.description }}
+                                </mat-option>
+                              }
+                            </mat-autocomplete>
+                          }
+                          @if (productPackage.get('productId').value) {
+                            @if (productPackage.value.isCustomized) {
+                              <dadyin-button
+                                (clicked)="viewCustomizedDetail(productPackage, i)" type="icon"
+                                [typeval]="'workspace_premium'" [theme]="'borderless-primary'">
+                              </dadyin-button>
+                            }
+                            <div class="bg-disable text-ellipse">
                           <span style="padding: 3px" class="mx-1" [ngClass]="{
                               'self-product':
                                 businessAccountService.getOwnerEnhanced(
@@ -409,328 +435,343 @@
                                     .get('productMetaBusinessAccountId').value
                                 ) == 'M'
                             }">
-                            ({{
-                            businessAccountService.getOwnerEnhanced(
-                            productPackage
-                            .get("productDetails")
-                            .get("audit").value,
-                            productPackage
-                            .get("productDetails")
-                            .get("productMetaBusinessAccountId").value
-                            )
-                            }})
-                          </span>
-                          (
-                          {{
-                          productPackage
-                          .get("productDetails")
-                          .get("productCode").value
-                          }}
-                          )
-                          {{
-                          productPackage
-                          .get("productDetails")
-                          .get("description").value
-                          }}
+                                ({{
+                                businessAccountService.getOwnerEnhanced(
+                                productPackage
+                                .get("productDetails")
+                                .get("audit").value,
+                                productPackage
+                                .get("productDetails")
+                                .get("productMetaBusinessAccountId").value
+                                )
+                                }})
+                              </span>
+                              (
+                              {{
+                              productPackage
+                              .get("productDetails")
+                              .get("productCode").value
+                              }}
+                              )
+                              {{
+                              productPackage
+                              .get("productDetails")
+                              .get("description").value
+                              }}
+                            </div>
+                          }
                         </div>
-                      </ng-container>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="bg-disable">
-                      <ng-container matTooltip="packaging will be finalised once the order is confirmed"
-                        *ngIf="productPackage.value.isCustomized">
-                        1<sup>*</sup>
-                      </ng-container>
-                      <ng-container *ngIf="!productPackage.value.isCustomized">
-                        {{
-                        (productPackage.value.productDetails?.numberOfItems ??
-                        "") +
-                        "/" +
-                        (productPackage.value.productDetails
-                        ?.skuPackageType ??
-                        "")
-                        }}
-                      </ng-container>
-                    </div>
-                  </td>
-                  <td class="ps-1">
-                    <div>
-                      {{ productPackage.value.productDetails.qoh }}
-                    </div>
-                  </td>
-                  <td>
-                    <section class="bg-white my-1 d-flex align-items-center" style="column-gap: 2px">
-                      <dadyin-button [theme]="'borderless-default'" type="icon" [typeval]="'remove'"
-                        (clicked)="updateProductQuantityInOrder(i, -1)"></dadyin-button>
-                      <input [readonly]="!productPackage.get('productId').value || !isEditableCost"
-                        [ngClass]="{ 'bg-disable': !isEditableCost }" [matTooltip]="productPackage.value?.loadingType"
-                        name="quantity" (change)="changeQuantityInOrder(i)" type="number" min="1"
-                        class="text-center bg-white" formControlName="quantity" />
-                      <dadyin-button [theme]="'borderless-default'" type="icon" [typeval]="'add_circle_outline'"
-                        (clicked)="updateProductQuantityInOrder(i, 1)">
-                      </dadyin-button>
-                    </section>
-                  </td>
-                  <td class="number-column">
-                    <div class="bg-disable">
-                      {{ productPackage.value.metricCost.attributeValue }}
-                    </div>
-                  </td>
-                  <td class="weight number-column">
-                    <ng-container>
-                      <div class="bg-disable">
-                        {{
-                        productPackage.value.weight.attributeValue
-                        | numberFormatter : 3
-                        }}
-                      </div>
-                      <!-- <input disabled type="text" formControlName="attributeValue" /> -->
-                    </ng-container>
-                  </td>
-                  <td class="volume number-column">
-                    <ng-container>
-                      <div class="bg-disable">
-                        {{
-                        productPackage.value.volume.attributeValue
-                        | numberFormatter : 3
-                        }}
-                      </div>
-                    </ng-container>
-                  </td>
-                  <td class="number-column" formGroupName="cost" matTooltip="{{ getMetricCost(productPackage) }}">
-                    <ng-container *ngIf="
-                        !receivedPoForm.get('isQuickCheckout').value &&
-                        isEditableCost
-                      ">
-                      <input *ngIf="
-                          isSelfProduct(
-                            productPackage.get('productDetails').value
-                          )
-                        " type="text" formControlName="attributeValue" (change)="changeCostByUser(productPackage)" />
-                    </ng-container>
-                    <ng-container *ngIf="
-                        receivedPoForm.get('isQuickCheckout').value ||
-                        !isEditableCost
-                      ">
-                      <div class="bg-disable">
-                        {{
-                        productPackage.value.cost.attributeValue
-                        | numberFormatter : 3
-                        }}
-                      </div>
-                    </ng-container>
-                  </td>
-
-                  <td class="number-column" colspan="2">
-                    <div class="bg-disable price-text">
-                      {{
-                      productPackage.value.totalCost.attributeValue
-                      | numberFormatter : 3
-                      }}
-                    </div>
-                  </td>
-
-
-                  <td>
-                    <div class="d-flex align-items-center b-none">
-                      <mat-icon matTooltip="Copy Product" *ngIf="
-                          !isSelfProduct(
-                            productPackage.get('productDetails').value
-                          ) && isEditable
-                        " (click)="
+                      </td>
+                      <td>
+                        <div class="bg-disable">
+                          @if (productPackage.value.isCustomized) {
+                            <ng-container matTooltip="packaging will be finalised once the order is confirmed"
+                              >
+                              1<sup>*</sup>
+                            </ng-container>
+                          }
+                          @if (!productPackage.value.isCustomized) {
+                            {{
+                            (productPackage.value.productDetails?.numberOfItems ??
+                            "") +
+                            "/" +
+                            (productPackage.value.productDetails
+                            ?.skuPackageType ??
+                            "")
+                            }}
+                          }
+                        </div>
+                      </td>
+                      <td class="ps-1">
+                        <div>
+                          {{ productPackage.value.productDetails.qoh }}
+                        </div>
+                      </td>
+                      <td>
+                        <section class="bg-white my-1 d-flex align-items-center" style="column-gap: 2px">
+                          <dadyin-button [theme]="'borderless-default'" type="icon" [typeval]="'remove'"
+                          (clicked)="updateProductQuantityInOrder(i, -1)"></dadyin-button>
+                          <input [readonly]="!productPackage.get('productId').value || !isEditableCost"
+                            [ngClass]="{ 'bg-disable': !isEditableCost }" [matTooltip]="productPackage.value?.loadingType"
+                            name="quantity" (change)="changeQuantityInOrder(i)" type="number" min="1"
+                            class="text-center bg-white" formControlName="quantity" />
+                            <dadyin-button [theme]="'borderless-default'" type="icon" [typeval]="'add_circle_outline'"
+                              (clicked)="updateProductQuantityInOrder(i, 1)">
+                            </dadyin-button>
+                          </section>
+                        </td>
+                        <td class="number-column">
+                          <div class="bg-disable">
+                            {{ productPackage.value.metricCost.attributeValue }}
+                          </div>
+                        </td>
+                        <td class="weight number-column">
+                          <ng-container>
+                            <div class="bg-disable">
+                              {{
+                              productPackage.value.weight.attributeValue
+                              | numberFormatter : 3
+                              }}
+                            </div>
+                            <!-- <input disabled type="text" formControlName="attributeValue" /> -->
+                          </ng-container>
+                        </td>
+                        <td class="volume number-column">
+                          <ng-container>
+                            <div class="bg-disable">
+                              {{
+                              productPackage.value.volume.attributeValue
+                              | numberFormatter : 3
+                              }}
+                            </div>
+                          </ng-container>
+                        </td>
+                        <td class="number-column" formGroupName="cost" matTooltip="{{ getMetricCost(productPackage) }}">
+                          @if (
+                            !receivedPoForm.get('isQuickCheckout').value &&
+                            isEditableCost
+                            ) {
+                            @if (
+                              isSelfProduct(
+                              productPackage.get('productDetails').value
+                              )
+                              ) {
+                              <input type="text" formControlName="attributeValue" (change)="changeCostByUser(productPackage)" />
+                            }
+                          }
+                          @if (
+                            receivedPoForm.get('isQuickCheckout').value ||
+                            !isEditableCost
+                            ) {
+                            <div class="bg-disable">
+                              {{
+                              productPackage.value.cost.attributeValue
+                              | numberFormatter : 3
+                              }}
+                            </div>
+                          }
+                        </td>
+                        <td class="number-column" colspan="2">
+                          <div class="bg-disable price-text">
+                            {{
+                            productPackage.value.totalCost.attributeValue
+                            | numberFormatter : 3
+                            }}
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center b-none">
+                            @if (
+                              !isSelfProduct(
+                              productPackage.get('productDetails').value
+                              ) && isEditable
+                              ) {
+<mat-icon matTooltip="Copy Product" (click)="
                           copyProductForAccount(productPackage.value, i, false)
                         " class="mat-icon primary-text">content_copy</mat-icon>
-                      <mat-icon matTooltip="Copy for customization" *ngIf="
-                          showIsCustomizedandClonableProduct(
-                            productPackage.value
-                          ) && isEditable
-                        " (click)="
+                            }
+                            @if (
+                              showIsCustomizedandClonableProduct(
+                              productPackage.value
+                              ) && isEditable
+                              ) {
+<mat-icon matTooltip="Copy for customization" (click)="
                           copyProductForAccount(productPackage.value, i, true)
                         " class="mat-icon primary-text">content_copy</mat-icon>
-                      <dadyin-button *ngIf="
-                          i + 1 == productPackages?.controls.length &&
-                          this.status.value != 'CONFIRMED'
-                        " (clicked)="addProductPackage()" [theme]="'borderless-primary'" type="icon"
-                        [typeval]="'add_circle_outline'">
-                      </dadyin-button>
-                      <dadyin-button *ngIf="this.status.value != 'CONFIRMED'" (clicked)="deleteProductPackage(i)"
-                        [theme]="'borderless-danger'" type="icon" [typeval]="'delete_outline'">
-                      </dadyin-button>
-                    </div>
-                  </td>
-                </tr>
-              </ng-container>
-              <ng-container *ngIf="productPackages?.controls?.length == 0">
-                <tr>
-                  <td style="width: unset !important" colspan="3"></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <dadyin-button (clicked)="addProductPackage()" [theme]="'borderless-primary'" type="icon"
-                      [typeval]="'add_circle_outline'">
-                    </dadyin-button>
-                  </td>
-                </tr>
-              </ng-container>
-              <ng-container>
-                <tr class="bg-light b-light">
-                  <td style="width: unset !important" colspan="3">
-                    <section class="title-text font-size-12 w-100 px-2">
-                      Purchase Order Total
-                    </section>
-                  </td>
-                  <td></td>
-                  <td>
-                    <section class="ps-2">
-                      {{ receivedPoForm.get("totalSku").value }}
-                    </section>
-                  </td>
-                  <td>
-                    <!-- <section class="text-center">
-                      {{ receivedPoForm.get("totalMetricCost").value }}
-                    </section> -->
-                  </td>
-                  <td class="number-column">
-                    <section class="pe-1">
-                      {{
-                      receivedPoForm.get("weight").get("attributeValue").value
-                      | numberFormatter : 3
-                      }}
-                    </section>
-                  </td>
-                  <td class="number-column">
-                    <section class="pe-1">
-                      {{
-                      receivedPoForm.get("volume").get("attributeValue").value
-                      | numberFormatter : 3
-                      }}
-                    </section>
-                  </td>
-                  <td class="number-column">
-                    <ng-container *ngIf="!checkIfAnyProductIsSelfProduct()">
+                            }
+                            @if (
+                              i + 1 == productPackages?.controls.length &&
+                              this.status.value != 'CONFIRMED'
+                              ) {
+                              <dadyin-button (clicked)="addProductPackage()" [theme]="'borderless-primary'" type="icon"
+                                [typeval]="'add_circle_outline'">
+                              </dadyin-button>
+                            }
+                            @if (this.status.value != 'CONFIRMED') {
+                              <dadyin-button (clicked)="deleteProductPackage(i)"
+                                [theme]="'borderless-danger'" type="icon" [typeval]="'delete_outline'">
+                              </dadyin-button>
+                            }
+                          </div>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  }
+                  @if (productPackages?.controls?.length == 0) {
+                    <tr>
+                      <td style="width: unset !important" colspan="3"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <dadyin-button (clicked)="addProductPackage()" [theme]="'borderless-primary'" type="icon"
+                          [typeval]="'add_circle_outline'">
+                        </dadyin-button>
+                      </td>
+                    </tr>
+                  }
+                  <ng-container>
+                    <tr class="bg-light b-light">
+                      <td style="width: unset !important" colspan="3">
+                        <section class="title-text font-size-12 w-100 px-2">
+                          Purchase Order Total
+                        </section>
+                      </td>
+                      <td></td>
+                      <td>
+                        <section class="ps-2">
+                          {{ receivedPoForm.get("totalSku").value }}
+                        </section>
+                      </td>
+                      <td>
+                        <!-- <section class="text-center">
+                        {{ receivedPoForm.get("totalMetricCost").value }}
+                      </section> -->
+                    </td>
+                    <td class="number-column">
+                      <section class="pe-1">
+                        {{
+                        receivedPoForm.get("weight").get("attributeValue").value
+                        | numberFormatter : 3
+                        }}
+                      </section>
+                    </td>
+                    <td class="number-column">
+                      <section class="pe-1">
+                        {{
+                        receivedPoForm.get("volume").get("attributeValue").value
+                        | numberFormatter : 3
+                        }}
+                      </section>
+                    </td>
+                    <td class="number-column">
+                      @if (!checkIfAnyProductIsSelfProduct()) {
                       <input type="text" [formControl]="
                           receivedPoForm.get('totalCost').get('attributeValue')
                         " />
-                    </ng-container>
-                  </td>
-                  <td></td>
+                        }
+                      </td>
+                      <td></td>
 
-                  <td></td>
+                      <td></td>
 
-                  <td class="number-column">
-                    <ng-container *ngIf="!checkIfAnyProductIsSelfProduct()">
+                      <td class="number-column">
+                        @if (!checkIfAnyProductIsSelfProduct()) {
                       <input type="text" [formControl]="
                           receivedPoForm.get('totalCost').get('attributeValue')
                         " />
+                          }
+                        </td>
+                        <td>
+                          <section class="title-text"></section>
+                        </td>
+                      </tr>
                     </ng-container>
-                  </td>
-                  <td>
-                    <section class="title-text"></section>
-                  </td>
-                </tr>
-              </ng-container>
-            </tbody>
-          </table>
-        </div>
-      </section>
-      <div class="px-1 my-2">
-        <div class="mb-3">
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <div class="px-1 my-2">
+              <div class="mb-3">
           <textarea id="quickNote" class="font-size-12 b-all w-100 px-1" style="
               width: 100%;
               min-height: 20px;
               resize: vertical;
               border-radius: 6px;
             " placeholder="Type Quick Note" [formControl]="receivedPoForm.get('customNote')"></textarea>
-        </div>
-      </div>
-      <div [formGroup]="receivedPoForm" class="row mx-auto b-round bg-white">
-        <div class="col-12 col-md-3 p-2">
-          <div class="b-round">
-            <div class="text-nowrap me-2">
-              <div class="fw-bold font-size-14">
-                Reference files :
-
               </div>
-              <div style="max-height: 100px; overflow: auto">
-                <div class="mt-2 font-size-12 p-1 align-items-center text-dark b-light b-round d-flex"
-                  *ngFor="let item of media_urls.value; let i = index">
-                  {{ i + 1 }}. <i class="material-icon">article</i>
-                  <a class="mx-1" [href]="imgUrl + item.media_url" target="_blank">{{ item.media_url?.substring(14) }}
-                  </a>
-                  <dadyin-button [theme]="'borderless-danger'" type="image" [typeval]="'assets/img/icons/delete.png'"
-                    (clicked)="deleteFile(item.media_url)">
-                  </dadyin-button>
+            </div>
+            <div [formGroup]="receivedPoForm" class="row mx-auto b-round bg-white">
+              <div class="col-12 col-md-3 p-2">
+                <div class="b-round">
+                  <div class="text-nowrap me-2">
+                    <div class="fw-bold font-size-14">
+                      Reference files :
+
+                    </div>
+                    <div style="max-height: 100px; overflow: auto">
+                      @for (item of media_urls.value; track item; let i = $index) {
+                        <div class="mt-2 font-size-12 p-1 align-items-center text-dark b-light b-round d-flex"
+                          >
+                          {{ i + 1 }}. <i class="material-icon">article</i>
+                          <a class="mx-1" [href]="imgUrl + item.media_url" target="_blank">{{ item.media_url?.substring(14) }}
+                          </a>
+                          <dadyin-button [theme]="'borderless-danger'" type="image" [typeval]="'assets/img/icons/delete.png'"
+                            (clicked)="deleteFile(item.media_url)">
+                          </dadyin-button>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                  @if (!poFile) {
+                    <div class="dashed-border mt-3 p-2" (drop)="fileSelected($event, 'drop', fileinp1)"
+                      (dragover)="onDragOver($event)" style="cursor: pointer; text-align: center">
+                      <div>
+                        <input placeholder="Type Order/Document Ref. Number" (paste)="onPaste($event)"
+                          (click)="$event.stopPropagation()" class="w-100 bg-white mb-2" />
+                          <div class="bg-light p-1 b-round b-light" style="width: max-content" (click)="fileinp1.click()">
+                            <dadyin-button [theme]="'borderless-default'" type="icon" label="Upload"
+                            typeval="file_upload"></dadyin-button>
+                            <span class="mx-1 font-size-12"> Upload </span>
+                          </div>
+                          <div class="font-size-14"></div>
+                        </div>
+                        <input (change)="fileSelected($event, 'normal', fileinp1)" type="file" style="display: none !important"
+                          #fileinp1 accept=".pdf,.png,.jpeg,.jpg,.webp" />
+                        </div>
+                      }
+                      @if (poFile) {
+                        <div class="mt-2 d-flex">
+                          <div class="b-round b-light d-flex px-2 font-size-12 py-1 align-content-center">
+                            {{ poFile?.name }}
+                          </div>
+                          <dadyin-button [theme]="'borderless-danger'" type="icon" [typeval]="'delete_outline'"
+                            (clicked)="poFile = null">
+                          </dadyin-button>
+                          <dadyin-button [theme]="'borderless-primary'" type="icon" [typeval]="'visibility'"
+                            (clicked)="viewFile(poFile)">
+                          </dadyin-button>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-5 p-2">
+                    <div class="mb-2">
+                      <div class="font-size-14">
+                        <b> Vendor Note </b>
+                      </div>
+                      <!-- <div class="mt-3" formGroupName="noteTemplate">
+                      <dadyin-select [optionArr]="businessAccountService.notesList" label="Select Vendor Note"
+                        formControlName="id" optionLabel="note_title" optionValue="id">
+                      </dadyin-select>
+                    </div> -->
+                    <div class="b-light b-round font-size-12 p-3 mt-3" style="height: 100px; overflow: auto">
+                      {{ getNoteTitle() }}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div *ngIf="!poFile" class="dashed-border mt-3 p-2" (drop)="fileSelected($event, 'drop', fileinp1)"
-              (dragover)="onDragOver($event)" style="cursor: pointer; text-align: center">
-              <div>
-                <input placeholder="Type Order/Document Ref. Number" (paste)="onPaste($event)"
-                  (click)="$event.stopPropagation()" class="w-100 bg-white mb-2" />
-                <div class="bg-light p-1 b-round b-light" style="width: max-content" (click)="fileinp1.click()">
-                  <dadyin-button [theme]="'borderless-default'" type="icon" label="Upload"
-                    typeval="file_upload"></dadyin-button>
-                  <span class="mx-1 font-size-12"> Upload </span>
-                </div>
-                <div class="font-size-14"></div>
-              </div>
-
-              <input (change)="fileSelected($event, 'normal', fileinp1)" type="file" style="display: none !important"
-                #fileinp1 accept=".pdf,.png,.jpeg,.jpg,.webp" />
-            </div>
-            <div class="mt-2 d-flex" *ngIf="poFile">
-              <div class="b-round b-light d-flex px-2 font-size-12 py-1 align-content-center">
-                {{ poFile?.name }}
-              </div>
-              <dadyin-button [theme]="'borderless-danger'" type="icon" [typeval]="'delete_outline'"
-                (clicked)="poFile = null">
-              </dadyin-button>
-              <dadyin-button [theme]="'borderless-primary'" type="icon" [typeval]="'visibility'"
-                (clicked)="viewFile(poFile)">
-              </dadyin-button>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-5 p-2">
-          <div class="mb-2">
-            <div class="font-size-14">
-              <b> Vendor Note </b>
-            </div>
-            <!-- <div class="mt-3" formGroupName="noteTemplate">
-              <dadyin-select [optionArr]="businessAccountService.notesList" label="Select Vendor Note"
-                formControlName="id" optionLabel="note_title" optionValue="id">
-              </dadyin-select>
-            </div> -->
-            <div class="b-light b-round font-size-12 p-3 mt-3" style="height: 100px; overflow: auto">
-              {{ getNoteTitle() }}
-            </div>
-          </div>
-        </div>
 
 
 
-        <div class="col-12 col-md-4 p-2">
-          <div class="card b-light">
-            <div class="card-header fw-bold">Order Total</div>
-            <div class="process-table p-2">
-              <table style="border-collapse: separate; border-spacing: 0 0.5em">
-                <tbody>
-                  <ng-container>
-                    <tr>
-                      <td style="width: 100px" colspan="2">
-                        <div style="padding-left: 10px">Discount</div>
-                      </td>
-                      <td class="number-column width-100">
-                        <div class="d-flex p-0 align-items-center">
-                          <input class="text-primary fw-bold text-right b-none" placeholder="Enter Discount in %"
+                <div class="col-12 col-md-4 p-2">
+                  <div class="card b-light">
+                    <div class="card-header fw-bold">Order Total</div>
+                    <div class="process-table p-2">
+                      <table style="border-collapse: separate; border-spacing: 0 0.5em">
+                        <tbody>
+                          <ng-container>
+                            <tr>
+                              <td style="width: 100px" colspan="2">
+                                <div style="padding-left: 10px">Discount</div>
+                              </td>
+                              <td class="number-column width-100">
+                                <div class="d-flex p-0 align-items-center">
+                                  <input class="text-primary fw-bold text-right b-none" placeholder="Enter Discount in %"
                             type="number" min="0" max="100" (change)="
                               onChangePercentage(
                                 receivedPoForm.get('discountPercentage'),
@@ -739,11 +780,11 @@
                             " [formControl]="
                               receivedPoForm.get('discountPercentage')
                             " />
-                          <span class="mx-1 text-primary">%</span>
-                        </div>
-                      </td>
-                      <td class="number-column">
-                        <div class="d-flex p-0 align-items-center">
+                                    <span class="mx-1 text-primary">%</span>
+                                  </div>
+                                </td>
+                                <td class="number-column">
+                                  <div class="d-flex p-0 align-items-center">
                           <input class="fw-bold text-right b-none" type="number" (change)="
                               onChangeCost(
                                 receivedPoForm
@@ -761,21 +802,21 @@
                                 .get('attributeValue').value
                                 | numberFormatter : 3
                             " />
-                          <span class="mx-1">{{
-                            receivedPoForm
-                            .get("discountCost")
-                            .get("userConversionUom").value
-                            }}</span>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="width: 150px" colspan="2">
-                        <div style="padding-left: 10px">Sales Tax</div>
-                      </td>
-                      <td class="number-column width-100">
-                        <div class="d-flex p-0 align-items-center">
-                          <input class="text-primary fw-bold text-right b-none" [min]="0" [max]="100"
+                                      <span class="mx-1">{{
+                                        receivedPoForm
+                                        .get("discountCost")
+                                        .get("userConversionUom").value
+                                      }}</span>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="width: 150px" colspan="2">
+                                    <div style="padding-left: 10px">Sales Tax</div>
+                                  </td>
+                                  <td class="number-column width-100">
+                                    <div class="d-flex p-0 align-items-center">
+                                      <input class="text-primary fw-bold text-right b-none" [min]="0" [max]="100"
                             placeholder="Enter Sales Tax in %" (change)="
                               onChangePercentage(
                                 receivedPoForm.get('salesTaxPercentage'),
@@ -784,11 +825,11 @@
                             " type="number" [formControl]="
                               receivedPoForm.get('salesTaxPercentage')
                             " />
-                          <span class="mx-1 text-primary">%</span>
-                        </div>
-                      </td>
-                      <td class="number-column">
-                        <div class="d-flex p-0 align-items-center">
+                                        <span class="mx-1 text-primary">%</span>
+                                      </div>
+                                    </td>
+                                    <td class="number-column">
+                                      <div class="d-flex p-0 align-items-center">
                           <input class="fw-bold text-right b-none" type="number" (change)="
                               onChangeCost(
                                 receivedPoForm
@@ -806,62 +847,62 @@
                                 .get('attributeValue').value
                                 | numberFormatter : 3
                             " />
-                          <span class="mx-1">{{
-                            receivedPoForm
-                            .get("salesTaxCost")
-                            .get("userConversionUom").value
-                            }}</span>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3">
-                        <div style="padding-left: 10px">
-                          Delivery Fees
-                          <i class="material-icon text-dark mx-1 mt-2"
-                            matTooltip="Keep your order value above $500 for Free Delivery">info</i>
-                        </div>
-                      </td>
-                      <td class="number-column">
-                        <input class="text-primary" placeholder="Delivery Cost" (change)="onChangeDeliveryCost()"
+                                          <span class="mx-1">{{
+                                            receivedPoForm
+                                            .get("salesTaxCost")
+                                            .get("userConversionUom").value
+                                          }}</span>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="3">
+                                        <div style="padding-left: 10px">
+                                          Delivery Fees
+                                          <i class="material-icon text-dark mx-1 mt-2"
+                                          matTooltip="Keep your order value above $500 for Free Delivery">info</i>
+                                        </div>
+                                      </td>
+                                      <td class="number-column">
+                                        <input class="text-primary" placeholder="Delivery Cost" (change)="onChangeDeliveryCost()"
                           type="number" [formControl]="
                             receivedPoForm
                               .get('deliveryCost')
                               .get('attributeValue')
                           " />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3">
-                        <div class="bg-light" style="padding-left: 10px">
-                          <b>Grand Total </b>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="3">
+                                          <div class="bg-light" style="padding-left: 10px">
+                                            <b>Grand Total </b>
+                                          </div>
+                                        </td>
+                                        <td class="number-column">
+                                          <div class="bg-light">
+                                            <span>
+                                              {{
+                                              receivedPoForm
+                                              .get("totalCost")
+                                              .get("attributeValue").value
+                                              | numberFormatter : 3
+                                              }}
+                                              {{
+                                              receivedPoForm
+                                              .get("totalCost")
+                                              .get("userConversionUom").value
+                                              }}
+                                            </span>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                    </ng-container>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </td>
-                      <td class="number-column">
-                        <div class="bg-light">
-                          <span>
-                            {{
-                            receivedPoForm
-                            .get("totalCost")
-                            .get("attributeValue").value
-                            | numberFormatter : 3
-                            }}
-                            {{
-                            receivedPoForm
-                            .get("totalCost")
-                            .get("userConversionUom").value
-                            }}
-                          </span>
-                        </div>
-                      </td>
-                    </tr>
-                  </ng-container>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ng-template>
-  </mat-expansion-panel>
-</form>
+                      </ng-template>
+                    </mat-expansion-panel>
+                  </form>

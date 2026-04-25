@@ -7,7 +7,7 @@
         [theme]="'borderless-default'"
         type="icon"
         [typeval]="'arrow_circle_left'"
-      >
+        >
       </dadyin-button>
       <div class="content-title">
         <label>Purchase manager</label>
@@ -19,7 +19,7 @@
         [theme]="'borderless-danger'"
         type="icon"
         [typeval]="'delete_outline'"
-      >
+        >
       </dadyin-button>
       <dadyin-button [theme]="'primary'" label="Save" (clicked)="onClickSave()">
       </dadyin-button>
@@ -43,7 +43,7 @@
             formControlName="roleName"
             label="Define New User Role"
             [isClearable]="false"
-          >
+            >
           </dadyin-input>
         </div>
       </div>
@@ -54,7 +54,7 @@
     class="panel-no-padding"
     expanded="true"
     #expansionPanel2
-  >
+    >
     <mat-expansion-panel-header (click)="expandPanel(expansionPanel2, $event)">
       <mat-panel-description>
         <div class=" w-100 title-text">Access Control Selection</div>
@@ -74,34 +74,35 @@
         </div>
 
         <!-- order management  -->
-        <div
-          *ngFor="let item of AccessModules"
-          class="d-flex justify-content-between align-items-center flex-wrap my-2"
-        >
-          <div class="d-flex align-items-center width-perc-25 my-2">
-            <div class="mx-2 mb-1">
-              {{ item }}
+        @for (item of AccessModules; track item) {
+          <div
+            class="d-flex justify-content-between align-items-center flex-wrap my-2"
+            >
+            <div class="d-flex align-items-center width-perc-25 my-2">
+              <div class="mx-2 mb-1">
+                {{ item }}
+              </div>
+            </div>
+            <div class="d-flex align-items-center width-perc-25 my-2">
+              <div>
+                <input type="checkbox" />
+              </div>
+              <div class="mx-2 mb-1">Create Access</div>
+            </div>
+            <div class="d-flex align-items-center width-perc-25 my-2">
+              <div>
+                <input type="checkbox" />
+              </div>
+              <div class="mx-2 mb-1">Edit Access</div>
+            </div>
+            <div class="d-flex align-items-center width-perc-25 my-2">
+              <div>
+                <input type="checkbox" />
+              </div>
+              <div class="mx-2 mb-1">Delete Access</div>
             </div>
           </div>
-          <div class="d-flex align-items-center width-perc-25 my-2">
-            <div>
-              <input type="checkbox" />
-            </div>
-            <div class="mx-2 mb-1">Create Access</div>
-          </div>
-          <div class="d-flex align-items-center width-perc-25 my-2">
-            <div>
-              <input type="checkbox" />
-            </div>
-            <div class="mx-2 mb-1">Edit Access</div>
-          </div>
-          <div class="d-flex align-items-center width-perc-25 my-2">
-            <div>
-              <input type="checkbox" />
-            </div>
-            <div class="mx-2 mb-1">Delete Access</div>
-          </div>
-        </div>
+        }
       </div>
 
       <div class="b-light px-3 my-2">
@@ -116,34 +117,35 @@
         </div>
 
         <!-- order management  -->
-        <div
-          *ngFor="let item of SystemAccessModules"
-          class="d-flex justify-content-between align-items-center flex-wrap my-2"
-        >
-          <div class="d-flex align-items-center width-perc-25 my-2">
-            <div class="mx-2 mb-1">
-              {{ item }}
+        @for (item of SystemAccessModules; track item) {
+          <div
+            class="d-flex justify-content-between align-items-center flex-wrap my-2"
+            >
+            <div class="d-flex align-items-center width-perc-25 my-2">
+              <div class="mx-2 mb-1">
+                {{ item }}
+              </div>
+            </div>
+            <div class="d-flex align-items-center width-perc-25 my-2">
+              <div>
+                <input type="checkbox" />
+              </div>
+              <div class="mx-2 mb-1">Create Access</div>
+            </div>
+            <div class="d-flex align-items-center width-perc-25 my-2">
+              <div>
+                <input type="checkbox" />
+              </div>
+              <div class="mx-2 mb-1">Edit Access</div>
+            </div>
+            <div class="d-flex align-items-center width-perc-25 my-2">
+              <div>
+                <input type="checkbox" />
+              </div>
+              <div class="mx-2 mb-1">Delete Access</div>
             </div>
           </div>
-          <div class="d-flex align-items-center width-perc-25 my-2">
-            <div>
-              <input type="checkbox" />
-            </div>
-            <div class="mx-2 mb-1">Create Access</div>
-          </div>
-          <div class="d-flex align-items-center width-perc-25 my-2">
-            <div>
-              <input type="checkbox" />
-            </div>
-            <div class="mx-2 mb-1">Edit Access</div>
-          </div>
-          <div class="d-flex align-items-center width-perc-25 my-2">
-            <div>
-              <input type="checkbox" />
-            </div>
-            <div class="mx-2 mb-1">Delete Access</div>
-          </div>
-        </div>
+        }
       </div>
     </ng-template>
   </mat-expansion-panel>

@@ -7,7 +7,7 @@
         [theme]="'borderless-default'"
         type="icon"
         [typeval]="'arrow_circle_left'"
-      >
+        >
       </dadyin-button>
       <div class="content-title px-2">
         <label>{{ "Label" }}</label>
@@ -29,58 +29,65 @@
       <div class="content-title width-perc-5">
         <span class="next-icon">
           <mat-icon> keyboard_double_arrow_right </mat-icon></span
-        >
+          >
+        </div>
       </div>
     </div>
-  </div>
-  <div class="d-flex justify-content-end align-items-center width-perc-25">
-    <div *ngIf="inventoryForm?.value?.status" class="status">
-      Status : {{ inventoryForm?.value?.status }}
-    </div>
-    <div
-      *ngIf="
+    <div class="d-flex justify-content-end align-items-center width-perc-25">
+      @if (inventoryForm?.value?.status) {
+        <div class="status">
+          Status : {{ inventoryForm?.value?.status }}
+        </div>
+      }
+      @if (
         inventoryForm.value.status != 'DRAFT' &&
         inventoryForm.value.status != 'COMPLETED'
-      "
-    >
-      <dadyin-button [theme]="'primary'" label="Draft" (clicked)="onSaveDraft()">
-      </dadyin-button>
-      <dadyin-button
-        [theme]="'primary'"
-        label="Confirm"
-        (clicked)="onClickConfirm()"
-      >
-      </dadyin-button>
-    </div>
-    <div *ngIf="inventoryForm.value.status == 'DRAFT'">
-      <dadyin-button
-        [theme]="'primary'"
-        label="Save Draft"
-        (clicked)="onSaveDraft()"
-      >
-      </dadyin-button>
-      <dadyin-button
-        [theme]="'primary'"
-        label="Confirm"
-        (clicked)="onClickConfirm()"
-      >
-      </dadyin-button>
-    </div>
-    <div *ngIf="inventoryForm.value.status == 'COMPLETED'">
-      <dadyin-button
-        [theme]="'primary'"
-        label="Save Draft"
-        (clicked)="onSaveDraft()"
-      >
-      </dadyin-button>
-      <dadyin-button
-        [theme]="'primary'"
-        label="Confirm Changes"
-        (clicked)="onClickConfirm()"
-      >
-      </dadyin-button>
-    </div>
-    <!-- <dadyin-button [theme]="'primary'" label="Draft" (clicked)="onSaveDraft()">
+        ) {
+        <div
+          >
+          <dadyin-button [theme]="'primary'" label="Draft" (clicked)="onSaveDraft()">
+          </dadyin-button>
+          <dadyin-button
+            [theme]="'primary'"
+            label="Confirm"
+            (clicked)="onClickConfirm()"
+            >
+          </dadyin-button>
+        </div>
+      }
+      @if (inventoryForm.value.status == 'DRAFT') {
+        <div>
+          <dadyin-button
+            [theme]="'primary'"
+            label="Save Draft"
+            (clicked)="onSaveDraft()"
+            >
+          </dadyin-button>
+          <dadyin-button
+            [theme]="'primary'"
+            label="Confirm"
+            (clicked)="onClickConfirm()"
+            >
+          </dadyin-button>
+        </div>
+      }
+      @if (inventoryForm.value.status == 'COMPLETED') {
+        <div>
+          <dadyin-button
+            [theme]="'primary'"
+            label="Save Draft"
+            (clicked)="onSaveDraft()"
+            >
+          </dadyin-button>
+          <dadyin-button
+            [theme]="'primary'"
+            label="Confirm Changes"
+            (clicked)="onClickConfirm()"
+            >
+          </dadyin-button>
+        </div>
+      }
+      <!-- <dadyin-button [theme]="'primary'" label="Draft" (clicked)="onSaveDraft()">
     </dadyin-button>
     <dadyin-button [theme]="'primary'" label="Confirm" (clicked)="onClickConfirm()">
     </dadyin-button> -->
@@ -103,7 +110,7 @@
               formControlName="orderDate"
               inputType="date"
               label="Date"
-            >
+              >
             </dadyin-input>
           </div>
           <div class="col-2">
@@ -111,7 +118,7 @@
               inputType="text"
               label="Invoice"
               formControlName="billNumber"
-            >
+              >
             </dadyin-input>
           </div>
           <div class="col-2">
@@ -122,98 +129,98 @@
                   disabled
                   type="text"
                   formControlName="saleOrderTransactionId"
-                />
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-2">
-            <dadyin-select
-              class="input-field"
-              [optionArr]="employees"
-              label="Sales Person"
-              optionLabel="firstName"
-              optionValue="id"
-              [emptyOption]="'Select Sales Person'"
-              formControlName="salesPersonId"
-            >
-            </dadyin-select>
-          </div>
-          <div class="col-2">
-            <dadyin-select
-              [isDisabled]="true"
-              class="input-field"
-              [optionArr]="containerTypes"
-              label="Order Type"
-              optionLabel="description"
-              optionValue="id"
-              [emptyOption]="'Select Order Type'"
-              formControlName="containerTypeId"
-            >
-            </dadyin-select>
-          </div>
-          <div class="col-2">
-            <dadyin-input
-              [isDisabled]="true"
-              formControlName="deliveryPickup"
-              inputType="text"
-              label="Delivery Type"
-            >
-            </dadyin-input>
-          </div>
-          <div class="col-2">
-            <dadyin-select
-              class="input-field"
-              [optionArr]="employees"
-              label="Assign By"
-              optionLabel="firstName"
-              optionValue="id"
-              [emptyOption]="'Select Assign Person'"
-              formControlName="verifierId"
-            >
-            </dadyin-select>
-          </div>
+            <div class="col-2">
+              <dadyin-select
+                class="input-field"
+                [optionArr]="employees"
+                label="Sales Person"
+                optionLabel="firstName"
+                optionValue="id"
+                [emptyOption]="'Select Sales Person'"
+                formControlName="salesPersonId"
+                >
+              </dadyin-select>
+            </div>
+            <div class="col-2">
+              <dadyin-select
+                [isDisabled]="true"
+                class="input-field"
+                [optionArr]="containerTypes"
+                label="Order Type"
+                optionLabel="description"
+                optionValue="id"
+                [emptyOption]="'Select Order Type'"
+                formControlName="containerTypeId"
+                >
+              </dadyin-select>
+            </div>
+            <div class="col-2">
+              <dadyin-input
+                [isDisabled]="true"
+                formControlName="deliveryPickup"
+                inputType="text"
+                label="Delivery Type"
+                >
+              </dadyin-input>
+            </div>
+            <div class="col-2">
+              <dadyin-select
+                class="input-field"
+                [optionArr]="employees"
+                label="Assign By"
+                optionLabel="firstName"
+                optionValue="id"
+                [emptyOption]="'Select Assign Person'"
+                formControlName="verifierId"
+                >
+              </dadyin-select>
+            </div>
 
-          <div class="col-2">
-            <dadyin-input
-              formControlName="dockNumber"
-              inputType="text"
-              label="Loading Dock"
-            >
-            </dadyin-input>
-          </div>
-          <div class="col-2">
-            <dadyin-input
-              [isDisabled]="true"
-              formControlName="expectedByDate"
-              inputType="date"
-              label="Required By Date"
-            >
-            </dadyin-input>
-          </div>
-          <div class="col-2">
-            <dadyin-input
-              [isDisabled]="true"
-              formControlName="shipDate"
-              inputType="date"
-              label="Ship Date"
-            >
-            </dadyin-input>
-          </div>
-          <div class="col-2">
-            <div class="attribute one attr-b">
-              <label for="">Ship Via</label>
-              <div class="attribute-input">
-                <input type="text" formControlName="shipVia" />
+            <div class="col-2">
+              <dadyin-input
+                formControlName="dockNumber"
+                inputType="text"
+                label="Loading Dock"
+                >
+              </dadyin-input>
+            </div>
+            <div class="col-2">
+              <dadyin-input
+                [isDisabled]="true"
+                formControlName="expectedByDate"
+                inputType="date"
+                label="Required By Date"
+                >
+              </dadyin-input>
+            </div>
+            <div class="col-2">
+              <dadyin-input
+                [isDisabled]="true"
+                formControlName="shipDate"
+                inputType="date"
+                label="Ship Date"
+                >
+              </dadyin-input>
+            </div>
+            <div class="col-2">
+              <div class="attribute one attr-b">
+                <label for="">Ship Via</label>
+                <div class="attribute-input">
+                  <input type="text" formControlName="shipVia" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-2">
-            <div class="attribute tabular-sheet attr-b">
-              <div class="attribute-input">
-                <div class="font-size-12">Shipment Delivered</div>
-                <div class="toggle mx-1">
-                  <button
+            <div class="col-2">
+              <div class="attribute tabular-sheet attr-b">
+                <div class="attribute-input">
+                  <div class="font-size-12">Shipment Delivered</div>
+                  <div class="toggle mx-1">
+                    <button
                     (click)="
                       inventoryForm.get('shipmentDelivered').setValue(true)
                     "
@@ -221,10 +228,10 @@
                       active:
                         inventoryForm.get('shipmentDelivered').value == true
                     }"
-                  >
-                    Y
-                  </button>
-                  <button
+                      >
+                      Y
+                    </button>
+                    <button
                     (click)="
                       inventoryForm.get('shipmentDelivered').setValue(false)
                     "
@@ -232,193 +239,193 @@
                       active:
                         inventoryForm.get('shipmentDelivered').value == false
                     }"
-                  >
-                    N
-                  </button>
+                      >
+                      N
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-2">
-            <div class="radio-selection attr-b">
-              <input type="checkbox" formControlName="advanceOrder" />
-              <label class="font-size-12 title-text">Advance Order</label>
-            </div>
-          </div>
-          <div class="col-2">
-            <div class="attribute one attr-b">
-              <label for="">Local Container</label>
-              <div class="attribute-input">
-                <input type="text" />
+            <div class="col-2">
+              <div class="radio-selection attr-b">
+                <input type="checkbox" formControlName="advanceOrder" />
+                <label class="font-size-12 title-text">Advance Order</label>
               </div>
             </div>
-          </div>
-          <div class="col-2">
-            <div class="attribute one attr-b">
-              <label for="">Dady In Points</label>
-              <div class="attribute-input">
-                <input type="text" formControlName="dadyInPoints" />
+            <div class="col-2">
+              <div class="attribute one attr-b">
+                <label for="">Local Container</label>
+                <div class="attribute-input">
+                  <input type="text" />
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="attribute one attr-b">
+                <label for="">Dady In Points</label>
+                <div class="attribute-input">
+                  <input type="text" formControlName="dadyInPoints" />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </ng-template>
-</mat-expansion-panel>
+    </ng-template>
+  </mat-expansion-panel>
 
-<mat-expansion-panel
-  class="panel-no-padding mt-4"
-  expanded="true"
-  #expansionPanel3
->
-  <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
-    <mat-panel-description>
-      <div class=" w-100 title-text">Product Details</div>
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-  <ng-template matExpansionPanelContent>
-    <div class="process-table table-padding">
-      <!-- Material Cost -->
-      <table>
-        <thead>
-          <tr>
-            <th style="padding-left: 20px">SR#</th>
-            <th>PRODUCT CODE</th>
-            <th colspan="2">PRODUCT DESCRIPTION</th>
-            <th>PKGs SKU</th>
-            <th>QTY ORDERED</th>
-            <th>QTY Packed</th>
-            <th>WT</th>
-            <th>VOL</th>
-            <th colspan="2">ADDED TO INVENTORY INSTRUCTIONS</th>
-            <!-- <th>QOH</th> -->
-            <th>STATUS</th>
-          </tr>
-        </thead>
-        <tbody>
-          <ng-container
-            *ngFor="let item of inventoryDetails.controls; let i = index"
-            [formGroup]="item"
-          >
+  <mat-expansion-panel
+    class="panel-no-padding mt-4"
+    expanded="true"
+    #expansionPanel3
+    >
+    <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
+      <mat-panel-description>
+        <div class=" w-100 title-text">Product Details</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <div class="process-table table-padding">
+        <!-- Material Cost -->
+        <table>
+          <thead>
             <tr>
-              <td style="padding-left: 20px">{{ i + 1 }}.</td>
-              <td>
-                <input disabled type="text" formControlName="productCode" />
-              </td>
-              <td colspan="2">
-                <input disabled type="text" formControlName="description" />
-              </td>
-              <td (click)="check(item)">
-                <input
-                  type="text"
-                  disabled
-                  [value]="item.get('productDetails')?.value?.skuPackageType"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  disabled
-                  [value]="item.get('quantityOrdered')?.value"
-                />
-              </td>
-              <td>
-                <input
-                  (change)="calculate(item.get('productId')?.value)"
-                  type="text"
-                  formControlName="quantityReceived"
-                />
-              </td>
-              <td formGroupName="weight">
-                <input
-                  (change)="calculate(item.get('productId')?.value)"
-                  type="text"
-                  formControlName="attributeValue"
-                />
-              </td>
-              <td formGroupName="volume">
-                <input
-                  (change)="calculate(item.get('productId')?.value)"
-                  type="text"
-                  formControlName="attributeValue"
-                />
-              </td>
-              <td colspan="2">
-                <section class="d-flex">
-                  <input type="text" formControlName="note" />
-                
-                </section>
-              </td>
-              <!-- <td>
-                                {{item.get('qoh').value}}
-                            </td> -->
-              <td class="d-flex align-items-center">
-                <span>{{ item.get("status").value }}</span>
-                <i
-                class="bg-light b-light title-text mat-icon table-icon mx-2"
+              <th style="padding-left: 20px">SR#</th>
+              <th>PRODUCT CODE</th>
+              <th colspan="2">PRODUCT DESCRIPTION</th>
+              <th>PKGs SKU</th>
+              <th>QTY ORDERED</th>
+              <th>QTY Packed</th>
+              <th>WT</th>
+              <th>VOL</th>
+              <th colspan="2">ADDED TO INVENTORY INSTRUCTIONS</th>
+              <!-- <th>QOH</th> -->
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of inventoryDetails.controls; track item; let i = $index) {
+              <ng-container
+                [formGroup]="item"
+                >
+                <tr>
+                  <td style="padding-left: 20px">{{ i + 1 }}.</td>
+                  <td>
+                    <input disabled type="text" formControlName="productCode" />
+                  </td>
+                  <td colspan="2">
+                    <input disabled type="text" formControlName="description" />
+                  </td>
+                  <td (click)="check(item)">
+                    <input
+                      type="text"
+                      disabled
+                      [value]="item.get('productDetails')?.value?.skuPackageType"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        disabled
+                        [value]="item.get('quantityOrdered')?.value"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          (change)="calculate(item.get('productId')?.value)"
+                          type="text"
+                          formControlName="quantityReceived"
+                          />
+                        </td>
+                        <td formGroupName="weight">
+                          <input
+                            (change)="calculate(item.get('productId')?.value)"
+                            type="text"
+                            formControlName="attributeValue"
+                            />
+                          </td>
+                          <td formGroupName="volume">
+                            <input
+                              (change)="calculate(item.get('productId')?.value)"
+                              type="text"
+                              formControlName="attributeValue"
+                              />
+                            </td>
+                            <td colspan="2">
+                              <section class="d-flex">
+                                <input type="text" formControlName="note" />
+                              </section>
+                            </td>
+                            <!-- <td>
+                            {{item.get('qoh').value}}
+                          </td> -->
+                          <td class="d-flex align-items-center">
+                            <span>{{ item.get("status").value }}</span>
+                            <i
+                              class="bg-light b-light title-text mat-icon table-icon mx-2"
                 (click)="
                   assignInventoryModal(item.get('productId')?.value, i)
                 "
-                >table_rows</i
-              >
-              </td>
-            </tr>
-          </ng-container>
-          <tr class="table-footer-row p-2 my-4">
-            <td colspan="2"></td>
-            <td colspan="3">
-              <div class="text-left w-100 title-text">Total</div>
-            </td>
-            <td class="title-text text-left">
-              <div>{{ inventoryForm.get("totalQuantity")?.value }}</div>
-            </td>
-            <td colspan="6"></td>
-          </tr>
-        </tbody>
-        <tfoot></tfoot>
-      </table>
-    </div>
-  </ng-template>
-</mat-expansion-panel>
+                              >table_rows</i
+                              >
+                            </td>
+                          </tr>
+                        </ng-container>
+                      }
+                      <tr class="table-footer-row p-2 my-4">
+                        <td colspan="2"></td>
+                        <td colspan="3">
+                          <div class="text-left w-100 title-text">Total</div>
+                        </td>
+                        <td class="title-text text-left">
+                          <div>{{ inventoryForm.get("totalQuantity")?.value }}</div>
+                        </td>
+                        <td colspan="6"></td>
+                      </tr>
+                    </tbody>
+                    <tfoot></tfoot>
+                  </table>
+                </div>
+              </ng-template>
+            </mat-expansion-panel>
 
-<div class="d-flex my-5 justify-content-between">
-  <div>
-    <dadyin-button
-      class="bg-light"
-      label="Product Slip"
-      [theme]="'default'"
-    ></dadyin-button>
-    <dadyin-button
-      class="bg-light"
-      label="Pallet Slip"
-      [theme]="'default'"
-    ></dadyin-button>
-    <dadyin-button
-      class="bg-light"
-      label="SKU Wise Slip"
-      [theme]="'default'"
-    ></dadyin-button>
-    <dadyin-button
-      [theme]="'borderless-primary'"
-      type="icon"
-      [typeval]="'print'"
-      height="33px"
-    >
-    </dadyin-button>
-    <dadyin-button
-      [theme]="'borderless-primary'"
-      type="icon"
-      [typeval]="'download'"
-      height="33px"
-    >
-    </dadyin-button>
-  </div>
-  <div>
-    <!-- <dadyin-button
-      class="bg-card-header title-text p-1"
-      label="Added To Inventory"
-      [theme]="'borderless-primary'"
-    ></dadyin-button> -->
-  </div>
-</div>
+            <div class="d-flex my-5 justify-content-between">
+              <div>
+                <dadyin-button
+                  class="bg-light"
+                  label="Product Slip"
+                  [theme]="'default'"
+                ></dadyin-button>
+                <dadyin-button
+                  class="bg-light"
+                  label="Pallet Slip"
+                  [theme]="'default'"
+                ></dadyin-button>
+                <dadyin-button
+                  class="bg-light"
+                  label="SKU Wise Slip"
+                  [theme]="'default'"
+                ></dadyin-button>
+                <dadyin-button
+                  [theme]="'borderless-primary'"
+                  type="icon"
+                  [typeval]="'print'"
+                  height="33px"
+                  >
+                </dadyin-button>
+                <dadyin-button
+                  [theme]="'borderless-primary'"
+                  type="icon"
+                  [typeval]="'download'"
+                  height="33px"
+                  >
+                </dadyin-button>
+              </div>
+              <div>
+                <!-- <dadyin-button
+                class="bg-card-header title-text p-1"
+                label="Added To Inventory"
+                [theme]="'borderless-primary'"
+              ></dadyin-button> -->
+            </div>
+          </div>

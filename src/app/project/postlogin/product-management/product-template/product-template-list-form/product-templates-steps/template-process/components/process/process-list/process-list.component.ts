@@ -1,4 +1,4 @@
-import { NgIf, NgFor } from '@angular/common';
+
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
@@ -10,11 +10,10 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     styleUrls: ['./process-list.component.scss'],
     standalone: true,
     imports: [
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelContent,
-        NgFor,
-    ],
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelContent
+],
 })
 export class ProcessListComponent implements OnInit {
   @Input() processData: any;

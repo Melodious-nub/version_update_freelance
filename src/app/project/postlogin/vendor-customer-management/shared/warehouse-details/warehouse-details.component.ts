@@ -11,7 +11,7 @@ import { MapDialogComponent } from 'src/app/shared/dialogs/map-dialog/map-dialog
 import { VendorFormsService } from '../../service/vendor-forms.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgIf, NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
@@ -22,19 +22,17 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     styleUrls: ['./warehouse-details.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatTooltip,
-        DadyinButtonComponent,
-        NgIf,
-        NgFor,
-        ReactiveFormsModule,
-        NgClass,
-        ExtendedModule,
-        NgSelectModule,
-    ],
+    FormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatTooltip,
+    DadyinButtonComponent,
+    ReactiveFormsModule,
+    NgClass,
+    ExtendedModule,
+    NgSelectModule
+],
 })
 export class WarehouseDetailsComponent implements OnInit {
   @Input('vendorForm') vendorForm: any;

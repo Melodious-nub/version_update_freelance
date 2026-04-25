@@ -11,7 +11,7 @@ import { ContainerInComponent } from './container-in/container-in.component';
 import { AddedToInventoryComponent } from './added-to-inventory/added-to-inventory.component';
 import { OrderArrivalComponent } from './order-arrival/order-arrival.component';
 import { MatBadge } from '@angular/material/badge';
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
@@ -20,17 +20,15 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     styleUrls: ['./inventoryin-list.component.scss'],
     standalone: true,
     imports: [
-        MatTabGroup,
-        NgFor,
-        MatTab,
-        MatTabLabel,
-        MatBadge,
-        MatTabContent,
-        NgIf,
-        OrderArrivalComponent,
-        AddedToInventoryComponent,
-        ContainerInComponent,
-    ],
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatBadge,
+    MatTabContent,
+    OrderArrivalComponent,
+    AddedToInventoryComponent,
+    ContainerInComponent
+],
 })
 export class InventoryinListComponent implements OnInit {
 

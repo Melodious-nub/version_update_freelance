@@ -26,7 +26,7 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
 import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { SpinnerOverlayComponent } from '../../../../shared/component/spinner-overlay/spinner-overlay.component';
-import { NgIf, NgClass, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet, TitleCasePipe, DatePipe } from '@angular/common';
+import { NgClass, NgTemplateOutlet, TitleCasePipe, DatePipe } from '@angular/common';
 
 type ProductImageTile = {
     productId: any;
@@ -42,7 +42,7 @@ type ProductImageTile = {
     templateUrl: './social-post-detail.component.html',
     styleUrls: ['./social-post-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, SpinnerOverlayComponent, NgClass, ExtendedModule, DadyinButtonComponent, MatTabGroup, NgFor, MatTab, MatTabLabel, NgSwitch, NgSwitchCase, NgSwitchDefault, MatTabContent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, MatTooltip, DadyinSearchSelectNewComponent, CKEditorModule, MatIcon, DadyinSelectComponent, TimePickerComponent, NgTemplateOutlet, TitleCasePipe, DatePipe]
+    imports: [SpinnerOverlayComponent, NgClass, ExtendedModule, DadyinButtonComponent, MatTabGroup, MatTab, MatTabLabel, MatTabContent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, MatTooltip, DadyinSearchSelectNewComponent, CKEditorModule, MatIcon, DadyinSelectComponent, TimePickerComponent, NgTemplateOutlet, TitleCasePipe, DatePipe]
 })
 export class SocialPostDetailComponent implements OnInit {
     public Editor = ClassicEditor;

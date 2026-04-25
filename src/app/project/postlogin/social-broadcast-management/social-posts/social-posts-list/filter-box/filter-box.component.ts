@@ -3,7 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, FormControl, FormsModule, Reactiv
 import { SocialPostItem } from 'src/app/model/social-broadcast/social-post.model';
 import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
 import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
@@ -11,7 +11,7 @@ import { MatIcon } from '@angular/material/icon';
     templateUrl: './filter-box.component.html',
     styleUrls: ['./filter-box.component.scss'],
     standalone: true,
-    imports: [MatIcon, NgIf, DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, NgFor]
+    imports: [MatIcon, DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle]
 })
 export class FilterBoxComponent implements OnInit {
   @Input() posts: SocialPostItem[] = [];

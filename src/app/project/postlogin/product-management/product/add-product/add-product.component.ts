@@ -27,7 +27,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { DadyinSearchableSelectComponent } from '../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
 import { DadyinInputComponent } from '../../../../../shared/widgets/dadyin-input/dadyin-input.component';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
+import { NgClass, NgStyle } from '@angular/common';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
 
@@ -37,29 +37,27 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     styleUrls: ['./add-product.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        DadyinButtonComponent,
-        NgClass,
-        ExtendedModule,
-        DadyinInputComponent,
-        DadyinSearchableSelectComponent,
-        NgFor,
-        MatTooltip,
-        CdkDropList,
-        MatIcon,
-        NgIf,
-        CdkDrag,
-        NgStyle,
-        MatAutocompleteTrigger,
-        MatAutocomplete,
-        MatOption,
-        SortFormArrayPipe_1,
-        NumberFormatterPipe,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    DadyinButtonComponent,
+    NgClass,
+    ExtendedModule,
+    DadyinInputComponent,
+    DadyinSearchableSelectComponent,
+    MatTooltip,
+    CdkDropList,
+    MatIcon,
+    CdkDrag,
+    NgStyle,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption,
+    SortFormArrayPipe_1,
+    NumberFormatterPipe
+],
 })
 export class AddProductComponent implements OnInit, OnDestroy {
   allProductsPackagingMaterial: any = [];
@@ -1282,7 +1280,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
     return this.productForm.get('isPackageAttributes');
   }
 
-  trackByFn(index) {
+  trackByFn(index, item) {
     return index;
   }
 

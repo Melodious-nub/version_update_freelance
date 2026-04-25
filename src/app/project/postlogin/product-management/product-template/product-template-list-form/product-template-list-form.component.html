@@ -9,7 +9,7 @@
           this.templateForm.value?.templateName
           ? this.templateForm.value?.templateName
           : "Create Product Template"
-          }}</label>
+        }}</label>
       </div>
       <div class="d-flex align-items-center">
         <div class="status" [ngClass]="{
@@ -30,14 +30,18 @@
     <div class="d-flex justify-content-end align-items-center">
 
       <dadyin-button matTooltip="Share" type="image" [theme]="'borderless-primary'"
-        [typeval]="'assets/nicons/share.png'"></dadyin-button>
-      <dadyin-button matTooltip="Delete" (clicked)="confirmDelete()" *ngIf="editMode" [theme]="'borderless-primary'"
-        type="image" [typeval]="'assets/nicons/delete.png'">
-      </dadyin-button>
-      <dadyin-button matTooltip="Save as Draft" (clicked)="onClickSave(true)" [theme]="'borderless-primary'"
-        *ngIf="templateForm.get('status').value != 'PUBLISHED'" [isDisabled]="!this.apiService.finalSave" type="image"
-        [typeval]="'assets/nicons/save.png'">
-      </dadyin-button>
+      [typeval]="'assets/nicons/share.png'"></dadyin-button>
+      @if (editMode) {
+        <dadyin-button matTooltip="Delete" (clicked)="confirmDelete()" [theme]="'borderless-primary'"
+          type="image" [typeval]="'assets/nicons/delete.png'">
+        </dadyin-button>
+      }
+      @if (templateForm.get('status').value != 'PUBLISHED') {
+        <dadyin-button matTooltip="Save as Draft" (clicked)="onClickSave(true)" [theme]="'borderless-primary'"
+          [isDisabled]="!this.apiService.finalSave" type="image"
+          [typeval]="'assets/nicons/save.png'">
+        </dadyin-button>
+      }
       <dadyin-button [isDisabled]="!this.apiService.finalSave"
         [matTooltip]="templateForm.get('status').value != 'PUBLISHED' ? 'Publish' : 'Publish Changes'"
         (clicked)="onClickSave(false)" [theme]="'borderless-primary'" type="image"
@@ -54,54 +58,67 @@
     <button (click)="$event.stopPropagation(); uomSetting = !uomSetting" class="btn bg-primary-light title-text">
       UOM Setting
     </button>
-    <div (click)="$event.stopPropagation()" class="card uom-card" *ngIf="uomSetting">
-      <div class="prefer-uom-grid align-items-center" *ngIf="componentUoms.controls?.length > 0">
-        <div [formGroup]="item" *ngFor="let item of componentUoms.controls; let i = index"
-          class="my-2 attribute one b-none w-100">
-          <div class="attribute-input justify-content-around w-100 title-text">
-            <div class="text-uppercase">
-              {{ item.get("attributeName").value }}
-            </div>
-            <select style="min-width: unset" (change)="onGlobalUomChange($event)" formControlName="userConversionUom">
-              <ng-container *ngFor="
-                  let uom of uomService.getUoms(
-                    item.get('attributeTypeId').value
-                  )
-                ">
-                <option [disabled]="templateProcesses?.controls?.length > 0" [value]="uom.description">
-                  {{ uom?.description }}
-                </option>
-              </ng-container>
-            </select>
+    @if (uomSetting) {
+      <div (click)="$event.stopPropagation()" class="card uom-card">
+        @if (componentUoms.controls?.length > 0) {
+          <div class="prefer-uom-grid align-items-center">
+            @for (item of componentUoms.controls; track item; let i = $index) {
+              <div [formGroup]="item"
+                class="my-2 attribute one b-none w-100">
+                <div class="attribute-input justify-content-around w-100 title-text">
+                  <div class="text-uppercase">
+                    {{ item.get("attributeName").value }}
+                  </div>
+                  <select style="min-width: unset" (change)="onGlobalUomChange($event)" formControlName="userConversionUom">
+                    @for (
+                      uom of uomService.getUoms(
+                      item.get('attributeTypeId').value
+                      )
+                      ; track
+                      uom) {
+                      <option [disabled]="templateProcesses?.controls?.length > 0" [value]="uom.description">
+                        {{ uom?.description }}
+                      </option>
+                    }
+                  </select>
+                </div>
+              </div>
+            }
           </div>
-        </div>
+        }
       </div>
-    </div>
+    }
   </div>
 
   <mat-tab-group (click)="markAsTouched($event)" class="mat-steps" [(selectedIndex)]="currentStepIndex">
     <mat-tab label="Template Info">
-      <template-info (calculate)="calculateValues($event)" *ngIf="this.currentStepIndex == 0"
+      @if (this.currentStepIndex == 0) {
+        <template-info (calculate)="calculateValues($event)"
         [templateForm]="templateForm"></template-info>
+      }
     </mat-tab>
     <mat-tab id="processTab" [disabled]="!isValidTemplateForm()">
       <ng-template mat-tab-label>
         <span matTooltip="Please fill all the fields of Product template information to enable"
-          [matTooltipDisabled]="isValidTemplateForm()">Metric Cost Calculator</span>
+        [matTooltipDisabled]="isValidTemplateForm()">Metric Cost Calculator</span>
       </ng-template>
-      <template-process [componentUoms]="componentUoms" (calculate)="calculateValues($event)"
-        *ngIf="this.currentStepIndex == 1" [templateForm]="templateForm">
-      </template-process>
+      @if (this.currentStepIndex == 1) {
+        <template-process [componentUoms]="componentUoms" (calculate)="calculateValues($event)"
+          [templateForm]="templateForm">
+        </template-process>
+      }
     </mat-tab>
     <mat-tab class="mat-tab-calc" [disabled]="!isValidTemplateForm() || !this.apiService.finalSave">
       <ng-template mat-tab-label>
         <span matTooltip="Please fill all the fields of Product template information to enable"
-          [matTooltipDisabled]="isValidTemplateForm()">Product Attribute</span>
+        [matTooltipDisabled]="isValidTemplateForm()">Product Attribute</span>
       </ng-template>
       <div class="container_body">
-        <template-calculator (calculate)="calculateValues($event)" *ngIf="this.currentStepIndex == 2"
-          [templateForm]="templateForm">
-        </template-calculator>
+        @if (this.currentStepIndex == 2) {
+          <template-calculator (calculate)="calculateValues($event)"
+            [templateForm]="templateForm">
+          </template-calculator>
+        }
       </div>
     </mat-tab>
   </mat-tab-group>

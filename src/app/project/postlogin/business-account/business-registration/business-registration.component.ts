@@ -38,7 +38,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { DadyinSelectComponent } from '../../../../shared/widgets/dadyin-select/dadyin-select.component';
 import { DadyinInputComponent } from '../../../../shared/widgets/dadyin-input/dadyin-input.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
-import { NgIf, NgFor, NgClass, DecimalPipe, DatePipe } from '@angular/common';
+import { NgClass, DecimalPipe, DatePipe } from '@angular/common';
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
 import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
@@ -48,29 +48,27 @@ import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/
     styleUrls: ['./business-registration.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        MatTabGroup,
-        MatTab,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        DadyinInputComponent,
-        DadyinSelectComponent,
-        NgSelectModule,
-        DadyinMapAutoCompleteComponent,
-        DadyinSearchSelectNewComponent,
-        NgFor,
-        MatTooltip,
-        NgClass,
-        ExtendedModule,
-        MatProgressBar,
-        DecimalPipe,
-        DatePipe,
-        SortFormArrayPipe,
-    ],
+    DadyinButtonComponent,
+    MatTabGroup,
+    MatTab,
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    DadyinInputComponent,
+    DadyinSelectComponent,
+    NgSelectModule,
+    DadyinMapAutoCompleteComponent,
+    DadyinSearchSelectNewComponent,
+    MatTooltip,
+    NgClass,
+    ExtendedModule,
+    MatProgressBar,
+    DecimalPipe,
+    DatePipe,
+    SortFormArrayPipe
+],
 })
 export class BusinessRegistrationComponent implements OnInit, OnDestroy {
   // Platform name input fields for Social Profile Tab

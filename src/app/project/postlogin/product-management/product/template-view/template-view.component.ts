@@ -2,14 +2,14 @@ import { UntypedFormGroup, FormsModule } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
-import { NgIf, NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'app-template-view',
     templateUrl: './template-view.component.html',
     styleUrls: ['./template-view.component.scss'],
     standalone: true,
-    imports: [NgIf, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, NgFor, MatExpansionPanelContent, FormsModule]
+    imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent, FormsModule]
 })
 export class TemplateViewComponent implements OnInit {
   @Input() productForm: UntypedFormGroup;

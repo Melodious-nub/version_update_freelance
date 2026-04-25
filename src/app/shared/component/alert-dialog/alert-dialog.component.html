@@ -3,14 +3,15 @@
   <div [innerHTML]="dialogData.content"></div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button
-    *ngIf="dialogData.showCancel"
-    (click)="onActionClick()"
-    mat-button
-    mat-dialog-close
-  >
-    {{ dialogData.cancelBtnName }}
-  </button>
+  @if (dialogData.showCancel) {
+    <button
+      (click)="onActionClick()"
+      mat-button
+      mat-dialog-close
+      >
+      {{ dialogData.cancelBtnName }}
+    </button>
+  }
   <button mat-button (click)="onActionClick(true)">
     {{ dialogData.actionBtnName }}
   </button>

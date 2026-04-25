@@ -8,7 +8,7 @@ import { BusinessAccountService } from '../../../business-account/business-accou
 import { UomService } from 'src/app/service/uom.service';
 import { DadyinSearchableSelectComponent } from '../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
 import { MatTooltip } from '@angular/material/tooltip';
-import { NgFor, NgIf, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } from '@angular/material/expansion';
 @Component({
@@ -17,18 +17,16 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     styleUrls: ['./other-details.component.scss'],
     standalone: true,
     imports: [
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelContent,
-        DadyinButtonComponent,
-        NgFor,
-        MatTooltip,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        DadyinSearchableSelectComponent,
-        DatePipe,
-    ],
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelContent,
+    DadyinButtonComponent,
+    MatTooltip,
+    FormsModule,
+    ReactiveFormsModule,
+    DadyinSearchableSelectComponent,
+    DatePipe
+],
 })
 export class OtherDetailsComponent implements OnInit {
 

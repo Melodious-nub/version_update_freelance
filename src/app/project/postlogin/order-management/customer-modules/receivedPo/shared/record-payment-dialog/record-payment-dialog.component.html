@@ -22,94 +22,92 @@
                   class="b-light"
                   type="number"
                   formControlName="amount"
-                />
-              </td>
-              <td>
-                <select formControlName="currency">
-                  <ng-container
-                    *ngFor="let uom of uomService.availableCostUoms"
-                  >
-                    <option [value]="uom.description">
-                      {{ uom?.description }}
-                    </option>
-                  </ng-container>
-                </select>
-              </td>
-              <td>
-                <select formControlName="paymentMethod">
-                  <ng-container>
-                    <option [value]="'CARD'">CARD</option>
-                    <option [value]="'CASH'">CASH</option>
-                  </ng-container>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="text"
-                  style="height: unset !important"
-                  class="b-light"
-                  formControlName="message"
-                />
-              </td>
-            </tr>
-          </ng-container>
-        </tbody>
-      </table>
-    </div>
-    <hr />
-    <div
-      class="table-responsive process-table my-2"
-      style="max-height: 400px; overflow: auto"
-    >
-      <h3 class="title-text">
-        List of all payment transactions done related to this order.
-      </h3>
-      <table id="example" class="table-striped" style="width: 100%">
-        <thead>
-          <tr>
-            <th style="width: 150px !important">Amount</th>
-            <th style="width: 150px !important">Currency</th>
-            <th style="width: 150px !important">Payment Method</th>
-            <th style="width: 150px !important">Payment Id</th>
-            <th style="width: max-content">Message</th>
-          </tr>
-        </thead>
-        <tbody>
-          <ng-container *ngFor="let item of paymentOverview">
-            <tr>
-              <td>
-                <div>{{ item?.amountReceived }}</div>
-              </td>
-              <td>
-                <div>{{ item?.currency }}</div>
-              </td>
-              <td>
-                <div>{{ item?.captureMethod }}</div>
-              </td>
-              <td>
-                <div>{{ item?.paymentId }}</div>
-              </td>
-              <td>
-                <div>{{ item?.description }}</div>
-              </td>
-            </tr>
-          </ng-container>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="text-center mt-2">
-    <dadyin-button
-      label="Save"
-      (clicked)="addManualEntry()"
-      [theme]="'primary'"
-    ></dadyin-button
-    >&nbsp;
-    <dadyin-button
-      label="Close"
-      (clicked)="close()"
-      [theme]="'danger'"
-    ></dadyin-button
-    >&nbsp;
-  </div>
-</div>
+                  />
+                </td>
+                <td>
+                  <select formControlName="currency">
+                    @for (uom of uomService.availableCostUoms; track uom) {
+                      <option [value]="uom.description">
+                        {{ uom?.description }}
+                      </option>
+                    }
+                  </select>
+                </td>
+                <td>
+                  <select formControlName="paymentMethod">
+                    <ng-container>
+                      <option [value]="'CARD'">CARD</option>
+                      <option [value]="'CASH'">CASH</option>
+                    </ng-container>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    style="height: unset !important"
+                    class="b-light"
+                    formControlName="message"
+                    />
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+        <hr />
+        <div
+          class="table-responsive process-table my-2"
+          style="max-height: 400px; overflow: auto"
+          >
+          <h3 class="title-text">
+            List of all payment transactions done related to this order.
+          </h3>
+          <table id="example" class="table-striped" style="width: 100%">
+            <thead>
+              <tr>
+                <th style="width: 150px !important">Amount</th>
+                <th style="width: 150px !important">Currency</th>
+                <th style="width: 150px !important">Payment Method</th>
+                <th style="width: 150px !important">Payment Id</th>
+                <th style="width: max-content">Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of paymentOverview; track item) {
+                <tr>
+                  <td>
+                    <div>{{ item?.amountReceived }}</div>
+                  </td>
+                  <td>
+                    <div>{{ item?.currency }}</div>
+                  </td>
+                  <td>
+                    <div>{{ item?.captureMethod }}</div>
+                  </td>
+                  <td>
+                    <div>{{ item?.paymentId }}</div>
+                  </td>
+                  <td>
+                    <div>{{ item?.description }}</div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="text-center mt-2">
+        <dadyin-button
+          label="Save"
+          (clicked)="addManualEntry()"
+          [theme]="'primary'"
+          ></dadyin-button
+          >&nbsp;
+          <dadyin-button
+            label="Close"
+            (clicked)="close()"
+            [theme]="'danger'"
+            ></dadyin-button
+            >&nbsp;
+          </div>
+        </div>

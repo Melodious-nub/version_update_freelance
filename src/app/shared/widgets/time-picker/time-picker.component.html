@@ -1,6 +1,8 @@
 <div [class]="class">
   <div class="attribute one attr-b">
-    <label *ngIf="label" [class.required]="isRequired">{{ label }}</label>
+    @if (label) {
+      <label [class.required]="isRequired">{{ label }}</label>
+    }
 
     <div class="attribute-input time-picker-attribute-input">
       <input
@@ -13,9 +15,11 @@
         (change)="onTimeSet($event)"
         (blur)="onTouched()"
         class="native-time-input"
-      />
+        />
+      </div>
     </div>
-  </div>
 
-  <span class="error" *ngIf="showFieldError()">{{ getFieldErrorDesc() }}</span>
-</div>
+    @if (showFieldError()) {
+      <span class="error">{{ getFieldErrorDesc() }}</span>
+    }
+  </div>

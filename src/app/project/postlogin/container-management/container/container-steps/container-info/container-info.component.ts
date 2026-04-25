@@ -13,7 +13,7 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
 import { DadyinSelectComponent } from '../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
 import { DadyinInputComponent } from '../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgStyle, NgFor, NgIf, SlicePipe } from '@angular/common';
+import { NgStyle, SlicePipe } from '@angular/common';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
 @Component({
@@ -22,24 +22,22 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     styleUrls: ['./container-info.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        NgStyle,
-        ExtendedModule,
-        MatExpansionPanelContent,
-        ReactiveFormsModule,
-        DadyinInputComponent,
-        NgFor,
-        DadyinSelectComponent,
-        NgIf,
-        DadyinButtonComponent,
-        MatAutocompleteTrigger,
-        MatAutocomplete,
-        MatOption,
-        SlicePipe,
-    ],
+    FormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    NgStyle,
+    ExtendedModule,
+    MatExpansionPanelContent,
+    ReactiveFormsModule,
+    DadyinInputComponent,
+    DadyinSelectComponent,
+    DadyinButtonComponent,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption,
+    SlicePipe
+],
 })
 export class ContainerInfoComponent implements OnInit {
   @Input() isExport: any;

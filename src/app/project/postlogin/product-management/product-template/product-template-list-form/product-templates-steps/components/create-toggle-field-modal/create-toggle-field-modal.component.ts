@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, UntypedFormBuilder, UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
-import { NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'app-create-toggle-field-modal',
@@ -9,11 +9,10 @@ import { NgFor } from '@angular/common';
     styleUrls: ['./create-toggle-field-modal.component.scss'],
     standalone: true,
     imports: [
-        MatDialogClose,
-        FormsModule,
-        ReactiveFormsModule,
-        NgFor,
-    ],
+    MatDialogClose,
+    FormsModule,
+    ReactiveFormsModule
+],
 })
 export class CreateToggleFieldModalComponent implements OnInit {
   attributeValueExpression = this.fb.array([]);

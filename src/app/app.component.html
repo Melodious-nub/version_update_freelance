@@ -1,11 +1,13 @@
-<app-spinner-overlay *ngIf="spinnerOverlayService.isLoading$ | async"></app-spinner-overlay>
+@if (spinnerOverlayService.isLoading$ | async) {
+  <app-spinner-overlay></app-spinner-overlay>
+}
 <div class="main-app view-content">
   <router-outlet></router-outlet>
   <div class="d-flex justify-content-between align-items-center footer">
-  <div>
+    <div>
       2025 Dadyin.All rights reserved.
-  </div>
-  <div> <img width="20px" src="../assets/img/icons/whatsapp.svg"> Whatsapp us | Facing issues? <a href="https://api.whatsapp.com/send/?phone=16468796854&text=Hi,I have a query related to Dadyin platform.&type=phone_number" target="_blank" class="text-primary"> Get help </a>
+    </div>
+    <div> <img width="20px" src="../assets/img/icons/whatsapp.svg"> Whatsapp us | Facing issues? <a href="https://api.whatsapp.com/send/?phone=16468796854&text=Hi,I have a query related to Dadyin platform.&type=phone_number" target="_blank" class="text-primary"> Get help </a>
   </div>
 </div>
 </div>

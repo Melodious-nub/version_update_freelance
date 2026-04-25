@@ -12,7 +12,7 @@ import { ApiService } from 'src/app/service/api.service';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { MatTooltip } from '@angular/material/tooltip';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { NgIf, NgFor, SlicePipe } from '@angular/common';
+import { SlicePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
@@ -21,16 +21,14 @@ import { MatIcon } from '@angular/material/icon';
     styleUrls: ['./lead-filter-box.component.scss'],
     standalone: true,
     imports: [
-        MatIcon,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        NgFor,
-        NgSelectModule,
-        MatTooltip,
-        DadyinButtonComponent,
-        SlicePipe,
-    ],
+    MatIcon,
+    FormsModule,
+    ReactiveFormsModule,
+    NgSelectModule,
+    MatTooltip,
+    DadyinButtonComponent,
+    SlicePipe
+],
 })
 export class LeadFilterBoxComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

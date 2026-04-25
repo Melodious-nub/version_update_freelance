@@ -11,7 +11,7 @@ import { ContainerFormsService } from '../../../service/container-forms.service'
 import { environment } from 'src/environments/environment';
 import { MatIcon } from '@angular/material/icon';
 import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
 @Component({
@@ -20,17 +20,15 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     styleUrls: ['./documents-details.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatExpansionPanelContent,
-        NgIf,
-        DadyinButtonComponent,
-        NgFor,
-        ReactiveFormsModule,
-        MatIcon,
-    ],
+    FormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatExpansionPanelContent,
+    DadyinButtonComponent,
+    ReactiveFormsModule,
+    MatIcon
+],
 })
 export class DocumentsDetailsComponent implements OnInit {
   imgUrl=environment.imgUrl

@@ -3,7 +3,7 @@ import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/f
 import { MatTooltip } from '@angular/material/tooltip';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'dadyin-searchable-select',
@@ -11,14 +11,13 @@ import { NgClass, NgIf } from '@angular/common';
     styleUrls: ['./dadyin-searchable-select.component.scss'],
     standalone: true,
     imports: [
-        NgClass,
-        ExtendedModule,
-        NgSelectModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgIf,
-        MatTooltip,
-    ],
+    NgClass,
+    ExtendedModule,
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTooltip
+],
 })
 export class DadyinSearchableSelectComponent implements OnInit, OnChanges {
   @Input() class: any;

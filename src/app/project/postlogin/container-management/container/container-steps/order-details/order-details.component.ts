@@ -28,7 +28,7 @@ import { DadyinInputComponent } from '../../../../../../shared/widgets/dadyin-in
 import { DadyinSelectComponent } from '../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
 import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { DadyinSearchableSelectComponent } from '../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
-import { NgIf, NgFor, NgStyle, NgClass, SlicePipe, DatePipe } from '@angular/common';
+import { NgStyle, NgClass, SlicePipe, DatePipe } from '@angular/common';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
 @Component({
@@ -37,29 +37,27 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     styleUrls: ['./order-details.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatExpansionPanelContent,
-        ReactiveFormsModule,
-        NgIf,
-        DadyinSearchableSelectComponent,
-        DadyinButtonComponent,
-        DadyinSelectComponent,
-        DadyinInputComponent,
-        NgFor,
-        NgStyle,
-        ExtendedModule,
-        ThreeSceneComponent_1,
-        NgClass,
-        RouterLink,
-        NgbTooltip,
-        MatIcon,
-        SlicePipe,
-        DatePipe,
-        NumberFormatterPipe,
-    ],
+    FormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatExpansionPanelContent,
+    ReactiveFormsModule,
+    DadyinSearchableSelectComponent,
+    DadyinButtonComponent,
+    DadyinSelectComponent,
+    DadyinInputComponent,
+    NgStyle,
+    ExtendedModule,
+    ThreeSceneComponent_1,
+    NgClass,
+    RouterLink,
+    NgbTooltip,
+    MatIcon,
+    SlicePipe,
+    DatePipe,
+    NumberFormatterPipe
+],
 })
 export class OrderDetailsComponent implements OnInit {
   containerData: any;

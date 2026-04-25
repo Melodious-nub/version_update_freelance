@@ -24,37 +24,41 @@
           </tr>
         </thead>
         <tbody>
-          <ng-container *ngFor="let buddy of buddyDetails">
-            <tr *ngIf="buddyDetails !== null">
-              <td>{{ 1 }}</td>
-              <td>{{ buddy?.businessAccountDetail?.name }}</td>
-              <td>{{ buddy?.businessAccountDetail?.primaryContact?.phone }}</td>
-              <td>{{ buddy?.businessAccountDetail?.primaryContact?.email }}</td>
-              <td class="odr-value">{{ orderValue.attributeValue }}</td>
-              <td class="odr-value">0.00</td>
-              <td>
-                <dadyin-button
-                  [theme]="'borderless-danger'"
-                  type="icon"
-                  [typeval]="'delete_outline'"
-                  (clicked)="deleteBuddy(buddy?.id)"
-                ></dadyin-button>
-              </td>
-            </tr>
-          </ng-container>
+          @for (buddy of buddyDetails; track buddy) {
+            @if (buddyDetails !== null) {
+              <tr>
+                <td>{{ 1 }}</td>
+                <td>{{ buddy?.businessAccountDetail?.name }}</td>
+                <td>{{ buddy?.businessAccountDetail?.primaryContact?.phone }}</td>
+                <td>{{ buddy?.businessAccountDetail?.primaryContact?.email }}</td>
+                <td class="odr-value">{{ orderValue.attributeValue }}</td>
+                <td class="odr-value">0.00</td>
+                <td>
+                  <dadyin-button
+                    [theme]="'borderless-danger'"
+                    type="icon"
+                    [typeval]="'delete_outline'"
+                    (clicked)="deleteBuddy(buddy?.id)"
+                  ></dadyin-button>
+                </td>
+              </tr>
+            }
+          }
         </tbody>
       </table>
     </div>
-    <div class="no-invite" *ngIf="buddyDetails.length == 0">
-      <label> Please Invite The Buddy</label>
-    </div>
+    @if (buddyDetails.length == 0) {
+      <div class="no-invite">
+        <label> Please Invite The Buddy</label>
+      </div>
+    }
   </div>
   <div class="invite">
     <dadyin-button
       label="Add Buddy to Order"
       [theme]="'primary'"
       (clicked)="inviteBuddy()"
-    ></dadyin-button
-    >&nbsp;
+      ></dadyin-button
+      >&nbsp;
+    </div>
   </div>
-</div>

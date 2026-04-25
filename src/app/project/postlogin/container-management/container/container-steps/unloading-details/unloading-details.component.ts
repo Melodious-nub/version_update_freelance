@@ -24,7 +24,7 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { DadyinSelectComponent } from '../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
 import { DadyinInputComponent } from '../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
-import { NgFor, NgIf, NgStyle, NgClass, SlicePipe } from '@angular/common';
+import { NgStyle, NgClass, SlicePipe } from '@angular/common';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
 @Component({
@@ -33,26 +33,24 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     styleUrls: ['./unloading-details.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatExpansionPanelContent,
-        ReactiveFormsModule,
-        NgFor,
-        DadyinInputComponent,
-        DadyinSelectComponent,
-        NgIf,
-        NgStyle,
-        ExtendedModule,
-        NgClass,
-        DadyinButtonComponent,
-        MatAutocompleteTrigger,
-        MatAutocomplete,
-        MatOption,
-        MatIcon,
-        SlicePipe,
-    ],
+    FormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatExpansionPanelContent,
+    ReactiveFormsModule,
+    DadyinInputComponent,
+    DadyinSelectComponent,
+    NgStyle,
+    ExtendedModule,
+    NgClass,
+    DadyinButtonComponent,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption,
+    MatIcon,
+    SlicePipe
+],
 })
 export class UnloadingDetailsComponent implements OnInit {
   poView: any = 'orderWise';

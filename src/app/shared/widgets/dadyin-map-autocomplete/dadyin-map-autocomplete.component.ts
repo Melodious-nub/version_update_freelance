@@ -13,7 +13,7 @@ import {
 import { Observable, catchError, map, of } from 'rxjs';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'dadyin-map-autocomplete',
@@ -21,10 +21,9 @@ import { NgIf } from '@angular/common';
     styleUrls: ['./dadyin-map-autocomplete.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-    ],
+    FormsModule,
+    ReactiveFormsModule
+],
 })
 export class DadyinMapAutoCompleteComponent implements OnInit, AfterViewInit {
   @Input() height: string | null = null;

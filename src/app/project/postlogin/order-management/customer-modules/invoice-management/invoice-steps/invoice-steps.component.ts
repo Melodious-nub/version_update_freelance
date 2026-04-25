@@ -16,7 +16,7 @@ import { CreateInvoiceComponent } from './create-invoice/create-invoice.componen
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { MatTooltip } from '@angular/material/tooltip';
-import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
@@ -25,18 +25,16 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     styleUrls: ['./invoice-steps.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        NgIf,
-        MatTooltip,
-        CdkDrag,
-        NgFor,
-        FormsModule,
-        ReactiveFormsModule,
-        MatTabGroup,
-        MatTab,
-        CreateInvoiceComponent,
-        DatePipe,
-    ],
+    DadyinButtonComponent,
+    MatTooltip,
+    CdkDrag,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTabGroup,
+    MatTab,
+    CreateInvoiceComponent,
+    DatePipe
+],
 })
 export class InvoiceStepsComponent implements OnInit {
   // ************* Variable Declarations *************

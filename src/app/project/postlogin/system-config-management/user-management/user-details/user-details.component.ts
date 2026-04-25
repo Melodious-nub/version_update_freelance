@@ -4,7 +4,7 @@ import { BusinessAccountService } from '../../../business-account/business-accou
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserFormsService } from '../service/user-forms.service';
-import { NgFor } from '@angular/common';
+
 import { DadyinInputComponent } from '../../../../../shared/widgets/dadyin-input/dadyin-input.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,16 +16,15 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     styleUrls: ['./user-details.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatExpansionPanelContent,
-        DadyinInputComponent,
-        NgFor,
-    ],
+    DadyinButtonComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatExpansionPanelContent,
+    DadyinInputComponent
+],
 })
 export class UserDetailsComponent implements OnInit {
   public currentMainIndex: number = 0;

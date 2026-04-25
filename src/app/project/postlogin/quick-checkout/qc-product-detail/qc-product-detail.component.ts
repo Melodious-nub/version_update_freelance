@@ -20,7 +20,7 @@ import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatIcon } from '@angular/material/icon';
 import { SwiperModule } from 'swiper/angular';
-import { NgIf, NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
 import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
@@ -30,22 +30,20 @@ import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/
     styleUrls: ['./qc-product-detail.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelTitle,
-        NgIf,
-        SwiperModule,
-        NgFor,
-        MatIcon,
-        FormsModule,
-        ReactiveFormsModule,
-        MatTooltip,
-        NgClass,
-        ExtendedModule,
-        NumberFormatterPipe,
-        SortNumberPropertyPipe,
-    ],
+    DadyinButtonComponent,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelTitle,
+    SwiperModule,
+    MatIcon,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTooltip,
+    NgClass,
+    ExtendedModule,
+    NumberFormatterPipe,
+    SortNumberPropertyPipe
+],
 })
 export class QcProductDetailComponent implements OnInit {
   imgUrl = environment.imgUrl;

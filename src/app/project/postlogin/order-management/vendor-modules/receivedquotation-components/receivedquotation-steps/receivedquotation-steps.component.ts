@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ViewQuotationComponent } from './view-quotation/view-quotation.component';
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
 import { MatTooltip } from '@angular/material/tooltip';
-import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
@@ -23,17 +23,15 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     styleUrls: ['./receivedquotation-steps.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        NgIf,
-        MatTooltip,
-        NgFor,
-        FormsModule,
-        ReactiveFormsModule,
-        MatTabGroup,
-        MatTab,
-        ViewQuotationComponent,
-        DatePipe,
-    ],
+    DadyinButtonComponent,
+    MatTooltip,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTabGroup,
+    MatTab,
+    ViewQuotationComponent,
+    DatePipe
+],
 })
 export class ReceivedQuotationStepsComponent implements OnInit {
   // ************* Variable Declarations *************

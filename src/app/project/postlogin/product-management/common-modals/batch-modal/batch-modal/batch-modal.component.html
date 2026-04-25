@@ -2,7 +2,7 @@
   <div class="bg-card-header py-3 px-2 d-flex align-items-center justify-content-between" cdkDragHandle>
     <div class="d-flex align-items-center gap-2">
       <dadyin-button type="icon" [typeval]="'close'" class="close-btn" aria-label="Close"
-        (clicked)="close()"></dadyin-button>
+      (clicked)="close()"></dadyin-button>
       <div class="font-size-14">{{this.data.productionDetails.logNumber}}</div>
       <div class="text-muted"> | </div>
       <div class="text-muted font-size-12">
@@ -18,204 +18,202 @@
       <dadyin-button matTooltip="Delete" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/delete.png'">
       </dadyin-button>
       <!-- <dadyin-button matTooltip="Save as Draft" [theme]="'borderless-primary'" type="image"
-        [typeval]="'assets/nicons/save.png'" (clicked)="saveBatch('DRAFT')">
-      </dadyin-button> -->
-      <dadyin-button matTooltip="Save" [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/place.png'"
-        (clicked)="saveBatch()">
-      </dadyin-button>
-    </div>
+      [typeval]="'assets/nicons/save.png'" (clicked)="saveBatch('DRAFT')">
+    </dadyin-button> -->
+    <dadyin-button matTooltip="Save" [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/place.png'"
+      (clicked)="saveBatch()">
+    </dadyin-button>
   </div>
+</div>
 
-  <div class="batch-modal__body">
+<div class="batch-modal__body">
 
-    <mat-expansion-panel [formGroup]="batchForm" expanded="true">
-      <mat-expansion-panel-header>
-        <mat-panel-description>
-          <div class="title-text">Batch Details</div>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
+  <mat-expansion-panel [formGroup]="batchForm" expanded="true">
+    <mat-expansion-panel-header>
+      <mat-panel-description>
+        <div class="title-text">Batch Details</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
-      <div class="row ">
-        <div class="col-9">
-          <div class="row">
-            <div class="col-2  ">
-              <div class="attribute one attr-b">
-                <label for="">Batch #</label>
-                <div class="attribute-input">
-                  <input type="text" formControlName="logNumber" />
-                </div>
+    <div class="row ">
+      <div class="col-9">
+        <div class="row">
+          <div class="col-2  ">
+            <div class="attribute one attr-b">
+              <label for="">Batch #</label>
+              <div class="attribute-input">
+                <input type="text" formControlName="logNumber" />
               </div>
             </div>
-            <div class="col-2  ">
-              <div class="attribute one attr-b">
-                <label for="">Grade</label>
-                <div class="attribute-input">
-                  <input type="text" formControlName="grade" />
-                </div>
-              </div>
-            </div>
-            <div class="col-2  ">
-              <div class="attribute one attr-b">
-                <label for="">Color</label>
-                <div class="attribute-input">
-                  <input type="text" formControlName="color" />
-                </div>
-              </div>
-            </div>
-            <div class="col-2  ">
-              <div class="attribute one attr-b">
-                <label for="">{{data.productForm.get('unitName').value || 'Pcs'}}</label>
-                <div class="attribute-input">
-                  <input type="number" formControlName="billetPcs" />
-                </div>
-              </div>
-            </div>
-            <div class="col-2  ">
-              <div class="attribute one attr-b">
-                <label for=""> Size</label>
-                <div class="attribute-input">
-                  <input type="text" formControlName="billetSize" />
-                </div>
-              </div>
-            </div>
-
           </div>
-          <div class="row">
-
-            <div class="col-2  ">
-              <div class="attribute one attr-b">
-                <label for=""> Length</label>
-                <div class="attribute-input">
-                  <input type="number" formControlName="billetLength" />
-                </div>
+          <div class="col-2  ">
+            <div class="attribute one attr-b">
+              <label for="">Grade</label>
+              <div class="attribute-input">
+                <input type="text" formControlName="grade" />
               </div>
             </div>
-            <div class="col-2  ">
-              <div class="attribute one attr-b">
-                <label for=""> Width</label>
-                <div class="attribute-input">
-                  <input type="number" formControlName="billetWidth" />
-                </div>
+          </div>
+          <div class="col-2  ">
+            <div class="attribute one attr-b">
+              <label for="">Color</label>
+              <div class="attribute-input">
+                <input type="text" formControlName="color" />
               </div>
             </div>
-            <div class="col-2  ">
-              <div class="attribute one attr-b">
-                <label for=""> Weight</label>
-                <div class="attribute-input">
-                  <input type="number" formControlName="billetWeight" />
-                </div>
+          </div>
+          <div class="col-2  ">
+            <div class="attribute one attr-b">
+              <label for="">{{data.productForm.get('unitName').value || 'Pcs'}}</label>
+              <div class="attribute-input">
+                <input type="number" formControlName="billetPcs" />
               </div>
             </div>
-            <div class="col-2  ">
-              <div class="attribute one attr-b">
-                <label for="">End Cut Weight</label>
-                <div class="attribute-input">
-                  <input type="number" formControlName="endCutWeight" />
-                </div>
-              </div>
-            </div>
-            <div class="col-2  ">
-              <div class="attribute one attr-b">
-                <label for="">Section</label>
-                <div class="attribute-input">
-                  <input type="text" formControlName="section" />
-                </div>
+          </div>
+          <div class="col-2  ">
+            <div class="attribute one attr-b">
+              <label for=""> Size</label>
+              <div class="attribute-input">
+                <input type="text" formControlName="billetSize" />
               </div>
             </div>
           </div>
 
         </div>
-        <div class="col-3">
-          <div class="row">
-            <div class="col-12">
-              <div class="attribute one attr-b">
-                <label for="">Date & Time</label>
-                <div class="attribute-input">
-                  <input type="datetime-local" formControlName="logDate" />
-                </div>
+        <div class="row">
+
+          <div class="col-2  ">
+            <div class="attribute one attr-b">
+              <label for=""> Length</label>
+              <div class="attribute-input">
+                <input type="number" formControlName="billetLength" />
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-6">
-              <dadyin-select [optionArr]="containerService.employeesList" label="Supervisor"
-                formControlName="supervisor" optionLabel="firstName" optionValue="id" [emptyOption]="'Supervisor'">
-              </dadyin-select>
+          <div class="col-2  ">
+            <div class="attribute one attr-b">
+              <label for=""> Width</label>
+              <div class="attribute-input">
+                <input type="number" formControlName="billetWidth" />
+              </div>
             </div>
-            <div class="col-6">
-              <div class="attribute one attr-b">
-                <label for="">Shift</label>
-                <div class="attribute-input">
-                  <input type="text" formControlName="shift" />
-                </div>
+          </div>
+          <div class="col-2  ">
+            <div class="attribute one attr-b">
+              <label for=""> Weight</label>
+              <div class="attribute-input">
+                <input type="number" formControlName="billetWeight" />
+              </div>
+            </div>
+          </div>
+          <div class="col-2  ">
+            <div class="attribute one attr-b">
+              <label for="">End Cut Weight</label>
+              <div class="attribute-input">
+                <input type="number" formControlName="endCutWeight" />
+              </div>
+            </div>
+          </div>
+          <div class="col-2  ">
+            <div class="attribute one attr-b">
+              <label for="">Section</label>
+              <div class="attribute-input">
+                <input type="text" formControlName="section" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-3">
+        <div class="row">
+          <div class="col-12">
+            <div class="attribute one attr-b">
+              <label for="">Date & Time</label>
+              <div class="attribute-input">
+                <input type="datetime-local" formControlName="logDate" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <dadyin-select [optionArr]="containerService.employeesList" label="Supervisor"
+              formControlName="supervisor" optionLabel="firstName" optionValue="id" [emptyOption]="'Supervisor'">
+            </dadyin-select>
+          </div>
+          <div class="col-6">
+            <div class="attribute one attr-b">
+              <label for="">Shift</label>
+              <div class="attribute-input">
+                <input type="text" formControlName="shift" />
               </div>
             </div>
           </div>
         </div>
       </div>
-    </mat-expansion-panel>
-    <mat-tab-group class="mat-steps" #tabGroup [(selectedIndex)]="selectedTabIndex"
-      (selectedTabChange)="onTabChange($event.index)">
+    </div>
+  </mat-expansion-panel>
+  <mat-tab-group class="mat-steps" #tabGroup [(selectedIndex)]="selectedTabIndex"
+    (selectedTabChange)="onTabChange($event.index)">
+    @for (logProcessForm of logProcesses?.controls; track trackByLogProcess(i, logProcessForm); let i = $index) {
       <mat-tab [formGroup]="logProcessForm"
-        *ngFor="let logProcessForm of logProcesses?.controls;let i = index; trackBy: trackByLogProcess"
         [label]="'Process ' + (i +1)">
-        <ng-container *ngIf="data?.productionDetails">
+        @if (data?.productionDetails) {
           <ng-container>
-
             <mat-expansion-panel class="panel-no-padding" expanded="true" #mep="matExpansionPanel">
               <mat-expansion-panel-header>
                 <div (click)="mep.expanded = !mep.expanded" class="panel-header p-0">
                   <!-- <div class="title-text">
-                    <span>Process {{ i + 1 }}</span>
-                  </div> -->
-
-                  <!-- <div class="process-input-output" formGroupName="process">
-                    <div class="me-1 w-100" style="border-right: 1px solid var(--text-light);">
-                      <input type="text" placeholder="Enter Process Name" readonly formControlName="description" />
+                  <span>Process {{ i + 1 }}</span>
+                </div> -->
+                <!-- <div class="process-input-output" formGroupName="process">
+                <div class="me-1 w-100" style="border-right: 1px solid var(--text-light);">
+                  <input type="text" placeholder="Enter Process Name" readonly formControlName="description" />
+                </div>
+                <div class="w-100 mx-1 d-flex align-items-center" formGroupName="productOfProcess">
+                  <div class="mx-1" formGroupName="productMeta">
+                    <input type="text" placeholder="Enter Product of Process Name" readonly
+                      formControlName="description" />
                     </div>
-                    <div class="w-100 mx-1 d-flex align-items-center" formGroupName="productOfProcess">
-                      <div class="mx-1" formGroupName="productMeta">
-                        <input type="text" placeholder="Enter Product of Process Name" readonly
-                          formControlName="description" />
-                      </div>
-                      <div class="mx-1" formGroupName="productMeta">
-                        <input type="text" placeholder="Enter Product Code" readonly formControlName="productCode" />
-                      </div>
+                    <div class="mx-1" formGroupName="productMeta">
+                      <input type="text" placeholder="Enter Product Code" readonly formControlName="productCode" />
                     </div>
-                  </div> -->
-                  <div class="process-calculation width-perc-100">
-                    <div class="units justify-content-end">
-                      <div class="currency-value">
-                        <span class="text-black">{{
-                          logProcessForm.get('process').get('productOfProcess').get('metricCost').get('userConversionUom').value
-                          }}</span>
-                        <span>{{
-                          logProcessForm.get('process').get('productOfProcess').get('metricCost').get('attributeValue').value
-                          | numberFormatter : 3
-                          }}</span>
-                      </div>
-                      <div class="unit-value">
-                        <span class="text-black">{{
-                          logProcessForm.get('process').get('productOfProcess').get('metricCostSecondary').get('userConversionUom').value
-                          }}</span>
-                        <span>{{
-                          logProcessForm.get('process').get('productOfProcess').get('metricCostSecondary').get('attributeValue').value
-                          | numberFormatter : 3
-                          }}</span>
-                      </div>
+                  </div>
+                </div> -->
+                <div class="process-calculation width-perc-100">
+                  <div class="units justify-content-end">
+                    <div class="currency-value">
+                      <span class="text-black">{{
+                        logProcessForm.get('process').get('productOfProcess').get('metricCost').get('userConversionUom').value
+                      }}</span>
+                      <span>{{
+                        logProcessForm.get('process').get('productOfProcess').get('metricCost').get('attributeValue').value
+                        | numberFormatter : 3
+                      }}</span>
+                    </div>
+                    <div class="unit-value">
+                      <span class="text-black">{{
+                        logProcessForm.get('process').get('productOfProcess').get('metricCostSecondary').get('userConversionUom').value
+                      }}</span>
+                      <span>{{
+                        logProcessForm.get('process').get('productOfProcess').get('metricCostSecondary').get('attributeValue').value
+                        | numberFormatter : 3
+                      }}</span>
                     </div>
                   </div>
                 </div>
-              </mat-expansion-panel-header>
-
-              <ng-template matExpansionPanelContent>
-                <section class="section-card  material-cost-calculation py-2">
-                  <div class="d-flex align-items-center justify-content-between font-size-12 py-2 pe-4">
-                    <div class="d-flex align-items-center justify-content-start">
-                      <div class=" d-flex align-items-center mx-2 ">
-                        <b class="title-text fw-bold">Material Cost Calculation</b>
-                      </div>
-                      <ng-container *ngIf="templateProcessMaterialType.value == 'LOG_SHEET'" formGroupName="process">
+              </div>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <section class="section-card  material-cost-calculation py-2">
+                <div class="d-flex align-items-center justify-content-between font-size-12 py-2 pe-4">
+                  <div class="d-flex align-items-center justify-content-start">
+                    <div class=" d-flex align-items-center mx-2 ">
+                      <b class="title-text fw-bold">Material Cost Calculation</b>
+                    </div>
+                    @if (templateProcessMaterialType.value == 'LOG_SHEET') {
+                      <ng-container formGroupName="process">
                         <div class="d-flex  align-items-center  font-size-12">
                           <div class="text-black me-2" style="white-space: pre; font-weight: 400; ">Total Units</div>
                           <div style="max-width: fit-content" class="d-flex align-items-center">
@@ -223,321 +221,339 @@
                               <div style="border-top-left-radius: 8px;border-bottom-left-radius: 8px;">
                                 <input readonly type="number" class="width-100" (change)="calculateValues()"
                                   formControlName="totalUnits" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="d-flex  align-items-center  font-size-12 mx-2">
+                            <div class="text-black me-2" style="white-space: pre; font-weight: 400; ">Total Weight</div>
+                            <div class="d-flex align-items-center b-round b-light" formGroupName="totalWeight">
+                              <input readonly type="number" class="width-100 disabled" (change)="calculateValues()"
+                                formControlName="attributeValue" />
+                                <select formControlName="userConversionUom" class="bg-light b-round">
+                                  @for (option of uomService?.availableNetWeightUoms; track option; let k = $index) {
+                                    <option disabled [value]="option.description">
+                                      {{ option.description }}
+                                    </option>
+                                  }
+                                </select>
+                              </div>
+                            </div>
+                            <div class="d-flex  align-items-center  font-size-12">
+                              <div class="text-black me-2" style="white-space: pre; font-weight: 400; ">Total Waste</div>
+                              <div class="d-flex align-items-center  b-round b-light" formGroupName="totalWaste">
+                                <input type="number" class="width-100" (change)="changeTotalWasteWeight(i)"
+                                  formControlName="attributeValue" />
+                                  <select formControlName="userConversionUom" class="bg-light b-round">
+                                    @for (option of uomService?.availableNetWeightUoms; track option; let k = $index) {
+                                      <option [value]="option.description">
+                                        {{ option.description }}
+                                      </option>
+                                    }
+                                  </select>
+                                </div>
+                              </div>
+                            </ng-container>
+                          }
+                          <!-- <div class="d-flex  align-items-center">
+                          <div>
+                            <div class="text-black h-20 align-content-center">
+                              | &nbsp;&nbsp; Process Waste %
+                            </div>
+                          </div>
+                          <div class="ms-2 b-round b-light d-flex align-items-center" formGroupName="process">
+                            <input type="number" class="width-100" formControlName="processWastePercent"
+                              (change)="calculateValues()" />
+                              <select (change)="onSelectOption($event)" style="background-color: var(--secondary-light);" class="">
+                                <ng-container
+                                  *ngFor="let option of logProcessForm.get('process').get('processCalculatorOptions').controls; let k = index">
+                                  <option [selected]="option.get('isSelected').value" [value]="option.get('name').value">
+                                    {{ option.get("name").value }}
+                                  </option>
+                                </ng-container>
+                              </select>
+                            </div>
+                          </div> -->
+                        </div>
+                        <div class="d-flex  align-items-center justify-content-end font-size-12">
+                          <div class="units justify-content-end d-flex">
+                            <div class="me-2">
+                              <div class="text-black h-20 align-content-center">
+                                {{
+                                logProcessForm.get('process').get('productOfProcess').get('density').get('userConversionUom').value
+                                }}
+                              </div>
+                              <div class="primary-text">
+                                {{
+                                logProcessForm.get('process').get('productOfProcess').get('density').get('attributeValue').value
+                                | numberFormatter : 3
+                                }}
+                              </div>
+                            </div>
+                            <div>
+                              <div class="text-black h-20 align-content-center">
+                                {{ logProcessForm.get('process').get('materialMetricCost').get('userConversionUom').value
+                                }}
+                              </div>
+                              <div class="price-text">
+                                {{ logProcessForm.get('process').get('materialMetricCost').get('attributeValue').value |
+                                numberFormatter : 3 }}
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div class="d-flex  align-items-center  font-size-12 mx-2">
-                          <div class="text-black me-2" style="white-space: pre; font-weight: 400; ">Total Weight</div>
-                          <div class="d-flex align-items-center b-round b-light" formGroupName="totalWeight">
-                            <input readonly type="number" class="width-100 disabled" (change)="calculateValues()"
-                              formControlName="attributeValue" />
-                            <select formControlName="userConversionUom" class="bg-light b-round">
-                              <ng-container *ngFor="let option of uomService?.availableNetWeightUoms;let k = index">
-                                <option disabled [value]="option.description">
-                                  {{ option.description }}
-                                </option>
-                              </ng-container>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="d-flex  align-items-center  font-size-12">
-                          <div class="text-black me-2" style="white-space: pre; font-weight: 400; ">Total Waste</div>
-                          <div class="d-flex align-items-center  b-round b-light" formGroupName="totalWaste">
-                            <input type="number" class="width-100" (change)="changeTotalWasteWeight(i)"
-                              formControlName="attributeValue" />
-                            <select formControlName="userConversionUom" class="bg-light b-round">
-                              <ng-container *ngFor="let option of uomService?.availableNetWeightUoms;let k = index">
-                                <option [value]="option.description">
-                                  {{ option.description }}
-                                </option>
-                              </ng-container>
-                            </select>
-                          </div>
-                        </div>
-                      </ng-container>
-                      <!-- <div class="d-flex  align-items-center">
-                        <div>
-                          <div class="text-black h-20 align-content-center">
-                            | &nbsp;&nbsp; Process Waste %
-                          </div>
-                        </div>
-                        <div class="ms-2 b-round b-light d-flex align-items-center" formGroupName="process">
-                          <input type="number" class="width-100" formControlName="processWastePercent"
-                            (change)="calculateValues()" />
-                          <select (change)="onSelectOption($event)" style="background-color: var(--secondary-light);" class="">
-                            <ng-container
-                              *ngFor="let option of logProcessForm.get('process').get('processCalculatorOptions').controls; let k = index">
-                              <option [selected]="option.get('isSelected').value" [value]="option.get('name').value">
-                                {{ option.get("name").value }}
-                              </option>
-                            </ng-container>
-                          </select>
-                        </div>
-
-                      </div> -->
-                    </div>
-                    <div class="d-flex  align-items-center justify-content-end font-size-12">
-                      <div class="units justify-content-end d-flex">
-
-                        <div class="me-2">
-                          <div class="text-black h-20 align-content-center">
-                            {{
-                            logProcessForm.get('process').get('productOfProcess').get('density').get('userConversionUom').value
-                            }}
-                          </div>
-                          <div class="primary-text">
-                            {{
-                            logProcessForm.get('process').get('productOfProcess').get('density').get('attributeValue').value
-                            | numberFormatter : 3
-                            }}
-                          </div>
-                        </div>
-                        <div>
-                          <div class="text-black h-20 align-content-center">
-                            {{ logProcessForm.get('process').get('materialMetricCost').get('userConversionUom').value
-                            }}
-                          </div>
-                          <div class="price-text">
-                            {{ logProcessForm.get('process').get('materialMetricCost').get('attributeValue').value |
-                            numberFormatter : 3 }}
-                          </div>
-                        </div>
                       </div>
-                    </div>
-                  </div>
-
-                  <ng-container>
-                    <div class="process-table">
-                      <!-- Material Cost -->
-                      <table>
-                        <thead>
-                          <tr style="background-color: var(--secondary-light);">
-                            <th style="padding-left: 20px">Sr.</th>
-                            <th style="width: 16%;">Product Type</th>
-                            <th style="width: 16%;">Product</th>
-                            <th>
-                              <div class="group">
-                                <span>Price </span>
-                              </div>
-                              <div class="group">
-                                <ng-container *ngIf="priceUom?.value; else noPriceUom">( {{ priceUom.value }}
-                                  )</ng-container>
-                                <ng-template #noPriceUom></ng-template>
-                              </div>
-                            </th>
-                            <th>
-                              <div class="group">
-                                <span>Density </span>
-                              </div>
-                              <div class="group">
-                                <ng-container *ngIf="densityUom?.value; else noDensityUom"> ( {{ densityUom.value }}
-                                  )</ng-container>
-                                <ng-template #noDensityUom></ng-template>
-                              </div>
-                            </th>
-                            <th [attr.colspan]="templateProcessMaterialType.value == 'LOG_SHEET' ? 2 : 1" class="p-0">
-                              <div class="text-center ">
-                                <span>USED <span *ngIf="templateProcessMaterialType.value 
-                                  != 'LOG_SHEET'"> % </span> </span>
-
-                              </div>
-                              <div *ngIf="templateProcessMaterialType.value == 'LOG_SHEET'"
-                                class="d-flex align-items-center justify-content-between">
-                                <div class="b-light w-50 text-center">
-                                  <span>% </span>
-                                </div>
-                                <div class="b-light w-50 text-center">
-                                  <ng-container *ngIf="usedWeightUom?.value; else noUsedWeightUom"> Weight ( {{
-                                    usedWeightUom.value }}
-                                    )</ng-container>
-                                  <ng-template #noUsedWeightUom>Weight</ng-template>
-                                </div>
-                              </div>
-                            </th>
-                            <th [attr.colspan]="templateProcessMaterialType.value == 'LOG_SHEET' ? 2 : 1" class="p-0">
-                              <div class="text-center ">
-                                <span>Waste <span *ngIf="templateProcessMaterialType.value 
-                                  != 'LOG_SHEET'"> % </span> </span>
-
-                              </div>
-                              <div *ngIf="templateProcessMaterialType.value == 'LOG_SHEET'"
-                                class="d-flex align-items-center justify-content-between">
-                                <div class="b-light w-50 text-center">
-                                  <span>% </span>
-                                </div>
-                                <div class="b-light w-50 text-center">
-                                  <ng-container *ngIf="wasteWeightUom?.value; else noWasteWeightUom">Weight ( {{
-                                    wasteWeightUom.value }}
-                                    )</ng-container>
-                                  <ng-template #noWasteWeightUom>Weight</ng-template>
-                                </div>
-                              </div>
-                            </th>
-                            <th>
-                              <div class="group">
-                                <span>AVG. Density </span>
-                              </div>
-                              <div class="group">
-                                <ng-container *ngIf="avgDensityUom?.value; else noAvgDensityUom"> ( {{
-                                  avgDensityUom.value }}
-                                  )</ng-container>
-                                <ng-template #noAvgDensityUom></ng-template>
-                              </div>
-                            </th>
-                            <th>
-                              <div class="group">
-                                <span>Cost Addon </span>
-                              </div>
-                              <div class="group">
-                                <ng-container *ngIf="metricCostUom?.value; else noMetricCostUom"> ( {{
-                                  metricCostUom.value }}
-                                  )</ng-container>
-                                <ng-template #noMetricCostUom></ng-template>
-                              </div>
-                            </th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <ng-container
-                            *ngFor="let processProductForm of logProcessForm.get('process').get('processProducts').controls; let j = index">
-                            <tr [formGroup]="processProductForm">
-                              <td style="padding-left: 20px">{{ j + 1 }}.</td>
-                              <td>
-                                <input type="text" formControlName="subProductTypeName" readonly>
-                              </td>
-                              <td>
+                      <ng-container>
+                        <div class="process-table">
+                          <!-- Material Cost -->
+                          <table>
+                            <thead>
+                              <tr style="background-color: var(--secondary-light);">
+                                <th style="padding-left: 20px">Sr.</th>
+                                <th style="width: 16%;">Product Type</th>
+                                <th style="width: 16%;">Product</th>
+                                <th>
+                                  <div class="group">
+                                    <span>Price </span>
+                                  </div>
+                                  <div class="group">
+                                    @if (priceUom?.value) {
+                                      ( {{ priceUom.value }}
+                                      )
+                                    } @else {
+                                    }
+                                  </div>
+                                </th>
+                                <th>
+                                  <div class="group">
+                                    <span>Density </span>
+                                  </div>
+                                  <div class="group">
+                                    @if (densityUom?.value) {
+                                      ( {{ densityUom.value }}
+                                      )
+                                    } @else {
+                                    }
+                                  </div>
+                                </th>
+                                <th [attr.colspan]="templateProcessMaterialType.value == 'LOG_SHEET' ? 2 : 1" class="p-0">
+                                  <div class="text-center ">
+                                    <span>USED @if (templateProcessMaterialType.value
+                                      != 'LOG_SHEET') {
+                                      <span> % </span>
+                                    } </span>
+                                  </div>
+                                  @if (templateProcessMaterialType.value == 'LOG_SHEET') {
+                                    <div
+                                      class="d-flex align-items-center justify-content-between">
+                                      <div class="b-light w-50 text-center">
+                                        <span>% </span>
+                                      </div>
+                                      <div class="b-light w-50 text-center">
+                                        @if (usedWeightUom?.value) {
+                                          Weight ( {{
+                                          usedWeightUom.value }}
+                                          )
+                                        } @else {
+                                          Weight
+                                        }
+                                      </div>
+                                    </div>
+                                  }
+                                </th>
+                                <th [attr.colspan]="templateProcessMaterialType.value == 'LOG_SHEET' ? 2 : 1" class="p-0">
+                                  <div class="text-center ">
+                                    <span>Waste @if (templateProcessMaterialType.value
+                                      != 'LOG_SHEET') {
+                                      <span> % </span>
+                                    } </span>
+                                  </div>
+                                  @if (templateProcessMaterialType.value == 'LOG_SHEET') {
+                                    <div
+                                      class="d-flex align-items-center justify-content-between">
+                                      <div class="b-light w-50 text-center">
+                                        <span>% </span>
+                                      </div>
+                                      <div class="b-light w-50 text-center">
+                                        @if (wasteWeightUom?.value) {
+                                          Weight ( {{
+                                          wasteWeightUom.value }}
+                                          )
+                                        } @else {
+                                          Weight
+                                        }
+                                      </div>
+                                    </div>
+                                  }
+                                </th>
+                                <th>
+                                  <div class="group">
+                                    <span>AVG. Density </span>
+                                  </div>
+                                  <div class="group">
+                                    @if (avgDensityUom?.value) {
+                                      ( {{
+                                      avgDensityUom.value }}
+                                      )
+                                    } @else {
+                                    }
+                                  </div>
+                                </th>
+                                <th>
+                                  <div class="group">
+                                    <span>Cost Addon </span>
+                                  </div>
+                                  <div class="group">
+                                    @if (metricCostUom?.value) {
+                                      ( {{
+                                      metricCostUom.value }}
+                                      )
+                                    } @else {
+                                    }
+                                  </div>
+                                </th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @for (processProductForm of logProcessForm.get('process').get('processProducts').controls; track processProductForm; let j = $index) {
+                                <tr [formGroup]="processProductForm">
+                                  <td style="padding-left: 20px">{{ j + 1 }}.</td>
+                                  <td>
+                                    <input type="text" formControlName="subProductTypeName" readonly>
+                                  </td>
+                                  <td>
                                 <select [ngClass]="{
                                   'b-red':
                                     processProductForm.get('subProductId').invalid &&
                                     processProductForm.get('subProductId').touched
                                 }" [formControl]="processProductForm.get('subProductId')"
-                                  (change)="getProductData($event, i,j)">
-                                  <option value="null" disabled selected>
-                                    Select Product
-                                  </option>
-                                  <ng-container *ngFor="let product of apiService.allproductsListForProcess">
-                                    <option [value]="product.id">
-                                      {{ product.description }}
-                                    </option>
-                                  </ng-container>
-                                </select>
-                              </td>
-                              <td>
-                                <ng-container formGroupName="subProductMetricCost">
-                                  <input type="text" class="text-end price-text" formControlName="attributeValue"
-                                    (change)="calculateValues()">
-                                </ng-container>
-                              </td>
-                              <td>
-                                <ng-container formGroupName="subProductDensity">
-                                  <input type="text" class="text-end" formControlName="attributeValue"
-                                    (change)="calculateValues()">
-                                </ng-container>
-                              </td>
-                              <td>
-                                <ng-container>
-                                  <input type="text" class="text-primary text-end" formControlName="usedPercent"
-                                    (change)="calculateValues()">
-                                </ng-container>
-                              </td>
-                              <td *ngIf="templateProcessMaterialType.value == 'LOG_SHEET'">
-                                <ng-container formGroupName="usedWeight">
-                                  <input (change)="calculateValues()" type="text" class="text-end"
-                                    formControlName="attributeValue">
-                                </ng-container>
-                              </td>
-                              <td>
-                                <ng-container>
-                                  <input type="text" class="text-end" formControlName="wastePercent"
-                                    (change)="calculateValues()">
-                                </ng-container>
-                              </td>
-                              <td *ngIf="templateProcessMaterialType.value == 'LOG_SHEET'">
-                                <ng-container formGroupName="wasteWeight">
-                                  <input (change)="calculateValues()" type="text" class="text-end"
-                                    formControlName="attributeValue">
-                                </ng-container>
-                              </td>
-                              <td>
-                                <ng-container formGroupName="density">
-                                  <input (change)="calculateValues()" type="text" class="text-end"
-                                    formControlName="attributeValue">
-                                </ng-container>
-                              </td>
-                              <td>
-                                <ng-container formGroupName="metricCost">
-                                  <input (change)="calculateValues()" type="text" class="text-end"
-                                    formControlName="attributeValue">
-                                </ng-container>
-                              </td>
-
-                              <td>
-                                <dadyin-button [theme]="'borderless-default'" type='image'
-                                  [typeval]="'assets/nicons/delete.png'" (clicked)="removeProcessProduct(i,j)">
-                                </dadyin-button>
-                                <ng-container *ngIf="getprocessProducts(i).controls?.length == j + 1">
-                                  <dadyin-button (clicked)="addNewProcessProductControl(i,j)"
-                                    [theme]="'borderless-primary'" type='image'
-                                    [typeval]="'assets/nicons/add-white.png'">
-                                  </dadyin-button>
-                                </ng-container>
-                              </td>
-                            </tr>
-                          </ng-container>
-                        </tbody>
-                      </table>
-                    </div>
-                  </ng-container>
-                </section>
-                <section class="section-card conversion-cost-calculation my-2">
-                  <div class="header" style="display: flex !important;">
-                    <div class="title">
-                      <span class="me-3 text-black">Conversion Cost</span>
-                      <dadyin-button (clicked)="addNewConversionType(i)" [theme]="'borderless-primary'" type='image'
-                        [typeval]="'assets/nicons/add-white.png'">
-                      </dadyin-button>
-                    </div>
-                    <div class="optional-values">
-                      <div class="units justify-content-end">
-                        <div class="currency-value">
-                          <span class="text-black">
-                            {{
-                            logProcessForm.get('process').get('conversionMetricCost').get('userConversionUom').value
-                            }}
-                          </span>
-                          <span>
-                            {{ logProcessForm.get('process').get('conversionMetricCost').get('attributeValue').value |
-                            numberFormatter : 3
-                            }}
-                          </span>
-                        </div>
-                        <div class="unit-value">
-                          <span class="text-black">
-                            {{
-                            logProcessForm.get('process').get('conversionMetricCostSecondary').get('userConversionUom').value
-                            }}
-                          </span>
-                          <span>
-                            {{
-                            logProcessForm.get('process').get('conversionMetricCostSecondary').get('attributeValue').value
-                            | numberFormatter : 3
-                            }}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Conversion Cost -->
-                  <section class="conversionCost p-2 d-flex flex-wrap align-items-center" style="row-gap: 0.5rem;">
-                    <ng-container *ngFor="
-                          let conversiontype of getProcessConversionTypes(i).controls; let m = index;
-                          trackBy: trackByFn
-                        ">
-                      <div class="d-flex align-items-center width-perc-25 ">
-                        <div class="b-light b-round d-flex align-items-center w-100">
+                                      (change)="getProductData($event, i,j)">
+                                      <option value="null" disabled selected>
+                                        Select Product
+                                      </option>
+                                      @for (product of apiService.allproductsListForProcess; track product) {
+                                        <option [value]="product.id">
+                                          {{ product.description }}
+                                        </option>
+                                      }
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <ng-container formGroupName="subProductMetricCost">
+                                      <input type="text" class="text-end price-text" formControlName="attributeValue"
+                                        (change)="calculateValues()">
+                                      </ng-container>
+                                    </td>
+                                    <td>
+                                      <ng-container formGroupName="subProductDensity">
+                                        <input type="text" class="text-end" formControlName="attributeValue"
+                                          (change)="calculateValues()">
+                                        </ng-container>
+                                      </td>
+                                      <td>
+                                        <ng-container>
+                                          <input type="text" class="text-primary text-end" formControlName="usedPercent"
+                                            (change)="calculateValues()">
+                                          </ng-container>
+                                        </td>
+                                        @if (templateProcessMaterialType.value == 'LOG_SHEET') {
+                                          <td>
+                                            <ng-container formGroupName="usedWeight">
+                                              <input (change)="calculateValues()" type="text" class="text-end"
+                                                formControlName="attributeValue">
+                                              </ng-container>
+                                            </td>
+                                          }
+                                          <td>
+                                            <ng-container>
+                                              <input type="text" class="text-end" formControlName="wastePercent"
+                                                (change)="calculateValues()">
+                                              </ng-container>
+                                            </td>
+                                            @if (templateProcessMaterialType.value == 'LOG_SHEET') {
+                                              <td>
+                                                <ng-container formGroupName="wasteWeight">
+                                                  <input (change)="calculateValues()" type="text" class="text-end"
+                                                    formControlName="attributeValue">
+                                                  </ng-container>
+                                                </td>
+                                              }
+                                              <td>
+                                                <ng-container formGroupName="density">
+                                                  <input (change)="calculateValues()" type="text" class="text-end"
+                                                    formControlName="attributeValue">
+                                                  </ng-container>
+                                                </td>
+                                                <td>
+                                                  <ng-container formGroupName="metricCost">
+                                                    <input (change)="calculateValues()" type="text" class="text-end"
+                                                      formControlName="attributeValue">
+                                                    </ng-container>
+                                                  </td>
+                                                  <td>
+                                                    <dadyin-button [theme]="'borderless-default'" type='image'
+                                                      [typeval]="'assets/nicons/delete.png'" (clicked)="removeProcessProduct(i,j)">
+                                                    </dadyin-button>
+                                                    @if (getprocessProducts(i).controls?.length == j + 1) {
+                                                      <dadyin-button (clicked)="addNewProcessProductControl(i,j)"
+                                                        [theme]="'borderless-primary'" type='image'
+                                                        [typeval]="'assets/nicons/add-white.png'">
+                                                      </dadyin-button>
+                                                    }
+                                                  </td>
+                                                </tr>
+                                              }
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      </ng-container>
+                                    </section>
+                                    <section class="section-card conversion-cost-calculation my-2">
+                                      <div class="header" style="display: flex !important;">
+                                        <div class="title">
+                                          <span class="me-3 text-black">Conversion Cost</span>
+                                          <dadyin-button (clicked)="addNewConversionType(i)" [theme]="'borderless-primary'" type='image'
+                                            [typeval]="'assets/nicons/add-white.png'">
+                                          </dadyin-button>
+                                        </div>
+                                        <div class="optional-values">
+                                          <div class="units justify-content-end">
+                                            <div class="currency-value">
+                                              <span class="text-black">
+                                                {{
+                                                logProcessForm.get('process').get('conversionMetricCost').get('userConversionUom').value
+                                                }}
+                                              </span>
+                                              <span>
+                                                {{ logProcessForm.get('process').get('conversionMetricCost').get('attributeValue').value |
+                                                numberFormatter : 3
+                                                }}
+                                              </span>
+                                            </div>
+                                            <div class="unit-value">
+                                              <span class="text-black">
+                                                {{
+                                                logProcessForm.get('process').get('conversionMetricCostSecondary').get('userConversionUom').value
+                                                }}
+                                              </span>
+                                              <span>
+                                                {{
+                                                logProcessForm.get('process').get('conversionMetricCostSecondary').get('attributeValue').value
+                                                | numberFormatter : 3
+                                                }}
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <!-- Conversion Cost -->
+                                      <section class="conversionCost p-2 d-flex flex-wrap align-items-center" style="row-gap: 0.5rem;">
+                                        @for (
+                                          conversiontype of getProcessConversionTypes(i).controls; track trackByFn(m,
+                                          conversiontype); let m = $index) {
+                                          <div class="d-flex align-items-center width-perc-25 ">
+                                            <div class="b-light b-round d-flex align-items-center w-100">
                           <select name="conversionTypeId" class="conversion-cost b-round" [formControl]="
                               conversiontype.get('conversionTypeId')
                             " (change)="calculateValues()" [ngClass]="{
@@ -547,10 +563,10 @@
                                   conversiontype.get('conversionTypeId')
                                     ?.touched
                               }">
-                            <ng-container *ngFor="let type of this.apiService.conversionTypes">
-                              <option [value]="type.id">{{ type.description }}</option>
-                            </ng-container>
-                          </select>
+                                                @for (type of this.apiService.conversionTypes; track type) {
+                                                  <option [value]="type.id">{{ type.description }}</option>
+                                                }
+                                              </select>
                           <input class=" w-100 currency price-text" [ngClass]="{
                                 'b-red':
                                 conversiontype.get('metricCost').get('attributeValue')
@@ -569,25 +585,26 @@
                               }" [formControl]="
                                 conversiontype.get('metricCost').get('userConversionUom')
                               " (change)="calculateValues()">
-                            <ng-container *ngFor="let uom of uomService?.availableMatricCostUoms">
-                              <option [value]="uom.description">
-                                {{ uom.description }}
-                              </option>
-                            </ng-container>
-                          </select>
-                        </div>
-                        <dadyin-button [theme]="'borderless-default'" type='image'
-                          [typeval]="'assets/nicons/delete.png'" (clicked)="removeConversionType(i,m)">
-                        </dadyin-button>
+                                                  @for (uom of uomService?.availableMatricCostUoms; track uom) {
+                                                    <option [value]="uom.description">
+                                                      {{ uom.description }}
+                                                    </option>
+                                                  }
+                                                </select>
+                                              </div>
+                                              <dadyin-button [theme]="'borderless-default'" type='image'
+                                                [typeval]="'assets/nicons/delete.png'" (clicked)="removeConversionType(i,m)">
+                                              </dadyin-button>
+                                            </div>
+                                          }
+                                        </section>
+                                      </section>
+                                    </ng-template>
+                                  </mat-expansion-panel>
+                                </ng-container>
+                              }
+                            </mat-tab>
+                          }
+                        </mat-tab-group>
                       </div>
-                    </ng-container>
-                  </section>
-                </section>
-              </ng-template>
-            </mat-expansion-panel>
-          </ng-container>
-        </ng-container>
-      </mat-tab>
-    </mat-tab-group>
-  </div>
-</div>
+                    </div>

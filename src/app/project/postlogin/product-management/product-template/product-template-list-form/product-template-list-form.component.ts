@@ -18,7 +18,7 @@ import { TemplateInfoComponent } from './product-templates-steps/template-info/t
 import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgClass, NgIf, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
@@ -27,21 +27,19 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     styleUrls: ['./product-template-list-form.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        NgClass,
-        ExtendedModule,
-        MatTooltip,
-        NgIf,
-        NgFor,
-        FormsModule,
-        ReactiveFormsModule,
-        MatTabGroup,
-        MatTab,
-        TemplateInfoComponent,
-        MatTabLabel,
-        TemplateProcessComponent,
-        TemplateCalculatorComponent,
-    ],
+    DadyinButtonComponent,
+    NgClass,
+    ExtendedModule,
+    MatTooltip,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTabGroup,
+    MatTab,
+    TemplateInfoComponent,
+    MatTabLabel,
+    TemplateProcessComponent,
+    TemplateCalculatorComponent
+],
 })
 export class ProductTemplateListFormComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

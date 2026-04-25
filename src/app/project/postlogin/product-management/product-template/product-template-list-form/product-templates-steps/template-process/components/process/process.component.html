@@ -1,14 +1,16 @@
 <div class="header-light">
-  <div class="d-flex" *ngIf="isShowProcessList == false">
-    <div class="font-size-14">
-      <strong>Template Cost : </strong>
-      <span class="price-text"> {{ getTemplateCost() }} </span>
+  @if (isShowProcessList == false) {
+    <div class="d-flex">
+      <div class="font-size-14">
+        <strong>Template Cost : </strong>
+        <span class="price-text"> {{ getTemplateCost() }} </span>
+      </div>
+      <div class="font-size-14 mx-2 border-l-light">
+        <strong>Template Density : </strong>
+        <span class="price-text"> {{ getTemplateDensity() }} </span>
+      </div>
     </div>
-    <div class="font-size-14 mx-2 border-l-light">
-      <strong>Template Density : </strong>
-      <span class="price-text"> {{ getTemplateDensity() }} </span>
-    </div>
-  </div>
+  }
   <div class="action-btns">
     <div class="attribute tabular-sheet col-2 width-perc-40" style="border-radius: 24px;">
       <div class="attribute-input bg-white" style="padding:2px;">
@@ -66,25 +68,25 @@
         <img src="assets/img/icons/{{
             isExpandAll ? 'Active Collapse Arrow.svg' : 'Expand Arrow.svg'
           }}" alt="" />
-      </button>
+        </button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- List of Process -->
-<div class="app-content">
-  <ng-container *ngIf="this.isShowProcessList">
-    <app-process-list [processData]="templateProcesses"></app-process-list>
-  </ng-container>
+  <!-- List of Process -->
+  <div class="app-content">
+    @if (this.isShowProcessList) {
+      <app-process-list [processData]="templateProcesses"></app-process-list>
+    }
 
-  <ng-container *ngIf="!this.isShowProcessList">
-    <ng-container *ngFor="let process of templateProcesses?.controls; let i = index">
-      <div>
-        <app-edit-process [componentUoms]="componentUoms" (calculate)="calculateValues($event)"
-          [existingProcess]="existingProcess" (deleteProcessEvent)="removeProcess(i)" [templateForm]="templateForm"
-          [index]="i" [isExpandAll]="isExpandAll" [process]="process">
-        </app-edit-process>
-      </div>
-    </ng-container>
-  </ng-container>
-</div>
+    @if (!this.isShowProcessList) {
+      @for (process of templateProcesses?.controls; track process; let i = $index) {
+        <div>
+          <app-edit-process [componentUoms]="componentUoms" (calculate)="calculateValues($event)"
+            [existingProcess]="existingProcess" (deleteProcessEvent)="removeProcess(i)" [templateForm]="templateForm"
+            [index]="i" [isExpandAll]="isExpandAll" [process]="process">
+          </app-edit-process>
+        </div>
+      }
+    }
+  </div>

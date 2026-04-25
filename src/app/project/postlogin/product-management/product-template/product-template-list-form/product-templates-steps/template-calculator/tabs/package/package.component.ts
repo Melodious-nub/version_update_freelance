@@ -23,7 +23,7 @@ import { MatOption } from '@angular/material/core';
 import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
 import { DadyinButtonComponent } from '../../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgStyle, NgIf, NgClass, NgFor } from '@angular/common';
+import { NgStyle, NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-package',
@@ -31,23 +31,21 @@ import { NgStyle, NgIf, NgClass, NgFor } from '@angular/common';
     styleUrls: ['./package.component.scss'],
     standalone: true,
     imports: [
-        NgStyle,
-        ExtendedModule,
-        NgIf,
-        FormsModule,
-        NgClass,
-        NgFor,
-        DadyinButtonComponent,
-        ReactiveFormsModule,
-        MatAutocompleteTrigger,
-        MatAutocomplete,
-        MatOption,
-        MatIcon,
-        MatTooltip,
-        CdkDropList,
-        CdkDrag,
-        SortFormArrayPipe,
-    ],
+    NgStyle,
+    ExtendedModule,
+    FormsModule,
+    NgClass,
+    DadyinButtonComponent,
+    ReactiveFormsModule,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption,
+    MatIcon,
+    MatTooltip,
+    CdkDropList,
+    CdkDrag,
+    SortFormArrayPipe
+],
 })
 export class PackageComponent implements OnInit {
   excelView = [false, false, false, false, false, false, false, false];

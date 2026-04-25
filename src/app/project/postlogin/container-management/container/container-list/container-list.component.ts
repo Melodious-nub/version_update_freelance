@@ -11,7 +11,7 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
 import { SearchFilterComponent } from '../../../../../shared/component/search-filter/search-filter.component';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { MatBadge } from '@angular/material/badge';
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
@@ -20,20 +20,18 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     styleUrls: ['./container-list.component.scss'],
     standalone: true,
     imports: [
-        MatTabGroup,
-        NgFor,
-        MatTab,
-        MatTabLabel,
-        MatBadge,
-        MatTabContent,
-        CdkDrag,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        SearchFilterComponent,
-        DadyinButtonComponent,
-        DataTableComponent,
-    ],
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatBadge,
+    MatTabContent,
+    CdkDrag,
+    FormsModule,
+    ReactiveFormsModule,
+    SearchFilterComponent,
+    DadyinButtonComponent,
+    DataTableComponent
+],
 })
 export class ContainerListComponent implements OnInit {
   public preferredUoms: any[];

@@ -18,7 +18,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { DadyinButtonComponent } from '../../../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { DadyinSearchableSelectComponent } from '../../../../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
-import { NgIf, NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } from '@angular/material/expansion';
 @Component({
     selector: 'app-edit-process',
@@ -26,18 +26,16 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     styleUrls: ['./edit-process.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        NgIf,
-        NgFor,
-        DadyinSearchableSelectComponent,
-        DadyinButtonComponent,
-        MatExpansionPanelContent,
-        NgClass,
-        ExtendedModule,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    DadyinSearchableSelectComponent,
+    DadyinButtonComponent,
+    MatExpansionPanelContent,
+    NgClass,
+    ExtendedModule
+],
 })
 export class EditProcessComponent implements OnInit {
   @Input() process: any;

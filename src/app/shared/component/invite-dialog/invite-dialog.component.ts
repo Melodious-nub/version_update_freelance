@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/service/auth.service';
 
 import { TokenService } from 'src/app/service/token.service';
 import { DadyinSelectComponent } from '../../widgets/dadyin-select/dadyin-select.component';
-import { NgIf } from '@angular/common';
+
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DadyinInputComponent } from '../../widgets/dadyin-input/dadyin-input.component';
 import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
@@ -23,17 +23,16 @@ import { MatIconModule } from '@angular/material/icon';
     styleUrls: ['./invite-dialog.component.scss'],
     standalone: true,
     imports: [
-        MatIconModule,
-        DadyinButtonComponent,
-        MatTooltipModule,
-        MatExpansionModule,
-        FormsModule,
-        ReactiveFormsModule,
-        DadyinInputComponent,
-        NgSelectModule,
-        NgIf,
-        DadyinSelectComponent,
-    ],
+    MatIconModule,
+    DadyinButtonComponent,
+    MatTooltipModule,
+    MatExpansionModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DadyinInputComponent,
+    NgSelectModule,
+    DadyinSelectComponent
+],
 })
 export class InviteDialogComponent implements OnInit, OnDestroy {
   public submitted = false;

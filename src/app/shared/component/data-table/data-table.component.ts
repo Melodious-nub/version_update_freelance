@@ -25,7 +25,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgFor, NgIf, NgStyle, NgClass, SlicePipe, DatePipe } from '@angular/common';
+import { NgStyle, NgClass, SlicePipe, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'data-table',
@@ -33,36 +33,34 @@ import { NgFor, NgIf, NgStyle, NgClass, SlicePipe, DatePipe } from '@angular/com
     styleUrls: ['./data-table.component.scss'],
     standalone: true,
     imports: [
-        MatTable,
-        MatSort,
-        NgFor,
-        MatColumnDef,
-        NgIf,
-        MatHeaderCellDef,
-        MatHeaderCell,
-        NgStyle,
-        ExtendedModule,
-        MatCheckbox,
-        MatCellDef,
-        MatCell,
-        MatSortHeader,
-        NgClass,
-        DadyinButtonComponent,
-        MatTooltip,
-        NgbTooltip,
-        MatIcon,
-        MatBadge,
-        FormsModule,
-        NgSelectModule,
-        MatHeaderRowDef,
-        MatHeaderRow,
-        MatRowDef,
-        MatRow,
-        MatPaginator,
-        SlicePipe,
-        DatePipe,
-        NumberFormatterPipe,
-    ],
+    MatTable,
+    MatSort,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatHeaderCell,
+    NgStyle,
+    ExtendedModule,
+    MatCheckbox,
+    MatCellDef,
+    MatCell,
+    MatSortHeader,
+    NgClass,
+    DadyinButtonComponent,
+    MatTooltip,
+    NgbTooltip,
+    MatIcon,
+    MatBadge,
+    FormsModule,
+    NgSelectModule,
+    MatHeaderRowDef,
+    MatHeaderRow,
+    MatRowDef,
+    MatRow,
+    MatPaginator,
+    SlicePipe,
+    DatePipe,
+    NumberFormatterPipe
+],
 })
 export class DataTableComponent implements OnInit {
   initialSelection = [];

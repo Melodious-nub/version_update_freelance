@@ -3,7 +3,7 @@ import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/f
 import { Subject, Subscription, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'search-filter',
@@ -11,12 +11,11 @@ import { NgIf } from '@angular/common';
     styleUrls: ['./search-filter.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        NgIf,
-        MatIcon,
-        MatIconButton,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatIcon,
+    MatIconButton
+],
 })
 export class SearchFilterComponent implements OnInit {
     @Input() searchControl =new UntypedFormControl();

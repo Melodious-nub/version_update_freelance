@@ -10,7 +10,7 @@ import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/f
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { NgIf, NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'dadyin-search-select-new',
@@ -19,14 +19,12 @@ import { NgIf, NgFor, NgClass } from '@angular/common';
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [
-        NgIf,
-        NgSelectModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgFor,
-        NgClass,
-        ExtendedModule,
-    ],
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgClass,
+    ExtendedModule
+],
 })
 export class DadyinSearchSelectNewComponent implements OnInit {
   @Input() highlightItems: any = [];

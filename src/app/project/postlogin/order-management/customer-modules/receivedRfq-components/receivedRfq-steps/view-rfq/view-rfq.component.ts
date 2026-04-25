@@ -19,7 +19,7 @@ import { ApiService } from 'src/app/service/api.service';
 import { environment } from 'src/environments/environment';
 import { OrderTransactionPackagesComponent } from '../../../../../../../shared/component/order-transaction-packages/order-transaction-packages.component';
 import { DadyinSelectComponent } from '../../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
-import { NgIf } from '@angular/common';
+
 import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { DadyinInputComponent } from '../../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
@@ -30,18 +30,17 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     styleUrls: ['./view-rfq.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatExpansionPanelContent,
-        DadyinInputComponent,
-        DadyinButtonComponent,
-        NgIf,
-        DadyinSelectComponent,
-        OrderTransactionPackagesComponent,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatExpansionPanelContent,
+    DadyinInputComponent,
+    DadyinButtonComponent,
+    DadyinSelectComponent,
+    OrderTransactionPackagesComponent
+],
 })
 export class ViewRfqComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

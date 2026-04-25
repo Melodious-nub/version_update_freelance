@@ -8,7 +8,7 @@ import { UomService } from 'src/app/service/uom.service';
 import { OrderManagementService } from '../../../service/order-management.service';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { DataTableComponent } from '../../../../../../shared/component/data-table/data-table.component';
-import { NgIf, NgFor } from '@angular/common';
+
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { SearchFilterComponent } from '../../../../../../shared/component/search-filter/search-filter.component';
 
@@ -18,14 +18,12 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     styleUrls: ['./receivedquotation-list.component.scss'],
     standalone: true,
     imports: [
-        SearchFilterComponent,
-        CdkDrag,
-        NgIf,
-        NgFor,
-        FormsModule,
-        ReactiveFormsModule,
-        DataTableComponent,
-    ],
+    SearchFilterComponent,
+    CdkDrag,
+    FormsModule,
+    ReactiveFormsModule,
+    DataTableComponent
+],
 })
 export class ReceivedquotationListComponent implements OnInit {
   @Input('single') single = false;

@@ -20,7 +20,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgIf, NgStyle, NgClass, NgFor } from '@angular/common';
+import { NgStyle, NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-business-entity-configuration',
@@ -28,25 +28,23 @@ import { NgIf, NgStyle, NgClass, NgFor } from '@angular/common';
     styleUrls: ['./business-entity-configuration.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        NgIf,
-        DadyinButtonComponent,
-        NgStyle,
-        ExtendedModule,
-        NgClass,
-        NgFor,
-        MatAccordion,
-        MatExpansionPanel,
-        MatTooltip,
-        MatAutocompleteTrigger,
-        MatAutocomplete,
-        MatOption,
-        MatIcon,
-        CdkDropList,
-        CdkDrag,
-        SortFormArrayPipe_1,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    DadyinButtonComponent,
+    NgStyle,
+    ExtendedModule,
+    NgClass,
+    MatAccordion,
+    MatExpansionPanel,
+    MatTooltip,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption,
+    MatIcon,
+    CdkDropList,
+    CdkDrag,
+    SortFormArrayPipe_1
+],
 })
 export class BusinessEntityConfigurationComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
@@ -998,7 +996,7 @@ export class BusinessEntityConfigurationComponent implements OnInit {
     item.get('isHidden').setValue(param);
   }
 
-  trackByFn(index) {
+  trackByFn(index, item) {
     return index;
   }
 }

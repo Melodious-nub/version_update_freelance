@@ -11,7 +11,7 @@ import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { DadyinSearchableSelectComponent } from '../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
-import { NgIf, NgFor, NgClass, CurrencyPipe, DatePipe } from '@angular/common';
+import { NgClass, CurrencyPipe, DatePipe } from '@angular/common';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
 
@@ -21,24 +21,22 @@ import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dad
     styleUrls: ['./payment-management.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        CdkDrag,
-        NgIf,
-        NgFor,
-        FormsModule,
-        ReactiveFormsModule,
-        MatTabGroup,
-        MatTab,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatExpansionPanelContent,
-        DadyinSearchableSelectComponent,
-        NgClass,
-        ExtendedModule,
-        CurrencyPipe,
-        DatePipe,
-    ],
+    DadyinButtonComponent,
+    CdkDrag,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTabGroup,
+    MatTab,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatExpansionPanelContent,
+    DadyinSearchableSelectComponent,
+    NgClass,
+    ExtendedModule,
+    CurrencyPipe,
+    DatePipe
+],
 })
 export class PaymentManagementComponent implements OnInit {
   currentMainIndex = 0;

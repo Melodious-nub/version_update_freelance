@@ -9,7 +9,7 @@ import { ConfirmationDialogComponent } from './components/process/edit-process/c
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } from '@angular/material/expansion';
 import { RawMaterialProcessComponent } from './components/process/raw-material-process/raw-material-process.component';
 import { ProcessComponent } from './components/process/process.component';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'template-process',
@@ -17,15 +17,14 @@ import { NgIf } from '@angular/common';
     styleUrls: ['./template-process.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        NgIf,
-        ProcessComponent,
-        RawMaterialProcessComponent,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelContent,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    ProcessComponent,
+    RawMaterialProcessComponent,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelContent
+],
 })
 export class TemplateProcessComponent implements OnInit {
   // ************* Variable Declarations *************

@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { DadyinSearchableSelectComponent } from '../../../../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
 import { DadyinButtonComponent } from '../../../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgIf, NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } from '@angular/material/expansion';
 @Component({
     selector: 'app-raw-material-process',
@@ -18,18 +18,16 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     styleUrls: ['./raw-material-process.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        NgIf,
-        DadyinButtonComponent,
-        DadyinSearchableSelectComponent,
-        NgFor,
-        MatExpansionPanelContent,
-        NgClass,
-        ExtendedModule,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    DadyinButtonComponent,
+    DadyinSearchableSelectComponent,
+    MatExpansionPanelContent,
+    NgClass,
+    ExtendedModule
+],
 })
 export class RawMaterialProcessComponent implements OnInit {
   @Input() templateForm: any;

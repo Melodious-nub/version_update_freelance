@@ -13,7 +13,7 @@ import { SwiperOptions } from 'swiper';
 import { SwiperComponent, SwiperModule } from 'swiper/angular';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgIf, NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DadyinMapAutoCompleteComponent } from '../../../shared/widgets/dadyin-map-autocomplete/dadyin-map-autocomplete.component';
 import { DadyinSelectComponent } from '../../../shared/widgets/dadyin-select/dadyin-select.component';
@@ -24,19 +24,17 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     styleUrls: ['./business-account.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        DadyinInputComponent,
-        DadyinSelectComponent,
-        DadyinMapAutoCompleteComponent,
-        NgSelectModule,
-        NgIf,
-        DadyinButtonComponent,
-        NgFor,
-        NgClass,
-        ExtendedModule,
-        SwiperModule,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    DadyinInputComponent,
+    DadyinSelectComponent,
+    DadyinMapAutoCompleteComponent,
+    NgSelectModule,
+    DadyinButtonComponent,
+    NgClass,
+    ExtendedModule,
+    SwiperModule
+],
 })
 export class BusinessAccountComponent implements OnInit {
   @ViewChild('swiperR', { static: false }) swiperR?: SwiperComponent;

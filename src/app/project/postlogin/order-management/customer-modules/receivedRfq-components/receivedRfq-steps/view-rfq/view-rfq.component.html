@@ -12,27 +12,33 @@
           <div class="row">
             <div class="col-12 col-md-4 d-flex">
               <dadyin-input inputType="text" class="w-100" label="Customer"
-                [formControl]="requestFromName"></dadyin-input>
+              [formControl]="requestFromName"></dadyin-input>
 
               <dadyin-button (clicked)="openMap(2)" (click)="$event.stopPropagation()" [theme]="'borderless-primary'"
                 type="image" [typeval]="'assets/img/icons/address.png'">
               </dadyin-button>
-              <div *ngIf="map2" class="tooltip-white b-light shadow-sm">
-                {{ requestFromAddress }}  
+              @if (map2) {
+                <div class="tooltip-white b-light shadow-sm">
+                  {{ requestFromAddress }}
+                </div>
+              }
+            </div>
+            @if (importLocalType.value == 'CONTAINER') {
+              <div class="col-12 col-md-2">
+                <dadyin-select [optionArr]="containerService.incoTermsList" label="Inco terms"
+                  formControlName="incoTermId" optionLabel="description" optionValue="id">
+                </dadyin-select>
               </div>
-            </div>
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value == 'CONTAINER'">
-              <dadyin-select [optionArr]="containerService.incoTermsList" label="Inco terms"
-                formControlName="incoTermId" optionLabel="description" optionValue="id">
-              </dadyin-select>
-            </div>
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value == 'LOCAL'">
+            }
+            @if (importLocalType.value == 'LOCAL') {
+              <div class="col-12 col-md-2">
               <dadyin-select [optionArr]="[
                   { id: 'DELIVERY', description: 'DELIVERY' },
                   { id: 'PICKUP', description: 'PICKUP' }
                 ]" label="Delivery Type" formControlName="deliveryPickup" optionLabel="description" optionValue="id">
-              </dadyin-select>
-            </div>
+                </dadyin-select>
+              </div>
+            }
             <div class="col-12 col-md-1 d-flex">
               <dadyin-button [isDisabled]="!isSelfRFQ" (clicked)="toggleType('LOCAL')" theme="borderless-primary"
                 type="image" [typeval]="importLocalType.value == 'LOCAL'
@@ -56,25 +62,31 @@
               <dadyin-input inputType="text" formControlName="purchaseManagerId" label="Purchase Manager">
               </dadyin-input>
             </div>
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value != 'LOCAL'">
-              <dadyin-input inputType="text" formControlName="buyingType" label="Buying Type">
-              </dadyin-input>
-            </div>
+            @if (importLocalType.value != 'LOCAL') {
+              <div class="col-12 col-md-2">
+                <dadyin-input inputType="text" formControlName="buyingType" label="Buying Type">
+                </dadyin-input>
+              </div>
+            }
 
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value == 'LOCAL'">
+            @if (importLocalType.value == 'LOCAL') {
+              <div class="col-12 col-md-2">
               <dadyin-select [optionArr]="[
                   { id: 'PALLET', name: 'PALLET' },
                   { id: 'FLOOR', name: 'FLOOR' },
                   { id: 'MIXED', name: 'MIXED' }
                 ]" label="Loading Type" formControlName="loadingTypeId" optionLabel="name" optionValue="id"
-                [emptyOption]="'Select Loading Type'">
-              </dadyin-select>
-            </div>
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value != 'LOCAL'">
-              <dadyin-select [optionArr]="containerService.portsList" label="Port of Departure"
-                formControlName="departurePortId" optionLabel="description" optionValue="id">
-              </dadyin-select>
-            </div>
+                  [emptyOption]="'Select Loading Type'">
+                </dadyin-select>
+              </div>
+            }
+            @if (importLocalType.value != 'LOCAL') {
+              <div class="col-12 col-md-2">
+                <dadyin-select [optionArr]="containerService.portsList" label="Port of Departure"
+                  formControlName="departurePortId" optionLabel="description" optionValue="id">
+                </dadyin-select>
+              </div>
+            }
             <div class="col-12 col-md-2"></div>
             <div class="col-12 col-md-2"></div>
           </div>
@@ -94,7 +106,7 @@
           <div class="row mx-auto">
             <div class="col-12 col-md-6">
               <dadyin-input inputType="text" label="External Ref No"
-                formControlName="transactionReferenceNumber"></dadyin-input>
+              formControlName="transactionReferenceNumber"></dadyin-input>
             </div>
             <div class="col-12 col-md-6">
               <dadyin-input inputType="text" formControlName="quotationId" label="Quotation# (Ref)">
@@ -115,7 +127,7 @@
       <img src="assets/nicons/overview.png" alt="Client Category" class="mx-1" style="width: 20px; height: 20px;">
       <div class="text-dark font-size-14">Client Category</div>
     </div>
-    <div class="ms-auto">   
+    <div class="ms-auto">
       <dadyin-button type="image" class="mx-1" [typeval]="'assets/nicons/strips.png'" [theme]="'borderless-default'">
       </dadyin-button>
     </div>
@@ -132,7 +144,7 @@
       <app-order-transaction-packages [orderFile]="rfqFile" [displayedColumns]="['pkgs', 'qtyReq']"
         [isEditable]="isEditable" [orderForm]="rfqForm" (getProducts)="getProductsList($event)"
         (calculate)="calculateValues()" (generatePoFromPdf)="generatePoFromPdf($event)" [productsList]="productsList"
-        [productPackages]="productPackages" [type]="'rcvrfq'"></app-order-transaction-packages>
+      [productPackages]="productPackages" [type]="'rcvrfq'"></app-order-transaction-packages>
     </ng-template>
   </mat-expansion-panel>
 </form>

@@ -26,7 +26,7 @@ import { PricecompareDialogComponent } from 'src/app/shared/component/pricecompa
 import { OrderTransactionPackagesComponent } from '../../../../../../../shared/component/order-transaction-packages/order-transaction-packages.component';
 import { DadyinInputComponent } from '../../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
 import { DadyinSelectComponent } from '../../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
-import { NgIf } from '@angular/common';
+
 import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { DadyinSearchableSelectComponent } from '../../../../../../../shared/widgets/dadyin-searchable-select/dadyin-searchable-select.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
@@ -37,19 +37,18 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     styleUrls: ['./create-bill.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        MatExpansionPanelContent,
-        DadyinSearchableSelectComponent,
-        DadyinButtonComponent,
-        NgIf,
-        DadyinSelectComponent,
-        DadyinInputComponent,
-        OrderTransactionPackagesComponent,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    MatExpansionPanelContent,
+    DadyinSearchableSelectComponent,
+    DadyinButtonComponent,
+    DadyinSelectComponent,
+    DadyinInputComponent,
+    OrderTransactionPackagesComponent
+],
 })
 export class CreateBillComponent implements OnInit {
   currentBusinessAccount: any;

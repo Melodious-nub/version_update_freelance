@@ -19,7 +19,7 @@ import { MatTabGroup, MatTab } from '@angular/material/tabs';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
-import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
@@ -28,19 +28,17 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     styleUrls: ['./receivedPo-steps.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        NgIf,
-        MatSlideToggle,
-        FormsModule,
-        ReactiveFormsModule,
-        NgFor,
-        MatTooltip,
-        CdkDrag,
-        MatTabGroup,
-        MatTab,
-        CreateOrderComponent,
-        DatePipe,
-    ],
+    DadyinButtonComponent,
+    MatSlideToggle,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTooltip,
+    CdkDrag,
+    MatTabGroup,
+    MatTab,
+    CreateOrderComponent,
+    DatePipe
+],
 })
 export class ReceivedPoStepsComponent implements OnInit {
   // ************* Variable Declarations *************

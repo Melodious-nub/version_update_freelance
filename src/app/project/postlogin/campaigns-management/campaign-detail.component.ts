@@ -1,4 +1,4 @@
-import { Location, NgIf, NgClass, NgFor, TitleCasePipe, DatePipe } from '@angular/common';
+import { Location, NgClass, TitleCasePipe, DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -42,27 +42,25 @@ type ProductImageTile = {
     styleUrls: ['./campaign-detail.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        SpinnerOverlayComponent,
-        NgClass,
-        ExtendedModule,
-        DadyinButtonComponent,
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        DadyinInputComponent,
-        MatTooltip,
-        DadyinSelectComponent,
-        TimePickerComponent,
-        DadyinSearchableSelectComponent,
-        DadyinSearchSelectNewComponent,
-        NgFor,
-        CKEditorModule,
-        TitleCasePipe,
-        DatePipe,
-    ],
+    SpinnerOverlayComponent,
+    NgClass,
+    ExtendedModule,
+    DadyinButtonComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    DadyinInputComponent,
+    MatTooltip,
+    DadyinSelectComponent,
+    TimePickerComponent,
+    DadyinSearchableSelectComponent,
+    DadyinSearchSelectNewComponent,
+    CKEditorModule,
+    TitleCasePipe,
+    DatePipe
+],
 })
 export class CampaignDetailComponent implements OnInit {
   public Editor: any = (ClassicEditor as any).default || ClassicEditor;

@@ -28,16 +28,16 @@
           </tr>
         </thead>
         <tbody class="font-size-12">
-          <tr *ngFor="let item of inventoryLedgerData">
-            <td class="px-1 text-center">{{ item.audit?.createdDate | date:'MM/dd/yyyy' }}</td>
-            <td class="px-1   text-center " style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-              {{ item.productCode }}
-            </td>
-            <!-- <td class="px-1 text-center">
+          @for (item of inventoryLedgerData; track item) {
+            <tr>
+              <td class="px-1 text-center">{{ item.audit?.createdDate | date:'MM/dd/yyyy' }}</td>
+              <td class="px-1   text-center " style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                {{ item.productCode }}
+              </td>
+              <!-- <td class="px-1 text-center">
               <span class="b-round" [ngClass]="item.inventoryDirection == 'IN' ? 'price-text' : 'danger-text'"> {{
-                item.inventoryDirection=='IN' ? '+' : '-' }} </span> {{ item.newQuantityAdded }}
+              item.inventoryDirection=='IN' ? '+' : '-' }} </span> {{ item.newQuantityAdded }}
             </td> -->
-
             <td class="px-1 text-center">
               {{ item.beforeQuantity }}
             </td>
@@ -57,18 +57,23 @@
               {{ item.status }}
             </td>
           </tr>
-        </tbody>
-      </table>
-    </div>
+        }
+      </tbody>
+    </table>
+  </div>
 
-    <mat-paginator *ngIf="inventoryLedgerData?.length && totalElements > 0" [length]="totalElements"
+  @if (inventoryLedgerData?.length && totalElements > 0) {
+    <mat-paginator [length]="totalElements"
       [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="pageSizeOptions" [showFirstLastButtons]="true"
       (page)="onPageChange($event)">
     </mat-paginator>
+  }
 
-    <div *ngIf="!inventoryLedgerData || inventoryLedgerData.length === 0" class="no-data-found">
+  @if (!inventoryLedgerData || inventoryLedgerData.length === 0) {
+    <div class="no-data-found">
       <span class="mx-p-b-10">No records found</span>
     </div>
+  }
 
-  </div>
+</div>
 </div>

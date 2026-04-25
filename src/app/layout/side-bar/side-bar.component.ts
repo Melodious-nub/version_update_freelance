@@ -14,7 +14,7 @@ import { BusinessAccountService } from 'src/app/project/postlogin/business-accou
 import { TokenService } from 'src/app/service/token.service';
 import { DadyinButtonComponent } from '../../shared/widgets/dadyin-button/dadyin-button.component';
 import { MatTooltip } from '@angular/material/tooltip';
-import { NgStyle, NgFor, NgIf, NgClass } from '@angular/common';
+import { NgStyle, NgClass } from '@angular/common';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 
 @Component({
@@ -23,14 +23,12 @@ import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
     styleUrls: ['./side-bar.component.scss'],
     standalone: true,
     imports: [
-        ExtendedModule,
-        NgStyle,
-        NgFor,
-        NgIf,
-        NgClass,
-        MatTooltip,
-        DadyinButtonComponent,
-    ],
+    ExtendedModule,
+    NgStyle,
+    NgClass,
+    MatTooltip,
+    DadyinButtonComponent
+],
 })
 export class SideBarComponent implements OnInit {
   @Input() isExpanded = true;

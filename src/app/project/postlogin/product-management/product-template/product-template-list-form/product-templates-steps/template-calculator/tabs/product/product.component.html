@@ -10,33 +10,41 @@
       </div>
       <div class="position-relative w-50">
         <div class="attribute w-100" [ngStyle]="{ opacity: currentControl ? 1 : 0 }">
-          <label *ngIf="currentControl" for="">{{
-            this.getAttributeObjectById(currentControl.parent.value.attributeId)
-            ?.description
+          @if (currentControl) {
+            <label for="">{{
+              this.getAttributeObjectById(currentControl.parent.value.attributeId)
+              ?.description
             }}</label>
+          }
           <input [ngClass]="{ highlight: currentControl }" class="width-perc-100" [(ngModel)]="formulaValue"
             [ngModelOptions]="{ standalone: true }" (input)="openFormulaAutoComplete($event)" type="text"
             placeholder="Formula" />
-        </div>
+          </div>
 
-        <div class="formula-autocomplete b-light" *ngIf="formulaAutoComplete">
-          <p style="cursor: pointer" (click)="
+          @if (formulaAutoComplete) {
+            <div class="formula-autocomplete b-light">
+              @for (
+                attribute of getFilteredAutoCompleteAttributes(); track
+                attribute; let i = $index) {
+<p style="cursor: pointer" (click)="
           selectFormulaAttribute(
             this.getAttributeObjectById(attribute?.attributeId)?.description
           )
-        " *ngFor="
-          let attribute of getFilteredAutoCompleteAttributes();
-          let i = index
         ">
-            {{ this.getAttributeObjectById(attribute?.attributeId)?.description }}
-          </p>
-          <ng-container *ngFor="let att of lastProcessProcessProducts?.controls; let k = index">
-            <ng-container *ngFor="
-            let processProductAttribute of getProcessProductAttributeValues(k)
-              .controls | sortFormArray;
-            let l = index
-          ">
-              <p style="cursor: pointer" (click)="
+                  {{ this.getAttributeObjectById(attribute?.attributeId)?.description }}
+                </p>
+              }
+              @for (att of lastProcessProcessProducts?.controls; track att; let k = $index) {
+                @for (
+                  processProductAttribute of getProcessProductAttributeValues(k)
+                  .controls | sortFormArray; track
+                  processProductAttribute; let l = $index) {
+                  @if (
+                    !layerWiselabelTypeAttributeIds[
+                    att?.value.subProductId + '' + l
+                    ]?.includes(processProductAttribute.value.attributeId)
+                    ) {
+<p style="cursor: pointer" (click)="
               selectFormulaAttribute(
                 '[Process].[Layer]' +
                   k +
@@ -45,171 +53,188 @@
                     processProductAttribute.value.attributeId
                   )?.description
               )
-            " *ngIf="
-              !layerWiselabelTypeAttributeIds[
-                att?.value.subProductId + '' + l
-              ]?.includes(processProductAttribute.value.attributeId)
             ">
-                Layer[{{ k }}].{{
-                this.getAttributeObjectById(
-                processProductAttribute.value.attributeId
-                )?.description
-                }}
-              </p>
-            </ng-container>
-          </ng-container>
+                      Layer[{{ k }}].{{
+                      this.getAttributeObjectById(
+                      processProductAttribute.value.attributeId
+                      )?.description
+                      }}
+                    </p>
+                  }
+                }
+              }
+            </div>
+          }
         </div>
+      </div>
+
+
+      <div class="d-flex align-items-center">
+        <dadyin-button (clicked)="resetFormula()" [theme]="'borderless-primary'" type="icon" [typeval]="'replay'"
+          [class]="'bg-white'">
+        </dadyin-button>
+        &nbsp;
+        <dadyin-button (clicked)="openDialog()" [theme]="'borderless-primary'" [class]="'bg-white px-2 w-auto-img'"
+          type="image" [typeval]="'assets/nicons/info.png'">
+        </dadyin-button>
       </div>
     </div>
 
-
-    <div class="d-flex align-items-center">
-      <dadyin-button (clicked)="resetFormula()" [theme]="'borderless-primary'" type="icon" [typeval]="'replay'"
-        [class]="'bg-white'">
-      </dadyin-button>
-      &nbsp;
-      <dadyin-button (clicked)="openDialog()" [theme]="'borderless-primary'" [class]="'bg-white px-2 w-auto-img'"
-        type="image" [typeval]="'assets/nicons/info.png'">
-      </dadyin-button>
-    </div>
-  </div>
-
-  <ng-container>
+    <ng-container>
 
 
-    <div [formGroup]="productTemplateCalculator"
-      class="toolbar padding-bar b-round height-40 my-2 d-flex justify-content-between width-perc-100">
-      <div class="d-flex align-items-center font-size-14 title-text">
-        <div class="mx-1"><b> Product </b></div>
-        <div class="attribute-group d-flex align-items-center">
-          <select class="b-round" *ngIf="!showInputMeta" formControlName="metaCalculatorId"
-            (change)="onSelectCalculatorMeta()">
-            <option value="null" disabled selected>
-              <b> Select calculator </b>
-            </option>
-            <option [value]="'NEW'"><b> + Create new calculator </b></option>
-            <option [value]="'SAVEAS'">
-              <b> + Save as new calculator </b>
-            </option>
-            <ng-container *ngFor="let meta of apiService.allCalculatorMetas">
-              <option *ngIf="meta.packageType == 'UNIT'" [value]="meta.id">
-                {{ meta.description }}
-              </option>
-            </ng-container>
-          </select>
-          <input *ngIf="showInputMeta" [ngClass]="{ 'b-red': description.invalid }" type="text"
-            [formControl]="description" />
-          <dadyin-button *ngIf="showInputMeta" (clicked)="postCalculatorMeta()" [theme]="'borderless-primary'"
-            type="image" [typeval]="'assets/nicons/save.png'" [isDisabled]="description.invalid">
-          </dadyin-button>
-          <dadyin-button *ngIf="!showInputMeta" (clicked)="updateCalculatorMeta()" [theme]="'borderless-primary'"
-            type="image" [typeval]="'assets/nicons/save.png'">
-          </dadyin-button>
-          <dadyin-button *ngIf="showInputMeta" (clicked)="toggleSaveInput()" [theme]="'borderless-primary'" type="image"
-            [typeval]="'assets/nicons/delete.png'">
-          </dadyin-button>
-        </div>
-        <div class="d-flex mx-1">
-          <div class="">
-            <strong>Template Cost : </strong>
-            <span (mousedown)="preventFocusChange($event)" (click)="onClickLabel('MetricCost', '[Product].', 'Product')"
-              class="price-text cursor">
-              {{ getTemplateCost() }}
-            </span>
+      <div [formGroup]="productTemplateCalculator"
+        class="toolbar padding-bar b-round height-40 my-2 d-flex justify-content-between width-perc-100">
+        <div class="d-flex align-items-center font-size-14 title-text">
+          <div class="mx-1"><b> Product </b></div>
+          <div class="attribute-group d-flex align-items-center">
+            @if (!showInputMeta) {
+              <select class="b-round" formControlName="metaCalculatorId"
+                (change)="onSelectCalculatorMeta()">
+                <option value="null" disabled selected>
+                  <b> Select calculator </b>
+                </option>
+                <option [value]="'NEW'"><b> + Create new calculator </b></option>
+                <option [value]="'SAVEAS'">
+                  <b> + Save as new calculator </b>
+                </option>
+                @for (meta of apiService.allCalculatorMetas; track meta) {
+                  @if (meta.packageType == 'UNIT') {
+                    <option [value]="meta.id">
+                      {{ meta.description }}
+                    </option>
+                  }
+                }
+              </select>
+            }
+            @if (showInputMeta) {
+              <input [ngClass]="{ 'b-red': description.invalid }" type="text"
+                [formControl]="description" />
+            }
+            @if (showInputMeta) {
+              <dadyin-button (clicked)="postCalculatorMeta()" [theme]="'borderless-primary'"
+                type="image" [typeval]="'assets/nicons/save.png'" [isDisabled]="description.invalid">
+              </dadyin-button>
+            }
+            @if (!showInputMeta) {
+              <dadyin-button (clicked)="updateCalculatorMeta()" [theme]="'borderless-primary'"
+                type="image" [typeval]="'assets/nicons/save.png'">
+              </dadyin-button>
+            }
+            @if (showInputMeta) {
+              <dadyin-button (clicked)="toggleSaveInput()" [theme]="'borderless-primary'" type="image"
+                [typeval]="'assets/nicons/delete.png'">
+              </dadyin-button>
+            }
           </div>
-          <div class=" mx-2">
-            <strong>Template Density : </strong>
-            <span (mousedown)="preventFocusChange($event)" (click)="onClickLabel('Density', '[Product].', 'Product')"
-              class="price-text cursor">
-              {{ getTemplateDensity() }}
-            </span>
+          <div class="d-flex mx-1">
+            <div class="">
+              <strong>Template Cost : </strong>
+              <span (mousedown)="preventFocusChange($event)" (click)="onClickLabel('MetricCost', '[Product].', 'Product')"
+                class="price-text cursor">
+                {{ getTemplateCost() }}
+              </span>
+            </div>
+            <div class=" mx-2">
+              <strong>Template Density : </strong>
+              <span (mousedown)="preventFocusChange($event)" (click)="onClickLabel('Density', '[Product].', 'Product')"
+                class="price-text cursor">
+                {{ getTemplateDensity() }}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="options">
-        <div class="d-flex">
-          <input [formControl]="attributeName" [matAutocomplete]="auto" type="text"
-            placeholder="Type new field to add" />
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="
-                let attribute of getFilteredAttributes()
+        <div class="options">
+          <div class="d-flex">
+            <input [formControl]="attributeName" [matAutocomplete]="auto" type="text"
+              placeholder="Type new field to add" />
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                @for (
+                  attribute of getFilteredAttributes()
                   | SortNamePipe : 'description'
-              " [value]="attribute.description">
-              {{ attribute.description }}
-            </mat-option>
-          </mat-autocomplete>
-          <select class="width-perc-100 b-round bg-light" [formControl]="attributeType">
-            <option value="null" selected>Attribute Type</option>
-            <option [value]="attributeType.id" *ngFor="
-                let attributeType of this.apiService.allAttributesTypes
+                  ; track
+                  attribute) {
+                  <mat-option [value]="attribute.description">
+                    {{ attribute.description }}
+                  </mat-option>
+                }
+              </mat-autocomplete>
+              <select class="width-perc-100 b-round bg-light" [formControl]="attributeType">
+                <option value="null" selected>Attribute Type</option>
+                @for (
+                  attributeType of this.apiService.allAttributesTypes
                   | SortNamePipe : 'description'
-              ">
-              {{ attributeType.description }}
-            </option>
-          </select>
-        </div>
-        <div class="px-1">
-          <select class="b-round" [formControl]="colSpace">
-            <option value="" selected disabled>Field Space</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-            <option value="75">75</option>
-            <option value="100">100</option>
-          </select>
-        </div>
-        <dadyin-button class="px-1" widthImage="30px" heightImage="30px" [typeval]="'assets/nicons/add-white.png'" type="image"
-          [theme]="'borderless-primary'" [isDisabled]="!attributeType.value || !attributeName.value"
-          (clicked)="addAttribute('calculator')">
-        </dadyin-button>
-        <dadyin-button (clicked)="openAttributeDialog()" [theme]="'borderless-primary'" class="sort-btn bg-white"
-          type="icon" [typeval]="'sort'">
-        </dadyin-button>
+                  ; track
+                  attributeType) {
+                  <option [value]="attributeType.id">
+                    {{ attributeType.description }}
+                  </option>
+                }
+              </select>
+            </div>
+            <div class="px-1">
+              <select class="b-round" [formControl]="colSpace">
+                <option value="" selected disabled>Field Space</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="75">75</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+            <dadyin-button class="px-1" widthImage="30px" heightImage="30px" [typeval]="'assets/nicons/add-white.png'" type="image"
+              [theme]="'borderless-primary'" [isDisabled]="!attributeType.value || !attributeName.value"
+              (clicked)="addAttribute('calculator')">
+            </dadyin-button>
+            <dadyin-button (clicked)="openAttributeDialog()" [theme]="'borderless-primary'" class="sort-btn bg-white"
+              type="icon" [typeval]="'sort'">
+            </dadyin-button>
 
-        <dadyin-button (clicked)="changeView(0)" [theme]="'borderless-primary'" class="bg-white mx-1" type="icon"
-          [typeval]="'format_list_numbered'">
-        </dadyin-button>
-      </div>
-    </div>
+            <dadyin-button (clicked)="changeView(0)" [theme]="'borderless-primary'" class="bg-white mx-1" type="icon"
+              [typeval]="'format_list_numbered'">
+            </dadyin-button>
+          </div>
+        </div>
     <section class="card" style="
         overflow-y: auto;
         overflow-x: hidden;
         max-height: 500px;
         margin-bottom: 60px !important;
       ">
-      <ul class="attribute-groups">
-        <li class="attribute-group">
-          <div class="d-flex w-100">
-            <div class="row py-3 w-100" *ngIf="
-                productCalculatorTemplateAttributeValues.controls?.length > 0
-              ">
-              <ng-container *ngIf="!excelView[0]">
-                <ng-container [formGroup]="item" *ngFor="
-                    let item of productCalculatorTemplateAttributeValues.controls
-                      | sortFormArray;
-                    let i = index
-                  ">
-                  <ng-container *ngIf="
-                      !labelTypeAttributeIds.includes(
-                        item.get('attributeId').value
-                      )
-                    ">
-                    <ng-container *ngIf="
-                        !['Toggle', 'Dropdown', 'Label'].includes(
-                          getAttributeTypeObjectById(
-                            this.getAttributeObjectById(
+          <ul class="attribute-groups">
+            <li class="attribute-group">
+              <div class="d-flex w-100">
+                @if (
+                  productCalculatorTemplateAttributeValues.controls?.length > 0
+                  ) {
+                  <div class="row py-3 w-100">
+                    @if (!excelView[0]) {
+                      @for (
+                        item of productCalculatorTemplateAttributeValues.controls
+                        | sortFormArray; track
+                        item; let i = $index) {
+                        <ng-container [formGroup]="item">
+                          @if (
+                            !labelTypeAttributeIds.includes(
+                            item.get('attributeId').value
+                            )
+                            ) {
+                            @if (
+                              !['Toggle', 'Dropdown', 'Label'].includes(
+                              getAttributeTypeObjectById(
+                              this.getAttributeObjectById(
                               item?.get('attributeId').value
-                            )?.attributeTypeId
-                          )?.description
-                        )
-                      ">
+                              )?.attributeTypeId
+                              )?.description
+                              )
+                              ) {
                       <div [ngClass]="{
                           'width-perc-25': item?.get('colSpace').value == 25,
                           'width-perc-50': item?.get('colSpace').value == 50,
                           'width-perc-75': item?.get('colSpace').value == 75,
                           'width-perc-100': item?.get('colSpace').value == 100
                         }" class="my-1">
-                        <div class="attribute one attr-b b-none ">
+                                <div class="attribute one attr-b b-none ">
                           <label (mousedown)="preventFocusChange($event)" (click)="
                               onClickLabel(
                                 this.getAttributeObjectById(
@@ -219,20 +244,24 @@
                                 'Product'
                               )
                             " for="">
-                            {{
-                            this.getAttributeObjectById(
-                            item?.get("attributeId").value
-                            )?.description
-                            }}</label>
-                          <div class="attribute-input b-light">
-                            <mat-icon (click)="onDragClickAttribute(i)" class="more_vert">more_vert
-                            </mat-icon>
-                            <mat-icon *ngIf="!item?.get('isHidden').value" (click)="toggleVisibility(item, true)"
-                              class="visibility">visibility
-                            </mat-icon>
-                            <mat-icon *ngIf="item?.get('isHidden').value" (click)="toggleVisibility(item, false)"
-                              class="visibility_off">visibility_off
-                            </mat-icon>
+                                    {{
+                                    this.getAttributeObjectById(
+                                    item?.get("attributeId").value
+                                    )?.description
+                                  }}</label>
+                                  <div class="attribute-input b-light">
+                                    <mat-icon (click)="onDragClickAttribute(i)" class="more_vert">more_vert
+                                    </mat-icon>
+                                    @if (!item?.get('isHidden').value) {
+                                      <mat-icon (click)="toggleVisibility(item, true)"
+                                        class="visibility">visibility
+                                      </mat-icon>
+                                    }
+                                    @if (item?.get('isHidden').value) {
+                                      <mat-icon (click)="toggleVisibility(item, false)"
+                                        class="visibility_off">visibility_off
+                                      </mat-icon>
+                                    }
                             <input [ngClass]="{
                                 highlight: currentFocusedIndex == i + 'Product'
                               }" type="text" (focus)="
@@ -246,137 +275,142 @@
                                   i + 'Product'
                                 )
                               " formControlName="attributeValueExpression" placeholder="Enter your value" />
-                            <ng-container *ngIf="
+                                      @if (
+                                        getAttributeTypeObjectById(
+                                        this.getAttributeObjectById(
+                                        item?.get('attributeId').value
+                                        )?.attributeTypeId
+                                        )?.availableUOMs?.length > 0
+                                        ) {
+                                        @if (
+                                          !['Number', 'String'].includes(
+                                          getAttributeTypeObjectById(
+                                          getAttributeObjectById(
+                                          item?.get('attributeId').value
+                                          )?.attributeTypeId
+                                          ).description
+                                          )
+                                          ) {
+                                          <select class="bg-light b-round" tabindex="-1" formControlName="userConversionUom" id="userConversionUom">
+                                            @for (
+                                              uom of getAttributeTypeObjectById(
+                                              this.getAttributeObjectById(
+                                              item?.get('attributeId').value
+                                              )?.attributeTypeId,
+                                              item?.get('userConversionUom')
+                                              ).availableUOMs
+                                              ; track
+                                              uom) {
+                                              <option [value]="uom.description">
+                                                {{ uom?.description }}
+                                              </option>
+                                            }
+                                          </select>
+                                        }
+                                      }
+                                      @if (
+                                        ['Number', 'String'].includes(
+                                        getAttributeTypeObjectById(
+                                        getAttributeObjectById(
+                                        item?.get('attributeId').value
+                                        )?.attributeTypeId
+                                        ).description
+                                        )
+                                        ) {
+                                        <div class="uom-label">
+                                          {{ item?.get("userConversionUom").value ?? "" }}
+                                        </div>
+                                      }
+                                    </div>
+                                    <dadyin-button matTooltip="Delete" (clicked)="removeProductCalculatorAttribute(i)"
+                                      [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
+                                    </dadyin-button>
+                                  </div>
+                                </div>
+                              }
+                              @if (
+                                ['Toggle'].includes(
                                 getAttributeTypeObjectById(
-                                  this.getAttributeObjectById(
-                                    item?.get('attributeId').value
-                                  )?.attributeTypeId
-                                )?.availableUOMs?.length > 0
-                              ">
-                              <select class="bg-light b-round" tabindex="-1" *ngIf="
-                                  !['Number', 'String'].includes(
-                                    getAttributeTypeObjectById(
-                                      getAttributeObjectById(
-                                        item?.get('attributeId').value
-                                      )?.attributeTypeId
-                                    ).description
-                                  )
-                                " formControlName="userConversionUom" id="userConversionUom">
-                                <option [value]="uom.description" *ngFor="
-                                    let uom of getAttributeTypeObjectById(
-                                      this.getAttributeObjectById(
-                                        item?.get('attributeId').value
-                                      )?.attributeTypeId,
-                                      item?.get('userConversionUom')
-                                    ).availableUOMs
-                                  ">
-                                  {{ uom?.description }}
-                                </option>
-                              </select>
-                            </ng-container>
-
-                            <ng-container *ngIf="
-                                ['Number', 'String'].includes(
-                                  getAttributeTypeObjectById(
-                                    getAttributeObjectById(
-                                      item?.get('attributeId').value
-                                    )?.attributeTypeId
-                                  ).description
+                                this.getAttributeObjectById(
+                                item?.get('attributeId').value
+                                )?.attributeTypeId
+                                )?.description
                                 )
-                              ">
-                              <div class="uom-label">
-                                {{ item?.get("userConversionUom").value ?? "" }}
-                              </div>
-                            </ng-container>
-                          </div>
-                          <dadyin-button matTooltip="Delete" (clicked)="removeProductCalculatorAttribute(i)"
-                            [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
-                          </dadyin-button>
-                        </div>
-                      </div>
-                    </ng-container>
-
-                    <ng-container *ngIf="
-                        ['Toggle'].includes(
-                          getAttributeTypeObjectById(
-                            this.getAttributeObjectById(
-                              item?.get('attributeId').value
-                            )?.attributeTypeId
-                          )?.description
-                        )
-                      ">
+                                ) {
                       <div [ngClass]="{
                           'width-perc-25': item.get('colSpace').value == 25,
                           'width-perc-50': item.get('colSpace').value == 50,
                           'width-perc-75': item.get('colSpace').value == 75,
                           'width-perc-100': item.get('colSpace').value == 100
                         }" class="my-1">
-                        <div class="attribute tabular-sheet d-flex attr-b">
-                          <div class="attribute-input b-light">
-                            <mat-icon (click)="onDragClickAttribute(i)" class="more_vert">more_vert
-                            </mat-icon>
-                            <mat-icon *ngIf="!item?.get('isHidden').value" (click)="toggleVisibility(item, true)"
-                              class="visibility">visibility
-                            </mat-icon>
-                            <mat-icon *ngIf="item?.get('isHidden').value" (click)="toggleVisibility(item, false)"
-                              class="visibility_off">visibility_off
-                            </mat-icon>
+                                  <div class="attribute tabular-sheet d-flex attr-b">
+                                    <div class="attribute-input b-light">
+                                      <mat-icon (click)="onDragClickAttribute(i)" class="more_vert">more_vert
+                                      </mat-icon>
+                                      @if (!item?.get('isHidden').value) {
+                                        <mat-icon (click)="toggleVisibility(item, true)"
+                                          class="visibility">visibility
+                                        </mat-icon>
+                                      }
+                                      @if (item?.get('isHidden').value) {
+                                        <mat-icon (click)="toggleVisibility(item, false)"
+                                          class="visibility_off">visibility_off
+                                        </mat-icon>
+                                      }
                             <input type="text" [value]="
                                 this.getAttributeObjectById(
                                   item?.get('attributeId').value
                                 )?.description
                               " readonly />
-                            <div class="toggle" style="border-radius: 5px;">
+                                        <div class="toggle" style="border-radius: 5px;">
                               <button [ngClass]="{
                                   active:
                                     getArray(
                                       item.get('attributeValueExpression').value
                                     )[0].selected == true
                                 }">
-                                {{
-                                getArray(
-                                item.get("attributeValueExpression").value
-                                )[0].choice
-                                }}
-                              </button>
+                                            {{
+                                            getArray(
+                                            item.get("attributeValueExpression").value
+                                            )[0].choice
+                                            }}
+                                          </button>
                               <button [ngClass]="{
                                   active:
                                     getArray(
                                       item.get('attributeValueExpression').value
                                     )[1].selected == true
                                 }">
-                                {{
-                                getArray(
-                                item.get("attributeValueExpression").value
-                                )[1].choice
-                                }}
-                              </button>
-
-                            </div>
-                          </div>
-
-                          <dadyin-button matTooltip="Delete" (clicked)="removeProductCalculatorAttribute(i)"
-                            [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
-                          </dadyin-button>
-                        </div>
-                      </div>
-                    </ng-container>
-                    <ng-container *ngIf="
-                        ['Dropdown'].includes(
-                          getAttributeTypeObjectById(
-                            this.getAttributeObjectById(
-                              item?.get('attributeId').value
-                            )?.attributeTypeId
-                          )?.description
-                        )
-                      ">
+                                            {{
+                                            getArray(
+                                            item.get("attributeValueExpression").value
+                                            )[1].choice
+                                            }}
+                                          </button>
+                                        </div>
+                                      </div>
+                                      <dadyin-button matTooltip="Delete" (clicked)="removeProductCalculatorAttribute(i)"
+                                        [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
+                                      </dadyin-button>
+                                    </div>
+                                  </div>
+                                }
+                                @if (
+                                  ['Dropdown'].includes(
+                                  getAttributeTypeObjectById(
+                                  this.getAttributeObjectById(
+                                  item?.get('attributeId').value
+                                  )?.attributeTypeId
+                                  )?.description
+                                  )
+                                  ) {
                       <div [ngClass]="{
                           'width-perc-25': item.get('colSpace').value == 25,
                           'width-perc-50': item.get('colSpace').value == 50,
                           'width-perc-75': item.get('colSpace').value == 75,
                           'width-perc-100': item.get('colSpace').value == 100
                         }" class="my-1">
-                        <div class="attribute one attr-b b-none">
+                                    <div class="attribute one attr-b b-none">
                           <label (mousedown)="preventFocusChange($event)" (click)="
                               onClickLabel(
                                 this.getAttributeObjectById(
@@ -386,75 +420,79 @@
                                 'Product'
                               )
                             " for="">
-                            {{
-                            this.getAttributeObjectById(
-                            item?.get("attributeId").value
-                            )?.description
-                            }}</label>
-                          <div class="attribute-input b-light">
-                            <mat-icon (click)="editDropdownAttribute(item, i)" class="preview">edit
-                            </mat-icon>
-                            <mat-icon (click)="onDragClickAttribute(i)" class="more_vert">more_vert
-                            </mat-icon>
-                            <mat-icon *ngIf="!item?.get('isHidden').value" (click)="toggleVisibility(item, true)"
-                              class="visibility">visibility
-                            </mat-icon>
-                            <mat-icon *ngIf="item?.get('isHidden').value" (click)="toggleVisibility(item, false)"
-                              class="visibility_off">visibility_off
-                            </mat-icon>
-                            <select class="bg-white" style="width: 100% !important;">
-                              <option *ngFor="
-                                  let opt of getArray(
-                                    item.get('attributeValueExpression').value
-                                  );
-                                  trackBy: trackByFn
-                                " [value]="opt.choice">
-                                {{ opt.choice }}
-                              </option>
-                            </select>
-                          </div>
-
-                          <dadyin-button matTooltip="Delete" (clicked)="removeProductCalculatorAttribute(i)"
-                            [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
-                          </dadyin-button>
-                        </div>
-
-                      </div>
-                    </ng-container>
-                    <ng-container *ngIf="
-                        ['Label'].includes(
-                          getAttributeTypeObjectById(
-                            this.getAttributeObjectById(
-                              item?.get('attributeId').value
-                            )?.attributeTypeId
-                          )?.description
-                        )
-                      ">
-                      <div class="d-flex align-items-top">
-                        <div class="attribute width-perc-100 row b-all mx-auto min-h-label p-0 attr-b relative">
-                          <label class="labeltype-attribute label" style="position: absolute;top: -10px;left: 10px;">
-                            {{
-                            this.getAttributeObjectById(
-                            item?.get("attributeId").value
-                            )?.description
-                            }}
-                          </label>
-
-                          <ng-container [formGroup]="attr" *ngFor="
-                            let attr of filterAttributeForLabel(
-                              productCalculatorTemplateAttributeValues
-                            ) | sortFormArray
-                          ">
-                            <ng-container>
-                              <ng-container *ngIf="
-                                !['Toggle', 'Dropdown', 'Label'].includes(
+                                        {{
+                                        this.getAttributeObjectById(
+                                        item?.get("attributeId").value
+                                        )?.description
+                                      }}</label>
+                                      <div class="attribute-input b-light">
+                                        <mat-icon (click)="editDropdownAttribute(item, i)" class="preview">edit
+                                        </mat-icon>
+                                        <mat-icon (click)="onDragClickAttribute(i)" class="more_vert">more_vert
+                                        </mat-icon>
+                                        @if (!item?.get('isHidden').value) {
+                                          <mat-icon (click)="toggleVisibility(item, true)"
+                                            class="visibility">visibility
+                                          </mat-icon>
+                                        }
+                                        @if (item?.get('isHidden').value) {
+                                          <mat-icon (click)="toggleVisibility(item, false)"
+                                            class="visibility_off">visibility_off
+                                          </mat-icon>
+                                        }
+                                        <select class="bg-white" style="width: 100% !important;">
+                                          @for (
+                                            opt of getArray(
+                                            item.get('attributeValueExpression').value
+                                            ); track trackByFn($index,
+                                            opt)) {
+                                            <option [value]="opt.choice">
+                                              {{ opt.choice }}
+                                            </option>
+                                          }
+                                        </select>
+                                      </div>
+                                      <dadyin-button matTooltip="Delete" (clicked)="removeProductCalculatorAttribute(i)"
+                                        [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
+                                      </dadyin-button>
+                                    </div>
+                                  </div>
+                                }
+                                @if (
+                                  ['Label'].includes(
                                   getAttributeTypeObjectById(
-                                    this.getAttributeObjectById(
-                                      attr?.get('attributeId').value
-                                    )?.attributeTypeId
+                                  this.getAttributeObjectById(
+                                  item?.get('attributeId').value
+                                  )?.attributeTypeId
                                   )?.description
-                                )
-                              ">
+                                  )
+                                  ) {
+                                  <div class="d-flex align-items-top">
+                                    <div class="attribute width-perc-100 row b-all mx-auto min-h-label p-0 attr-b relative">
+                                      <label class="labeltype-attribute label" style="position: absolute;top: -10px;left: 10px;">
+                                        {{
+                                        this.getAttributeObjectById(
+                                        item?.get("attributeId").value
+                                        )?.description
+                                        }}
+                                      </label>
+                                      @for (
+                                        attr of filterAttributeForLabel(
+                                        productCalculatorTemplateAttributeValues
+                                        ) | sortFormArray
+                                        ; track
+                                        attr) {
+                                        <ng-container [formGroup]="attr">
+                                          <ng-container>
+                                            @if (
+                                              !['Toggle', 'Dropdown', 'Label'].includes(
+                                              getAttributeTypeObjectById(
+                                              this.getAttributeObjectById(
+                                              attr?.get('attributeId').value
+                                              )?.attributeTypeId
+                                              )?.description
+                                              )
+                                              ) {
                                 <div [ngClass]="{
                                   'width-perc-25':
                                     attr?.get('colSpace').value == 25,
@@ -465,7 +503,7 @@
                                   'width-perc-100':
                                     attr?.get('colSpace').value == 100
                                 }" class="mt-3">
-                                  <div class="attribute one attr-b b-none">
+                                                <div class="attribute one attr-b b-none">
                                     <label (mousedown)="preventFocusChange($event)" (click)="
                                       onClickLabel(
                                         this.getAttributeObjectById(
@@ -475,18 +513,22 @@
                                         'Product'
                                       )
                                     " for="">
-                                      {{
-                                      this.getAttributeObjectById(
-                                      attr?.get("attributeId").value
-                                      )?.description
-                                      }}</label>
-                                    <div class="attribute-input b-light">
-                                      <mat-icon *ngIf="!attr?.get('isHidden').value"
-                                        (click)="toggleVisibility(attr, true)" class="visibility">visibility
-                                      </mat-icon>
-                                      <mat-icon *ngIf="attr?.get('isHidden').value"
-                                        (click)="toggleVisibility(attr, false)" class="visibility_off">visibility_off
-                                      </mat-icon>
+                                                    {{
+                                                    this.getAttributeObjectById(
+                                                    attr?.get("attributeId").value
+                                                    )?.description
+                                                  }}</label>
+                                                  <div class="attribute-input b-light">
+                                                    @if (!attr?.get('isHidden').value) {
+                                                      <mat-icon
+                                                        (click)="toggleVisibility(attr, true)" class="visibility">visibility
+                                                      </mat-icon>
+                                                    }
+                                                    @if (attr?.get('isHidden').value) {
+                                                      <mat-icon
+                                                        (click)="toggleVisibility(attr, false)" class="visibility_off">visibility_off
+                                                      </mat-icon>
+                                                    }
                                       <input type="text" formControlName="attributeValueExpression" [ngClass]="{
                                         highlight:
                                           currentFocusedIndex == i + 'Product'
@@ -501,69 +543,72 @@
                                           i + 'Product'
                                         )
                                       " placeholder="Enter your value" />
-                                      <ng-container *ngIf="
-                                        getAttributeTypeObjectById(
-                                          this.getAttributeObjectById(
-                                            attr?.get('attributeId').value
-                                          )?.attributeTypeId
-                                        )?.availableUOMs?.length > 0
-                                      ">
-                                        <select class="bg-light b-round" tabindex="-1" *ngIf="
-                                          !['Number', 'String'].includes(
-                                            getAttributeTypeObjectById(
-                                              getAttributeObjectById(
+                                                      @if (
+                                                        getAttributeTypeObjectById(
+                                                        this.getAttributeObjectById(
+                                                        attr?.get('attributeId').value
+                                                        )?.attributeTypeId
+                                                        )?.availableUOMs?.length > 0
+                                                        ) {
+                                                        @if (
+                                                          !['Number', 'String'].includes(
+                                                          getAttributeTypeObjectById(
+                                                          getAttributeObjectById(
+                                                          attr?.get('attributeId').value
+                                                          )?.attributeTypeId
+                                                          ).description
+                                                          )
+                                                          ) {
+                                                          <select class="bg-light b-round" tabindex="-1" formControlName="userConversionUom" id="userConversionUom">
+                                                            @for (
+                                                              uom of getAttributeTypeObjectById(
+                                                              this.getAttributeObjectById(
+                                                              attr?.get('attributeId').value
+                                                              )?.attributeTypeId,
+                                                              attr?.get('userConversionUom')
+                                                              ).availableUOMs
+                                                              ; track
+                                                              uom) {
+                                                              <option [value]="uom.description">
+                                                                {{ uom?.description }}
+                                                              </option>
+                                                            }
+                                                          </select>
+                                                        }
+                                                      }
+                                                      @if (
+                                                        ['Number', 'String'].includes(
+                                                        getAttributeTypeObjectById(
+                                                        getAttributeObjectById(
+                                                        attr?.get('attributeId').value
+                                                        )?.attributeTypeId
+                                                        ).description
+                                                        )
+                                                        ) {
+                                                        <div class="uom-label">
+                                                          {{
+                                                          attr?.get("userConversionUom")
+                                                          .value ?? ""
+                                                          }}
+                                                        </div>
+                                                      }
+                                                    </div>
+                                                    <dadyin-button matTooltip="Delete" (clicked)="onDragRemoveAttribute(i, attr)"
+                                                      [theme]="'borderless-primary'" type="image"
+                                                      [typeval]="'assets/nicons/delete.png'">
+                                                    </dadyin-button>
+                                                  </div>
+                                                </div>
+                                              }
+                                              @if (
+                                                ['Toggle'].includes(
+                                                getAttributeTypeObjectById(
+                                                this.getAttributeObjectById(
                                                 attr?.get('attributeId').value
-                                              )?.attributeTypeId
-                                            ).description
-                                          )
-                                        " formControlName="userConversionUom" id="userConversionUom">
-                                          <option [value]="uom.description" *ngFor="
-                                            let uom of getAttributeTypeObjectById(
-                                              this.getAttributeObjectById(
-                                                attr?.get('attributeId').value
-                                              )?.attributeTypeId,
-                                              attr?.get('userConversionUom')
-                                            ).availableUOMs
-                                          ">
-                                            {{ uom?.description }}
-                                          </option>
-                                        </select>
-                                      </ng-container>
-
-                                      <ng-container *ngIf="
-                                        ['Number', 'String'].includes(
-                                          getAttributeTypeObjectById(
-                                            getAttributeObjectById(
-                                              attr?.get('attributeId').value
-                                            )?.attributeTypeId
-                                          ).description
-                                        )
-                                      ">
-                                        <div class="uom-label">
-                                          {{
-                                          attr?.get("userConversionUom")
-                                          .value ?? ""
-                                          }}
-                                        </div>
-                                      </ng-container>
-                                    </div>
-                                    <dadyin-button matTooltip="Delete" (clicked)="onDragRemoveAttribute(i, attr)"
-                                      [theme]="'borderless-primary'" type="image"
-                                      [typeval]="'assets/nicons/delete.png'">
-                                    </dadyin-button>
-                                  </div>
-                                </div>
-                              </ng-container>
-
-                              <ng-container *ngIf="
-                                ['Toggle'].includes(
-                                  getAttributeTypeObjectById(
-                                    this.getAttributeObjectById(
-                                      attr?.get('attributeId').value
-                                    )?.attributeTypeId
-                                  )?.description
-                                )
-                              ">
+                                                )?.attributeTypeId
+                                                )?.description
+                                                )
+                                                ) {
                                 <div [ngClass]="{
                                   'width-perc-25':
                                     attr?.get('colSpace').value == 25,
@@ -574,20 +619,24 @@
                                   'width-perc-100':
                                     attr?.get('colSpace').value == 100
                                 }" class="mt-3">
-                                  <div class="attribute tabular-sheet d-flex attr-b">
-                                    <div class="attribute-input b-light ms-2">
-                                      <mat-icon *ngIf="!attr?.get('isHidden').value"
-                                        (click)="toggleVisibility(attr, true)" class="visibility">visibility
-                                      </mat-icon>
-                                      <mat-icon *ngIf="attr?.get('isHidden').value"
-                                        (click)="toggleVisibility(attr, false)" class="visibility_off">visibility_off
-                                      </mat-icon>
+                                                  <div class="attribute tabular-sheet d-flex attr-b">
+                                                    <div class="attribute-input b-light ms-2">
+                                                      @if (!attr?.get('isHidden').value) {
+                                                        <mat-icon
+                                                          (click)="toggleVisibility(attr, true)" class="visibility">visibility
+                                                        </mat-icon>
+                                                      }
+                                                      @if (attr?.get('isHidden').value) {
+                                                        <mat-icon
+                                                          (click)="toggleVisibility(attr, false)" class="visibility_off">visibility_off
+                                                        </mat-icon>
+                                                      }
                                       <input type="text" [value]="
                                         this.getAttributeObjectById(
                                           attr?.get('attributeId').value
                                         )?.description
                                       " readonly />
-                                      <div class="toggle" style="border-radius: 5px;">
+                                                        <div class="toggle" style="border-radius: 5px;">
                                         <button [ngClass]="{
                                           active:
                                             getArray(
@@ -596,13 +645,13 @@
                                               ).value
                                             )[0].selected == true
                                         }">
-                                          {{
-                                          getArray(
-                                          attr.get("attributeValueExpression")
-                                          .value
-                                          )[0].choice
-                                          }}
-                                        </button>
+                                                            {{
+                                                            getArray(
+                                                            attr.get("attributeValueExpression")
+                                                            .value
+                                                            )[0].choice
+                                                            }}
+                                                          </button>
                                         <button [ngClass]="{
                                           active:
                                             getArray(
@@ -611,33 +660,31 @@
                                               ).value
                                             )[1].selected == true
                                         }">
-                                          {{
-                                          getArray(
-                                          attr.get("attributeValueExpression")
-                                          .value
-                                          )[1].choice
-                                          }}
-                                        </button>
-
-                                      </div>
-                                    </div>
-                                    <dadyin-button matTooltip="Delete" (clicked)="onDragRemoveAttribute(i, attr)"
-                                      [theme]="'borderless-primary'" type="image"
-                                      [typeval]="'assets/nicons/delete.png'">
-                                    </dadyin-button>
-                                  </div>
-                                </div>
-                              </ng-container>
-
-                              <ng-container *ngIf="
-                                ['Dropdown'].includes(
-                                  getAttributeTypeObjectById(
-                                    this.getAttributeObjectById(
-                                      attr?.get('attributeId').value
-                                    )?.attributeTypeId
-                                  )?.description
-                                )
-                              ">
+                                                            {{
+                                                            getArray(
+                                                            attr.get("attributeValueExpression")
+                                                            .value
+                                                            )[1].choice
+                                                            }}
+                                                          </button>
+                                                        </div>
+                                                      </div>
+                                                      <dadyin-button matTooltip="Delete" (clicked)="onDragRemoveAttribute(i, attr)"
+                                                        [theme]="'borderless-primary'" type="image"
+                                                        [typeval]="'assets/nicons/delete.png'">
+                                                      </dadyin-button>
+                                                    </div>
+                                                  </div>
+                                                }
+                                                @if (
+                                                  ['Dropdown'].includes(
+                                                  getAttributeTypeObjectById(
+                                                  this.getAttributeObjectById(
+                                                  attr?.get('attributeId').value
+                                                  )?.attributeTypeId
+                                                  )?.description
+                                                  )
+                                                  ) {
                                 <div [ngClass]="{
                                   'width-perc-25':
                                     attr?.get('colSpace').value == 25,
@@ -648,7 +695,7 @@
                                   'width-perc-100':
                                     attr?.get('colSpace').value == 100
                                 }" class="mt-3">
-                                  <div class="attribute one attr-b b-none">
+                                                    <div class="attribute one attr-b b-none">
                                     <label (mousedown)="preventFocusChange($event)" (click)="
                                       onClickLabel(
                                         this.getAttributeObjectById(
@@ -658,85 +705,90 @@
                                         'Product'
                                       )
                                     " for="">
-                                      {{
-                                      this.getAttributeObjectById(
-                                      attr?.get("attributeId").value
-                                      )?.description
-                                      }}</label>
-                                    <div class="attribute-input b-light">
-                                      <mat-icon *ngIf="!attr?.get('isHidden').value"
-                                        (click)="toggleVisibility(attr, true)" class="visibility">visibility
-                                      </mat-icon>
-                                      <mat-icon *ngIf="attr?.get('isHidden').value"
-                                        (click)="toggleVisibility(attr, false)" class="visibility_off">visibility_off
-                                      </mat-icon>
-                                      <select class="width-perc-100 bg-white" style="width: 100% !important;">
-                                        <option *ngFor="
-                                          let opt of getArray(
-                                            attr.get('attributeValueExpression')
-                                              .value
-                                          )
-                                        " [value]="opt.choice">
-                                          {{ opt.choice }}
-                                        </option>
-                                      </select>
-                                    </div>
-
-                                    <dadyin-button matTooltip="Delete" (clicked)="onDragRemoveAttribute(i, attr)"
-                                      [theme]="'borderless-primary'" type="image"
-                                      [typeval]="'assets/nicons/delete.png'">
-                                    </dadyin-button>
-                                  </div>
-                                </div>
-                              </ng-container>
-                            </ng-container>
-                          </ng-container>
-                        </div>
-
-
-                        <dadyin-button class="mt-2" matTooltip="Delete" (clicked)="removeProductCalculatorAttribute(i)"
-                          [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
-                        </dadyin-button>
-                      </div>
-
-                    </ng-container>
-                  </ng-container>
-                </ng-container>
-              </ng-container>
-
-              <ng-container *ngIf="excelView[0]">
+                                                        {{
+                                                        this.getAttributeObjectById(
+                                                        attr?.get("attributeId").value
+                                                        )?.description
+                                                      }}</label>
+                                                      <div class="attribute-input b-light">
+                                                        @if (!attr?.get('isHidden').value) {
+                                                          <mat-icon
+                                                            (click)="toggleVisibility(attr, true)" class="visibility">visibility
+                                                          </mat-icon>
+                                                        }
+                                                        @if (attr?.get('isHidden').value) {
+                                                          <mat-icon
+                                                            (click)="toggleVisibility(attr, false)" class="visibility_off">visibility_off
+                                                          </mat-icon>
+                                                        }
+                                                        <select class="width-perc-100 bg-white" style="width: 100% !important;">
+                                                          @for (
+                                                            opt of getArray(
+                                                            attr.get('attributeValueExpression')
+                                                            .value
+                                                            )
+                                                            ; track
+                                                            opt) {
+                                                            <option [value]="opt.choice">
+                                                              {{ opt.choice }}
+                                                            </option>
+                                                          }
+                                                        </select>
+                                                      </div>
+                                                      <dadyin-button matTooltip="Delete" (clicked)="onDragRemoveAttribute(i, attr)"
+                                                        [theme]="'borderless-primary'" type="image"
+                                                        [typeval]="'assets/nicons/delete.png'">
+                                                      </dadyin-button>
+                                                    </div>
+                                                  </div>
+                                                }
+                                              </ng-container>
+                                            </ng-container>
+                                          }
+                                        </div>
+                                        <dadyin-button class="mt-2" matTooltip="Delete" (clicked)="removeProductCalculatorAttribute(i)"
+                                          [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
+                                        </dadyin-button>
+                                      </div>
+                                    }
+                                  }
+                                </ng-container>
+                              }
+                            }
+                            @if (excelView[0]) {
                 <table cdkDropList (cdkDropListDropped)="
                     drop(
                       $event,
                       productCalculatorTemplateAttributeValues.controls
                     )
                   ">
-                  <ng-container [formGroup]="item" *ngFor="
-                      let item of productCalculatorTemplateAttributeValues.controls
-                        | sortFormArray;
-                      let i = index
-                    ">
-                    <tr cdkDrag *ngIf="
-                        !labelTypeAttributeIds.includes(
-                          item.get('attributeId').value
-                        )
-                      " class="b-light">
-                      <ng-container *ngIf="
-                          !['Toggle', 'Dropdown', 'Label'].includes(
-                            getAttributeTypeObjectById(
-                              this.getAttributeObjectById(
-                                attr?.get('attributeId').value
-                              )?.attributeTypeId
-                            )?.description
-                          )
-                        ">
+                                @for (
+                                  item of productCalculatorTemplateAttributeValues.controls
+                                  | sortFormArray; track
+                                  item; let i = $index) {
+                                  <ng-container [formGroup]="item">
+                                    @if (
+                                      !labelTypeAttributeIds.includes(
+                                      item.get('attributeId').value
+                                      )
+                                      ) {
+                                      <tr cdkDrag class="b-light">
+                                        @if (
+                                          !['Toggle', 'Dropdown', 'Label'].includes(
+                                          getAttributeTypeObjectById(
+                                          this.getAttributeObjectById(
+                                          attr?.get('attributeId').value
+                                          )?.attributeTypeId
+                                          )?.description
+                                          )
+                                          ) {
                         <td style="
                             width: 200px;
                             padding-left: 10px;
                             white-space: nowrap;
                           ">
-                          <div class="d-flex align-items-center">
-                            <i class="mr-2 material-icon">drag_indicator</i>
+                                            <div class="d-flex align-items-center">
+                                              <i class="mr-2 material-icon">drag_indicator</i>
                             <div (mousedown)="preventFocusChange($event)" class="cursor" (click)="
                                 onClickLabel(
                                   this.getAttributeObjectById(
@@ -746,17 +798,17 @@
                                   'Product'
                                 )
                               ">
-                              <b>
-                                {{
-                                this.getAttributeObjectById(
-                                item?.get("attributeId").value
-                                )?.description
-                                }}
-                              </b>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
+                                                <b>
+                                                  {{
+                                                  this.getAttributeObjectById(
+                                                  item?.get("attributeId").value
+                                                  )?.description
+                                                  }}
+                                                </b>
+                                              </div>
+                                            </div>
+                                          </td>
+                                          <td>
                           <input class="b-light w-100" type="text" (focus)="
                               formula(
                                 item?.get('attributeValueExpression'),
@@ -768,46 +820,46 @@
                                 i + 'Product'
                               )
                             " formControlName="attributeValueExpression" placeholder="Enter your value" />
-                        </td>
-                      </ng-container>
-                    </tr>
-                  </ng-container>
-                </table>
-              </ng-container>
+                                            </td>
+                                          }
+                                        </tr>
+                                      }
+                                    </ng-container>
+                                  }
+                                </table>
+                              }
+                            </div>
+                          }
+                        </div>
+                      </li>
+                    </ul>
+                  </section>
+                </ng-container>
 
-            </div>
-          </div>
-        </li>
-      </ul>
-    </section>
-  </ng-container>
-
-  <!-- process calculator layerwise started -->
-  <ng-container *ngIf="
-      lastProcessLayerWiseCalculation?.value == false &&
-      templateProcessType.value == 'PROCESS'
-    ">
-    <div class="panel-header my-2 bg-card-header">
-      <div>
-        <strong>Process Calculator </strong>
-      </div>
-    </div>
-
-    <ng-container [formGroup]="processProduct" *ngFor="
-        let processProduct of lastProcessProcessProducts?.controls;
-        let i = index
-      ">
-      <div class="toolbar padding-bar my-2 d-flex align-items-center b-round width-perc-100" style="column-gap: 5px;">
-        <div class="font-size-14 primary-text">
-          <strong> Layer {{ i }} </strong>
-        </div>
-
-        <div class="attribute-group d-flex align-items-center w-50">
-          <input readonly [value]="getNameOfProduct(processProduct.get('subProductId').value)" type="text" />
-        </div>
-        <div class="d-flex">
-          <div class="primary-text">
-            <strong>Layer {{ i }} Cost : </strong>
+                <!-- process calculator layerwise started -->
+                @if (
+                  lastProcessLayerWiseCalculation?.value == false &&
+                  templateProcessType.value == 'PROCESS'
+                  ) {
+                  <div class="panel-header my-2 bg-card-header">
+                    <div>
+                      <strong>Process Calculator </strong>
+                    </div>
+                  </div>
+                  @for (
+                    processProduct of lastProcessProcessProducts?.controls; track
+                    processProduct; let i = $index) {
+                    <ng-container [formGroup]="processProduct">
+                      <div class="toolbar padding-bar my-2 d-flex align-items-center b-round width-perc-100" style="column-gap: 5px;">
+                        <div class="font-size-14 primary-text">
+                          <strong> Layer {{ i }} </strong>
+                        </div>
+                        <div class="attribute-group d-flex align-items-center w-50">
+                          <input readonly [value]="getNameOfProduct(processProduct.get('subProductId').value)" type="text" />
+                        </div>
+                        <div class="d-flex">
+                          <div class="primary-text">
+                            <strong>Layer {{ i }} Cost : </strong>
             <span (mousedown)="preventFocusChange($event)" (click)="
                 onClickLabel(
                   'MetricCost',
@@ -815,19 +867,19 @@
                   'Layer' + i
                 )
               " class="price-text cursor">
-              {{
-              processProduct.get("subProductMetricCost").get("attributeValue")
-              .value
-              }}
-              {{
-              processProduct
-              .get("subProductMetricCost")
-              .get("userConversionUom").value
-              }}
-            </span>
-          </div>
-          <div class="primary-text mx-2">
-            <strong>Layer {{ i }} Density : </strong>
+                              {{
+                              processProduct.get("subProductMetricCost").get("attributeValue")
+                              .value
+                              }}
+                              {{
+                              processProduct
+                              .get("subProductMetricCost")
+                              .get("userConversionUom").value
+                              }}
+                            </span>
+                          </div>
+                          <div class="primary-text mx-2">
+                            <strong>Layer {{ i }} Density : </strong>
             <span (mousedown)="preventFocusChange($event)" (click)="
                 onClickLabel(
                   'Density',
@@ -835,89 +887,98 @@
                   'Layer' + i
                 )
               " class="price-text cursor">
-              {{
-              processProduct.get("subProductDensity").get("attributeValue")
-              .value
-              }}
-              {{
-              processProduct.get("subProductDensity").get("userConversionUom")
-              .value
-              }}
-            </span>
-          </div>
-        </div>
-        <div class="options justify-content-end w-100">
-          <div class="d-flex" *ngIf="attributeNameArray?.length > 0">
-            <input [formControl]="attributeNameArray[i]" [matAutocomplete]="auto" type="text"
-              placeholder="Type new field to add" />
-            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-              <mat-option (click)="setAttributeTypeInArray(i)" *ngFor="
-                  let attribute of getFilteredAttributesforLayer(i)
-                    | SortNamePipe : 'description'
-                " [value]="attribute.description">
-                {{ attribute.description }}
-              </mat-option>
-            </mat-autocomplete>
-            <select class="width-perc-100 b-round" [formControl]="attributeTypeArray[i]">
-              <option value="null" selected>Attribute Type</option>
-              <option [value]="attributeType.id" *ngFor="
-                  let attributeType of this.apiService.allAttributesTypes
-                    | SortNamePipe : 'description'
-                ">
-                {{ attributeType.description }}
-              </option>
-            </select>
-          </div>
-          <div class="px-1">
-            <select class="b-round" [formControl]="colSpace">
-              <option value="" selected disabled>Field Space</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="75">75</option>
-              <option value="100">100</option>
-            </select>
-          </div>
+                              {{
+                              processProduct.get("subProductDensity").get("attributeValue")
+                              .value
+                              }}
+                              {{
+                              processProduct.get("subProductDensity").get("userConversionUom")
+                              .value
+                              }}
+                            </span>
+                          </div>
+                        </div>
+                        <div class="options justify-content-end w-100">
+                          @if (attributeNameArray?.length > 0) {
+                            <div class="d-flex">
+                              <input [formControl]="attributeNameArray[i]" [matAutocomplete]="auto" type="text"
+                                placeholder="Type new field to add" />
+                                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                  @for (
+                                    attribute of getFilteredAttributesforLayer(i)
+                                    | SortNamePipe : 'description'
+                                    ; track
+                                    attribute) {
+                                    <mat-option (click)="setAttributeTypeInArray(i)" [value]="attribute.description">
+                                      {{ attribute.description }}
+                                    </mat-option>
+                                  }
+                                </mat-autocomplete>
+                                <select class="width-perc-100 b-round" [formControl]="attributeTypeArray[i]">
+                                  <option value="null" selected>Attribute Type</option>
+                                  @for (
+                                    attributeType of this.apiService.allAttributesTypes
+                                    | SortNamePipe : 'description'
+                                    ; track
+                                    attributeType) {
+                                    <option [value]="attributeType.id">
+                                      {{ attributeType.description }}
+                                    </option>
+                                  }
+                                </select>
+                              </div>
+                            }
+                            <div class="px-1">
+                              <select class="b-round" [formControl]="colSpace">
+                                <option value="" selected disabled>Field Space</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                              </select>
+                            </div>
           <dadyin-button class="px-1" label="Add" [theme]="'primary'" [isDisabled]="
               !attributeTypeArray[i].value || !attributeNameArray[i].value
             " (clicked)="addAttribute('process', i)">
-          </dadyin-button>
-          <dadyin-button (clicked)="openLayerAttributeDialog(i)" [theme]="'borderless-primary'"
-            class="bg-white sort-btn" type="icon" [typeval]="'sort'">
-          </dadyin-button>
-          <dadyin-button (clicked)="changeView(i + 1)" [theme]="'borderless-primary'" class="bg-white mx-1" type="icon"
-            [typeval]="'format_list_numbered'">
-          </dadyin-button>
-        </div>
-      </div>
-      <section class="card my-2" style="overflow: auto; max-height: 500px; margin-bottom: 60px">
-        <ul class="attribute-groups">
-          <li class="attribute-group">
-            <div class="d-flex w-100">
-              <div class="row py-3 w-100" *ngIf="getProcessProductAttributeValues(i).controls?.length > 0">
-                <ng-container *ngIf="!excelView[i + 1]">
-                  <ng-container [formGroup]="processProductAttribute" *ngFor="
-                      let processProductAttribute of getProcessProductAttributeValues(
-                        i
-                      ).controls | sortFormArray;
-                      let j = index
-                    ">
-                    <ng-container *ngIf="
-                        !layerWiselabelTypeAttributeIds[
-                          processProduct?.value.subProductId + '' + i
-                        ]?.includes(
-                          processProductAttribute?.get('attributeId').value
-                        )
-                      ">
-                      <ng-container *ngIf="
-                          !['Toggle', 'Dropdown', 'Label'].includes(
-                            getAttributeTypeObjectById(
-                              this.getAttributeObjectById(
-                                processProductAttribute?.get('attributeId')
-                                  .value
-                              )?.attributeTypeId
-                            )?.description
-                          )
-                        ">
+                            </dadyin-button>
+                            <dadyin-button (clicked)="openLayerAttributeDialog(i)" [theme]="'borderless-primary'"
+                              class="bg-white sort-btn" type="icon" [typeval]="'sort'">
+                            </dadyin-button>
+                            <dadyin-button (clicked)="changeView(i + 1)" [theme]="'borderless-primary'" class="bg-white mx-1" type="icon"
+                              [typeval]="'format_list_numbered'">
+                            </dadyin-button>
+                          </div>
+                        </div>
+                        <section class="card my-2" style="overflow: auto; max-height: 500px; margin-bottom: 60px">
+                          <ul class="attribute-groups">
+                            <li class="attribute-group">
+                              <div class="d-flex w-100">
+                                @if (getProcessProductAttributeValues(i).controls?.length > 0) {
+                                  <div class="row py-3 w-100">
+                                    @if (!excelView[i + 1]) {
+                                      @for (
+                                        processProductAttribute of getProcessProductAttributeValues(
+                                        i
+                                        ).controls | sortFormArray; track
+                                        processProductAttribute; let j = $index) {
+                                        <ng-container [formGroup]="processProductAttribute">
+                                          @if (
+                                            !layerWiselabelTypeAttributeIds[
+                                            processProduct?.value.subProductId + '' + i
+                                            ]?.includes(
+                                            processProductAttribute?.get('attributeId').value
+                                            )
+                                            ) {
+                                            @if (
+                                              !['Toggle', 'Dropdown', 'Label'].includes(
+                                              getAttributeTypeObjectById(
+                                              this.getAttributeObjectById(
+                                              processProductAttribute?.get('attributeId')
+                                              .value
+                                              )?.attributeTypeId
+                                              )?.description
+                                              )
+                                              ) {
                         <div [ngClass]="{
                             'width-perc-25':
                               processProductAttribute?.get('colSpace').value ==
@@ -932,7 +993,7 @@
                               processProductAttribute?.get('colSpace').value ==
                               100
                           }" class="my-1">
-                          <div class="attribute one attr-b b-none">
+                                                <div class="attribute one attr-b b-none">
                             <label (mousedown)="preventFocusChange($event)" (click)="
                                 onClickLabel(
                                   this.getAttributeObjectById(
@@ -943,13 +1004,13 @@
                                   'Layer' + i
                                 )
                               " for="">
-                              {{
-                              this.getAttributeObjectById(
-                              processProductAttribute?.get("attributeId")
-                              .value
-                              )?.description
-                              }}</label>
-                            <div class="attribute-input b-light">
+                                                    {{
+                                                    this.getAttributeObjectById(
+                                                    processProductAttribute?.get("attributeId")
+                                                    .value
+                                                    )?.description
+                                                  }}</label>
+                                                  <div class="attribute-input b-light">
                               <mat-icon (click)="
                                   onDragClickProcessAttribute(
                                     i,
@@ -957,28 +1018,31 @@
                                     processProduct?.value.subProductId
                                   )
                                 " class="more_vert">more_vert
-                              </mat-icon>
-                              <mat-icon *ngIf="
-                                  !processProductAttribute?.get('isHidden')
-                                    .value
-                                " (click)="
+                                                    </mat-icon>
+                                                    @if (
+                                                      !processProductAttribute?.get('isHidden')
+                                                      .value
+                                                      ) {
+<mat-icon (click)="
                                   toggleVisibility(
                                     processProductAttribute,
                                     true
                                   )
                                 " class="visibility">visibility
-                              </mat-icon>
-                              <mat-icon *ngIf="
-                                  processProductAttribute?.get('isHidden').value
-                                " (click)="
+                                                      </mat-icon>
+                                                    }
+                                                    @if (
+                                                      processProductAttribute?.get('isHidden').value
+                                                      ) {
+<mat-icon (click)="
                                   toggleVisibility(
                                     processProductAttribute,
                                     false
                                   )
                                 " class="visibility_off">
-                                visibility_off
-                              </mat-icon>
-
+                                                        visibility_off
+                                                      </mat-icon>
+                                                    }
                               <input type="text" [ngClass]="{
                                   highlight:
                                     currentFocusedIndex == j + 'Layer' + i
@@ -997,80 +1061,83 @@
                                     j + 'Layer' + i
                                   )
                                 " formControlName="attributeValueExpression" placeholder="Enter your value" />
-                              <ng-container *ngIf="
-                                  getAttributeTypeObjectById(
-                                    this.getAttributeObjectById(
-                                      processProductAttribute?.get(
-                                        'attributeId'
-                                      ).value
-                                    )?.attributeTypeId
-                                  )?.availableUOMs?.length > 0
-                                ">
-                                <select class="bg-light b-round" tabindex="-1" *ngIf="
-                                    !['Number', 'String'].includes(
-                                      getAttributeTypeObjectById(
-                                        getAttributeObjectById(
-                                          processProductAttribute?.get(
-                                            'attributeId'
-                                          ).value
-                                        )?.attributeTypeId
-                                      ).description
-                                    )
-                                  " formControlName="userConversionUom" id="userConversionUom">
-                                  <option [value]="uom.description" *ngFor="
-                                      let uom of getAttributeTypeObjectById(
-                                        this.getAttributeObjectById(
-                                          processProductAttribute?.get(
-                                            'attributeId'
-                                          ).value
-                                        )?.attributeTypeId,
-                                        processProductAttribute?.get(
-                                          'userConversionUom'
-                                        )
-                                      ).availableUOMs
-                                    ">
-                                    {{ uom?.description }}
-                                  </option>
-                                </select>
-                              </ng-container>
-
-                              <ng-container *ngIf="
-                                  ['Number', 'String'].includes(
-                                    getAttributeTypeObjectById(
-                                      getAttributeObjectById(
-                                        processProductAttribute?.get(
-                                          'attributeId'
-                                        ).value
-                                      )?.attributeTypeId
-                                    ).description
-                                  )
-                                ">
-                                <div class="uom-label">
-                                  {{
-                                  processProductAttribute?.get(
-                                  "userConversionUom"
-                                  ).value ?? ""
-                                  }}
-                                </div>
-                              </ng-container>
-                            </div>
-                            <dadyin-button matTooltip="Delete" (clicked)="removeProcessProductAttribute(i, j)"
-                              [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
-                            </dadyin-button>
-                          </div>
-                        </div>
-                      </ng-container>
-
-                      <ng-container *ngIf="
-                          ['Toggle'].includes(
-                            getAttributeTypeObjectById(
-                              this.getAttributeObjectById(
-                                processProductAttribute?.get('attributeId')
-                                  .value
-                              )?.attributeTypeId
-                            )?.description
-                          )
-                        ">
+                                                      @if (
+                                                        getAttributeTypeObjectById(
+                                                        this.getAttributeObjectById(
+                                                        processProductAttribute?.get(
+                                                        'attributeId'
+                                                        ).value
+                                                        )?.attributeTypeId
+                                                        )?.availableUOMs?.length > 0
+                                                        ) {
+                                                        @if (
+                                                          !['Number', 'String'].includes(
+                                                          getAttributeTypeObjectById(
+                                                          getAttributeObjectById(
+                                                          processProductAttribute?.get(
+                                                          'attributeId'
+                                                          ).value
+                                                          )?.attributeTypeId
+                                                          ).description
+                                                          )
+                                                          ) {
+                                                          <select class="bg-light b-round" tabindex="-1" formControlName="userConversionUom" id="userConversionUom">
+                                                            @for (
+                                                              uom of getAttributeTypeObjectById(
+                                                              this.getAttributeObjectById(
+                                                              processProductAttribute?.get(
+                                                              'attributeId'
+                                                              ).value
+                                                              )?.attributeTypeId,
+                                                              processProductAttribute?.get(
+                                                              'userConversionUom'
+                                                              )
+                                                              ).availableUOMs
+                                                              ; track
+                                                              uom) {
+                                                              <option [value]="uom.description">
+                                                                {{ uom?.description }}
+                                                              </option>
+                                                            }
+                                                          </select>
+                                                        }
+                                                      }
+                                                      @if (
+                                                        ['Number', 'String'].includes(
+                                                        getAttributeTypeObjectById(
+                                                        getAttributeObjectById(
+                                                        processProductAttribute?.get(
+                                                        'attributeId'
+                                                        ).value
+                                                        )?.attributeTypeId
+                                                        ).description
+                                                        )
+                                                        ) {
+                                                        <div class="uom-label">
+                                                          {{
+                                                          processProductAttribute?.get(
+                                                          "userConversionUom"
+                                                          ).value ?? ""
+                                                          }}
+                                                        </div>
+                                                      }
+                                                    </div>
+                                                    <dadyin-button matTooltip="Delete" (clicked)="removeProcessProductAttribute(i, j)"
+                                                      [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
+                                                    </dadyin-button>
+                                                  </div>
+                                                </div>
+                                              }
+                                              @if (
+                                                ['Toggle'].includes(
+                                                getAttributeTypeObjectById(
+                                                this.getAttributeObjectById(
+                                                processProductAttribute?.get('attributeId')
+                                                .value
+                                                )?.attributeTypeId
+                                                )?.description
+                                                )
+                                                ) {
                         <div [ngClass]="{
                             'width-perc-25':
                               processProductAttribute.get('colSpace').value ==
@@ -1085,8 +1152,8 @@
                               processProductAttribute.get('colSpace').value ==
                               100
                           }" class="my-1">
-                          <div class="attribute tabular-sheet d-flex attr-b">
-                            <div class="attribute-input b-light ms-2">
+                                                  <div class="attribute tabular-sheet d-flex attr-b">
+                                                    <div class="attribute-input b-light ms-2">
                               <mat-icon (click)="
                                   onDragClickProcessAttribute(
                                     i,
@@ -1094,34 +1161,38 @@
                                     processProduct?.value.subProductId
                                   )
                                 " class="more_vert">more_vert
-                              </mat-icon>
-                              <mat-icon *ngIf="
-                                  !processProductAttribute?.get('isHidden')
-                                    .value
-                                " (click)="
+                                                      </mat-icon>
+                                                      @if (
+                                                        !processProductAttribute?.get('isHidden')
+                                                        .value
+                                                        ) {
+<mat-icon (click)="
                                   toggleVisibility(
                                     processProductAttribute,
                                     true
                                   )
                                 " class="visibility">visibility
-                              </mat-icon>
-                              <mat-icon *ngIf="
-                                  processProductAttribute?.get('isHidden').value
-                                " (click)="
+                                                        </mat-icon>
+                                                      }
+                                                      @if (
+                                                        processProductAttribute?.get('isHidden').value
+                                                        ) {
+<mat-icon (click)="
                                   toggleVisibility(
                                     processProductAttribute,
                                     false
                                   )
                                 " class="visibility_off">
-                                visibility_off
-                              </mat-icon>
+                                                          visibility_off
+                                                        </mat-icon>
+                                                      }
                               <input type="text" [value]="
                                   this.getAttributeObjectById(
                                     processProductAttribute?.get('attributeId')
                                       .value
                                   )?.description
                                 " readonly />
-                              <div class="toggle" style="border-radius: 5px;">
+                                                        <div class="toggle" style="border-radius: 5px;">
                                 <button [ngClass]="{
                                     active:
                                       getArray(
@@ -1130,14 +1201,14 @@
                                         ).value
                                       )[0].selected == true
                                   }">
-                                  {{
-                                  getArray(
-                                  processProductAttribute.get(
-                                  "attributeValueExpression"
-                                  ).value
-                                  )[0].choice
-                                  }}
-                                </button>
+                                                            {{
+                                                            getArray(
+                                                            processProductAttribute.get(
+                                                            "attributeValueExpression"
+                                                            ).value
+                                                            )[0].choice
+                                                            }}
+                                                          </button>
                                 <button [ngClass]="{
                                     active:
                                       getArray(
@@ -1146,38 +1217,38 @@
                                         ).value
                                       )[1].selected == true
                                   }">
-                                  {{
-                                  getArray(
-                                  processProductAttribute.get(
-                                  "attributeValueExpression"
-                                  ).value
-                                  )[1].choice
-                                  }}
-                                </button>
-                              </div>
-                            </div>
-                            <!--  <i
-                              (click)="removeProcessProductAttribute(i, j)"
-                              class="cancel_outline_new material-icon"
-                            >
-                              cancel_outline</i
-                            > -->
-                            <dadyin-button matTooltip="Delete" (clicked)="removeProcessProductAttribute(i,j)"
-                              [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
-                            </dadyin-button>
-                          </div>
-                        </div>
-                      </ng-container>
-                      <ng-container *ngIf="
-                          ['Dropdown'].includes(
-                            getAttributeTypeObjectById(
-                              this.getAttributeObjectById(
-                                processProductAttribute?.get('attributeId')
-                                  .value
-                              )?.attributeTypeId
-                            )?.description
-                          )
-                        ">
+                                                            {{
+                                                            getArray(
+                                                            processProductAttribute.get(
+                                                            "attributeValueExpression"
+                                                            ).value
+                                                            )[1].choice
+                                                            }}
+                                                          </button>
+                                                        </div>
+                                                      </div>
+                                                      <!--  <i
+                                                      (click)="removeProcessProductAttribute(i, j)"
+                                                      class="cancel_outline_new material-icon"
+                                                      >
+                                                      cancel_outline</i
+                                                      > -->
+                                                      <dadyin-button matTooltip="Delete" (clicked)="removeProcessProductAttribute(i,j)"
+                                                        [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
+                                                      </dadyin-button>
+                                                    </div>
+                                                  </div>
+                                                }
+                                                @if (
+                                                  ['Dropdown'].includes(
+                                                  getAttributeTypeObjectById(
+                                                  this.getAttributeObjectById(
+                                                  processProductAttribute?.get('attributeId')
+                                                  .value
+                                                  )?.attributeTypeId
+                                                  )?.description
+                                                  )
+                                                  ) {
                         <div [ngClass]="{
                             'width-perc-25':
                               processProductAttribute.get('colSpace').value ==
@@ -1192,7 +1263,7 @@
                               processProductAttribute.get('colSpace').value ==
                               100
                           }" class="my-1">
-                          <div class="attribute one attr-b b-none">
+                                                    <div class="attribute one attr-b b-none">
                             <label (mousedown)="preventFocusChange($event)" (click)="
                                 onClickLabel(
                                   this.getAttributeObjectById(
@@ -1203,13 +1274,13 @@
                                   'Layer' + i
                                 )
                               " for="">
-                              {{
-                              this.getAttributeObjectById(
-                              processProductAttribute?.get("attributeId")
-                              .value
-                              )?.description
-                              }}</label>
-                            <div class="attribute-input b-light">
+                                                        {{
+                                                        this.getAttributeObjectById(
+                                                        processProductAttribute?.get("attributeId")
+                                                        .value
+                                                        )?.description
+                                                      }}</label>
+                                                      <div class="attribute-input b-light">
                               <mat-icon (click)="
                                   onDragClickProcessAttribute(
                                     i,
@@ -1217,83 +1288,91 @@
                                     processProduct?.value.subProductId
                                   )
                                 " class="more_vert">more_vert
-                              </mat-icon>
-                              <mat-icon *ngIf="
-                                  !processProductAttribute?.get('isHidden')
-                                    .value
-                                " (click)="
+                                                        </mat-icon>
+                                                        @if (
+                                                          !processProductAttribute?.get('isHidden')
+                                                          .value
+                                                          ) {
+<mat-icon (click)="
                                   toggleVisibility(
                                     processProductAttribute,
                                     true
                                   )
                                 " class="visibility">visibility
-                              </mat-icon>
-                              <mat-icon *ngIf="
-                                  processProductAttribute?.get('isHidden').value
-                                " (click)="
+                                                          </mat-icon>
+                                                        }
+                                                        @if (
+                                                          processProductAttribute?.get('isHidden').value
+                                                          ) {
+<mat-icon (click)="
                                   toggleVisibility(
                                     processProductAttribute,
                                     false
                                   )
                                 " class="visibility_off">
-                                visibility_off
-                              </mat-icon>
-                              <select class="width-perc-100 bg-white" style="width: 100% !important;">
-                                <option *ngFor="
-                                    let opt of getArray(
-                                      processProductAttribute.get(
-                                        'attributeValueExpression'
-                                      ).value
-                                    )
-                                  " [value]="opt.choice">
-                                  {{ opt.choice }}
-                                </option>
-                              </select>
-                            </div>
-                            <dadyin-button matTooltip="Delete" (clicked)="removeProcessProductAttribute(i, j)"
-                              [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
-                            </dadyin-button>
-                          </div>
-                        </div>
-                      </ng-container>
-                      <ng-container *ngIf="
-                          ['Label'].includes(
-                            getAttributeTypeObjectById(
-                              this.getAttributeObjectById(
-                                processProductAttribute?.get('attributeId')
-                                  .value
-                              )?.attributeTypeId
-                            )?.description
-                          )
-                        ">
-                        <div class="d-flex align-items-top">
-                          <div class="attribute w-100 b-all  min-h-label b-round p-1 attr-b relative d-flex flex-wrap">
-                            <label class="labeltype-attribute label" style="position: absolute;top: -10px;left: 10px;">
-                              {{
-                              this.getAttributeObjectById(
-                              processProductAttribute?.get("attributeId")
-                              .value
-                              )?.description
-                              }}
-                            </label>
-
-                            <ng-container [formGroup]="attr" *ngFor="
-                              let attr of filterAttributeForLayerWiseLabel(
-                                getProcessProductAttributeValues(i),
-                                processProduct?.value.subProductId,
-                                i
-                              ) | sortFormArray
-                            ">
-                              <ng-container>
-                                <ng-container *ngIf="
-                                  !['Toggle', 'Dropdown', 'Label'].includes(
-                                    getAttributeTypeObjectById(
-                                      this.getAttributeObjectById(
-                                        attr?.get('attributeId').value
-                                      )?.attributeTypeId
-                                    )?.description
-                                  )
-                                ">
+                                                            visibility_off
+                                                          </mat-icon>
+                                                        }
+                                                        <select class="width-perc-100 bg-white" style="width: 100% !important;">
+                                                          @for (
+                                                            opt of getArray(
+                                                            processProductAttribute.get(
+                                                            'attributeValueExpression'
+                                                            ).value
+                                                            )
+                                                            ; track
+                                                            opt) {
+                                                            <option [value]="opt.choice">
+                                                              {{ opt.choice }}
+                                                            </option>
+                                                          }
+                                                        </select>
+                                                      </div>
+                                                      <dadyin-button matTooltip="Delete" (clicked)="removeProcessProductAttribute(i, j)"
+                                                        [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
+                                                      </dadyin-button>
+                                                    </div>
+                                                  </div>
+                                                }
+                                                @if (
+                                                  ['Label'].includes(
+                                                  getAttributeTypeObjectById(
+                                                  this.getAttributeObjectById(
+                                                  processProductAttribute?.get('attributeId')
+                                                  .value
+                                                  )?.attributeTypeId
+                                                  )?.description
+                                                  )
+                                                  ) {
+                                                  <div class="d-flex align-items-top">
+                                                    <div class="attribute w-100 b-all  min-h-label b-round p-1 attr-b relative d-flex flex-wrap">
+                                                      <label class="labeltype-attribute label" style="position: absolute;top: -10px;left: 10px;">
+                                                        {{
+                                                        this.getAttributeObjectById(
+                                                        processProductAttribute?.get("attributeId")
+                                                        .value
+                                                        )?.description
+                                                        }}
+                                                      </label>
+                                                      @for (
+                                                        attr of filterAttributeForLayerWiseLabel(
+                                                        getProcessProductAttributeValues(i),
+                                                        processProduct?.value.subProductId,
+                                                        i
+                                                        ) | sortFormArray
+                                                        ; track
+                                                        attr) {
+                                                        <ng-container [formGroup]="attr">
+                                                          <ng-container>
+                                                            @if (
+                                                              !['Toggle', 'Dropdown', 'Label'].includes(
+                                                              getAttributeTypeObjectById(
+                                                              this.getAttributeObjectById(
+                                                              attr?.get('attributeId').value
+                                                              )?.attributeTypeId
+                                                              )?.description
+                                                              )
+                                                              ) {
                                   <div [ngClass]="{
                                     'width-perc-25':
                                       attr?.get('colSpace').value == 25,
@@ -1304,7 +1383,7 @@
                                     'width-perc-100':
                                       attr?.get('colSpace').value == 100
                                   }" class="mt-3">
-                                    <div class="attribute one attr-b b-none">
+                                                                <div class="attribute one attr-b b-none">
                                       <label (mousedown)="preventFocusChange($event)" (click)="
                                         onClickLabel(
                                           this.getAttributeObjectById(
@@ -1314,19 +1393,23 @@
                                           'Layer' + i
                                         )
                                       " for="">
-                                        {{
-                                        this.getAttributeObjectById(
-                                        attr?.get("attributeId").value
-                                        )?.description
-                                        }}
-                                      </label>
-                                      <div class="attribute-input b-light">
-                                        <mat-icon *ngIf="!attr?.get('isHidden').value"
-                                          (click)="toggleVisibility(attr, true)" class="visibility">visibility
-                                        </mat-icon>
-                                        <mat-icon *ngIf="attr?.get('isHidden').value"
-                                          (click)="toggleVisibility(attr, false)" class="visibility_off">visibility_off
-                                        </mat-icon>
+                                                                    {{
+                                                                    this.getAttributeObjectById(
+                                                                    attr?.get("attributeId").value
+                                                                    )?.description
+                                                                    }}
+                                                                  </label>
+                                                                  <div class="attribute-input b-light">
+                                                                    @if (!attr?.get('isHidden').value) {
+                                                                      <mat-icon
+                                                                        (click)="toggleVisibility(attr, true)" class="visibility">visibility
+                                                                      </mat-icon>
+                                                                    }
+                                                                    @if (attr?.get('isHidden').value) {
+                                                                      <mat-icon
+                                                                        (click)="toggleVisibility(attr, false)" class="visibility_off">visibility_off
+                                                                      </mat-icon>
+                                                                    }
                                         <input type="text" formControlName="attributeValueExpression" [ngClass]="{
                                           highlight:
                                             currentFocusedIndex ==
@@ -1346,52 +1429,56 @@
                                             j + 'Layer' + i
                                           )
                                         " placeholder="Enter your value" />
-                                        <ng-container *ngIf="
-                                          getAttributeTypeObjectById(
-                                            this.getAttributeObjectById(
-                                              attr?.get('attributeId').value
-                                            )?.attributeTypeId
-                                          )?.availableUOMs?.length > 0
-                                        ">
-                                          <select class="bg-light b-round" tabindex="-1" *ngIf="
-                                            !['Number', 'String'].includes(
-                                              getAttributeTypeObjectById(
-                                                getAttributeObjectById(
-                                                  attr?.get('attributeId').value
-                                                )?.attributeTypeId
-                                              ).description
-                                            )
-                                          " formControlName="userConversionUom" id="userConversionUom">
-                                            <option [value]="uom.description" *ngFor="
-                                              let uom of getAttributeTypeObjectById(
-                                                this.getAttributeObjectById(
-                                                  attr?.get('attributeId').value
-                                                )?.attributeTypeId,
-                                                attr?.get('userConversionUom')
-                                              ).availableUOMs
-                                            ">
-                                              {{ uom?.description }}
-                                            </option>
-                                          </select>
-                                        </ng-container>
-
-                                        <ng-container *ngIf="
-                                          ['Number', 'String'].includes(
-                                            getAttributeTypeObjectById(
-                                              getAttributeObjectById(
-                                                attr?.get('attributeId').value
-                                              )?.attributeTypeId
-                                            ).description
-                                          )
-                                        ">
-                                          <div class="uom-label">
-                                            {{
-                                            attr?.get("userConversionUom")
-                                            .value ?? ""
-                                            }}
-                                          </div>
-                                        </ng-container>
-                                      </div>
+                                                                      @if (
+                                                                        getAttributeTypeObjectById(
+                                                                        this.getAttributeObjectById(
+                                                                        attr?.get('attributeId').value
+                                                                        )?.attributeTypeId
+                                                                        )?.availableUOMs?.length > 0
+                                                                        ) {
+                                                                        @if (
+                                                                          !['Number', 'String'].includes(
+                                                                          getAttributeTypeObjectById(
+                                                                          getAttributeObjectById(
+                                                                          attr?.get('attributeId').value
+                                                                          )?.attributeTypeId
+                                                                          ).description
+                                                                          )
+                                                                          ) {
+                                                                          <select class="bg-light b-round" tabindex="-1" formControlName="userConversionUom" id="userConversionUom">
+                                                                            @for (
+                                                                              uom of getAttributeTypeObjectById(
+                                                                              this.getAttributeObjectById(
+                                                                              attr?.get('attributeId').value
+                                                                              )?.attributeTypeId,
+                                                                              attr?.get('userConversionUom')
+                                                                              ).availableUOMs
+                                                                              ; track
+                                                                              uom) {
+                                                                              <option [value]="uom.description">
+                                                                                {{ uom?.description }}
+                                                                              </option>
+                                                                            }
+                                                                          </select>
+                                                                        }
+                                                                      }
+                                                                      @if (
+                                                                        ['Number', 'String'].includes(
+                                                                        getAttributeTypeObjectById(
+                                                                        getAttributeObjectById(
+                                                                        attr?.get('attributeId').value
+                                                                        )?.attributeTypeId
+                                                                        ).description
+                                                                        )
+                                                                        ) {
+                                                                        <div class="uom-label">
+                                                                          {{
+                                                                          attr?.get("userConversionUom")
+                                                                          .value ?? ""
+                                                                          }}
+                                                                        </div>
+                                                                      }
+                                                                    </div>
                                       <dadyin-button matTooltip="Delete" (clicked)="
                                         onDragRemoveProcessAttribute(
                                           i,
@@ -1400,21 +1487,20 @@
                                           processProduct?.value.subProductId
                                         )
                                       " [theme]="'borderless-primary'" type="image"
-                                        [typeval]="'assets/nicons/delete.png'">
-                                      </dadyin-button>
-                                    </div>
-                                  </div>
-                                </ng-container>
-
-                                <ng-container *ngIf="
-                                  ['Toggle'].includes(
-                                    getAttributeTypeObjectById(
-                                      this.getAttributeObjectById(
-                                        attr?.get('attributeId').value
-                                      )?.attributeTypeId
-                                    )?.description
-                                  )
-                                ">
+                                                                      [typeval]="'assets/nicons/delete.png'">
+                                                                    </dadyin-button>
+                                                                  </div>
+                                                                </div>
+                                                              }
+                                                              @if (
+                                                                ['Toggle'].includes(
+                                                                getAttributeTypeObjectById(
+                                                                this.getAttributeObjectById(
+                                                                attr?.get('attributeId').value
+                                                                )?.attributeTypeId
+                                                                )?.description
+                                                                )
+                                                                ) {
                                   <div [ngClass]="{
                                     'width-perc-25':
                                       attr?.get('colSpace').value == 25,
@@ -1425,20 +1511,24 @@
                                     'width-perc-100':
                                       attr?.get('colSpace').value == 100
                                   }" class="mt-3">
-                                    <div class="attribute tabular-sheet attr-b">
-                                      <div class="attribute-input b-light">
-                                        <mat-icon *ngIf="!attr?.get('isHidden').value"
-                                          (click)="toggleVisibility(attr, true)" class="visibility">visibility
-                                        </mat-icon>
-                                        <mat-icon *ngIf="attr?.get('isHidden').value"
-                                          (click)="toggleVisibility(attr, false)" class="visibility_off">visibility_off
-                                        </mat-icon>
+                                                                  <div class="attribute tabular-sheet attr-b">
+                                                                    <div class="attribute-input b-light">
+                                                                      @if (!attr?.get('isHidden').value) {
+                                                                        <mat-icon
+                                                                          (click)="toggleVisibility(attr, true)" class="visibility">visibility
+                                                                        </mat-icon>
+                                                                      }
+                                                                      @if (attr?.get('isHidden').value) {
+                                                                        <mat-icon
+                                                                          (click)="toggleVisibility(attr, false)" class="visibility_off">visibility_off
+                                                                        </mat-icon>
+                                                                      }
                                         <input type="text" [value]="
                                           this.getAttributeObjectById(
                                             attr?.get('attributeId').value
                                           )?.description
                                         " readonly />
-                                        <div class="toggle" style="border-radius: 5px;">
+                                                                        <div class="toggle" style="border-radius: 5px;">
                                           <button [ngClass]="{
                                             active:
                                               getArray(
@@ -1447,14 +1537,14 @@
                                                 ).value
                                               )[0].selected == true
                                           }">
-                                            {{
-                                            getArray(
-                                            attr.get(
-                                            "attributeValueExpression"
-                                            ).value
-                                            )[0].choice
-                                            }}
-                                          </button>
+                                                                            {{
+                                                                            getArray(
+                                                                            attr.get(
+                                                                            "attributeValueExpression"
+                                                                            ).value
+                                                                            )[0].choice
+                                                                            }}
+                                                                          </button>
                                           <button [ngClass]="{
                                             active:
                                               getArray(
@@ -1463,17 +1553,17 @@
                                                 ).value
                                               )[1].selected == true
                                           }">
-                                            {{
-                                            getArray(
-                                            attr.get(
-                                            "attributeValueExpression"
-                                            ).value
-                                            )[1].choice
-                                            }}
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <!--   <i
+                                                                            {{
+                                                                            getArray(
+                                                                            attr.get(
+                                                                            "attributeValueExpression"
+                                                                            ).value
+                                                                            )[1].choice
+                                                                            }}
+                                                                          </button>
+                                                                        </div>
+                                                                      </div>
+                                                                      <!--   <i
                                       (click)="
                                         onDragRemoveProcessAttribute(
                                           i,
@@ -1482,10 +1572,10 @@
                                           processProduct?.value.subProductId
                                         )
                                       "
-                                      class="cancel_outline_new material-icon"
-                                    >
-                                      cancel_outline
-                                    </i> -->
+                                                                      class="cancel_outline_new material-icon"
+                                                                      >
+                                                                      cancel_outline
+                                                                    </i> -->
                                       <dadyin-button matTooltip="Delete" (clicked)="
                                         onDragRemoveProcessAttribute(
                                           i,
@@ -1494,21 +1584,20 @@
                                           processProduct?.value.subProductId
                                         )
                                       " [theme]="'borderless-primary'" type="image"
-                                        [typeval]="'assets/nicons/delete.png'">
-                                      </dadyin-button>
-                                    </div>
-                                  </div>
-                                </ng-container>
-
-                                <ng-container *ngIf="
-                                  ['Dropdown'].includes(
-                                    getAttributeTypeObjectById(
-                                      this.getAttributeObjectById(
-                                        attr?.get('attributeId').value
-                                      )?.attributeTypeId
-                                    )?.description
-                                  )
-                                ">
+                                                                      [typeval]="'assets/nicons/delete.png'">
+                                                                    </dadyin-button>
+                                                                  </div>
+                                                                </div>
+                                                              }
+                                                              @if (
+                                                                ['Dropdown'].includes(
+                                                                getAttributeTypeObjectById(
+                                                                this.getAttributeObjectById(
+                                                                attr?.get('attributeId').value
+                                                                )?.attributeTypeId
+                                                                )?.description
+                                                                )
+                                                                ) {
                                   <div [ngClass]="{
                                     'width-perc-25':
                                       attr?.get('colSpace').value == 25,
@@ -1519,7 +1608,7 @@
                                     'width-perc-100':
                                       attr?.get('colSpace').value == 100
                                   }" class="mt-3">
-                                    <div class="attribute one attr-b b-none">
+                                                                  <div class="attribute one attr-b b-none">
                                       <label (mousedown)="preventFocusChange($event)" (click)="
                                         onClickLabel(
                                           this.getAttributeObjectById(
@@ -1529,31 +1618,36 @@
                                           'Layer' + i
                                         )
                                       " for="">
-                                        {{
-                                        this.getAttributeObjectById(
-                                        attr?.get("attributeId").value
-                                        )?.description
-                                        }}</label>
-                                      <div class="attribute-input b-light">
-                                        <mat-icon *ngIf="!attr?.get('isHidden').value"
-                                          (click)="toggleVisibility(attr, true)" class="visibility">visibility
-                                        </mat-icon>
-                                        <mat-icon *ngIf="attr?.get('isHidden').value"
-                                          (click)="toggleVisibility(attr, false)" class="visibility_off">visibility_off
-                                        </mat-icon>
-                                        <select class="width-perc-100 bg-white" style="width: 100% !important;">
-                                          <option *ngFor="
-                                            let opt of getArray(
-                                              attr.get(
-                                                'attributeValueExpression'
-                                              ).value
-                                            );
-                                            trackBy: trackByFn
-                                          " [value]="opt.choice">
-                                            {{ opt.choice }}
-                                          </option>
-                                        </select>
-                                      </div>
+                                                                      {{
+                                                                      this.getAttributeObjectById(
+                                                                      attr?.get("attributeId").value
+                                                                      )?.description
+                                                                    }}</label>
+                                                                    <div class="attribute-input b-light">
+                                                                      @if (!attr?.get('isHidden').value) {
+                                                                        <mat-icon
+                                                                          (click)="toggleVisibility(attr, true)" class="visibility">visibility
+                                                                        </mat-icon>
+                                                                      }
+                                                                      @if (attr?.get('isHidden').value) {
+                                                                        <mat-icon
+                                                                          (click)="toggleVisibility(attr, false)" class="visibility_off">visibility_off
+                                                                        </mat-icon>
+                                                                      }
+                                                                      <select class="width-perc-100 bg-white" style="width: 100% !important;">
+                                                                        @for (
+                                                                          opt of getArray(
+                                                                          attr.get(
+                                                                          'attributeValueExpression'
+                                                                          ).value
+                                                                          ); track trackByFn($index,
+                                                                          opt)) {
+                                                                          <option [value]="opt.choice">
+                                                                            {{ opt.choice }}
+                                                                          </option>
+                                                                        }
+                                                                      </select>
+                                                                    </div>
                                       <dadyin-button matTooltip="Delete" (clicked)="
                                         onDragRemoveProcessAttribute(
                                           i,
@@ -1562,59 +1656,60 @@
                                           processProduct?.value.subProductId
                                         )
                                       " [theme]="'borderless-primary'" type="image"
-                                        [typeval]="'assets/nicons/delete.png'">
-                                      </dadyin-button>
-                                    </div>
-                                  </div>
-                                </ng-container>
-                              </ng-container>
-                            </ng-container>
-                          </div>
-                          <dadyin-button matTooltip="Delete" (clicked)="removeProcessProductAttribute(i, j)"
-                            [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
-                          </dadyin-button>
-                        </div>
-                      </ng-container>
-                    </ng-container>
-                  </ng-container>
-                </ng-container>
-
-                <ng-container *ngIf="excelView[i + 1]">
+                                                                      [typeval]="'assets/nicons/delete.png'">
+                                                                    </dadyin-button>
+                                                                  </div>
+                                                                </div>
+                                                              }
+                                                            </ng-container>
+                                                          </ng-container>
+                                                        }
+                                                      </div>
+                                                      <dadyin-button matTooltip="Delete" (clicked)="removeProcessProductAttribute(i, j)"
+                                                        [theme]="'borderless-primary'" type="image" [typeval]="'assets/nicons/delete.png'">
+                                                      </dadyin-button>
+                                                    </div>
+                                                  }
+                                                }
+                                              </ng-container>
+                                            }
+                                          }
+                                          @if (excelView[i + 1]) {
                   <table cdkDropList (cdkDropListDropped)="
                       drop($event, getProcessProductAttributeValues(i).controls)
                     ">
-                    <ng-container [formGroup]="processProductAttribute" *ngFor="
-                        let processProductAttribute of getProcessProductAttributeValues(
-                          i
-                        ).controls | sortFormArray;
-                        let j = index
-                      ">
-                      <ng-container *ngIf="
-                          !layerWiselabelTypeAttributeIds[
-                            processProduct?.value.subProductId + '' + i
-                          ]?.includes(
-                            processProductAttribute?.get('attributeId').value
-                          )
-                        ">
-                        <ng-container *ngIf="
-                            !['Toggle', 'Dropdown', 'Label'].includes(
-                              getAttributeTypeObjectById(
-                                this.getAttributeObjectById(
-                                  processProductAttribute?.get('attributeId')
-                                    .value
-                                )?.attributeTypeId
-                              )?.description
-                            )
-                          ">
-                          <ng-container>
-                            <tr cdkDrag class="b-light">
+                                              @for (
+                                                processProductAttribute of getProcessProductAttributeValues(
+                                                i
+                                                ).controls | sortFormArray; track
+                                                processProductAttribute; let j = $index) {
+                                                <ng-container [formGroup]="processProductAttribute">
+                                                  @if (
+                                                    !layerWiselabelTypeAttributeIds[
+                                                    processProduct?.value.subProductId + '' + i
+                                                    ]?.includes(
+                                                    processProductAttribute?.get('attributeId').value
+                                                    )
+                                                    ) {
+                                                    @if (
+                                                      !['Toggle', 'Dropdown', 'Label'].includes(
+                                                      getAttributeTypeObjectById(
+                                                      this.getAttributeObjectById(
+                                                      processProductAttribute?.get('attributeId')
+                                                      .value
+                                                      )?.attributeTypeId
+                                                      )?.description
+                                                      )
+                                                      ) {
+                                                      <ng-container>
+                                                        <tr cdkDrag class="b-light">
                               <td style="
                                   width: 200px;
                                   padding-left: 10px;
                                   white-space: nowrap;
                                 ">
-                                <div class="d-flex align-items-center">
-                                  <i class="mr-2 material-icon">drag_indicator</i>
+                                                            <div class="d-flex align-items-center">
+                                                              <i class="mr-2 material-icon">drag_indicator</i>
                                   <div (mousedown)="preventFocusChange($event)" class="cursor" (click)="
                                       onClickLabel(
                                         this.getAttributeObjectById(
@@ -1626,19 +1721,19 @@
                                         'Layer' + i
                                       )
                                     ">
-                                    <b>
-                                      {{
-                                      this.getAttributeObjectById(
-                                      processProductAttribute?.get(
-                                      "attributeId"
-                                      ).value
-                                      )?.description
-                                      }}
-                                    </b>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
+                                                                <b>
+                                                                  {{
+                                                                  this.getAttributeObjectById(
+                                                                  processProductAttribute?.get(
+                                                                  "attributeId"
+                                                                  ).value
+                                                                  )?.description
+                                                                  }}
+                                                                </b>
+                                                              </div>
+                                                            </div>
+                                                          </td>
+                                                          <td>
                                 <input class="b-light w-100" type="text" [ngClass]="{
                                     highlight:
                                       currentFocusedIndex == j + 'Layer' + i
@@ -1657,62 +1752,65 @@
                                      j + 'Layer' + i
                                     )
                                   " formControlName="attributeValueExpression" placeholder="Enter your value" />
-                              </td>
-                            </tr>
-                          </ng-container>
-                        </ng-container>
-                      </ng-container>
-                    </ng-container>
-                  </table>
-                </ng-container>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </section>
-    </ng-container>
-  </ng-container>
-  <!-- process calculator layerwise ended-->
+                                                            </td>
+                                                          </tr>
+                                                        </ng-container>
+                                                      }
+                                                    }
+                                                  </ng-container>
+                                                }
+                                              </table>
+                                            }
+                                          </div>
+                                        }
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </section>
+                              </ng-container>
+                            }
+                          }
+                          <!-- process calculator layerwise ended-->
 
-  <!-- Selection Area -->
-  <!-- <section class="card">
-    <div class="selection-area">
-      <h3 class="selection-area-heading">Selection Area </h3>
-      <p class="selection-area-sub-heading">
-        Choose attributes to use in the formulas
-      </p>
-    </div>
+                          <!-- Selection Area -->
+                          <!-- <section class="card">
+                          <div class="selection-area">
+                            <h3 class="selection-area-heading">Selection Area </h3>
+                            <p class="selection-area-sub-heading">
+                              Choose attributes to use in the formulas
+                            </p>
+                          </div>
 
-    <div class="selection-area-body">
-      <ng-container *ngFor="let i of [0]">
-        <table>
-          <thead>
-            <tr>
-              <th>Extra Expenses Attributes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Extra expenses /Unit</td>
-            </tr>
-            <tr>
-              <td>Weight</td>
-            </tr>
-            <tr>
-              <td>Volume</td>
-            </tr>
-            <tr>
-              <td>Labour/Unit</td>
-            </tr>
-            <tr>
-              <td>Labour/MT</td>
-            </tr>
-            <tr>
-              <td>Electricity/MT</td>
-            </tr>
-          </tbody>
-        </table>
-      </ng-container>
-    </div>
-  </section> -->
-</form>
+                          <div class="selection-area-body">
+                            <ng-container *ngFor="let i of [0]">
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <th>Extra Expenses Attributes</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Extra expenses /Unit</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Weight</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Volume</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Labour/Unit</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Labour/MT</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Electricity/MT</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </ng-container>
+                          </div>
+                        </section> -->
+                      </form>

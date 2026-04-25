@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
-import { Location, NgIf, NgClass, NgFor, TitleCasePipe, DatePipe } from '@angular/common';
+import { Location, NgClass, TitleCasePipe, DatePipe } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CampaignsApiService } from './service/campaigns-api.service';
@@ -15,18 +15,16 @@ import { SpinnerOverlayComponent } from '../../../shared/component/spinner-overl
     styleUrls: ['./campaign-history.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        SpinnerOverlayComponent,
-        NgClass,
-        ExtendedModule,
-        MatAccordion,
-        NgFor,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelTitle,
-        TitleCasePipe,
-        DatePipe,
-    ],
+    SpinnerOverlayComponent,
+    NgClass,
+    ExtendedModule,
+    MatAccordion,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelTitle,
+    TitleCasePipe,
+    DatePipe
+],
 })
 export class CampaignHistoryComponent implements OnInit, AfterViewInit {
   public campaignName: string = 'Campaign History';

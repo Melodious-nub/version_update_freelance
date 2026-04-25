@@ -9,7 +9,7 @@ import { UomService } from 'src/app/service/uom.service';
 import { BatchModalComponent } from '../../common-modals/batch-modal/batch-modal/batch-modal.component';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { NgFor, NgIf, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
@@ -18,12 +18,10 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     styleUrls: ['./production.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        NgFor,
-        NgIf,
-        MatPaginator,
-        DatePipe,
-    ],
+    DadyinButtonComponent,
+    MatPaginator,
+    DatePipe
+],
 })
 export class ProductionComponent implements OnInit {
   productionDetails: any;

@@ -33,24 +33,26 @@
         </div>
       </div>
     </div>
-    <div
-      class="col-md-6 col-12 px-0 d-flex justify-content-end align-items-center"
-      *ngIf="!showUpcoming"
-    >
-      <div class="action-btns">
-        <dadyin-button
-          *ngIf="!showUpcoming"
-          [theme]="'primary'"
-          label="Create Campaign"
-          (clicked)="createCampaign()"
-        ></dadyin-button>
+    @if (!showUpcoming) {
+      <div
+        class="col-md-6 col-12 px-0 d-flex justify-content-end align-items-center"
+        >
+        <div class="action-btns">
+          @if (!showUpcoming) {
+            <dadyin-button
+              [theme]="'primary'"
+              label="Create Campaign"
+              (clicked)="createCampaign()"
+            ></dadyin-button>
+          }
+        </div>
       </div>
-    </div>
+    }
   </div>
 </div>
 
 <div class="content-wrapper mt-2">
-  <ng-container *ngIf="!showUpcoming">
+  @if (!showUpcoming) {
     <data-table
       [data]="filtered"
       [headers]="headers"
@@ -58,11 +60,11 @@
       (pageChange)="pageChange($event)"
       [actions]="tableActions"
       (editData)="viewCampaign($event.data)"
-    >
+      >
     </data-table>
-  </ng-container>
+  }
 
-  <ng-container *ngIf="showUpcoming">
+  @if (showUpcoming) {
     <data-table
       [data]="upcomingFiltered"
       [headers]="upcomingHeaders"
@@ -70,7 +72,7 @@
       (pageChange)="pageChange($event)"
       [actions]="tableActions"
       (editData)="viewCampaign($event.data)"
-    >
+      >
     </data-table>
-  </ng-container>
+  }
 </div>

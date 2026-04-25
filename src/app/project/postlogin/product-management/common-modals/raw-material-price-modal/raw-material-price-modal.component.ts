@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
 import { ProductService } from '../../product/service/product.service';
-import { NgIf } from '@angular/common';
+
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
@@ -15,11 +15,10 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     styleUrls: ['./raw-material-price-modal.component.scss'],
     standalone: true,
     imports: [
-        MatDialogClose,
-        FormsModule,
-        DadyinButtonComponent,
-        NgIf,
-    ],
+    MatDialogClose,
+    FormsModule,
+    DadyinButtonComponent
+],
 })
 export class RawMaterialPriceModalComponent implements OnInit {
   prompt = null;

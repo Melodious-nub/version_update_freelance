@@ -9,7 +9,7 @@ import { LOCALSTORAGEKEYS } from 'src/app/shared/constant';
 import { SignupService } from '../signup.service';
 import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyin-input.component';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-signup',
@@ -17,12 +17,11 @@ import { NgIf } from '@angular/common';
     styleUrls: ['./signup.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        NgIf,
-        DadyinInputComponent,
-        DadyinButtonComponent,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    DadyinInputComponent,
+    DadyinButtonComponent
+],
 })
 export class SignupComponent implements OnInit {
   public signupGroup: UntypedFormGroup;

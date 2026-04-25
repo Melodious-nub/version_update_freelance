@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgIf, NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'product-types',
@@ -8,11 +8,9 @@ import { NgIf, NgFor, NgClass } from '@angular/common';
     styleUrls: ['./product-types.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        NgFor,
-        NgClass,
-        ExtendedModule,
-    ],
+    NgClass,
+    ExtendedModule
+],
 })
 export class ProductTypesComponent implements OnInit {
   @Input() pageTitle: string = 'Product Type';

@@ -15,7 +15,7 @@ import { SwiperOptions } from 'swiper';
 import { SwiperComponent, SwiperModule } from 'swiper/angular';
 import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-choose-business-account',
@@ -23,12 +23,11 @@ import { NgFor, NgClass } from '@angular/common';
     styleUrls: ['./choose-business-account.scss'],
     standalone: true,
     imports: [
-        NgFor,
-        NgClass,
-        ExtendedModule,
-        DadyinButtonComponent,
-        SwiperModule,
-    ],
+    NgClass,
+    ExtendedModule,
+    DadyinButtonComponent,
+    SwiperModule
+],
 })
 export class ChooseBusinessAccountComponent implements OnInit {
   public imgUrl = environment.imgUrl;

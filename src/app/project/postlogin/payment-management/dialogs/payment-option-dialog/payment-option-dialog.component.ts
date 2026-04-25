@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+
 
 export interface DialogData {
   Id: number;
@@ -16,7 +16,7 @@ export interface DialogData {
     templateUrl: './payment-option-dialog.component.html',
     styleUrls: ['./payment-option-dialog.component.scss'],
     standalone: true,
-    imports: [NgIf, FormsModule, DadyinButtonComponent, MatDialogClose]
+    imports: [FormsModule, DadyinButtonComponent, MatDialogClose]
 })
 export class PaymentOptionDialogComponent implements OnInit {
 

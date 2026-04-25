@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { NgFor, NgIf, NgClass, DatePipe } from '@angular/common';
+import { NgClass, DatePipe } from '@angular/common';
 import { SwiperModule } from 'swiper/angular';
 @Component({
     selector: 'app-grid-view-product-card',
@@ -21,20 +21,18 @@ import { SwiperModule } from 'swiper/angular';
     styleUrls: ['./grid-view-product-card.component.scss'],
     standalone: true,
     imports: [
-        SwiperModule,
-        NgFor,
-        MatTooltipModule,
-        NgIf,
-        NgClass,
-        ExtendedModule,
-        NgbTooltip,
-        MatIconModule,
-        DadyinButtonComponent,
-        FormsModule,
-        DatePipe,
-        NumberFormatterPipe,
-        SortNumberPropertyPipe,
-    ],
+    SwiperModule,
+    MatTooltipModule,
+    NgClass,
+    ExtendedModule,
+    NgbTooltip,
+    MatIconModule,
+    DadyinButtonComponent,
+    FormsModule,
+    DatePipe,
+    NumberFormatterPipe,
+    SortNumberPropertyPipe
+],
 })
 export class GridViewProductCardComponent implements OnInit {
   imgUrl = environment.imgUrl;

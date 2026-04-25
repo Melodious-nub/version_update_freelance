@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Location, NgIf, NgFor, NgClass } from '@angular/common';
+import { Location, NgClass } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -43,24 +43,22 @@ type ProductImageTile = {
     styleUrls: ['./create-campaign.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        SpinnerOverlayComponent,
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelDescription,
-        DadyinInputComponent,
-        MatTooltip,
-        DadyinSelectComponent,
-        TimePickerComponent,
-        DadyinSearchableSelectComponent,
-        DadyinSearchSelectNewComponent,
-        NgFor,
-        NgClass,
-        ExtendedModule,
-        CKEditorModule,
-    ],
+    SpinnerOverlayComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelDescription,
+    DadyinInputComponent,
+    MatTooltip,
+    DadyinSelectComponent,
+    TimePickerComponent,
+    DadyinSearchableSelectComponent,
+    DadyinSearchSelectNewComponent,
+    NgClass,
+    ExtendedModule,
+    CKEditorModule
+],
 })
 export class CreateCampaignComponent implements OnInit {
   public Editor: any = (ClassicEditor as any).default || ClassicEditor;

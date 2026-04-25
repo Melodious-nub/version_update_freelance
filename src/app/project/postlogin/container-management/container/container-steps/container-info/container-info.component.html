@@ -15,10 +15,10 @@
                   ? '#03266d'
                   : '#3E7FFF'
             }"
-          >
+            >
             {{
-              containerForm.get("filledOdometer").get("odometerType").value
-                | slice : 0 : 1
+            containerForm.get("filledOdometer").get("odometerType").value
+            | slice : 0 : 1
             }}{{ containerForm.get("filledOdometer").get("value").value }}
           </div>
         </div>
@@ -35,10 +35,10 @@
                   ? '#03266d'
                   : '#3E7FFF'
             }"
-          >
+            >
             {{
-              containerForm.get("remainingOdometer").get("odometerType").value
-                | slice : 0 : 1
+            containerForm.get("remainingOdometer").get("odometerType").value
+            | slice : 0 : 1
             }}{{ containerForm.get("remainingOdometer").get("value").value }}
           </div>
         </div>
@@ -53,7 +53,7 @@
               inputType="text"
               formControlName="localContainerNumber"
               label="Local Container #"
-            >
+              >
             </dadyin-input>
           </div>
           <div class="inp">
@@ -61,7 +61,7 @@
               inputType="text"
               formControlName="containerNumber"
               label="Container #"
-            >
+              >
             </dadyin-input>
           </div>
           <div class="inp">
@@ -69,7 +69,7 @@
               inputType="text"
               formControlName="ssealNumber"
               label="S. seal #"
-            >
+              >
             </dadyin-input>
           </div>
           <div class="inp">
@@ -77,7 +77,7 @@
               inputType="text"
               formControlName="csealNumber"
               label="C. seal #"
-            >
+              >
             </dadyin-input>
           </div>
           <div class="inp">
@@ -85,7 +85,7 @@
               inputType="text"
               formControlName="bolNumber"
               label="BOL #"
-            >
+              >
             </dadyin-input>
           </div>
           <div class="inp">
@@ -93,7 +93,7 @@
               inputType="text"
               formControlName="mblNumber"
               label="MBL #"
-            >
+              >
             </dadyin-input>
           </div>
           <div class="inp">
@@ -101,7 +101,7 @@
               inputType="text"
               formControlName="hblNumber"
               label="HBL #"
-            >
+              >
             </dadyin-input>
           </div>
           <div class="inp">
@@ -113,347 +113,350 @@
                   formControlName="totalOrders"
                   type="text"
                   placeholder="Enter your value"
-                />
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="inp">
-            <div class="attribute one">
-              <label for="">Total SKUs</label>
-              <div class="attribute-input">
-                <input
-                  disabled
-                  formControlName="totalSKUs"
-                  type="text"
-                  placeholder="Enter your value"
-                />
+            <div class="inp">
+              <div class="attribute one">
+                <label for="">Total SKUs</label>
+                <div class="attribute-input">
+                  <input
+                    disabled
+                    formControlName="totalSKUs"
+                    type="text"
+                    placeholder="Enter your value"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="inp">
-            <div class="attribute one">
-              <label for="">Total Weight</label>
-              <div class="attribute-input" formGroupName="weight">
-                <input
-                  disabled
-                  min="0"
-                  formControlName="attributeValue"
-                  type="number"
-                  placeholder="Enter your value"
-                />
-                <select
-                  disabled
-                  formControlName="userConversionUom"
-                  id="NetWtUnit"
-                >
-                  <ng-container
-                    *ngFor="let item of uomService?.availableNetWeightUoms"
-                  >
-                    <option [value]="item.description">
-                      {{ item?.description }}
-                    </option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="inp">
-            <div class="attribute one">
-              <label for="">Total Volume</label>
-              <div class="attribute-input" formGroupName="volume">
-                <input
-                  disabled
-                  min="0"
-                  formControlName="attributeValue"
-                  type="number"
-                  placeholder="Enter your value"
-                />
-                <select
-                  disabled
-                  formControlName="userConversionUom"
-                  id="NetWtUnit"
-                >
-                  <ng-container
-                    *ngFor="let item of uomService?.availableNormalVolumeUoms"
-                  >
-                    <option [value]="item.description">
-                      {{ item?.description }}
-                    </option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-          </div>
-          <!--
-          <div class="inp">
-            <dadyin-input inputType="text"  formControlName="totalPackages" label="Total Packages">
-            </dadyin-input>
-          </div> -->
-          <div class="inp">
-            <dadyin-select
+              <div class="inp">
+                <div class="attribute one">
+                  <label for="">Total Weight</label>
+                  <div class="attribute-input" formGroupName="weight">
+                    <input
+                      disabled
+                      min="0"
+                      formControlName="attributeValue"
+                      type="number"
+                      placeholder="Enter your value"
+                      />
+                      <select
+                        disabled
+                        formControlName="userConversionUom"
+                        id="NetWtUnit"
+                        >
+                        @for (item of uomService?.availableNetWeightUoms; track item) {
+                          <option [value]="item.description">
+                            {{ item?.description }}
+                          </option>
+                        }
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="inp">
+                  <div class="attribute one">
+                    <label for="">Total Volume</label>
+                    <div class="attribute-input" formGroupName="volume">
+                      <input
+                        disabled
+                        min="0"
+                        formControlName="attributeValue"
+                        type="number"
+                        placeholder="Enter your value"
+                        />
+                        <select
+                          disabled
+                          formControlName="userConversionUom"
+                          id="NetWtUnit"
+                          >
+                          @for (item of uomService?.availableNormalVolumeUoms; track item) {
+                            <option [value]="item.description">
+                              {{ item?.description }}
+                            </option>
+                          }
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <!--
+                  <div class="inp">
+                    <dadyin-input inputType="text"  formControlName="totalPackages" label="Total Packages">
+                    </dadyin-input>
+                  </div> -->
+                  <div class="inp">
+                    <dadyin-select
               [optionArr]="[
                 { id: 'PALLET', name: 'PALLET' },
                 { id: 'FLOOR', name: 'FLOOR' },
                 { id: 'MIXED', name: 'MIXED' }
               ]"
-              label="Loading Type"
-              formControlName="loadingType"
-              optionLabel="name"
-              optionValue="id"
-              [emptyOption]="'Select Loading Type'"
-            >
-            </dadyin-select>
-          </div>
-          <div class="inp" *ngIf="!isExport" formGroupName="importCost">
-            <div class="attribute one">
-              <label for="">Order Value</label>
-              <div class="attribute-input">
-                <input
-                  disabled
-                  min="0"
-                  formControlName="attributeValue"
-                  type="number"
-                  placeholder="Enter your value"
-                />
-                <select
-                  disabled
-                  formControlName="userConversionUom"
-                  id="importCost"
-                >
-                  <ng-container
-                    *ngFor="let item of uomService?.availableCostUoms"
-                  >
-                    <option [value]="item.description">
-                      {{ item?.description }}
-                    </option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div *ngIf="isExport" class="inp" formGroupName="exportCost">
-            <div class="attribute one">
-              <label for="">Order Value</label>
-              <div class="attribute-input">
-                <input
-                  disabled
-                  min="0"
-                  formControlName="attributeValue"
-                  type="number"
-                  placeholder="Enter your value"
-                />
-                <select
-                  disabled
-                  formControlName="userConversionUom"
-                  id="exportCost"
-                >
-                  <ng-container
-                    *ngFor="let item of uomService?.availableCostUoms"
-                  >
-                    <option [value]="item.description">
-                      {{ item?.description }}
-                    </option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="inp">
-            <div class="attribute one">
-              <label for="">Vessel Name</label>
-              <div class="attribute-input">
-                <input
-                  disabled
-                  formControlName="vesselName"
-                  type="text"
-                  placeholder="Enter your value"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="inp">
-            <div class="attribute one mb-2">
-              <label for="">Vessel #</label>
-              <div class="attribute-input">
-                <input
-                  disabled
-                  formControlName="vesselNumber"
-                  type="text"
-                  placeholder="Enter your value"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ng-template>
-  </mat-expansion-panel>
+                      label="Loading Type"
+                      formControlName="loadingType"
+                      optionLabel="name"
+                      optionValue="id"
+                      [emptyOption]="'Select Loading Type'"
+                      >
+                    </dadyin-select>
+                  </div>
+                  @if (!isExport) {
+                    <div class="inp" formGroupName="importCost">
+                      <div class="attribute one">
+                        <label for="">Order Value</label>
+                        <div class="attribute-input">
+                          <input
+                            disabled
+                            min="0"
+                            formControlName="attributeValue"
+                            type="number"
+                            placeholder="Enter your value"
+                            />
+                            <select
+                              disabled
+                              formControlName="userConversionUom"
+                              id="importCost"
+                              >
+                              @for (item of uomService?.availableCostUoms; track item) {
+                                <option [value]="item.description">
+                                  {{ item?.description }}
+                                </option>
+                              }
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                    @if (isExport) {
+                      <div class="inp" formGroupName="exportCost">
+                        <div class="attribute one">
+                          <label for="">Order Value</label>
+                          <div class="attribute-input">
+                            <input
+                              disabled
+                              min="0"
+                              formControlName="attributeValue"
+                              type="number"
+                              placeholder="Enter your value"
+                              />
+                              <select
+                                disabled
+                                formControlName="userConversionUom"
+                                id="exportCost"
+                                >
+                                @for (item of uomService?.availableCostUoms; track item) {
+                                  <option [value]="item.description">
+                                    {{ item?.description }}
+                                  </option>
+                                }
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      }
+                      <div class="inp">
+                        <div class="attribute one">
+                          <label for="">Vessel Name</label>
+                          <div class="attribute-input">
+                            <input
+                              disabled
+                              formControlName="vesselName"
+                              type="text"
+                              placeholder="Enter your value"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="inp">
+                          <div class="attribute one mb-2">
+                            <label for="">Vessel #</label>
+                            <div class="attribute-input">
+                              <input
+                                disabled
+                                formControlName="vesselNumber"
+                                type="text"
+                                placeholder="Enter your value"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </mat-expansion-panel>
 
-  <mat-expansion-panel
-    class="panel-no-padding mt-4"
-    expanded="true"
-    #expansionPanel3
-  >
-    <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
-      <mat-panel-description>
-        <div class=" w-100 title-text">Final Contact Details</div>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <ng-template matExpansionPanelContent>
-      <div class="process-table table-padding">
-        <!-- Material Cost -->
-        <table>
-          <thead>
-            <tr>
-              <th style="padding-left: 20px">SR#</th>
-              <th>SERVICE</th>
-              <th>SERVICE PROVIDER</th>
-              <th>PHONE NUMBER</th>
-              <th>EMAIL</th>
-              <!-- <th>AMOUNT PAYABLE ({{isExport ? getUomByName('exportCost') : getUomByName('importCost')  }}) </th>
-              <th>PAYMENT STATUS</th> -->
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngIf="getFilteredFinalContactDetail()?.length == 0">
-              <td style="padding-left: 20px"></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <!-- <td></td>
-              <td></td> -->
-              <td>
-                <dadyin-button
-                  (clicked)="addInFinalContact()"
-                  [theme]="'borderless-primary'"
-                  type="icon"
-                  [typeval]="'add_circle_outline'"
-                ></dadyin-button>
-              </td>
-            </tr>
-            <ng-container
-              *ngFor="let item of finalContactDetails.controls; let i = index"
-              [formGroup]="item"
-            >
-              <tr
-                *ngIf="
-                  item.get('addedByBusinessAccountId').value ==
-                  this.currentBusinessAccount?.id
-                "
-              >
-                <td style="padding-left: 21px">
-                  {{
-                    getFilteredFinalContactDetail()?.length -
-                      (finalContactDetails.controls?.length - i) +
-                      1
-                  }}.
-                </td>
-                <td>
-                  <select
-                    (change)="item.get('amountPayableTo')?.reset()"
-                    formControlName="containerExpenseTypeId"
-                  >
-                    <option value="null" disabled selected>
-                      Select Expense Type
-                    </option>
-                    <ng-container
-                      *ngFor="
-                        let type of filterExpenseTypes(
-                          containerService.expenseTypes,
-                          i
-                        )
-                      "
+                  <mat-expansion-panel
+                    class="panel-no-padding mt-4"
+                    expanded="true"
+                    #expansionPanel3
                     >
-                      <option [value]="type.id">{{ type.description }}</option>
-                    </ng-container>
-                  </select>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [readonly]="!item.get('containerExpenseTypeId').value"
-                    formControlName="amountPayableTo"
+                    <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
+                      <mat-panel-description>
+                        <div class=" w-100 title-text">Final Contact Details</div>
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <ng-template matExpansionPanelContent>
+                      <div class="process-table table-padding">
+                        <!-- Material Cost -->
+                        <table>
+                          <thead>
+                            <tr>
+                              <th style="padding-left: 20px">SR#</th>
+                              <th>SERVICE</th>
+                              <th>SERVICE PROVIDER</th>
+                              <th>PHONE NUMBER</th>
+                              <th>EMAIL</th>
+                              <!-- <th>AMOUNT PAYABLE ({{isExport ? getUomByName('exportCost') : getUomByName('importCost')  }}) </th>
+                              <th>PAYMENT STATUS</th> -->
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @if (getFilteredFinalContactDetail()?.length == 0) {
+                              <tr>
+                                <td style="padding-left: 20px"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <!-- <td></td>
+                                <td></td> -->
+                                <td>
+                                  <dadyin-button
+                                    (clicked)="addInFinalContact()"
+                                    [theme]="'borderless-primary'"
+                                    type="icon"
+                                    [typeval]="'add_circle_outline'"
+                                  ></dadyin-button>
+                                </td>
+                              </tr>
+                            }
+                            @for (item of finalContactDetails.controls; track item; let i = $index) {
+                              <ng-container
+                                [formGroup]="item"
+                                >
+                                @if (
+                                  item.get('addedByBusinessAccountId').value ==
+                                  this.currentBusinessAccount?.id
+                                  ) {
+                                  <tr
+                                    >
+                                    <td style="padding-left: 21px">
+                                      {{
+                                      getFilteredFinalContactDetail()?.length -
+                                      (finalContactDetails.controls?.length - i) +
+                                      1
+                                      }}.
+                                    </td>
+                                    <td>
+                                      <select
+                                        (change)="item.get('amountPayableTo')?.reset()"
+                                        formControlName="containerExpenseTypeId"
+                                        >
+                                        <option value="null" disabled selected>
+                                          Select Expense Type
+                                        </option>
+                                        @for (
+                                          type of filterExpenseTypes(
+                                          containerService.expenseTypes,
+                                          i
+                                          )
+                                          ; track
+                                          type) {
+                                          <option [value]="type.id">{{ type.description }}</option>
+                                        }
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <input
+                                        type="text"
+                                        [readonly]="!item.get('containerExpenseTypeId').value"
+                                        formControlName="amountPayableTo"
                     (change)="
                       onSelectServiceProvider($event.target.value, item)
                     "
-                    [matAutocomplete]="auto"
-                    class="example-input"
-                  />
-                  <mat-autocomplete
-                    autoActiveFirstOption
-                    #auto="matAutocomplete"
-                  >
-                    <mat-option
+                                        [matAutocomplete]="auto"
+                                        class="example-input"
+                                        />
+                                        <mat-autocomplete
+                                          autoActiveFirstOption
+                                          #auto="matAutocomplete"
+                                          >
+                                          @for (
+                                            type of filterLabourList(
+                                            containerService.labourList,
+                                            item.get('containerExpenseTypeId').value
+                                            )
+                                            ; track
+                                            type) {
+                                            <mat-option
                       (click)="
                         onSelectServiceProvider(type.amountPayableTo, item)
                       "
-                      *ngFor="
-                        let type of filterLabourList(
-                          containerService.labourList,
-                          item.get('containerExpenseTypeId').value
-                        )
-                      "
-                      [value]="type.amountPayableTo"
-                    >
-                      {{ type.amountPayableTo }}
-                    </mat-option>
-                  </mat-autocomplete>
-                </td>
-                <td>
-                  <input type="text" formControlName="phone" />
-                </td>
-                <td>
-                  <input type="text" formControlName="emailId" />
-                </td>
-                <!-- <td [formGroup]="item.get('cost')">
-                  <input type="text" (change)="calculate.emit()" formControlName="attributeValue" />
-                </td>
-                <td>
-                  <select (change)="calculate.emit()" formControlName="status">
-                    <option value="PAID">Paid</option>
-                    <option value="UNPAID">Unpaid</option>
-                  </select>
-                </td> -->
-                <td>
-                  <dadyin-button
-                    (clicked)="removeInFinalContact(i)"
-                    [theme]="'borderless-danger'"
-                    type="icon"
-                    [typeval]="'delete_outline'"
-                  >
-                  </dadyin-button>
-                  <dadyin-button
-                    (clicked)="share(item)"
-                    *ngIf="
-                      (isExport &&
-                        item.get('forImporter').value == false &&
-                        item.get('isShareable').value == true) ||
-                      (!isExport &&
-                        item.get('forExporter').value == false &&
-                        item.get('isShareable').value == true)
-                    "
-                    [theme]="'borderless-primary'"
-                    type="icon"
-                    [typeval]="'share'"
-                  >
-                  </dadyin-button>
-                  <dadyin-button
-                    *ngIf="finalContactDetails.controls?.length == i + 1"
-                    (clicked)="addInFinalContact()"
-                    [theme]="'borderless-primary'"
-                    type="icon"
-                    [typeval]="'add_circle_outline'"
-                  >
-                  </dadyin-button>
-                </td>
-              </tr>
-            </ng-container>
-          </tbody>
-        </table>
-      </div>
-    </ng-template>
-  </mat-expansion-panel>
-</form>
+                                              [value]="type.amountPayableTo"
+                                              >
+                                              {{ type.amountPayableTo }}
+                                            </mat-option>
+                                          }
+                                        </mat-autocomplete>
+                                      </td>
+                                      <td>
+                                        <input type="text" formControlName="phone" />
+                                      </td>
+                                      <td>
+                                        <input type="text" formControlName="emailId" />
+                                      </td>
+                                      <!-- <td [formGroup]="item.get('cost')">
+                                      <input type="text" (change)="calculate.emit()" formControlName="attributeValue" />
+                                    </td>
+                                    <td>
+                                      <select (change)="calculate.emit()" formControlName="status">
+                                        <option value="PAID">Paid</option>
+                                        <option value="UNPAID">Unpaid</option>
+                                      </select>
+                                    </td> -->
+                                    <td>
+                                      <dadyin-button
+                                        (clicked)="removeInFinalContact(i)"
+                                        [theme]="'borderless-danger'"
+                                        type="icon"
+                                        [typeval]="'delete_outline'"
+                                        >
+                                      </dadyin-button>
+                                      @if (
+                                        (isExport &&
+                                        item.get('forImporter').value == false &&
+                                        item.get('isShareable').value == true) ||
+                                        (!isExport &&
+                                        item.get('forExporter').value == false &&
+                                        item.get('isShareable').value == true)
+                                        ) {
+                                        <dadyin-button
+                                          (clicked)="share(item)"
+                                          [theme]="'borderless-primary'"
+                                          type="icon"
+                                          [typeval]="'share'"
+                                          >
+                                        </dadyin-button>
+                                      }
+                                      @if (finalContactDetails.controls?.length == i + 1) {
+                                        <dadyin-button
+                                          (clicked)="addInFinalContact()"
+                                          [theme]="'borderless-primary'"
+                                          type="icon"
+                                          [typeval]="'add_circle_outline'"
+                                          >
+                                        </dadyin-button>
+                                      }
+                                    </td>
+                                  </tr>
+                                }
+                              </ng-container>
+                            }
+                          </tbody>
+                        </table>
+                      </div>
+                    </ng-template>
+                  </mat-expansion-panel>
+                </form>

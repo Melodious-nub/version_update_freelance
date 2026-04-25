@@ -11,7 +11,7 @@ import { BusinessAccountService } from '../business-account/business-account.ser
 import { environment } from 'src/environments/environment';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-home',
@@ -19,13 +19,11 @@ import { NgFor, NgIf, NgClass } from '@angular/common';
     styleUrls: ['./home.component.scss'],
     standalone: true,
     imports: [
-        NgFor,
-        NgIf,
-        RouterLink,
-        FormsModule,
-        NgClass,
-        ExtendedModule,
-    ],
+    RouterLink,
+    FormsModule,
+    NgClass,
+    ExtendedModule
+],
 })
 export class HomeComponent implements OnInit {
   menuList = sidebarMenu;

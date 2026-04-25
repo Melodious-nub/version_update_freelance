@@ -4,14 +4,14 @@ import { Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { UomService } from 'src/app/service/uom.service';
 import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
-import { NgFor } from '@angular/common';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
     selector: 'app-quick-pricing-modal',
     templateUrl: './quick-pricing-modal.component.html',
     styleUrls: ['./quick-pricing-modal.component.scss'],
     standalone: true,
-    imports: [MatDialogClose, FormsModule, ReactiveFormsModule, NgFor, DadyinButtonComponent]
+    imports: [MatDialogClose, FormsModule, ReactiveFormsModule, DadyinButtonComponent]
 })
 export class QuickPricingModalComponent implements OnInit {
   tierPricingDetail:any

@@ -9,7 +9,7 @@ import { UomService } from 'src/app/service/uom.service';
 import { ContainerManagementService } from 'src/app/project/postlogin/container-management/service/container-management.service';
 import { NumberFormatterPipe } from '../../../../../../shared/pipes/number-formatter.pipe';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgFor, NgIf, NgClass, DatePipe } from '@angular/common';
+import { NgClass, DatePipe } from '@angular/common';
 import { DadyinSelectComponent } from '../../../../../../shared/widgets/dadyin-select/dadyin-select.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -21,7 +21,7 @@ import { CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
     templateUrl: './batch-modal.component.html',
     styleUrls: ['./batch-modal.component.scss'],
     standalone: true,
-    imports: [CdkDrag, CdkDragHandle, DadyinButtonComponent, MatTooltip, MatExpansionPanel, FormsModule, ReactiveFormsModule, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinSelectComponent, MatTabGroup, NgFor, MatTab, NgIf, MatExpansionPanelContent, NgClass, ExtendedModule, DatePipe, NumberFormatterPipe]
+    imports: [CdkDrag, CdkDragHandle, DadyinButtonComponent, MatTooltip, MatExpansionPanel, FormsModule, ReactiveFormsModule, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinSelectComponent, MatTabGroup, MatTab, MatExpansionPanelContent, NgClass, ExtendedModule, DatePipe, NumberFormatterPipe]
 })
 export class BatchModalComponent implements OnInit {
 

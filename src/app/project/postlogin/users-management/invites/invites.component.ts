@@ -5,7 +5,7 @@ import { UsersManagementService } from '../services/users-management.service';
 import { DataTableComponent } from '../../../../shared/component/data-table/data-table.component';
 import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { SearchFilterComponent } from '../../../../shared/component/search-filter/search-filter.component';
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
@@ -14,16 +14,14 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     styleUrls: ['./invites.component.scss'],
     standalone: true,
     imports: [
-        MatTabGroup,
-        NgFor,
-        MatTab,
-        MatTabLabel,
-        MatTabContent,
-        SearchFilterComponent,
-        NgIf,
-        DadyinButtonComponent,
-        DataTableComponent,
-    ],
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatTabContent,
+    SearchFilterComponent,
+    DadyinButtonComponent,
+    DataTableComponent
+],
 })
 export class InvitesComponent implements OnInit {
   currentTabIndex = 0;

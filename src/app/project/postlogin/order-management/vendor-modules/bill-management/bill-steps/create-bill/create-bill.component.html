@@ -13,23 +13,27 @@
             <div class="col-12 col-md-4 map-grid">
               <dadyin-searchable-select label="Bill From" class="w-100" placeholder="Select Vendor" [control]="vendorId"
                 (changed)="onChangeVendor()" [fullItems]="businessAccountService.vendorList"
-                bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
+              bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
 
               <dadyin-button (clicked)="openMap(1)" (click)="$event.stopPropagation()" [theme]="'borderless-primary'"
                 type="icon" typeval="map">
               </dadyin-button>
 
-              <div *ngIf="map1" class="tooltip-white b-light shadow-sm">
-                {{ requestToAddress }}
-              </div>
+              @if (map1) {
+                <div class="tooltip-white b-light shadow-sm">
+                  {{ requestToAddress }}
+                </div>
+              }
             </div>
 
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value == 'CONTAINER'">
-              <dadyin-select [isDisabled]="!isEditable" [optionArr]="containerService.incoTermsList"
-                [emptyOption]="'Select Inco Terms'" label="Inco Terms" formControlName="incoTermId"
-                optionLabel="description" optionValue="id">
-              </dadyin-select>
-            </div>
+            @if (importLocalType.value == 'CONTAINER') {
+              <div class="col-12 col-md-2">
+                <dadyin-select [isDisabled]="!isEditable" [optionArr]="containerService.incoTermsList"
+                  [emptyOption]="'Select Inco Terms'" label="Inco Terms" formControlName="incoTermId"
+                  optionLabel="description" optionValue="id">
+                </dadyin-select>
+              </div>
+            }
             <div class="col-12 col-md-2 d-flex align-items-baseline">
               <div class="d-flex align-items-center">
                 <dadyin-button (clicked)="toggleType('LOCAL')" theme="borderless-primary" type="image" [typeval]="importLocalType.value == 'LOCAL'
@@ -46,55 +50,58 @@
                 { id: 'DELIVERY', description: 'DELIVERY' },
                 { id: 'PICKUP', description: 'PICKUP' }
               ]" label="Delivery Type" formControlName="deliveryPickup" class="mb-0" optionLabel="description"
-                  optionValue="id">
-                </dadyin-select>
-              </div> -->
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-2">
-              <dadyin-input [isDisabled]="!isEditable" inputType="date" formControlName="requiredByDate"
-                label="Required By Date">
-              </dadyin-input>
-            </div>
-            <div class="col-12 col-md-2">
-              <dadyin-input [isDisabled]="!isEditable" inputType="date" formControlName="shippingDate"
-                label="Shipping Date">
-              </dadyin-input>
-            </div>
-            <div class="col-12 col-md-2">
-              <dadyin-select (onSelect)="calculateValues()" [optionArr]="buyingTypeList" label="Buying Type"
-                formControlName="buyingType" optionLabel="name" optionValue="value">
+                optionValue="id">
               </dadyin-select>
-            </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-2">
+            <dadyin-input [isDisabled]="!isEditable" inputType="date" formControlName="requiredByDate"
+              label="Required By Date">
+            </dadyin-input>
+          </div>
+          <div class="col-12 col-md-2">
+            <dadyin-input [isDisabled]="!isEditable" inputType="date" formControlName="shippingDate"
+              label="Shipping Date">
+            </dadyin-input>
+          </div>
+          <div class="col-12 col-md-2">
+            <dadyin-select (onSelect)="calculateValues()" [optionArr]="buyingTypeList" label="Buying Type"
+              formControlName="buyingType" optionLabel="name" optionValue="value">
+            </dadyin-select>
+          </div>
 
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value != 'LOCAL'">
+          @if (importLocalType.value != 'LOCAL') {
+            <div class="col-12 col-md-2">
               <dadyin-select [optionArr]="containerService.portsList" label="Port of Departure"
                 formControlName="departurePortId" optionLabel="description" optionValue="id">
               </dadyin-select>
             </div>
-            <div class="col-12 col-md-2">
-              <dadyin-input type="number" label="Shipping via" formControlName="shipper">
-              </dadyin-input>
-            </div>
-            <div class="col-12 col-md-2">
-              <dadyin-input inputType="text" label="External Ref No"
-                formControlName="transactionReferenceNumber"></dadyin-input>
-            </div>
+          }
+          <div class="col-12 col-md-2">
+            <dadyin-input type="number" label="Shipping via" formControlName="shipper">
+            </dadyin-input>
           </div>
-          <div class="row">
-            <div class="col-12 col-md-2">
-              <dadyin-select [optionArr]="containerService.employeesList" label="Sales Person"
-                formControlName="salesManagerId" optionLabel="firstName" optionValue="id">
-              </dadyin-select>
-            </div>
+          <div class="col-12 col-md-2">
+            <dadyin-input inputType="text" label="External Ref No"
+            formControlName="transactionReferenceNumber"></dadyin-input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-2">
+            <dadyin-select [optionArr]="containerService.employeesList" label="Sales Person"
+              formControlName="salesManagerId" optionLabel="firstName" optionValue="id">
+            </dadyin-select>
+          </div>
 
+          <div class="col-12 col-md-2">
+            <dadyin-input inputType="text" formControlName="dadyInPoints" label="Dady Points"
+              placeholder="Dady Points">
+            </dadyin-input>
+          </div>
+          @if (importLocalType.value != 'LOCAL') {
             <div class="col-12 col-md-2">
-              <dadyin-input inputType="text" formControlName="dadyInPoints" label="Dady Points"
-                placeholder="Dady Points">
-              </dadyin-input>
-            </div>
-            <div class="col-12 col-md-2" *ngIf="importLocalType.value != 'LOCAL'">
               <dadyin-select [optionArr]="[
                   { id: 'PALLET', name: 'PALLET' },
                   { id: 'FLOOR', name: 'FLOOR' },
@@ -103,119 +110,122 @@
                 [emptyOption]="'Select Loading Type'">
               </dadyin-select>
             </div>
-            <div class="col-12 col-md-2 ">
-              <dadyin-select [emptyOption]="'Select Payment Term'" formControlName="paymentTermId"
-                [optionArr]="containerService.paymentTermsList" label="Payment Terms" optionLabel="description"
-                optionValue="id">
-              </dadyin-select>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-12 col-md-4">
-              <dadyin-searchable-select label="Bill To" class="w-100" placeholder="Select Customer"
-                [control]="customerId" (changed)="onChangeCustomer()" [fullItems]="businessAccountService.customerList"
-                bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
-            </div>
-            <div class="col-12 col-md-2">
-              <dadyin-select [emptyOption]="'Select Delivery Status'" formControlName="deliveryStatus" [optionArr]="[]"
-                label="Delivery Status" optionLabel="description" optionValue="id">
-              </dadyin-select>
-            </div>
-            <div class="col-12 col-md-2">
-              <dadyin-input inputType="date" formControlName="deliveryDate" label="Delivery Date"
-                placeholder="Delivery Date"></dadyin-input>
-            </div>
-            <div class="col-12 col-md-2">
-              <dadyin-input inputType="text" formControlName="containerNumber" label="Container #"
-                placeholder="Enter Container #"></dadyin-input>
-            </div>
-
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-2">
-              <dadyin-input inputType="text" formControlName="vesselName" label="Vessel Name"
-                placeholder="MSC"></dadyin-input>
-            </div>
-            <div class="col-12 col-md-2">
-              <dadyin-input inputType="text" formControlName="vesselNumber" label="Vessel #"
-                placeholder="Enter Vessel #"></dadyin-input>
-            </div>
-            <div class="col-12 col-md-2">
-              <dadyin-input inputType="text" formControlName="bolNumber" label="BOL #"
-                placeholder="Enter BOL #"></dadyin-input>
-            </div>
-            <div class="col-12 col-md-2">
-              <dadyin-input inputType="text" formControlName="ssealNumber" label="S.Seal"
-                placeholder="Enter S.Seal #"></dadyin-input>
-            </div>
-            <div class="col-12 col-md-2">
-              <dadyin-input inputType="text" formControlName="csealNumber" label="C.Seal"
-                placeholder="Enter C.Seal #"></dadyin-input>
-            </div>
+          }
+          <div class="col-12 col-md-2 ">
+            <dadyin-select [emptyOption]="'Select Payment Term'" formControlName="paymentTermId"
+              [optionArr]="containerService.paymentTermsList" label="Payment Terms" optionLabel="description"
+              optionValue="id">
+            </dadyin-select>
           </div>
         </div>
 
-        <div class="col-12 col-md-3">
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <dadyin-input inputType="text" [isDisabled]="true" formControlName="transactionId" label="Invoice#">
-              </dadyin-input>
-            </div>
-            <div class="col-12 col-md-6">
-              <dadyin-input [isDisabled]="!isEditable" inputType="date" formControlName="date" label="Date">
-              </dadyin-input>
-            </div>
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <dadyin-searchable-select label="Bill To" class="w-100" placeholder="Select Customer"
+              [control]="customerId" (changed)="onChangeCustomer()" [fullItems]="businessAccountService.customerList"
+            bindValue="relationAccountId" bindLabel="relationAccountName"></dadyin-searchable-select>
+          </div>
+          <div class="col-12 col-md-2">
+            <dadyin-select [emptyOption]="'Select Delivery Status'" formControlName="deliveryStatus" [optionArr]="[]"
+              label="Delivery Status" optionLabel="description" optionValue="id">
+            </dadyin-select>
+          </div>
+          <div class="col-12 col-md-2">
+            <dadyin-input inputType="date" formControlName="deliveryDate" label="Delivery Date"
+            placeholder="Delivery Date"></dadyin-input>
+          </div>
+          <div class="col-12 col-md-2">
+            <dadyin-input inputType="text" formControlName="containerNumber" label="Container #"
+            placeholder="Enter Container #"></dadyin-input>
           </div>
 
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <div class="attribute one attr-b">
-                <label> Due Date</label>
-                <div class="attribute-input">
-                  <input [min]="minRequiredDate" [disabled]="!isEditable" formControlName="dueDate" type="date" />
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <dadyin-input inputType="text" [isDisabled]="true" formControlName="purchaseOrderId" label="Ref.PO#">
-              </dadyin-input>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-2">
+            <dadyin-input inputType="text" formControlName="vesselName" label="Vessel Name"
+            placeholder="MSC"></dadyin-input>
+          </div>
+          <div class="col-12 col-md-2">
+            <dadyin-input inputType="text" formControlName="vesselNumber" label="Vessel #"
+            placeholder="Enter Vessel #"></dadyin-input>
+          </div>
+          <div class="col-12 col-md-2">
+            <dadyin-input inputType="text" formControlName="bolNumber" label="BOL #"
+            placeholder="Enter BOL #"></dadyin-input>
+          </div>
+          <div class="col-12 col-md-2">
+            <dadyin-input inputType="text" formControlName="ssealNumber" label="S.Seal"
+            placeholder="Enter S.Seal #"></dadyin-input>
+          </div>
+          <div class="col-12 col-md-2">
+            <dadyin-input inputType="text" formControlName="csealNumber" label="C.Seal"
+            placeholder="Enter C.Seal #"></dadyin-input>
           </div>
         </div>
       </div>
-    </ng-template>
-  </mat-expansion-panel>
-  <div class="py-2 d-flex align-items-center" style="column-gap: 5px">
 
-    <div class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
-      <img src="assets/nicons/previous.png" alt="Prev. Orders" style="width:20px;height:20px;" />
-      <div class="text-dark font-size-14 mx-1">Prev. Orders</div>
-    </div>
-    <div (click)="onClickMyCategory()" class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
-      <img src="assets/nicons/overview.png" alt="My Category" style="width:20px;height:20px;" />
-      <div class="text-dark font-size-14 mx-1">My Category</div>
-    </div>
-    <div (click)="onClickMyFavourite()" class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
-      <img src="assets/nicons/Fav.png" alt="Favourite" style="width:20px;height:20px;" />
-      <div class="text-dark font-size-14 mx-1">My Favourite</div>
-    </div>
+      <div class="col-12 col-md-3">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <dadyin-input inputType="text" [isDisabled]="true" formControlName="transactionId" label="Invoice#">
+            </dadyin-input>
+          </div>
+          <div class="col-12 col-md-6">
+            <dadyin-input [isDisabled]="!isEditable" inputType="date" formControlName="date" label="Date">
+            </dadyin-input>
+          </div>
+        </div>
 
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="attribute one attr-b">
+              <label> Due Date</label>
+              <div class="attribute-input">
+                <input [min]="minRequiredDate" [disabled]="!isEditable" formControlName="dueDate" type="date" />
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <dadyin-input inputType="text" [isDisabled]="true" formControlName="purchaseOrderId" label="Ref.PO#">
+            </dadyin-input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</mat-expansion-panel>
+<div class="py-2 d-flex align-items-center" style="column-gap: 5px">
+
+  <div class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
+    <img src="assets/nicons/previous.png" alt="Prev. Orders" style="width:20px;height:20px;" />
+    <div class="text-dark font-size-14 mx-1">Prev. Orders</div>
+  </div>
+  <div (click)="onClickMyCategory()" class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
+    <img src="assets/nicons/overview.png" alt="My Category" style="width:20px;height:20px;" />
+    <div class="text-dark font-size-14 mx-1">My Category</div>
+  </div>
+  <div (click)="onClickMyFavourite()" class="d-flex align-items-center bg-card-header b-secondary b-round p-1 cursor">
+    <img src="assets/nicons/Fav.png" alt="Favourite" style="width:20px;height:20px;" />
+    <div class="text-dark font-size-14 mx-1">My Favourite</div>
   </div>
 
-  <mat-expansion-panel class="panel-no-padding mt-1" expanded="true" #expansionPanel3>
-    <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
-      <mat-panel-description>
-        <div class="w-100 title-text">
-          Product Details
-          <span *ngIf="productPackages?.controls?.length">
-            ({{ productPackages?.controls?.length }})</span>
-        </div>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+</div>
 
-    <ng-template matExpansionPanelContent>
-      <section>
+<mat-expansion-panel class="panel-no-padding mt-1" expanded="true" #expansionPanel3>
+  <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
+    <mat-panel-description>
+      <div class="w-100 title-text">
+        Product Details
+        @if (productPackages?.controls?.length) {
+          <span>
+          ({{ productPackages?.controls?.length }})</span>
+        }
+      </div>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <ng-template matExpansionPanelContent>
+    <section>
         <app-order-transaction-packages [displayedColumns]="[
             'pkgs',
             'qoh',
@@ -227,10 +237,10 @@
             'subTotal',
             'action'
           ]" [isEditable]="isEditable" [orderFile]="billFile" [orderForm]="billForm"
-          (generatePoFromPdf)="generateBillFromPdf($event)" (getProducts)="getProductsList($event)"
-          (calculate)="calculateValues()" [productsList]="productsList" [productPackages]="productPackages"
-          [type]="'bill'"></app-order-transaction-packages>
-      </section>
-    </ng-template>
-  </mat-expansion-panel>
+        (generatePoFromPdf)="generateBillFromPdf($event)" (getProducts)="getProductsList($event)"
+        (calculate)="calculateValues()" [productsList]="productsList" [productPackages]="productPackages"
+      [type]="'bill'"></app-order-transaction-packages>
+    </section>
+  </ng-template>
+</mat-expansion-panel>
 </form>

@@ -27,7 +27,7 @@ import { MatTabGroup, MatTab } from '@angular/material/tabs';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgClass, NgIf, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
 @Component({
@@ -36,27 +36,25 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     styleUrls: ['./product-list.component.scss'],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        DadyinButtonComponent,
-        NgClass,
-        ExtendedModule,
-        NgIf,
-        MatTooltip,
-        CdkDrag,
-        NgFor,
-        MatTabGroup,
-        MatTab,
-        AddProductComponent,
-        AddPackageComponent,
-        TemplateViewComponent,
-        RelatedPoComponent,
-        ProductionComponent,
-        OtherDetailsComponent,
-        SocialPostsListComponent,
-        NgbTooltip,
-        NumberFormatterPipe,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    DadyinButtonComponent,
+    NgClass,
+    ExtendedModule,
+    MatTooltip,
+    CdkDrag,
+    MatTabGroup,
+    MatTab,
+    AddProductComponent,
+    AddPackageComponent,
+    TemplateViewComponent,
+    RelatedPoComponent,
+    ProductionComponent,
+    OtherDetailsComponent,
+    SocialPostsListComponent,
+    NgbTooltip,
+    NumberFormatterPipe
+],
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

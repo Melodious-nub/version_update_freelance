@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/service/api.service';
 import { ProductTypeFormService } from '../../service/product-type-form.service';
 import { BuyingCapacityCommonComponent } from '../../common/buying-capacity-common/buying-capacity-common.component';
 import { AdditionalCostCommonComponent } from '../../common/additional-cost-common/additional-cost-common.component';
-import { NgFor } from '@angular/common';
+
 import { DadyinInputComponent } from '../../../../../../shared/widgets/dadyin-input/dadyin-input.component';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
 import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
@@ -19,7 +19,7 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     templateUrl: './addedit-subtype.component.html',
     styleUrls: ['./addedit-subtype.component.scss'],
     standalone: true,
-    imports: [DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, NgFor, AdditionalCostCommonComponent, BuyingCapacityCommonComponent]
+    imports: [DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, AdditionalCostCommonComponent, BuyingCapacityCommonComponent]
 })
 export class AddeditSubtypeComponent implements OnInit {
     public productSubTypeForm: UntypedFormGroup = this.formService.createProductSubTypeForm()

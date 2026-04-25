@@ -18,7 +18,7 @@ import { MatOption } from '@angular/material/core';
 import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgFor, NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button.component';
 
 @Component({
@@ -27,16 +27,14 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     styleUrls: ['./pricecompare-dialog.component.scss'],
     standalone: true,
     imports: [
-        DadyinButtonComponent,
-        NgFor,
-        NgClass,
-        ExtendedModule,
-        NgbTooltip,
-        NgIf,
-        MatAutocompleteTrigger,
-        MatAutocomplete,
-        MatOption,
-    ],
+    DadyinButtonComponent,
+    NgClass,
+    ExtendedModule,
+    NgbTooltip,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    MatOption
+],
 })
 export class PricecompareDialogComponent implements OnInit {
   public imgUrl = environment.imgUrl;

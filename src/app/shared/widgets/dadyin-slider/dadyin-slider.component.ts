@@ -2,7 +2,7 @@ import { Component, HostListener, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
-import { NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-dadyin-slider',
@@ -10,10 +10,9 @@ import { NgFor, NgClass } from '@angular/common';
     styleUrls: ['./dadyin-slider.component.scss'],
     standalone: true,
     imports: [
-        NgFor,
-        NgClass,
-        ExtendedModule,
-    ],
+    NgClass,
+    ExtendedModule
+],
 })
 export class DadyinSliderComponent implements OnInit {
   imgUrl = environment.imgUrl;

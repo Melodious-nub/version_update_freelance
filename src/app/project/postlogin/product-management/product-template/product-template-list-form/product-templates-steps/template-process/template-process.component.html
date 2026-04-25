@@ -24,102 +24,95 @@
       </div>
     </div>
     <!-- Add processes -->
-    <ng-container *ngIf="templateProcessType.value === 'PROCESS'">
+    @if (templateProcessType.value === 'PROCESS') {
       <app-create-process (calculate)="calculateValues($event)" [componentUoms]="componentUoms"
-        [templateForm]="templateForm"></app-create-process>
-    </ng-container>
+      [templateForm]="templateForm"></app-create-process>
+    }
     <!-- Add Material Details -->
-    <ng-container *ngIf="templateProcessType.value === 'RAW_MATERIAL'">
+    @if (templateProcessType.value === 'RAW_MATERIAL') {
       <div class="header-light justify-content-start">
         <div class=" font-size-14 ">
           <strong>Total Material Cost : </strong> <span class="price-text">
-            {{templateForm.get('templateCost').get('attributeValue').value}}
-            {{templateForm.get('templateCost').get('userConversionUom').value}} </span>
-        </div>
-        <div class=" font-size-14 ms-2">
-          <strong>Total Material Density : </strong> <span class="price-text">
-            {{templateForm.get('templateDensity').get('attributeValue').value}}
-            {{templateForm.get('templateDensity').get('userConversionUom').value}} </span>
-        </div>
+          {{templateForm.get('templateCost').get('attributeValue').value}}
+        {{templateForm.get('templateCost').get('userConversionUom').value}} </span>
       </div>
-      <app-raw-material-process (calculate)="calculateValues($event)" [componentUoms]="componentUoms"
-        [templateForm]="templateForm">
-      </app-raw-material-process>
-    </ng-container>
+      <div class=" font-size-14 ms-2">
+        <strong>Total Material Density : </strong> <span class="price-text">
+        {{templateForm.get('templateDensity').get('attributeValue').value}}
+      {{templateForm.get('templateDensity').get('userConversionUom').value}} </span>
+    </div>
+  </div>
+  <app-raw-material-process (calculate)="calculateValues($event)" [componentUoms]="componentUoms"
+    [templateForm]="templateForm">
+  </app-raw-material-process>
+}
 
-    <ng-container *ngIf="templateProcessType.value === 'FIXED'">
-      <div class="header-light justify-content-start">
-        <div class=" font-size-14">
-          <strong>Total Fixed Cost : </strong> <span class="price-text">
-            {{templateForm.get('templateCost').get('attributeValue').value}}
-            {{templateForm.get('templateCost').get('userConversionUom').value}} </span>
+@if (templateProcessType.value === 'FIXED') {
+  <div class="header-light justify-content-start">
+    <div class=" font-size-14">
+      <strong>Total Fixed Cost : </strong> <span class="price-text">
+      {{templateForm.get('templateCost').get('attributeValue').value}}
+    {{templateForm.get('templateCost').get('userConversionUom').value}} </span>
+  </div>
+</div>
+<div>
+  <form [formGroup]="fixedProcess" class="xx" novalidate>
+    <mat-expansion-panel [expanded]="true" class="mt-2" #mep1="matExpansionPanel">
+      <mat-expansion-panel-header>
+        <div class="panel-header p-0 " (click)="mep1.expanded = !mep1.expanded">
+          <div class="title-text">
+            <span>Material Cost</span>
+          </div>
         </div>
-
-      </div>
-
-      <div>
-        <form [formGroup]="fixedProcess" class="xx" novalidate>
-          <mat-expansion-panel [expanded]="true" class="mt-2" #mep1="matExpansionPanel">
-            <mat-expansion-panel-header>
-              <div class="panel-header p-0 " (click)="mep1.expanded = !mep1.expanded">
-                <div class="title-text">
-                  <span>Material Cost</span>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <section>
+          <div class="width-perc-15 my-1">
+            <div class="attribute one  attr-b">
+              <label for="">
+              Enter Material cost</label>
+              <div formGroupName="materialMetricCost" class="attribute-input">
+                <input (change)="calculateValues(null)" formControlName="attributeValue" type="number"
+                  placeholder="Enter your value" />
+                  <div class="uom" style="background-color: var(--secondary-light);"> {{ this.fixedProcess
+                    .get('materialMetricCost')
+                  .get('userConversionUom').value}} </div>
                 </div>
               </div>
-            </mat-expansion-panel-header>
-
-            <ng-template matExpansionPanelContent>
-              <section>
-                <div class="width-perc-15 my-1">
-                  <div class="attribute one  attr-b">
-                    <label for="">
-                      Enter Material cost</label>
-                    <div formGroupName="materialMetricCost" class="attribute-input">
-                      <input (change)="calculateValues(null)" formControlName="attributeValue" type="number"
-                        placeholder="Enter your value" />
-                      <div class="uom" style="background-color: var(--secondary-light);"> {{ this.fixedProcess
-                        .get('materialMetricCost')
-                        .get('userConversionUom').value}} </div>
-                    </div>
+            </div>
+          </section>
+        </ng-template>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true" class="mt-2" #mep2="matExpansionPanel">
+        <mat-expansion-panel-header>
+          <div class="panel-header p-0" (click)="mep2.expanded = !mep2.expanded">
+            <div class="title-text">
+              <span>Conversion Cost</span>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <section>
+            <div class="width-perc-15 my-1">
+              <div class="attribute one  attr-b">
+                <label for="">
+                Enter Conversion cost</label>
+                <div formGroupName="conversionMetricCost" class="attribute-input">
+                  <input (change)="calculateValues(null)" formControlName="attributeValue" type="number"
+                    placeholder="Enter your value" />
+                    <div class="uom" style="background-color: var(--secondary-light);">{{ this.fixedProcess
+                      .get('conversionMetricCost')
+                    .get('userConversionUom').value}} </div>
                   </div>
-                </div>
-
-              </section>
-            </ng-template>
-          </mat-expansion-panel>
-
-          <mat-expansion-panel [expanded]="true" class="mt-2" #mep2="matExpansionPanel">
-            <mat-expansion-panel-header>
-              <div class="panel-header p-0" (click)="mep2.expanded = !mep2.expanded">
-                <div class="title-text">
-                  <span>Conversion Cost</span>
                 </div>
               </div>
-            </mat-expansion-panel-header>
-
-            <ng-template matExpansionPanelContent>
-              <section>
-                <div class="width-perc-15 my-1">
-                  <div class="attribute one  attr-b">
-                    <label for="">
-                      Enter Conversion cost</label>
-                    <div formGroupName="conversionMetricCost" class="attribute-input">
-                      <input (change)="calculateValues(null)" formControlName="attributeValue" type="number"
-                        placeholder="Enter your value" />
-                      <div class="uom" style="background-color: var(--secondary-light);">{{ this.fixedProcess
-                        .get('conversionMetricCost')
-                        .get('userConversionUom').value}} </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            </ng-template>
-          </mat-expansion-panel>
-        </form>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="templateProcessType.value === 'NONE'">
-
-    </ng-container>
-  </section>
+            </section>
+          </ng-template>
+        </mat-expansion-panel>
+      </form>
+    </div>
+  }
+  @if (templateProcessType.value === 'NONE') {
+  }
+</section>
 </div>

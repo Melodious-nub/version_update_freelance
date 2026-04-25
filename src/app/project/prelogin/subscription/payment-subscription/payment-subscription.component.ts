@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { SubscriptionService } from '../subscription.service';
 import { Router } from '@angular/router';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
-import { NgIf, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
     templateUrl: './payment-subscription.component.html',
     styleUrls: ['./payment-subscription.component.scss'],
     standalone: true,
-    imports: [FormsModule, NgIf, DecimalPipe]
+    imports: [FormsModule, DecimalPipe]
 })
 export class PaymentSubscriptionComponent implements OnInit, OnDestroy {
   // Stripe related code
