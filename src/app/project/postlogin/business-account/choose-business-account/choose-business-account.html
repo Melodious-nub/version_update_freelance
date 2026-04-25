@@ -17,7 +17,7 @@
             class="businessaccount-card"
             (click)="selectBusinessAccount(account.id)"
             (dblclick)="doubleClickToBusinessAccountLogin(account.id)"
-            [ngClass]="account.id == selectedBusinessAccountId ? 'selected' : ''"
+            [ngClass]="account.id === selectedBusinessAccountId ? 'selected' : ''"
             >
             <div class="d-flex align-items-center justify-content-start">
               <div>

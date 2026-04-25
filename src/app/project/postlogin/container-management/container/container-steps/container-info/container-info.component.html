@@ -313,7 +313,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            @if (getFilteredFinalContactDetail()?.length == 0) {
+                            @if (getFilteredFinalContactDetail()?.length === 0) {
                               <tr>
                                 <td style="padding-left: 20px"></td>
                                 <td></td>
@@ -337,7 +337,7 @@
                                 [formGroup]="item"
                                 >
                                 @if (
-                                  item.get('addedByBusinessAccountId').value ==
+                                  item.get('addedByBusinessAccountId').value ===
                                   this.currentBusinessAccount?.id
                                   ) {
                                   <tr
@@ -426,11 +426,11 @@
                                       </dadyin-button>
                                       @if (
                                         (isExport &&
-                                        item.get('forImporter').value == false &&
-                                        item.get('isShareable').value == true) ||
+                                        item.get('forImporter').value === false &&
+                                        item.get('isShareable').value === true) ||
                                         (!isExport &&
-                                        item.get('forExporter').value == false &&
-                                        item.get('isShareable').value == true)
+                                        item.get('forExporter').value === false &&
+                                        item.get('isShareable').value === true)
                                         ) {
                                         <dadyin-button
                                           (clicked)="share(item)"
@@ -440,7 +440,7 @@
                                           >
                                         </dadyin-button>
                                       }
-                                      @if (finalContactDetails.controls?.length == i + 1) {
+                                      @if (finalContactDetails.controls?.length === i + 1) {
                                         <dadyin-button
                                           (clicked)="addInFinalContact()"
                                           [theme]="'borderless-primary'"

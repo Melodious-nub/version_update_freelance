@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, forwardRef, Output, EventEmitter } from '@angular/core';
+import { Component, Input, forwardRef, Output, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -13,7 +13,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     ],
     imports: [MatTooltip, MatIcon]
 })
-export class DadyinButtonComponent implements OnInit {
+export class DadyinButtonComponent {
 
     @Input() label = "";
     @Input() theme = "default"; // value will be : default , primary , secondary , danger , warning
@@ -34,12 +34,6 @@ export class DadyinButtonComponent implements OnInit {
     @Input() routerLink: string[] = [];
 
     constructor() {
-    }
-
-    
-
-
-    ngOnInit(): void {
     }
 
     onClick(event?: MouseEvent) {

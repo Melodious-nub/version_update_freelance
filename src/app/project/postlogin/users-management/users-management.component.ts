@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,11 +7,8 @@ import { RouterOutlet } from '@angular/router';
     styleUrls: ['./users-management.component.scss'],
     imports: [RouterOutlet]
 })
-export class UsersManagementComponent implements OnInit {
+export class UsersManagementComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

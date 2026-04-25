@@ -1,5 +1,5 @@
 import { productTemplate } from '../../../../../../../shared/constant';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormArray, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +20,7 @@ import { ProductComponent } from './tabs/product/product.component';
         PackageComponent
     ]
 })
-export class TemplateCalculatorComponent implements OnInit {
+export class TemplateCalculatorComponent {
 
   // ************* Variable Declarations *************
   @Input() templateForm: UntypedFormGroup;
@@ -34,10 +34,6 @@ export class TemplateCalculatorComponent implements OnInit {
     public route: ActivatedRoute,
     public productTemplateService: ProductTemplateService,
   ) {
-
-  }
-
-  ngOnInit(): void {
 
   }
 

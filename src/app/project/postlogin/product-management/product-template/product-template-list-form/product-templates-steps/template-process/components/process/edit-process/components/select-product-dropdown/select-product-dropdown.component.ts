@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'dadyin-select-product-dropdown',
@@ -6,11 +6,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./select-product-dropdown.component.scss'],
     standalone: true
 })
-export class SelectProductDropdownComponent implements OnInit {
+export class SelectProductDropdownComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

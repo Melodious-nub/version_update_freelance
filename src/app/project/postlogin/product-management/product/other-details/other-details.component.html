@@ -75,7 +75,7 @@
               </tr>
             </thead>
             <tbody>
-              @if (similarProducts?.controls?.length == 0) {
+              @if (similarProducts?.controls?.length === 0) {
                 <ng-container class="col-3 d-flex p-1">
                   <tr>
                     <td></td>
@@ -142,7 +142,7 @@
                         <dadyin-button (clicked)="removeSimilarProduct(i)" matTooltip="Delete"
                           [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'" type="image">
                         </dadyin-button>
-                        @if (similarProducts?.controls?.length == i + 1) {
+                        @if (similarProducts?.controls?.length === i + 1) {
                           <dadyin-button
                             (clicked)="addSimilarProductForm()" [typeval]="'assets/nicons/add-white.png'"
                             [theme]="'borderless-primary'" type="image">

@@ -20,7 +20,7 @@ import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyi
         DadyinButtonComponent
     ]
 })
-export class RecordPaymentDialog implements OnInit {
+export class RecordPaymentDialogComponent implements OnInit {
   paymentRecordForm: UntypedFormGroup;
   paymentOverview: any;
   constructor(

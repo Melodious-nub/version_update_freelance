@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationStrategy } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
@@ -10,7 +10,7 @@ import { MatButton } from '@angular/material/button';
     styleUrls: ['./forbidden.component.scss'],
     imports: [MatButton, MatIcon]
 })
-export class ForbiddenComponent implements OnInit {
+export class ForbiddenComponent {
 
   constructor(
     private router: Router,
@@ -22,9 +22,6 @@ export class ForbiddenComponent implements OnInit {
       history.pushState(null, null, window.location.href);
       this.router.navigate(['/signin'],  {replaceUrl:true});
   });
-  }
-
-  ngOnInit(): void {
   }
 
   onClick(){

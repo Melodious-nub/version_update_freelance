@@ -567,7 +567,7 @@
                         item; let j = $index) {
 <tr [ngClass]="{
                     'b-bottom-primary':
-                      getProductPackages(i)?.controls?.length == j + 1
+                      getProductPackages(i)?.controls?.length === j + 1
                   }">
                           @if (isExport) {
                             <td style="padding-left: 20px !important">
@@ -851,7 +851,7 @@
                             </td>
                             <td>
                     <dadyin-button [isDisabled]="
-                        p?.requestTo?.id != this.requestFromId?.value &&
+                        p?.requestTo?.id !== this.requestFromId?.value &&
                         containerOrders?.controls?.length > 0
                       " (clicked)="addInContainerOrder(p)" [theme]="'borderless-primary'" type="image"
                                 [typeval]="'assets/img/icons/add-dash.svg'">
@@ -911,7 +911,7 @@
                         @for (order of sortedData(); track order; let i = $index) {
                           @for (product of order?.productPackages; track product; let j = $index) {
 <tr [ngClass]="{
-                    'b-bottom-primary': order?.productPackages?.length == j + 1
+                    'b-bottom-primary': order?.productPackages?.length === j + 1
                   }">
                               @if (isExport) {
                                 <td style="padding-left: 20px !important">
@@ -1211,7 +1211,7 @@
                               item; let j = $index) {
 <tr [ngClass]="{
                     'b-bottom-primary':
-                      getProductPackagesQuotation(i)?.controls?.length == j + 1
+                      getProductPackagesQuotation(i)?.controls?.length === j + 1
                   }">
                                 @if (isExport) {
                                   <td style="padding-left: 20px !important">
@@ -1546,7 +1546,7 @@
                                   product; let j = $index) {
 <tr [ngClass]="{
                     'b-bottom-primary':
-                      quotation?.productPackages?.length == j + 1
+                      quotation?.productPackages?.length === j + 1
                   }">
                                     <td style="padding-left: 20px !important">
                     <a [routerLink]="[

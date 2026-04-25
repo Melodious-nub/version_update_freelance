@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Inject } from '@angular/core';
 import { UntypedFormBuilder, FormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
@@ -19,7 +19,7 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
         DadyinButtonComponent
     ]
 })
-export class RawMaterialPriceModalComponent implements OnInit {
+export class RawMaterialPriceModalComponent {
   prompt = null;
   rawMaterial: any = null;
   constructor(
@@ -31,8 +31,6 @@ export class RawMaterialPriceModalComponent implements OnInit {
     public dialogRef: MatDialogRef<RawMaterialPriceModalComponent>,
     public productService: ProductService
   ) {}
-
-  ngOnInit(): void {}
 
   async refreshRawMaterialPricing() {
     try {

@@ -125,7 +125,7 @@
         [disabled]="orderForm.value.status!=='PLACED' && orderForm.value.status!=='CONFIRMED'" (actionClick)="actions($event)"
       [action]="mainTab" [currentIndex]="currentMainIndex"></dadyin-tab>
     }
-    @if (currentMainIndex == 0) {
+    @if (currentMainIndex === 0) {
       <div>
         <div class="b-dark attr-b attr-top b-round">
           <div class="d-flex align-items-center b-round toolbar height-40 px-2 font-size-14"
@@ -169,7 +169,7 @@
                   [formControl]="vendorId"
                   >
                   <option
-                    *ngIf="businessAccountService.vendorList?.length==0"
+                    *ngIf="businessAccountService.vendorList?.length===0"
                     [matTooltipPosition]="'after'"
                     [matTooltip]="(productPackages?.controls?.length>0 ? 'Please remove products from order to change vendor' : '')"
                     [disabled]="productPackages?.controls?.length>0"
@@ -587,7 +587,7 @@
                         </ng-container>
                       }
                     </tbody>
-                    @if (productPackages.controls?.length==0) {
+                    @if (productPackages.controls?.length===0) {
                       <tr>
                         <td></td>
                         <td colspan="8" class="text-center font-size-14">
@@ -608,7 +608,7 @@
             <div class="d-flex align-items-center bg-white b-round overflow-auto px-2">
               @if (viewType==='normal') {
                 <div class="d-flex align-items-center b-round">
-                  <dadyin-button [isDisabled]="this.productSearchRequest.pageIndex==0" type="icon"
+                  <dadyin-button [isDisabled]="this.productSearchRequest.pageIndex===0" type="icon"
                     [typeval]="'navigate_before'" [theme]="'borderless-primary'"
                   (clicked)="changePage('prev')"></dadyin-button>&nbsp;
                   <div class="bg-light b-round b-light width-90 text-center">
@@ -621,14 +621,14 @@
                         of {{productsListDetails?.totalElements}}
                       </span>
                     }
-                    @if (this.productsListDetails?.numberOfElements==0) {
+                    @if (this.productsListDetails?.numberOfElements===0) {
                       <span>
                         No Products
                       </span>
                     }
                   </div>
                   <dadyin-button type="icon"
-                    [isDisabled]="this.productSearchRequest.pageIndex==productsListDetails?.totalPages-1"
+                    [isDisabled]="this.productSearchRequest.pageIndex===productsListDetails?.totalPages-1"
                     [typeval]="'navigate_next'" (clicked)="changePage('next')"
                   [theme]="'borderless-primary'"></dadyin-button>&nbsp;
                 </div>
@@ -704,7 +704,7 @@
                       M
                     </div>
                     <!-- <div
-                    *ngIf="viewType=='normal'"
+                    *ngIf="viewType==='normal'"
                     [matTooltip]="'Compare Price with other vendors for the products'"
                     class="mx-1 text-center mt-1"
                     >
@@ -736,7 +736,7 @@
                       <div #widgetsContent style="overflow: hidden; min-width: 350px; max-width: 600px"
                         class="d-flex align-items-center w-100">
                         <div class="item-inline"
-                          [ngClass]="(this.productSearchRequest.productTypeIds == null || this.productSearchRequest.productTypeIds?.length<1 ) ? 'activeTab' : ''"
+                          [ngClass]="(this.productSearchRequest.productTypeIds === null || this.productSearchRequest.productTypeIds?.length<1 ) ? 'activeTab' : ''"
                           (click)="searchByProductType(null)">
                           <span> All</span>
                         </div>
@@ -1229,7 +1229,7 @@
                                         }
                                       </tbody>
                                     }
-                                    @if (productsList?.length==0) {
+                                    @if (productsList?.length===0) {
                                       <tbody>
                                         <tr>
                                           <td colspan="12" class="text-center" align="center">
@@ -1273,7 +1273,7 @@
                                   }
                                 }
                               </swiper-container>
-                              @if (productsList?.length==0) {
+                              @if (productsList?.length===0) {
                                 <div class="d-flex align-items-center justify-content-center">
                                   No Products Found
                                 </div>
@@ -1307,7 +1307,7 @@
                               }
                             </div>
                           }
-                          @if (productsList?.length==0 && !this.authService.isHandset) {
+                          @if (productsList?.length===0 && !this.authService.isHandset) {
                             <div class="d-flex align-items-center justify-content-center"
                               >
                               No Products Found
@@ -1319,11 +1319,11 @@
                       @if (productsListDetails?.totalElements>0) {
                         <div class="pagination-bar">
                           <div class="d-flex align-items-center">
-                            <dadyin-button [isDisabled]="this.productSearchRequest.pageIndex==0" label="Previous"
+                            <dadyin-button [isDisabled]="this.productSearchRequest.pageIndex===0" label="Previous"
                               [typeval]="'navigate_before'" [theme]="'primary'"
                             (clicked)="changePage('prev')"></dadyin-button>&nbsp;
                             <dadyin-button label="Next"
-                              [isDisabled]="this.productSearchRequest.pageIndex==productsListDetails?.totalPages-1"
+                              [isDisabled]="this.productSearchRequest.pageIndex===productsListDetails?.totalPages-1"
                             [typeval]="'navigate_next'" (clicked)="changePage('next')" [theme]="'primary'"></dadyin-button>&nbsp;
                           </div>
                         </div>
@@ -1334,7 +1334,7 @@
               </div>
             }
 
-            @if (currentMainIndex == 1) {
+            @if (currentMainIndex === 1) {
               <app-payment [componentUoms]="componentUoms" [purchaseOrderForm]="orderForm"
               (getOrderById)="getOrderById()"></app-payment>
             }

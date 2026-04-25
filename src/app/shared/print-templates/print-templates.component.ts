@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PrintService } from 'src/app/service/print.service';
 import { UnloadingSheetComponent } from './unloading-sheet/unloading-sheet.component';
 
@@ -9,11 +9,8 @@ import { UnloadingSheetComponent } from './unloading-sheet/unloading-sheet.compo
     styleUrls: ['./print-templates.component.scss'],
     imports: [UnloadingSheetComponent]
 })
-export class PrintTemplatesComponent implements OnInit {
+export class PrintTemplatesComponent {
   constructor(public printService:PrintService) { }
-
-  ngOnInit(): void {
-  }
 
 
 

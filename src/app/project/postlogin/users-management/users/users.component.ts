@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InactiveBusinessListComponent } from './inactive-business/inactive-business-list/inactive-business-list.component';
 import { ActiveBusinessListComponent } from './active-business/active-business-list/active-business-list.component';
@@ -13,7 +13,7 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     styleUrls: ['./users.component.scss'],
     imports: [MatTabGroup, MatTab, MatTabLabel, MatBadge, MatTabContent, AllBusinessListComponent, ActiveBusinessListComponent, InactiveBusinessListComponent]
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent {
   currentStepIndex = 0;
   tabs: Array<any> = [
     {
@@ -37,9 +37,6 @@ export class UsersComponent implements OnInit {
   ];
 
   constructor(private router: Router, private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-  }
 
   onTabChange(event: any) {
     this.currentStepIndex = event.index;

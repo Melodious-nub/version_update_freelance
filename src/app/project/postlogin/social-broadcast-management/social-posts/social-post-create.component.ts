@@ -1,5 +1,5 @@
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChildren, QueryList, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChildren, QueryList, ViewChild, ElementRef } from '@angular/core';
 import { SocialProfilesApiService } from '../service/social-profiles-api.service';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
 import { Location, NgClass, NgTemplateOutlet } from '@angular/common';
@@ -42,7 +42,7 @@ type ProductImageTile = {
     styleUrls: ['./social-post-detail.component.scss'],
     imports: [SpinnerOverlayComponent, DadyinButtonComponent, MatTabGroup, MatTab, MatTabLabel, MatTabContent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, DadyinSelectComponent, DadyinSearchSelectNewComponent, CKEditorModule, NgClass, ExtendedModule, MatIcon, TimePickerComponent, NgTemplateOutlet]
 })
-export class SocialPostCreateComponent implements OnInit, AfterViewInit, OnDestroy {
+export class SocialPostCreateComponent implements OnInit, OnDestroy{
     public Editor = ClassicEditor;
     public editorConfig = {
         toolbar: [
@@ -162,7 +162,6 @@ export class SocialPostCreateComponent implements OnInit, AfterViewInit, OnDestr
 
         this.setupGoesLiveBehavior();
     }
-    ngAfterViewInit(): void {}
     ngOnDestroy(): void {
         try {
             if (this.publicationTimeSub && typeof this.publicationTimeSub.unsubscribe === 'function') {

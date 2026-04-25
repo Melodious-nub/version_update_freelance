@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,11 +7,8 @@ import { RouterLink } from '@angular/router';
     styleUrls: ['./terms-of-service.component.scss'],
     imports: [RouterLink]
 })
-export class TermsOfServiceComponent implements OnInit {
+export class TermsOfServiceComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

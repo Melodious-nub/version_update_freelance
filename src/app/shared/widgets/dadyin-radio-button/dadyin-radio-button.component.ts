@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, forwardRef } from '@angular/core';
 import { UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { MatRadioGroup, MatRadioButton } from '@angular/material/radio';
@@ -14,12 +14,9 @@ import { MatLabel } from '@angular/material/form-field';
     standalone: true,
     imports: [MatLabel, MatRadioGroup, MatRadioButton]
 })
-export class DadyinRadioButtonComponent implements OnInit {
+export class DadyinRadioButtonComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
   @Input() label = "";
   @Input() value: any;
   @Input() customclass = '';

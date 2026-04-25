@@ -495,7 +495,7 @@
                                                     <dadyin-button [theme]="'borderless-default'" type='image'
                                                       [typeval]="'assets/nicons/delete.png'" (clicked)="removeProcessProduct(i,j)">
                                                     </dadyin-button>
-                                                    @if (getprocessProducts(i).controls?.length == j + 1) {
+                                                    @if (getprocessProducts(i).controls?.length === j + 1) {
                                                       <dadyin-button (clicked)="addNewProcessProductControl(i,j)"
                                                         [theme]="'borderless-primary'" type='image'
                                                         [typeval]="'assets/nicons/add-white.png'">

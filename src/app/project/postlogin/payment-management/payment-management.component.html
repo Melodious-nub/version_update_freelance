@@ -76,7 +76,7 @@
     class="mat-steps"
     >
     <mat-tab label="Bills">
-      @if (currentMainIndex == 0) {
+      @if (currentMainIndex === 0) {
         <form>
           <mat-expansion-panel
             class="panel-no-padding mt-1"
@@ -266,7 +266,7 @@
         </mat-tab>
 
         <mat-tab disabled label="Payment">
-          @if (currentMainIndex == 1) {
+          @if (currentMainIndex === 1) {
             @if (showPayNowButton) {
               <div
                 style="padding: 5px 10px 5px 20px"

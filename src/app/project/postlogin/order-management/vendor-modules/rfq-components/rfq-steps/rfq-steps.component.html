@@ -54,7 +54,7 @@
     <dadyin-button matTooltip="Email Transaction (Regular or Tier)" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/mail.png'">
     </dadyin-button>
     @if (
-      rfqForm?.value.status == null || rfqForm?.value.status === 'DRAFT'
+      rfqForm?.value.status === null || rfqForm?.value.status === 'DRAFT'
       ) {
       <dadyin-button matTooltip="Save this in Draft" (clicked)="saveRfq('DRAFT')" [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/save.png'">
       </dadyin-button>

@@ -1,12 +1,5 @@
 import { FormsService } from '../../../../../../../../../../service/forms.service';
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output, OnChanges,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output, OnChanges } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -36,7 +29,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
         ExtendedModule
     ]
 })
-export class EditProcessComponent implements OnInit, OnChanges {
+export class EditProcessComponent implements OnChanges{
   @Input() process: any;
   @Input() templateForm: any;
   @Input() index: number = 0;
@@ -58,7 +51,7 @@ export class EditProcessComponent implements OnInit, OnChanges {
     public route: ActivatedRoute
   ) { }
 
-  async ngOnInit() { }
+  async
 
   ngOnChanges() {
     this.isExpanded = this.isExpandAll;

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormArray, UntypedFormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -29,7 +29,7 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
         InventoryinContainerInComponent
     ]
 })
-export class InventoryinListComponent implements OnInit {
+export class InventoryinListComponent {
 
   currentMainIndex: number = 0;
   mainTab: Array<any> = [
@@ -63,9 +63,7 @@ export class InventoryinListComponent implements OnInit {
     public fb: UntypedFormBuilder
   ) { }
 
-  async ngOnInit() {
-   
-  }
+  async
 
   changeMainTab(event: any) {
     this.currentMainIndex = event;

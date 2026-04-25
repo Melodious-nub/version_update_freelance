@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,15 +7,12 @@ import { Router, RouterOutlet } from '@angular/router';
     styleUrls: ['./social-broadcast-management.component.scss'],
     imports: [RouterOutlet]
 })
-export class SocialBroadcastManagementComponent implements OnInit {
+export class SocialBroadcastManagementComponent {
   centered = false;
   disabled = false;
   unbounded = false;
 
   constructor(private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   navigate(link: string): void {
     this.router.navigateByUrl(link);

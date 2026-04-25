@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -17,7 +17,7 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
     styleUrls: ['./category-steps.component.scss'],
     imports: [CreateCategoryComponent]
 })
-export class CategoryStepsComponent implements OnInit {
+export class CategoryStepsComponent {
   // ************* Variable Declarations *************
   currentStepIndex = 0;
   productCategoryForm: UntypedFormGroup
@@ -37,11 +37,6 @@ export class CategoryStepsComponent implements OnInit {
     public containerService:ContainerManagementService
   ) {
     this.productCategoryForm = this.categorymanagementFormsService.createCategoryForm();
-  }
-
-
-  ngOnInit(): void {
-    
   }
   
   

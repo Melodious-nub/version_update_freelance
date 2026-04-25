@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { NgClass } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
@@ -10,7 +10,7 @@ import { MatIcon } from '@angular/material/icon';
     styleUrls: ['./date-scroll.component.scss'],
     imports: [MatIcon, NgClass, ExtendedModule]
 })
-export class DateScrollComponent implements OnInit,OnChanges {
+export class DateScrollComponent implements OnInit{
   @Input() initialDate=new Date()
   @Input() startDate=this.getDateWithoutTime(new Date())
   @Input() selectedDate=this.startDate
@@ -20,10 +20,6 @@ export class DateScrollComponent implements OnInit,OnChanges {
   ngOnInit(): void {
     this.startDate=this.getDateWithoutTime(this.initialDate)
     this.selectedDate=this.startDate
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    
   }
 
   getNext10Dates(): any {

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormArray, UntypedFormBuilder, UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 
@@ -13,7 +13,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material
         ReactiveFormsModule
     ]
 })
-export class CreateToggleFieldModalComponent implements OnInit {
+export class CreateToggleFieldModalComponent {
   attributeValueExpression = this.fb.array([]);
 
   constructor(
@@ -27,8 +27,6 @@ export class CreateToggleFieldModalComponent implements OnInit {
       this.attributeValueExpression.push(this.createAttributeExpression());
     }
   }
-
-  ngOnInit(): void {}
 
   createAttributeExpression() {
     return this.fb.group({

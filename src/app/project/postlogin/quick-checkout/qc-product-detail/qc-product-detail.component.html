@@ -128,7 +128,7 @@
                         this.getAttributeObjectById(productattribute?.attributeId)
                         ?.description
                         ) &&
-                        productattribute?.isHidden != true &&
+                        productattribute?.isHidden !== true &&
                         productattribute?.attributeValue
                         ) {
                         <div
@@ -330,7 +330,7 @@
                         active:
                           getArray(
                             getAttributeById(49)?.attributeValueExpression
-                          )[0]?.selected == true
+                          )[0]?.selected === true
                       }"
                                         class="w-100"
                                         >
@@ -347,7 +347,7 @@
                         active:
                           getArray(
                             getAttributeById(49)?.attributeValueExpression
-                          )[1]?.selected == true
+                          )[1]?.selected === true
                       }"
                                         >
                                         {{
@@ -525,7 +525,7 @@
                         "
                         [ngClass]="{
                           'active-price':
-                            deliveryPricing?.numberOfDays ==
+                            deliveryPricing?.numberOfDays ===
                             orderDelivery?.value
                         }"
                                             >
@@ -553,7 +553,7 @@
                                             (click)="onClickQuantity(tierPricing.minimumQuantity)"
                       [ngClass]="{
                         'active-price':
-                          tierPricing?.minimumQuantity ==
+                          tierPricing?.minimumQuantity ===
                           data.productData.value.skuQuantities
                       }"
                                             >
@@ -582,9 +582,9 @@
                         "
                         [ngClass]="{
                           'active-price':
-                            tierPricing?.minimumQuantity ==
+                            tierPricing?.minimumQuantity ===
                               data.productData.value.skuQuantities &&
-                            deliveryPricing?.numberOfDays ==
+                            deliveryPricing?.numberOfDays ===
                               orderDelivery?.value
                         }"
                                               >

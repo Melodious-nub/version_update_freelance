@@ -1,13 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  forwardRef,
-  ChangeDetectorRef,
-  AfterContentChecked,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, Input, forwardRef, ChangeDetectorRef, AfterContentChecked, Output, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { CommonService } from 'src/app/service/common.service';
 import { MatCheckbox } from '@angular/material/checkbox';
@@ -25,7 +16,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     ],
     imports: [MatCheckbox, FormsModule]
 })
-export class DadyinCheckBoxComponent implements OnInit, AfterContentChecked {
+export class DadyinCheckBoxComponent implements AfterContentChecked{
   @Input() ischecked = false;
   @Input('disabled') isDisabled = false;
   @Input() class = '';
@@ -41,8 +32,6 @@ export class DadyinCheckBoxComponent implements OnInit, AfterContentChecked {
   ngAfterContentChecked() {
     this.cdr.detectChanges();
   }
-
-  ngOnInit(): void {}
 
   onValueChange(event: any) {
     this.valueChange.emit(event.checked);

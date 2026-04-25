@@ -14,28 +14,28 @@
             >
           </ng-template>
           <ng-template matTabContent>
-            @if (link.index == 0) {
+            @if (link.index === 0) {
               <app-received-rfq-list
                 [customerId]="customerId"
                 [single]="single"
                 [role]="'customer'"
               ></app-received-rfq-list>
             }
-            @if (link.index == 1) {
+            @if (link.index === 1) {
               <app-quotation-list
                 [customerId]="customerId"
                 [single]="single"
                 [role]="'customer'"
               ></app-quotation-list>
             }
-            @if (link.index == 2) {
+            @if (link.index === 2) {
               <app-receivedPo-list
                 [customerId]="customerId"
                 [single]="single"
                 [role]="'customer'"
               ></app-receivedPo-list>
             }
-            @if (link.index == 3) {
+            @if (link.index === 3) {
               <app-invoice-list
                 [customerId]="customerId"
                 [single]="single"

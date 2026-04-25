@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-inventoryout-container-in',
@@ -6,11 +6,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./container-in.component.scss'],
     standalone: true
 })
-export class InventoryoutContainerInComponent implements OnInit {
+export class InventoryoutContainerInComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

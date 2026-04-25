@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -19,7 +19,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     standalone: true,
     imports: [FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, DadyinSelectComponent, FlexModule]
 })
-export class AccountDetailsComponent implements OnInit {
+export class AccountDetailsComponent {
 
   @Input() isCustomer: any;
   @Input() vendorForm: any;
@@ -31,9 +31,6 @@ export class AccountDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     public vendorFormsService: VendorFormsService
   ) {}
-
-    ngOnInit(): void {
-    }
 
 
 

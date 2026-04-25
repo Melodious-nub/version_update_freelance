@@ -1,5 +1,5 @@
 import { UntypedFormGroup, FormsModule } from '@angular/forms';
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
@@ -10,7 +10,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     styleUrls: ['./template-view.component.scss'],
     imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent, FormsModule]
 })
-export class TemplateViewComponent implements OnInit, OnChanges {
+export class TemplateViewComponent implements OnInit{
   @Input() productForm: UntypedFormGroup;
   @Input() currentStepIndex: any;
   @Input() componentUoms: any;
@@ -41,10 +41,6 @@ export class TemplateViewComponent implements OnInit, OnChanges {
     } catch (err: any) {
       ;
     }
-  }
-
-  ngOnChanges() {
-
   }
 
 

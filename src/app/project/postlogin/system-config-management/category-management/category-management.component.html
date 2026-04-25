@@ -6,7 +6,7 @@
           <span [matBadge]="link.badge" [matBadgeHidden]="link.badge === 0" [matBadgeOverlap]=false>{{link.title}}</span>
         </ng-template>
         <ng-template matTabContent>
-          @if (currentMainIndex == 0) {
+          @if (currentMainIndex === 0) {
             <app-category-list></app-category-list>
           }
         </ng-template>

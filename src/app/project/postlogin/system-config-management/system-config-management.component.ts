@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dadyin-button.component';
 import { RouterLink } from '@angular/router';
 
@@ -9,15 +9,11 @@ import { RouterLink } from '@angular/router';
     styleUrls: ['./system-config-management.component.scss'],
     imports: [RouterLink, DadyinButtonComponent]
 })
-export class SystemConfigManagementComponent implements OnInit {
+export class SystemConfigManagementComponent {
  
   constructor(
    
   ) {}
-
-  ngOnInit(): void {
-   
-  }
 
   
 }

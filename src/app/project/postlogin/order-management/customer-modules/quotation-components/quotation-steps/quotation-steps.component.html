@@ -60,7 +60,7 @@
       <dadyin-button matTooltip="Email Transaction (Regular or Tier)" [theme]="'disabled'" type="image" [typeval]="'assets/nicons/mail.png'">
       </dadyin-button>
       @if (
-        quotationForm?.value.status == null || quotationForm?.value.status === 'DRAFT'
+        quotationForm?.value.status === null || quotationForm?.value.status === 'DRAFT'
         ) {
         <dadyin-button matTooltip="Save this in Draft" (clicked)="saveQuotation('DRAFT')" [theme]="''" type="image"
           [typeval]="'assets/nicons/save.png'">

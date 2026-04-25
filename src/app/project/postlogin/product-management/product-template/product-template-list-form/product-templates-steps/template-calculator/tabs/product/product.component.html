@@ -229,10 +229,10 @@
                               )
                               ) {
                       <div [ngClass]="{
-                          'width-perc-25': item?.get('colSpace').value == 25,
-                          'width-perc-50': item?.get('colSpace').value == 50,
-                          'width-perc-75': item?.get('colSpace').value == 75,
-                          'width-perc-100': item?.get('colSpace').value == 100
+                          'width-perc-25': item?.get('colSpace').value === 25,
+                          'width-perc-50': item?.get('colSpace').value === 50,
+                          'width-perc-75': item?.get('colSpace').value === 75,
+                          'width-perc-100': item?.get('colSpace').value === 100
                         }" class="my-1">
                                 <div class="attribute one attr-b b-none ">
                           <label (mousedown)="preventFocusChange($event)" (click)="
@@ -263,7 +263,7 @@
                                       </mat-icon>
                                     }
                             <input [ngClass]="{
-                                highlight: currentFocusedIndex == i + 'Product'
+                                highlight: currentFocusedIndex === i + 'Product'
                               }" type="text" (focus)="
                                 formula(
                                   item?.get('attributeValueExpression'),
@@ -338,10 +338,10 @@
                                 )
                                 ) {
                       <div [ngClass]="{
-                          'width-perc-25': item.get('colSpace').value == 25,
-                          'width-perc-50': item.get('colSpace').value == 50,
-                          'width-perc-75': item.get('colSpace').value == 75,
-                          'width-perc-100': item.get('colSpace').value == 100
+                          'width-perc-25': item.get('colSpace').value === 25,
+                          'width-perc-50': item.get('colSpace').value === 50,
+                          'width-perc-75': item.get('colSpace').value === 75,
+                          'width-perc-100': item.get('colSpace').value === 100
                         }" class="my-1">
                                   <div class="attribute tabular-sheet d-flex attr-b">
                                     <div class="attribute-input b-light">
@@ -367,7 +367,7 @@
                                   active:
                                     getArray(
                                       item.get('attributeValueExpression').value
-                                    )[0].selected == true
+                                    )[0].selected === true
                                 }">
                                             {{
                                             getArray(
@@ -379,7 +379,7 @@
                                   active:
                                     getArray(
                                       item.get('attributeValueExpression').value
-                                    )[1].selected == true
+                                    )[1].selected === true
                                 }">
                                             {{
                                             getArray(
@@ -405,10 +405,10 @@
                                   )
                                   ) {
                       <div [ngClass]="{
-                          'width-perc-25': item.get('colSpace').value == 25,
-                          'width-perc-50': item.get('colSpace').value == 50,
-                          'width-perc-75': item.get('colSpace').value == 75,
-                          'width-perc-100': item.get('colSpace').value == 100
+                          'width-perc-25': item.get('colSpace').value === 25,
+                          'width-perc-50': item.get('colSpace').value === 50,
+                          'width-perc-75': item.get('colSpace').value === 75,
+                          'width-perc-100': item.get('colSpace').value === 100
                         }" class="my-1">
                                     <div class="attribute one attr-b b-none">
                           <label (mousedown)="preventFocusChange($event)" (click)="
@@ -495,13 +495,13 @@
                                               ) {
                                 <div [ngClass]="{
                                   'width-perc-25':
-                                    attr?.get('colSpace').value == 25,
+                                    attr?.get('colSpace').value === 25,
                                   'width-perc-50':
-                                    attr?.get('colSpace').value == 50,
+                                    attr?.get('colSpace').value === 50,
                                   'width-perc-75':
-                                    attr?.get('colSpace').value == 75,
+                                    attr?.get('colSpace').value === 75,
                                   'width-perc-100':
-                                    attr?.get('colSpace').value == 100
+                                    attr?.get('colSpace').value === 100
                                 }" class="mt-3">
                                                 <div class="attribute one attr-b b-none">
                                     <label (mousedown)="preventFocusChange($event)" (click)="
@@ -531,7 +531,7 @@
                                                     }
                                       <input type="text" formControlName="attributeValueExpression" [ngClass]="{
                                         highlight:
-                                          currentFocusedIndex == i + 'Product'
+                                          currentFocusedIndex === i + 'Product'
                                       }" (input)="
                                         formula(
                                           attr?.get('attributeValueExpression'),
@@ -611,13 +611,13 @@
                                                 ) {
                                 <div [ngClass]="{
                                   'width-perc-25':
-                                    attr?.get('colSpace').value == 25,
+                                    attr?.get('colSpace').value === 25,
                                   'width-perc-50':
-                                    attr?.get('colSpace').value == 50,
+                                    attr?.get('colSpace').value === 50,
                                   'width-perc-75':
-                                    attr?.get('colSpace').value == 75,
+                                    attr?.get('colSpace').value === 75,
                                   'width-perc-100':
-                                    attr?.get('colSpace').value == 100
+                                    attr?.get('colSpace').value === 100
                                 }" class="mt-3">
                                                   <div class="attribute tabular-sheet d-flex attr-b">
                                                     <div class="attribute-input b-light ms-2">
@@ -643,7 +643,7 @@
                                               attr.get(
                                                 'attributeValueExpression'
                                               ).value
-                                            )[0].selected == true
+                                            )[0].selected === true
                                         }">
                                                             {{
                                                             getArray(
@@ -658,7 +658,7 @@
                                               attr.get(
                                                 'attributeValueExpression'
                                               ).value
-                                            )[1].selected == true
+                                            )[1].selected === true
                                         }">
                                                             {{
                                                             getArray(
@@ -687,13 +687,13 @@
                                                   ) {
                                 <div [ngClass]="{
                                   'width-perc-25':
-                                    attr?.get('colSpace').value == 25,
+                                    attr?.get('colSpace').value === 25,
                                   'width-perc-50':
-                                    attr?.get('colSpace').value == 50,
+                                    attr?.get('colSpace').value === 50,
                                   'width-perc-75':
-                                    attr?.get('colSpace').value == 75,
+                                    attr?.get('colSpace').value === 75,
                                   'width-perc-100':
-                                    attr?.get('colSpace').value == 100
+                                    attr?.get('colSpace').value === 100
                                 }" class="mt-3">
                                                     <div class="attribute one attr-b b-none">
                                     <label (mousedown)="preventFocusChange($event)" (click)="
@@ -838,7 +838,7 @@
 
                 <!-- process calculator layerwise started -->
                 @if (
-                  lastProcessLayerWiseCalculation?.value == false &&
+                  lastProcessLayerWiseCalculation?.value === false &&
                   templateProcessType.value === 'PROCESS'
                   ) {
                   <div class="panel-header my-2 bg-card-header">
@@ -981,16 +981,16 @@
                                               ) {
                         <div [ngClass]="{
                             'width-perc-25':
-                              processProductAttribute?.get('colSpace').value ==
+                              processProductAttribute?.get('colSpace').value ===
                               25,
                             'width-perc-50':
-                              processProductAttribute?.get('colSpace').value ==
+                              processProductAttribute?.get('colSpace').value ===
                               50,
                             'width-perc-75':
-                              processProductAttribute?.get('colSpace').value ==
+                              processProductAttribute?.get('colSpace').value ===
                               75,
                             'width-perc-100':
-                              processProductAttribute?.get('colSpace').value ==
+                              processProductAttribute?.get('colSpace').value ===
                               100
                           }" class="my-1">
                                                 <div class="attribute one attr-b b-none">
@@ -1045,7 +1045,7 @@
                                                     }
                               <input type="text" [ngClass]="{
                                   highlight:
-                                    currentFocusedIndex == j + 'Layer' + i
+                                    currentFocusedIndex === j + 'Layer' + i
                                 }" (focus)="
                                   formula(
                                     processProductAttribute?.get(
@@ -1140,16 +1140,16 @@
                                                 ) {
                         <div [ngClass]="{
                             'width-perc-25':
-                              processProductAttribute.get('colSpace').value ==
+                              processProductAttribute.get('colSpace').value ===
                               25,
                             'width-perc-50':
-                              processProductAttribute.get('colSpace').value ==
+                              processProductAttribute.get('colSpace').value ===
                               50,
                             'width-perc-75':
-                              processProductAttribute.get('colSpace').value ==
+                              processProductAttribute.get('colSpace').value ===
                               75,
                             'width-perc-100':
-                              processProductAttribute.get('colSpace').value ==
+                              processProductAttribute.get('colSpace').value ===
                               100
                           }" class="my-1">
                                                   <div class="attribute tabular-sheet d-flex attr-b">
@@ -1199,7 +1199,7 @@
                                         processProductAttribute.get(
                                           'attributeValueExpression'
                                         ).value
-                                      )[0].selected == true
+                                      )[0].selected === true
                                   }">
                                                             {{
                                                             getArray(
@@ -1215,7 +1215,7 @@
                                         processProductAttribute.get(
                                           'attributeValueExpression'
                                         ).value
-                                      )[1].selected == true
+                                      )[1].selected === true
                                   }">
                                                             {{
                                                             getArray(
@@ -1251,16 +1251,16 @@
                                                   ) {
                         <div [ngClass]="{
                             'width-perc-25':
-                              processProductAttribute.get('colSpace').value ==
+                              processProductAttribute.get('colSpace').value ===
                               25,
                             'width-perc-50':
-                              processProductAttribute.get('colSpace').value ==
+                              processProductAttribute.get('colSpace').value ===
                               50,
                             'width-perc-75':
-                              processProductAttribute.get('colSpace').value ==
+                              processProductAttribute.get('colSpace').value ===
                               75,
                             'width-perc-100':
-                              processProductAttribute.get('colSpace').value ==
+                              processProductAttribute.get('colSpace').value ===
                               100
                           }" class="my-1">
                                                     <div class="attribute one attr-b b-none">
@@ -1375,13 +1375,13 @@
                                                               ) {
                                   <div [ngClass]="{
                                     'width-perc-25':
-                                      attr?.get('colSpace').value == 25,
+                                      attr?.get('colSpace').value === 25,
                                     'width-perc-50':
-                                      attr?.get('colSpace').value == 50,
+                                      attr?.get('colSpace').value === 50,
                                     'width-perc-75':
-                                      attr?.get('colSpace').value == 75,
+                                      attr?.get('colSpace').value === 75,
                                     'width-perc-100':
-                                      attr?.get('colSpace').value == 100
+                                      attr?.get('colSpace').value === 100
                                   }" class="mt-3">
                                                                 <div class="attribute one attr-b b-none">
                                       <label (mousedown)="preventFocusChange($event)" (click)="
@@ -1412,7 +1412,7 @@
                                                                     }
                                         <input type="text" formControlName="attributeValueExpression" [ngClass]="{
                                           highlight:
-                                            currentFocusedIndex ==
+                                            currentFocusedIndex ===
                                             j + 'Layer' + i
                                         }" (input)="
                                           formula(
@@ -1503,13 +1503,13 @@
                                                                 ) {
                                   <div [ngClass]="{
                                     'width-perc-25':
-                                      attr?.get('colSpace').value == 25,
+                                      attr?.get('colSpace').value === 25,
                                     'width-perc-50':
-                                      attr?.get('colSpace').value == 50,
+                                      attr?.get('colSpace').value === 50,
                                     'width-perc-75':
-                                      attr?.get('colSpace').value == 75,
+                                      attr?.get('colSpace').value === 75,
                                     'width-perc-100':
-                                      attr?.get('colSpace').value == 100
+                                      attr?.get('colSpace').value === 100
                                   }" class="mt-3">
                                                                   <div class="attribute tabular-sheet attr-b">
                                                                     <div class="attribute-input b-light">
@@ -1535,7 +1535,7 @@
                                                 attr.get(
                                                   'attributeValueExpression'
                                                 ).value
-                                              )[0].selected == true
+                                              )[0].selected === true
                                           }">
                                                                             {{
                                                                             getArray(
@@ -1551,7 +1551,7 @@
                                                 attr.get(
                                                   'attributeValueExpression'
                                                 ).value
-                                              )[1].selected == true
+                                              )[1].selected === true
                                           }">
                                                                             {{
                                                                             getArray(
@@ -1600,13 +1600,13 @@
                                                                 ) {
                                   <div [ngClass]="{
                                     'width-perc-25':
-                                      attr?.get('colSpace').value == 25,
+                                      attr?.get('colSpace').value === 25,
                                     'width-perc-50':
-                                      attr?.get('colSpace').value == 50,
+                                      attr?.get('colSpace').value === 50,
                                     'width-perc-75':
-                                      attr?.get('colSpace').value == 75,
+                                      attr?.get('colSpace').value === 75,
                                     'width-perc-100':
-                                      attr?.get('colSpace').value == 100
+                                      attr?.get('colSpace').value === 100
                                   }" class="mt-3">
                                                                   <div class="attribute one attr-b b-none">
                                       <label (mousedown)="preventFocusChange($event)" (click)="
@@ -1736,7 +1736,7 @@
                                                           <td>
                                 <input class="b-light w-100" type="text" [ngClass]="{
                                     highlight:
-                                      currentFocusedIndex == j + 'Layer' + i
+                                      currentFocusedIndex === j + 'Layer' + i
                                   }" (focus)="
                                     formula(
                                       processProductAttribute?.get(

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeaderComponent } from '../../layout/header/header.component';
 
 
@@ -8,14 +8,9 @@ import { HeaderComponent } from '../../layout/header/header.component';
     styleUrls: ['./postlogin.component.scss'],
     imports: [HeaderComponent]
 })
-export class PostloginComponent implements OnInit {
+export class PostloginComponent {
  
   constructor() {}
-
-  ngOnInit(): void {
-
-    
-  }
 
 
   

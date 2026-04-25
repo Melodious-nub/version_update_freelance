@@ -72,7 +72,7 @@
                 <ng-container
                   [formGroup]="detail"
                   >
-                  @if (detail.get('productId').value == productId) {
+                  @if (detail.get('productId').value === productId) {
                     <tr>
                       <td style="padding-left: 21px">{{ i + 1 }}.</td>
                       <td>
@@ -220,7 +220,7 @@
                                   <ng-container
                                     [formGroup]="pallet"
                                     >
-                                    @if (detail.get('productId').value == productId) {
+                                    @if (detail.get('productId').value === productId) {
                                       <tr>
                                         <td>
                                           <input [readonly]="detail.get('status').value==='COMPLETED'" formControlName="palletNumber" type="text" />

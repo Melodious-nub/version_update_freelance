@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,12 +8,9 @@ import { Router, RouterOutlet } from '@angular/router';
     standalone: true,
     imports: [RouterOutlet]
 })
-export class OrderManagementComponent implements OnInit {
+export class OrderManagementComponent {
 
   constructor(private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   navigate(link: string): void {
     this.router.navigateByUrl(link);

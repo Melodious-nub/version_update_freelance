@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators, UntypedFormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -33,7 +33,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
         NgSelectModule
     ]
 })
-export class WarehouseDetailsComponent implements OnInit {
+export class WarehouseDetailsComponent {
   @Input() vendorForm: any;
   @Input() isCustomer: any;
   @Input() countries: any;
@@ -44,8 +44,6 @@ export class WarehouseDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     public vendorFormsService: VendorFormsService
   ) {}
-
-  ngOnInit(): void {}
 
   get wareHouseDetails() {
     return this.vendorForm.get('warehouses') as UntypedFormArray;

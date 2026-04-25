@@ -580,7 +580,7 @@
                         " class="mat-icon primary-text">content_copy</mat-icon>
                             }
                             @if (
-                              i + 1 == productPackages?.controls.length &&
+                              i + 1 === productPackages?.controls.length &&
                               this.status.value !== 'CONFIRMED'
                               ) {
                               <dadyin-button (clicked)="addProductPackage()" [theme]="'borderless-primary'" type="icon"
@@ -597,7 +597,7 @@
                       </tr>
                     </ng-container>
                   }
-                  @if (productPackages?.controls?.length == 0) {
+                  @if (productPackages?.controls?.length === 0) {
                     <tr>
                       <td style="width: unset !important" colspan="3"></td>
                       <td></td>

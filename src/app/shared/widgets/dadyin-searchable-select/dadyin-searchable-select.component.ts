@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTooltip } from '@angular/material/tooltip';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -18,7 +18,7 @@ import { NgClass } from '@angular/common';
         MatTooltip
     ]
 })
-export class DadyinSearchableSelectComponent implements OnInit, OnChanges {
+export class DadyinSearchableSelectComponent implements OnChanges{
   @Input() class: any;
   @Input() label: any;
   @Input() fullItems: any;
@@ -37,8 +37,6 @@ export class DadyinSearchableSelectComponent implements OnInit, OnChanges {
   @Input() clearable: any =false;
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if ((changes['isDisabled'] || changes['disabled']) && this.control) {

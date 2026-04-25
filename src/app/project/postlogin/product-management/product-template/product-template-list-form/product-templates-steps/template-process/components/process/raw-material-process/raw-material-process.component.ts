@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Observable, debounceTime } from 'rxjs';
 import { FormsService } from '../../../../../../../../../../service/forms.service';
-import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectorRef, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectorRef } from '@angular/core';
 import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -28,7 +28,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
         ExtendedModule
     ]
 })
-export class RawMaterialProcessComponent implements OnInit, OnChanges {
+export class RawMaterialProcessComponent {
   @Input() templateForm: any;
   @Input() index: number = 0;
   @Input() isExpandAll: boolean;
@@ -47,12 +47,7 @@ export class RawMaterialProcessComponent implements OnInit, OnChanges {
     private cdr: ChangeDetectorRef
   ) { }
 
-  async ngOnInit() {
-
-  }
-
-  ngOnChanges(): void {
-  }
+  async
 
   get process() {
     return this.templateForm.get('rawMaterialProcess');

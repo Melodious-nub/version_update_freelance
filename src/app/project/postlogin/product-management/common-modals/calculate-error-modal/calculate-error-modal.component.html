@@ -26,10 +26,10 @@
                       )
                       ) {
                     <div [ngClass]="{
-                        'width-perc-25': item?.get('colSpace').value == 25,
-                        'width-perc-50': item?.get('colSpace').value == 50,
-                        'width-perc-75': item?.get('colSpace').value == 75,
-                        'width-perc-100': item?.get('colSpace').value == 100
+                        'width-perc-25': item?.get('colSpace').value === 25,
+                        'width-perc-50': item?.get('colSpace').value === 50,
+                        'width-perc-75': item?.get('colSpace').value === 75,
+                        'width-perc-100': item?.get('colSpace').value === 100
                       }">
                         <div class="attribute one attr-b">
                         <label for="" [ngClass]="{
@@ -127,10 +127,10 @@
                         )
                         ) {
                     <div [ngClass]="{
-                        'width-perc-25': item.get('colSpace').value == 25,
-                        'width-perc-50': item.get('colSpace').value == 50,
-                        'width-perc-75': item.get('colSpace').value == 75,
-                        'width-perc-100': item.get('colSpace').value == 100
+                        'width-perc-25': item.get('colSpace').value === 25,
+                        'width-perc-50': item.get('colSpace').value === 50,
+                        'width-perc-75': item.get('colSpace').value === 75,
+                        'width-perc-100': item.get('colSpace').value === 100
                       }">
                           <div class="attribute tabular-sheet attr-b">
                             <div class="attribute-input">
@@ -170,7 +170,7 @@
                                 active:
                                   getArray(
                                     item.get('attributeValueExpression').value
-                                  )[0]?.selected == true
+                                  )[0]?.selected === true
                               }" (click)="toggleAttribute(item, 0)">
                                     {{
                                     getArray(
@@ -182,7 +182,7 @@
                                 active:
                                   getArray(
                                     item.get('attributeValueExpression').value
-                                  )[1]?.selected == true
+                                  )[1]?.selected === true
                               }" (click)="toggleAttribute(item, 1)">
                                     {{
                                     getArray(
@@ -205,10 +205,10 @@
                           )
                           ) {
                     <div [ngClass]="{
-                        'width-perc-25': item.get('colSpace').value == 25,
-                        'width-perc-50': item.get('colSpace').value == 50,
-                        'width-perc-75': item.get('colSpace').value == 75,
-                        'width-perc-100': item.get('colSpace').value == 100
+                        'width-perc-25': item.get('colSpace').value === 25,
+                        'width-perc-50': item.get('colSpace').value === 50,
+                        'width-perc-75': item.get('colSpace').value === 75,
+                        'width-perc-100': item.get('colSpace').value === 100
                       }">
                             <div class="attribute one attr-b">
                               <label for="">
@@ -287,13 +287,13 @@
                                     ) {
                             <div [ngClass]="{
                                 'width-perc-25':
-                                  attr?.get('colSpace').value == 25,
+                                  attr?.get('colSpace').value === 25,
                                 'width-perc-50':
-                                  attr?.get('colSpace').value == 50,
+                                  attr?.get('colSpace').value === 50,
                                 'width-perc-75':
-                                  attr?.get('colSpace').value == 75,
+                                  attr?.get('colSpace').value === 75,
                                 'width-perc-100':
-                                  attr?.get('colSpace').value == 100
+                                  attr?.get('colSpace').value === 100
                               }" class="mt-3">
                                       <div class="attribute one attr-b">
                                 <label [ngClass]="{
@@ -396,13 +396,13 @@
                                       ) {
                             <div [ngClass]="{
                                 'width-perc-25':
-                                  attr?.get('colSpace').value == 25,
+                                  attr?.get('colSpace').value === 25,
                                 'width-perc-50':
-                                  attr?.get('colSpace').value == 50,
+                                  attr?.get('colSpace').value === 50,
                                 'width-perc-75':
-                                  attr?.get('colSpace').value == 75,
+                                  attr?.get('colSpace').value === 75,
                                 'width-perc-100':
-                                  attr?.get('colSpace').value == 100
+                                  attr?.get('colSpace').value === 100
                               }" class="mt-3">
                                         <div class="attribute tabular-sheet attr-b">
                                           <div class="attribute-input">
@@ -444,7 +444,7 @@
                                           getArray(
                                             attr.get('attributeValueExpression')
                                               .value
-                                          )[0].selected == true
+                                          )[0].selected === true
                                       }">
                                                   {{
                                                   getArray(
@@ -458,7 +458,7 @@
                                           getArray(
                                             attr.get('attributeValueExpression')
                                               .value
-                                          )[1].selected == true
+                                          )[1].selected === true
                                       }">
                                                   {{
                                                   getArray(
@@ -483,13 +483,13 @@
                                         ) {
                             <div [ngClass]="{
                                 'width-perc-25':
-                                  attr?.get('colSpace').value == 25,
+                                  attr?.get('colSpace').value === 25,
                                 'width-perc-50':
-                                  attr?.get('colSpace').value == 50,
+                                  attr?.get('colSpace').value === 50,
                                 'width-perc-75':
-                                  attr?.get('colSpace').value == 75,
+                                  attr?.get('colSpace').value === 75,
                                 'width-perc-100':
-                                  attr?.get('colSpace').value == 100
+                                  attr?.get('colSpace').value === 100
                               }" class="mt-3">
                                           <div class="attribute one">
                                             <label for="">
@@ -550,10 +550,10 @@
                       )
                       ) {
             <div [ngClass]="{
-                'width-perc-25': item?.get('colSpace').value == 25,
-                'width-perc-50': item?.get('colSpace').value == 50,
-                'width-perc-75': item?.get('colSpace').value == 75,
-                'width-perc-100': item?.get('colSpace').value == 100
+                'width-perc-25': item?.get('colSpace').value === 25,
+                'width-perc-50': item?.get('colSpace').value === 50,
+                'width-perc-75': item?.get('colSpace').value === 75,
+                'width-perc-100': item?.get('colSpace').value === 100
               }">
                         <div class="attribute one attr-b">
                 <label for="" [ngClass]="{
@@ -635,10 +635,10 @@
                         )
                         ) {
             <div [ngClass]="{
-                'width-perc-25': item.get('colSpace').value == 25,
-                'width-perc-50': item.get('colSpace').value == 50,
-                'width-perc-75': item.get('colSpace').value == 75,
-                'width-perc-100': item.get('colSpace').value == 100
+                'width-perc-25': item.get('colSpace').value === 25,
+                'width-perc-50': item.get('colSpace').value === 50,
+                'width-perc-75': item.get('colSpace').value === 75,
+                'width-perc-100': item.get('colSpace').value === 100
               }">
                           <div class="attribute tabular-sheet attr-b">
                             <div class="attribute-input">
@@ -664,7 +664,7 @@
                         active:
                           getArray(
                             item.get('attributeValueExpression').value
-                          )[0]?.selected == true
+                          )[0]?.selected === true
                       }" (click)="toggleAttribute(item, 0)">
                                     {{
                                     getArray(item.get("attributeValueExpression").value)[0]
@@ -675,7 +675,7 @@
                         active:
                           getArray(
                             item.get('attributeValueExpression').value
-                          )[1]?.selected == true
+                          )[1]?.selected === true
                       }" (click)="toggleAttribute(item, 1)">
                                     {{
                                     getArray(item.get("attributeValueExpression").value)[1]
@@ -697,10 +697,10 @@
                           )
                           ) {
             <div [ngClass]="{
-                'width-perc-25': item.get('colSpace').value == 25,
-                'width-perc-50': item.get('colSpace').value == 50,
-                'width-perc-75': item.get('colSpace').value == 75,
-                'width-perc-100': item.get('colSpace').value == 100
+                'width-perc-25': item.get('colSpace').value === 25,
+                'width-perc-50': item.get('colSpace').value === 50,
+                'width-perc-75': item.get('colSpace').value === 75,
+                'width-perc-100': item.get('colSpace').value === 100
               }">
                             <div class="attribute one attr-b">
                               <label for="">
@@ -767,10 +767,10 @@
                                     )
                                     ) {
                     <div [ngClass]="{
-                        'width-perc-25': attr?.get('colSpace').value == 25,
-                        'width-perc-50': attr?.get('colSpace').value == 50,
-                        'width-perc-75': attr?.get('colSpace').value == 75,
-                        'width-perc-100': attr?.get('colSpace').value == 100
+                        'width-perc-25': attr?.get('colSpace').value === 25,
+                        'width-perc-50': attr?.get('colSpace').value === 50,
+                        'width-perc-75': attr?.get('colSpace').value === 75,
+                        'width-perc-100': attr?.get('colSpace').value === 100
                       }" class="mt-3">
                                       <div class="attribute one attr-b">
                         <label for="" [ngClass]="{
@@ -860,10 +860,10 @@
                                     )
                                     ) {
                     <div [ngClass]="{
-                        'width-perc-25': attr?.get('colSpace').value == 25,
-                        'width-perc-50': attr?.get('colSpace').value == 50,
-                        'width-perc-75': attr?.get('colSpace').value == 75,
-                        'width-perc-100': attr?.get('colSpace').value == 100
+                        'width-perc-25': attr?.get('colSpace').value === 25,
+                        'width-perc-50': attr?.get('colSpace').value === 50,
+                        'width-perc-75': attr?.get('colSpace').value === 75,
+                        'width-perc-100': attr?.get('colSpace').value === 100
                       }" class="mt-3 b-all">
                                       <div class="attribute tabular-sheet attr-b">
                                         <div class="attribute-input">
@@ -891,7 +891,7 @@
                                 active:
                                   getArray(
                                     attr.get('attributeValueExpression').value
-                                  )[0].selected == true
+                                  )[0].selected === true
                               }">
                                                 {{
                                                 getArray(
@@ -903,7 +903,7 @@
                                 active:
                                   getArray(
                                     attr.get('attributeValueExpression').value
-                                  )[1].selected == true
+                                  )[1].selected === true
                               }">
                                                 {{
                                                 getArray(
@@ -929,10 +929,10 @@
                                     )
                                     ) {
                     <div [ngClass]="{
-                        'width-perc-25': attr?.get('colSpace').value == 25,
-                        'width-perc-50': attr?.get('colSpace').value == 50,
-                        'width-perc-75': attr?.get('colSpace').value == 75,
-                        'width-perc-100': attr?.get('colSpace').value == 100
+                        'width-perc-25': attr?.get('colSpace').value === 25,
+                        'width-perc-50': attr?.get('colSpace').value === 50,
+                        'width-perc-75': attr?.get('colSpace').value === 75,
+                        'width-perc-100': attr?.get('colSpace').value === 100
                       }" class="mt-3">
                                       <div class="attribute one attr-b">
                                         <label for="">

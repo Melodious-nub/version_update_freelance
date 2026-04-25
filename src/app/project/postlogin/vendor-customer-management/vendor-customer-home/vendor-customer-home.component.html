@@ -107,7 +107,7 @@
       [currentIndex]="currentMainIndex"
     ></dadyin-tab>
 
-    @if (currentMainIndex == 0) {
+    @if (currentMainIndex === 0) {
       <app-vendor-customer-details
         [countries]="countries"
         [vendorForm]="vendorForm"
@@ -117,7 +117,7 @@
         (emitClearBusinessAccount)="businessAccountCleared()"
       ></app-vendor-customer-details>
     }
-    @if (currentMainIndex == 1) {
+    @if (currentMainIndex === 1) {
       <app-warehouse-details
         [countries]="countries"
         [vendorForm]="vendorForm"
@@ -126,7 +126,7 @@
         (emitClearBusinessAccount)="businessAccountCleared()"
       ></app-warehouse-details>
     }
-    @if (currentMainIndex == 3) {
+    @if (currentMainIndex === 3) {
       @if ((isCustomer || isLead || isProspect) && this.businessAccountId) {
         <app-customer-management
           [customerId]="this.businessAccountId"

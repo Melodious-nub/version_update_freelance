@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
@@ -23,7 +23,7 @@ import { NgClass } from '@angular/common';
         EditProcessComponent
     ]
 })
-export class ProcessComponent implements OnInit {
+export class ProcessComponent {
   // ************* Variable Declarations *************
   @Input() public templateForm: UntypedFormGroup;
   @Input() componentUoms: any;
@@ -44,8 +44,6 @@ export class ProcessComponent implements OnInit {
   calculateValues(event: any) {
     this.calculate.emit(event);
   }
-
-  ngOnInit(): void { }
 
   getUomByName(type: any) {
     const componentUoms: any = this.componentUoms.getRawValue();

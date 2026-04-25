@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -11,7 +11,7 @@ import { BusinessAccountService } from '../../business-account/business-account.
     styleUrls: ['./industry-type.component.scss'],
     standalone: true,
 })
-export class IndustryTypeComponent implements OnInit {
+export class IndustryTypeComponent {
   
 
   constructor(
@@ -21,10 +21,6 @@ export class IndustryTypeComponent implements OnInit {
     public systemConfigFormService: SystemConfigFormsService,
   ) {
     
-  }
-
-  ngOnInit(): void {
-  
   }
 
 

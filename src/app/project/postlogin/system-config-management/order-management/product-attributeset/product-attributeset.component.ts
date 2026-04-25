@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-product-attributeset',
@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-attributeset.component.scss'],
   standalone: true
 })
-export class ProductAttributeSetComponent implements OnInit {
+export class ProductAttributeSetComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }

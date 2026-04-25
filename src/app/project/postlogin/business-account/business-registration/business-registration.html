@@ -7,7 +7,7 @@
   </div>
   <mat-tab-group class="mat-steps" [(selectedIndex)]="currentMainIndex" (selectedTabChange)="onMainTabChange($event)">
     <mat-tab label="Business Details">
-      @if (currentMainIndex == 0) {
+      @if (currentMainIndex === 0) {
         <div [formGroup]="businessRegistrationForm">
           <div>
             <mat-expansion-panel class="my-2" expanded="true">
@@ -81,7 +81,7 @@
                                   <label for="">Phone</label>
                                   <div class="attribute-input">
                                     <input type="number" formControlName="number"
-                                      onKeyPress="if(this.value.length==12) return false;" />
+                                      onKeyPress="if(this.value.length===12) return false;" />
                                     </div>
                                   </div>
                                 </div>
@@ -123,7 +123,7 @@
                                         <label for="">Landline</label>
                                         <div class="attribute-input">
                                           <input type="number" formControlName="number"
-                                            onKeyPress="if(this.value.length==12) return false;" />
+                                            onKeyPress="if(this.value.length===12) return false;" />
                                           </div>
                                         </div>
                                       </div>
@@ -161,7 +161,7 @@
                                               <label for="">Fax</label>
                                               <div class="attribute-input">
                                                 <input type="number" formControlName="number"
-                                                  onKeyPress="if(this.value.length==12) return false;" />
+                                                  onKeyPress="if(this.value.length===12) return false;" />
                                                 </div>
                                               </div>
                                             </div>
@@ -341,7 +341,7 @@
                                                       <label for="">Phone</label>
                                                       <div class="attribute-input">
                                                         <input type="number" formControlName="number"
-                                                          onKeyPress="if(this.value.length==12) return false;" />
+                                                          onKeyPress="if(this.value.length===12) return false;" />
                                                         </div>
                                                       </div>
                                                     </div>
@@ -528,7 +528,7 @@
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                  @if (branchDetails.controls?.length==0) {
+                                                  @if (branchDetails.controls?.length===0) {
                                                     <tr>
                                                       <td></td>
                                                       <td></td>
@@ -584,7 +584,7 @@
                                                                   >*</span>
                                                                 }
                                                                 <input type="number" formControlName="number"
-                                                                  onKeyPress="if(this.value.length==12) return false;" class="w-100 bg-transparent" />
+                                                                  onKeyPress="if(this.value.length===12) return false;" class="w-100 bg-transparent" />
                                                                 </td>
                                                                 <td>
                                                                   <input type="text" formControlName="email" class="bg-transparent" />
@@ -616,7 +616,7 @@
                                                                           class="bg-transparent" />
                                                                         </td>
                                                                         <td class="actions">
-                                                                          @if (branchDetails.controls?.length==i+1) {
+                                                                          @if (branchDetails.controls?.length===i+1) {
                                                                             <dadyin-button (clicked)="addBranchLineItem()" [theme]="'borderless-primary'" type="image"
                                                                               [typeval]="'assets/nicons/Add Blue.png'">
                                                                             </dadyin-button>
@@ -637,7 +637,7 @@
                                                     }
                                                   </mat-tab>
                                                   <mat-tab label="Employees" [disabled]="isNewBusiness">
-                                                    @if (currentMainIndex == 1) {
+                                                    @if (currentMainIndex === 1) {
                                                       <mat-expansion-panel class="panel-no-padding" expanded="true">
                                                         <mat-expansion-panel-header>
                                                           <mat-panel-description>
@@ -668,7 +668,7 @@
                                                               </tr>
                                                             </thead>
                                                             <tbody>
-                                                              @if (employeeDetails.controls?.length==0) {
+                                                              @if (employeeDetails.controls?.length===0) {
                                                                 <tr>
                                                                   <td></td>
                                                                   <td></td>
@@ -738,7 +738,7 @@
                                                                             <span class="required text-danger"
                                                                             >*</span>
                                                                           }
-                                                                          <input type="number" formControlName="number" onKeyPress="if(this.value.length==12) return false;"
+                                                                          <input type="number" formControlName="number" onKeyPress="if(this.value.length===12) return false;"
                                                                             class="w-100 bg-transparent" />
                                                                           </td>
                                                                           <td>
@@ -798,7 +798,7 @@
                                                           }
                                                         </mat-tab>
                                                         <mat-tab label="Subscription Details" [disabled]="isNewBusiness">
-                                                          @if (currentMainIndex == 2) {
+                                                          @if (currentMainIndex === 2) {
                                                             <div class="subscription-tab-container">
                                                               <div class="row p-3">
                                                                 <div class="col-6 plan-container">
@@ -927,18 +927,18 @@
                                                                 <div class="prog-container" [ngClass]="{'w-60': nextSubscription, 'w-100': !nextSubscription}">
                                                                   <div class="d-flex justify-content-between">
                                                                     <div class="prog-title">Order Management Documents
-                                                                      ({{selectedSubscription?.allowedTransactionsByMonth == -1 ? 'Unlimited' :
+                                                                      ({{selectedSubscription?.allowedTransactionsByMonth === -1 ? 'Unlimited' :
                                                                     selectedSubscription?.allowedTransactionsByMonth}}/month) </div>
                                                                     <div>
                                                                       <span class="prog-info-text me-2">Limit Reached:</span>
-                                                                      @if (selectedSubscription?.allowedTransactionsByMonth != -1) {
+                                                                      @if (selectedSubscription?.allowedTransactionsByMonth !== -1) {
                                                                         <span
                                                                           [ngClass]="(subscriptionDetails?.allowedTransactionsByMonth / selectedSubscription?.allowedTransactionsByMonth) >= 1 ? 'prog-sec-value' : 'prog-prim-value'"
                                                                           >
                                                                           {{subscriptionDetails?.allowedTransactionsByMonth}}/{{selectedSubscription?.allowedTransactionsByMonth}}
                                                                         </span>
                                                                       }
-                                                                      @if (selectedSubscription?.allowedTransactionsByMonth == -1) {
+                                                                      @if (selectedSubscription?.allowedTransactionsByMonth === -1) {
                                                                         <span
                                                                           [ngClass]="(subscriptionDetails?.allowedTransactionsByMonth / selectedSubscription?.allowedTransactionsByMonth) >= 1 ? 'prog-sec-value' : 'prog-prim-value'"
                                                                           >
@@ -959,7 +959,7 @@
                                                                   <div class="d-flex gap-4">
                                                                     <div>
                                                                       <div class="prog-info-text">Upgrade to next Tier</div>
-                                                                      <div><span class="pog-count">{{nextSubscription?.allowedTransactionsByMonth == -1 ? 'Unlimited' :
+                                                                      <div><span class="pog-count">{{nextSubscription?.allowedTransactionsByMonth === -1 ? 'Unlimited' :
                                                                       nextSubscription?.allowedTransactionsByMonth}}</span> <span
                                                                       class="prog-sub-count-text">Documents per
                                                                     month</span></div>
@@ -975,17 +975,17 @@
                                                             <div class="table-box">
                                                               <div class="prog-container" [ngClass]="{'w-60': nextSubscription, 'w-100': !nextSubscription}">
                                                                 <div class="d-flex justify-content-between">
-                                                                  <div class="prog-title">Container Management ({{selectedSubscription?.containerManagementByYear ==
+                                                                  <div class="prog-title">Container Management ({{selectedSubscription?.containerManagementByYear ===
                                                                   -1 ? 'Unlimited' : selectedSubscription?.containerManagementByYear}}/year)</div>
                                                                   <div>
-                                                                    @if (selectedSubscription?.containerManagementByYear != -1) {
+                                                                    @if (selectedSubscription?.containerManagementByYear !== -1) {
                                                                       <span
                                                                         [ngClass]="(subscriptionDetails?.containerManagementByYear / selectedSubscription?.containerManagementByYear) >= 1 ? 'prog-sec-value' : 'prog-prim-value'"
                                                                         >
                                                                         {{subscriptionDetails?.containerManagementByYear}}/{{selectedSubscription?.containerManagementByYear}}
                                                                       </span>
                                                                     }
-                                                                    @if (selectedSubscription?.containerManagementByYear == -1) {
+                                                                    @if (selectedSubscription?.containerManagementByYear === -1) {
                                                                       <span
                                                                         [ngClass]="(subscriptionDetails?.containerManagementByYear / selectedSubscription?.containerManagementByYear) >= 1 ? 'prog-sec-value' : 'prog-prim-value'"
                                                                         >
@@ -1005,7 +1005,7 @@
                                                                 <div class="table-bar"></div>
                                                                 <div>
                                                                   <div class="prog-info-text">Next Tier limit</div>
-                                                                  <div><span class="pog-count">{{nextSubscription?.containerManagementByYear == -1 ? 'Unlimited' :
+                                                                  <div><span class="pog-count">{{nextSubscription?.containerManagementByYear === -1 ? 'Unlimited' :
                                                                   nextSubscription?.containerManagementByYear}} </span> <span class="prog-sub-count-text">per
                                                                 year</span></div>
                                                               </div>
@@ -1079,7 +1079,7 @@
                                               }
                                             </mat-tab>
                                             <mat-tab label="Social Profile" [disabled]="isNewBusiness">
-                                              @if (currentMainIndex == 3) {
+                                              @if (currentMainIndex === 3) {
                                                 <mat-expansion-panel class="panel-no-padding" expanded="true" [hideToggle]="true" [disabled]="true">
                                                   <mat-expansion-panel-header>
                                                     <mat-panel-description>

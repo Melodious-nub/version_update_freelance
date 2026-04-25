@@ -6,7 +6,7 @@
           <span>Process {{ index + 1 }}</span>
         </div>
         <!-- Start New -->
-        @if (isExistingProcess?.value == true) {
+        @if (isExistingProcess?.value === true) {
           <div class="process-input-output">
             <div class="input w-100" style="border-right: 1px solid var(--text-light);">
               <!-- <span>Process Input</span> -->
@@ -46,7 +46,7 @@
         </div>
       }
       <!-- End New -->
-      @if (isExistingProcess?.value == false) {
+      @if (isExistingProcess?.value === false) {
         <div class="process-input-output">
           <div class="input w-100" style="border-right: 1px solid var(--text-light) !important;">
             <input autocomplete="off" (keydown.Space)="$event.stopImmediatePropagation()" type="text"
@@ -124,18 +124,18 @@
                     <div class="attribute-input">
                       <div class="toggle w-100" style="border-radius: 16px;">
                         <button (click)=" setToggle(true);resetUsedPercent()" class="w-50 fs-12"
-                          style="font-size: 12px !important;" [ngClass]="{active: usedToggle.value == true}">
+                          style="font-size: 12px !important;" [ngClass]="{active: usedToggle.value === true}">
                           % Used
                         </button>
                         <button class="w-50  fs-12" (click)="setToggle(false);"
-                          [ngClass]="{active: usedToggle.value == false}" style="font-size: 12px !important;">
+                          [ngClass]="{active: usedToggle.value === false}" style="font-size: 12px !important;">
                           Layer
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
-                @if (usedToggle.value == true) {
+                @if (usedToggle.value === true) {
                   @if (templateProcessMaterialType.value === 'LOG_SHEET') {
                     <div class="d-flex  align-items-center  font-size-12">
                       <div class="text-black me-2" style="white-space: pre; font-weight: 400; ">Total Units</div>
@@ -376,7 +376,7 @@
                               ({{ sumOfUsedPercent }} / 100.00%)
                             </div>
                           </th>
-                          <th *ngIf="templateProcessMaterialType.value == 'LOG_SHEET'">
+                          <th *ngIf="templateProcessMaterialType.value === 'LOG_SHEET'">
                             <div class="group">
                               <span>Weight </span>
                               ({{ usedWeightUom?.value }})
@@ -389,7 +389,7 @@
                         </tr> -->
                       </thead>
                       <tbody>
-                        @if (getprocessProducts.controls?.length == 0) {
+                        @if (getprocessProducts.controls?.length === 0) {
                           <tr>
                             <td style="padding-left: 20px"></td>
                             <td></td>
@@ -501,7 +501,7 @@
                                               <dadyin-button (clicked)="removeProcessProduct(i)" [theme]="'borderless-default'" type='image'
                                                 [typeval]="'assets/nicons/delete.png'" [disabled]="processForm?.disabled">
                                               </dadyin-button>
-                                              @if (getprocessProducts.controls?.length == i + 1) {
+                                              @if (getprocessProducts.controls?.length === i + 1) {
                                                 <dadyin-button (clicked)="addNewProcessProductControl()" [theme]="'borderless-primary'"
                           type='image' [typeval]="'assets/nicons/add-white.png'" [disabled]="
                             processForm?.disabled || getprocessProducts?.invalid

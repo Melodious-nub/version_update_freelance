@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { BusinessAccountService } from '../../../../business-account/business-account.service';
@@ -25,7 +25,7 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
         DataTableComponent
     ]
 })
-export class InvoiceListComponent implements OnInit {
+export class InvoiceListComponent {
   @Input() single = false;
   invoiceList: any[];
   public searchText: string;
@@ -86,8 +86,6 @@ export class InvoiceListComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit() {}
   get componentUoms() {
     return this.preferForm.get('componentUoms') as UntypedFormArray;
   }

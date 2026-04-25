@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  Pipe, OnDestroy,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output, Pipe, OnDestroy } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -51,7 +44,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
         SlicePipe
     ]
 })
-export class UnloadingDetailsComponent implements OnInit, OnDestroy {
+export class UnloadingDetailsComponent implements OnDestroy{
   poView: any = 'orderWise';
   expanded: any[] = [];
   @Input() containerForm: UntypedFormGroup;
@@ -75,7 +68,7 @@ export class UnloadingDetailsComponent implements OnInit, OnDestroy {
     public printService: PrintService
   ) {}
 
-  async ngOnInit() {}
+  async
 
   ngOnDestroy(): void {
     this.ngUnsubscribe.next();

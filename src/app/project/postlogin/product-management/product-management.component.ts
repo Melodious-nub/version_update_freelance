@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,15 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './product-management.component.html',
   styleUrls: ['./product-management.component.scss']
 })
-export class ProductManagementComponent implements OnInit {
+export class ProductManagementComponent {
   centered = false;
   disabled = false;
   unbounded = false;
 
   constructor(private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   navigate(link: string): void {
     this.router.navigateByUrl(link);

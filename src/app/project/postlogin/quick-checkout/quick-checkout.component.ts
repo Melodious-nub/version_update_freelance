@@ -14,22 +14,22 @@ import { MatBadge } from '@angular/material/badge';
 import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/material/tabs';
 
 @Component({
-    selector: 'app-quick-checkout',
-    templateUrl: './quick-checkout.html',
-    styleUrls: ['./quick-checkout.scss'],
-    imports: [
-        MatTabGroup,
-        MatTab,
-        MatTabLabel,
-        MatBadge,
-        MatTabContent,
-        SearchFilterComponent,
-        DadyinButtonComponent,
-        CdkDrag,
-        FormsModule,
-        ReactiveFormsModule,
-        DataTableComponent
-    ]
+  selector: 'app-quick-checkout',
+  templateUrl: './quick-checkout.html',
+  styleUrls: ['./quick-checkout.scss'],
+  imports: [
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatBadge,
+    MatTabContent,
+    SearchFilterComponent,
+    DadyinButtonComponent,
+    CdkDrag,
+    FormsModule,
+    ReactiveFormsModule,
+    DataTableComponent
+  ]
 })
 export class QuickCheckoutComponent implements OnInit {
   public preferForm: UntypedFormGroup = this.formService.createPreferUomForm();
@@ -268,5 +268,5 @@ export class QuickCheckoutComponent implements OnInit {
   }
   navigateToOrder() {
     this.router.navigateByUrl('home/quick-checkout/order');
-  } 
+  }
 }

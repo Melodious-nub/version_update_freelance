@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogClose } from '@angular/material/dialog';
 
 @Component({
@@ -7,11 +7,8 @@ import { MatDialogClose } from '@angular/material/dialog';
     styleUrls: ['./usage-formulas-modal.component.scss'],
     imports: [MatDialogClose]
 })
-export class UsageFormulasModalComponent implements OnInit {
+export class UsageFormulasModalComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
     styleUrls: ['./product-type.component.scss'],
     imports: [RouterOutlet]
 })
-export class ProductTypeComponent implements OnInit {
+export class ProductTypeComponent {
 
     currentMainIndex: number = 0;
     mainTab: Array<any> = [
@@ -28,10 +28,6 @@ export class ProductTypeComponent implements OnInit {
     ];
 
     constructor(private router: Router,public route:ActivatedRoute) {
-    }
-
-    ngOnInit(): void {
-       
     }
 
     changeMainTab(event: any) {

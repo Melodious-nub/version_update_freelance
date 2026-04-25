@@ -1,5 +1,5 @@
 <div class="my-2">
-  @if (packages.controls?.length == 0) {
+  @if (packages.controls?.length === 0) {
     <div class="bg-light b-round b-dark d-flex py-2 justify-content-end">
       <dadyin-button class="text-right" (clicked)="addPackage()" label="Add New Package" [theme]="'primary'">
       </dadyin-button>
@@ -182,7 +182,7 @@
       @if (
         hidePackageExpenseAndAttributes(
         packageForm.get('packageType').value
-        ) && isPackageAttributes.value == true
+        ) && isPackageAttributes.value === true
         ) {
         <div class="mt-1 b-all">
           <div class="toolbar bg-light grid-7 height-40 font-size-14 border-b-light">
@@ -291,10 +291,10 @@
                       )
                       ) {
                       <div class="d-flex align-items-baseline" [ngClass]="{
-                                  'width-perc-25': item?.get('colSpace').value == 25,
-                                  'width-perc-50': item?.get('colSpace').value == 50,
-                                  'width-perc-75': item?.get('colSpace').value == 75,
-                                  'width-perc-100': item?.get('colSpace').value == 100
+                                  'width-perc-25': item?.get('colSpace').value === 25,
+                                  'width-perc-50': item?.get('colSpace').value === 50,
+                                  'width-perc-75': item?.get('colSpace').value === 75,
+                                  'width-perc-100': item?.get('colSpace').value === 100
                                 }">
                         <div class="attribute one attr-b mb-0">
                           <label for="">
@@ -386,10 +386,10 @@
                       )
                       ) {
                       <div class="d-flex  align-items-start" [ngClass]="{
-                                  'width-perc-25': item.get('colSpace').value == 25,
-                                  'width-perc-50': item.get('colSpace').value == 50,
-                                  'width-perc-75': item.get('colSpace').value == 75,
-                                  'width-perc-100': item.get('colSpace').value == 100
+                                  'width-perc-25': item.get('colSpace').value === 25,
+                                  'width-perc-50': item.get('colSpace').value === 50,
+                                  'width-perc-75': item.get('colSpace').value === 75,
+                                  'width-perc-100': item.get('colSpace').value === 100
                                 }">
                         <div class="attribute tabular-sheet attr-b">
                           <div class="attribute-input">
@@ -415,7 +415,7 @@
                                           active:
                                             getArray(
                                               item.get('attributeValueExpression').value
-                                            )[0]?.selected == true
+                                            )[0]?.selected === true
                                         }" (click)="toggleAttribute(item, 0, i)">
                                   {{
                                   getArray(
@@ -427,7 +427,7 @@
                                           active:
                                             getArray(
                                               item.get('attributeValueExpression').value
-                                            )[1]?.selected == true
+                                            )[1]?.selected === true
                                         }" (click)="toggleAttribute(item, 1, i)">
                                   {{
                                   getArray(
@@ -455,10 +455,10 @@
                         )
                         ) {
                       <div class="d-flex  align-items-baseline" [ngClass]="{
-                                  'width-perc-25': item.get('colSpace').value == 25,
-                                  'width-perc-50': item.get('colSpace').value == 50,
-                                  'width-perc-75': item.get('colSpace').value == 75,
-                                  'width-perc-100': item.get('colSpace').value == 100
+                                  'width-perc-25': item.get('colSpace').value === 25,
+                                  'width-perc-50': item.get('colSpace').value === 50,
+                                  'width-perc-75': item.get('colSpace').value === 75,
+                                  'width-perc-100': item.get('colSpace').value === 100
                                 }">
                           <div class="attribute one attr-b">
                             <label for="">
@@ -531,13 +531,13 @@
                                   ) {
                                 <div [ngClass]="{
                                           'width-perc-25':
-                                            attr?.get('colSpace').value == 25,
+                                            attr?.get('colSpace').value === 25,
                                           'width-perc-50':
-                                            attr?.get('colSpace').value == 50,
+                                            attr?.get('colSpace').value === 50,
                                           'width-perc-75':
-                                            attr?.get('colSpace').value == 75,
+                                            attr?.get('colSpace').value === 75,
                                           'width-perc-100':
-                                            attr?.get('colSpace').value == 100
+                                            attr?.get('colSpace').value === 100
                                         }" class="mt-3">
                                     <div class="attribute one attr-b">
                                       <label for="">
@@ -624,13 +624,13 @@
                                     ) {
                                 <div [ngClass]="{
                                           'width-perc-25':
-                                            attr?.get('colSpace').value == 25,
+                                            attr?.get('colSpace').value === 25,
                                           'width-perc-50':
-                                            attr?.get('colSpace').value == 50,
+                                            attr?.get('colSpace').value === 50,
                                           'width-perc-75':
-                                            attr?.get('colSpace').value == 75,
+                                            attr?.get('colSpace').value === 75,
                                           'width-perc-100':
-                                            attr?.get('colSpace').value == 100
+                                            attr?.get('colSpace').value === 100
                                         }" class="mt-3 b-all">
                                       <div class="attribute tabular-sheet attr-b">
                                         <div class="attribute-input">
@@ -657,7 +657,7 @@
                                                     getArray(
                                                       attr.get('attributeValueExpression')
                                                         .value
-                                                    )[0].selected == true
+                                                    )[0].selected === true
                                                 }">
                                                 {{
                                                 getArray(
@@ -671,7 +671,7 @@
                                                     getArray(
                                                       attr.get('attributeValueExpression')
                                                         .value
-                                                    )[1].selected == true
+                                                    )[1].selected === true
                                                 }">
                                                 {{
                                                 getArray(
@@ -699,13 +699,13 @@
                                     ) {
                                 <div [ngClass]="{
                                           'width-perc-25':
-                                            attr?.get('colSpace').value == 25,
+                                            attr?.get('colSpace').value === 25,
                                           'width-perc-50':
-                                            attr?.get('colSpace').value == 50,
+                                            attr?.get('colSpace').value === 50,
                                           'width-perc-75':
-                                            attr?.get('colSpace').value == 75,
+                                            attr?.get('colSpace').value === 75,
                                           'width-perc-100':
-                                            attr?.get('colSpace').value == 100
+                                            attr?.get('colSpace').value === 100
                                         }" class="mt-3">
                                       <div class="attribute one attr-b">
                                         <label for="">
@@ -900,14 +900,14 @@
         <div class="p-1 px-3 mx-auto b-all">
           <div class=" text-light attr-b mar-top-20">
             Material cost
-            @if (getPackageExpenseValues(i)?.controls?.length == 0) {
+            @if (getPackageExpenseValues(i)?.controls?.length === 0) {
               <dadyin-button (clicked)="addPackageExpense(i)"
               [typeval]="'assets/nicons/add-white.png'" [theme]="'borderless-primary'" type="image"></dadyin-button>
             }
             <!--   <dadyin-button
             type="icon"
             typeval="add"
-            *ngIf="getPackageExpenseValues(i)?.controls?.length == 0"
+            *ngIf="getPackageExpenseValues(i)?.controls?.length === 0"
             (clicked)="addPackageExpense(i)"
           ></dadyin-button> -->
         </div>
@@ -928,7 +928,7 @@
                     is Product</span>
                   </div>
                 </div>
-                @if (expense.get('isProduct').value == true) {
+                @if (expense.get('isProduct').value === true) {
                   <div class="">
                     <dadyin-searchable-select placeholder="Product Type" label="Product Type"
                       [control]="expense.get('productTypeId')" (changed)="onProductTypeExpenseChange(expense)"
@@ -973,7 +973,7 @@
                       <div class="attribute-input">
                       <input [ngClass]="{
                           'b-red': expense.get('expenseDescription').invalid
-                        }" formControlName="expenseDescription" [readonly]="expense.get('isProduct').value == true"
+                        }" formControlName="expenseDescription" [readonly]="expense.get('isProduct').value === true"
                           type="text" />
                         </div>
                       </div>
@@ -1049,7 +1049,7 @@
                             </dadyin-button>
                           </div>
                           @if (
-                            getPackageExpenseValues(i)?.controls?.length == k + 1
+                            getPackageExpenseValues(i)?.controls?.length === k + 1
                             ) {
                             <div>
                               <dadyin-button (clicked)="addPackageExpense(i)" [typeval]="'assets/nicons/add-white.png'"
@@ -1066,7 +1066,7 @@
                     Conversion cost
                     @if (getPackageExpenseConversionTypeValues(
                       i
-                      )?.controls?.length == 0) {
+                      )?.controls?.length === 0) {
                       <dadyin-button (clicked)="addPackageExpenseConversionType(i)"
                         [typeval]="'assets/nicons/add-white.png'" [theme]="'borderless-primary'" type="image">
                       </dadyin-button>
@@ -1189,7 +1189,7 @@
                                         <dadyin-button (clicked)="removePalletRow(i, k)" matTooltip="Delete"
                                           [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'" type="image">
                                         </dadyin-button>
-                                        @if (getPalletRows(i)?.controls?.length == k + 1) {
+                                        @if (getPalletRows(i)?.controls?.length === k + 1) {
                                           <dadyin-button (clicked)="addPalletRow(i)"
                                             matTooltip="Add" [typeval]="'assets/nicons/add-white.png'" [theme]="'borderless-primary'"
                                             type="image">
@@ -1217,7 +1217,7 @@
                           </div>
                         }
                         @if (
-                          packageForm.get('isSku').value || packages.controls?.length == i + 1
+                          packageForm.get('isSku').value || packages.controls?.length === i + 1
                           ) {
                           <div class="mt-1">
                             <div class="bg-light font-size-12 tab p-2">
@@ -1322,7 +1322,7 @@
                                 active:
                                   packageForm
                                     .get('packageSKUDetail')
-                                    .get('isStackable').value == true
+                                    .get('isStackable').value === true
                               }">
                                                     Yes
                                                   </button>
@@ -1335,7 +1335,7 @@
                                 active:
                                   packageForm
                                     .get('packageSKUDetail')
-                                    .get('isStackable').value == false
+                                    .get('isStackable').value === false
                               }">
                                                     No
                                                   </button>
@@ -1348,7 +1348,7 @@
                                       @if (!packageForm.get('isSku').value) {
                                         <div class="col-8"></div>
                                       }
-                                      @if (packages.controls?.length == i + 1) {
+                                      @if (packages.controls?.length === i + 1) {
                                         <div class="col-4 justify-content-end d-flex align-items-end flex-column"
                                           >
                                           <dadyin-button class="text-right" (clicked)="addPackage()" label="Add New Package"

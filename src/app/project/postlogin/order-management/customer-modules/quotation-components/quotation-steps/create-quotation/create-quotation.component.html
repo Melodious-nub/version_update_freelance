@@ -206,7 +206,7 @@
   <div style="margin-left:auto; display: flex; justify-content: flex-end;">
     <div class="toggle-container bg-white">
       <button type="button" class="toggle-btn"
-        [class.active]="quotationForm.get('isRegularPrice')?.value == null ||  quotationForm.get('isRegularPrice')?.value === true"
+        [class.active]="quotationForm.get('isRegularPrice')?.value === null ||  quotationForm.get('isRegularPrice')?.value === true"
         (click)="selectOption(true)">
         Regular Price
       </button>

@@ -126,7 +126,7 @@
           </tr>
         </thead>
         <tbody>
-          @if (productPackages?.controls?.length == 0) {
+          @if (productPackages?.controls?.length === 0) {
             <tr>
               <td [attr.colspan]="16 - this.displayedColumns?.length"></td>
               @if (displayedColumns.includes('pkgs')) {
@@ -427,7 +427,7 @@
                             </dadyin-button>
                           }
                           @if (
-                            productPackages.controls?.length == i + 1 &&
+                            productPackages.controls?.length === i + 1 &&
                             status.value !== 'CONFIRMED' &&
                             status.value !== 'PLACED' &&
                             status.value !== 'REJECTED' &&
@@ -585,7 +585,7 @@
                 </tr>
               </thead>
               <tbody>
-                @if (productPackages?.controls?.length == 0) {
+                @if (productPackages?.controls?.length === 0) {
                   <tr>
                     <td></td>
                     <td></td>
@@ -739,7 +739,7 @@
                               </dadyin-button>
                             }
                             @if (
-                              productPackages.controls?.length == i + 1 &&
+                              productPackages.controls?.length === i + 1 &&
                               status.value !== 'CONFIRMED' &&
                               status.value !== 'PLACED' &&
                               status.value !== 'REJECTED' &&

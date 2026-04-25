@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,9 +7,7 @@ import { Router, RouterOutlet } from '@angular/router';
     styleUrls: ['./invoice-management.component.scss'],
     imports: [RouterOutlet]
 })
-export class InvoiceManagementComponent implements OnInit {
+export class InvoiceManagementComponent {
   constructor(public router: Router) {}
-
-  ngOnInit(): void {}
 
 }

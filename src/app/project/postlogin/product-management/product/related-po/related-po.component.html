@@ -241,7 +241,7 @@
                   </div>
                 </div>
                 <div class="w-100 d-flex flex-wrap" style="row-gap: 2px; column-gap: 5px">
-                  @if (tierPricingCustomization?.controls?.length == 0) {
+                  @if (tierPricingCustomization?.controls?.length === 0) {
                     <div>
                       <!--  <button
                       class="b-none d-flex align-items-center bg-transparent p-0 mt-1"
@@ -316,7 +316,7 @@
                                   >
                                 </dadyin-button> -->
                                 <!--  <button
-                                *ngIf="tierPricingCustomization?.controls?.length == i + 1"
+                                *ngIf="tierPricingCustomization?.controls?.length === i + 1"
                                 class="b-none mt-1 d-flex align-items-center bg-transparent p-0"
                                 >
                                 <mat-icon
@@ -325,7 +325,7 @@
                                   >add_circle_outline</mat-icon
                                   >
                                 </button> -->
-                                @if (tierPricingCustomization?.controls?.length == i + 1) {
+                                @if (tierPricingCustomization?.controls?.length === i + 1) {
                                   <dadyin-button
                                     (clicked)="addTierPricingCustomForm()" [typeval]="'assets/nicons/add-white.png'"
                                     [theme]="'borderless-primary'" type="image">
@@ -339,7 +339,7 @@
                                 delivery of deliveryPricings(i)?.controls; track
                                 delivery; let j = $index) {
                                 <div class="d-flex h-32 width-perc-100">
-                                  @if (i == tierPricingCustomization.controls?.length - 1) {
+                                  @if (i === tierPricingCustomization.controls?.length - 1) {
                                     <dadyin-button (clicked)="removeDeliveryPricing(i)" matTooltip="Delete"
                                       [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'" type="image">
                                     </dadyin-button>
@@ -352,7 +352,7 @@
                                   </dadyin-button> -->
                                   <!-- <button
                       *ngIf="
-                        j == deliveryPricings(i)?.controls?.length - 1 && j < 1
+                        j === deliveryPricings(i)?.controls?.length - 1 && j < 1
                       "
                                   (click)="addDeliveryPricingForm()"
                                   class="b-none d-flex align-items-center bg-transparent p-0"
@@ -362,7 +362,7 @@
                                     >
                                   </button> -->
                                   @if (
-                                    j == deliveryPricings(i)?.controls?.length - 1 && j < 1
+                                    j === deliveryPricings(i)?.controls?.length - 1 && j < 1
                                     ) {
                                     <dadyin-button (clicked)="addDeliveryPricingForm()" [typeval]="'assets/nicons/add-white.png'"
                                       [theme]="'borderless-primary'" type="image">

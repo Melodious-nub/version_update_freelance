@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormArray, FormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -18,7 +18,7 @@ import { CreateAttributeComponent } from './create-attribute/create-attribute.co
     styleUrls: ['./attribute-steps.component.scss'],
     imports: [CreateAttributeComponent]
 })
-export class AttributeSetStepsComponent implements OnInit {
+export class AttributeSetStepsComponent {
   // ************* Variable Declarations *************
   currentStepIndex = 0;
   attributeConfigForm: UntypedFormGroup
@@ -38,11 +38,6 @@ export class AttributeSetStepsComponent implements OnInit {
     public containerService:ContainerManagementService
   ) {
     this.attributeConfigForm = this.ordermanagementFormsService.createAttributeConfigForm();
-  }
-
-
-  ngOnInit(): void {
-    
   }
   
   

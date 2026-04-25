@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
-import { Component, ElementRef, Input, OnInit, ViewChild, OnChanges, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -24,18 +24,12 @@ import { NgStyle } from '@angular/common';
         NumberFormatterPipe
     ]
 })
-export class ThreeSceneComponent implements OnInit, OnChanges, AfterViewInit {
+export class ThreeSceneComponent {
   @Input() containerData: any; // Input to dynamically pass JSON data
   previousRenderer: any = null;
   excludedProducts = [];
   imgUrl= environment.imgUrl
   constructor(private elementRef: ElementRef, private toastr: ToastrService) {}
-
-  ngOnInit(): void {}
-
-  ngOnChanges() {}
-
-  ngAfterViewInit(): void {}
 
   create3DScene(productOrder) {
     this.excludedProducts = [];

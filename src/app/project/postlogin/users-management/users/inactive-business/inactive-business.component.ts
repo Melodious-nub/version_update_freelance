@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,11 +7,8 @@ import { RouterOutlet } from '@angular/router';
     styleUrls: ['./inactive-business.component.scss'],
     imports: [RouterOutlet]
 })
-export class InactiveBusinessComponent implements OnInit {
+export class InactiveBusinessComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

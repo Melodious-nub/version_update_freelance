@@ -108,7 +108,7 @@
           >
         </dadyin-button>
         <!-- <dadyin-button (clicked)="saveRfq('DRAFT')"
-        *ngIf="rfqForm?.value.status == null || rfqForm?.value.status == 'DRAFT'" matTooltip="Save this in Draft"
+        *ngIf="rfqForm?.value.status === null || rfqForm?.value.status === 'DRAFT'" matTooltip="Save this in Draft"
         [theme]="'borderless-default'" type="image" [typeval]="'assets/nicons/save.png'">
       </dadyin-button> -->
       @if (isEdit && !isSelfRfq && rfqForm?.value.status !== 'REJECTED') {

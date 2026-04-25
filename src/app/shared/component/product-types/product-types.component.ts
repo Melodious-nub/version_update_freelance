@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { NgClass } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { NgClass } from '@angular/common';
         ExtendedModule
     ]
 })
-export class ProductTypesComponent implements OnInit {
+export class ProductTypesComponent {
   @Input() pageTitle: string = 'Product Type';
   @Input() types: any = [];
 
@@ -20,8 +20,6 @@ export class ProductTypesComponent implements OnInit {
   selected_types: any = [];
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   selectedTypes(type: string) {
     if (this.selected_types.includes(type)) {

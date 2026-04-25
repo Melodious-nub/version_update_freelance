@@ -166,7 +166,7 @@
               </div>
 
         <div class="row mb-1" [ngClass]="{
-            'd-none': productInformationValues.controls.length == 0
+            'd-none': productInformationValues.controls.length === 0
           }">
                 @for (
                   information of productInformationValues.controls; track
@@ -293,12 +293,12 @@
                             <div class="attribute-input">
                               <div class="toggle w-100">
                   <button class="w-50" (click)="productForm.get('isSaleable').setValue(true)" [ngClass]="{
-                      active: productForm.get('isSaleable').value == true
+                      active: productForm.get('isSaleable').value === true
                     }">
                                   Saleable
                                 </button>
                   <button class="w-50" (click)="productForm.get('isSaleable').setValue(false)" [ngClass]="{
-                      active: productForm.get('isSaleable').value == false
+                      active: productForm.get('isSaleable').value === false
                     }">
                                   Non-Saleable
                                 </button>
@@ -371,7 +371,7 @@
 
                             @if (
                               !preferredCustomerId?.value ||
-                              preferredCustomerId?.value == null ||
+                              preferredCustomerId?.value === null ||
                               preferredCustomerId?.value === 'null'
                               ) {
                               <div class="d-flex check">
@@ -459,7 +459,7 @@
                       </div>
                     </mat-expansion-panel>
 
-                    @if (isInventoryListed.value == true) {
+                    @if (isInventoryListed.value === true) {
                       <mat-expansion-panel expanded="true" #expansionPanel3>
                         <mat-expansion-panel-header (click)="expandPanel(expansionPanel3, $event)">
                           <mat-panel-description>
@@ -547,7 +547,7 @@
                     active:
                       productForm
                         .get('inventoryDetail')
-                        .get('showLiveInventory').value == true
+                        .get('showLiveInventory').value === true
                   }">
                                       Show Live Inventory
                                     </button>
@@ -560,7 +560,7 @@
                     active:
                       productForm
                         .get('inventoryDetail')
-                        .get('showLiveInventory').value == false
+                        .get('showLiveInventory').value === false
                   }">
                                       Show greater than
                                     </button>
@@ -622,7 +622,7 @@
                       </div>
                     </mat-expansion-panel>
                   }
-                  @if (isImportExportable.value == true) {
+                  @if (isImportExportable.value === true) {
                     <mat-expansion-panel expanded="true" #expansionPanel4>
                       <mat-expansion-panel-header (click)="expandPanel(expansionPanel4, $event)">
                         <mat-panel-description>
@@ -754,7 +754,7 @@
                   </mat-expansion-panel>
                 }
 
-                @if (isProductAttributes.value == true) {
+                @if (isProductAttributes.value === true) {
                   <mat-expansion-panel class="panel-no-padding mar-top-30" expanded="true"
                     #expansionPanel55>
                     <mat-expansion-panel-header class="bg-primary-light" (click)="expandPanel(expansionPanel55, $event)">
@@ -793,7 +793,7 @@
                 </mat-expansion-panel>
               }
 
-              @if (isProductAttributes.value == true) {
+              @if (isProductAttributes.value === true) {
                 <mat-expansion-panel class="panel-no-padding mar-top-30" expanded="true"
                   #expansionPanel5>
                   <mat-expansion-panel-header class="bg-primary-light" (click)="expandPanel(expansionPanel5, $event)">
@@ -965,10 +965,10 @@
                                   )
                                   ) {
                     <div [ngClass]="{
-                        'width-perc-25': item?.get('colSpace').value == 25,
-                        'width-perc-50': item?.get('colSpace').value == 50,
-                        'width-perc-75': item?.get('colSpace').value == 75,
-                        'width-perc-100': item?.get('colSpace').value == 100
+                        'width-perc-25': item?.get('colSpace').value === 25,
+                        'width-perc-50': item?.get('colSpace').value === 50,
+                        'width-perc-75': item?.get('colSpace').value === 75,
+                        'width-perc-100': item?.get('colSpace').value === 100
                       }" class="d-flex align-items-top">
                                     <div class="attribute one attr-b d-flex align-items-center w-100" style="width: fit-content">
                         <label [ngClass]="{
@@ -1082,10 +1082,10 @@
                                     )
                                     ) {
                     <div [ngClass]="{
-                        'width-perc-25': item.get('colSpace').value == 25,
-                        'width-perc-50': item.get('colSpace').value == 50,
-                        'width-perc-75': item.get('colSpace').value == 75,
-                        'width-perc-100': item.get('colSpace').value == 100
+                        'width-perc-25': item.get('colSpace').value === 25,
+                        'width-perc-50': item.get('colSpace').value === 50,
+                        'width-perc-75': item.get('colSpace').value === 75,
+                        'width-perc-100': item.get('colSpace').value === 100
                       }" class="d-flex align-items-top">
                                       <div class="attribute tabular-sheet attr-b w-100">
                                         <div class="attribute-input w-100">
@@ -1136,7 +1136,7 @@
                                 active:
                                   getArray(
                                     item.get('attributeValueExpression').value
-                                  )[0]?.selected == true
+                                  )[0]?.selected === true
                               }" (click)="toggleAttribute(item, 0)">
                                                 {{
                                                 getArray(
@@ -1148,7 +1148,7 @@
                                 active:
                                   getArray(
                                     item.get('attributeValueExpression').value
-                                  )[1]?.selected == true
+                                  )[1]?.selected === true
                               }" (click)="toggleAttribute(item, 1)">
                                                 {{
                                                 getArray(
@@ -1174,10 +1174,10 @@
                                       )
                                       ) {
                     <div [ngClass]="{
-                        'width-perc-25': item.get('colSpace').value == 25,
-                        'width-perc-50': item.get('colSpace').value == 50,
-                        'width-perc-75': item.get('colSpace').value == 75,
-                        'width-perc-100': item.get('colSpace').value == 100
+                        'width-perc-25': item.get('colSpace').value === 25,
+                        'width-perc-50': item.get('colSpace').value === 50,
+                        'width-perc-75': item.get('colSpace').value === 75,
+                        'width-perc-100': item.get('colSpace').value === 100
                       }" class="d-flex align-items-top">
                                         <div class="attribute one attr-b w-100">
                         <label [ngClass]="{
@@ -1279,13 +1279,13 @@
                                                   ) {
                               <div [ngClass]="{
                                   'width-perc-25':
-                                    attr?.get('colSpace').value == 25,
+                                    attr?.get('colSpace').value === 25,
                                   'width-perc-50':
-                                    attr?.get('colSpace').value == 50,
+                                    attr?.get('colSpace').value === 50,
                                   'width-perc-75':
-                                    attr?.get('colSpace').value == 75,
+                                    attr?.get('colSpace').value === 75,
                                   'width-perc-100':
-                                    attr?.get('colSpace').value == 100
+                                    attr?.get('colSpace').value === 100
                                 }" class="mt-3">
                                                     <div class="attribute one attr-b w-100">
                                   <label for="" [ngClass]="{
@@ -1403,13 +1403,13 @@
                                                     ) {
                               <div [ngClass]="{
                                   'width-perc-25':
-                                    attr?.get('colSpace').value == 25,
+                                    attr?.get('colSpace').value === 25,
                                   'width-perc-50':
-                                    attr?.get('colSpace').value == 50,
+                                    attr?.get('colSpace').value === 50,
                                   'width-perc-75':
-                                    attr?.get('colSpace').value == 75,
+                                    attr?.get('colSpace').value === 75,
                                   'width-perc-100':
-                                    attr?.get('colSpace').value == 100
+                                    attr?.get('colSpace').value === 100
                                 }" class="mt-3">
                                                       <div class="attribute tabular-sheet attr-b">
                                                         <div class="attribute-input">
@@ -1457,7 +1457,7 @@
                                             getArray(
                                               attr.get('attributeValueExpression')
                                                 .value
-                                            )[0].selected == true
+                                            )[0].selected === true
                                         }">
                                                                 {{
                                                                 getArray(
@@ -1471,7 +1471,7 @@
                                             getArray(
                                               attr.get('attributeValueExpression')
                                                 .value
-                                            )[1].selected == true
+                                            )[1].selected === true
                                         }">
                                                                 {{
                                                                 getArray(
@@ -1496,13 +1496,13 @@
                                                       ) {
                               <div [ngClass]="{
                                   'width-perc-25':
-                                    attr?.get('colSpace').value == 25,
+                                    attr?.get('colSpace').value === 25,
                                   'width-perc-50':
-                                    attr?.get('colSpace').value == 50,
+                                    attr?.get('colSpace').value === 50,
                                   'width-perc-75':
-                                    attr?.get('colSpace').value == 75,
+                                    attr?.get('colSpace').value === 75,
                                   'width-perc-100':
-                                    attr?.get('colSpace').value == 100
+                                    attr?.get('colSpace').value === 100
                                 }" class="mt-3">
                                                         <div class="attribute one">
                                   <label for="" [ngClass]="{
@@ -1560,7 +1560,7 @@
 
                   <!--   unit expense -->
 
-                  @if (isAdvanceProduct.value == true) {
+                  @if (isAdvanceProduct.value === true) {
                     <mat-expansion-panel class="panel-no-padding mar-top-30" expanded="true"
                       #expansionPanel6>
                       <mat-expansion-panel-header class="bg-primary-light" (click)="expandPanel(expansionPanel6, $event)">
@@ -1778,7 +1778,7 @@
                           </div>
                         <!-- </mat-panel-description>-->
                       </div>
-                      @if (productForm.get('isExtraExpense').value == true) {
+                      @if (productForm.get('isExtraExpense').value === true) {
                         <div class="mx-2 attr-b my-3">
                           <div class="title-text text-light fw-400 attr-b " style="font-weight: 400">
                             Material Cost
@@ -1799,7 +1799,7 @@
                                     is Product</span>
                                   </div>
                                 </div>
-                                @if (expense.get('isProduct').value == true) {
+                                @if (expense.get('isProduct').value === true) {
                                   <div class="w-100">
                                     <dadyin-searchable-select [marginBottom]="false" placeholder="Product Type" label="Product Type"
                                       [control]="expense.get('productTypeId')" (changed)="onProductTypeExpenseChange(expense)"
@@ -1845,7 +1845,7 @@
                                     <div class="attribute one">
                                       <label for="">Material/Product Name</label>
                                       <div class="attribute-input">
-                                        <input formControlName="expenseDescription" [readonly]="expense.get('isProduct').value == true"
+                                        <input formControlName="expenseDescription" [readonly]="expense.get('isProduct').value === true"
                                           type="text" />
                                         </div>
                                       </div>
@@ -1996,7 +1996,7 @@
                                             </div>
                                             <dadyin-button (clicked)="removeProductExpenseConversionType(m)" matTooltip="Delete"
                                             [typeval]="'assets/nicons/delete.png'" [theme]="'borderless-primary'" type="image"></dadyin-button>
-                                            @if (m == (productExpenseConversionTypes?.length - 1)) {
+                                            @if (m === (productExpenseConversionTypes?.length - 1)) {
                                               <dadyin-button type="image"
                                                 [theme]="'borderless-primary'" [typeval]="'assets/nicons/add-white.png'"
                                                 (clicked)="addProductExpenseConversionType()">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,8 +7,6 @@ import { RouterOutlet } from '@angular/router';
     styleUrls: ['./inventoryin.component.scss'],
     imports: [RouterOutlet]
 })
-export class InventoryinComponent implements OnInit {
+export class InventoryinComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }

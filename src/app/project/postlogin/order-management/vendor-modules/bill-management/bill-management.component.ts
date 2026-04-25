@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,9 +7,7 @@ import { Router, RouterOutlet } from '@angular/router';
     styleUrls: ['./bill-management.component.scss'],
     imports: [RouterOutlet]
 })
-export class BillManagementComponent implements OnInit {
+export class BillManagementComponent {
   constructor(public router: Router) {}
-
-  ngOnInit(): void {}
 
 }

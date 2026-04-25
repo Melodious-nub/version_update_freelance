@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -14,7 +14,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     standalone: true,
     imports: [MatTooltip, MatIcon]
 })
-export class DadyinSelectedValueComponent implements OnInit {
+export class DadyinSelectedValueComponent {
 
     @Input() height = '';
     @Input() options = [];
@@ -22,9 +22,6 @@ export class DadyinSelectedValueComponent implements OnInit {
     @Input() label = "";
 
     constructor() { }
-
-    ngOnInit(): void {
-    }
 
     remove(item) {
         const index = this.options.indexOf(item);

@@ -46,7 +46,7 @@
             </tr>
           </thead>
           <tbody>
-            @if (wareHouseDetails.controls?.length == 0) {
+            @if (wareHouseDetails.controls?.length === 0) {
               <tr>
                 <td></td>
                 <td></td>
@@ -153,7 +153,7 @@
                             <input
                               type="text"
                               formControlName="number"
-                              onKeyPress="if(this.value.length==12) return false;"
+                              onKeyPress="if(this.value.length===12) return false;"
                     [ngClass]="{
                       'b-red':
                         wareHouse.get('phone').get('number').invalid &&
@@ -250,7 +250,7 @@
                                             [typeval]="'delete_outline'"
                                             >
                                           </dadyin-button>
-                                          @if (wareHouseDetails.controls?.length == i + 1) {
+                                          @if (wareHouseDetails.controls?.length === i + 1) {
                                             <dadyin-button
                                               (clicked)="addWareHouseItem()"
                                               [theme]="'borderless-primary'"
@@ -293,7 +293,7 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  @if (contactDetails.controls?.length == 0) {
+                                  @if (contactDetails.controls?.length === 0) {
                                     <tr>
                                       <td></td>
                                       <td></td>
@@ -391,7 +391,7 @@
                                                 <input
                                                   type="text"
                                                   formControlName="number"
-                                                  onKeyPress="if(this.value.length==12) return false;"
+                                                  onKeyPress="if(this.value.length===12) return false;"
                 [ngClass]="{
                   'b-red':
                     contactForm.get('phone').get('number').invalid &&
@@ -432,7 +432,7 @@
                                                         [typeval]="'delete_outline'"
                                                         >
                                                       </dadyin-button>
-                                                      @if (contactDetails.controls?.length == i + 1) {
+                                                      @if (contactDetails.controls?.length === i + 1) {
                                                         <dadyin-button
                                                           (clicked)="addContactLineItem()"
                                                           [theme]="'borderless-primary'"
@@ -476,7 +476,7 @@
                                                 </tr>
                                               </thead>
                                               <tbody>
-                                                @if (purchaseDepartmentPricings.controls?.length == 0) {
+                                                @if (purchaseDepartmentPricings.controls?.length === 0) {
                                                   <tr>
                                                     <td></td>
                                                     <td></td>
@@ -577,7 +577,7 @@
                                                               <input
                                                                 type="text"
                                                                 formControlName="number"
-                                                                onKeyPress="if(this.value.length==12) return false;"
+                                                                onKeyPress="if(this.value.length===12) return false;"
                 [ngClass]="{
                   'b-red':
                     purchasePricingForm.get('phone').get('number').invalid &&
@@ -654,7 +654,7 @@
                                                                         [typeval]="'delete_outline'"
                                                                         >
                                                                       </dadyin-button>
-                                                                      @if (purchaseDepartmentPricings.controls?.length == i + 1) {
+                                                                      @if (purchaseDepartmentPricings.controls?.length === i + 1) {
                                                                         <dadyin-button
                                                                           (clicked)="addPurchasePricingItem()"
                                                                           [theme]="'borderless-primary'"

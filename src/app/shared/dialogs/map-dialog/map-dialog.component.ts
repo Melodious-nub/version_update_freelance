@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable} from 'rxjs';
@@ -13,7 +13,7 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     styleUrls: ['./map-dialog.component.scss'],
     imports: [DadyinButtonComponent, FormsModule, ReactiveFormsModule, DadyinMapAutoCompleteComponent, GoogleMap, MapMarker]
 })
-export class MapDialogComponent implements OnInit {
+export class MapDialogComponent {
   apiLoaded: Observable<boolean>;
   markerOptions: google.maps.MarkerOptions = {draggable: true};
   markerPosition: google.maps.LatLngLiteral = {lat: 24.576110,lng: 73.700500};
@@ -26,9 +26,6 @@ export class MapDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<MapDialogComponent>,httpClient: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: any,public fb:UntypedFormBuilder)
   {}
-
-  ngOnInit(): void {
-  }
   close() {
     this.dialogRef.close();
   }

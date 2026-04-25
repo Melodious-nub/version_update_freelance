@@ -10,14 +10,14 @@
           ">
           <ng-template mat-tab-label>
             <span>{{ link.label }}
-              @if (j == customerTabSelectedIndex && pageConfig.totalElements) {
+              @if (j === customerTabSelectedIndex && pageConfig.totalElements) {
                 <span>({{ pageConfig?.totalElements
                 }})</span>
               }
             </span>
           </ng-template>
           <ng-template matTabContent>
-            @if (currentMainIndex == 0) {
+            @if (currentMainIndex === 0) {
               <ng-container>
                 <div class="header-wrapper my-2">
                   <div class="row mx-auto">
@@ -49,7 +49,7 @@
               </div>
             </ng-container>
           }
-          @if (currentMainIndex == 1) {
+          @if (currentMainIndex === 1) {
             <ng-container>
               <div class="header-wrapper my-2">
                 <div class="row mx-auto">
@@ -87,7 +87,7 @@
             </div>
           </ng-container>
         }
-        @if (currentMainIndex == 2) {
+        @if (currentMainIndex === 2) {
           <ng-container>
             <div class="lead-sub-tabs mb-3">
               @for (tab of leadSubTabs; track tab) {
@@ -171,21 +171,21 @@
                                   border-top-left-radius: 10px;
                                 " class="bg-primary text-white height-28" [ngClass]="{
                                   disabled:
-                                    bulkAssignmentIds?.length == 0 ||
-                                    salesRepIds?.length == 0
+                                    bulkAssignmentIds?.length === 0 ||
+                                    salesRepIds?.length === 0
                                 }" [disabled]="
-                                  bulkAssignmentIds?.length == 0 ||
-                                  salesRepIds?.length == 0
+                                  bulkAssignmentIds?.length === 0 ||
+                                  salesRepIds?.length === 0
                                 " (click)="assignLeads()">
                             Assign
                           </button>
                               <button style="min-width: unset" class="bg-secondary text-primary height-28" [ngClass]="{
                                   disabled:
-                                    bulkAssignmentIds?.length == 0 ||
-                                    salesRepIds?.length == 0
+                                    bulkAssignmentIds?.length === 0 ||
+                                    salesRepIds?.length === 0
                                 }" [disabled]="
-                                  bulkAssignmentIds?.length == 0 ||
-                                  salesRepIds?.length == 0
+                                  bulkAssignmentIds?.length === 0 ||
+                                  salesRepIds?.length === 0
                                 " (click)="unassignLeads()">
                             Unassign
                           </button>
@@ -200,7 +200,7 @@
                           (change)="assignRelationStatus()">
                           <option [value]="null" disabled>Select Status</option>
                           @for (item of apiService.allRelationStatuses; track item) {
-                            <option [disabled]="bulkAssignmentIds?.length == 0"
+                            <option [disabled]="bulkAssignmentIds?.length === 0"
                               [value]="item.id">
                               {{ item.description }}
                             </option>
@@ -212,7 +212,7 @@
                 }
                 <div class="d-flex w-100 align-items-center justify-content-end">
                         <!-- <dadyin-button *ngIf="
-                          this.tokenService.getRoleInBusinessAccountIdToken() !=
+                          this.tokenService.getRoleInBusinessAccountIdToken() !==
                           'CRM'
                         " [theme]="'secondary'" label="Bulk Add" class="mx-1" (clicked)="openLeadsBulkAddDialog()">
                 </dadyin-button> -->
@@ -237,7 +237,7 @@
         </div>
       </ng-container>
     }
-    @if (currentMainIndex == 3) {
+    @if (currentMainIndex === 3) {
       <ng-container>
         <div class="header-wrapper my-2">
           <div class="row mx-auto">
@@ -280,7 +280,7 @@
           <span>{{ link.label }}</span>
         </ng-template>
         <ng-template matTabContent>
-          @if (currentMainIndex == 0) {
+          @if (currentMainIndex === 0) {
             <ng-container>
               <div class="header-wrapper my-2">
                 <div class="row mx-auto">

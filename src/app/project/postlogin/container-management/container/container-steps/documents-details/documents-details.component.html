@@ -27,7 +27,7 @@
             </tr>
           </thead>
           <tbody>
-            @if (getFilteredDocuments()?.length == 0) {
+            @if (getFilteredDocuments()?.length === 0) {
               <tr>
                 <th></th>
                 <th></th>
@@ -51,7 +51,7 @@
                 [formGroup]="document"
                 >
                 @if (
-                  document.get('addedByBusinessAccountId').value ==
+                  document.get('addedByBusinessAccountId').value ===
                   this.currentBusinessAccount?.id
                   ) {
                   <tr
@@ -62,7 +62,7 @@
                     </td>
                     <td>
                       <input
-                        onKeyPress="if(this.value.length==12) return false;"
+                        onKeyPress="if(this.value.length===12) return false;"
                         type="text"
                         formControlName="number"
                         />
@@ -119,7 +119,7 @@
                             }
                           </td>
                           <td>
-                            @if (documents?.controls.length == i + 1) {
+                            @if (documents?.controls.length === i + 1) {
                               <dadyin-button
                                 (clicked)="addDocument()"
                                 [theme]="'borderless-primary'"

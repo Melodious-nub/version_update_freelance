@@ -6,16 +6,16 @@
                     [matBadgeOverlap]=false>{{link.title}}</span>
             </ng-template>
             <ng-template matTabContent>
-                <ng-container *ngIf="currentMainIndex == 0">
+                <ng-container *ngIf="currentMainIndex === 0">
                     <app-product-details></app-product-details>
                 </ng-container>
-                <ng-container *ngIf="currentMainIndex == 1">
+                <ng-container *ngIf="currentMainIndex === 1">
                     <app-subtype-list></app-subtype-list>
                 </ng-container>
-                <ng-container *ngIf="currentMainIndex == 2">
+                <ng-container *ngIf="currentMainIndex === 2">
                     <app-additional-cost-details></app-additional-cost-details>
                 </ng-container>
-                <ng-container *ngIf="currentMainIndex == 3">
+                <ng-container *ngIf="currentMainIndex === 3">
                     <app-buying-capacity-details></app-buying-capacity-details>
                 </ng-container>
             </ng-template>

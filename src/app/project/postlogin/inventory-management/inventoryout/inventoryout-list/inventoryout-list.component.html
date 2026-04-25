@@ -5,13 +5,13 @@
         <span [matBadge]="link.badge" [matBadgeHidden]="link.badge === 0" [matBadgeOverlap]=false>{{link.title}}</span>
       </ng-template>
       <ng-template matTabContent>
-        @if (currentMainIndex == 0) {
+        @if (currentMainIndex === 0) {
           <app-inventoryout-order-arrival></app-inventoryout-order-arrival>
         }
-        @if (currentMainIndex == 1) {
+        @if (currentMainIndex === 1) {
           <app-inventoryout-added-to-inventory></app-inventoryout-added-to-inventory>
         }
-        @if (currentMainIndex == 2) {
+        @if (currentMainIndex === 2) {
           <app-inventoryout-container-in></app-inventoryout-container-in>
         }
       </ng-template>

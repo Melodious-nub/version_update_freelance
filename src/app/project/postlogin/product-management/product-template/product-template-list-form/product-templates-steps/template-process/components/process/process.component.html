@@ -1,5 +1,5 @@
 <div class="header-light">
-  @if (isShowProcessList == false) {
+  @if (isShowProcessList === false) {
     <div class="d-flex">
       <div class="font-size-14">
         <strong>Template Cost : </strong>
@@ -19,7 +19,7 @@
           !this.apiService.finalSave ||
           templateProcesses?.controls[this.templateProcesses?.length - 1]
             ?.get('process')
-            ?.get('isLayerPercentageCalculated')?.value == false" (click)="setTemplateProcessMaterialType('LOG_SHEET')"
+            ?.get('isLayerPercentageCalculated')?.value === false" (click)="setTemplateProcessMaterialType('LOG_SHEET')"
             class="width-perc-50 h-25 font-size-12"
             [ngClass]="{ active: templateProcessMaterialType.value === 'LOG_SHEET' }">
             Log Sheet
@@ -28,7 +28,7 @@
           !this.apiService.finalSave ||
           templateProcesses?.controls[this.templateProcesses?.length - 1]
             ?.get('process')
-            ?.get('isLayerPercentageCalculated')?.value == false"
+            ?.get('isLayerPercentageCalculated')?.value === false"
             (click)="setTemplateProcessMaterialType('FIXED_MATERIAL')" class="width-perc-50 h-25 font-size-12"
             [ngClass]="{ active: templateProcessMaterialType.value === 'FIXED_MATERIAL' }">
             Fixed Material
@@ -41,7 +41,7 @@
           !this.apiService.finalSave ||
           templateProcesses?.controls[this.templateProcesses?.length - 1]
             ?.get('process')
-            ?.get('isLayerPercentageCalculated')?.value == false
+            ?.get('isLayerPercentageCalculated')?.value === false
         " label="Add New Process" (clicked)="createNewProcess(false)" type="image" [theme]="'borderless-primary'"
         [class]="'bg-white px-2 w-auto-img d-flex '" [typeval]="'assets/nicons/add.png'" height="25px">
       </dadyin-button>
@@ -51,7 +51,7 @@
           !this.apiService.finalSave ||
           templateProcesses?.controls[this.templateProcesses?.length - 1]
             ?.get('process')
-            ?.get('isLayerPercentageCalculated')?.value == false
+            ?.get('isLayerPercentageCalculated')?.value === false
         " label="Add Existing Process" (clicked)="createNewProcess(true)" type="image" height="25px"
         [theme]="'borderless-primary'" [class]="'bg-white px-2 w-auto-img d-flex'" [typeval]="'assets/nicons/add.png'">
       </dadyin-button>

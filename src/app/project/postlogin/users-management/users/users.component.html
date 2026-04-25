@@ -7,13 +7,13 @@
           link.title }}</span>
         </ng-template>
         <ng-template matTabContent>
-          @if (link.index == 0) {
+          @if (link.index === 0) {
             <app-all-business-list></app-all-business-list>
           }
-          @if (link.index == 1) {
+          @if (link.index === 1) {
             <app-active-business-list></app-active-business-list>
           }
-          @if (link.index == 2) {
+          @if (link.index === 2) {
             <app-inactive-business-list></app-inactive-business-list>
           }
         </ng-template>

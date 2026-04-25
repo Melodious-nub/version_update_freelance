@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/service/http.service';
@@ -34,7 +34,7 @@ export interface BusinessBulkExtractResponse {
         MatExpansionModule
     ]
 })
-export class BulkAddDialogComponent implements OnInit {
+export class BulkAddDialogComponent {
   businessListExpanded = true;
   extractedRows: BusinessBulkExtractRow[] = [];
   selectedFile: File | null = null;
@@ -47,8 +47,6 @@ export class BulkAddDialogComponent implements OnInit {
     private toastr: ToastrService,
     private httpService: HttpService
   ) {}
-
-  ngOnInit(): void {}
 
   onBack(): void {
     this.dialogRef.close();

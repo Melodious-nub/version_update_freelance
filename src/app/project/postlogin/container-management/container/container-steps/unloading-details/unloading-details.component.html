@@ -568,7 +568,7 @@
                                                 </td>
                                                 <td>
                                                   @if (
-                                                    p.get('purchaseOrderDetail').get('expanded').value ==
+                                                    p.get('purchaseOrderDetail').get('expanded').value ===
                                                     false && getContainerProducts(i)?.controls?.length > 0
                                                     ) {
                                                     <dadyin-button
@@ -585,7 +585,7 @@
                                                     </dadyin-button>
                                                   }
                                                   @if (
-                                                    p.get('purchaseOrderDetail').get('expanded').value == true
+                                                    p.get('purchaseOrderDetail').get('expanded').value === true
                                                     ) {
                                                     <dadyin-button
                     (clicked)="
@@ -603,7 +603,7 @@
                                                 </td>
                                               </tr>
                                               @if (
-                                                p.get('purchaseOrderDetail').get('expanded').value == true
+                                                p.get('purchaseOrderDetail').get('expanded').value === true
                                                 ) {
                                                 <tr class="t-head b-top b-right-left">
                                                   <th class="cell-white"></th>
@@ -627,21 +627,21 @@
                                                   <tr
                     [ngStyle]="{
                       'border-bottom':
-                        j == getContainerProducts(i)?.controls?.length - 1
+                        j === getContainerProducts(i)?.controls?.length - 1
                           ? ''
                           : 'solid 1px white'
                     }"
                                                     class="bg-grey b-right-left"
                     [ngClass]="{
                       'b-bottom':
-                        j == getContainerProducts(i)?.controls?.length - 1 &&
-                        getOrderPalletInformations(i, j)?.controls?.length == 0
+                        j === getContainerProducts(i)?.controls?.length - 1 &&
+                        getOrderPalletInformations(i, j)?.controls?.length === 0
                     }"
                                                     [formGroup]="containerproduct"
                                                     >
                                                     <td class="cell-white"></td>
                                                     <td style="padding-left: 7px" colspan="2">
-                                                      @if (k == 0) {
+                                                      @if (k === 0) {
                                                         <span>
                                                           {{ containerproduct.value.productId }}
                                                         </span>
@@ -719,14 +719,14 @@
                                                                 class="bg-lightgrey b-right-left"
                       [ngStyle]="{
                         'border-bottom':
-                          getOrderPalletInformations(i, j)?.controls?.length ==
+                          getOrderPalletInformations(i, j)?.controls?.length ===
                           k + 1
                             ? ''
                             : 'solid 1px white'
                       }"
                       [ngClass]="{
                         'b-bottom':
-                          k ==
+                          k ===
                           getOrderPalletInformations(i, j)?.controls?.length - 1
                       }"
                                                                 [formGroup]="pallet"
@@ -979,7 +979,7 @@
                                                                                 </td>
                                                                                 <td>
                                                                                   @if (
-                                                                                    containerproduct.get('expanded').value == false &&
+                                                                                    containerproduct.get('expanded').value === false &&
                                                                                     getOrderPalletInformations(i, j)?.controls?.length > 0
                                                                                     ) {
                                                                                     <dadyin-button
@@ -992,7 +992,7 @@
                                                                                       >
                                                                                     </dadyin-button>
                                                                                   }
-                                                                                  @if (containerproduct.get('expanded').value == true) {
+                                                                                  @if (containerproduct.get('expanded').value === true) {
                                                                                     <dadyin-button
                       (clicked)="
                         containerproduct.get('expanded').setValue(false)
@@ -1005,7 +1005,7 @@
                                                                                   }
                                                                                 </td>
                                                                               </tr>
-                                                                              @if (containerproduct.get('expanded').value == true) {
+                                                                              @if (containerproduct.get('expanded').value === true) {
                                                                                 <tr class="b-top b-right-left t-head">
                                                                                   <th class="cell-white"></th>
                                                                                   <th style="padding-left: 7px"></th>
@@ -1039,14 +1039,14 @@
                                                                                     class="b-right-left bg-lightgrey"
                     [ngStyle]="{
                       'border-bottom':
-                        getOrderPalletInformations(i, j)?.controls?.length ==
+                        getOrderPalletInformations(i, j)?.controls?.length ===
                         k + 1
                           ? ''
                           : 'solid 1px white'
                     }"
                     [ngClass]="{
                       'b-bottom':
-                        k ==
+                        k ===
                         getOrderPalletInformations(i, j)?.controls?.length - 1
                     }"
                                                                                     [formGroup]="pallet"
@@ -1185,7 +1185,7 @@
                                                                                 </tr>
                                                                               </thead>
                                                                               <tbody>
-                                                                                @if (getFilteredLabourExpenses()?.length == 0) {
+                                                                                @if (getFilteredLabourExpenses()?.length === 0) {
                                                                                   <tr>
                                                                                     <td style="padding-left: 20px"></td>
                                                                                     <td colspan="2"></td>
@@ -1213,7 +1213,7 @@
                                                                                     [formGroup]="labourExpense"
                                                                                     >
                                                                                     @if (
-                                                                                      labourExpense.get('addedByBusinessAccountId').value ==
+                                                                                      labourExpense.get('addedByBusinessAccountId').value ===
                                                                                       this.currentBusinessAccount?.id
                                                                                       ) {
                                                                                       <tr
@@ -1341,7 +1341,7 @@
                                                                                                   [typeval]="'delete_outline'"
                                                                                                   >
                                                                                                 </dadyin-button>
-                                                                                                @if (labourExpenses?.controls.length == i + 1) {
+                                                                                                @if (labourExpenses?.controls.length === i + 1) {
                                                                                                   <dadyin-button
                                                                                                     (clicked)="addInLabourExpense()"
                                                                                                     [theme]="'borderless-primary'"
@@ -1400,7 +1400,7 @@
                                                                                       </tr>
                                                                                     </thead>
                                                                                     <tbody>
-                                                                                      @if (getFilteredUnloadingMaterialExpenses()?.length == 0) {
+                                                                                      @if (getFilteredUnloadingMaterialExpenses()?.length === 0) {
                                                                                         <tr>
                                                                                           <td style="padding-left: 20px"></td>
                                                                                           <td colspan="2"></td>
@@ -1428,7 +1428,7 @@
                                                                                           >
                                                                                           @if (
                                                                                             unloadingMaterialExpense.get('addedByBusinessAccountId')
-                                                                                            .value == this.currentBusinessAccount?.id
+                                                                                            .value === this.currentBusinessAccount?.id
                                                                                             ) {
                                                                                             <tr
                                                                                               >
@@ -1475,7 +1475,7 @@
                                                                                                     [typeval]="'delete_outline'"
                                                                                                     >
                                                                                                   </dadyin-button>
-                                                                                                  @if (unloadingMaterialExpenses?.controls?.length == i + 1) {
+                                                                                                  @if (unloadingMaterialExpenses?.controls?.length === i + 1) {
                                                                                                     <dadyin-button
                                                                                                       (clicked)="addInUnloadingMaterialExpense()"
                                                                                                       [theme]="'borderless-primary'"

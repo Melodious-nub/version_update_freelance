@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
@@ -14,7 +14,7 @@ import { FormsService } from 'src/app/service/forms.service';
         MatDialogClose,
     ]
 })
-export class WasteOptionModalComponent implements OnInit {
+export class WasteOptionModalComponent {
   formulaValue = '';
   wasteOptionform: any
   currentControl: any;
@@ -26,9 +26,6 @@ export class WasteOptionModalComponent implements OnInit {
     public dialogRef: MatDialogRef<WasteOptionModalComponent>
   ) {
     this.wasteOptionform = this.formsService.createWasteOptionForm()
-  }
-
-  ngOnInit(): void {
   }
 
   formula(item: UntypedFormControl) {

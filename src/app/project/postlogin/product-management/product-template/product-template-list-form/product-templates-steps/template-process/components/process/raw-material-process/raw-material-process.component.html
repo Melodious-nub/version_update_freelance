@@ -6,7 +6,7 @@
           <div style="text-wrap: nowrap;" class="d-flex align-items-center text-black font-size-14 ">
             <span class="me-3 text-black">Raw Material Details</span>
 
-            @if (getprocessProducts.controls?.length==0) {
+            @if (getprocessProducts.controls?.length===0) {
               <dadyin-button (clicked)="addNewProcessProductControl()" (click)="$event.stopPropagation()"
                 [theme]="'borderless-primary'" type='image' [class]="'w-auto-img'" [typeval]="'assets/nicons/add.png'"
                 [isDisabled]="process?.disabled ">
@@ -130,7 +130,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!--   <tr *ngIf="getprocessProducts.controls?.length==0">
+                  <!--   <tr *ngIf="getprocessProducts.controls?.length===0">
                   <th style="width:20px;"></th>
                   <th></th>
                   <th></th>
@@ -198,7 +198,7 @@
                               <dadyin-button (clicked)="removeProcessProduct(i)" [theme]="'borderless-danger'" type='icon'
                                 [typeval]="'delete_outline'" [isDisabled]="process?.disabled">
                               </dadyin-button>
-                              @if (getprocessProducts.controls?.length==i+1) {
+                              @if (getprocessProducts.controls?.length===i+1) {
                                 <dadyin-button (clicked)="addNewProcessProductControl()" [theme]="'borderless-primary'"
                                   type='image' [typeval]="'assets/nicons/add-white.png'"
                                   [isDisabled]="process?.disabled || getprocessProducts?.invalid">

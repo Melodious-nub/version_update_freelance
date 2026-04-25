@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnDestroy } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -38,7 +38,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
         SlicePipe
     ]
 })
-export class ContainerInfoComponent implements OnInit, OnDestroy {
+export class ContainerInfoComponent implements OnDestroy{
   @Input() isExport: any;
   expanded: any[] = [];
   @Input() containerForm: UntypedFormGroup;
@@ -59,7 +59,7 @@ export class ContainerInfoComponent implements OnInit, OnDestroy {
     public uomService: UomService
   ) {}
 
-  async ngOnInit() {}
+  async
 
   ngOnDestroy(): void {
     this.ngUnsubscribe.next();

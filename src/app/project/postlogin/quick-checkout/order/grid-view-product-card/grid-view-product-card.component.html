@@ -290,7 +290,7 @@
                                       <td
                 [ngClass]="{
                   'bg-secondary':
-                    tierPricing?.minimumQuantity == this.product.skuQuantities
+                    tierPricing?.minimumQuantity === this.product.skuQuantities
                 }"
                                         (click)="setQuantity(tierPricing.minimumQuantity, this.i)"
                                         class="cursor text-muted"
@@ -308,7 +308,7 @@
                                   <tr
                                     class="b-bottom-secondary"
                                     >
-                                    @if (m == 0) {
+                                    @if (m === 0) {
                                       <td rowspan="2">
                                         <b> {{ deliveryPricing?.deliveryCost?.userConversionUom }} </b>
                                       </td>
@@ -334,9 +334,9 @@
                 "
                 [ngClass]="{
                   'bg-secondary':
-                    tierPricing?.minimumQuantity ==
+                    tierPricing?.minimumQuantity ===
                       this.product.skuQuantities &&
-                    deliveryPricing?.numberOfDays == this.product.deliveryDays
+                    deliveryPricing?.numberOfDays === this.product.deliveryDays
                 }"
                                           >
                                           {{
@@ -352,7 +352,7 @@
                                       (click)="setDays(deliveryPricing?.numberOfDays, null, this.i)"
               [ngClass]="{
                 'bg-secondary':
-                  deliveryPricing?.numberOfDays == this.product.deliveryDays
+                  deliveryPricing?.numberOfDays === this.product.deliveryDays
               }"
                                       class="width-100"
                                       >

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 
@@ -8,12 +8,9 @@ import { environment } from 'src/environments/environment';
     styleUrls: ['./dadyin-card-slider.component.scss'],
     imports: []
 })
-export class DadyinCardSliderComponent implements OnInit {
+export class DadyinCardSliderComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   @Input() cardLength: any;
  

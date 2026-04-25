@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,11 +7,8 @@ import { Router } from '@angular/router';
     styleUrls: ['./inventory-management.component.scss'],
     standalone: true
 })
-export class InventoryManagementComponent implements OnInit {
+export class InventoryManagementComponent {
   constructor(private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   navigate(link: string): void {
     this.router.navigateByUrl(link);

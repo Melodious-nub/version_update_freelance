@@ -1,5 +1,5 @@
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { Dir } from '@angular/cdk/bidi';
 
@@ -14,14 +14,11 @@ import { Dir } from '@angular/cdk/bidi';
         MatDialogClose,
     ]
 })
-export class TermsDialogComponent implements OnInit {
+export class TermsDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<TermsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
-
-  ngOnInit(): void {
-  }
 
 
   agree(): void {

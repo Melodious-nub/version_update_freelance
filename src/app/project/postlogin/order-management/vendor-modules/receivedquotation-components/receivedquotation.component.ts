@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,8 +8,6 @@ import { RouterOutlet } from '@angular/router';
     standalone: true,
     imports: [RouterOutlet],
 })
-export class ReceivedQuotationComponent implements OnInit {
+export class ReceivedQuotationComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-inactive-business-list',
@@ -6,11 +6,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./inactive-business-list.component.scss'],
     standalone: true
 })
-export class InactiveBusinessListComponent implements OnInit {
+export class InactiveBusinessListComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

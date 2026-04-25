@@ -162,13 +162,13 @@
 </div>
 <mat-tab-group [(selectedIndex)]="currentStepIndex" class="mat-steps">
   <mat-tab label="Purchase order">
-    @if (currentStepIndex == 0) {
+    @if (currentStepIndex === 0) {
       <app-create-order (generatePdf)="generatePdf()" [componentUoms]="componentUoms" (calculate)="calculateValues()"
       (patchEditData)="patchEditData($event, true)" [purchaseOrderForm]="purchaseOrderForm"></app-create-order>
     }
   </mat-tab>
   <mat-tab [disabled]="status.value !== 'CONFIRMED'" label="Payment">
-    @if (currentStepIndex == 1) {
+    @if (currentStepIndex === 1) {
       <app-payment [componentUoms]="componentUoms" [purchaseOrderForm]="purchaseOrderForm"
       (getOrderById)="getOrderById()"></app-payment>
     }

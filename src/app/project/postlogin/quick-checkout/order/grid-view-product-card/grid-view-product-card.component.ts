@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DadyinSliderComponent } from 'src/app/shared/widgets/dadyin-slider/dadyin-slider.component';
 import { environment } from 'src/environments/environment';
@@ -33,7 +33,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
         SortNumberPropertyPipe
     ]
 })
-export class GridViewProductCardComponent implements OnInit {
+export class GridViewProductCardComponent {
   imgUrl = environment.imgUrl;
   @Input() product;
   @Input() i;
@@ -60,8 +60,6 @@ export class GridViewProductCardComponent implements OnInit {
     public purchaseOrderService: PurchaseOrderService,
     public commonService: CommonService
   ) {}
-
-  ngOnInit(): void {}
 
   hideAddToOrder(audit: any) {
     return this.hideAddToOrderValue;

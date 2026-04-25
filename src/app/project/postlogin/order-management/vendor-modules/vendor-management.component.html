@@ -7,16 +7,16 @@
           [matBadgeOverlap]=false>{{link.title}}</span>
         </ng-template>
         <ng-template matTabContent>
-          @if (link.index == 0) {
+          @if (link.index === 0) {
             <app-rfq-list [single]="single" [vendorId]="vendorId" [role]="'vendor'"></app-rfq-list>
           }
-          @if (link.index == 1) {
+          @if (link.index === 1) {
             <app-receivedquotation-list [single]="single" [vendorId]="vendorId"  [role]="'vendor'"></app-receivedquotation-list>
           }
-          @if (link.index == 2) {
+          @if (link.index === 2) {
             <app-purchaseorder-list [single]="single" [vendorId]="vendorId"  [role]="'vendor'"></app-purchaseorder-list>
           }
-          @if (link.index == 3) {
+          @if (link.index === 3) {
             <app-bill-list [single]="single" [vendorId]="vendorId"  [role]="'vendor'"></app-bill-list>
           }
         </ng-template>

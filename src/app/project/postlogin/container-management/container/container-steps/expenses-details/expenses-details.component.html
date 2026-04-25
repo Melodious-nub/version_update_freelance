@@ -192,7 +192,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @if (getFilteredMiscellaneousExpenses()?.length == 0) {
+                  @if (getFilteredMiscellaneousExpenses()?.length === 0) {
                     <tr>
                       <td style="padding-left: 20px"></td>
                       <td></td>
@@ -218,7 +218,7 @@
                       [formGroup]="miscellaneousExpense"
                       >
                       @if (
-                        miscellaneousExpense.get('addedByBusinessAccountId').value ==
+                        miscellaneousExpense.get('addedByBusinessAccountId').value ===
                         this.currentBusinessAccount?.id
                         ) {
                         <tr
@@ -379,7 +379,7 @@
                                     >
                                   </dadyin-button>
                                 }
-                                @if (miscellaneousExpenses.controls?.length == i + 1) {
+                                @if (miscellaneousExpenses.controls?.length === i + 1) {
                                   <dadyin-button
                                     (clicked)="addInmiscellaneousExpensesExpense()"
                                     [theme]="'borderless-primary'"

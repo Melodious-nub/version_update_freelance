@@ -94,7 +94,7 @@
                             bindLabel="firstName"
                             >
                             <ng-template ng-multi-label-tmp let-items="items">
-                              @if (items.length == 1) {
+                              @if (items.length === 1) {
                                 @for (item of items | slice : 0 : 1; track item) {
                                   <div
                                     class="ng-value"

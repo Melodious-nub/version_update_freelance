@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 
@@ -16,7 +16,7 @@ import { NgClass } from '@angular/common';
         ExtendedModule
     ]
 })
-export class PreloginComponent implements OnInit, AfterViewInit {
+export class PreloginComponent implements AfterViewInit{
   @ViewChild('swiperR', { static: false }) swiperR?: ElementRef;
   activeIndex = 0;
   swiperConfig: any = {
@@ -39,8 +39,6 @@ export class PreloginComponent implements OnInit, AfterViewInit {
     }
   };
   constructor(private router: Router) {}
-
-  ngOnInit(): void {}
 
   ngAfterViewInit() {
     if (this.swiperR) {

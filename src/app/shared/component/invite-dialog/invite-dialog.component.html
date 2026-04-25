@@ -62,7 +62,7 @@
                 <div class="attribute one attr-b">
                   <label for="">Phone</label>
                   <div class="attribute-input">
-                    <input onKeyPress="if(this.value.length==12) return false;" type="number"
+                    <input onKeyPress="if(this.value.length===12) return false;" type="number"
                       formControlName="number" />
                     </div>
                   </div>
@@ -71,7 +71,7 @@
             </div>
           </form>
         </div>
-        @if (data?.redirectType === '' || data?.redirectType == null) {
+        @if (data?.redirectType === '' || data?.redirectType === null) {
           <div class="mar-top-15 px-2">
             <form [formGroup]="inviteDetailGroup">
               <div class="row mb-3">

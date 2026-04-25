@@ -12,7 +12,7 @@
               <label class="text-ellipsis" [matTooltip]="value.description" [matTooltipPosition]="'above'"
               >{{value.description}}</label>
             }
-            @if (value.description == null) {
+            @if (value.description === null) {
               <label>Null</label>
             }
           </div>

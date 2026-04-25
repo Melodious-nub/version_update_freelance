@@ -158,7 +158,7 @@
       </dadyin-button>
     }
     @if (
-      receivedPoForm?.getRawValue().status == null ||
+      receivedPoForm?.getRawValue().status === null ||
       receivedPoForm?.getRawValue().status === 'DRAFT'
       ) {
       <dadyin-button (clicked)="savePo('DRAFT')" [theme]="'borderless-default'" type="image" typeval="assets/nicons/save.png"

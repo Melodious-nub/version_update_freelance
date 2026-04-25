@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { BusinessAccountService } from '../../../business-account/business-account.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -25,7 +25,7 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
         DadyinInputComponent
     ]
 })
-export class UserDetailsComponent implements OnInit {
+export class UserDetailsComponent {
   public currentMainIndex: number = 0;
 
   public userForm: any;
@@ -43,10 +43,6 @@ export class UserDetailsComponent implements OnInit {
 
   ) {
     this.userForm = this.userFormsService.createUserForm()
-  }
-
-  ngOnInit(): void {
-
   }
   onClickSave() {
 

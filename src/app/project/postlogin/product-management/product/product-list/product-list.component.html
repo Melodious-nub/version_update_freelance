@@ -140,7 +140,7 @@
                   </div> -->
                 </div>
               </div>
-              @if (currentStepIndex == 0 && loaded) {
+              @if (currentStepIndex === 0 && loaded) {
                 <app-add-product (loadedDetail)="loadedProductTemplateDetail()" [currentBusinessAccount]="currentBusinessAccount"
                   [loadingProductTemplateDetail]="loadingProductTemplateDetail" [createdBy]="createdBy"
                   (calculate)="calculateValues($event)" [componentUoms]="componentUoms"
@@ -184,7 +184,7 @@
                             </div> -->
                           </div>
                         </div>
-                        @if (currentStepIndex == 1) {
+                        @if (currentStepIndex === 1) {
                           <app-add-package [isThirdPartyProductMeta]="isThirdPartyProductMeta" (calculate)="calculateValues($event)"
                             [disableForThirdPartyProduct]="disableForThirdPartyProduct"
                           [componentUoms]="componentUoms" [productForm]="productForm"></app-add-package>
@@ -226,7 +226,7 @@
                                       </div> -->
                                     </div>
                                   </div>
-                                  @if (currentStepIndex == 2) {
+                                  @if (currentStepIndex === 2) {
                                     <app-template-view (calculate)="calculateValues($event)"
                                       [componentUoms]="componentUoms" [disableForThirdPartyProduct]="disableForThirdPartyProduct"
                                       [currentStepIndex]="currentStepIndex" [productForm]="productForm">
@@ -269,25 +269,25 @@
                                                 </div> -->
                                               </div>
                                             </div>
-                                            @if (currentStepIndex == 3) {
+                                            @if (currentStepIndex === 3) {
                                               <app-related-po (calculate)="calculateValues($event)"
                                                 [disableForThirdPartyProduct]="disableForThirdPartyProduct" [componentUoms]="componentUoms"
                                               [productForm]="productForm"></app-related-po>
                                             }
                                           </mat-tab>
                                           <mat-tab label="Production">
-                                            @if (productForm.get('isLogsheetEnabled').value && currentStepIndex == 4) {
+                                            @if (productForm.get('isLogsheetEnabled').value && currentStepIndex === 4) {
                                               <app-production [productForm]="productForm" [componentUoms]="componentUoms">
                                               </app-production>
                                             }
-                                            @if (!productForm.get('isLogsheetEnabled').value && currentStepIndex == 4) {
+                                            @if (!productForm.get('isLogsheetEnabled').value && currentStepIndex === 4) {
                                               <div class="bg-card-header b-round d-flex align-items-center b-light my-2 tab-top">
                                                 <div class="title-text">Log Sheet is not enabled for this product</div>
                                               </div>
                                             }
                                           </mat-tab>
                                           <mat-tab label="Other Details">
-                                            @if (currentStepIndex == 5) {
+                                            @if (currentStepIndex === 5) {
                                               <app-other-details [disableForThirdPartyProduct]="disableForThirdPartyProduct"
                                                 (calculate)="calculateValues($event)" [componentUoms]="componentUoms"
                                                 [productForm]="productForm">
@@ -296,7 +296,7 @@
                                           </mat-tab>
                                           <mat-tab label="Post Details">
                                             <div class="content-wrapper mt-2">
-                                              @if (currentStepIndex == 6) {
+                                              @if (currentStepIndex === 6) {
                                                 <app-social-posts-list
                                                   [showVersionColumn]="true"
                                                   [productId]="productForm.get('id').value || productForm.get('productMeta').get('id').value">

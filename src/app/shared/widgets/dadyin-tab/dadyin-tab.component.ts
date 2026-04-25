@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, forwardRef, Input, Output, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
@@ -12,11 +12,9 @@ import { MatTabGroup, MatTab } from '@angular/material/tabs';
     ],
     imports: [MatTabGroup, MatTab]
 })
-export class DadyinTabComponent implements OnInit {
+export class DadyinTabComponent {
 
     constructor() { }
-    ngOnInit(): void {
-    }
     @Output() actionClick = new EventEmitter();
     @Input() currentIndex: number = 0;
     @Input() disabled = false;

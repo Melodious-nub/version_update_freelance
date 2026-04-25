@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm/confirm-dialog.component';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { FormsService } from 'src/app/service/forms.service';
-import { RecordPaymentDialog } from '../shared/record-payment-dialog/record-payment-dialog.component';
+import { RecordPaymentDialogComponent } from '../shared/record-payment-dialog/record-payment-dialog.component';
 import { environment } from 'src/environments/environment';
 import { CreateOrderComponent } from './create-order/create-order.component';
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
@@ -39,7 +39,7 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
         DatePipe
     ]
 })
-export class ReceivedPoStepsComponent implements OnInit, OnDestroy {
+export class ReceivedPoStepsComponent implements OnInit{
   // ************* Variable Declarations *************
   currentStepIndex = 0;
   receivedPoForm: UntypedFormGroup;
@@ -161,11 +161,9 @@ export class ReceivedPoStepsComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy() { }
-
   recordPayment() {
     this.dialog
-      .open(RecordPaymentDialog, {
+      .open(RecordPaymentDialogComponent, {
         width: '95%',
         data: {
           orderId: this.receivedPoForm.get('id').value,
