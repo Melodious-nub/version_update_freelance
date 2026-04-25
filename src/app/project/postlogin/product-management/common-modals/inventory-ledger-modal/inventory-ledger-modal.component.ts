@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
-import { Inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+
 import { FormArray, UntypedFormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { PageEvent, MatPaginator } from '@angular/material/paginator';
@@ -15,15 +15,18 @@ import { DatePipe } from '@angular/common';
     imports: [MatDialogClose, MatPaginator, DatePipe]
 })
 export class InventoryLedgerModalComponent implements OnInit {
+  data = inject(MAT_DIALOG_DATA);
+  apiService = inject(ApiService);
+  toastr = inject(ToastrService);
+  fb = inject(UntypedFormBuilder);
+  formsService = inject(FormsService);
+  dialogRef = inject<MatDialogRef<InventoryLedgerModalComponent>>(MatDialogRef);
+
   inventoryLedgerData: any[] = [];
   totalElements: number = 0;
   pageSize: number = 20;
   pageIndex: number = 0;
   pageSizeOptions: number[] = [10, 20, 50, 100];
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public apiService: ApiService, public toastr: ToastrService, public fb: UntypedFormBuilder, public formsService: FormsService, public dialogRef: MatDialogRef<InventoryLedgerModalComponent>) {
-
-  }
 
   ngOnInit(): void {
     this.getInventoryLedgerData();

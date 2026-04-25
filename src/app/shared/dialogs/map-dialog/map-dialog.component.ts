@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable} from 'rxjs';
@@ -14,6 +14,10 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     imports: [DadyinButtonComponent, FormsModule, ReactiveFormsModule, DadyinMapAutoCompleteComponent, GoogleMap, MapMarker]
 })
 export class MapDialogComponent {
+  dialogRef = inject<MatDialogRef<MapDialogComponent>>(MatDialogRef);
+  data = inject(MAT_DIALOG_DATA);
+  fb = inject(UntypedFormBuilder);
+
   apiLoaded: Observable<boolean>;
   markerOptions: google.maps.MarkerOptions = {draggable: true};
   markerPosition: google.maps.LatLngLiteral = {lat: 24.576110,lng: 73.700500};
@@ -23,9 +27,6 @@ export class MapDialogComponent {
   searchControl=this.fb.group({
     addressLine:[]
   })
-  constructor(public dialogRef: MatDialogRef<MapDialogComponent>,httpClient: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: any,public fb:UntypedFormBuilder)
-  {}
   close() {
     this.dialogRef.close();
   }

@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InventoryoutFormsService {
-  constructor(public _fb: FormBuilder) {}
+    public _fb = inject(FormBuilder);
+  constructor() {}
 
   createContainerForm(): FormGroup {
     return this._fb.group({

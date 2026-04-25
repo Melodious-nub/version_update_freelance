@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormArray, UntypedFormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -30,6 +30,14 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     ]
 })
 export class InventoryoutListComponent {
+  router = inject(Router);
+  inventoryoutApi = inject(InventoryoutmanagementService);
+  apiService = inject(ApiService);
+  uomService = inject(UomService);
+  formService = inject(FormsService);
+  http = inject(HttpClient);
+  fb = inject(UntypedFormBuilder);
+
 
   currentMainIndex: number = 0;
   mainTab: Array<any> = [
@@ -52,16 +60,6 @@ export class InventoryoutListComponent {
       index: 0,
     },
   ];
-
-  constructor(
-    public router: Router,
-    public inventoryoutApi: InventoryoutmanagementService,
-    public apiService: ApiService,
-    public uomService: UomService,
-    public formService: FormsService,
-    public http: HttpClient,
-    public fb: UntypedFormBuilder
-  ) { }
 
   async
 

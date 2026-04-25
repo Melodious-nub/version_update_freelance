@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnInit,
-  Output, OnDestroy,
-} from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, OnDestroy, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -61,6 +54,20 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class CreateOrderComponent implements OnInit, OnDestroy {
+  fb = inject(UntypedFormBuilder);
+  orderManagementService = inject(OrderManagementService);
+  orderFormsService = inject(OrderFormsService);
+  formsService = inject(FormsService);
+  route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  uomService = inject(UomService);
+  containerService = inject(ContainerManagementService);
+  businessAccountService = inject(BusinessAccountService);
+  apiService = inject(ApiService);
+  router = inject(Router);
+  productService = inject(ProductService);
+  dialog = inject(MatDialog);
+
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.map2 = false;
     this.map1 = false;
@@ -91,21 +98,6 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
 
   quotationTransactionId = new UntypedFormControl();
   htmlContent: any;
-  constructor(
-    public fb: UntypedFormBuilder,
-    public orderManagementService: OrderManagementService,
-    public orderFormsService: OrderFormsService,
-    public formsService: FormsService,
-    public route: ActivatedRoute,
-    public toastr: ToastrService,
-    public uomService: UomService,
-    public containerService: ContainerManagementService,
-    public businessAccountService: BusinessAccountService,
-    public apiService: ApiService,
-    public router: Router,
-    public productService: ProductService,
-    public dialog: MatDialog
-  ) {}
 
   ngOnInit() {
     this.businessAccountService.Get_All_Exporter_Vendors();

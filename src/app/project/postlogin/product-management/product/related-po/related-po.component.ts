@@ -1,5 +1,5 @@
 import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormsService } from 'src/app/service/forms.service';
@@ -26,6 +26,11 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     ]
 })
 export class RelatedPoComponent implements OnInit {
+  toastr = inject(ToastrService);
+  apiService = inject(ApiService);
+  formsService = inject(FormsService);
+  uomService = inject(UomService);
+
   relatedPoDetails: any;
   @Input() productForm: UntypedFormGroup;
 
@@ -37,13 +42,6 @@ export class RelatedPoComponent implements OnInit {
     { name: '21+ (SKUS)', key: 'SKU21' },
     { name: 'PALLET', key: 'Pallet' },
   ];
-
-  constructor(
-    public toastr: ToastrService,
-    public apiService: ApiService,
-    public formsService: FormsService,
-    public uomService: UomService
-  ) {}
 
   ngOnInit(): void {
     this.getRelatedPoDetails();

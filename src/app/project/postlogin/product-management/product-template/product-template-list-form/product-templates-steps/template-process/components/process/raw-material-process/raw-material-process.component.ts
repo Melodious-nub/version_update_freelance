@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Observable, debounceTime } from 'rxjs';
 import { FormsService } from '../../../../../../../../../../service/forms.service';
-import { Component, EventEmitter, Input, Output, ChangeDetectorRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectorRef, inject } from '@angular/core';
 import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -29,6 +29,13 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     ]
 })
 export class RawMaterialProcessComponent {
+  apiService = inject(ApiService);
+  private FormsService = inject(FormsService);
+  uomService = inject(UomService);
+  toastr = inject(ToastrService);
+  route = inject(ActivatedRoute);
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() templateForm: any;
   @Input() index: number = 0;
   @Input() isExpandAll: boolean;
@@ -37,15 +44,6 @@ export class RawMaterialProcessComponent {
   filteredProductList$: Observable<any>;
 
   isExpanded = true;
-
-  constructor(
-    public apiService: ApiService,
-    private FormsService: FormsService,
-    public uomService: UomService,
-    public toastr: ToastrService,
-    public route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
-  ) { }
 
   async
 

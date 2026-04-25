@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -29,6 +29,15 @@ import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyi
     ]
 })
 export class CreateCategoryComponent implements OnInit {
+  toastr = inject(ToastrService);
+  categoryManagementFormService = inject(CategoryManagementFormsService);
+  categoryManagementService = inject(CategoryManagementService);
+  fb = inject(UntypedFormBuilder);
+  apiService = inject(ApiService);
+  route = inject(ActivatedRoute);
+  router = inject(Router);
+  businessAccountService = inject(BusinessAccountService);
+
   public pageConfig = null;
   pageIndex: any = 0;
   pageS = 20;
@@ -50,16 +59,6 @@ export class CreateCategoryComponent implements OnInit {
   ];
   selectedProductType = null;
   public tabelActions: any = [];
-  constructor(
-    public toastr: ToastrService,
-    public categoryManagementFormService: CategoryManagementFormsService,
-    public categoryManagementService: CategoryManagementService,
-    public fb: UntypedFormBuilder,
-    public apiService: ApiService,
-    public route: ActivatedRoute,
-    public router: Router,
-    public businessAccountService: BusinessAccountService
-  ) {}
 
   ngOnInit(): void {
     this.apiService.Get_Industry_Types();

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -25,6 +25,17 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     ]
 })
 export class AllBusinessListComponent implements OnInit {
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+  userService = inject(UsersManagementService);
+  apiService = inject(ApiService);
+  formService = inject(FormsService);
+  http = inject(HttpClient);
+  fb = inject(UntypedFormBuilder);
+  dialog = inject(MatDialog);
+  businessAccountService = inject(BusinessAccountService);
+  private toastr = inject(ToastrService);
+
   public allBusinessList: any[] = [];
   public filterValue: string;
   public headers = [
@@ -60,19 +71,6 @@ export class AllBusinessListComponent implements OnInit {
     itemPerPage: 20,
     sizeOption: [20, 50, 75, 100],
   };
-
-  constructor(
-    public router: Router,
-    public route: ActivatedRoute,
-    public userService: UsersManagementService,
-    public apiService: ApiService,
-    public formService: FormsService,
-    public http: HttpClient,
-    public fb: UntypedFormBuilder,
-    public dialog: MatDialog,
-    public businessAccountService: BusinessAccountService,
-    private toastr: ToastrService
-  ) {}
 
   ngOnInit(): void {
     this.businessAccountService.Get_All_employees();

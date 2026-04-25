@@ -1,5 +1,5 @@
 import { UntypedFormGroup, FormsModule } from '@angular/forms';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent } from '@angular/material/expansion';
 
@@ -11,13 +11,14 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent, FormsModule]
 })
 export class TemplateViewComponent implements OnInit{
+  apiService = inject(ApiService);
+
   @Input() productForm: UntypedFormGroup;
   @Input() currentStepIndex: any;
   @Input() componentUoms: any;
 
 
   data: any = {};
-  constructor(public apiService: ApiService) { }
 
   ngOnInit(): void {
     let productTemplateId: any = this.productForm.get('productTemplateId').value

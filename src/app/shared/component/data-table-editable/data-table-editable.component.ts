@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, OnChanges, inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
@@ -17,6 +17,10 @@ import { NgClass, NgStyle } from '@angular/common';
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, NgClass, ExtendedModule, NgStyle, MatCellDef, MatCell, FormsModule, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator]
 })
 export class DataTableEditableComponent implements OnInit, AfterViewInit, OnChanges {
+    uomService = inject(UomService);
+    router = inject(Router);
+    businessAccountService = inject(BusinessAccountService);
+
     imgUrl: any = environment.imgUrl
     @Input() set data(tableData) {
         this.tableData = tableData;
@@ -96,8 +100,6 @@ export class DataTableEditableComponent implements OnInit, AfterViewInit, OnChan
         }
         return result;
     }
-
-    constructor(public uomService: UomService, public router: Router, public businessAccountService: BusinessAccountService) { }
 
     ngOnInit(): void {
         this.displayedColumns = this.headers.map(col => col.prop);

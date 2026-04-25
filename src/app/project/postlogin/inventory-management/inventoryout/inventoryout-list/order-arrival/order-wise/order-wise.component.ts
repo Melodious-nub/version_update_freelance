@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { InventoryoutmanagementService } from '../../../service/inventoryout-management.service';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { DataTableComponent } from '../../../../../../../shared/component/data-table/data-table.component';
@@ -15,6 +15,10 @@ import { DateScrollComponent } from '../../../../../../../shared/component/date-
     ]
 })
 export class InventoryoutOrderWiseComponent implements OnInit {
+  inventoryoutmanagement = inject(InventoryoutmanagementService);
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+
   list = [];
   public filterValue: string;
   startDate = new Date();
@@ -45,11 +49,6 @@ export class InventoryoutOrderWiseComponent implements OnInit {
     },
   ];
   public pageConfig = null;
-  constructor(
-    public inventoryoutmanagement: InventoryoutmanagementService,
-    public router: Router,
-    public route: ActivatedRoute
-  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((res) => {

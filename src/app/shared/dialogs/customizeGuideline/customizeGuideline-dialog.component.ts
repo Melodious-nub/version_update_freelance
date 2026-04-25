@@ -1,5 +1,5 @@
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { Dir } from '@angular/cdk/bidi';
 
@@ -15,10 +15,9 @@ import { Dir } from '@angular/cdk/bidi';
     ]
 })
 export class CustomizeGuidelineDialogComponent {
-  constructor(
-    public dialogRef: MatDialogRef<CustomizeGuidelineDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  dialogRef = inject<MatDialogRef<CustomizeGuidelineDialogComponent>>(MatDialogRef);
+  data = inject(MAT_DIALOG_DATA);
+
 
   cancel(): void {
     this.dialogRef.close();

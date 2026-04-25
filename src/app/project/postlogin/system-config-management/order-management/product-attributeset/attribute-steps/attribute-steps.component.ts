@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormArray, FormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -19,6 +19,16 @@ import { CreateAttributeComponent } from './create-attribute/create-attribute.co
     imports: [CreateAttributeComponent]
 })
 export class AttributeSetStepsComponent {
+  uomService = inject(UomService);
+  ordermanagementService = inject(OrderManagementService);
+  commonService = inject(CommonService);
+  toastr = inject(ToastrService);
+  router = inject(Router);
+  apiService = inject(ApiService);
+  ordermanagementFormsService = inject(OrderManagementFormsService);
+  businessAccountService = inject(BusinessAccountService);
+  containerService = inject(ContainerManagementService);
+
   // ************* Variable Declarations *************
   currentStepIndex = 0;
   attributeConfigForm: UntypedFormGroup
@@ -26,17 +36,7 @@ export class AttributeSetStepsComponent {
   currentBusinessAccount: any;
 
 
-  constructor(
-    public uomService: UomService,
-    public ordermanagementService: OrderManagementService,
-    public commonService: CommonService,
-    public toastr: ToastrService,
-    public router: Router,
-    public apiService: ApiService,
-    public ordermanagementFormsService: OrderManagementFormsService,
-    public businessAccountService:BusinessAccountService,
-    public containerService:ContainerManagementService
-  ) {
+  constructor() {
     this.attributeConfigForm = this.ordermanagementFormsService.createAttributeConfigForm();
   }
   

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,8 @@ export class ProductManagementComponent {
   disabled = false;
   unbounded = false;
 
-  constructor(private router: Router) { }
+    private router = inject(Router);
+  constructor() { }
 
   navigate(link: string): void {
     this.router.navigateByUrl(link);

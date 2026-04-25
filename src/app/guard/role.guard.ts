@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -15,11 +15,10 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class RoleGuard implements CanActivate, CanActivateChild {
-  constructor(
-    private tokenService: TokenService,
-    private toastr: ToastrService,
-    private router: Router
-  ) {}
+  private tokenService = inject(TokenService);
+  private toastr = inject(ToastrService);
+  private router = inject(Router);
+
 
   canActivate(
     route: ActivatedRouteSnapshot,

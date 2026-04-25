@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
@@ -26,17 +26,14 @@ import { ProcessComponent } from './components/process/process.component';
     ]
 })
 export class TemplateProcessComponent implements OnInit {
+  apiService = inject(ApiService);
+  route = inject(ActivatedRoute);
+  uomService = inject(UomService);
+
   // ************* Variable Declarations *************
 
   @Input() templateForm: UntypedFormGroup;
   @Input() componentUoms: any;
-
-
-  constructor(
-    public apiService: ApiService,
-    public route: ActivatedRoute,
-    public uomService: UomService
-  ) { }
 
   @Output() calculate = new EventEmitter();
 

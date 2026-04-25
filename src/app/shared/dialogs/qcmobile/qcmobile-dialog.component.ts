@@ -1,5 +1,5 @@
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogActions } from '@angular/material/dialog';
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -18,15 +18,13 @@ import { MatButton } from '@angular/material/button';
     ]
 })
 export class QcmobileDialogComponent {
-  constructor(
-    public dialogRef: MatDialogRef<QcmobileDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public authService: AuthService,
-    public router: Router,
-    private toastr: ToastrService,
-    private businessAccountService: BusinessAccountService
-  ) {
-  }
+  dialogRef = inject<MatDialogRef<QcmobileDialogComponent>>(MatDialogRef);
+  data = inject(MAT_DIALOG_DATA);
+  authService = inject(AuthService);
+  router = inject(Router);
+  private toastr = inject(ToastrService);
+  private businessAccountService = inject(BusinessAccountService);
+
 
   private getDefaultFlyerUrl(): string {
     return (

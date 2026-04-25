@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { InviteDialogComponent } from '../invite-dialog/invite-dialog.component';
 
@@ -11,10 +11,11 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     imports: [DadyinButtonComponent]
 })
 export class BuddyDialogComponent implements OnInit {
+    dialog = inject(MatDialog);
+    data = inject(MAT_DIALOG_DATA);
+
     public buddyDetails: any[]
     public orderValue: any
-    constructor(public dialog: MatDialog,
-        @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     ngOnInit(): void {
         this.buddyDetails = this.data?.buddyAccounts;

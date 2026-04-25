@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationStrategy } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
@@ -11,11 +11,11 @@ import { MatButton } from '@angular/material/button';
     imports: [MatButton, MatIcon]
 })
 export class ForbiddenComponent {
+  private router = inject(Router);
+  private location = inject(LocationStrategy);
 
-  constructor(
-    private router: Router,
-    private location: LocationStrategy
-  ) {
+
+  constructor() {
     history.pushState(null, null, window.location.href);
     // check if back or forward button is pressed.
     this.location.onPopState(() => {

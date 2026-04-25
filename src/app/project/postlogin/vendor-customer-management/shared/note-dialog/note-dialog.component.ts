@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { forkJoin } from 'rxjs';
@@ -32,6 +32,14 @@ export type NoteReminderDialogType = 'note' | 'reminder';
     ]
 })
 export class NoteDialogComponent implements OnInit {
+  dialog = inject(MatDialog);
+  data = inject(MAT_DIALOG_DATA);
+  vendorFormService = inject(VendorFormsService);
+  vendorCustomerService = inject(VendorCustomerService);
+  toastr = inject(ToastrService);
+  apiService = inject(ApiService);
+  private fb = inject(UntypedFormBuilder);
+
   noteForm = this.vendorFormService.noteForm();
   reminderForm = this.vendorFormService.reminderForm();
   minDateTime: string;
@@ -45,15 +53,7 @@ export class NoteDialogComponent implements OnInit {
     return !this.data?.type || this.data?.type === 'note';
   }
 
-  constructor(
-    public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public vendorFormService: VendorFormsService,
-    public vendorCustomerService: VendorCustomerService,
-    public toastr: ToastrService,
-    public apiService: ApiService,
-    private fb: UntypedFormBuilder
-  ) {
+  constructor() {
     const now = new Date();
     this.minDateTime = now.toISOString().slice(0, 16);
     if (!this.data) {

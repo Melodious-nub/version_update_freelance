@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { UntypedFormArray, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { APPCOMMONHELPERS } from 'src/app/helpers/appcommonhelpers';
@@ -13,6 +13,9 @@ import { ActivatedRoute } from '@angular/router';
     imports: [FormsModule, ReactiveFormsModule]
 })
 export class BuyingCapacityCommonComponent implements OnInit, OnChanges {
+    formService = inject(ProductTypeFormService);
+    private route = inject(ActivatedRoute);
+
 
     @Input() buyingCapacities: UntypedFormArray;
 
@@ -37,10 +40,6 @@ export class BuyingCapacityCommonComponent implements OnInit, OnChanges {
     ];
   
     buyingCapacityTypeArray: any = ['UNIT', 'SKU', 'PALLET', 'CONTAINER'];
-
-    constructor(public formService: ProductTypeFormService, private route:ActivatedRoute) {
-     
-    }
 
     ngOnChanges(changes: SimpleChanges): void {
         this.removeEmptyBuyingCapacities()

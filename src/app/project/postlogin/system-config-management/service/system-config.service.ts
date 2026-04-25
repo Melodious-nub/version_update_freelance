@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { map } from 'rxjs';
 import { HttpService } from 'src/app/service/http.service';
 import { orderConfigModule, systemConfigModule } from 'src/app/shared/constant';
@@ -7,9 +7,8 @@ import { orderConfigModule, systemConfigModule } from 'src/app/shared/constant';
   providedIn: 'root',
 })
 export class SystemConfigService {
-  constructor(
-    private httpService: HttpService
-) { }
+  private httpService = inject(HttpService);
+
 
 
 

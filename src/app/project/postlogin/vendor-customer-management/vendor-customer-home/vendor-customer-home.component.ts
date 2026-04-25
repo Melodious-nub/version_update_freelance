@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -36,6 +36,17 @@ import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/
     ]
 })
 export class AddEditVendorComponent implements OnInit {
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private service = inject(ApiService);
+  toastr = inject(ToastrService);
+  vendorFormService = inject(VendorFormsService);
+  private vendorCustomerService = inject(VendorCustomerService);
+  dialog = inject(MatDialog);
+  businessAccountService = inject(BusinessAccountService);
+  private authService = inject(AuthService);
+  systemConfigFormsService = inject(SystemConfigFormsService);
+
   public currentMainIndex: number = 0;
 
   public vendorForm: any;
@@ -50,18 +61,7 @@ export class AddEditVendorComponent implements OnInit {
   isShowInvite: Boolean = true;
   @ViewChild(VendorDetailsComponent) vendorDetailsComponent: VendorDetailsComponent;
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private service: ApiService,
-    public toastr: ToastrService,
-    public vendorFormService: VendorFormsService,
-    private vendorCustomerService: VendorCustomerService,
-    public dialog: MatDialog,
-    public businessAccountService: BusinessAccountService,
-    private authService: AuthService,
-    public systemConfigFormsService: SystemConfigFormsService
-  ) {
+  constructor() {
     this.vendorForm = this.vendorFormService.createVendorForm();
  
   }

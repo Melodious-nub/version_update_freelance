@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
+import { Component, OnDestroy, OnInit, HostListener, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProdTemplate } from 'src/app/model/common/product-template.model';
@@ -34,6 +34,13 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     ]
 })
 export class ProductTemplateListComponent implements OnInit {
+  private router = inject(Router);
+  apiService = inject(ApiService);
+  http = inject(HttpClient);
+  formsService = inject(FormsService);
+  uomService = inject(UomService);
+  businessAccountService = inject(BusinessAccountService);
+
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.uomSetting = false;
   }
@@ -80,15 +87,6 @@ export class ProductTemplateListComponent implements OnInit {
       index: 0
     }
   ];
-
-  constructor(
-    private router: Router,
-    public apiService: ApiService,
-    public http: HttpClient,
-    public formsService: FormsService,
-    public uomService: UomService,
-    public businessAccountService: BusinessAccountService
-  ) { }
 
   ngOnInit(): void {
     this.getPreference();

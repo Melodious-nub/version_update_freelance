@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { InventoryoutmanagementService } from '../service/inventoryout-management.service';
 import { UntypedFormArray, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +28,14 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     ]
 })
 export class ProductWiseCreateInventoryComponent implements OnInit {
+  inventoryoutmanagementService = inject(InventoryoutmanagementService);
+  route = inject(ActivatedRoute);
+  fb = inject(UntypedFormBuilder);
+  toastr = inject(ToastrService);
+  private dialog = inject(MatDialog);
+  private _location = inject(Location);
+  router = inject(Router);
+
   productId: any;
   response: any;
   public filterValue: string;
@@ -60,15 +68,6 @@ export class ProductWiseCreateInventoryComponent implements OnInit {
   ];
   public pageConfig = null;
   palletDetails = null;
-  constructor(
-    public inventoryoutmanagementService: InventoryoutmanagementService,
-    public route: ActivatedRoute,
-    public fb: UntypedFormBuilder,
-    public toastr: ToastrService,
-    private dialog: MatDialog,
-    private _location: Location,
-    public router: Router
-  ) {}
 
   ngOnInit(): void {
     this.inventoryLotForm = this.fb.array([]);

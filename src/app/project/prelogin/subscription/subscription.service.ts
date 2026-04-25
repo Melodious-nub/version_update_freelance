@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Country } from 'src/app/model/common/business-account';
@@ -9,8 +9,8 @@ import { apiModules, SubscriptionModule } from 'src/app/shared/constant';
   providedIn: 'root'
 })
 export class SubscriptionService {
+  private httpService = inject(HttpService);
 
-  constructor(private httpService: HttpService) { }
 
   initiateSubscriptionPayment(data: any) {
     const url = `${SubscriptionModule.initiateSubscriptionPayment}${data.amount}&currency=${data.currency}`;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from 'src/app/service/http.service';
@@ -35,18 +35,16 @@ export interface BusinessBulkExtractResponse {
     ]
 })
 export class BulkAddDialogComponent {
+  dialogRef = inject<MatDialogRef<BulkAddDialogComponent>>(MatDialogRef);
+  private toastr = inject(ToastrService);
+  private httpService = inject(HttpService);
+
   businessListExpanded = true;
   extractedRows: BusinessBulkExtractRow[] = [];
   selectedFile: File | null = null;
   extractLoading = false;
   saveLoading = false;
-  selectedFiles: File[] = []; // to store the selected files      this.selectedFiles.push(file);
-
-  constructor(
-    public dialogRef: MatDialogRef<BulkAddDialogComponent>,
-    private toastr: ToastrService,
-    private httpService: HttpService
-  ) {}
+  selectedFiles: File[] = [];
 
   onBack(): void {
     this.dialogRef.close();

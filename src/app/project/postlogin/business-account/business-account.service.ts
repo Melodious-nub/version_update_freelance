@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   apiModules,
   container,
@@ -15,6 +15,9 @@ import { TokenService } from 'src/app/service/token.service';
 
 @Injectable({ providedIn: 'root' })
 export class BusinessAccountService {
+  private httpService = inject(HttpService);
+  tokenService = inject(TokenService);
+
   /**
    * Default vendor id used for flyer/landing shortcuts.
    * Can be overridden by URL params `vendorId` or `vendorKey`.
@@ -38,10 +41,7 @@ export class BusinessAccountService {
   salesRepList: any[] = [];
   salesRepListForCrmSales: any[] = [];
 
-  constructor(
-    private httpService: HttpService,
-    public tokenService: TokenService
-  ) {
+  constructor() {
     this.applyVendorFromUrl();
     this.currentBusinessAccountId =
       this.tokenService.getBusinessAccountIdToken();

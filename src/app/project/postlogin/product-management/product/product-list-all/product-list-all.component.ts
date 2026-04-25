@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { UomService } from 'src/app/service/uom.service';
@@ -49,6 +49,19 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     ]
 })
 export class ProductListAllComponent implements OnInit, OnDestroy {
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+  apiService = inject(ApiService);
+  http = inject(HttpClient);
+  service = inject(ProductManagementService);
+  formsService = inject(FormsService);
+  toastr = inject(ToastrService);
+  productService = inject(ProductService);
+  businessAccountService = inject(BusinessAccountService);
+  uomService = inject(UomService);
+  dialog = inject(MatDialog);
+  commonService = inject(CommonService);
+
   searchControl = new UntypedFormControl('');
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.uomSetting = false;
@@ -182,21 +195,6 @@ export class ProductListAllComponent implements OnInit, OnDestroy {
       index: 0,
     },
   ];
-
-  constructor(
-    public router: Router,
-    public route: ActivatedRoute,
-    public apiService: ApiService,
-    public http: HttpClient,
-    public service: ProductManagementService,
-    public formsService: FormsService,
-    public toastr: ToastrService,
-    public productService: ProductService,
-    public businessAccountService: BusinessAccountService,
-    public uomService: UomService,
-    public dialog: MatDialog,
-    public commonService: CommonService
-  ) { }
 
   ngOnInit(): void {
     this.setupSearchSubscription();

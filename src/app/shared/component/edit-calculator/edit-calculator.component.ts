@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  AfterViewChecked,
-  ChangeDetectorRef, OnDestroy,
-} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewChecked, ChangeDetectorRef, OnDestroy, inject } from '@angular/core';
 import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject, Subscription, takeUntil } from 'rxjs';
@@ -55,6 +47,10 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
     ]
 })
 export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChecked {
+  private _formBuilder = inject(UntypedFormBuilder);
+  private _dialog = inject(MatDialog);
+  private readonly _changeDetectorRef = inject(ChangeDetectorRef);
+
   private _processCalculatorForm: UntypedFormGroup;
   @Input() public set processCalculatorForm(processCalculatorForm: UntypedFormGroup) {
     this._processCalculatorForm = processCalculatorForm;
@@ -178,12 +174,6 @@ export class EditCalculatorComponent implements OnInit, OnDestroy, AfterViewChec
   private processCalculatorProductSet: any[];
   private processCalculatorConversionTypeSet: any[];
   private unSubscribeAll: Subject<void> = new Subject();
-
-  constructor(
-    private _formBuilder: UntypedFormBuilder,
-    private _dialog: MatDialog,
-    private readonly _changeDetectorRef: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this.setInitialValues();

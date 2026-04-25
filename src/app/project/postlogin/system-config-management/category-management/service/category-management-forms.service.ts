@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryManagementFormsService {
-  constructor(public _fb: UntypedFormBuilder) { }
+  _fb = inject(UntypedFormBuilder);
+
 
 
 

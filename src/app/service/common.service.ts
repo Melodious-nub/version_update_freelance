@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import {
   MatDialog,
@@ -14,7 +14,8 @@ import { ComponentDialogComponent } from '../shared/dialogs/component-dialog/com
   providedIn: 'root',
 })
 export class CommonService {
-  constructor(public dialog: MatDialog) {}
+  dialog = inject(MatDialog);
+
 
   getFieldErrorDesc(control: UntypedFormControl): string {
     if (control.errors?.required) {

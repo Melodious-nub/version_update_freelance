@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -24,6 +24,15 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     ]
 })
 export class ReceivedRfqListComponent implements OnInit {
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+  orderApi = inject(OrderManagementService);
+  apiService = inject(ApiService);
+  uomService = inject(UomService);
+  formService = inject(FormsService);
+  http = inject(HttpClient);
+  fb = inject(UntypedFormBuilder);
+
   uomSetting = false;
   public preferredUoms: any[];
   public preferForm: UntypedFormGroup = this.formService.createPreferUomForm();
@@ -71,16 +80,6 @@ export class ReceivedRfqListComponent implements OnInit {
     itemPerPage: 20,
     sizeOption: [20, 50, 75, 100],
   };
-  constructor(
-    public router: Router,
-    public route: ActivatedRoute,
-    public orderApi: OrderManagementService,
-    public apiService: ApiService,
-    public uomService: UomService,
-    public formService: FormsService,
-    public http: HttpClient,
-    public fb: UntypedFormBuilder
-  ) {}
 
   ngOnInit() {
     this.getPreference();

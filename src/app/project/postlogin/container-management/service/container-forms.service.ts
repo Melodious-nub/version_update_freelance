@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContainerFormsService {
-  constructor(public _fb: UntypedFormBuilder) {}
+  _fb = inject(UntypedFormBuilder);
+
 
   createContainerForm(): UntypedFormGroup {
     return this._fb.group({

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -18,20 +18,18 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     imports: [FormsModule, ReactiveFormsModule, DadyinButtonComponent, MatIcon, NgClass, ExtendedModule]
 })
 export class ChangePasswordDialogComponent implements OnInit {
+  dialogRef = inject<MatDialogRef<ChangePasswordDialogComponent>>(MatDialogRef);
+  data = inject(MAT_DIALOG_DATA);
+  private fb = inject(UntypedFormBuilder);
+  private httpService = inject(HttpService);
+  private signupService = inject(SignupService);
+  private toastr = inject(ToastrService);
+
   changePasswordForm: UntypedFormGroup;
   isSubmitting = false;
   showOldPassword = false;
   showNewPassword = false;
   showConfirmPassword = false;
-
-  constructor(
-    public dialogRef: MatDialogRef<ChangePasswordDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private fb: UntypedFormBuilder,
-    private httpService: HttpService,
-    private signupService: SignupService,
-    private toastr: ToastrService
-  ) { }
 
   ngOnInit(): void {
     this.initForm();

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogClose } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
@@ -22,6 +22,12 @@ import { MatIcon } from '@angular/material/icon';
     ]
 })
 export class InventoryAssigningModalComponent implements OnInit {
+  data = inject(MAT_DIALOG_DATA);
+  apiService = inject(ApiService);
+  inventoryinmanagement = inject(InventoryinmanagementService);
+  dialog = inject(MatDialog);
+  private dialogRef = inject<MatDialogRef<any>>(MatDialogRef);
+
   inventoryDetailsData: any;
   public filterValue: string;
   list: any = [];
@@ -50,14 +56,6 @@ export class InventoryAssigningModalComponent implements OnInit {
   ];
   public pageConfig = null;
   palletDetails = null;
-  constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: any,
-    public apiService: ApiService,
-    public inventoryinmanagement: InventoryinmanagementService,
-    public dialog: MatDialog,
-    private dialogRef: MatDialogRef<any>
-  ) {}
 
   ngOnInit(): void {
     this.inventoryDetailsData = this.data.calculatedData.inventoryDetails.find(

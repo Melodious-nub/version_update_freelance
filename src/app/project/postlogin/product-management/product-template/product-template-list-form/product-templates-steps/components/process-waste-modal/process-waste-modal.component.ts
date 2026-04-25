@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
@@ -23,14 +23,16 @@ import { NgStyle, NgClass } from '@angular/common';
     ]
 })
 export class ProcessWasteModalComponent implements OnInit {
+  data = inject<{
+    processForm: UntypedFormGroup;
+    calculate: any;
+    index: any;
+}>(MAT_DIALOG_DATA);
+  apiService = inject(ApiService);
+  formsService = inject(FormsService);
+  dialog = inject(MatDialog);
+
   calculateOptionForm: UntypedFormGroup = this.formsService.calculateOptionsForm();
-  constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: { processForm: UntypedFormGroup; calculate: any; index: any },
-    public apiService: ApiService,
-    public formsService: FormsService,
-    public dialog: MatDialog
-  ) {}
 
   ngOnInit(): void {
     this.calculateWasteOptions(true);

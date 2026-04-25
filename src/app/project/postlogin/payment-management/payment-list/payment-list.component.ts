@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { BusinessAccountService } from '../../business-account/business-account.service';
@@ -20,6 +20,11 @@ import { MatTabGroup, MatTab } from '@angular/material/tabs';
     ]
 })
 export class PaymentListComponent implements OnInit {
+  router = inject(Router);
+  apiService = inject(ApiService);
+  private business = inject(BusinessAccountService);
+  paymentManagementService = inject(PaymentManagementService);
+
   @Input() single = false;
   paymentList: any[];
   public searchText: string;
@@ -57,12 +62,7 @@ export class PaymentListComponent implements OnInit {
    
   ];
   currentBusinessAccount;
-  constructor(
-    public router: Router,
-    public apiService: ApiService,
-    private business: BusinessAccountService,
-    public paymentManagementService: PaymentManagementService
-  ) {
+  constructor() {
     this.business.$currentBusinessAccount.subscribe((res) => {
       this.currentBusinessAccount = res;
     });

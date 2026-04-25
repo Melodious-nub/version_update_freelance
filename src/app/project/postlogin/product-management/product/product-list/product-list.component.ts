@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -56,6 +56,20 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     ]
 })
 export class ProductListComponent implements OnInit, OnDestroy {
+  apiService = inject(ApiService);
+  productService = inject(ProductService);
+  commonService = inject(CommonService);
+  private fb = inject(UntypedFormBuilder);
+  private formsService = inject(FormsService);
+  route = inject(ActivatedRoute);
+  uomService = inject(UomService);
+  toastr = inject(ToastrService);
+  router = inject(Router);
+  businessAccountService = inject(BusinessAccountService);
+  dialog = inject(MatDialog);
+  ordermanagementService = inject(OrderManagementService);
+  private seoService = inject(SeoService);
+
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.uomSetting = false;
   }
@@ -74,22 +88,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
   costType = new UntypedFormControl('UNIT');
   productDetail: any;
   createdBy;
-
-  constructor(
-    public apiService: ApiService,
-    public productService: ProductService,
-    public commonService: CommonService,
-    private fb: UntypedFormBuilder,
-    private formsService: FormsService,
-    public route: ActivatedRoute,
-    public uomService: UomService,
-    public toastr: ToastrService,
-    public router: Router,
-    public businessAccountService: BusinessAccountService,
-    public dialog: MatDialog,
-    public ordermanagementService: OrderManagementService,
-    private seoService: SeoService, 
-  ) { }
 
   async ngOnInit() {
     this.createdBy = this.route.snapshot.params.createdBy;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InviteDialogComponent } from 'src/app/shared/component/invite-dialog/invite-dialog.component';
 import { UsersManagementService } from '../services/users-management.service';
@@ -23,6 +23,9 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     ]
 })
 export class InvitesComponent implements OnInit {
+  dialog = inject(MatDialog);
+  private userService = inject(UsersManagementService);
+
   currentTabIndex = 0;
   tabs = [
     { id: 'ALL', title: 'All invites', index: 0 },
@@ -52,11 +55,6 @@ export class InvitesComponent implements OnInit {
     { name: 'Status', prop: 'status', sortable: true },
     { name: 'Invited On', prop: 'invitedOn', type: 'date', sortable: true },
   ];
-
-  constructor(
-    public dialog: MatDialog,
-    private userService: UsersManagementService
-  ) {}
 
   ngOnInit(): void {
     this.loadList();

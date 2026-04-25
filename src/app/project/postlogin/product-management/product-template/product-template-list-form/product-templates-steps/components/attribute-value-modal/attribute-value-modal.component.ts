@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
-import { Inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { SortFormArrayPipe } from 'src/app/shared/pipes/sort-formarray-sortorder.pipe';
@@ -15,12 +15,14 @@ import { NgStyle } from '@angular/common';
     imports: [MatDialogClose, CdkDropList, NgStyle, ExtendedModule, CdkDrag, MatIcon, SortFormArrayPipe_1]
 })
 export class AttributeValueModalComponent implements OnInit {
+  data = inject(MAT_DIALOG_DATA);
+  sortFormArray = inject(SortFormArrayPipe);
+  dialogRef = inject<MatDialogRef<AttributeValueModalComponent>>(MatDialogRef);
+  apiService = inject(ApiService);
+
   public attributeValue = []
   public saveData: any
   labelTypeAttributeIds:any
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,public sortFormArray:SortFormArrayPipe, public dialogRef: MatDialogRef<AttributeValueModalComponent>,public apiService:ApiService) {
-
-  }
 
   ngOnInit(): void {
     this.attributeValue = this.data.elementdata;

@@ -1,4 +1,4 @@
-import { Component, Input, Pipe, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, Input, Pipe, Output, EventEmitter, OnDestroy, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -30,6 +30,15 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class DocumentsDetailsComponent implements OnDestroy{
+  fb = inject(UntypedFormBuilder);
+  containerService = inject(ContainerManagementService);
+  containerFormService = inject(ContainerFormsService);
+  formsService = inject(FormsService);
+  route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  uomService = inject(UomService);
+  apiService = inject(ApiService);
+
   imgUrl=environment.imgUrl
   @Input() isExport: any;
   expanded:any[]=[]
@@ -42,16 +51,6 @@ export class DocumentsDetailsComponent implements OnDestroy{
   documentForm: UntypedFormGroup=this.containerFormService.documentForm();
   @Output() calculate = new EventEmitter();
   file:any
-  constructor(
-    public fb: UntypedFormBuilder,
-    public containerService: ContainerManagementService,
-    public containerFormService: ContainerFormsService,
-    public formsService: FormsService,
-    public route: ActivatedRoute,
-    public toastr: ToastrService,
-    public uomService: UomService,
-    public apiService:ApiService
-  ) {}
 
   async
 

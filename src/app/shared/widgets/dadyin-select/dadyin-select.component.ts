@@ -1,5 +1,5 @@
 import { ControlContainer, UntypedFormControl, NG_VALUE_ACCESSOR, ControlValueAccessor, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef, ViewEncapsulation, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef, ViewEncapsulation, AfterContentChecked, inject } from '@angular/core';
 import { CommonService } from 'src/app/service/common.service';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { NgClass, NgStyle } from '@angular/common';
@@ -25,6 +25,10 @@ import { NgClass, NgStyle } from '@angular/common';
     ]
 })
 export class DadyinSelectComponent implements ControlValueAccessor, OnInit, AfterContentChecked {
+    private commonService = inject(CommonService);
+    private controlContainer = inject(ControlContainer);
+    private cdr = inject(ChangeDetectorRef);
+
     @Input() height: string | null = null;
     @Input() fontSize: string | null = null;
     @Input() label = '';
@@ -60,9 +64,6 @@ export class DadyinSelectComponent implements ControlValueAccessor, OnInit, Afte
     }
     get value() {
         return this._value;
-    }
-
-    constructor(private commonService: CommonService, private controlContainer: ControlContainer, private cdr: ChangeDetectorRef) {
     }
 
     ngOnInit(): void {

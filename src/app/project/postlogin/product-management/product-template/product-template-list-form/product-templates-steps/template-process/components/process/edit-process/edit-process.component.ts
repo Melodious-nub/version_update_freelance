@@ -1,5 +1,5 @@
 import { FormsService } from '../../../../../../../../../../service/forms.service';
-import { ChangeDetectorRef, Component, EventEmitter, Input, Output, OnChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output, OnChanges, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -30,6 +30,13 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     ]
 })
 export class EditProcessComponent implements OnChanges{
+  apiService = inject(ApiService);
+  private FormsService = inject(FormsService);
+  private dialog = inject(MatDialog);
+  uomService = inject(UomService);
+  toastr = inject(ToastrService);
+  route = inject(ActivatedRoute);
+
   @Input() process: any;
   @Input() templateForm: any;
   @Input() index: number = 0;
@@ -41,15 +48,6 @@ export class EditProcessComponent implements OnChanges{
 
   isExpanded = true;
   isProcessSaved = true;
-
-  constructor(
-    public apiService: ApiService,
-    private FormsService: FormsService,
-    private dialog: MatDialog,
-    public uomService: UomService,
-    public toastr: ToastrService,
-    public route: ActivatedRoute
-  ) { }
 
   async
 

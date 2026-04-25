@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { SubscriptionService } from '../subscription.service';
@@ -14,6 +14,11 @@ import { FormsModule } from '@angular/forms';
     imports: [FormsModule, DecimalPipe]
 })
 export class PaymentSubscriptionComponent implements OnInit, OnDestroy {
+  toastr = inject(ToastrService);
+  private subscriptionService = inject(SubscriptionService);
+  private router = inject(Router);
+  private businessAccountService = inject(BusinessAccountService);
+
   // Stripe related code
   public stripePK = (<any>window).Stripe(environment.stripePK);
   elements;
@@ -32,9 +37,6 @@ export class PaymentSubscriptionComponent implements OnInit, OnDestroy {
   businessInfo;
   businessDetails;
   isFromBusinessPage = false;
-  
-
-  constructor(public toastr: ToastrService, private subscriptionService: SubscriptionService, private router: Router, private businessAccountService: BusinessAccountService) { }
 
   ngOnInit(): void {
     this.selectedPaymentData = history.state.data;

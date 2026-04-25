@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { PaymentInfoList } from '../payment-info-list';
 import { Router } from '@angular/router';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
@@ -14,14 +14,16 @@ import { NgClass } from '@angular/common';
     imports: [NgClass, ExtendedModule, DadyinButtonComponent]
 })
 export class ChooseSubscriptionComponent implements OnInit {
+  private router = inject(Router);
+  private businessAccountService = inject(BusinessAccountService);
+  private subscriptionService = inject(SubscriptionService);
+
   calenderList = [{ name: 'Yearly', isChecked: true, value: 'Year' }, { name: 'Monthly', isChecked: false, value: 'Month' }];
   selectedCalendar = this.calenderList[0];
   paymentInfoList = PaymentInfoList;
   selectedPayment = this.paymentInfoList[2];
   showBackButton = false;
   businessDetails;
-
-  constructor(private router: Router, private businessAccountService: BusinessAccountService, private subscriptionService: SubscriptionService) { }
 
   ngOnInit(): void {
     this.showBackButton = history.state?.from === 'business-registration';

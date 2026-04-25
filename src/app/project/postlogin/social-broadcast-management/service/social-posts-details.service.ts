@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { SocialBroadcastDetailsApiService } from './social-broadcast-details-api.service';
@@ -7,7 +7,8 @@ import { SocialBroadcastDetailsApiService } from './social-broadcast-details-api
   providedIn: 'root',
 })
 export class SocialPostsDetailsService {
-  constructor(private api: SocialBroadcastDetailsApiService) { }
+  private api = inject(SocialBroadcastDetailsApiService);
+
 
   getSocialPostDetails(id: string | number): Observable<any> {
     return this.api.getSocialPostDetails(id).pipe(

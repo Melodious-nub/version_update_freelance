@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren, QueryList, inject } from '@angular/core';
 import { Location, NgClass, TitleCasePipe, DatePipe } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -26,6 +26,13 @@ import { SpinnerOverlayComponent } from '../../../shared/component/spinner-overl
     ]
 })
 export class CampaignHistoryComponent implements OnInit, AfterViewInit {
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private location = inject(Location);
+  private api = inject(CampaignsApiService);
+  private toastr = inject(ToastrService);
+  private sanitizer = inject(DomSanitizer);
+
   public campaignName: string = 'Campaign History';
   public statusLabel: string = 'N/A';
   public campaignPlatformsForDisplay: string[] = [];
@@ -35,15 +42,6 @@ export class CampaignHistoryComponent implements OnInit, AfterViewInit {
   readonly maxVisibleImages = 3;
   @ViewChildren('imageViewport') imageViewports!: QueryList<ElementRef>;
   public sliderStates: Array<{ canPrev: boolean; canNext: boolean }> = [];
-
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private location: Location,
-    private api: CampaignsApiService,
-    private toastr: ToastrService,
-    private sanitizer: DomSanitizer
-  ) {}
 
   ngOnInit(): void {
     const state: any = window.history.state || {};

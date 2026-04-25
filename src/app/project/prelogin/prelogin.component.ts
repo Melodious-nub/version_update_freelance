@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 
@@ -17,6 +17,8 @@ import { NgClass } from '@angular/common';
     ]
 })
 export class PreloginComponent implements AfterViewInit{
+  private router = inject(Router);
+
   @ViewChild('swiperR', { static: false }) swiperR?: ElementRef;
   activeIndex = 0;
   swiperConfig: any = {
@@ -38,7 +40,6 @@ export class PreloginComponent implements AfterViewInit{
       },
     }
   };
-  constructor(private router: Router) {}
 
   ngAfterViewInit() {
     if (this.swiperR) {

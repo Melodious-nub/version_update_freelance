@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -18,6 +18,16 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
     imports: [CreateCategoryComponent]
 })
 export class CategoryStepsComponent {
+  uomService = inject(UomService);
+  categorymanagementService = inject(CategoryManagementService);
+  commonService = inject(CommonService);
+  toastr = inject(ToastrService);
+  router = inject(Router);
+  apiService = inject(ApiService);
+  categorymanagementFormsService = inject(CategoryManagementFormsService);
+  businessAccountService = inject(BusinessAccountService);
+  containerService = inject(ContainerManagementService);
+
   // ************* Variable Declarations *************
   currentStepIndex = 0;
   productCategoryForm: UntypedFormGroup
@@ -25,17 +35,7 @@ export class CategoryStepsComponent {
   currentBusinessAccount: any;
 
 
-  constructor(
-    public uomService: UomService,
-    public categorymanagementService: CategoryManagementService,
-    public commonService: CommonService,
-    public toastr: ToastrService,
-    public router: Router,
-    public apiService: ApiService,
-    public categorymanagementFormsService: CategoryManagementFormsService,
-    public businessAccountService:BusinessAccountService,
-    public containerService:ContainerManagementService
-  ) {
+  constructor() {
     this.productCategoryForm = this.categorymanagementFormsService.createCategoryForm();
   }
   

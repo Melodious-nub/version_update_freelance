@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { map } from 'rxjs';
 import { HttpService } from 'src/app/service/http.service';
 import { invoiceConfigModule } from 'src/app/shared/constant';
@@ -7,9 +7,10 @@ import { invoiceConfigModule } from 'src/app/shared/constant';
   providedIn: 'root',
 })
 export class BillManagementService {
+  private httpService = inject(HttpService);
+
   productIndexList = [];
   billsList: any[] = [];
-  constructor(private httpService: HttpService) {}
 
   // API 1: Calculate Bill Values
   calculateBillValues(billPayload: any, uomQuery) {

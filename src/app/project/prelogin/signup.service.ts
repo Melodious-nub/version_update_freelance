@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { SignupUser } from 'src/app/model/signup/SignupUser';
 import { environment } from 'src/environments/environment';
 import { apiModules, userApiModules } from 'src/app/shared/constant';
@@ -14,8 +14,9 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class SignupService {
+  private httpService = inject(HttpService);
+  private http = inject(HttpClient);
 
-  constructor(private httpService: HttpService, private http: HttpClient) { }
 
   register(signup: any): Observable<GenricResponse> {
     return this.httpService.post<GenricResponse>(userApiModules.signup, signup);

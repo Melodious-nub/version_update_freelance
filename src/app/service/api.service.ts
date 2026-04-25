@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { map, Observable } from 'rxjs';
@@ -16,6 +16,10 @@ import {
 import { TokenService } from './token.service';
 @Injectable({ providedIn: 'root' })
 export class ApiService {
+  private httpService = inject(HttpService);
+  private httpClient = inject(HttpClient);
+  tokenService = inject(TokenService);
+
   productSubTypes: any[] = [];
   allproductsListForProcess: any[] = [];
   allproductsWithIsPackage: any[] = [];
@@ -49,14 +53,6 @@ export class ApiService {
   ];
 
   allRelationStatuses: any[] = [];
-
-  constructor(
-    private httpService: HttpService,
-    private httpClient: HttpClient,
-    public tokenService: TokenService
-  ) {
-    // super();
-  }
 
   getAllDatas() {
     this.Get_Industry_Types();

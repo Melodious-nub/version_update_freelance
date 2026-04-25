@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
@@ -15,14 +15,14 @@ import { NgClass, TitleCasePipe } from '@angular/common';
     ]
 })
 export class SocialCallbackComponent implements OnInit, OnDestroy {
+  private route = inject(ActivatedRoute);
+
   provider = 'N/A';
   status = 'N/A';
   providerIcon = '';
   statusIcon = '';
   message = '';
   private sub: Subscription | null = null;
-
-  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.sub = this.route.queryParamMap.subscribe((params) => {

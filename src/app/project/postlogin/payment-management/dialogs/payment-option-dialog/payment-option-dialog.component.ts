@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogClose } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -18,6 +18,11 @@ export interface DialogData {
     imports: [FormsModule, DadyinButtonComponent, MatDialogClose]
 })
 export class PaymentOptionDialogComponent implements OnInit {
+  dialogRef = inject<MatDialogRef<PaymentOptionDialogComponent>>(MatDialogRef);
+  data = inject<DialogData>(MAT_DIALOG_DATA);
+  apiService = inject(ApiService);
+  toastr = inject(ToastrService);
+
 
   phoneNumber;
   userName;
@@ -27,9 +32,6 @@ export class PaymentOptionDialogComponent implements OnInit {
   routingNo;
   accountNo;
   address;
-
-  constructor( public dialogRef: MatDialogRef<PaymentOptionDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:DialogData , public apiService:ApiService,public toastr:ToastrService) { }
 
   ngOnInit(): void {
     if(this.data && this.data.Id && this.data.Id > 0){

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { CategoryManagementService } from '../../service/category-management.service';
@@ -19,6 +19,12 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     ]
 })
 export class CategoryListComponent implements OnInit {
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+  apiService = inject(ApiService);
+  http = inject(HttpClient);
+  categoryManagementService = inject(CategoryManagementService);
+
   productCategories: any[] = [];
   filterValue;
   public headers = [
@@ -114,13 +120,6 @@ export class CategoryListComponent implements OnInit {
     itemPerPage: 20,
     sizeOption: [20, 50, 75, 100],
   };
-  constructor(
-    public router: Router,
-    public route: ActivatedRoute,
-    public apiService: ApiService,
-    public http: HttpClient,
-    public categoryManagementService: CategoryManagementService
-  ) {}
 
   ngOnInit() {
     this.loadAllCategories();

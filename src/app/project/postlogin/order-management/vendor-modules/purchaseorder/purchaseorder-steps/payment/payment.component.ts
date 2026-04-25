@@ -1,11 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectorRef,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter, inject } from '@angular/core';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -40,29 +33,28 @@ import { NgClass, DatePipe } from '@angular/common';
     ]
 })
 export class PaymentComponent implements OnInit {
+  fb = inject(UntypedFormBuilder);
+  ordermanagementService = inject(OrderManagementService);
+  orderFormService = inject(OrderFormsService);
+  formsService = inject(FormsService);
+  route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  uomService = inject(UomService);
+  containerService = inject(ContainerManagementService);
+  businessAccountService = inject(BusinessAccountService);
+  apiService = inject(ApiService);
+  router = inject(Router);
+  productService = inject(ProductService);
+  ref = inject(ChangeDetectorRef);
+  printService = inject(PrintService);
+  dialog = inject(MatDialog);
+  paymentService = inject(PaymentService);
+
   showPayNowButton = false;
   @Input() purchaseOrderForm: any;
   @Input() componentUoms: any;
   @Output() getOrderById = new EventEmitter();
   paymentOverview: any[] = [];
-  constructor(
-    public fb: UntypedFormBuilder,
-    public ordermanagementService: OrderManagementService,
-    public orderFormService: OrderFormsService,
-    public formsService: FormsService,
-    public route: ActivatedRoute,
-    public toastr: ToastrService,
-    public uomService: UomService,
-    public containerService: ContainerManagementService,
-    public businessAccountService: BusinessAccountService,
-    public apiService: ApiService,
-    public router: Router,
-    public productService: ProductService,
-    public ref: ChangeDetectorRef,
-    public printService: PrintService,
-    public dialog: MatDialog,
-    public paymentService: PaymentService
-  ) {}
 
   ngOnInit() {
     this.purchaseOrderForm.get('totalCost').enable();

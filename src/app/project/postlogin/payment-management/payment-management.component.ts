@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { Router } from '@angular/router';
@@ -38,6 +38,14 @@ import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dad
     ]
 })
 export class PaymentManagementComponent implements OnInit {
+  router = inject(Router);
+  dialog = inject(MatDialog);
+  apiService = inject(ApiService);
+  fb = inject(UntypedFormBuilder);
+  formsService = inject(FormsService);
+  paymentManagementService = inject(PaymentManagementService);
+  toastr = inject(ToastrService);
+
   currentMainIndex = 0;
   public preferredUoms: any[];
   public preferForm: UntypedFormGroup = this.formsService.createPreferUomForm();
@@ -49,15 +57,6 @@ export class PaymentManagementComponent implements OnInit {
   };
   businessId = new UntypedFormControl();
   invoicesList: any[] = [];
-  constructor(
-    public router: Router,
-    public dialog: MatDialog,
-    public apiService: ApiService,
-    public fb: UntypedFormBuilder,
-    public formsService: FormsService,
-    public paymentManagementService: PaymentManagementService,
-    public toastr: ToastrService
-  ) {}
 
   ngOnInit() {
     this.uomSetting = false;

@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuickCheckoutFormsService {
-  constructor(public _fb: UntypedFormBuilder) {}
+  _fb = inject(UntypedFormBuilder);
+
 
   createPOForm(): UntypedFormGroup {
     return this._fb.group({

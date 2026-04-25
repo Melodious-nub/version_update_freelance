@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 
 import { catchError, map, Observable, retryWhen, throwError } from 'rxjs';
@@ -13,6 +13,10 @@ import { BusinessAccountService } from '../../../business-account/business-accou
   providedIn: 'root',
 })
 export class InventoryoutmanagementService {
+  private httpService = inject(HttpService);
+  private httpClient = inject(HttpClient);
+  accountService = inject(BusinessAccountService);
+
   url = environment.apiUrl;
   branchesList: any[] = [];
   containerTypesList: any[] = [];
@@ -29,11 +33,6 @@ export class InventoryoutmanagementService {
   globalCostUom = new UntypedFormControl();
   globalWeightUom = new UntypedFormControl();
   globalVolumeUom = new UntypedFormControl();
-  constructor(
-    private httpService: HttpService,
-    private httpClient: HttpClient,
-    public accountService: BusinessAccountService
-  ) {}
 
   getAllDatas() {}
 

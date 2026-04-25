@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SpinnerOverlayService } from '../service/spinner-overlay.service';
 
 @Injectable()
 export class SpinnerInterceptor implements HttpInterceptor {
+  private readonly spinnerOverlayService = inject(SpinnerOverlayService);
 
-  constructor(private readonly spinnerOverlayService: SpinnerOverlayService) { }
 
   intercept(
     req: HttpRequest<any>,

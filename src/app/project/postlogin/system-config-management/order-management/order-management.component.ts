@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NotesListComponent } from './notes/notes-list/notes-list.component';
@@ -22,6 +22,9 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     ]
 })
 export class OrderManagementComponent implements OnInit {
+  toastr = inject(ToastrService);
+  route = inject(ActivatedRoute);
+
   public currentMainIndex: number = 0;
   public pageConfig = null;
   pageIndex: any = 0;
@@ -30,14 +33,6 @@ export class OrderManagementComponent implements OnInit {
 
 
   public headers = [];
-
-
-
-
-  constructor(
-    public toastr: ToastrService,
-    public route:ActivatedRoute
-  ) { }
 
   ngOnInit(): void {
     this.currentMainIndex=this.route.snapshot.queryParams.currentStepIndex ?? 0

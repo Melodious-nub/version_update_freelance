@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -40,6 +40,18 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     ]
 })
 export class ReceivedPoStepsComponent implements OnInit{
+  uomService = inject(UomService);
+  ordermanagementService = inject(OrderManagementService);
+  commonService = inject(CommonService);
+  private route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  router = inject(Router);
+  apiService = inject(ApiService);
+  orderFormsService = inject(OrderFormsService);
+  private dialog = inject(MatDialog);
+  formsService = inject(FormsService);
+  businessAccountService = inject(BusinessAccountService);
+
   // ************* Variable Declarations *************
   currentStepIndex = 0;
   receivedPoForm: UntypedFormGroup;
@@ -51,19 +63,7 @@ export class ReceivedPoStepsComponent implements OnInit{
 
   paymentStatusControl = new UntypedFormControl();
 
-  constructor(
-    public uomService: UomService,
-    public ordermanagementService: OrderManagementService,
-    public commonService: CommonService,
-    private route: ActivatedRoute,
-    public toastr: ToastrService,
-    public router: Router,
-    public apiService: ApiService,
-    public orderFormsService: OrderFormsService,
-    private dialog: MatDialog,
-    public formsService: FormsService,
-    public businessAccountService: BusinessAccountService
-  ) {
+  constructor() {
     this.receivedPoForm =
       this.orderFormsService.createReceivedPurchaseOrderForm();
     this.receivedPoForm.get('isReceiving').setValue(true);

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { BusinessAccountService } from '../../../../business-account/business-account.service';
@@ -26,6 +26,14 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     ]
 })
 export class InvoiceListComponent {
+  router = inject(Router);
+  apiService = inject(ApiService);
+  private businessAccount = inject(BusinessAccountService);
+  orderManagementService = inject(OrderManagementService);
+  invoiceManagementService = inject(InvoiceManagementService);
+  formsService = inject(FormsService);
+  uomService = inject(UomService);
+
   @Input() single = false;
   invoiceList: any[];
   public searchText: string;
@@ -70,15 +78,7 @@ export class InvoiceListComponent {
   public preferredUoms: any[];
   public preferForm: UntypedFormGroup = this.formsService.createPreferUomForm();
 
-  constructor(
-    public router: Router,
-    public apiService: ApiService,
-    private businessAccount: BusinessAccountService,
-    public orderManagementService: OrderManagementService,
-    public invoiceManagementService: InvoiceManagementService,
-    public formsService: FormsService,
-    public uomService: UomService
-  ) {
+  constructor() {
     this.businessAccount.$currentBusinessAccount.subscribe((res) => {
       this.currentBusinessAccount = res;
       if (this.currentBusinessAccount) {

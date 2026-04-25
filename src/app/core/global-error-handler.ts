@@ -1,8 +1,9 @@
-import { ErrorHandler, Injectable, NgZone } from '@angular/core';
+import { ErrorHandler, Injectable, NgZone, inject } from '@angular/core';
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
-  constructor(private ngZone: NgZone) {}
+  private ngZone = inject(NgZone);
+
 
   handleError(error: any): void {
     const actualError = (error && (error.rejection || error)) || error;

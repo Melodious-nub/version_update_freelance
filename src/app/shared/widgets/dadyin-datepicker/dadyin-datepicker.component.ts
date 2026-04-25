@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, forwardRef, Injector, Inject, Optional, ChangeDetectorRef, AfterContentInit, AfterContentChecked, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, Injector, Inject, Optional, ChangeDetectorRef, AfterContentInit, AfterContentChecked, Output, EventEmitter, inject } from '@angular/core';
 
 import { NG_VALUE_ACCESSOR, NgControl, ControlValueAccessor, UntypedFormControl, ControlContainer, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
@@ -72,8 +72,12 @@ export class DadyinDatePickerComponent implements OnInit, ControlValueAccessor, 
     }
 
 
-    constructor(private commonService: CommonService, private controlContainer: ControlContainer, private injector: Injector,
-        private cdr: ChangeDetectorRef) {
+    private commonService = inject(CommonService);
+    private controlContainer = inject(ControlContainer);
+    private injector = inject(Injector);
+    private cdr = inject(ChangeDetectorRef);
+
+    constructor() {
     }
 
     ngAfterContentChecked() {

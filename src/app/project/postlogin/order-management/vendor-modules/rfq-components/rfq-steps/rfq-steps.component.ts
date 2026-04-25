@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -37,6 +37,19 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     ]
 })
 export class RfqStepsComponent implements OnInit {
+  dialog = inject(MatDialog);
+  uomService = inject(UomService);
+  ordermanagementService = inject(OrderManagementService);
+  commonService = inject(CommonService);
+  private route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  router = inject(Router);
+  apiService = inject(ApiService);
+  orderFormsService = inject(OrderFormsService);
+  formsService = inject(FormsService);
+  businessAccountService = inject(BusinessAccountService);
+  containerService = inject(ContainerManagementService);
+
   // ************* Variable Declarations *************
   currentStepIndex = 0;
   rfqForm: UntypedFormGroup;
@@ -47,20 +60,7 @@ export class RfqStepsComponent implements OnInit {
   public preferForm: UntypedFormGroup = this.formsService.createPreferUomForm();
   uomSetting = false;
 
-  constructor(
-    public dialog: MatDialog,
-    public uomService: UomService,
-    public ordermanagementService: OrderManagementService,
-    public commonService: CommonService,
-    private route: ActivatedRoute,
-    public toastr: ToastrService,
-    public router: Router,
-    public apiService: ApiService,
-    public orderFormsService: OrderFormsService,
-    public formsService: FormsService,
-    public businessAccountService: BusinessAccountService,
-    public containerService: ContainerManagementService
-  ) {
+  constructor() {
     this.rfqForm = this.orderFormsService.createRfqForm();
   }
 

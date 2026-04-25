@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -34,6 +34,14 @@ import { MatIconModule } from '@angular/material/icon';
     ]
 })
 export class InviteDialogComponent implements OnInit{
+  dialogRef = inject<MatDialogRef<InviteDialogComponent>>(MatDialogRef);
+  private fb = inject(UntypedFormBuilder);
+  private tokenService = inject(TokenService);
+  private authService = inject(AuthService);
+  private toastr = inject(ToastrService);
+  private businessService = inject(BusinessAccountService);
+  data = inject(MAT_DIALOG_DATA);
+
   public submitted = false;
   public disableSubmitBtn = false;
   public inviteFriend: boolean = false;
@@ -63,15 +71,9 @@ export class InviteDialogComponent implements OnInit{
   public states: any[] = [];
   public industryTypes: { label: string; value: string }[] = [];
 
-  constructor(
-    public dialogRef: MatDialogRef<InviteDialogComponent>,
-    private fb: UntypedFormBuilder,
-    private tokenService: TokenService,
-    private authService: AuthService,
-    private toastr: ToastrService,
-    private businessService: BusinessAccountService,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
+  constructor() {
+    const data = this.data;
+
     this.refData = data || {};
   }
 

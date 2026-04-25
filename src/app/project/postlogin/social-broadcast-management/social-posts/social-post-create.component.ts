@@ -1,5 +1,5 @@
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChildren, QueryList, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChildren, QueryList, ViewChild, ElementRef, inject } from '@angular/core';
 import { SocialProfilesApiService } from '../service/social-profiles-api.service';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription } from '@angular/material/expansion';
 import { Location, NgClass, NgTemplateOutlet } from '@angular/common';
@@ -43,6 +43,17 @@ type ProductImageTile = {
     imports: [SpinnerOverlayComponent, DadyinButtonComponent, MatTabGroup, MatTab, MatTabLabel, MatTabContent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, DadyinSelectComponent, DadyinSearchSelectNewComponent, CKEditorModule, NgClass, ExtendedModule, MatIcon, TimePickerComponent, NgTemplateOutlet]
 })
 export class SocialPostCreateComponent implements OnInit, OnDestroy{
+    private fb = inject(UntypedFormBuilder);
+    private location = inject(Location);
+    private cdr = inject(ChangeDetectorRef);
+    private socialProfilesApi = inject(SocialProfilesApiService);
+    private apiService = inject(ApiService);
+    private detailsApi = inject(SocialBroadcastDetailsApiService);
+    private sanitizer = inject(DomSanitizer);
+    private commonService = inject(CommonService);
+    private router = inject(Router);
+    toastr = inject(ToastrService);
+
     public Editor = ClassicEditor;
     public editorConfig = {
         toolbar: [
@@ -133,18 +144,7 @@ export class SocialPostCreateComponent implements OnInit, OnDestroy{
     private readonly allOverwriteFields = ['postDescription'];
     private publicationTimeSub: any = null;
 
-    constructor(
-        private fb: UntypedFormBuilder,
-        private location: Location,
-        private cdr: ChangeDetectorRef,
-        private socialProfilesApi: SocialProfilesApiService,
-        private apiService: ApiService,
-        private detailsApi: SocialBroadcastDetailsApiService,
-        private sanitizer: DomSanitizer,
-        private commonService: CommonService,
-        private router: Router,
-        public toastr: ToastrService
-    ) {
+    constructor() {
         this.postForm = this.fb.group({
             postName: [''],
             postCategory: [''],

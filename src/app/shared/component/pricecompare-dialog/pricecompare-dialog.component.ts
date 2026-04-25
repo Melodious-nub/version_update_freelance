@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, inject } from '@angular/core';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
@@ -36,14 +36,13 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     ]
 })
 export class PricecompareDialogComponent implements OnInit, OnDestroy {
+  dialog = inject(MatDialog);
+  data = inject(MAT_DIALOG_DATA);
+  apiService = inject(ApiService);
+  dialogRef = inject<MatDialogRef<PricecompareDialogComponent>>(MatDialogRef);
+  orderFormService = inject(OrderFormsService);
+
   public imgUrl = environment.imgUrl;
-  constructor(
-    public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public apiService: ApiService,
-    public dialogRef: MatDialogRef<PricecompareDialogComponent>,
-    public orderFormService: OrderFormsService
-  ) {}
 
   close() {
     this.dialog.closeAll();

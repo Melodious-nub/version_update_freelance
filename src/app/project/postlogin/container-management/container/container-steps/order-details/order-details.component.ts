@@ -1,12 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild, AfterViewInit, OnDestroy,
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, OnDestroy, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -59,6 +51,16 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
+  fb = inject(UntypedFormBuilder);
+  containerService = inject(ContainerManagementService);
+  containerFormService = inject(ContainerFormsService);
+  formsService = inject(FormsService);
+  route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  uomService = inject(UomService);
+  businessAccountService = inject(BusinessAccountService);
+  orderManagementService = inject(OrderManagementService);
+
   containerData: any;
 
   @ViewChild('expansionPanel2') expansionPanel2;
@@ -151,18 +153,6 @@ export class OrderDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
       icon: 'add-dash',
     },
   ];
-
-  constructor(
-    public fb: UntypedFormBuilder,
-    public containerService: ContainerManagementService,
-    public containerFormService: ContainerFormsService,
-    public formsService: FormsService,
-    public route: ActivatedRoute,
-    public toastr: ToastrService,
-    public uomService: UomService,
-    public businessAccountService: BusinessAccountService,
-    public orderManagementService: OrderManagementService
-  ) {}
 
   ngAfterViewInit() {
     this.calculateSquares();

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
@@ -23,6 +23,14 @@ import { CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
     imports: [CdkDrag, CdkDragHandle, DadyinButtonComponent, MatTooltip, MatExpansionPanel, FormsModule, ReactiveFormsModule, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinSelectComponent, MatTabGroup, MatTab, MatExpansionPanelContent, NgClass, ExtendedModule, DatePipe, NumberFormatterPipe]
 })
 export class BatchModalComponent implements OnInit {
+  data = inject(MAT_DIALOG_DATA);
+  private dialogRef = inject<MatDialogRef<BatchModalComponent>>(MatDialogRef);
+  private formsService = inject(FormsService);
+  apiService = inject(ApiService);
+  private toastr = inject(ToastrService);
+  private uomService = inject(UomService);
+  containerService = inject(ContainerManagementService);
+
 
   @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
 
@@ -30,16 +38,6 @@ export class BatchModalComponent implements OnInit {
   isSaving = false;
   isEditMode = false;
   selectedTabIndex = 0;
-
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private dialogRef: MatDialogRef<BatchModalComponent>,
-    private formsService: FormsService,
-    public apiService: ApiService,
-    private toastr: ToastrService,
-    private uomService: UomService,
-    public containerService: ContainerManagementService
-  ) { }
 
   async ngOnInit() {
     this.containerService.Get_All_employees();

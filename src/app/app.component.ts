@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { AuthService } from './service/auth.service';
 import { TokenService } from './service/token.service';
@@ -17,6 +17,13 @@ import { AsyncPipe } from '@angular/common';
     imports: [RouterOutlet, PrintTemplatesComponent, SpinnerOverlayComponent, AsyncPipe]
 })
 export class AppComponent implements OnInit {
+  private authService = inject(AuthService);
+  private tokenService = inject(TokenService);
+  private router = inject(Router);
+  http = inject(HttpClient);
+  private httpService = inject(HttpService);
+  spinnerOverlayService = inject(SpinnerOverlayService);
+
   currentRoute: string;
   @HostListener('window:beforeunload', ['$event'])
   onWindowClose(event: any): void {
@@ -28,15 +35,6 @@ export class AppComponent implements OnInit {
       event.returnValue = false;
     }
   }
-
-  constructor(
-    private authService: AuthService,
-    private tokenService: TokenService,
-    private router: Router,
-    public http: HttpClient,
-    private httpService: HttpService,
-    public spinnerOverlayService: SpinnerOverlayService
-  ) { }
 
   ngOnInit() {
     this.loadThemeColors();

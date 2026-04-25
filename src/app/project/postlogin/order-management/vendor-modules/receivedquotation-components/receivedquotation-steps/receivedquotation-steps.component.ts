@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -33,6 +33,18 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     ]
 })
 export class ReceivedQuotationStepsComponent implements OnInit {
+  uomService = inject(UomService);
+  ordermanagementService = inject(OrderManagementService);
+  commonService = inject(CommonService);
+  private fb = inject(UntypedFormBuilder);
+  private route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  router = inject(Router);
+  apiService = inject(ApiService);
+  orderFormsService = inject(OrderFormsService);
+  formsService = inject(FormsService);
+  dialog = inject(MatDialog);
+
   // ************* Variable Declarations *************
   uomSetting = false;
   currentStepIndex = 0;
@@ -41,19 +53,7 @@ export class ReceivedQuotationStepsComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject();
   public preferForm: UntypedFormGroup = this.formsService.createPreferUomForm();
 
-  constructor(
-    public uomService: UomService,
-    public ordermanagementService: OrderManagementService,
-    public commonService: CommonService,
-    private fb: UntypedFormBuilder,
-    private route: ActivatedRoute,
-    public toastr: ToastrService,
-    public router: Router,
-    public apiService: ApiService,
-    public orderFormsService: OrderFormsService,
-    public formsService: FormsService,
-    public dialog: MatDialog
-  ) {
+  constructor() {
     this.recvQuotationForm = this.orderFormsService.createQuotationForm();
   }
 

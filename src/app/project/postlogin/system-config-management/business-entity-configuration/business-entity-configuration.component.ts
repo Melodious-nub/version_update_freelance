@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
-import { Component, HostListener, Inject, Optional, OnInit, Input } from '@angular/core';
+import { Component, HostListener, OnInit, Input, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -46,6 +46,17 @@ import { NgStyle, NgClass } from '@angular/common';
     ]
 })
 export class BusinessEntityConfigurationComponent implements OnInit {
+  private fb = inject(UntypedFormBuilder);
+  private systemConfigService = inject(SystemConfigService);
+  private formsService = inject(SystemConfigFormsService);
+  apiService = inject(ApiService);
+  toastr = inject(ToastrService);
+  sortFormArray = inject(SortFormArrayPipe);
+  productTemplateService = inject(ProductTemplateService);
+  dialog = inject(MatDialog);
+  dialogData? = inject(MAT_DIALOG_DATA, { optional: true });
+  dialogRef? = inject<MatDialogRef<BusinessEntityConfigurationComponent>>(MatDialogRef, { optional: true });
+
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.formulaAutoComplete = false;
   }
@@ -67,18 +78,7 @@ export class BusinessEntityConfigurationComponent implements OnInit {
   searchAutoComplete = new UntypedFormControl('');
   currentFocusedIndex: string | null = null;
   labelTypeAttributeIds: any = [];
-  constructor(
-    private fb: UntypedFormBuilder,
-    private systemConfigService: SystemConfigService,
-    private formsService: SystemConfigFormsService,
-    public apiService: ApiService,
-    public toastr: ToastrService,
-    public sortFormArray: SortFormArrayPipe,
-    public productTemplateService: ProductTemplateService,
-    public dialog: MatDialog,
-    @Optional() @Inject(MAT_DIALOG_DATA) public dialogData?: any,
-    @Optional() public dialogRef?: MatDialogRef<BusinessEntityConfigurationComponent>
-  ) {
+  constructor() {
     this.configurationForm = this.formsService.createBusinessEntityConfigurationForm();
   }
 

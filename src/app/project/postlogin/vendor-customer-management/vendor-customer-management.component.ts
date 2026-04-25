@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { BusinessAccountService } from '../business-account/business-account.service';
@@ -51,6 +51,21 @@ import { NgClass, SlicePipe } from '@angular/common';
     ]
 })
 export class VendorCustomerManagementComponent implements OnInit {
+  apiService = inject(ApiService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  businessAccountService = inject(BusinessAccountService);
+  vendorCustomerService = inject(VendorCustomerService);
+  toastr = inject(ToastrService);
+  dialog = inject(MatDialog);
+  vendorFormService = inject(VendorFormsService);
+  fb = inject(UntypedFormBuilder);
+  selectMenuService = inject(SelectMenuService);
+  tokenService = inject(TokenService);
+  pdfGeneratorService = inject(PdfGeneratorService);
+  private systemConfigService = inject(SystemConfigService);
+
   @ViewChild(DataTableComponent) dataTable!: DataTableComponent;
   employeeId = null;
   productCategoryId = null;
@@ -124,22 +139,7 @@ export class VendorCustomerManagementComponent implements OnInit {
     { id: 'CONVERTED', label: 'Converted', index: 3 },
   ];
 
-  constructor(
-    public apiService: ApiService,
-    private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute,
-    public businessAccountService: BusinessAccountService,
-    public vendorCustomerService: VendorCustomerService,
-    public toastr: ToastrService,
-    public dialog: MatDialog,
-    public vendorFormService: VendorFormsService,
-    public fb: UntypedFormBuilder,
-    public selectMenuService: SelectMenuService,
-    public tokenService: TokenService,
-    public pdfGeneratorService: PdfGeneratorService,
-    private systemConfigService: SystemConfigService
-  ) {
+  constructor() {
     this.initializeTabs();
     // if (tokenService?.getRoleInBusinessAccountIdToken() == 'CRM') {
     //   this.currentMainIndex = 2;

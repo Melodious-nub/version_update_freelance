@@ -1,5 +1,5 @@
 import { FormsService } from 'src/app/service/forms.service';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -55,6 +55,15 @@ import { NgClass, NgStyle } from '@angular/common';
     ]
 })
 export class AddPackageComponent implements OnInit {
+  toastr = inject(ToastrService);
+  formsService = inject(FormsService);
+  fb = inject(UntypedFormBuilder);
+  apiService = inject(ApiService);
+  route = inject(ActivatedRoute);
+  uomService = inject(UomService);
+  sortFormArray = inject(SortFormArrayPipe);
+  dialog = inject(MatDialog);
+
   @Input() productForm: UntypedFormGroup;
   @Input() componentUoms: UntypedFormArray;
 
@@ -71,16 +80,6 @@ export class AddPackageComponent implements OnInit {
   labelTypeAttributeIds: any = [];
   allProductsPackagingMaterial: any[] = []
   imageDragging = false;
-  constructor(
-    public toastr: ToastrService,
-    public formsService: FormsService,
-    public fb: UntypedFormBuilder,
-    public apiService: ApiService,
-    public route: ActivatedRoute,
-    public uomService: UomService,
-    public sortFormArray: SortFormArrayPipe,
-    public dialog: MatDialog
-  ) { }
 
   ngOnInit() {
     this.uomService.getAllUoms()

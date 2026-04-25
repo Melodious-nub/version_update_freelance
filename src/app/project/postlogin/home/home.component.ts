@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { SelectMenuService } from 'src/app/layout/select-menu.service';
 import {
@@ -25,6 +25,10 @@ import { NgClass } from '@angular/common';
     ]
 })
 export class HomeComponent implements OnInit {
+  private router = inject(Router);
+  private selectMenuService = inject(SelectMenuService);
+  businessAccountService = inject(BusinessAccountService);
+
   menuList = sidebarMenu;
   topList = topList;
   vendorList = vendorList;
@@ -43,11 +47,6 @@ export class HomeComponent implements OnInit {
     { value: 'thismonth', label: 'This Month' },
     { value: '30days', label: 'Last 30 Days' },
   ];
-  constructor(
-    private router: Router,
-    private selectMenuService: SelectMenuService,
-    public businessAccountService: BusinessAccountService
-  ) {}
 
   ngOnInit(): void {
     this.menuList = this.menuList.filter((item) => item !== this.menuList[0]);

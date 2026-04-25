@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { InventoryoutOrderWiseComponent } from './order-wise/order-wise.component';
 import { InventoryoutProductWiseComponent } from './product-wise/product-wise.component';
@@ -14,9 +14,10 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     imports: [SearchFilterComponent, NgClass, ExtendedModule, InventoryoutProductWiseComponent, InventoryoutOrderWiseComponent]
 })
 export class InventoryoutOrderArrivalComponent implements OnInit {
-  poView='orderWise'
+  route = inject(ActivatedRoute);
+  router = inject(Router);
 
-  constructor(public route:ActivatedRoute,public router:Router) { }
+  poView='orderWise'
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(res=>{

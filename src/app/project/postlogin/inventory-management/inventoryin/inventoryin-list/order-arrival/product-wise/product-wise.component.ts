@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { InventoryinmanagementService } from '../../../service/inventoryin-management.service';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { DataTableComponent } from '../../../../../../../shared/component/data-table/data-table.component';
@@ -11,6 +11,10 @@ import { DateScrollComponent } from '../../../../../../../shared/component/date-
     imports: [DateScrollComponent, DataTableComponent]
 })
 export class InventoryinProductWiseComponent implements OnInit {
+  inventoryinmanagement = inject(InventoryinmanagementService);
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+
 
   list = []
   public filterValue: string;
@@ -35,7 +39,6 @@ export class InventoryinProductWiseComponent implements OnInit {
     icon: 'edit'
   }];
   public pageConfig = null;
-  constructor(public inventoryinmanagement: InventoryinmanagementService, public router: Router, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
     

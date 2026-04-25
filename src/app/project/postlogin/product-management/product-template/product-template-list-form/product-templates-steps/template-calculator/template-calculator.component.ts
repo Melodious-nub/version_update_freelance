@@ -1,5 +1,5 @@
 import { productTemplate } from '../../../../../../../shared/constant';
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { FormArray, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -21,6 +21,11 @@ import { ProductComponent } from './tabs/product/product.component';
     ]
 })
 export class TemplateCalculatorComponent {
+  dialog = inject(MatDialog);
+  apiService = inject(ApiService);
+  route = inject(ActivatedRoute);
+  productTemplateService = inject(ProductTemplateService);
+
 
   // ************* Variable Declarations *************
   @Input() templateForm: UntypedFormGroup;
@@ -28,14 +33,6 @@ export class TemplateCalculatorComponent {
   currentStepIndex = 0
 
   calculatorType = new UntypedFormControl('product');
-  constructor(
-    public dialog: MatDialog,
-    public apiService: ApiService,
-    public route: ActivatedRoute,
-    public productTemplateService: ProductTemplateService,
-  ) {
-
-  }
 
 
 

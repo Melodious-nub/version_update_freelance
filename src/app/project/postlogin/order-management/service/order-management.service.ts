@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { HttpService } from 'src/app/service/http.service';
 import { order, orderConfigModule } from 'src/app/shared/constant';
@@ -9,14 +9,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class OrderManagementService {
+  private httpService = inject(HttpService);
+  private httpClient = inject(HttpClient);
+
   productIndexList = [];
   receivedPOsList: any[] = [];
   currentRouteId: any = null;
   productsList: any;
-  constructor(
-    private httpService: HttpService,
-    private httpClient: HttpClient
-  ) {}
 
   Get_All_ReceivedPOs(
     pageNumber: any,

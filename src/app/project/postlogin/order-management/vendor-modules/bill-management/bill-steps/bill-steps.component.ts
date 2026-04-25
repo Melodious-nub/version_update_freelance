@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -37,6 +37,18 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     ]
 })
 export class BillStepsComponent implements OnInit {
+  uomService = inject(UomService);
+  billManagementService = inject(BillManagementService);
+  commonService = inject(CommonService);
+  private route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  router = inject(Router);
+  apiService = inject(ApiService);
+  billFormsService = inject(BillFormsService);
+  formsService = inject(FormsService);
+  businessAccountService = inject(BusinessAccountService);
+  dialog = inject(MatDialog);
+
   // ************* Variable Declarations *************
   currentStepIndex = 0;
   billForm: UntypedFormGroup;
@@ -45,19 +57,7 @@ export class BillStepsComponent implements OnInit {
   uomSetting = false;
   ngUnsubscribe: any = new Subject<void>();
 
-  constructor(
-    public uomService: UomService,
-    public billManagementService: BillManagementService,
-    public commonService: CommonService,
-    private route: ActivatedRoute,
-    public toastr: ToastrService,
-    public router: Router,
-    public apiService: ApiService,
-    public billFormsService: BillFormsService,
-    public formsService: FormsService,
-    public businessAccountService: BusinessAccountService,
-    public dialog: MatDialog
-  ) {
+  constructor() {
     this.billForm = this.billFormsService.createBillForm();
   }
 

@@ -1,5 +1,5 @@
 
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -24,13 +24,12 @@ export class AccountDetailsComponent {
   @Input() isCustomer: any;
   @Input() vendorForm: any;
 
-  constructor(
-    public toastr: ToastrService,
-    public customerService: ApiService,
-    private dialog: MatDialog,
-    private route: ActivatedRoute,
-    public vendorFormsService: VendorFormsService
-  ) {}
+    public toastr = inject(ToastrService);
+  public customerService = inject(ApiService);
+  private dialog = inject(MatDialog);
+  private route = inject(ActivatedRoute);
+  public vendorFormsService = inject(VendorFormsService);
+  constructor() {}
 
 
 

@@ -1,5 +1,5 @@
 
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators, UntypedFormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -34,16 +34,15 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class WarehouseDetailsComponent {
+  toastr = inject(ToastrService);
+  customerService = inject(ApiService);
+  private dialog = inject(MatDialog);
+  private route = inject(ActivatedRoute);
+  vendorFormsService = inject(VendorFormsService);
+
   @Input() vendorForm: any;
   @Input() isCustomer: any;
   @Input() countries: any;
-  constructor(
-    public toastr: ToastrService,
-    public customerService: ApiService,
-    private dialog: MatDialog,
-    private route: ActivatedRoute,
-    public vendorFormsService: VendorFormsService
-  ) {}
 
   get wareHouseDetails() {
     return this.vendorForm.get('warehouses') as UntypedFormArray;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/service/token.service';
 
@@ -9,8 +9,9 @@ import { TokenService } from 'src/app/service/token.service';
     standalone: true
 })
 export class DashboardComponent implements OnInit {
+  private router = inject(Router);
+  private tokenService = inject(TokenService);
 
-  constructor(private router: Router, private tokenService: TokenService) { }
 
   ngOnInit(): void {
     const businessAccountId = this.tokenService.getBusinessAccountIdToken();

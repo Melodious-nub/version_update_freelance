@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -15,11 +15,10 @@ import { TokenService } from '../service/token.service';
   providedIn: 'root',
 })
 export class BusinessAccountGuard implements CanActivate, CanActivateChild {
-  constructor(
-    private tokenService: TokenService,
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  private tokenService = inject(TokenService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
 
   canActivate(
     route: ActivatedRouteSnapshot,

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { GenricResponse } from 'src/app/model/common/generic-response';
 import { ToastrService } from 'ngx-toastr';
@@ -21,6 +21,12 @@ import { DadyinInputComponent } from '../../../../shared/widgets/dadyin-input/da
     ]
 })
 export class SignupOTPComponent implements OnInit {
+  private router = inject(Router);
+  private businessAccountService = inject(BusinessAccountService);
+  private signupService = inject(SignupService);
+  private toastr = inject(ToastrService);
+  private fb = inject(UntypedFormBuilder);
+
 
   private user: any;
   public userEmail: any;
@@ -29,7 +35,7 @@ export class SignupOTPComponent implements OnInit {
   public forgotGroup: UntypedFormGroup;
   
 
-  constructor(private router: Router, private businessAccountService: BusinessAccountService, private signupService: SignupService, private toastr: ToastrService, private fb: UntypedFormBuilder) {
+  constructor() {
     if (this.router.getCurrentNavigation().extras.state == null) {
       this.navigate("/signup");
     }

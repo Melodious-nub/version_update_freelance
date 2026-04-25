@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { DadyinButtonComponent } from '../../../../../../../../shared/widgets/dadyin-button/dadyin-button.component';
@@ -11,14 +11,18 @@ import { DadyinButtonComponent } from '../../../../../../../../shared/widgets/da
     imports: [MatDialogClose, FormsModule, ReactiveFormsModule, DadyinButtonComponent]
 })
 export class CreateDropdownFieldModalComponent implements OnInit {
+  data = inject<{
+    attributeName: UntypedFormControl;
+    attributeType: any;
+    attributeValueExpression: any;
+}>(MAT_DIALOG_DATA);
+  fb = inject(UntypedFormBuilder);
+  dialogRef = inject<MatDialogRef<CreateDropdownFieldModalComponent>>(MatDialogRef);
+
 
   attributeValueExpression: UntypedFormArray;
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { attributeName: UntypedFormControl, attributeType: any ,attributeValueExpression:any},
-    public fb: UntypedFormBuilder,
-    public dialogRef: MatDialogRef<CreateDropdownFieldModalComponent>
-  ) {
+  constructor() {
     this.attributeValueExpression = this.fb.array([])
   }
 

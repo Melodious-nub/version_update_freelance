@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { BusinessAccountService } from '../../business-account/business-account.service';
 import { ToastrService } from 'ngx-toastr';
@@ -21,6 +21,12 @@ import { MatTabGroup, MatTab } from '@angular/material/tabs';
     ]
 })
 export class CategoryComponent implements OnInit {
+  router = inject(Router);
+  private businueeAccount = inject(BusinessAccountService);
+  toastr = inject(ToastrService);
+  dialog = inject(MatDialog);
+  private apiService = inject(ApiService);
+
   currentBusinessAccount;
   categoryList;
   category;
@@ -43,13 +49,7 @@ export class CategoryComponent implements OnInit {
   };
   id = 0;
 
-  constructor(
-    public router: Router,
-    private businueeAccount: BusinessAccountService,
-    public toastr: ToastrService,
-    public dialog: MatDialog,
-    private apiService: ApiService
-  ) {
+  constructor() {
     this.businueeAccount.$currentBusinessAccount.subscribe((res) => {
       this.currentBusinessAccount = res;
     });

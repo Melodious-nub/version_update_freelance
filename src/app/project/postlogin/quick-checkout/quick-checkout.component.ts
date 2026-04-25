@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { PurchaseOrderService } from 'src/app/project/postlogin/quick-checkout/services/purchase-order.service';
 import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,6 +32,12 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
   ]
 })
 export class QuickCheckoutComponent implements OnInit {
+  private router = inject(Router);
+  private purchaseOrderService = inject(PurchaseOrderService);
+  private formService = inject(FormsService);
+  apiService = inject(ApiService);
+  uomService = inject(UomService);
+
   public preferForm: UntypedFormGroup = this.formService.createPreferUomForm();
   uomSetting = false;
   public preferredUoms: any[];
@@ -124,15 +130,6 @@ export class QuickCheckoutComponent implements OnInit {
       icon: 'edit',
     },
   ];
-
-  constructor(
-    private router: Router,
-    private purchaseOrderService: PurchaseOrderService,
-    private formService: FormsService,
-    public apiService: ApiService,
-    public uomService: UomService
-  ) {
-  }
 
   ngOnInit(): void {
     this.getPreference();

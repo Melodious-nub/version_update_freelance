@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PaymentFormsService {
-  constructor(public _fb: FormBuilder) {}
+    public _fb = inject(FormBuilder);
+  constructor() {}
 
   createInvoiceForm(): FormGroup {
     return this._fb.group({

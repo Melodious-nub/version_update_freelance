@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit, HostListener, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, HostListener, ViewChild, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { ProductManagementService } from '../../service/product-management.service';
@@ -35,6 +35,15 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     ]
 })
 export class ProductTagsListComponent implements OnInit {
+  router = inject(Router);
+  apiService = inject(ApiService);
+  http = inject(HttpClient);
+  service = inject(ProductManagementService);
+  uomService = inject(UomService);
+  formsService = inject(FormsService);
+  toastr = inject(ToastrService);
+  businessAccountService = inject(BusinessAccountService);
+
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.uomSetting = false;
   }
@@ -96,17 +105,6 @@ export class ProductTagsListComponent implements OnInit {
       index: 0,
     },
   ];
-
-  constructor(
-    public router: Router,
-    public apiService: ApiService,
-    public http: HttpClient,
-    public service: ProductManagementService,
-    public uomService: UomService,
-    public formsService: FormsService,
-    public toastr: ToastrService,
-    public businessAccountService:BusinessAccountService
-  ) { }
 
   ngOnInit(): void {
     this.getPreference();

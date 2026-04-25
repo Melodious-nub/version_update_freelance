@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -25,6 +25,11 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class TemplateInfoComponent implements OnInit {
+  apiService = inject(ApiService);
+  fb = inject(UntypedFormBuilder);
+  formsService = inject(FormsService);
+  route = inject(ActivatedRoute);
+
   @Input() templateForm: UntypedFormGroup;
 
   submitted = false;
@@ -35,10 +40,6 @@ export class TemplateInfoComponent implements OnInit {
   selectedProductsSubTypes: any = [];
   industryTypes: any = [];
   industrySubTypes: any = [];
-
-  /*##################### Template Information Form #####################*/
-
-  constructor(public apiService: ApiService, public fb: UntypedFormBuilder, public formsService: FormsService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getIndustrySubTypes()

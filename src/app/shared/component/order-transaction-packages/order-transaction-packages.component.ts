@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, inject } from '@angular/core';
 import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -38,6 +38,12 @@ import { NgClass, DecimalPipe } from '@angular/common';
     ]
 })
 export class OrderTransactionPackagesComponent implements OnInit {
+  orderFormService = inject(OrderFormsService);
+  businessAccountService = inject(BusinessAccountService);
+  toastr = inject(ToastrService);
+  apiService = inject(ApiService);
+  router = inject(Router);
+
   @Input() tierPriceView: boolean = false;
   @Input() productPackages: any;
   @Input() isEditable: any;
@@ -86,14 +92,6 @@ export class OrderTransactionPackagesComponent implements OnInit {
   private purchaseTooltipMouseEnterHandler: any = null;
   private purchaseTooltipMouseLeaveHandler: any = null;
   private currentPurchaseTooltipElement: HTMLElement = null;
-
-  constructor(
-    public orderFormService: OrderFormsService,
-    public businessAccountService: BusinessAccountService,
-    public toastr: ToastrService,
-    public apiService: ApiService,
-    public router: Router
-  ) {}
 
   ngOnInit(): void {
     console.log(this.router.url);

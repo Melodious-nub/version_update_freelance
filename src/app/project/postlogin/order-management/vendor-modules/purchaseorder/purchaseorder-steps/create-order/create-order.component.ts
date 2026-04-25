@@ -1,12 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  Output,
-  EventEmitter,
-  ChangeDetectorRef,
-  HostListener, OnDestroy,
-} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef, HostListener, OnDestroy, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -53,6 +45,22 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class CreateOrderComponent implements OnInit, OnDestroy {
+  fb = inject(UntypedFormBuilder);
+  ordermanagementService = inject(OrderManagementService);
+  orderFormService = inject(OrderFormsService);
+  formsService = inject(FormsService);
+  route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  uomService = inject(UomService);
+  containerService = inject(ContainerManagementService);
+  businessAccountService = inject(BusinessAccountService);
+  apiService = inject(ApiService);
+  router = inject(Router);
+  productService = inject(ProductService);
+  ref = inject(ChangeDetectorRef);
+  printService = inject(PrintService);
+  dialog = inject(MatDialog);
+
   currentBusinessAccount: any;
   htmlContent: any;
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
@@ -88,24 +96,6 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   });
 
   poFile = null;
-
-  constructor(
-    public fb: UntypedFormBuilder,
-    public ordermanagementService: OrderManagementService,
-    public orderFormService: OrderFormsService,
-    public formsService: FormsService,
-    public route: ActivatedRoute,
-    public toastr: ToastrService,
-    public uomService: UomService,
-    public containerService: ContainerManagementService,
-    public businessAccountService: BusinessAccountService,
-    public apiService: ApiService,
-    public router: Router,
-    public productService: ProductService,
-    public ref: ChangeDetectorRef,
-    public printService: PrintService,
-    public dialog: MatDialog
-  ) {}
 
   ngOnInit() {
     this.businessAccountService.Get_All_Notes();

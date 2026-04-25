@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocialPostItem } from 'src/app/model/social-broadcast/social-post.model';
 import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
@@ -13,6 +13,8 @@ import { MatIcon } from '@angular/material/icon';
     imports: [MatIcon, DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle]
 })
 export class FilterBoxComponent implements OnInit {
+  private fb = inject(UntypedFormBuilder);
+
   @Input() posts: SocialPostItem[] = [];
   @Output() emitFilterPosts = new EventEmitter<SocialPostItem[]>();
   @Output() filtersApplied = new EventEmitter<{ status?: string; post_type?: string; selectedCategory?: string }>();
@@ -30,7 +32,7 @@ export class FilterBoxComponent implements OnInit {
   statuses = ['Draft', 'Approved', 'Scheduled', 'Rejected', 'Published'];
   platforms = ['instagram', 'facebook', 'linkedin', 'youtube', 'twitter', 'tiktok'];
 
-  constructor(private fb: UntypedFormBuilder) {
+  constructor() {
     this.filterForm = this.fb.group({
       statusDraft: [false],
       statusApproved: [false],

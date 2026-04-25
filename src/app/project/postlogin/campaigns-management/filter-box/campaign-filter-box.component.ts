@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/dadyin-button.component';
 
@@ -11,6 +11,8 @@ import { MatIcon } from '@angular/material/icon';
     imports: [MatIcon, DadyinButtonComponent, FormsModule, ReactiveFormsModule]
 })
 export class CampaignFilterBoxComponent implements OnInit {
+  private fb = inject(UntypedFormBuilder);
+
   @Output() filtersApplied = new EventEmitter<any>();
   @Input() mode: 'status' | 'interval' = 'status';
 
@@ -18,7 +20,7 @@ export class CampaignFilterBoxComponent implements OnInit {
   filterForm: UntypedFormGroup;
   filterCount = 0;
 
-  constructor(private fb: UntypedFormBuilder) {
+  constructor() {
     this.filterForm = this.fb.group({
       statusDraft: [false],
       statusRunning: [false],

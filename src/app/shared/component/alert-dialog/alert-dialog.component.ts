@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { Dialog } from '../../interfaces';
 import { MatButton } from '@angular/material/button';
@@ -17,6 +17,9 @@ import { MatButton } from '@angular/material/button';
     ]
 })
 export class AlertDialogComponent implements OnInit {
+  data = inject<MatDialogConfig>(MAT_DIALOG_DATA, { optional: true });
+  private dialogRef = inject<MatDialogRef<AlertDialogComponent>>(MatDialogRef);
+
   public dialogData: Dialog.AlertDialogData = {
     heading: 'Alert',
     content: 'Something is happening',
@@ -24,11 +27,6 @@ export class AlertDialogComponent implements OnInit {
     cancelBtnName: 'Cancel',
     actionBtnName: 'Ok',
   };
-
-  constructor(
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: MatDialogConfig,
-    private dialogRef: MatDialogRef<AlertDialogComponent>
-  ) {}
 
   ngOnInit(): void {
     this.dialogData = {

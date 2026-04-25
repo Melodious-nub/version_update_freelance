@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InvoiceListComponent } from './invoice-management/invoice-list/invoice-list.component';
 import { ReceivedPoListComponent } from './receivedPo/receivedPo-list/receivedPo-list.component';
@@ -28,6 +28,9 @@ import { NgClass } from '@angular/common';
     ]
 })
 export class CustomerManagementComponent implements OnInit {
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
   currentStepIndex = 0;
   tabs: Array<any> = [
     {
@@ -57,7 +60,6 @@ export class CustomerManagementComponent implements OnInit {
   ];
   @Input() single = false;
   @Input() customerId: any = null;
-  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.currentStepIndex = this.route.snapshot.queryParams.currentStepIndex;

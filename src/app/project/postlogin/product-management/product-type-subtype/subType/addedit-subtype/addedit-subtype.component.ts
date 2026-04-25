@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, FormControl, UntypedFormGroup, Validators, FormBuilder, Form, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -21,17 +21,16 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     imports: [DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, AdditionalCostCommonComponent, BuyingCapacityCommonComponent]
 })
 export class AddeditSubtypeComponent implements OnInit {
+    productmanagementService = inject(ProductManagementService);
+    private route = inject(ActivatedRoute);
+    private router = inject(Router);
+    private toastr = inject(ToastrService);
+    apiService = inject(ApiService);
+    dialog = inject(MatDialog);
+    formService = inject(ProductTypeFormService);
+
     public productSubTypeForm: UntypedFormGroup = this.formService.createProductSubTypeForm()
     public productTemplatesList: any = [];
-
-
-
-
-    constructor(public productmanagementService: ProductManagementService,
-        private route: ActivatedRoute,
-        private router: Router,
-        private toastr: ToastrService, public apiService: ApiService, public dialog: MatDialog, public formService: ProductTypeFormService) {
-    }
 
     ngOnInit(): void {
         this.apiService.getAllMetaDatas()

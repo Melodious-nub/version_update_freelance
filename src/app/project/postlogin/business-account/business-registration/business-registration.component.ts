@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, ElementRef, inject } from '@angular/core';
 import { UntypedFormArray, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -70,6 +70,21 @@ import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/
     ]
 })
 export class BusinessRegistrationComponent implements OnInit, OnDestroy {
+  private router = inject(Router);
+  private businessAccountService = inject(BusinessAccountService);
+  private businessRegistrationService = inject(BusinessRegistartionService);
+  private businessFormService = inject(BusinessRegistrationFormsService);
+  private toastr = inject(ToastrService);
+  apiService = inject(ApiService);
+  private headerService = inject(HeaderService);
+  private commonService = inject(CommonService);
+  containerService = inject(ContainerManagementService);
+  ref = inject(ChangeDetectorRef);
+  private http = inject(HttpClient);
+  private tokenService = inject(TokenService);
+  private httpService = inject(HttpService);
+  private route = inject(ActivatedRoute);
+
   // Platform name input fields for Social Profile Tab
   // Static data for Social Profile Table
   socialPlatforms = [
@@ -116,22 +131,7 @@ export class BusinessRegistrationComponent implements OnInit, OnDestroy {
 
   private readonly destroy$ = new Subject<void>();
 
-  constructor(
-    private router: Router,
-    private businessAccountService: BusinessAccountService,
-    private businessRegistrationService: BusinessRegistartionService,
-    private businessFormService: BusinessRegistrationFormsService,
-    private toastr: ToastrService,
-    public apiService: ApiService,
-    private headerService: HeaderService,
-    private commonService: CommonService,
-    public containerService: ContainerManagementService,
-    public ref: ChangeDetectorRef,
-    private http: HttpClient,
-    private tokenService: TokenService,
-    private httpService: HttpService,
-    private route: ActivatedRoute
-  ) {
+  constructor() {
     this.containerService.Get_All_ports();
     this.apiService.Get_Industry_Types();
     this.apiService.Get_Customer_Categories();

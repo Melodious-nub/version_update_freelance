@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { SignupUser } from 'src/app/model/signup/SignupUser';
 import { environment } from 'src/environments/environment';
@@ -20,8 +20,8 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class BusinessRegistartionService {
+    private httpService = inject(HttpService);
 
-    constructor(private httpService: HttpService) { }
 
     saveBusinessAccDetail(userId, BADetail): Observable<BusinessAccount> {
       return this.httpService.post<BusinessAccount>(`${apiModules.save_business_account_regi}`+"/"+userId, BADetail);

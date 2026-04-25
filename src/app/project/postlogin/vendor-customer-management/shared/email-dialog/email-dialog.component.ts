@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { VendorFormsService } from '../../service/vendor-forms.service';
 import { VendorCustomerService } from '../../service/vendor-customer.service';
@@ -19,16 +19,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ]
 })
 export class EmailDialogComponent implements OnInit {
+  dialog = inject(MatDialog);
+  data = inject(MAT_DIALOG_DATA);
+  vendorFormService = inject(VendorFormsService);
+  vendorCustomerService = inject(VendorCustomerService);
+  toastr = inject(ToastrService);
+  apiService = inject(ApiService);
+
   emailForm = this.vendorFormService.emailForm();
   attachments: any[] = [];
-  constructor(
-    public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public vendorFormService: VendorFormsService,
-    public vendorCustomerService: VendorCustomerService,
-    public toastr: ToastrService,
-    public apiService: ApiService
-  ) {}
 
   ngOnInit(): void {
     this.initiateNote();

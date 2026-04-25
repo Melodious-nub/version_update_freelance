@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable, catchError, map, of } from 'rxjs';
@@ -14,9 +14,10 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     imports: [DadyinButtonComponent, MatIcon]
 })
 export class RateDialogComponent implements OnInit {
+ dialogRef = inject<MatDialogRef<RateDialogComponent>>(MatDialogRef);
+ data = inject(MAT_DIALOG_DATA);
+
  rating:any
-  constructor(public dialogRef: MatDialogRef<RateDialogComponent>,httpClient: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: any){}
 
   ngOnInit(): void {
    this.rating=this.data.rating

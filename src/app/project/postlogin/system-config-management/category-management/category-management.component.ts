@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryListComponent } from './product-categories/category-list/category-list.component';
@@ -20,6 +20,9 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     ]
 })
 export class CategoryManagementComponent implements OnInit {
+  toastr = inject(ToastrService);
+  route = inject(ActivatedRoute);
+
   public currentMainIndex: number = 0;
   public pageConfig = null;
   pageIndex: any = 0;
@@ -28,14 +31,6 @@ export class CategoryManagementComponent implements OnInit {
 
 
   public headers = [];
-
-
-
-
-  constructor(
-    public toastr: ToastrService,
-    public route:ActivatedRoute
-  ) { }
 
   ngOnInit(): void {
     this.currentMainIndex=this.route.snapshot.queryParams.currentStepIndex ?? 0

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -36,6 +36,15 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     ]
 })
 export class BusinessAccountComponent implements OnInit, AfterViewInit {
+  private router = inject(Router);
+  private fb = inject(UntypedFormBuilder);
+  private businessAccountService = inject(BusinessAccountService);
+  private businessFormService = inject(BusinessRegistrationFormsService);
+  private authService = inject(AuthService);
+  private dialog = inject(MatDialog);
+  private toastr = inject(ToastrService);
+  private tokenService = inject(TokenService);
+
   @ViewChild('swiperR') swiperR?: ElementRef;
   activeIndex = 0;
   swiperConfig: any = {
@@ -67,17 +76,6 @@ export class BusinessAccountComponent implements OnInit, AfterViewInit {
   public countries: any = [];
   public currencyList: any = [];
   public businessTypes: any = [];
-
-  constructor(
-    private router: Router,
-    private fb: UntypedFormBuilder,
-    private businessAccountService: BusinessAccountService,
-    private businessFormService: BusinessRegistrationFormsService,
-    private authService: AuthService,
-    private dialog: MatDialog,
-    private toastr: ToastrService,
-    private tokenService: TokenService
-  ) {}
 
   ngAfterViewInit() {
     if (this.swiperR) {

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, throwError } from 'rxjs';
@@ -9,7 +9,9 @@ import { TokenService } from 'src/app/service/token.service';
   providedIn: 'root',
 })
 export class CampaignsApiService {
-  constructor(private httpClient: HttpClient, private tokenService: TokenService) { }
+  private httpClient = inject(HttpClient);
+  private tokenService = inject(TokenService);
+
 
   private buildAuthHeaders(): HttpHeaders | null {
     try {

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { HttpService } from 'src/app/service/http.service';
 import { relationAccountApis } from 'src/app/shared/constant';
@@ -7,10 +7,9 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class VendorCustomerService {
-  constructor(
-    private httpService: HttpService,
-    private httpClient: HttpClient
-  ) {}
+  private httpService = inject(HttpService);
+  private httpClient = inject(HttpClient);
+
 
   //Get All notes List
   Get_All_Notes(relationAccountid: any): Observable<any> {

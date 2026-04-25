@@ -1,5 +1,5 @@
 import { Location, NgClass, TitleCasePipe, DatePipe } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -62,6 +62,16 @@ type ProductImageTile = {
     ]
 })
 export class CampaignDetailComponent implements OnInit {
+  private fb = inject(UntypedFormBuilder);
+  private location = inject(Location);
+  private cdr = inject(ChangeDetectorRef);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private apiService = inject(ApiService);
+  private campaignsApi = inject(CampaignsApiService);
+  private commonService = inject(CommonService);
+  toastr = inject(ToastrService);
+
   public Editor: any = (ClassicEditor as any).default || ClassicEditor;
   public editorConfig: any = {
     toolbar: ['bulletedList', 'numberedList', '|', 'undo', 'redo']
@@ -400,17 +410,7 @@ export class CampaignDetailComponent implements OnInit {
     }
   }
 
-  constructor(
-    private fb: UntypedFormBuilder,
-    private location: Location,
-    private cdr: ChangeDetectorRef,
-    private router: Router,
-    private route: ActivatedRoute,
-    private apiService: ApiService,
-    private campaignsApi: CampaignsApiService,
-    private commonService: CommonService,
-    public toastr: ToastrService
-  ) {
+  constructor() {
     this.campaignForm = this.fb.group({
       prompt: [''],
       campaignDescription: [''],

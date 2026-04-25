@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,6 +8,9 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
     imports: [RouterOutlet]
 })
 export class ProductTypeComponent {
+    private router = inject(Router);
+    route = inject(ActivatedRoute);
+
 
     currentMainIndex: number = 0;
     mainTab: Array<any> = [
@@ -26,9 +29,6 @@ export class ProductTypeComponent {
             index: 1
         }
     ];
-
-    constructor(private router: Router,public route:ActivatedRoute) {
-    }
 
     changeMainTab(event: any) {
         this.currentMainIndex = event;

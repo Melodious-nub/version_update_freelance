@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsModule } from '@angular/forms';
 
@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
     ]
 })
 export class SelectProcessNameComponent implements OnInit {
+  private apiService = inject(ApiService);
+
   @Input() isShowTextBox: boolean = true;
   @Input() disabled: boolean = false;
   @Input() placeholder: string = '';
@@ -26,8 +28,6 @@ export class SelectProcessNameComponent implements OnInit {
 
   processName: string = '';
   processID: string = '';
-
-  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.processID = this.process_id ? this.process_id : null;

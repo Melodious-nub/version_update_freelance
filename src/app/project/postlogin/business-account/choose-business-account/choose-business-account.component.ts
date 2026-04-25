@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -29,6 +29,13 @@ import { NgClass } from '@angular/common';
     ]
 })
 export class ChooseBusinessAccountComponent implements OnInit, AfterViewInit {
+  private router = inject(Router);
+  private tokenService = inject(TokenService);
+  private authService = inject(AuthService);
+  private chooseBAService = inject(ChooseBusinessAccountService);
+  private toastr = inject(ToastrService);
+  dialog = inject(MatDialog);
+
   public imgUrl = environment.imgUrl;
   public businessAccountGroup: UntypedFormGroup;
   public submitted = false;
@@ -59,14 +66,7 @@ export class ChooseBusinessAccountComponent implements OnInit, AfterViewInit {
     }
   };
 
-  constructor(
-    private router: Router,
-    private tokenService: TokenService,
-    private authService: AuthService,
-    private chooseBAService: ChooseBusinessAccountService,
-    private toastr: ToastrService,
-    public dialog: MatDialog
-  ) {
+  constructor() {
     this.user = this.authService.$currentUser.value;
     this.userName = this.user?.email ?? 'Unknown';
   }

@@ -1,6 +1,6 @@
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild, OnDestroy, inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { debounceTime, distinctUntilChanged, finalize, switchMap } from 'rxjs/operators';
 import { first, Observable, of } from 'rxjs';
@@ -44,6 +44,17 @@ type ProductImageTile = {
     imports: [SpinnerOverlayComponent, NgClass, ExtendedModule, DadyinButtonComponent, MatTabGroup, MatTab, MatTabLabel, MatTabContent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, MatTooltip, DadyinSearchSelectNewComponent, CKEditorModule, MatIcon, DadyinSelectComponent, TimePickerComponent, NgTemplateOutlet, TitleCasePipe, DatePipe]
 })
 export class SocialPostDetailComponent implements OnInit, OnDestroy {
+    private fb = inject(UntypedFormBuilder);
+    private route = inject(ActivatedRoute);
+    private detailsService = inject(SocialPostsDetailsService);
+    private socialProfilesApi = inject(SocialProfilesApiService);
+    private apiService = inject(ApiService);
+    private router = inject(Router);
+    private cdr = inject(ChangeDetectorRef);
+    private sanitizer = inject(DomSanitizer);
+    toastr = inject(ToastrService);
+    private commonService = inject(CommonService);
+
     public Editor = ClassicEditor;
     public editorConfig = {
         toolbar: [
@@ -347,18 +358,7 @@ export class SocialPostDetailComponent implements OnInit, OnDestroy {
         }
     }
 
-    constructor(
-        private fb: UntypedFormBuilder,
-        private route: ActivatedRoute,
-        private detailsService: SocialPostsDetailsService,
-        private socialProfilesApi: SocialProfilesApiService,
-        private apiService: ApiService,
-        private router: Router,
-        private cdr: ChangeDetectorRef,
-        private sanitizer: DomSanitizer,
-        public toastr: ToastrService,
-        private commonService: CommonService
-    ) {
+    constructor() {
         this.postForm = this.fb.group({
             postName: [''],
             postCategory: [''],

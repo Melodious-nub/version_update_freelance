@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -20,7 +20,9 @@ export interface SocialProfileConnection {
   providedIn: 'root',
 })
 export class SocialProfilesApiService {
-  constructor(private httpClient: HttpClient, private tokenService: TokenService) {}
+  private httpClient = inject(HttpClient);
+  private tokenService = inject(TokenService);
+
 
   private buildAuthHeaders(): HttpHeaders | null {
     try {

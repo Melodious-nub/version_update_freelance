@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LOCALSTORAGEKEYS } from 'src/app/shared/constant';
 import { ProductManagementService } from '../../../service/product-management.service';
@@ -18,6 +18,11 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     ]
 })
 export class SubtypeListComponent implements OnInit {
+  private router = inject(Router);
+  private service = inject(ProductManagementService);
+  route = inject(ActivatedRoute);
+  businessAccountService = inject(BusinessAccountService);
+
   public filterValue: string;
   public SubTypeDetailsList: any;
   public SubTypeDetails: any;
@@ -81,12 +86,6 @@ export class SubtypeListComponent implements OnInit {
   pageS = 20;
   sortQuery: any = 'id,desc';
   productTypeId = null;
-  constructor(
-    private router: Router,
-    private service: ProductManagementService,
-    public route: ActivatedRoute,
-    public businessAccountService: BusinessAccountService
-  ) {}
 
   ngOnInit(): void {
     this.productTypeId =

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
     standalone: true
 })
 export class InventoryManagementComponent {
-  constructor(private router: Router) { }
+    private router = inject(Router);
+  constructor() { }
 
   navigate(link: string): void {
     this.router.navigateByUrl(link);

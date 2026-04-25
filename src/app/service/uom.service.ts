@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { BusinessAccountService } from '../project/postlogin/business-account/business-account.service';
 import { ApiService } from './api.service';
 @Injectable({ providedIn: 'root' })
 export class UomService {
+  businessAccountService = inject(BusinessAccountService);
+  private apiService = inject(ApiService);
+
   availableCostUoms: any = [];
   availableMatricCostUoms: any = [];
   availableSurfaceAreaUoms: any = [];
@@ -17,10 +20,7 @@ export class UomService {
 
   availableAllMetricUOM: any[] = [];
 
-  constructor(
-    public businessAccountService: BusinessAccountService,
-    private apiService: ApiService
-  ) {
+  constructor() {
     this.fetchData();
   }
   async fetchData() {

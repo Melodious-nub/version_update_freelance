@@ -1,12 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild, AfterViewInit, OnChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, OnChanges, inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
@@ -62,6 +55,11 @@ import { NgStyle, NgClass, SlicePipe, DatePipe } from '@angular/common';
     ]
 })
 export class DataTableComponent implements OnInit, AfterViewInit, OnChanges {
+  uomService = inject(UomService);
+  apiService = inject(ApiService);
+  router = inject(Router);
+  businessAccountService = inject(BusinessAccountService);
+
   initialSelection = [];
   allowMultiSelect = true;
   selection = new SelectionModel<any>(
@@ -199,13 +197,6 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnChanges {
     }
     return result;
   }
-
-  constructor(
-    public uomService: UomService,
-    public apiService: ApiService,
-    public router: Router,
-    public businessAccountService: BusinessAccountService
-  ) { }
 
   ngOnInit(): void {
     this.displayedColumns = this.headers.map((col) => col.prop);

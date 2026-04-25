@@ -1,5 +1,5 @@
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatSelectChange, MatSelect } from '@angular/material/select';
 import { MatButton } from '@angular/material/button';
@@ -25,10 +25,10 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 })
 export class AddNewAttributesDialogComponent {
   selectedValue: string;
-  constructor(
-    public dialogRef: MatDialogRef<AddNewAttributesDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  public dialogRef = inject<MatDialogRef<AddNewAttributesDialogComponent>>(MatDialogRef);
+  public data = inject(MAT_DIALOG_DATA);
+
+  constructor() {}
 
   selectProductType(event: MatSelectChange) {
     this.selectedValue = event?.value;

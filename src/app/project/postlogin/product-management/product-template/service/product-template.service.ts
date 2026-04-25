@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
@@ -48,10 +48,11 @@ export function requireHundredPercent(): ValidatorFn {
   providedIn: 'root',
 })
 export class ProductTemplateService {
+  private httpService = inject(HttpService);
+  _fb = inject(UntypedFormBuilder);
+
   url = environment.apiUrl;
   metaData:any;
-
-  constructor(private httpService: HttpService, public _fb: UntypedFormBuilder) { }
 
   saveProcess(formData): Observable<any> {
     return this.httpService.post<any>(

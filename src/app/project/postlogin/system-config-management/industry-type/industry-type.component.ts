@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -14,12 +14,11 @@ import { BusinessAccountService } from '../../business-account/business-account.
 export class IndustryTypeComponent {
   
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,    
-    public toastr: ToastrService,
-    public systemConfigFormService: SystemConfigFormsService,
-  ) {
+    private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  public toastr = inject(ToastrService);
+  public systemConfigFormService = inject(SystemConfigFormsService);
+  constructor() {
     
   }
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { catchError, map, Observable, retryWhen, throwError } from 'rxjs';
 import { HttpService } from 'src/app/service/http.service';
@@ -10,12 +10,13 @@ import { environment } from 'src/environments/environment';
     providedIn: 'root'
 })
 export class ProductManagementService {
+    private httpService = inject(HttpService);
+
 
     url = environment.apiUrl;
     products: any[] = [];
     productSubTypes:any[]=[]
     additionalCostValues:any[]=[]
-    constructor(private httpService: HttpService) { }
 
   getProcutDetailsList(
     pageNumber: any,

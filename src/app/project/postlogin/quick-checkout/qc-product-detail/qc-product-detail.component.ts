@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Input, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
@@ -45,6 +45,17 @@ import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/
     ]
 })
 export class QcProductDetailComponent implements OnInit {
+  dialogRef = inject<MatDialogRef<QcProductDetailComponent>>(MatDialogRef);
+  data = inject(MAT_DIALOG_DATA);
+  dialog = inject(MatDialog);
+  purchaseOrderService = inject(PurchaseOrderService);
+  toastr = inject(ToastrService);
+  quickCheckoutFormService = inject(QuickCheckoutFormsService);
+  apiService = inject(ApiService);
+  formsService = inject(FormsService);
+  fb = inject(UntypedFormBuilder);
+  commonService = inject(CommonService);
+
   imgUrl = environment.imgUrl;
   productDetail: any;
   productAttributeIds: any;
@@ -60,19 +71,6 @@ export class QcProductDetailComponent implements OnInit {
     { name: 'Container (40ft)', value: 'CONTAINER_40_FT' },
     { name: 'Container (40ft) HQ', value: 'CONTAINER_40_FT_HQ' },
   ];
-  constructor(
-    public dialogRef: MatDialogRef<QcProductDetailComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialog: MatDialog,
-    public purchaseOrderService: PurchaseOrderService,
-    public toastr: ToastrService,
-
-    public quickCheckoutFormService: QuickCheckoutFormsService,
-    public apiService: ApiService,
-    public formsService: FormsService,
-    public fb: UntypedFormBuilder,
-    public commonService: CommonService
-  ) {}
 
   ngOnInit(): void {
     this.getProductDetail();

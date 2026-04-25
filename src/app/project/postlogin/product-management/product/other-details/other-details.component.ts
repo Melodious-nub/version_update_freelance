@@ -1,5 +1,5 @@
 import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormsService } from 'src/app/service/forms.service';
@@ -28,6 +28,13 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     ]
 })
 export class OtherDetailsComponent implements OnInit {
+  toastr = inject(ToastrService);
+  apiService = inject(ApiService);
+  formsService = inject(FormsService);
+  containerService = inject(ContainerManagementService);
+  businessAccountService = inject(BusinessAccountService);
+  uomService = inject(UomService);
+
 
   @Input() productForm: UntypedFormGroup;
 
@@ -35,15 +42,6 @@ export class OtherDetailsComponent implements OnInit {
 
 
   isLoadingCompetitorPrices: boolean = false;
-
-  constructor(
-    public toastr: ToastrService,
-    public apiService: ApiService,
-    public formsService: FormsService,
-    public containerService: ContainerManagementService,
-    public businessAccountService: BusinessAccountService,
-    public uomService: UomService
-  ) { }
 
   ngOnInit(): void {
     this.businessAccountService.Get_All_Vendors()

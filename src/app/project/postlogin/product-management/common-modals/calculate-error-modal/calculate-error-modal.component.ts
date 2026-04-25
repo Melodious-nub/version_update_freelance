@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
-import { Inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -17,13 +17,17 @@ import { NgClass } from '@angular/common';
     imports: [MatDialogClose, FormsModule, ReactiveFormsModule, NgClass, ExtendedModule, MatIcon, SortFormArrayPipe]
 })
 export class CalculateErrorModalComponent implements OnInit {
+  data = inject(MAT_DIALOG_DATA);
+  apiService = inject(ApiService);
+  toastr = inject(ToastrService);
+  fb = inject(UntypedFormBuilder);
+  formsService = inject(FormsService);
+  dialogRef = inject<MatDialogRef<CalculateErrorModalComponent>>(MatDialogRef);
+
   productForm = this.formsService.createProductForm()
   labelTypeAttributeIds: any[] = []
   errorKeys: any
   errors: any
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public apiService: ApiService, public toastr: ToastrService, public fb: UntypedFormBuilder, public formsService: FormsService, public dialogRef: MatDialogRef<CalculateErrorModalComponent>) {
-
-  }
 
   ngOnInit(): void {
     this.labelTypeAttributeIds = this.data.labelTypeAttributeIds

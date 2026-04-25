@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { HttpService } from 'src/app/service/http.service';
 import { DadyInUsersModule } from 'src/app/shared/constant';
@@ -7,8 +7,8 @@ import { DadyInUsersModule } from 'src/app/shared/constant';
   providedIn: 'root'
 })
 export class UsersManagementService {
+  private httpService = inject(HttpService);
 
-  constructor(private httpService: HttpService) { }
 
   getAllBusinessAccount(
     pageNumber: any,

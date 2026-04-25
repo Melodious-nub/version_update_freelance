@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { Router, RouterOutlet } from '@angular/router';
     styleUrls: ['./invoice-management.component.scss'],
     imports: [RouterOutlet]
 })
-export class InvoiceManagementComponent {
-  constructor(public router: Router) {}
+export class InvoiceManagementComponent {  router = inject(Router);
+
 
 }

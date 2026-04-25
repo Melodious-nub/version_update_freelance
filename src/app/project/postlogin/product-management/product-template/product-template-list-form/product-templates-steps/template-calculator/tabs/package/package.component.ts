@@ -1,9 +1,4 @@
-import {
-  Component,
-  HostListener,
-  Input,
-  OnInit
-} from '@angular/core';
+import { Component, HostListener, Input, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -47,6 +42,13 @@ import { NgStyle, NgClass } from '@angular/common';
     ]
 })
 export class PackageComponent implements OnInit {
+  productTemplateService = inject(ProductTemplateService);
+  apiService = inject(ApiService);
+  private formsService = inject(FormsService);
+  private fb = inject(UntypedFormBuilder);
+  dialog = inject(MatDialog);
+  toastr = inject(ToastrService);
+
   excelView = [false, false, false, false, false, false, false, false];
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.formulaAutoComplete = false;
@@ -72,14 +74,6 @@ export class PackageComponent implements OnInit {
   labelTypeAttributeIds: any = [];
   formulaAutoComplete = false;
   searchAutoComplete = new UntypedFormControl('');
-  constructor(
-    public productTemplateService: ProductTemplateService,
-    public apiService: ApiService,
-    private formsService: FormsService,
-    private fb: UntypedFormBuilder,
-    public dialog: MatDialog,
-    public toastr: ToastrService
-  ) { }
 
   ngOnInit(): void {
     this.settingLabelAttributesIds();

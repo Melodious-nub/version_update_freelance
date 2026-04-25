@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
@@ -26,20 +26,20 @@ import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyi
     ]
 })
 export class CreateAttributeComponent implements OnInit {
+  toastr = inject(ToastrService);
+  ordermanagementFormService = inject(OrderManagementFormsService);
+  ordermanagementService = inject(OrderManagementService);
+  fb = inject(UntypedFormBuilder);
+  apiService = inject(ApiService);
+  route = inject(ActivatedRoute);
+  router = inject(Router);
+
   listViewAttribute = null
   @Input() attributeConfigForm: UntypedFormGroup
   selectedAttributes: any[] = []
   attributes: any[] = []
   allTransactionCategories: any = []
-  constructor(
-    public toastr: ToastrService,
-    public ordermanagementFormService: OrderManagementFormsService,
-    public ordermanagementService: OrderManagementService,
-    public fb: UntypedFormBuilder,
-    public apiService: ApiService,
-    public route: ActivatedRoute,
-    public router: Router
-  ) {
+  constructor() {
     this.apiService.Get_Product_Types()
     this.apiService.Get_All_Attributes()
     this.getAllTransactionCategories()

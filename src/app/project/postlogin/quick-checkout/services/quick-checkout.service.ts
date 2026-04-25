@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { apiModules } from 'src/app/shared/constant';
 import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/service/http.service';
@@ -7,7 +7,8 @@ import { City, Country, State } from 'src/app/model/common/geo';
 
 @Injectable({ providedIn: 'root' })
 export class QuickCheckoutService {
-  constructor(private httpService: HttpService) {}
+    private httpService = inject(HttpService);
+  constructor() {}
 
   saveBusinessAccount(
     businessAccount: BusinessAccounts,

@@ -1,12 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnInit,
-  Output, OnDestroy,
-} from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, HostListener, Input, OnInit, Output, OnDestroy, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UomService } from 'src/app/service/uom.service';
@@ -46,6 +38,18 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class CreateRfqComponent implements OnInit, OnDestroy {
+  fb = inject(UntypedFormBuilder);
+  ordermanagementService = inject(OrderManagementService);
+  orderFormService = inject(OrderFormsService);
+  route = inject(ActivatedRoute);
+  router = inject(Router);
+  toastr = inject(ToastrService);
+  uomService = inject(UomService);
+  containerService = inject(ContainerManagementService);
+  businessAccountService = inject(BusinessAccountService);
+  apiService = inject(ApiService);
+  dialog = inject(MatDialog);
+
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.map2 = false;
     this.map1 = false;
@@ -77,20 +81,6 @@ export class CreateRfqComponent implements OnInit, OnDestroy {
     { name: 'Container (40ft)', value: 'CONTAINER_40_FT' },
     { name: 'Container (40ft) HQ', value: 'CONTAINER_40_FT_HQ' },
   ];
-
-  constructor(
-    public fb: UntypedFormBuilder,
-    public ordermanagementService: OrderManagementService,
-    public orderFormService: OrderFormsService,
-    public route: ActivatedRoute,
-    public router: Router,
-    public toastr: ToastrService,
-    public uomService: UomService,
-    public containerService: ContainerManagementService,
-    public businessAccountService: BusinessAccountService,
-    public apiService: ApiService,
-    public dialog: MatDialog
-  ) { }
 
   async ngOnInit() {
     this.businessAccountService.Get_All_Notes();

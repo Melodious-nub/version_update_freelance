@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SignupUser } from 'src/app/model/signup/SignupUser';
@@ -26,6 +26,14 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     ]
 })
 export class SigninComponent implements OnInit {
+  private router = inject(Router);
+  dialog = inject(MatDialog);
+  private fb = inject(UntypedFormBuilder);
+  private route = inject(ActivatedRoute);
+  private signupService = inject(SignupService);
+  private authService = inject(AuthService);
+  private tstr = inject(ToastrService);
+
 
   public signinGroup: UntypedFormGroup;
   public submitted = false;
@@ -33,15 +41,7 @@ export class SigninComponent implements OnInit {
   public inviteLink: any;
   user: any;
 
-  constructor(
-    private router: Router,
-    public dialog: MatDialog,
-    private fb: UntypedFormBuilder,
-    private route: ActivatedRoute,
-    private signupService: SignupService,
-    private authService: AuthService,
-    private tstr: ToastrService
-  ) {
+  constructor() {
     this.initForm();
 
     this.authService.$currentUser.subscribe((res) => {

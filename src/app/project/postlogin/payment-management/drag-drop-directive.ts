@@ -1,27 +1,29 @@
-import {
-    Directive,
+import { Directive,
     HostBinding,
     HostListener,
     Output,
     EventEmitter,
-    Input
-  } from "@angular/core";
-  import {DomSanitizer} from '@angular/platform-browser';
+    Input, inject } from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
 import { ToastrService } from "ngx-toastr";
   
-  export interface FileHandle {
+export interface FileHandle {
     file: File
-  }
+}
   
-  @Directive({
-    selector: "[appDrag]"
-  })
-  export class DragDirective {
+@Directive({
+    selector: "[appDrag]",
+    standalone: true
+})
+export class DragDirective {
     @Output() files: EventEmitter<any> = new EventEmitter();
     @Input() disabled: boolean = false;
-    @HostBinding("style.background") private background = "#eee";
+    @HostBinding("style.background") public background = "#eee";
   
-    constructor(private sanitizer: DomSanitizer,public toastr:ToastrService) { }
+    private sanitizer = inject(DomSanitizer);
+    public toastr = inject(ToastrService);
+
+    constructor() { }
   
     @HostListener("dragover", ["$event"]) public onDragOver(evt: DragEvent) {
       evt.preventDefault();
@@ -45,11 +47,9 @@ import { ToastrService } from "ngx-toastr";
       this.background = '#eee';
     
       const file = evt.dataTransfer.files[0];
-      const url = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
+      // const url = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
       
       this.files.emit(file);
       }
-      
     }
-  }
-  
+}

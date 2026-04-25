@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsService } from 'src/app/service/forms.service';
@@ -24,20 +24,18 @@ import { NgClass } from '@angular/common';
     ]
 })
 export class ProcessComponent {
+  apiService = inject(ApiService);
+  private formsService = inject(FormsService);
+  uomService = inject(UomService);
+  route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+
   // ************* Variable Declarations *************
   @Input() public templateForm: UntypedFormGroup;
   @Input() componentUoms: any;
 
   isShowProcessList: boolean = false;
   isExpandAll: boolean = true;
-
-  constructor(
-    public apiService: ApiService,
-    private formsService: FormsService,
-    public uomService: UomService,
-    public route: ActivatedRoute,
-    public toastr: ToastrService
-  ) { }
 
   @Output() calculate = new EventEmitter();
 

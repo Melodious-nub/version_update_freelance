@@ -1,5 +1,5 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { SocialPostItem } from 'src/app/model/social-broadcast/social-post.model';
@@ -10,7 +10,8 @@ import { version } from 'os';
   providedIn: 'root'
 })
 export class SocialPostsService {
-  constructor(private api: SocialBroadcastApiService) { }
+  private api = inject(SocialBroadcastApiService);
+
 
   // Get all social posts from API
   getSocialPosts(

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { SubscriptionService } from '../subscription.service';
 import { UntypedFormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -19,14 +19,21 @@ import { NgSelectModule } from '@ng-select/ng-select';
     imports: [FormsModule, ReactiveFormsModule, NgSelectModule, DadyinSelectComponent, DadyinInputComponent, DadyinMapAutoCompleteComponent, DadyinButtonComponent]
 })
 export class OnboardingComponent implements OnInit {
+  private subscriptionService = inject(SubscriptionService);
+  _fb = inject(UntypedFormBuilder);
+  private router = inject(Router);
+  private businessFormService = inject(BusinessRegistrationFormsService);
+  ref = inject(ChangeDetectorRef);
+  private authService = inject(AuthService);
+  private signupService = inject(SignupService);
+  private businessAccountService = inject(BusinessAccountService);
+
   countries = [];
   currencyList: any = [];
   businessTypes: any[] = [];
   public businessRegistrationForm: any;
   signupData;
   userInfo;
-
-  constructor(private subscriptionService: SubscriptionService, public _fb: UntypedFormBuilder, private router: Router, private businessFormService: BusinessRegistrationFormsService, public ref: ChangeDetectorRef, private authService: AuthService, private signupService: SignupService, private businessAccountService: BusinessAccountService) { }
 
   ngOnInit(): void {
     this.businessRegistrationForm = this.businessFormService.createBusinessForm();

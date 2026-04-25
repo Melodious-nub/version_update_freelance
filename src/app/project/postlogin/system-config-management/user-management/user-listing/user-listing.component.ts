@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UntypedFormBuilder } from '@angular/forms';
 import { FormsService } from 'src/app/service/forms.service';
@@ -29,6 +29,15 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     ]
 })
 export class UserListingComponent implements OnInit {
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+  usermanagementService = inject(UsermanagementService);
+  apiService = inject(ApiService);
+  uomService = inject(UomService);
+  formService = inject(FormsService);
+  http = inject(HttpClient);
+  fb = inject(UntypedFormBuilder);
+
   public userListing: any[];
 
   public filterValue: string;
@@ -66,16 +75,6 @@ export class UserListingComponent implements OnInit {
       index: 0,
     },
   ];
-  constructor(
-    public router: Router,
-    public route: ActivatedRoute,
-    public usermanagementService: UsermanagementService,
-    public apiService: ApiService,
-    public uomService: UomService,
-    public formService: FormsService,
-    public http: HttpClient,
-    public fb: UntypedFormBuilder
-  ) { }
 
   async ngOnInit() {
     this.pageConfig = {

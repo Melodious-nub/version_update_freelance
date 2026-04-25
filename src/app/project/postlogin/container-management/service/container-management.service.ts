@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { HttpService } from 'src/app/service/http.service';
 import { container, orderConfigModule } from 'src/app/shared/constant';
@@ -9,6 +9,9 @@ import { BusinessAccountService } from '../../business-account/business-account.
   providedIn: 'root',
 })
 export class ContainerManagementService {
+  private httpService = inject(HttpService);
+  businessAccountService = inject(BusinessAccountService);
+
   url = environment.apiUrl;
   branchesList: any[] = [];
   containerTypesList: any[] = [];
@@ -21,10 +24,6 @@ export class ContainerManagementService {
   containersList: any[] = [];
   purchaseOrdersList: any[] = [];
   materialList: any[] = [];
-  constructor(
-    private httpService: HttpService,
-    public businessAccountService: BusinessAccountService
-  ) {}
 
   getAllDatas() {
     this.Get_All_IncoTerms();

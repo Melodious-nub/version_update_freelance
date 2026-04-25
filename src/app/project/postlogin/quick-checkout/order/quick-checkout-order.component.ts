@@ -1,14 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  HostListener,
-  OnInit,
-  ViewChild,
-  OnDestroy,
-  AfterViewInit,
-  CUSTOM_ELEMENTS_SCHEMA,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, ViewChild, OnDestroy, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -84,6 +74,24 @@ import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
     ]
 })
 export class QuickCheckoutOrderComponent implements OnInit, OnDestroy, AfterViewInit {
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private purchaseOrderService = inject(PurchaseOrderService);
+  private apiService = inject(ApiService);
+  private tokenService = inject(TokenService);
+  private fb = inject(UntypedFormBuilder);
+  private toastr = inject(ToastrService);
+  dialog = inject(MatDialog);
+  formsService = inject(FormsService);
+  quickCheckoutFormService = inject(QuickCheckoutFormsService);
+  uomService = inject(UomService);
+  private authService = inject(AuthService);
+  private containerService = inject(ContainerManagementService);
+  businessAccountService = inject(BusinessAccountService);
+  paymentService = inject(PaymentService);
+  location = inject(Location);
+  private cdr = inject(ChangeDetectorRef);
+
   @ViewChild('swiperOrder') swiperOrder?: ElementRef;
   cartView = false;
   htmlContent: any;
@@ -145,26 +153,6 @@ export class QuickCheckoutOrderComponent implements OnInit, OnDestroy, AfterView
     dayana: 301,
     skventure: 4513,
   };
-
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private purchaseOrderService: PurchaseOrderService,
-    private apiService: ApiService,
-    private tokenService: TokenService,
-    private fb: UntypedFormBuilder,
-    private toastr: ToastrService,
-    public dialog: MatDialog,
-    public formsService: FormsService,
-    public quickCheckoutFormService: QuickCheckoutFormsService,
-    public uomService: UomService,
-    private authService: AuthService,
-    private containerService: ContainerManagementService,
-    public businessAccountService: BusinessAccountService,
-    public paymentService: PaymentService,
-    public location: Location,
-    private cdr: ChangeDetectorRef
-  ) { }
 
   mainTab: Array<any> = [
     { id: 1, name: 'Order Details', index: 0 },

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InactiveBusinessListComponent } from './inactive-business/inactive-business-list/inactive-business-list.component';
 import { ActiveBusinessListComponent } from './active-business/active-business-list/active-business-list.component';
@@ -14,6 +14,9 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     imports: [MatTabGroup, MatTab, MatTabLabel, MatBadge, MatTabContent, AllBusinessListComponent, ActiveBusinessListComponent, InactiveBusinessListComponent]
 })
 export class UsersComponent {
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
   currentStepIndex = 0;
   tabs: Array<any> = [
     {
@@ -35,8 +38,6 @@ export class UsersComponent {
       index: 2,
     }
   ];
-
-  constructor(private router: Router, private route: ActivatedRoute) { }
 
   onTabChange(event: any) {
     this.currentStepIndex = event.index;

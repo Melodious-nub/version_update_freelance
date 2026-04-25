@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import {
@@ -25,6 +25,14 @@ import { GenricResponse } from '../model/common/generic-response';
   providedIn: 'root',
 })
 export class AuthService {
+  private httpService = inject(HttpService);
+  private tokenService = inject(TokenService);
+  private router = inject(Router);
+  purchaseOrderService = inject(PurchaseOrderService);
+  toastr = inject(ToastrService);
+  dialog = inject(MatDialog);
+  breakpointObserver = inject(BreakpointObserver);
+
   // redirectUrl: any = null;
   quickCheckoutData: any = null;
   public isInitialCallCompleted = false;
@@ -37,15 +45,7 @@ export class AuthService {
   isHandset = false;
   isHandset$: Observable<boolean>;
 
-  constructor(
-    private httpService: HttpService,
-    private tokenService: TokenService,
-    private router: Router,
-    public purchaseOrderService: PurchaseOrderService,
-    public toastr: ToastrService,
-    public dialog: MatDialog,
-    public breakpointObserver: BreakpointObserver
-  ) {
+  constructor() {
     this.isHandset$ = this.breakpointObserver
       .observe([Breakpoints.Handset, Breakpoints.Tablet,Breakpoints.Medium,Breakpoints.TabletLandscape])
       .pipe(map((result) => result.matches));

@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  ViewChild,
-  EventEmitter,
-  Output
-} from '@angular/core';
+import { Component, Input, OnInit, ViewChild, EventEmitter, Output, inject } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { sidebarMenu } from 'src/app/shared/menuconstant';
@@ -30,6 +23,11 @@ import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
     ]
 })
 export class SideBarComponent implements OnInit {
+  private router = inject(Router);
+  private selectMenuService = inject(SelectMenuService);
+  private businessAccountService = inject(BusinessAccountService);
+  tokenService = inject(TokenService);
+
   @Input() isExpanded = true;
   @Input() flyerMode = false;
   @Input() label = true;
@@ -43,12 +41,7 @@ export class SideBarComponent implements OnInit {
   isShowing = false;
   reason = '';
 
-  constructor(
-    private router: Router,
-    private selectMenuService: SelectMenuService,
-    private businessAccountService: BusinessAccountService,
-    public tokenService: TokenService
-  ) {
+  constructor() {
     this.businessAccountService.$currentBusinessAccount.subscribe(
       (res: any) => {
         if (res?.businessLines?.includes('RETAILER')) {

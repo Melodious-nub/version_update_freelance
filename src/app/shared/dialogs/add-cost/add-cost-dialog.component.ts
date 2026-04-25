@@ -1,5 +1,5 @@
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatInput } from '@angular/material/input';
@@ -25,11 +25,11 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 export class AddCostDialogComponent implements OnInit {
   addCost: UntypedFormGroup;
 
-  constructor(
-    public dialogRef: MatDialogRef<AddCostDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private _fb: UntypedFormBuilder
-  ) {}
+  public dialogRef = inject<MatDialogRef<AddCostDialogComponent>>(MatDialogRef);
+  public data = inject(MAT_DIALOG_DATA);
+  private _fb = inject(UntypedFormBuilder);
+
+  constructor() {}
 
   ngOnInit(): void {
     this.addCost = this._fb.group({

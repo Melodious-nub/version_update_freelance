@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { map } from 'rxjs';
 import { HttpService } from 'src/app/service/http.service';
 import { orderConfigModule } from 'src/app/shared/constant';
@@ -7,7 +7,8 @@ import { orderConfigModule } from 'src/app/shared/constant';
   providedIn: 'root',
 })
 export class OrderManagementService {
-  constructor(public httpService: HttpService) { }
+  httpService = inject(HttpService);
+
 
 
   saveProductAttributes(data: any) {

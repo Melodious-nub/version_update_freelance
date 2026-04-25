@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { HttpService } from 'src/app/service/http.service';
@@ -27,11 +27,10 @@ export class InventoryManagementService {
   globalCostUom = new FormControl();
   globalWeightUom = new FormControl();
   globalVolumeUom = new FormControl();
-  constructor(
-    private httpService: HttpService,
-    private httpClient: HttpClient,
-    public businessAccountService: BusinessAccountService
-  ) {}
+    private httpService = inject(HttpService);
+  private httpClient = inject(HttpClient);
+  public businessAccountService = inject(BusinessAccountService);
+  constructor() {}
 
   getAllDatas() {
     this.Get_All_IncoTerms();

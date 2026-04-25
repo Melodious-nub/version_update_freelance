@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -23,19 +23,17 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     ]
 })
 export class SignupComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private fb = inject(UntypedFormBuilder);
+  private signupService = inject(SignupService);
+  private toastr = inject(ToastrService);
+  private authService = inject(AuthService);
+
   public signupGroup: UntypedFormGroup;
   public submitted = false;
 
   private genericResponse: GenricResponse;
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private fb: UntypedFormBuilder,
-    private signupService: SignupService,
-    private toastr: ToastrService,
-    private authService: AuthService
-  ) {}
 
   inviteLink: any = null;
   inviteType: any = null;

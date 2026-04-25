@@ -1,5 +1,5 @@
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogClose } from '@angular/material/dialog';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormsService } from 'src/app/service/forms.service';
 import { ApiService } from 'src/app/service/api.service';
@@ -19,17 +19,15 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     ]
 })
 export class AddRawMaterialDialogComponent implements OnInit {
+  dialogRef = inject<MatDialogRef<AddRawMaterialDialogComponent>>(MatDialogRef);
+  data = inject(MAT_DIALOG_DATA);
+  private _fb = inject(UntypedFormBuilder);
+  private formsService = inject(FormsService);
+  apiService = inject(ApiService);
+  toastr = inject(ToastrService);
+
   productForm: UntypedFormGroup;
   title: string = 'Add Raw Material';
-
-  constructor(
-    public dialogRef: MatDialogRef<AddRawMaterialDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private _fb: UntypedFormBuilder,
-    private formsService: FormsService,
-    public apiService: ApiService,
-    public toastr: ToastrService
-  ) { }
 
   ngOnInit(): void {
     this.productForm = this.formsService.createProductForm();

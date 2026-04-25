@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -27,6 +27,16 @@ import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dad
     ]
 })
 export class LandingComponent implements OnInit, AfterViewInit {
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+  tokenService = inject(TokenService);
+  apiService = inject(ApiService);
+  fb = inject(UntypedFormBuilder);
+  dialog = inject(MatDialog);
+  toastr = inject(ToastrService);
+  OrderManagementService = inject(OrderManagementService);
+  businessAccountService = inject(BusinessAccountService);
+
   @ViewChild('swiperLanding') swiperLanding?: ElementRef;
   @ViewChild('swiperLanding2') swiperLanding2?: ElementRef;
   productsList = [];
@@ -50,17 +60,6 @@ export class LandingComponent implements OnInit, AfterViewInit {
   };
 
   imgSrc = environment.imgUrl;
-  constructor(
-    public router: Router,
-    public route: ActivatedRoute,
-    public tokenService: TokenService,
-    public apiService: ApiService,
-    public fb: UntypedFormBuilder,
-    public dialog: MatDialog,
-    public toastr: ToastrService,
-    public OrderManagementService: OrderManagementService,
-    public businessAccountService: BusinessAccountService
-  ) {}
 
   ngAfterViewInit() {
     [this.swiperLanding, this.swiperLanding2].forEach(swiper => {

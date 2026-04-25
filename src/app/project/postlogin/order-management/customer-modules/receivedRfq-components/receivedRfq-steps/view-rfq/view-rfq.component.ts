@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnInit,
-  Output, OnDestroy,
-} from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, OnDestroy, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UomService } from 'src/app/service/uom.service';
@@ -42,6 +35,17 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class ViewRfqComponent implements OnInit, OnDestroy {
+  fb = inject(UntypedFormBuilder);
+  ordermanagementService = inject(OrderManagementService);
+  orderFormService = inject(OrderFormsService);
+  route = inject(ActivatedRoute);
+  router = inject(Router);
+  toastr = inject(ToastrService);
+  uomService = inject(UomService);
+  containerService = inject(ContainerManagementService);
+  businessAccountService = inject(BusinessAccountService);
+  apiService = inject(ApiService);
+
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.map2 = false;
     this.map1 = false;
@@ -61,19 +65,6 @@ export class ViewRfqComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject();
   productsList: any;
   minRequiredDate: any = new Date().toISOString().split('T')[0];
-
-  constructor(
-    public fb: UntypedFormBuilder,
-    public ordermanagementService: OrderManagementService,
-    public orderFormService: OrderFormsService,
-    public route: ActivatedRoute,
-    public router: Router,
-    public toastr: ToastrService,
-    public uomService: UomService,
-    public containerService: ContainerManagementService,
-    public businessAccountService: BusinessAccountService,
-    public apiService: ApiService
-  ) {}
 
   async ngOnInit() {
     this.ordermanagementService.currentRouteId = this.route.snapshot.params.id;

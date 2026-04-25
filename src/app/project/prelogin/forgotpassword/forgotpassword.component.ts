@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -19,16 +19,14 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     ]
 })
 export class ForgotPasswordComponent implements OnInit {
+  private router = inject(Router);
+  route = inject(ActivatedRoute);
+  private signupService = inject(SignupService);
+  private toastr = inject(ToastrService);
+  private fb = inject(UntypedFormBuilder);
+
   private genericResponse: GenricResponse;
   public forgotGroup: UntypedFormGroup;
-
-  constructor(
-    private router: Router,
-    public route: ActivatedRoute,
-    private signupService: SignupService,
-    private toastr: ToastrService,
-    private fb: UntypedFormBuilder
-  ) {}
 
   ngOnInit(): void {
     this.initForm();

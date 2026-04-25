@@ -1,5 +1,5 @@
 import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
@@ -23,6 +23,12 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     ]
 })
 export class ProductionComponent implements OnInit {
+  toastr = inject(ToastrService);
+  apiService = inject(ApiService);
+  formsService = inject(FormsService);
+  uomService = inject(UomService);
+  private dialog = inject(MatDialog);
+
   productionDetails: any;
   productionLogs: any[] = [];
   totalLogs = 0;
@@ -35,14 +41,6 @@ export class ProductionComponent implements OnInit {
 
   @Input() componentUoms: UntypedFormArray;
   @Output() calculate = new EventEmitter();
-
-  constructor(
-    public toastr: ToastrService,
-    public apiService: ApiService,
-    public formsService: FormsService,
-    public uomService: UomService,
-    private dialog: MatDialog
-  ) { }
 
   ngOnInit(): void {
     this.initSearch();

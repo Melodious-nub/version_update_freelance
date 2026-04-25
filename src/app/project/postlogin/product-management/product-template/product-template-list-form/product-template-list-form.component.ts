@@ -1,8 +1,4 @@
-import {
-  Component,
-  OnInit,
-  HostListener,
-} from '@angular/core';
+import { Component, OnInit, HostListener, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -41,6 +37,15 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     ]
 })
 export class ProductTemplateListFormComponent implements OnInit {
+  apiService = inject(ApiService);
+  uomService = inject(UomService);
+  private formsService = inject(FormsService);
+  private route = inject(ActivatedRoute);
+  router = inject(Router);
+  toastr = inject(ToastrService);
+  private dialog = inject(MatDialog);
+  commonService = inject(CommonService);
+
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.uomSetting = false;
   }
@@ -52,17 +57,6 @@ export class ProductTemplateListFormComponent implements OnInit {
 
   public preferredUoms: any[];
   public preferForm: UntypedFormGroup = this.formsService.createPreferUomForm();
-
-  constructor(
-    public apiService: ApiService,
-    public uomService: UomService,
-    private formsService: FormsService,
-    private route: ActivatedRoute,
-    public router: Router,
-    public toastr: ToastrService,
-    private dialog: MatDialog,
-    public commonService: CommonService
-  ) { }
 
   async ngOnInit() {
     // Reset global save flag on entry so UI controls start enabled

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { OrderManagementService } from '../../service/order-management.service';
@@ -19,6 +19,12 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     ]
 })
 export class AttributeListComponent implements OnInit {
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+  apiService = inject(ApiService);
+  http = inject(HttpClient);
+  ordermanagementService = inject(OrderManagementService);
+
   attributeSetList: any[] = []
   filterValue
   public headers = [
@@ -44,13 +50,6 @@ export class AttributeListComponent implements OnInit {
     itemPerPage: 20,
     sizeOption: [20, 50, 75, 100],
   };
-  constructor(
-    public router: Router,
-    public route: ActivatedRoute,
-    public apiService: ApiService,
-    public http: HttpClient,
-    public ordermanagementService: OrderManagementService
-  ) { }
 
   ngOnInit() {
 

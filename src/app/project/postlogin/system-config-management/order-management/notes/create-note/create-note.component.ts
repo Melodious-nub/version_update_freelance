@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,22 +27,21 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     ]
 })
 export class CreateNoteComponent implements OnInit {
+  toastr = inject(ToastrService);
+  ordermanagementFormService = inject(OrderManagementFormsService);
+  ordermanagementService = inject(OrderManagementService);
+  fb = inject(UntypedFormBuilder);
+  apiService = inject(ApiService);
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+
 
   noteForm: UntypedFormGroup
   selectedAttributes: any[] = []
   attributes: any[]=[]
   allTransactionCategories: any = []
   private ngUnsubscribe: Subject<void> = new Subject();
-  constructor(
-    public toastr: ToastrService,
-    public ordermanagementFormService: OrderManagementFormsService,
-    public ordermanagementService: OrderManagementService,
-    public fb: UntypedFormBuilder,
-    public apiService: ApiService,
-    public router:Router,
-    public route:ActivatedRoute
-
-  ) {
+  constructor() {
     this.noteForm=this.ordermanagementFormService.noteForm()
     this.getAllTransactionCategories()
 

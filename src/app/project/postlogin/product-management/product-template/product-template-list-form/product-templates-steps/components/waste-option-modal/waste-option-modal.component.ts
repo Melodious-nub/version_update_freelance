@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
@@ -15,16 +15,17 @@ import { FormsService } from 'src/app/service/forms.service';
     ]
 })
 export class WasteOptionModalComponent {
+  data = inject<{
+    processForm: any;
+}>(MAT_DIALOG_DATA);
+  apiService = inject(ApiService);
+  formsService = inject(FormsService);
+  dialogRef = inject<MatDialogRef<WasteOptionModalComponent>>(MatDialogRef);
+
   formulaValue = '';
   wasteOptionform: any
   currentControl: any;
-  constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: { processForm: any },
-    public apiService: ApiService,
-    public formsService: FormsService,
-    public dialogRef: MatDialogRef<WasteOptionModalComponent>
-  ) {
+  constructor() {
     this.wasteOptionform = this.formsService.createWasteOptionForm()
   }
 

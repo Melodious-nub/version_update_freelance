@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { productTemplate } from 'src/app/shared/constant';
 import { TokenService } from 'src/app/service/token.service';
 import { environment } from 'src/environments/environment';
@@ -23,14 +23,15 @@ export type ProductBulkUploadSample = {
   providedIn: 'root',
 })
 export class ProductService {
+  private httpClient = inject(HttpClient);
+  private tokenService = inject(TokenService);
+
   additionalCostValues: any = [];
   productSubTypes: any = [];
   clonePayload: any = null;
   // Store search and filter state for navigation
   savedSearchValue: string = '';
   savedFilterValue: string = '';
-
-  constructor(private httpClient: HttpClient, private tokenService: TokenService) {}
 
   private buildAuthHeaders(): HttpHeaders | null {
     try {

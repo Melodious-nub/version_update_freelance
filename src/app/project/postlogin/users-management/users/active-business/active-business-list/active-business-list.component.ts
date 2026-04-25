@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -17,6 +17,16 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     imports: [SearchFilterComponent, DataTableComponent]
 })
 export class ActiveBusinessListComponent implements OnInit {
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+  userService = inject(UsersManagementService);
+  apiService = inject(ApiService);
+  formService = inject(FormsService);
+  http = inject(HttpClient);
+  fb = inject(UntypedFormBuilder);
+  businessAccountService = inject(BusinessAccountService);
+  private toastr = inject(ToastrService);
+
   uomSetting = false;
   public preferredUoms: any[];
   public preferForm: UntypedFormGroup = this.formService.createPreferUomForm();
@@ -71,17 +81,6 @@ export class ActiveBusinessListComponent implements OnInit {
     itemPerPage: 20,
     sizeOption: [20, 50, 75, 100],
   };
-  constructor(
-    public router: Router,
-    public route: ActivatedRoute,
-    public userService: UsersManagementService,
-    public apiService: ApiService,
-    public formService: FormsService,
-    public http: HttpClient,
-    public fb: UntypedFormBuilder,
-    public businessAccountService: BusinessAccountService,
-    private toastr: ToastrService
-  ) { }
 
   ngOnInit() {
     this.businessAccountService.Get_All_employees();

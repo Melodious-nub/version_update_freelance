@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -40,6 +40,19 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     ]
 })
 export class ContainerStepsComponent implements OnInit, OnDestroy {
+  uomService = inject(UomService);
+  containerService = inject(ContainerManagementService);
+  commonService = inject(CommonService);
+  private fb = inject(UntypedFormBuilder);
+  containerFormService = inject(ContainerFormsService);
+  private route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  router = inject(Router);
+  businessAccountService = inject(BusinessAccountService);
+  apiService = inject(ApiService);
+  formsService = inject(FormsService);
+  dialog = inject(MatDialog);
+
   // ************* Variable Declarations *************
   currentStepIndex = 0;
   containerForm: UntypedFormGroup;
@@ -53,20 +66,7 @@ export class ContainerStepsComponent implements OnInit, OnDestroy {
   public preferForm: UntypedFormGroup = this.formsService.createPreferUomForm();
   public preferredUoms: any[];
 
-  constructor(
-    public uomService: UomService,
-    public containerService: ContainerManagementService,
-    public commonService: CommonService,
-    private fb: UntypedFormBuilder,
-    public containerFormService: ContainerFormsService,
-    private route: ActivatedRoute,
-    public toastr: ToastrService,
-    public router: Router,
-    public businessAccountService: BusinessAccountService,
-    public apiService: ApiService,
-    public formsService: FormsService,
-    public dialog: MatDialog
-  ) {
+  constructor() {
     this.containerForm = this.containerFormService.createContainerForm();
   }
 

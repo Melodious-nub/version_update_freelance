@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { map, Observable, Subject } from 'rxjs';
 import { HttpService } from '../../../../service/http.service';
 import {
@@ -13,13 +13,12 @@ import { BusinessAccountService } from '../../business-account/business-account.
 
 @Injectable({ providedIn: 'root' })
 export class PurchaseOrderService {
+  private httpService = inject(HttpService);
+  private httpClient = inject(HttpClient);
+  private businessAccountService = inject(BusinessAccountService);
+
   daysFreightMap = { 20: 'Air', 90: 'Ground' };
   loadPurchaseOrder = new Subject();
-  constructor(
-    private httpService: HttpService,
-    private httpClient: HttpClient,
-    private businessAccountService: BusinessAccountService
-  ) {}
 
   // Get Product list for checkout
   Get_Product_List(

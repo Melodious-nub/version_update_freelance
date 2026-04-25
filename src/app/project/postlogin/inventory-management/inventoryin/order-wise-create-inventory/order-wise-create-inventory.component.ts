@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InventoryinmanagementService } from '../service/inventoryin-management.service';
 import { UntypedFormArray, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,20 +32,20 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     ]
 })
 export class OrderWiseCreateInventoryComponent implements OnInit {
+  route = inject(ActivatedRoute);
+  router = inject(Router);
+  inventoryinmanagement = inject(InventoryinmanagementService);
+  fb = inject(UntypedFormBuilder);
+  private dialog = inject(MatDialog);
+  toastr = inject(ToastrService);
+
   id = '';
   inventoryForm: any;
   data = null;
   employees = [];
   containerTypes = [];
   triggerCalculate = new Subject();
-  constructor(
-    public route: ActivatedRoute,
-    public router: Router,
-    public inventoryinmanagement: InventoryinmanagementService,
-    public fb: UntypedFormBuilder,
-    private dialog: MatDialog,
-    public toastr: ToastrService
-  ) {
+  constructor() {
     this.inventoryForm = this.fb.group({
       id: [null],
       purchaseOrderId: [null],

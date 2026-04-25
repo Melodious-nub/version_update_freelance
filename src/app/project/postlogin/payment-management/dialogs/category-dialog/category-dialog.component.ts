@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -15,6 +15,11 @@ import { NgClass } from '@angular/common';
     imports: [FormsModule, ReactiveFormsModule, NgClass, ExtendedModule, DadyinButtonComponent]
 })
 export class CategoryDialogComponent implements OnInit {
+  private apiService = inject(ApiService);
+  toastr = inject(ToastrService);
+  dialogRef = inject<MatDialogRef<CategoryDialogComponent>>(MatDialogRef);
+  data = inject<DialogData>(MAT_DIALOG_DATA);
+
 
 
   categoryForm = new UntypedFormGroup({
@@ -22,7 +27,6 @@ export class CategoryDialogComponent implements OnInit {
   });
   
   formError = false;
-  constructor(private apiService: ApiService,public toastr:ToastrService,public dialogRef: MatDialogRef<CategoryDialogComponent>,@Inject(MAT_DIALOG_DATA) public data:DialogData ) { }
 
   ngOnInit(): void {
     if(this.data && this.data.Id && this.data.Id > 0){

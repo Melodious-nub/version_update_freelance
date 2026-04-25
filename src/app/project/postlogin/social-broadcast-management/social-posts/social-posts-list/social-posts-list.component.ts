@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntypedFormControl } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
@@ -19,6 +19,12 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     imports: [DadyinButtonComponent, SearchFilterComponent, FilterBoxComponent, DataTableComponent]
 })
 export class SocialPostsListComponent implements OnInit, OnChanges {
+  private socialPostsService = inject(SocialPostsService);
+  private detailsService = inject(SocialPostsDetailsService);
+  private toastr = inject(ToastrService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
   @Input() productId?: any;
   @Input() showVersionColumn: boolean = false;
   searchControl = new UntypedFormControl('');
@@ -76,14 +82,6 @@ export class SocialPostsListComponent implements OnInit, OnChanges {
       showOnStatus: ['draft']
     },
   ];
-
-  constructor(
-    private socialPostsService: SocialPostsService,
-    private detailsService: SocialPostsDetailsService,
-    private toastr: ToastrService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
 
   goToCampaigns(): void {
     this.activeTab = 'campaigns';

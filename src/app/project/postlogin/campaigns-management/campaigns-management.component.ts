@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { CampaignsApiService } from './service/campaigns-api.service';
@@ -47,6 +47,10 @@ interface CampaignApiItem {
     ]
 })
 export class CampaignsManagementComponent implements OnInit {
+  private router = inject(Router);
+  route = inject(ActivatedRoute);
+  private campaignsApi = inject(CampaignsApiService);
+
   searchControl = new UntypedFormControl('');
   socialPosts: Campaign[] = [];
   filtered: Campaign[] = [];
@@ -88,12 +92,6 @@ export class CampaignsManagementComponent implements OnInit {
   ];
 
   tableActions: any[] = [];
-
-  constructor(
-    private router: Router,
-    public route: ActivatedRoute,
-    private campaignsApi: CampaignsApiService
-  ) {}
 
   ngOnInit(): void {
     this.updateActiveTabFromUrl();

@@ -1,14 +1,5 @@
 import { VendorFormsService } from '../../service/vendor-forms.service';
-import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  Input,
-  ChangeDetectorRef,
-  OnChanges,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectorRef, OnChanges, ViewChild, inject } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators, UntypedFormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/service/api.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
@@ -65,6 +56,19 @@ import { MatExpansionModule } from '@angular/material/expansion';
     ]
 })
 export class VendorDetailsComponent implements OnInit, OnChanges {
+  apiService = inject(ApiService);
+  toastr = inject(ToastrService);
+  containerService = inject(ContainerManagementService);
+  businessAccountService = inject(BusinessAccountService);
+  vendorCustomerService = inject(VendorCustomerService);
+  vendorFormsService = inject(VendorFormsService);
+  systemConfigFormsService = inject(SystemConfigFormsService);
+  ref = inject(ChangeDetectorRef);
+  dialog = inject(MatDialog);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  route = inject(ActivatedRoute);
+
   public imgUrl = environment.imgUrl;
   public keywordsList: any = [];
   public port: any = [];
@@ -96,20 +100,6 @@ export class VendorDetailsComponent implements OnInit, OnChanges {
     { name: 'Container (40ft)', value: 'CONTAINER_40_FT' },
     { name: 'Container (40ft) HQ', value: 'CONTAINER_40_FT_HQ' },
   ];
-  constructor(
-    public apiService: ApiService,
-    public toastr: ToastrService,
-    public containerService: ContainerManagementService,
-    public businessAccountService: BusinessAccountService,
-    public vendorCustomerService: VendorCustomerService,
-    public vendorFormsService: VendorFormsService,
-    public systemConfigFormsService: SystemConfigFormsService,
-    public ref: ChangeDetectorRef,
-    public dialog: MatDialog,
-    private authService: AuthService,
-    private router: Router,
-    public route: ActivatedRoute
-  ) { }
 
   ngOnChanges(): void {
     this.vendorForm

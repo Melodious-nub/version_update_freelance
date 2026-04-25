@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BusinessAccountService } from '../../../business-account/business-account.service';
 import { ApiService } from 'src/app/service/api.service';
@@ -30,6 +23,10 @@ import { MatIcon } from '@angular/material/icon';
     ]
 })
 export class LeadFilterBoxComponent implements OnInit {
+  private fb = inject(UntypedFormBuilder);
+  businessAccountService = inject(BusinessAccountService);
+  apiService = inject(ApiService);
+
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.openFilter = false;
   }
@@ -38,11 +35,7 @@ export class LeadFilterBoxComponent implements OnInit {
   filterForm: UntypedFormGroup;
 
   @Output() emitFilterLeads: EventEmitter<any> = new EventEmitter();
-  constructor(
-    private fb: UntypedFormBuilder,
-    public businessAccountService: BusinessAccountService,
-    public apiService: ApiService
-  ) {
+  constructor() {
     this.filterForm = this.fb.group({
       relationAccountName: [],
       phone: [],

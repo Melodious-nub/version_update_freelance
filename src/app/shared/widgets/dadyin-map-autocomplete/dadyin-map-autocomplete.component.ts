@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, Inject, ViewChild, ElementRef, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input, Output, EventEmitter, AfterViewInit, inject } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
 import { ApiService } from 'src/app/service/api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,6 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ]
 })
 export class DadyinMapAutoCompleteComponent implements AfterViewInit{
+  httpClient = inject(HttpClient);
+  apiService = inject(ApiService);
+
   @Input() height: string | null = null;
   @Input() fontSize: string | null = null;
   apiLoaded: boolean;
@@ -22,7 +25,6 @@ export class DadyinMapAutoCompleteComponent implements AfterViewInit{
   @Input() label: any = '';
   @ViewChild('autocompleteInput') autocompleteInput: ElementRef;
   @Output() address = new EventEmitter();
-  constructor(public httpClient: HttpClient, public apiService: ApiService) {}
 
   ngAfterViewInit() {
     if (!this.apiService.googleMapApiLoaded) {

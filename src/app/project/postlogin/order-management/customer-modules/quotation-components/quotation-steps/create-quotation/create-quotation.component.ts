@@ -1,12 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnInit,
-  Output, OnDestroy,
-} from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, HostListener, Input, OnInit, Output, OnDestroy, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -52,6 +44,18 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestroy {
+  fb = inject(UntypedFormBuilder);
+  formsService = inject(FormsService);
+  orderFormsService = inject(OrderFormsService);
+  route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  uomService = inject(UomService);
+  containerService = inject(ContainerManagementService);
+  orderManagementService = inject(OrderManagementService);
+  businessAccountService = inject(BusinessAccountService);
+  apiService = inject(ApiService);
+  dialog = inject(MatDialog);
+
   tierPriceView = false;
   public buyingTypeList: any[] = [
     { name: 'SKU', value: 'SKU' },
@@ -84,20 +88,6 @@ export class CreateQuotationComponent implements OnInit, AfterViewInit, OnDestro
   quotationFile: any = null;
 
   private ngUnsubscribe: Subject<void> = new Subject();
-
-  constructor(
-    public fb: UntypedFormBuilder,
-    public formsService: FormsService,
-    public orderFormsService: OrderFormsService,
-    public route: ActivatedRoute,
-    public toastr: ToastrService,
-    public uomService: UomService,
-    public containerService: ContainerManagementService,
-    public orderManagementService: OrderManagementService,
-    public businessAccountService: BusinessAccountService,
-    public apiService: ApiService,
-    public dialog: MatDialog
-  ) { }
 
   async ngOnInit() {
     this.businessAccountService.$currentBusinessAccount.subscribe((res) => {

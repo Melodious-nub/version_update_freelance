@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
 import { TokenService } from 'src/app/service/token.service';
@@ -18,6 +18,12 @@ import { MatIcon } from '@angular/material/icon';
     providers: [DatePipe]
 })
 export class FilterBoxComponent implements OnInit {
+  private formbuilder = inject(UntypedFormBuilder);
+  private businessAccountService = inject(BusinessAccountService);
+  private tokenService = inject(TokenService);
+  private productmanagementService = inject(ProductManagementService);
+  private datePipe = inject(DatePipe);
+
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.openFilter=false
    }
@@ -36,13 +42,7 @@ export class FilterBoxComponent implements OnInit {
   dateFormat: string = "yyyy-MM-ddThh:mm:ss";
   filterCount: number = 0;
 
-  constructor(
-    private formbuilder: UntypedFormBuilder,
-    private businessAccountService: BusinessAccountService,
-    private tokenService: TokenService,
-    private productmanagementService: ProductManagementService,
-    private datePipe: DatePipe
-  ) {
+  constructor() {
     this.filterForm = this.formbuilder.group({
       isFavourite: [null],
       isPackagingMaterial: [null],

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, Pipe, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, Pipe, OnDestroy, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -45,6 +45,15 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class UnloadingDetailsComponent implements OnDestroy{
+  fb = inject(UntypedFormBuilder);
+  containerService = inject(ContainerManagementService);
+  containerFormService = inject(ContainerFormsService);
+  formsService = inject(FormsService);
+  route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  uomService = inject(UomService);
+  printService = inject(PrintService);
+
   poView: any = 'orderWise';
   expanded: any[] = [];
   @Input() containerForm: UntypedFormGroup;
@@ -55,18 +64,6 @@ export class UnloadingDetailsComponent implements OnDestroy{
   private ngUnsubscribe: Subject<void> = new Subject();
   public purchaseOrdersList: any[] = [];
   @Input() componentUoms: any;
-
-
-  constructor(
-    public fb: UntypedFormBuilder,
-    public containerService: ContainerManagementService,
-    public containerFormService: ContainerFormsService,
-    public formsService: FormsService,
-    public route: ActivatedRoute,
-    public toastr: ToastrService,
-    public uomService: UomService,
-    public printService: PrintService
-  ) {}
 
   async
 

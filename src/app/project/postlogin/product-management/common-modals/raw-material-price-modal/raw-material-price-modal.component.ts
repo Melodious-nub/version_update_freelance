@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
 import { UntypedFormBuilder, FormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -20,17 +20,16 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     ]
 })
 export class RawMaterialPriceModalComponent {
+  data = inject(MAT_DIALOG_DATA);
+  apiService = inject(ApiService);
+  toastr = inject(ToastrService);
+  fb = inject(UntypedFormBuilder);
+  formsService = inject(FormsService);
+  dialogRef = inject<MatDialogRef<RawMaterialPriceModalComponent>>(MatDialogRef);
+  productService = inject(ProductService);
+
   prompt = null;
   rawMaterial: any = null;
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public apiService: ApiService,
-    public toastr: ToastrService,
-    public fb: UntypedFormBuilder,
-    public formsService: FormsService,
-    public dialogRef: MatDialogRef<RawMaterialPriceModalComponent>,
-    public productService: ProductService
-  ) {}
 
   async refreshRawMaterialPricing() {
     try {

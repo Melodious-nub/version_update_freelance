@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -36,6 +36,18 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     ]
 })
 export class InvoiceStepsComponent implements OnInit {
+  uomService = inject(UomService);
+  invoiceManagementService = inject(InvoiceManagementService);
+  commonService = inject(CommonService);
+  private route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  router = inject(Router);
+  apiService = inject(ApiService);
+  invoiceFormsService = inject(InvoiceFormsService);
+  formsService = inject(FormsService);
+  businessAccountService = inject(BusinessAccountService);
+  dialog = inject(MatDialog);
+
   // ************* Variable Declarations *************
   currentStepIndex = 0;
   invoiceForm: UntypedFormGroup;
@@ -44,19 +56,7 @@ export class InvoiceStepsComponent implements OnInit {
   uomSetting = false;
   ngUnsubscribe: any = new Subject<void>();
 
-  constructor(
-    public uomService: UomService,
-    public invoiceManagementService: InvoiceManagementService,
-    public commonService: CommonService,
-    private route: ActivatedRoute,
-    public toastr: ToastrService,
-    public router: Router,
-    public apiService: ApiService,
-    public invoiceFormsService: InvoiceFormsService,
-    public formsService: FormsService,
-    public businessAccountService: BusinessAccountService,
-    public dialog: MatDialog
-  ) {
+  constructor() {
     this.invoiceForm = this.invoiceFormsService.createInvoiceForm();
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,16 +21,16 @@ import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyi
     ]
 })
 export class RecordPaymentDialogComponent implements OnInit {
+  dialog = inject(MatDialog);
+  data = inject(MAT_DIALOG_DATA);
+  toastr = inject(ToastrService);
+  orderFormsService = inject(OrderFormsService);
+  orderManagementService = inject(OrderManagementService);
+  uomService = inject(UomService);
+
   paymentRecordForm: UntypedFormGroup;
   paymentOverview: any;
-  constructor(
-    public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public toastr: ToastrService,
-    public orderFormsService: OrderFormsService,
-    public orderManagementService: OrderManagementService,
-    public uomService: UomService
-  ) {
+  constructor() {
     this.paymentRecordForm = this.orderFormsService.createPaymentForm();
   }
 

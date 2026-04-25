@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Output, EventEmitter, inject } from '@angular/core';
 import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -59,6 +59,18 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class AddProductComponent implements OnInit, OnDestroy {
+  fb = inject(UntypedFormBuilder);
+  apiService = inject(ApiService);
+  formsService = inject(FormsService);
+  uomService = inject(UomService);
+  route = inject(ActivatedRoute);
+  toastr = inject(ToastrService);
+  sortFormArray = inject(SortFormArrayPipe);
+  dialog = inject(MatDialog);
+  containerService = inject(ContainerManagementService);
+  businessAccountService = inject(BusinessAccountService);
+  productService = inject(ProductService);
+
   allProductsPackagingMaterial: any = [];
   imgUrl = environment.imgUrl;
   imageDragging = false;
@@ -110,21 +122,6 @@ export class AddProductComponent implements OnInit, OnDestroy {
   @Output() loadedDetail = new EventEmitter();
 
   userDetail: any = [];
-
-
-  constructor(
-    public fb: UntypedFormBuilder,
-    public apiService: ApiService,
-    public formsService: FormsService,
-    public uomService: UomService,
-    public route: ActivatedRoute,
-    public toastr: ToastrService,
-    public sortFormArray: SortFormArrayPipe,
-    public dialog: MatDialog,
-    public containerService: ContainerManagementService,
-    public businessAccountService: BusinessAccountService,
-    public productService: ProductService
-  ) { }
 
   async ngOnInit() {
     this.createdBy = this.route.snapshot.params.createdBy;

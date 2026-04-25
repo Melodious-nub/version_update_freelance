@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { BusinessAccountService } from '../../../business-account/business-account.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -26,6 +26,12 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     ]
 })
 export class UserDetailsComponent {
+  toastr = inject(ToastrService);
+  dialog = inject(MatDialog);
+  businessAccountService = inject(BusinessAccountService);
+  userFormsService = inject(UserFormsService);
+  router = inject(Router);
+
   public currentMainIndex: number = 0;
 
   public userForm: any;
@@ -34,14 +40,7 @@ export class UserDetailsComponent {
   
   SystemAccessModules=['Order management','User management','Container management','Product management']
   
-  constructor(
-    public toastr: ToastrService,
-    public dialog: MatDialog,
-    public businessAccountService: BusinessAccountService,
-    public userFormsService: UserFormsService,
-    public router: Router
-
-  ) {
+  constructor() {
     this.userForm = this.userFormsService.createUserForm()
   }
   onClickSave() {

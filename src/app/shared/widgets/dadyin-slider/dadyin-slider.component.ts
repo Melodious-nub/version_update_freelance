@@ -1,4 +1,4 @@
-import { Component, HostListener, Inject, Input } from '@angular/core';
+import { Component, HostListener, Input, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
@@ -14,6 +14,9 @@ import { NgClass } from '@angular/common';
     ]
 })
 export class DadyinSliderComponent {
+  data = inject(MAT_DIALOG_DATA);
+  dialog = inject(MatDialog);
+
   imgUrl = environment.imgUrl;
 
   @HostListener('wheel', ['$event'])
@@ -24,7 +27,6 @@ export class DadyinSliderComponent {
       this.selectImage(this.data.index - 1);
     }
   }
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialog:MatDialog) {}
 
   selectImage(i) {
     if (i < this.data.images?.length - 1 && i >= 0) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UomService } from 'src/app/service/uom.service';
@@ -23,16 +23,14 @@ import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autoc
     ]
 })
 export class AdditionalCostCommonComponent implements OnInit {
+  private toastr = inject(ToastrService);
+  apiService = inject(ProductManagementService);
+  productTypeFormService = inject(ProductTypeFormService);
+  uomService = inject(UomService);
+
   @Input() additionalCosts: UntypedFormArray;
   additionalCostList: any;
   searchControl = new UntypedFormControl(null);
-
-  constructor(
-    private toastr: ToastrService,
-    public apiService: ProductManagementService,
-    public productTypeFormService: ProductTypeFormService,
-    public uomService: UomService
-  ) {}
 
   ngOnInit(): void {
     this.loadAdditionalCostValue();

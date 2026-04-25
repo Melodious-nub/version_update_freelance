@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
-import { Component, HostListener, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostListener, Input, OnInit, OnDestroy, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -45,6 +45,14 @@ import { DadyinButtonComponent } from '../../../../../../../../../shared/widgets
     ]
 })
 export class ProductComponent implements OnInit, OnDestroy {
+  productTemplateService = inject(ProductTemplateService);
+  apiService = inject(ApiService);
+  private formsService = inject(FormsService);
+  private fb = inject(UntypedFormBuilder);
+  dialog = inject(MatDialog);
+  toastr = inject(ToastrService);
+  sortFormArray = inject(SortFormArrayPipe);
+
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.formulaAutoComplete = false;
   }
@@ -75,16 +83,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   attribute;
   formulaAutoComplete = false;
   searchAutoComplete = new UntypedFormControl('');
-
-  constructor(
-    public productTemplateService: ProductTemplateService,
-    public apiService: ApiService,
-    private formsService: FormsService,
-    private fb: UntypedFormBuilder,
-    public dialog: MatDialog,
-    public toastr: ToastrService,
-    public sortFormArray: SortFormArrayPipe
-  ) { }
 
   async ngOnInit() {
     if (this.templateProcesses?.controls?.length > 0) {

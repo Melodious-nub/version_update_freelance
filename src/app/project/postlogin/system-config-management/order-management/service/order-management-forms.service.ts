@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderManagementFormsService {
-  constructor(public _fb: UntypedFormBuilder) { }
+  _fb = inject(UntypedFormBuilder);
+
 
  
   noteForm(): UntypedFormGroup {

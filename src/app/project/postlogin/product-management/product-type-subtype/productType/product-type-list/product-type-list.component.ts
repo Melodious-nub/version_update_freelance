@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductManagementService } from '../../../service/product-management.service';
 import { BusinessAccountService } from 'src/app/project/postlogin/business-account/business-account.service';
@@ -27,6 +27,11 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     ]
 })
 export class ProductTypeListComponent implements OnInit {
+  private router = inject(Router);
+  private service = inject(ProductManagementService);
+  route = inject(ActivatedRoute);
+  businessAccountService = inject(BusinessAccountService);
+
   public ProductTypeList: any;
   public tabelActions: any = [
     {
@@ -108,12 +113,7 @@ export class ProductTypeListComponent implements OnInit {
       index: 0,
     },
   ];
-  constructor(
-    private router: Router,
-    private service: ProductManagementService,
-    public route: ActivatedRoute,
-    public businessAccountService: BusinessAccountService
-  ) {
+  constructor() {
     this.route.queryParams.subscribe((res) => {
       this.currentMainIndex = res?.currentIndex ?? 0;
     });

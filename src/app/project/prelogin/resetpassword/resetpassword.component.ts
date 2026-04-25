@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GenricResponse } from 'src/app/model/common/generic-response';
@@ -23,19 +23,17 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     ]
 })
 export class ResetPasswordComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private fb = inject(UntypedFormBuilder);
+  private signupService = inject(SignupService);
+  private toastr = inject(ToastrService);
+
   public resetPasswordGroup: UntypedFormGroup;
   public submitted = false;
   private resetPasswordDetail: SignupUser;
   private genericResponse: GenricResponse;
   private resetLink;
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private fb: UntypedFormBuilder,
-    private signupService: SignupService,
-    private toastr: ToastrService
-  ) {}
 
   ngOnInit(): void {
     this.initForm();

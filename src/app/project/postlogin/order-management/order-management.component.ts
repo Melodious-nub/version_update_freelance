@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -10,7 +10,8 @@ import { Router, RouterOutlet } from '@angular/router';
 })
 export class OrderManagementComponent {
 
-  constructor(private router: Router) { }
+    private router = inject(Router);
+  constructor() { }
 
   navigate(link: string): void {
     this.router.navigateByUrl(link);

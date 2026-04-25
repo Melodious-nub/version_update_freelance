@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, OnInit, Renderer2, inject } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router, RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
@@ -42,6 +42,17 @@ import { MatSidenavContainer, MatSidenav, MatSidenavContent } from '@angular/mat
     ]
 })
 export class HeaderComponent implements OnInit {
+  private router = inject(Router);
+  private authService = inject(AuthService);
+  tokenService = inject(TokenService);
+  private businessAccountService = inject(BusinessAccountService);
+  dialog = inject(MatDialog);
+  apiService = inject(ApiService);
+  private headerService = inject(HeaderService);
+  private renderer = inject(Renderer2);
+  private selectMenuService = inject(SelectMenuService);
+  route = inject(ActivatedRoute);
+
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.notification = false;
   }
@@ -90,18 +101,7 @@ export class HeaderComponent implements OnInit {
   sidebarMenus = sidebarMenu;
   isExpanded = false;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    public tokenService: TokenService,
-    private businessAccountService: BusinessAccountService,
-    public dialog: MatDialog,
-    public apiService: ApiService,
-    private headerService: HeaderService,
-    private renderer: Renderer2,
-    private selectMenuService: SelectMenuService,
-    public route: ActivatedRoute
-  ) {
+  constructor() {
     this.selectMenuService.selectedChildMenu.subscribe((value) => {
       if (value != null) {
         this.selectedmenu = value;

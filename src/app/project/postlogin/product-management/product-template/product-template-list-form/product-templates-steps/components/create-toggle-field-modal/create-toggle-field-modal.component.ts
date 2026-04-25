@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormArray, UntypedFormBuilder, UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 
@@ -14,14 +14,16 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material
     ]
 })
 export class CreateToggleFieldModalComponent {
+  data = inject<{
+    attributeName: UntypedFormControl;
+    attributeType: any;
+}>(MAT_DIALOG_DATA);
+  fb = inject(UntypedFormBuilder);
+  dialogRef = inject<MatDialogRef<CreateToggleFieldModalComponent>>(MatDialogRef);
+
   attributeValueExpression = this.fb.array([]);
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: { attributeName: UntypedFormControl; attributeType: any },
-    public fb: UntypedFormBuilder,
-    public dialogRef: MatDialogRef<CreateToggleFieldModalComponent>
-  ) {
+  constructor() {
     this.attributeValueExpression.clear();
     for (let index = 0; index < 2; index++) {
       this.attributeValueExpression.push(this.createAttributeExpression());

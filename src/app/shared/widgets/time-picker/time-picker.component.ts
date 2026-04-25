@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, forwardRef, ChangeDetectorRef, AfterContentChecked, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, ChangeDetectorRef, AfterContentChecked, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, UntypedFormControl, ControlContainer } from '@angular/forms';
 import { CommonService } from 'src/app/service/common.service';
 
@@ -16,6 +16,10 @@ import { CommonService } from 'src/app/service/common.service';
     imports: []
 })
 export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterContentChecked, OnChanges {
+  private commonService = inject(CommonService);
+  private controlContainer = inject(ControlContainer);
+  private cdr = inject(ChangeDetectorRef);
+
 
   @Input() class = '';
   @Input() label = '';
@@ -38,8 +42,6 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterC
   @Input('value') _value: any;
   set value(val: any) { this._value = val; }
   get value() { return this._value; }
-
-  constructor(private commonService: CommonService, private controlContainer: ControlContainer, private cdr: ChangeDetectorRef) { }
 
   ngAfterContentChecked() {
     this.cdr.detectChanges();

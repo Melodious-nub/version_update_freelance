@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { HttpService } from 'src/app/service/http.service';
 import { order, paymentManagement } from 'src/app/shared/constant';
@@ -8,7 +8,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class PaymentManagementService {
-  constructor(private httpService: HttpService) {}
+  private httpService = inject(HttpService);
+
 
   getPendingPaymentBills(): Observable<any> {
     return this.httpService.get(paymentManagement.pendingPaymentBills).pipe(

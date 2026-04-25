@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { map, tap, catchError, timeout } from 'rxjs/operators';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
@@ -14,6 +14,11 @@ import { TokenService } from './token.service';
     providedIn: 'root'
 })
 export class HttpService {
+    private httpClient = inject(HttpClient);
+    private router = inject(Router);
+    private _cs = inject(CommonService);
+    private tokenService = inject(TokenService);
+
 
     private apiBaseUrl: String = environment.apiUrl;
 
@@ -25,8 +30,6 @@ export class HttpService {
         showToaster: false,
         showLoader: true
     };
-
-    constructor(private httpClient: HttpClient, private router: Router, private _cs: CommonService, private tokenService : TokenService) { }
 
     get = <T>(endpoint: string, body: any = null, headers: any = null, customUrl: boolean = false, options: any = {}): Observable<T | never> => {
      

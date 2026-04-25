@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SocialBroadcastApiService {
-  constructor(private httpClient: HttpClient) {}
+  private httpClient = inject(HttpClient);
+
 
   getSocialPosts(
     page = 1,

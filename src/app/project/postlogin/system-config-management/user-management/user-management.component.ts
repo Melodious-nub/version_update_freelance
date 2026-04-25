@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { BusinessAccountService } from '../../business-account/business-account.service';
@@ -11,6 +11,9 @@ import { ToastrService } from 'ngx-toastr';
     imports: [RouterOutlet]
 })
 export class UsermanagementComponent implements OnInit {
+  businessAccountService = inject(BusinessAccountService);
+  toastr = inject(ToastrService);
+
   public currentMainIndex: number = 0;
   public pageConfig = null;
   pageIndex: any = 0;
@@ -40,13 +43,6 @@ export class UsermanagementComponent implements OnInit {
       icon: 'cancel'
     }
   ];
-  
-
-
-  constructor(
-    public businessAccountService: BusinessAccountService,
-    public toastr: ToastrService
-  ) { }
 
   ngOnInit(): void {
     this.loadListing()

@@ -1,14 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ChangeDetectorRef,
-  AfterContentChecked,
-  Output,
-  EventEmitter,
-  HostListener,
-  Optional,
-} from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, AfterContentChecked, Output, EventEmitter, HostListener, inject } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, ControlContainer, UntypedFormControl, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonService } from 'src/app/service/common.service';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
@@ -36,6 +26,10 @@ import { NgClass, NgStyle } from '@angular/common';
 export class DadyinInputComponent
   implements OnInit, ControlValueAccessor, AfterContentChecked
 {
+  private commonService = inject(CommonService);
+  private controlContainer = inject(ControlContainer, { optional: true });
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() height: string | null = null;
   @Input() fontSize: string | null = null;
   @Input() class: string = '';
@@ -78,12 +72,6 @@ export class DadyinInputComponent
   get value(): string {
     return this._value;
   }
-
-  constructor(
-    private commonService: CommonService,
-    @Optional() private controlContainer: ControlContainer,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   @HostListener('paste', ['$event'])
   blockPaste(e: ClipboardEvent) {

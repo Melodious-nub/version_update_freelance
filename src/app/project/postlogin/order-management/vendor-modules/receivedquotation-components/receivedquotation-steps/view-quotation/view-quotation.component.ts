@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  Output,
-  EventEmitter,
-  HostListener, OnDestroy,
-} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, HostListener, OnDestroy, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormsService } from 'src/app/service/forms.service';
@@ -41,6 +34,16 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     ]
 })
 export class ViewQuotationComponent implements OnInit, OnDestroy {
+    fb = inject(UntypedFormBuilder);
+    formsService = inject(FormsService);
+    orderFormsService = inject(OrderFormsService);
+    route = inject(ActivatedRoute);
+    toastr = inject(ToastrService);
+    uomService = inject(UomService);
+    containerService = inject(ContainerManagementService);
+    businessAccountService = inject(BusinessAccountService);
+    apiService = inject(ApiService);
+
     public buyingTypeList: any[] = [
     { name: 'SKU', value: 'SKU' },
     { name: 'Truck Load', value: 'TRUCK' },
@@ -66,17 +69,6 @@ export class ViewQuotationComponent implements OnInit, OnDestroy {
   @Output() patchEditData = new EventEmitter();
   private ngUnsubscribe: Subject<void> = new Subject();
   quotationFile = null;
-  constructor(
-    public fb: UntypedFormBuilder,
-    public formsService: FormsService,
-    public orderFormsService: OrderFormsService,
-    public route: ActivatedRoute,
-    public toastr: ToastrService,
-    public uomService: UomService,
-    public containerService: ContainerManagementService,
-    public businessAccountService: BusinessAccountService,
-    public apiService: ApiService
-  ) {}
 
   async ngOnInit() {
     this.businessAccountService.Get_All_Vendors();

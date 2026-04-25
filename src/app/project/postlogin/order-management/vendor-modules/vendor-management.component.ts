@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BillListComponent } from './bill-management/bill-list/bill-list.component';
 import { PurchaseorderListComponent } from './purchaseorder/purchaseorder-list/purchaseorder-list.component';
@@ -28,6 +28,9 @@ import { NgClass } from '@angular/common';
     ]
 })
 export class VendorManagementComponent implements OnInit {
+  private router = inject(Router);
+  route = inject(ActivatedRoute);
+
   @Input() single = false;
   @Input() vendorId = false;
   currentStepIndex = 0;
@@ -57,8 +60,6 @@ export class VendorManagementComponent implements OnInit {
       index: 3,
     },
   ];
-
-  constructor(private router: Router, public route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.currentStepIndex = this.route.snapshot.queryParams.currentStepIndex;
