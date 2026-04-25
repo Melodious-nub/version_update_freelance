@@ -1,4 +1,4 @@
-import { enableProdMode, APP_INITIALIZER, ErrorHandler, importProvidersFrom } from '@angular/core';
+import { enableProdMode, APP_INITIALIZER, ErrorHandler, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -45,7 +45,7 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
   providers: [
     // Modern Standalone APIs
-    provideAnimations(),
+    provideZoneChangeDetection(),provideAnimations(),
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter(
       routes,
