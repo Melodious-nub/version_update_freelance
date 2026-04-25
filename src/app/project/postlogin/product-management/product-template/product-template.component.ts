@@ -7,8 +7,7 @@ import { RouterOutlet } from '@angular/router';
     selector: 'app-product-template',
     templateUrl: './product-template.component.html',
     styleUrls: ['./product-template.component.scss'],
-    standalone: true,
-    imports: [RouterOutlet],
+    imports: [RouterOutlet]
 })
 export class ProductTemplateComponent implements OnInit {
 

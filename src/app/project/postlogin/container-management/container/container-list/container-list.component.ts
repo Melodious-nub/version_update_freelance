@@ -18,20 +18,19 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     selector: 'app-container-list',
     templateUrl: './container-list.component.html',
     styleUrls: ['./container-list.component.scss'],
-    standalone: true,
     imports: [
-    MatTabGroup,
-    MatTab,
-    MatTabLabel,
-    MatBadge,
-    MatTabContent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    SearchFilterComponent,
-    DadyinButtonComponent,
-    DataTableComponent
-],
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent
+    ]
 })
 export class ContainerListComponent implements OnInit {
   public preferredUoms: any[];

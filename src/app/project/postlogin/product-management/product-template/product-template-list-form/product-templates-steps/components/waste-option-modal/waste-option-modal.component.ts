@@ -8,12 +8,11 @@ import { FormsService } from 'src/app/service/forms.service';
     selector: 'app-waste-option-modal',
     templateUrl: './waste-option-modal.component.html',
     styleUrls: ['./waste-option-modal.component.scss'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,
         MatDialogClose,
-    ],
+    ]
 })
 export class WasteOptionModalComponent implements OnInit {
   formulaValue = '';

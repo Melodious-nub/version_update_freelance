@@ -9,13 +9,12 @@ import { NgClass } from '@angular/common';
     selector: 'app-prelogin',
     templateUrl: './prelogin.component.html',
     styleUrls: ['./prelogin.component.scss'],
-    standalone: true,
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-    RouterOutlet,
-    NgClass,
-    ExtendedModule
-],
+        RouterOutlet,
+        NgClass,
+        ExtendedModule
+    ]
 })
 export class PreloginComponent implements OnInit, AfterViewInit {
   @ViewChild('swiperR', { static: false }) swiperR?: ElementRef;

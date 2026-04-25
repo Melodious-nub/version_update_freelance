@@ -13,13 +13,12 @@ import { MatTabGroup, MatTab } from '@angular/material/tabs';
     selector: 'app-category',
     templateUrl: './category.component.html',
     styleUrls: ['./category.component.scss'],
-    standalone: true,
     imports: [
         MatTabGroup,
         MatTab,
         DadyinButtonComponent,
         DataTableComponent,
-    ],
+    ]
 })
 export class CategoryComponent implements OnInit {
   currentBusinessAccount;

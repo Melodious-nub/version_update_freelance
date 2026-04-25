@@ -8,7 +8,6 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     selector: 'app-buddy-dialog',
     templateUrl: './buddy-dialog.component.html',
     styleUrls: ['./buddy-dialog.component.scss'],
-    standalone: true,
     imports: [DadyinButtonComponent]
 })
 export class BuddyDialogComponent implements OnInit {

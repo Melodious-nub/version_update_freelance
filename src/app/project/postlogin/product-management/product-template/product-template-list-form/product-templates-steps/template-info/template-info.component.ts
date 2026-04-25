@@ -13,17 +13,16 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'template-info',
     templateUrl: './template-info.component.html',
     styleUrls: ['./template-info.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    NgClass,
-    ExtendedModule,
-    DadyinSearchableSelectComponent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        NgClass,
+        ExtendedModule,
+        DadyinSearchableSelectComponent
+    ]
 })
 export class TemplateInfoComponent implements OnInit {
   @Input() templateForm: UntypedFormGroup;

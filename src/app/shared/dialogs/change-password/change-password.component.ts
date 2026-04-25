@@ -15,7 +15,6 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     selector: 'app-change-password-dialog',
     templateUrl: './change-password.component.html',
     styleUrls: ['./change-password.component.scss'],
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, DadyinButtonComponent, MatIcon, NgClass, ExtendedModule]
 })
 export class ChangePasswordDialogComponent implements OnInit {

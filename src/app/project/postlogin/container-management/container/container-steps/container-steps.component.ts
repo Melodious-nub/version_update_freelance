@@ -25,20 +25,19 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     selector: 'app-container-steps',
     templateUrl: './container-steps.component.html',
     styleUrls: ['./container-steps.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTabGroup,
-    MatTab,
-    OrderDetailsComponent,
-    ContainerInfoComponent,
-    UnloadingDetailsComponent,
-    ExpensesDetailsComponent,
-    DocumentsDetailsComponent
-],
+        DadyinButtonComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabGroup,
+        MatTab,
+        OrderDetailsComponent,
+        ContainerInfoComponent,
+        UnloadingDetailsComponent,
+        ExpensesDetailsComponent,
+        DocumentsDetailsComponent
+    ]
 })
 export class ContainerStepsComponent implements OnInit {
   // ************* Variable Declarations *************

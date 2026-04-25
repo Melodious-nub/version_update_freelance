@@ -15,18 +15,17 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     selector: 'app-product-wise-create-inventory',
     templateUrl: './product-wise-create-inventory.component.html',
     styleUrls: ['./product-wise-create-inventory.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    MatIcon,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    FormsModule,
-    ReactiveFormsModule,
-    DataTableComponent
-],
+        DadyinButtonComponent,
+        MatIcon,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent
+    ]
 })
 export class ProductWiseCreateInventoryComponent implements OnInit {
   productId: any;

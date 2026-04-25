@@ -19,7 +19,6 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     selector: 'app-addedit-product-type',
     templateUrl: './addedit-product-type.component.html',
     styleUrls: ['./addedit-product-type.component.scss'],
-    standalone: true,
     imports: [DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, DadyinSearchSelectNewComponent, AdditionalCostCommonComponent, BuyingCapacityCommonComponent]
 })
 

@@ -17,13 +17,12 @@ import { NgClass } from '@angular/common';
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
-    standalone: true,
     imports: [
-    RouterLink,
-    FormsModule,
-    NgClass,
-    ExtendedModule
-],
+        RouterLink,
+        FormsModule,
+        NgClass,
+        ExtendedModule
+    ]
 })
 export class HomeComponent implements OnInit {
   menuList = sidebarMenu;

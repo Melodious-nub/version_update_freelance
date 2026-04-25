@@ -8,12 +8,11 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     selector: 'app-process-list',
     templateUrl: './process-list.component.html',
     styleUrls: ['./process-list.component.scss'],
-    standalone: true,
     imports: [
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelContent
-],
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelContent
+    ]
 })
 export class ProcessListComponent implements OnInit {
   @Input() processData: any;

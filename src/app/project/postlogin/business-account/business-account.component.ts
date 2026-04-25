@@ -22,19 +22,18 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     selector: 'app-business-account',
     templateUrl: './business-account.html',
     styleUrls: ['./business-account.scss'],
-    standalone: true,
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    DadyinInputComponent,
-    DadyinSelectComponent,
-    DadyinMapAutoCompleteComponent,
-    NgSelectModule,
-    DadyinButtonComponent,
-    NgClass,
-    ExtendedModule
-],
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        DadyinSelectComponent,
+        DadyinMapAutoCompleteComponent,
+        NgSelectModule,
+        DadyinButtonComponent,
+        NgClass,
+        ExtendedModule
+    ]
 })
 export class BusinessAccountComponent implements OnInit, AfterViewInit {
   @ViewChild('swiperR') swiperR?: ElementRef;

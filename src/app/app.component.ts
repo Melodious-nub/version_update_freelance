@@ -14,8 +14,7 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    standalone: true,
-    imports: [RouterOutlet, PrintTemplatesComponent, SpinnerOverlayComponent, AsyncPipe],
+    imports: [RouterOutlet, PrintTemplatesComponent, SpinnerOverlayComponent, AsyncPipe]
 })
 export class AppComponent implements OnInit {
   currentRoute: string;

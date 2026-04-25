@@ -8,7 +8,6 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'app-template-view',
     templateUrl: './template-view.component.html',
     styleUrls: ['./template-view.component.scss'],
-    standalone: true,
     imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelContent, FormsModule]
 })
 export class TemplateViewComponent implements OnInit {

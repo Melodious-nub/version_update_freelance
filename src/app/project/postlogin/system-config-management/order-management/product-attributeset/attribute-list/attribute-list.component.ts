@@ -11,13 +11,12 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-attribute-list',
     templateUrl: './attribute-list.component.html',
     styleUrls: ['./attribute-list.component.scss'],
-    standalone: true,
     imports: [
         RouterLink,
         SearchFilterComponent,
         DadyinButtonComponent,
         DataTableComponent,
-    ],
+    ]
 })
 export class AttributeListComponent implements OnInit {
   attributeSetList: any[] = []

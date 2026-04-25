@@ -5,7 +5,6 @@ import { RouterLink } from '@angular/router';
     selector: 'app-terms-of-service',
     templateUrl: './terms-of-service.component.html',
     styleUrls: ['./terms-of-service.component.scss'],
-    standalone: true,
     imports: [RouterLink]
 })
 export class TermsOfServiceComponent implements OnInit {

@@ -5,7 +5,6 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
     selector: 'app-product-type',
     templateUrl: './product-type.component.html',
     styleUrls: ['./product-type.component.scss'],
-    standalone: true,
     imports: [RouterOutlet]
 })
 export class ProductTypeComponent implements OnInit {

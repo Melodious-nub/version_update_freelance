@@ -40,7 +40,6 @@ type ProductImageTile = {
     selector: 'app-social-post-create',
     templateUrl: './social-post-create.component.html',
     styleUrls: ['./social-post-detail.component.scss'],
-    standalone: true,
     imports: [SpinnerOverlayComponent, DadyinButtonComponent, MatTabGroup, MatTab, MatTabLabel, MatTabContent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, DadyinSelectComponent, DadyinSearchSelectNewComponent, CKEditorModule, NgClass, ExtendedModule, MatIcon, TimePickerComponent, NgTemplateOutlet]
 })
 export class SocialPostCreateComponent implements OnInit, AfterViewInit, OnDestroy {

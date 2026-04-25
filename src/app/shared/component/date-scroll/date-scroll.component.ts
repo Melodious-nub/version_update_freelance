@@ -8,7 +8,6 @@ import { MatIcon } from '@angular/material/icon';
     selector: 'app-date-scroll',
     templateUrl: './date-scroll.component.html',
     styleUrls: ['./date-scroll.component.scss'],
-    standalone: true,
     imports: [MatIcon, NgClass, ExtendedModule]
 })
 export class DateScrollComponent implements OnInit,OnChanges {

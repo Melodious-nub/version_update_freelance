@@ -9,15 +9,14 @@ import { NgClass } from '@angular/common';
     selector: 'dadyin-searchable-select',
     templateUrl: './dadyin-searchable-select.component.html',
     styleUrls: ['./dadyin-searchable-select.component.scss'],
-    standalone: true,
     imports: [
-    NgClass,
-    ExtendedModule,
-    NgSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTooltip
-],
+        NgClass,
+        ExtendedModule,
+        NgSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTooltip
+    ]
 })
 export class DadyinSearchableSelectComponent implements OnInit, OnChanges {
   @Input() class: any;

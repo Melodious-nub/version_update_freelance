@@ -5,8 +5,7 @@ import { RouterOutlet } from '@angular/router';
     selector: 'app-container',
     templateUrl: './container.component.html',
     styleUrls: ['./container.component.scss'],
-    standalone: true,
-    imports: [RouterOutlet],
+    imports: [RouterOutlet]
 })
 export class ContainerComponent implements OnInit {
   constructor() {}

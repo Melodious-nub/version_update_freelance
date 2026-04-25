@@ -14,8 +14,7 @@ import { ReplaySubject } from 'rxjs';
     selector: 'app-component-dialog',
     templateUrl: './component-dialog.component.html',
     styleUrls: ['./component-dialog.component.scss'],
-    standalone: true,
-    imports: [MatDialogContent],
+    imports: [MatDialogContent]
 })
 export class ComponentDialogComponent implements OnInit, OnDestroy {
   @ViewChild('target', { read: ViewContainerRef, static: true })

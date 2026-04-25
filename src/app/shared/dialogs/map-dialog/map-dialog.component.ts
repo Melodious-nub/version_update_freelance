@@ -11,7 +11,6 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     selector: 'app-map-dialog',
     templateUrl: './map-dialog.component.html',
     styleUrls: ['./map-dialog.component.scss'],
-    standalone: true,
     imports: [DadyinButtonComponent, FormsModule, ReactiveFormsModule, DadyinMapAutoCompleteComponent, GoogleMap, MapMarker]
 })
 export class MapDialogComponent implements OnInit {

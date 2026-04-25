@@ -14,7 +14,6 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-active-business-list',
     templateUrl: './active-business-list.component.html',
     styleUrls: ['./active-business-list.component.scss'],
-    standalone: true,
     imports: [SearchFilterComponent, DataTableComponent]
 })
 export class ActiveBusinessListComponent implements OnInit {

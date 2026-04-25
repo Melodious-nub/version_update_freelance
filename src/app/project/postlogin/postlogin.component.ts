@@ -6,8 +6,7 @@ import { HeaderComponent } from '../../layout/header/header.component';
     selector: 'app-postlogin',
     templateUrl: './postlogin.component.html',
     styleUrls: ['./postlogin.component.scss'],
-    standalone: true,
-    imports: [HeaderComponent],
+    imports: [HeaderComponent]
 })
 export class PostloginComponent implements OnInit {
  

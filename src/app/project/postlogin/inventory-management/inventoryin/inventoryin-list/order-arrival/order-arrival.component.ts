@@ -11,7 +11,6 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-inventoryin-order-arrival',
     templateUrl: './order-arrival.component.html',
     styleUrls: ['./order-arrival.component.scss'],
-    standalone: true,
     imports: [SearchFilterComponent, NgClass, ExtendedModule, InventoryinProductWiseComponent, InventoryinOrderWiseComponent]
 })
 export class InventoryinOrderArrivalComponent implements OnInit {

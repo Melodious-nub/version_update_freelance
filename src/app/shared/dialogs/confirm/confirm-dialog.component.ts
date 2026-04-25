@@ -7,13 +7,12 @@ import { MatButton } from '@angular/material/button';
     selector: 'confirm-dialog',
     templateUrl: './confirm-dialog.component.html',
     styleUrls: ['./confirm-dialog.component.scss'],
-    standalone: true,
     imports: [
-    MatDialogTitle,
-    MatDialogActions,
-    MatButton,
-    MatDialogClose
-],
+        MatDialogTitle,
+        MatDialogActions,
+        MatButton,
+        MatDialogClose
+    ]
 })
 export class ConfirmDialogComponent {
   okayButtonText='Yes'

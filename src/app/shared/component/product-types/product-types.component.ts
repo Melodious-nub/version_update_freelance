@@ -6,11 +6,10 @@ import { NgClass } from '@angular/common';
     selector: 'product-types',
     templateUrl: './product-types.component.html',
     styleUrls: ['./product-types.component.scss'],
-    standalone: true,
     imports: [
-    NgClass,
-    ExtendedModule
-],
+        NgClass,
+        ExtendedModule
+    ]
 })
 export class ProductTypesComponent implements OnInit {
   @Input() pageTitle: string = 'Product Type';

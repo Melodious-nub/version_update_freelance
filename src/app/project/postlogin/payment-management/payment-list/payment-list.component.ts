@@ -11,14 +11,13 @@ import { MatTabGroup, MatTab } from '@angular/material/tabs';
     selector: 'app-payment-list',
     templateUrl: './payment-list.component.html',
     styleUrls: ['./payment-list.component.scss'],
-    standalone: true,
     imports: [
         MatTabGroup,
         MatTab,
         SearchFilterComponent,
         DadyinButtonComponent,
         DataTableComponent,
-    ],
+    ]
 })
 export class PaymentListComponent implements OnInit {
   @Input('single') single = false;

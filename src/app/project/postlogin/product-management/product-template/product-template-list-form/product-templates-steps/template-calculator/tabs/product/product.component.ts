@@ -26,24 +26,23 @@ import { DadyinButtonComponent } from '../../../../../../../../../shared/widgets
     selector: 'app-product-calculator',
     templateUrl: './product.component.html',
     styleUrls: ['./product.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    DadyinButtonComponent,
-    NgStyle,
-    ExtendedModule,
-    NgClass,
-    ReactiveFormsModule,
-    MatAutocompleteTrigger,
-    MatAutocomplete,
-    MatOption,
-    MatIcon,
-    MatTooltip,
-    CdkDropList,
-    CdkDrag,
-    SortFormArrayPipe_1,
-    SortNamePipe
-],
+        FormsModule,
+        DadyinButtonComponent,
+        NgStyle,
+        ExtendedModule,
+        NgClass,
+        ReactiveFormsModule,
+        MatAutocompleteTrigger,
+        MatAutocomplete,
+        MatOption,
+        MatIcon,
+        MatTooltip,
+        CdkDropList,
+        CdkDrag,
+        SortFormArrayPipe_1,
+        SortNamePipe
+    ]
 })
 export class ProductComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

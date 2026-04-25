@@ -19,20 +19,19 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     selector: 'app-grid-view-product-card',
     templateUrl: './grid-view-product-card.component.html',
     styleUrls: ['./grid-view-product-card.component.scss'],
-    standalone: true,
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-    MatTooltipModule,
-    NgClass,
-    ExtendedModule,
-    NgbTooltip,
-    MatIconModule,
-    DadyinButtonComponent,
-    FormsModule,
-    DatePipe,
-    NumberFormatterPipe,
-    SortNumberPropertyPipe
-],
+        MatTooltipModule,
+        NgClass,
+        ExtendedModule,
+        NgbTooltip,
+        MatIconModule,
+        DadyinButtonComponent,
+        FormsModule,
+        DatePipe,
+        NumberFormatterPipe,
+        SortNumberPropertyPipe
+    ]
 })
 export class GridViewProductCardComponent implements OnInit {
   imgUrl = environment.imgUrl;

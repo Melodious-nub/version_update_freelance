@@ -23,18 +23,17 @@ import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/
     selector: 'app-vendor-customer-home',
     templateUrl: './vendor-customer-home.component.html',
     styleUrls: ['./vendor-customer-home.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    MatTooltip,
-    FormsModule,
-    ReactiveFormsModule,
-    DadyinTabComponent,
-    VendorDetailsComponent,
-    WarehouseDetailsComponent,
-    CustomerManagementComponent,
-    VendorManagementComponent
-],
+        DadyinButtonComponent,
+        MatTooltip,
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinTabComponent,
+        VendorDetailsComponent,
+        WarehouseDetailsComponent,
+        CustomerManagementComponent,
+        VendorManagementComponent
+    ]
 })
 export class AddEditVendorComponent implements OnInit {
   public currentMainIndex: number = 0;

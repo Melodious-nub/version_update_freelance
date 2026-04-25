@@ -7,13 +7,12 @@ import { Dir } from '@angular/cdk/bidi';
     selector: 'terms-dialog',
     templateUrl: './terms-dialog.component.html',
     styleUrls: ['./terms-dialog.component.scss'],
-    standalone: true,
     imports: [
         Dir,
         MatDialogActions,
         MatButton,
         MatDialogClose,
-    ],
+    ]
 })
 export class TermsDialogComponent implements OnInit {
   constructor(

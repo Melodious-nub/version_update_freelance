@@ -28,22 +28,21 @@ import { DadyinButtonComponent } from '../../../../shared/widgets/dadyin-button/
     selector: 'app-qc-product-detail',
     templateUrl: './qc-product-detail.component.html',
     styleUrls: ['./qc-product-detail.component.scss'],
-    standalone: true,
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-    DadyinButtonComponent,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelTitle,
-    MatIcon,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTooltip,
-    NgClass,
-    ExtendedModule,
-    NumberFormatterPipe,
-    SortNumberPropertyPipe
-],
+        DadyinButtonComponent,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelTitle,
+        MatIcon,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTooltip,
+        NgClass,
+        ExtendedModule,
+        NumberFormatterPipe,
+        SortNumberPropertyPipe
+    ]
 })
 export class QcProductDetailComponent implements OnInit {
   imgUrl = environment.imgUrl;

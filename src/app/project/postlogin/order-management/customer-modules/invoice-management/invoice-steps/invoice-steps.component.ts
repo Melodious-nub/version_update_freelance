@@ -23,18 +23,17 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     selector: 'app-invoice-steps',
     templateUrl: './invoice-steps.component.html',
     styleUrls: ['./invoice-steps.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    MatTooltip,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTabGroup,
-    MatTab,
-    CreateInvoiceComponent,
-    DatePipe
-],
+        DadyinButtonComponent,
+        MatTooltip,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabGroup,
+        MatTab,
+        CreateInvoiceComponent,
+        DatePipe
+    ]
 })
 export class InvoiceStepsComponent implements OnInit {
   // ************* Variable Declarations *************

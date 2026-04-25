@@ -10,7 +10,6 @@ import { MatButton } from '@angular/material/button';
     selector: 'app-select-product-type',
     templateUrl: './select-product-type.component.html',
     styleUrls: ['./select-product-type.component.scss'],
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, MatButton, MatDialogClose]
 })
 export class SelectProductTypeComponent implements OnInit {

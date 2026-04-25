@@ -16,15 +16,14 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-bill-list',
     templateUrl: './bill-list.component.html',
     styleUrls: ['./bill-list.component.scss'],
-    standalone: true,
     imports: [
-    SearchFilterComponent,
-    DadyinButtonComponent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    DataTableComponent
-],
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent
+    ]
 })
 export class BillListComponent implements OnInit {
   @Input('single') single = false;

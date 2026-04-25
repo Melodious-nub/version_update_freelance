@@ -21,18 +21,17 @@ import { MatIconModule } from '@angular/material/icon';
     selector: 'app-invite-dialog',
     templateUrl: './invite-dialog.component.html',
     styleUrls: ['./invite-dialog.component.scss'],
-    standalone: true,
     imports: [
-    MatIconModule,
-    DadyinButtonComponent,
-    MatTooltipModule,
-    MatExpansionModule,
-    FormsModule,
-    ReactiveFormsModule,
-    DadyinInputComponent,
-    NgSelectModule,
-    DadyinSelectComponent
-],
+        MatIconModule,
+        DadyinButtonComponent,
+        MatTooltipModule,
+        MatExpansionModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        NgSelectModule,
+        DadyinSelectComponent
+    ]
 })
 export class InviteDialogComponent implements OnInit, OnDestroy {
   public submitted = false;

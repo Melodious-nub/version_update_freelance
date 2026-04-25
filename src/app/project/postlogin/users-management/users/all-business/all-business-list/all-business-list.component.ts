@@ -18,12 +18,11 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-all-business-list',
     templateUrl: './all-business-list.component.html',
     styleUrls: ['./all-business-list.component.scss'],
-    standalone: true,
     imports: [
         SearchFilterComponent,
         DadyinButtonComponent,
         DataTableComponent,
-    ],
+    ]
 })
 export class AllBusinessListComponent implements OnInit {
   public allBusinessList: any[] = [];

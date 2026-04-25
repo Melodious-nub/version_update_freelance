@@ -21,17 +21,16 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     selector: 'app-quotation-steps',
     templateUrl: './receivedquotation-steps.component.html',
     styleUrls: ['./receivedquotation-steps.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    MatTooltip,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTabGroup,
-    MatTab,
-    ViewQuotationComponent,
-    DatePipe
-],
+        DadyinButtonComponent,
+        MatTooltip,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabGroup,
+        MatTab,
+        ViewQuotationComponent,
+        DatePipe
+    ]
 })
 export class ReceivedQuotationStepsComponent implements OnInit {
   // ************* Variable Declarations *************

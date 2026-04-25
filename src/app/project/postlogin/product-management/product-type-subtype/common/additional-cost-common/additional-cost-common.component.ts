@@ -13,15 +13,14 @@ import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autoc
     selector: 'app-additional-cost-common',
     templateUrl: './additional-cost-common.component.html',
     styleUrls: ['./additional-cost-common.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    MatAutocompleteTrigger,
-    ReactiveFormsModule,
-    DadyinButtonComponent,
-    MatAutocomplete,
-    MatOption
-],
+        FormsModule,
+        MatAutocompleteTrigger,
+        ReactiveFormsModule,
+        DadyinButtonComponent,
+        MatAutocomplete,
+        MatOption
+    ]
 })
 export class AdditionalCostCommonComponent implements OnInit {
   @Input() additionalCosts: UntypedFormArray;

@@ -11,13 +11,12 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     selector: 'add-raw-material',
     templateUrl: './add-raw-material-dialog.component.html',
     styleUrls: ['./add-raw-material-dialog.component.scss'],
-    standalone: true,
     imports: [
         MatDialogClose,
         FormsModule,
         ReactiveFormsModule,
         DadyinButtonComponent,
-    ],
+    ]
 })
 export class AddRawMaterialDialogComponent implements OnInit {
   productForm: UntypedFormGroup;

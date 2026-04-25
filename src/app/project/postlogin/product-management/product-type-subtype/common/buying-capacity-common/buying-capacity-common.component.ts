@@ -10,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
     selector: 'app-buying-capacity-common',
     templateUrl: './buying-capacity-common.component.html',
     styleUrls: ['./buying-capacity-common.component.scss'],
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule]
 })
 export class BuyingCapacityCommonComponent implements OnInit, OnChanges {

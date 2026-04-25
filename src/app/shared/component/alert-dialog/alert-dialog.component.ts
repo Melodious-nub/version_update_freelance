@@ -8,14 +8,13 @@ import { MatButton } from '@angular/material/button';
     selector: 'app-alert-dialog',
     templateUrl: './alert-dialog.component.html',
     styleUrls: ['./alert-dialog.component.scss'],
-    standalone: true,
     imports: [
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatButton,
-    MatDialogClose
-],
+        MatDialogTitle,
+        MatDialogContent,
+        MatDialogActions,
+        MatButton,
+        MatDialogClose
+    ]
 })
 export class AlertDialogComponent implements OnInit {
   public dialogData: Dialog.AlertDialogData = {

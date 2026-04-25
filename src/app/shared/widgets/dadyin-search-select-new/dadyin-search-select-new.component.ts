@@ -17,14 +17,13 @@ import { NgClass } from '@angular/common';
     templateUrl: './dadyin-search-select-new.component.html',
     styleUrls: ['./dadyin-search-select-new.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    standalone: true,
     imports: [
-    NgSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgClass,
-    ExtendedModule
-],
+        NgSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgClass,
+        ExtendedModule
+    ]
 })
 export class DadyinSearchSelectNewComponent implements OnInit {
   @Input() highlightItems: any = [];

@@ -15,14 +15,13 @@ import { NgClass } from '@angular/common';
     selector: 'app-create-process',
     templateUrl: './process.component.html',
     styleUrls: ['./process.component.scss'],
-    standalone: true,
     imports: [
-    NgClass,
-    ExtendedModule,
-    DadyinButtonComponent,
-    ProcessListComponent,
-    EditProcessComponent
-],
+        NgClass,
+        ExtendedModule,
+        DadyinButtonComponent,
+        ProcessListComponent,
+        EditProcessComponent
+    ]
 })
 export class ProcessComponent implements OnInit {
   // ************* Variable Declarations *************

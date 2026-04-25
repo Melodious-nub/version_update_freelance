@@ -8,7 +8,6 @@ import { DateScrollComponent } from '../../../../../../../shared/component/date-
     selector: 'app-inventoryin-product-wise',
     templateUrl: './product-wise.component.html',
     styleUrls: ['./product-wise.component.scss'],
-    standalone: true,
     imports: [DateScrollComponent, DataTableComponent]
 })
 export class InventoryinProductWiseComponent implements OnInit {

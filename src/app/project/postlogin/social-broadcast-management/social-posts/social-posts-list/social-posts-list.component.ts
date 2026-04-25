@@ -16,7 +16,6 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     selector: 'app-social-posts-list',
     templateUrl: './social-posts-list.component.html',
     styleUrls: ['./social-posts-list.component.scss'],
-    standalone: true,
     imports: [DadyinButtonComponent, SearchFilterComponent, FilterBoxComponent, DataTableComponent]
 })
 export class SocialPostsListComponent implements OnInit, OnChanges {

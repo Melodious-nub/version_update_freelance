@@ -9,13 +9,12 @@ import { MatIcon } from '@angular/material/icon';
     selector: 'search-filter',
     templateUrl: './search-filter.component.html',
     styleUrls: ['./search-filter.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatIcon,
-    MatIconButton
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatIcon,
+        MatIconButton
+    ]
 })
 export class SearchFilterComponent implements OnInit {
     @Input() searchControl =new UntypedFormControl();

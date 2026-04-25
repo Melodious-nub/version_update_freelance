@@ -12,7 +12,6 @@ import { NgClass } from '@angular/common';
     selector: 'app-category-dialog',
     templateUrl: './category-dialog.component.html',
     styleUrls: ['./category-dialog.component.scss'],
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NgClass, ExtendedModule, DadyinButtonComponent]
 })
 export class CategoryDialogComponent implements OnInit {

@@ -16,7 +16,6 @@ import { CreateAttributeComponent } from './create-attribute/create-attribute.co
     selector: 'app-attribute-steps',
     templateUrl: './attribute-steps.component.html',
     styleUrls: ['./attribute-steps.component.scss'],
-    standalone: true,
     imports: [CreateAttributeComponent]
 })
 export class AttributeSetStepsComponent implements OnInit {

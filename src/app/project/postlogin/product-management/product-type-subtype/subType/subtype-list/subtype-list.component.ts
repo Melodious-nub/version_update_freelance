@@ -11,12 +11,11 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-subtype-list',
     templateUrl: './subtype-list.component.html',
     styleUrls: ['./subtype-list.component.scss'],
-    standalone: true,
     imports: [
         SearchFilterComponent,
         DadyinButtonComponent,
         DataTableComponent,
-    ],
+    ]
 })
 export class SubtypeListComponent implements OnInit {
   public filterValue: string;

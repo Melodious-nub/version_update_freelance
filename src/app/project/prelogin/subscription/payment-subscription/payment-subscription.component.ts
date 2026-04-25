@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-payment-subscription',
     templateUrl: './payment-subscription.component.html',
     styleUrls: ['./payment-subscription.component.scss'],
-    standalone: true,
     imports: [FormsModule, DecimalPipe]
 })
 export class PaymentSubscriptionComponent implements OnInit, OnDestroy {

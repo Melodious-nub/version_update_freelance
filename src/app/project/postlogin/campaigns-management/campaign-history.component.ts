@@ -13,18 +13,17 @@ import { SpinnerOverlayComponent } from '../../../shared/component/spinner-overl
     selector: 'app-campaign-history',
     templateUrl: './campaign-history.component.html',
     styleUrls: ['./campaign-history.component.scss'],
-    standalone: true,
     imports: [
-    SpinnerOverlayComponent,
-    NgClass,
-    ExtendedModule,
-    MatAccordion,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelTitle,
-    TitleCasePipe,
-    DatePipe
-],
+        SpinnerOverlayComponent,
+        NgClass,
+        ExtendedModule,
+        MatAccordion,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelTitle,
+        TitleCasePipe,
+        DatePipe
+    ]
 })
 export class CampaignHistoryComponent implements OnInit, AfterViewInit {
   public campaignName: string = 'Campaign History';

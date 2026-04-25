@@ -18,7 +18,6 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     selector: 'app-addedit-subtype',
     templateUrl: './addedit-subtype.component.html',
     styleUrls: ['./addedit-subtype.component.scss'],
-    standalone: true,
     imports: [DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, AdditionalCostCommonComponent, BuyingCapacityCommonComponent]
 })
 export class AddeditSubtypeComponent implements OnInit {

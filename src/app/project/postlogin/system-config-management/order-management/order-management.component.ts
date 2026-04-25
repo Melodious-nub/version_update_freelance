@@ -11,16 +11,15 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     selector: 'app-order-management',
     templateUrl: './order-management.component.html',
     styleUrls: ['./order-management.component.scss'],
-    standalone: true,
     imports: [
-    MatTabGroup,
-    MatTab,
-    MatTabLabel,
-    MatBadge,
-    MatTabContent,
-    AttributeListComponent,
-    NotesListComponent
-],
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        AttributeListComponent,
+        NotesListComponent
+    ]
 })
 export class OrderManagementComponent implements OnInit {
   public currentMainIndex: number = 0;

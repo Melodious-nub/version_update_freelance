@@ -15,18 +15,17 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     selector: 'app-other-details',
     templateUrl: './other-details.component.html',
     styleUrls: ['./other-details.component.scss'],
-    standalone: true,
     imports: [
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelContent,
-    DadyinButtonComponent,
-    MatTooltip,
-    FormsModule,
-    ReactiveFormsModule,
-    DadyinSearchableSelectComponent,
-    DatePipe
-],
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelContent,
+        DadyinButtonComponent,
+        MatTooltip,
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinSearchableSelectComponent,
+        DatePipe
+    ]
 })
 export class OtherDetailsComponent implements OnInit {
 

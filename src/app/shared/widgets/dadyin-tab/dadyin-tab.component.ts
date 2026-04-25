@@ -10,7 +10,6 @@ import { MatTabGroup, MatTab } from '@angular/material/tabs';
     providers: [
         { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DadyinTabComponent), multi: true },
     ],
-    standalone: true,
     imports: [MatTabGroup, MatTab]
 })
 export class DadyinTabComponent implements OnInit {

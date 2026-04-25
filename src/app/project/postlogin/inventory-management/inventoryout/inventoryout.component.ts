@@ -5,8 +5,7 @@ import { RouterOutlet } from '@angular/router';
     selector: 'app-inventoryout',
     templateUrl: './inventoryout.component.html',
     styleUrls: ['./inventoryout.component.scss'],
-    standalone: true,
-    imports: [RouterOutlet],
+    imports: [RouterOutlet]
 })
 export class InventoryoutComponent implements OnInit {
   constructor() {}

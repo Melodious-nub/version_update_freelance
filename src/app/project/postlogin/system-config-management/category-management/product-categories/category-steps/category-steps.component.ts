@@ -15,7 +15,6 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
     selector: 'app-category-steps',
     templateUrl: './category-steps.component.html',
     styleUrls: ['./category-steps.component.scss'],
-    standalone: true,
     imports: [CreateCategoryComponent]
 })
 export class CategoryStepsComponent implements OnInit {

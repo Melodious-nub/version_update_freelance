@@ -13,20 +13,19 @@ import { NgClass } from '@angular/common';
     selector: 'app-customer-management',
     templateUrl: './customer-management.component.html',
     styleUrls: ['./customer-management.component.scss'],
-    standalone: true,
     imports: [
-    NgClass,
-    ExtendedModule,
-    MatTabGroup,
-    MatTab,
-    MatTabLabel,
-    MatBadge,
-    MatTabContent,
-    ReceivedRfqListComponent,
-    QuotationListComponent,
-    ReceivedPoListComponent,
-    InvoiceListComponent
-],
+        NgClass,
+        ExtendedModule,
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        ReceivedRfqListComponent,
+        QuotationListComponent,
+        ReceivedPoListComponent,
+        InvoiceListComponent
+    ]
 })
 export class CustomerManagementComponent implements OnInit {
   currentStepIndex = 0;

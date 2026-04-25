@@ -7,12 +7,11 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialogClose } from '@angular/material
     selector: 'app-create-toggle-field-modal',
     templateUrl: './create-toggle-field-modal.component.html',
     styleUrls: ['./create-toggle-field-modal.component.scss'],
-    standalone: true,
     imports: [
-    MatDialogClose,
-    FormsModule,
-    ReactiveFormsModule
-],
+        MatDialogClose,
+        FormsModule,
+        ReactiveFormsModule
+    ]
 })
 export class CreateToggleFieldModalComponent implements OnInit {
   attributeValueExpression = this.fb.array([]);

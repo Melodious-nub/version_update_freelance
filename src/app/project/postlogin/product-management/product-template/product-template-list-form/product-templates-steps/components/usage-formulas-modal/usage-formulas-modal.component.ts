@@ -5,7 +5,6 @@ import { MatDialogClose } from '@angular/material/dialog';
     selector: 'app-usage-formulas-modal',
     templateUrl: './usage-formulas-modal.component.html',
     styleUrls: ['./usage-formulas-modal.component.scss'],
-    standalone: true,
     imports: [MatDialogClose]
 })
 export class UsageFormulasModalComponent implements OnInit {

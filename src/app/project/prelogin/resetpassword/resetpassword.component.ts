@@ -14,14 +14,13 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     selector: 'app-reset-password',
     templateUrl: './resetpassword.component.html',
     styleUrls: ['./resetpassword.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    DadyinInputComponent,
-    MatError,
-    DadyinButtonComponent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        MatError,
+        DadyinButtonComponent
+    ]
 })
 export class ResetPasswordComponent implements OnInit {
   public resetPasswordGroup: UntypedFormGroup;

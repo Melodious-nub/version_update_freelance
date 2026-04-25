@@ -12,16 +12,15 @@ import { NgStyle, NgClass } from '@angular/common';
     selector: 'app-process-waste-modal',
     templateUrl: './process-waste-modal.component.html',
     styleUrls: ['./process-waste-modal.component.scss'],
-    standalone: true,
     imports: [
-    MatDialogClose,
-    FormsModule,
-    ReactiveFormsModule,
-    NgStyle,
-    ExtendedModule,
-    NgClass,
-    DadyinButtonComponent
-],
+        MatDialogClose,
+        FormsModule,
+        ReactiveFormsModule,
+        NgStyle,
+        ExtendedModule,
+        NgClass,
+        DadyinButtonComponent
+    ]
 })
 export class ProcessWasteModalComponent implements OnInit {
   calculateOptionForm: UntypedFormGroup = this.formsService.calculateOptionsForm();

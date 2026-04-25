@@ -15,13 +15,12 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     selector: 'app-signup',
     templateUrl: './signup.component.html',
     styleUrls: ['./signup.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    DadyinInputComponent,
-    DadyinButtonComponent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        DadyinButtonComponent
+    ]
 })
 export class SignupComponent implements OnInit {
   public signupGroup: UntypedFormGroup;

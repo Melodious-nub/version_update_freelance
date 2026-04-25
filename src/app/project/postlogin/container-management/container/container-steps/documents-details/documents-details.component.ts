@@ -18,17 +18,16 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'app-documents-details',
     templateUrl: './documents-details.component.html',
     styleUrls: ['./documents-details.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    DadyinButtonComponent,
-    ReactiveFormsModule,
-    MatIcon
-],
+        FormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinButtonComponent,
+        ReactiveFormsModule,
+        MatIcon
+    ]
 })
 export class DocumentsDetailsComponent implements OnInit {
   imgUrl=environment.imgUrl

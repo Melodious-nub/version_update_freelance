@@ -16,12 +16,11 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     selector: 'app-production',
     templateUrl: './production.component.html',
     styleUrls: ['./production.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    MatPaginator,
-    DatePipe
-],
+        DadyinButtonComponent,
+        MatPaginator,
+        DatePipe
+    ]
 })
 export class ProductionComponent implements OnInit {
   productionDetails: any;

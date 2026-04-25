@@ -23,18 +23,17 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     selector: 'app-quotation-steps',
     templateUrl: './quotation-steps.component.html',
     styleUrls: ['./quotation-steps.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    MatTooltip,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTabGroup,
-    MatTab,
-    CreateQuotationComponent,
-    DatePipe
-],
+        DadyinButtonComponent,
+        MatTooltip,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabGroup,
+        MatTab,
+        CreateQuotationComponent,
+        DatePipe
+    ]
 })
 export class QuotationStepsComponent implements OnInit {
   // ************* Variable Declarations *************

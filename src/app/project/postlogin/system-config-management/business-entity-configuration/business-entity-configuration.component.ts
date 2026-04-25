@@ -26,25 +26,24 @@ import { NgStyle, NgClass } from '@angular/common';
     selector: 'app-business-entity-configuration',
     templateUrl: './business-entity-configuration.component.html',
     styleUrls: ['./business-entity-configuration.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    DadyinButtonComponent,
-    NgStyle,
-    ExtendedModule,
-    NgClass,
-    MatAccordion,
-    MatExpansionPanel,
-    MatTooltip,
-    MatAutocompleteTrigger,
-    MatAutocomplete,
-    MatOption,
-    MatIcon,
-    CdkDropList,
-    CdkDrag,
-    SortFormArrayPipe_1
-],
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinButtonComponent,
+        NgStyle,
+        ExtendedModule,
+        NgClass,
+        MatAccordion,
+        MatExpansionPanel,
+        MatTooltip,
+        MatAutocompleteTrigger,
+        MatAutocomplete,
+        MatOption,
+        MatIcon,
+        CdkDropList,
+        CdkDrag,
+        SortFormArrayPipe_1
+    ]
 })
 export class BusinessEntityConfigurationComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

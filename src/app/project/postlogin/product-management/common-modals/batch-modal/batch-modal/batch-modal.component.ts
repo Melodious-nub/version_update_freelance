@@ -20,7 +20,6 @@ import { CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
     selector: 'app-batch-modal',
     templateUrl: './batch-modal.component.html',
     styleUrls: ['./batch-modal.component.scss'],
-    standalone: true,
     imports: [CdkDrag, CdkDragHandle, DadyinButtonComponent, MatTooltip, MatExpansionPanel, FormsModule, ReactiveFormsModule, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinSelectComponent, MatTabGroup, MatTab, MatExpansionPanelContent, NgClass, ExtendedModule, DatePipe, NumberFormatterPipe]
 })
 export class BatchModalComponent implements OnInit {

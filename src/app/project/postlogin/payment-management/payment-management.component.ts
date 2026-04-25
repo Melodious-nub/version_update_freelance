@@ -19,24 +19,23 @@ import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dad
     selector: 'app-payment-management',
     templateUrl: './payment-management.component.html',
     styleUrls: ['./payment-management.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTabGroup,
-    MatTab,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    DadyinSearchableSelectComponent,
-    NgClass,
-    ExtendedModule,
-    CurrencyPipe,
-    DatePipe
-],
+        DadyinButtonComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabGroup,
+        MatTab,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinSearchableSelectComponent,
+        NgClass,
+        ExtendedModule,
+        CurrencyPipe,
+        DatePipe
+    ]
 })
 export class PaymentManagementComponent implements OnInit {
   currentMainIndex = 0;

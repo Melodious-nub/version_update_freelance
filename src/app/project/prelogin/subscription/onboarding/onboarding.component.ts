@@ -16,7 +16,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
     selector: 'app-onboarding',
     templateUrl: './onboarding.component.html',
     styleUrls: ['./onboarding.component.scss'],
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NgSelectModule, DadyinSelectComponent, DadyinInputComponent, DadyinMapAutoCompleteComponent, DadyinButtonComponent]
 })
 export class OnboardingComponent implements OnInit {

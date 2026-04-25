@@ -10,15 +10,14 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     selector: 'app-category-management',
     templateUrl: './category-management.component.html',
     styleUrls: ['./category-management.component.scss'],
-    standalone: true,
     imports: [
-    MatTabGroup,
-    MatTab,
-    MatTabLabel,
-    MatBadge,
-    MatTabContent,
-    CategoryListComponent
-],
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        CategoryListComponent
+    ]
 })
 export class CategoryManagementComponent implements OnInit {
   public currentMainIndex: number = 0;

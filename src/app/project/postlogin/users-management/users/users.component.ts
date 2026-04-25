@@ -11,7 +11,6 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     selector: 'app-users',
     templateUrl: './users.component.html',
     styleUrls: ['./users.component.scss'],
-    standalone: true,
     imports: [MatTabGroup, MatTab, MatTabLabel, MatBadge, MatTabContent, AllBusinessListComponent, ActiveBusinessListComponent, InactiveBusinessListComponent]
 })
 export class UsersComponent implements OnInit {

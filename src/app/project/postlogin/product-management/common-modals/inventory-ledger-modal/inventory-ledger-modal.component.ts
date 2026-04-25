@@ -12,7 +12,6 @@ import { DatePipe } from '@angular/common';
     selector: 'app-inventory-ledger-modal',
     templateUrl: './inventory-ledger-modal.component.html',
     styleUrls: ['./inventory-ledger-modal.component.scss'],
-    standalone: true,
     imports: [MatDialogClose, MatPaginator, DatePipe]
 })
 export class InventoryLedgerModalComponent implements OnInit {

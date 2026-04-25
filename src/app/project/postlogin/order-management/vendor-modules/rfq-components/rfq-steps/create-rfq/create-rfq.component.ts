@@ -31,20 +31,19 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'app-create-rfq',
     templateUrl: './create-rfq.component.html',
     styleUrls: ['./create-rfq.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    DadyinSearchableSelectComponent,
-    DadyinButtonComponent,
-    DadyinSelectComponent,
-    DadyinInputComponent,
-    OrderTransactionPackagesComponent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+        DadyinSelectComponent,
+        DadyinInputComponent,
+        OrderTransactionPackagesComponent
+    ]
 })
 export class CreateRfqComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

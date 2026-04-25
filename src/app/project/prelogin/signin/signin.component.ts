@@ -17,14 +17,13 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     selector: 'app-signin',
     templateUrl: './signin.component.html',
     styleUrls: ['./signin.component.scss'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,
         DadyinInputComponent,
         DadyinCheckBoxComponent,
         DadyinButtonComponent,
-    ],
+    ]
 })
 export class SigninComponent implements OnInit {
 

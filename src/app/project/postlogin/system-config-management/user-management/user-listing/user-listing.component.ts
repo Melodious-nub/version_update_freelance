@@ -17,17 +17,16 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     selector: 'app-user-listing',
     templateUrl: './user-listing.component.html',
     styleUrls: ['./user-listing.component.scss'],
-    standalone: true,
     imports: [
-    MatTabGroup,
-    MatTab,
-    MatTabLabel,
-    MatBadge,
-    MatTabContent,
-    SearchFilterComponent,
-    DadyinButtonComponent,
-    DataTableComponent
-],
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent
+    ]
 })
 export class UserListingComponent implements OnInit {
   public userListing: any[];

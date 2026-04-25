@@ -13,13 +13,12 @@ import { DadyinInputComponent } from '../../../../shared/widgets/dadyin-input/da
     selector: 'app-signup-otp',
     templateUrl: './signup-otp.component.html',
     styleUrls: ['./signup-otp.component.scss'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,
         DadyinInputComponent,
         DadyinButtonComponent,
-    ],
+    ]
 })
 export class SignupOTPComponent implements OnInit {
 

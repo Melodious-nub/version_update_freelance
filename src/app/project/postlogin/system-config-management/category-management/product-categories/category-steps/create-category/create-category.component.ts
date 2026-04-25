@@ -16,7 +16,6 @@ import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyi
     selector: 'app-create-category',
     templateUrl: './create-category.component.html',
     styleUrls: ['./create-category.component.scss'],
-    standalone: true,
     imports: [
         DadyinButtonComponent,
         FormsModule,
@@ -27,7 +26,7 @@ import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyi
         DadyinSearchableSelectComponent,
         DadyinSearchSelectNewComponent,
         DataTableComponent,
-    ],
+    ]
 })
 export class CreateCategoryComponent implements OnInit {
   public pageConfig = null;

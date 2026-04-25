@@ -15,16 +15,15 @@ import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyi
     selector: 'app-create-attribute',
     templateUrl: './create-attribute.component.html',
     styleUrls: ['./create-attribute.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    NgSelectModule
-],
+        DadyinButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        NgSelectModule
+    ]
 })
 export class CreateAttributeComponent implements OnInit {
   listViewAttribute = null

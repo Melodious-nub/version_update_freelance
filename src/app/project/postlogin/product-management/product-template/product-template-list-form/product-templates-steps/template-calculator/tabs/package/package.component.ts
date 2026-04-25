@@ -29,23 +29,22 @@ import { NgStyle, NgClass } from '@angular/common';
     selector: 'app-package',
     templateUrl: './package.component.html',
     styleUrls: ['./package.component.scss'],
-    standalone: true,
     imports: [
-    NgStyle,
-    ExtendedModule,
-    FormsModule,
-    NgClass,
-    DadyinButtonComponent,
-    ReactiveFormsModule,
-    MatAutocompleteTrigger,
-    MatAutocomplete,
-    MatOption,
-    MatIcon,
-    MatTooltip,
-    CdkDropList,
-    CdkDrag,
-    SortFormArrayPipe
-],
+        NgStyle,
+        ExtendedModule,
+        FormsModule,
+        NgClass,
+        DadyinButtonComponent,
+        ReactiveFormsModule,
+        MatAutocompleteTrigger,
+        MatAutocomplete,
+        MatOption,
+        MatIcon,
+        MatTooltip,
+        CdkDropList,
+        CdkDrag,
+        SortFormArrayPipe
+    ]
 })
 export class PackageComponent implements OnInit {
   excelView = [false, false, false, false, false, false, false, false];

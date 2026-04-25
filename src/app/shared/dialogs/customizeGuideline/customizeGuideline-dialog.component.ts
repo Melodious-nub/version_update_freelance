@@ -7,13 +7,12 @@ import { Dir } from '@angular/cdk/bidi';
     selector: 'customizeGuideline-dialog',
     templateUrl: './customizeGuideline-dialog.component.html',
     styleUrls: ['./customizeGuideline-dialog.component.scss'],
-    standalone: true,
     imports: [
         Dir,
         MatDialogActions,
         MatButton,
         MatDialogClose,
-    ],
+    ]
 })
 export class CustomizeGuidelineDialogComponent implements OnInit {
   constructor(

@@ -15,7 +15,6 @@ export interface DialogData {
     selector: 'app-payment-option-dialog',
     templateUrl: './payment-option-dialog.component.html',
     styleUrls: ['./payment-option-dialog.component.scss'],
-    standalone: true,
     imports: [FormsModule, DadyinButtonComponent, MatDialogClose]
 })
 export class PaymentOptionDialogComponent implements OnInit {

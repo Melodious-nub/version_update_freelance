@@ -5,7 +5,6 @@ import { RouterOutlet } from '@angular/router';
     selector: 'app-users-management',
     templateUrl: './users-management.component.html',
     styleUrls: ['./users-management.component.scss'],
-    standalone: true,
     imports: [RouterOutlet]
 })
 export class UsersManagementComponent implements OnInit {

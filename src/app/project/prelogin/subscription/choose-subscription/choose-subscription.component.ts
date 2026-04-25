@@ -11,7 +11,6 @@ import { NgClass } from '@angular/common';
     selector: 'app-choose-subscription',
     templateUrl: './choose-subscription.component.html',
     styleUrls: ['./choose-subscription.component.scss'],
-    standalone: true,
     imports: [NgClass, ExtendedModule, DadyinButtonComponent]
 })
 export class ChooseSubscriptionComponent implements OnInit {

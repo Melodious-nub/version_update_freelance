@@ -8,11 +8,10 @@ import { NgClass } from '@angular/common';
     selector: 'app-dadyin-slider',
     templateUrl: './dadyin-slider.component.html',
     styleUrls: ['./dadyin-slider.component.scss'],
-    standalone: true,
     imports: [
-    NgClass,
-    ExtendedModule
-],
+        NgClass,
+        ExtendedModule
+    ]
 })
 export class DadyinSliderComponent implements OnInit {
   imgUrl = environment.imgUrl;

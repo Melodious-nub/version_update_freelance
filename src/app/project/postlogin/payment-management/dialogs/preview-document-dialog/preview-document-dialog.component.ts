@@ -8,7 +8,6 @@ import { MatButton } from '@angular/material/button';
     selector: 'app-preview-document-dialog',
     templateUrl: './preview-document-dialog.component.html',
     styleUrls: ['./preview-document-dialog.component.scss'],
-    standalone: true,
     imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatButton, DadyinButtonComponent, MatDialogClose]
 })
 export class PreviewDocumentDialogComponent implements OnInit {

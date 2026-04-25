@@ -24,23 +24,22 @@ import { MatSidenavContainer, MatSidenav, MatSidenavContent } from '@angular/mat
     selector: 'header-layout',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    standalone: true,
     imports: [
-    MatSidenavContainer,
-    MatSidenav,
-    SideBarComponent,
-    MatSidenavContent,
-    ExtendedModule,
-    NgClass,
-    RouterLinkActive,
-    RouterLink,
-    MatBadge,
-    DadyinButtonComponent,
-    MatTooltip,
-    RouterOutlet,
-    CurrencyPipe,
-    DatePipe
-],
+        MatSidenavContainer,
+        MatSidenav,
+        SideBarComponent,
+        MatSidenavContent,
+        ExtendedModule,
+        NgClass,
+        RouterLinkActive,
+        RouterLink,
+        MatBadge,
+        DadyinButtonComponent,
+        MatTooltip,
+        RouterOutlet,
+        CurrencyPipe,
+        DatePipe
+    ]
 })
 export class HeaderComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

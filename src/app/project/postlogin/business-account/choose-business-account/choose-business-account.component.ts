@@ -21,13 +21,12 @@ import { NgClass } from '@angular/common';
     selector: 'app-choose-business-account',
     templateUrl: './choose-business-account.html',
     styleUrls: ['./choose-business-account.scss'],
-    standalone: true,
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-    NgClass,
-    ExtendedModule,
-    DadyinButtonComponent
-],
+        NgClass,
+        ExtendedModule,
+        DadyinButtonComponent
+    ]
 })
 export class ChooseBusinessAccountComponent implements OnInit, AfterViewInit {
   public imgUrl = environment.imgUrl;

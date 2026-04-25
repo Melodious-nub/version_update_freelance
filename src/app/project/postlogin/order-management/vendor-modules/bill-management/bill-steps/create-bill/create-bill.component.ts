@@ -35,20 +35,19 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'app-create-bill',
     templateUrl: './create-bill.component.html',
     styleUrls: ['./create-bill.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    DadyinSearchableSelectComponent,
-    DadyinButtonComponent,
-    DadyinSelectComponent,
-    DadyinInputComponent,
-    OrderTransactionPackagesComponent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+        DadyinSelectComponent,
+        DadyinInputComponent,
+        OrderTransactionPackagesComponent
+    ]
 })
 export class CreateBillComponent implements OnInit {
   currentBusinessAccount: any;

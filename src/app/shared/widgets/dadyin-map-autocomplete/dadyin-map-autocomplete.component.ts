@@ -19,11 +19,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     selector: 'dadyin-map-autocomplete',
     templateUrl: './dadyin-map-autocomplete.component.html',
     styleUrls: ['./dadyin-map-autocomplete.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule
-],
+        FormsModule,
+        ReactiveFormsModule
+    ]
 })
 export class DadyinMapAutoCompleteComponent implements OnInit, AfterViewInit {
   @Input() height: string | null = null;

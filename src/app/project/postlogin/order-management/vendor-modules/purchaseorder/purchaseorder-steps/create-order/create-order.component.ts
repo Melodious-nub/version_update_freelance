@@ -35,23 +35,22 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'app-create-order',
     templateUrl: './create-order.component.html',
     styleUrls: ['./create-order.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    DadyinSearchableSelectComponent,
-    DadyinButtonComponent,
-    DadyinSelectComponent,
-    DadyinInputComponent,
-    MatAutocompleteTrigger,
-    MatAutocomplete,
-    MatOption,
-    OrderTransactionPackagesComponent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+        DadyinSelectComponent,
+        DadyinInputComponent,
+        MatAutocompleteTrigger,
+        MatAutocomplete,
+        MatOption,
+        OrderTransactionPackagesComponent
+    ]
 })
 export class CreateOrderComponent implements OnInit {
   currentBusinessAccount: any;

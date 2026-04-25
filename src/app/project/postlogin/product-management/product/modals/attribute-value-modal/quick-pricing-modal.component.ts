@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     selector: 'app-quick-pricing-modal',
     templateUrl: './quick-pricing-modal.component.html',
     styleUrls: ['./quick-pricing-modal.component.scss'],
-    standalone: true,
     imports: [MatDialogClose, FormsModule, ReactiveFormsModule, DadyinButtonComponent]
 })
 export class QuickPricingModalComponent implements OnInit {

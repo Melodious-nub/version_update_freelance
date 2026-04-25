@@ -8,7 +8,6 @@ import { DadyinButtonComponent } from '../../../../../../../../shared/widgets/da
     selector: 'app-create-dropdown-field-modal',
     templateUrl: './create-dropdown-field-modal.component.html',
     styleUrls: ['./create-dropdown-field-modal.component.scss'],
-    standalone: true,
     imports: [MatDialogClose, FormsModule, ReactiveFormsModule, DadyinButtonComponent]
 })
 export class CreateDropdownFieldModalComponent implements OnInit {

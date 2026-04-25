@@ -14,7 +14,6 @@ import { NgClass } from '@angular/common';
     selector: 'app-calculate-error-modal',
     templateUrl: './calculate-error-modal.component.html',
     styleUrls: ['./calculate-error-modal.component.scss'],
-    standalone: true,
     imports: [MatDialogClose, FormsModule, ReactiveFormsModule, NgClass, ExtendedModule, MatIcon, SortFormArrayPipe]
 })
 export class CalculateErrorModalComponent implements OnInit {

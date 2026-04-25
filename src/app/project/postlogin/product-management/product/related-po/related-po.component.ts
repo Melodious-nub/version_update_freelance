@@ -14,17 +14,16 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     selector: 'app-related-po',
     templateUrl: './related-po.component.html',
     styleUrls: ['./related-po.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelContent,
-    DadyinButtonComponent,
-    MatTooltip,
-    NumberFormatterPipe
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelContent,
+        DadyinButtonComponent,
+        MatTooltip,
+        NumberFormatterPipe
+    ]
 })
 export class RelatedPoComponent implements OnInit {
   relatedPoDetails: any;

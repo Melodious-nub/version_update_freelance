@@ -20,24 +20,23 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'app-expenses-details',
     templateUrl: './expenses-details.component.html',
     styleUrls: ['./expenses-details.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    DadyinInputComponent,
-    DadyinButtonComponent,
-    MatAutocompleteTrigger,
-    NgClass,
-    ExtendedModule,
-    MatAutocomplete,
-    MatOption,
-    NgStyle,
-    SlicePipe
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinInputComponent,
+        DadyinButtonComponent,
+        MatAutocompleteTrigger,
+        NgClass,
+        ExtendedModule,
+        MatAutocomplete,
+        MatOption,
+        NgStyle,
+        SlicePipe
+    ]
 })
 export class ExpensesDetailsComponent implements OnInit {
   @Input() isExport: any;

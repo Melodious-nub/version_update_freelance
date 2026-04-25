@@ -41,7 +41,6 @@ type ProductImageTile = {
     selector: 'app-social-post-detail',
     templateUrl: './social-post-detail.component.html',
     styleUrls: ['./social-post-detail.component.scss'],
-    standalone: true,
     imports: [SpinnerOverlayComponent, NgClass, ExtendedModule, DadyinButtonComponent, MatTabGroup, MatTab, MatTabLabel, MatTabContent, FormsModule, ReactiveFormsModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescription, DadyinInputComponent, MatTooltip, DadyinSearchSelectNewComponent, CKEditorModule, MatIcon, DadyinSelectComponent, TimePickerComponent, NgTemplateOutlet, TitleCasePipe, DatePipe]
 })
 export class SocialPostDetailComponent implements OnInit {

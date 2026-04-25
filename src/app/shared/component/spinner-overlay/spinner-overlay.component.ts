@@ -2,15 +2,14 @@ import { Component } from '@angular/core';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
-  selector: 'app-spinner-overlay',
-  standalone: true,
-  imports: [MatProgressSpinner],
-  template: `
+    selector: 'app-spinner-overlay',
+    imports: [MatProgressSpinner],
+    template: `
     <div class="spinner-wrapper">
       <mat-spinner diameter="50"></mat-spinner>
     </div>
   `,
-  styles: [`
+    styles: [`
     .spinner-wrapper {
       position: fixed;
       top: 0;

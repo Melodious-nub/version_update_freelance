@@ -11,12 +11,11 @@ import { MatButton } from '@angular/material/button';
     selector: 'qcmobile-dialog',
     templateUrl: './qcmobile-dialog.component.html',
     styleUrls: ['./qcmobile-dialog.component.scss'],
-    standalone: true,
     imports: [
-    MatDialogTitle,
-    MatDialogActions,
-    MatButton
-],
+        MatDialogTitle,
+        MatDialogActions,
+        MatButton
+    ]
 })
 export class QcmobileDialogComponent {
   constructor(

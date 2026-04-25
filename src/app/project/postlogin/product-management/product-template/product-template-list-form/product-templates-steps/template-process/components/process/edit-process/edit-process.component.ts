@@ -24,18 +24,17 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     selector: 'app-edit-process',
     templateUrl: './edit-process.component.html',
     styleUrls: ['./edit-process.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    DadyinSearchableSelectComponent,
-    DadyinButtonComponent,
-    MatExpansionPanelContent,
-    NgClass,
-    ExtendedModule
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+        MatExpansionPanelContent,
+        NgClass,
+        ExtendedModule
+    ]
 })
 export class EditProcessComponent implements OnInit {
   @Input() process: any;

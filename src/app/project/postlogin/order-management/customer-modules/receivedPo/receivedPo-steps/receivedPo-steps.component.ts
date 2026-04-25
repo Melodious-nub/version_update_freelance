@@ -26,19 +26,18 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     selector: 'app-receivedPo-steps',
     templateUrl: './receivedPo-steps.component.html',
     styleUrls: ['./receivedPo-steps.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    MatSlideToggle,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTooltip,
-    CdkDrag,
-    MatTabGroup,
-    MatTab,
-    CreateOrderComponent,
-    DatePipe
-],
+        DadyinButtonComponent,
+        MatSlideToggle,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTooltip,
+        CdkDrag,
+        MatTabGroup,
+        MatTab,
+        CreateOrderComponent,
+        DatePipe
+    ]
 })
 export class ReceivedPoStepsComponent implements OnInit {
   // ************* Variable Declarations *************

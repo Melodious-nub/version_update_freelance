@@ -12,7 +12,6 @@ import { NgStyle } from '@angular/common';
     selector: 'app-attribute-value-modal',
     templateUrl: './attribute-value-modal.component.html',
     styleUrls: ['./attribute-value-modal.component.scss'],
-    standalone: true,
     imports: [MatDialogClose, CdkDropList, NgStyle, ExtendedModule, CdkDrag, MatIcon, SortFormArrayPipe_1]
 })
 export class AttributeValueModalComponent implements OnInit {

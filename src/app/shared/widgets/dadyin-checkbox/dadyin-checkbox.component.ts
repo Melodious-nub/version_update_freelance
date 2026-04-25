@@ -23,8 +23,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
             multi: true,
         },
     ],
-    standalone: true,
-    imports: [MatCheckbox, FormsModule],
+    imports: [MatCheckbox, FormsModule]
 })
 export class DadyinCheckBoxComponent implements OnInit, AfterContentChecked {
   @Input() ischecked = false;

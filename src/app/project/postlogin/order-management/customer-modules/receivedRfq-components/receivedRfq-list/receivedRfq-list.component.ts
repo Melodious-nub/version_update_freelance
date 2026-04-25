@@ -15,14 +15,13 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-received-rfq-list',
     templateUrl: './receivedRfq-list.component.html',
     styleUrls: ['./receivedRfq-list.component.scss'],
-    standalone: true,
     imports: [
-    SearchFilterComponent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    DataTableComponent
-],
+        SearchFilterComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent
+    ]
 })
 export class ReceivedRfqListComponent implements OnInit {
   uomSetting = false;

@@ -27,19 +27,18 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'app-view-quotation',
     templateUrl: './view-quotation.component.html',
     styleUrls: ['./view-quotation.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    DadyinSelectComponent,
-    DadyinButtonComponent,
-    DadyinInputComponent,
-    OrderTransactionPackagesComponent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinSelectComponent,
+        DadyinButtonComponent,
+        DadyinInputComponent,
+        OrderTransactionPackagesComponent
+    ]
 })
 export class ViewQuotationComponent implements OnInit {
     public buyingTypeList: any[] = [

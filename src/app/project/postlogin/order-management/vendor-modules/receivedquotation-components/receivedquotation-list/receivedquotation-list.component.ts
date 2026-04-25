@@ -16,14 +16,13 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-receivedquotation-list',
     templateUrl: './receivedquotation-list.component.html',
     styleUrls: ['./receivedquotation-list.component.scss'],
-    standalone: true,
     imports: [
-    SearchFilterComponent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    DataTableComponent
-],
+        SearchFilterComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent
+    ]
 })
 export class ReceivedquotationListComponent implements OnInit {
   @Input('single') single = false;

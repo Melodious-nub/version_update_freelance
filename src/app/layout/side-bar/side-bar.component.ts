@@ -21,14 +21,13 @@ import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
     selector: 'sidebar-layout',
     templateUrl: './side-bar.component.html',
     styleUrls: ['./side-bar.component.scss'],
-    standalone: true,
     imports: [
-    ExtendedModule,
-    NgStyle,
-    NgClass,
-    MatTooltip,
-    DadyinButtonComponent
-],
+        ExtendedModule,
+        NgStyle,
+        NgClass,
+        MatTooltip,
+        DadyinButtonComponent
+    ]
 })
 export class SideBarComponent implements OnInit {
   @Input() isExpanded = true;

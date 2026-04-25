@@ -41,24 +41,23 @@ type ProductImageTile = {
     selector: 'app-create-campaign',
     templateUrl: './create-campaign.component.html',
     styleUrls: ['./create-campaign.component.scss'],
-    standalone: true,
     imports: [
-    SpinnerOverlayComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    DadyinInputComponent,
-    MatTooltip,
-    DadyinSelectComponent,
-    TimePickerComponent,
-    DadyinSearchableSelectComponent,
-    DadyinSearchSelectNewComponent,
-    NgClass,
-    ExtendedModule,
-    CKEditorModule
-],
+        SpinnerOverlayComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        DadyinInputComponent,
+        MatTooltip,
+        DadyinSelectComponent,
+        TimePickerComponent,
+        DadyinSearchableSelectComponent,
+        DadyinSearchSelectNewComponent,
+        NgClass,
+        ExtendedModule,
+        CKEditorModule
+    ]
 })
 export class CreateCampaignComponent implements OnInit {
   public Editor: any = (ClassicEditor as any).default || ClassicEditor;

@@ -13,7 +13,6 @@ import { CommonService } from 'src/app/service/common.service';
     providers: [
         { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => TimePickerComponent), multi: true },
     ],
-    standalone: true,
     imports: []
 })
 export class TimePickerComponent implements OnInit, ControlValueAccessor, AfterContentChecked, OnChanges {

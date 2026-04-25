@@ -15,16 +15,15 @@ import { ProcessComponent } from './components/process/process.component';
     selector: 'template-process',
     templateUrl: './template-process.component.html',
     styleUrls: ['./template-process.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    ProcessComponent,
-    RawMaterialProcessComponent,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelContent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        ProcessComponent,
+        RawMaterialProcessComponent,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelContent
+    ]
 })
 export class TemplateProcessComponent implements OnInit {
   // ************* Variable Declarations *************

@@ -13,20 +13,19 @@ import { NgClass } from '@angular/common';
     selector: 'app-vendor-management',
     templateUrl: './vendor-management.component.html',
     styleUrls: ['./vendor-management.component.scss'],
-    standalone: true,
     imports: [
-    NgClass,
-    ExtendedModule,
-    MatTabGroup,
-    MatTab,
-    MatTabLabel,
-    MatBadge,
-    MatTabContent,
-    RfqListComponent,
-    ReceivedquotationListComponent,
-    PurchaseorderListComponent,
-    BillListComponent
-],
+        NgClass,
+        ExtendedModule,
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        RfqListComponent,
+        ReceivedquotationListComponent,
+        PurchaseorderListComponent,
+        BillListComponent
+    ]
 })
 export class VendorManagementComponent implements OnInit {
   @Input('single') single = false;

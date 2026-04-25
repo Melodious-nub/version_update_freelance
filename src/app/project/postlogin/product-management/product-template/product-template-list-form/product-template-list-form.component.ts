@@ -25,21 +25,20 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     selector: 'app-product-template-list-form',
     templateUrl: './product-template-list-form.component.html',
     styleUrls: ['./product-template-list-form.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    NgClass,
-    ExtendedModule,
-    MatTooltip,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTabGroup,
-    MatTab,
-    TemplateInfoComponent,
-    MatTabLabel,
-    TemplateProcessComponent,
-    TemplateCalculatorComponent
-],
+        DadyinButtonComponent,
+        NgClass,
+        ExtendedModule,
+        MatTooltip,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabGroup,
+        MatTab,
+        TemplateInfoComponent,
+        MatTabLabel,
+        TemplateProcessComponent,
+        TemplateCalculatorComponent
+    ]
 })
 export class ProductTemplateListFormComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

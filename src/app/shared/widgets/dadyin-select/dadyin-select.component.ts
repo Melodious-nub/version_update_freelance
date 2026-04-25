@@ -16,14 +16,13 @@ import { NgClass, NgStyle } from '@angular/common';
             multi: true
         }
     ],
-    standalone: true,
     imports: [
-    FormsModule,
-    NgClass,
-    ExtendedModule,
-    NgStyle,
-    ReactiveFormsModule
-],
+        FormsModule,
+        NgClass,
+        ExtendedModule,
+        NgStyle,
+        ReactiveFormsModule
+    ]
 })
 export class DadyinSelectComponent implements ControlValueAccessor, OnInit {
     @Input() height: string | null = null;

@@ -15,15 +15,14 @@ import { NgStyle } from '@angular/common';
     selector: 'app-three-scene',
     templateUrl: './three-scene.component.html',
     styleUrls: ['./three-scene.component.scss'],
-    standalone: true,
     imports: [
-    CdkDropList,
-    CdkDrag,
-    NgbTooltip,
-    NgStyle,
-    ExtendedModule,
-    NumberFormatterPipe
-],
+        CdkDropList,
+        CdkDrag,
+        NgbTooltip,
+        NgStyle,
+        ExtendedModule,
+        NumberFormatterPipe
+    ]
 })
 export class ThreeSceneComponent implements OnInit {
   @Input() containerData: any; // Input to dynamically pass JSON data

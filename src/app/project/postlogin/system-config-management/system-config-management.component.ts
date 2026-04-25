@@ -7,8 +7,7 @@ import { RouterLink } from '@angular/router';
     selector: 'app-system-config-management',
     templateUrl: './system-config-management.component.html',
     styleUrls: ['./system-config-management.component.scss'],
-    standalone: true,
-    imports: [RouterLink, DadyinButtonComponent],
+    imports: [RouterLink, DadyinButtonComponent]
 })
 export class SystemConfigManagementComponent implements OnInit {
  

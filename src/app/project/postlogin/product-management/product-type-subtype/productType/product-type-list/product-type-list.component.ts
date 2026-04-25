@@ -14,18 +14,17 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     selector: 'app-product-type-list',
     templateUrl: './product-type-list.component.html',
     styleUrls: ['./product-type-list.component.scss'],
-    standalone: true,
     imports: [
-    MatTabGroup,
-    MatTab,
-    MatTabLabel,
-    MatBadge,
-    MatTabContent,
-    SearchFilterComponent,
-    DadyinButtonComponent,
-    DataTableComponent,
-    SubtypeListComponent
-],
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent,
+        SubtypeListComponent
+    ]
 })
 export class ProductTypeListComponent implements OnInit {
   public ProductTypeList: any;

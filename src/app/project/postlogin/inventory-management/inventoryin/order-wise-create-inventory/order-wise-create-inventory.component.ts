@@ -18,19 +18,18 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     selector: 'app-order-wise-create-inventory',
     templateUrl: './order-wise-create-inventory.component.html',
     styleUrls: ['./order-wise-create-inventory.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    MatIcon,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    FormsModule,
-    ReactiveFormsModule,
-    DadyinInputComponent,
-    DadyinSelectComponent
-],
+        DadyinButtonComponent,
+        MatIcon,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        DadyinSelectComponent
+    ]
 })
 export class OrderWiseCreateInventoryComponent implements OnInit {
   id = '';

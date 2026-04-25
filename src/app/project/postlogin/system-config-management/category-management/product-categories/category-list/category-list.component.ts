@@ -11,13 +11,12 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-category-list',
     templateUrl: './category-list.component.html',
     styleUrls: ['./category-list.component.scss'],
-    standalone: true,
     imports: [
         RouterLink,
         SearchFilterComponent,
         DadyinButtonComponent,
         DataTableComponent,
-    ],
+    ]
 })
 export class CategoryListComponent implements OnInit {
   productCategories: any[] = [];

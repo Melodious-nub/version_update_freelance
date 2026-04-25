@@ -21,22 +21,21 @@ import { NgClass, DecimalPipe } from '@angular/common';
     selector: 'app-order-transaction-packages',
     templateUrl: './order-transaction-packages.component.html',
     styleUrls: ['./order-transaction-packages.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    MatAutocompleteTrigger,
-    MatAutocomplete,
-    MatOption,
-    NgClass,
-    ExtendedModule,
-    NgbTooltip,
-    MatTooltip,
-    DadyinSelectComponent,
-    DecimalPipe,
-    NumberFormatterPipe
-],
+        DadyinButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatAutocompleteTrigger,
+        MatAutocomplete,
+        MatOption,
+        NgClass,
+        ExtendedModule,
+        NgbTooltip,
+        MatTooltip,
+        DadyinSelectComponent,
+        DecimalPipe,
+        NumberFormatterPipe
+    ]
 })
 export class OrderTransactionPackagesComponent implements OnInit {
   @Input() tierPriceView: boolean = false;

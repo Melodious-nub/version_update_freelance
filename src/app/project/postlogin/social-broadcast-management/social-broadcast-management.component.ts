@@ -5,7 +5,6 @@ import { Router, RouterOutlet } from '@angular/router';
     selector: 'app-social-broadcast-management',
     templateUrl: './social-broadcast-management.component.html',
     styleUrls: ['./social-broadcast-management.component.scss'],
-    standalone: true,
     imports: [RouterOutlet]
 })
 export class SocialBroadcastManagementComponent implements OnInit {

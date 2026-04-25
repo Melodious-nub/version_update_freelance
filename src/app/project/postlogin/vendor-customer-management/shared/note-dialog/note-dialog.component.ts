@@ -20,17 +20,16 @@ export type NoteReminderDialogType = 'note' | 'reminder';
     selector: 'app-note-dialog',
     templateUrl: './note-dialog.component.html',
     styleUrls: ['./note-dialog.component.scss'],
-    standalone: true,
     imports: [
-    MatIconModule,
-    DadyinButtonComponent,
-    MatTooltipModule,
-    MatExpansionModule,
-    FormsModule,
-    ReactiveFormsModule,
-    SlicePipe,
-    DatePipe
-],
+        MatIconModule,
+        DadyinButtonComponent,
+        MatTooltipModule,
+        MatExpansionModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SlicePipe,
+        DatePipe
+    ]
 })
 export class NoteDialogComponent implements OnInit {
   noteForm = this.vendorFormService.noteForm();

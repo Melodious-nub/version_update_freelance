@@ -25,18 +25,17 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     selector: 'app-purchaseorder-steps',
     templateUrl: './purchaseorder-steps.component.html',
     styleUrls: ['./purchaseorder-steps.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    MatTooltip,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTabGroup,
-    MatTab,
-    CreateOrderComponent,
-    PaymentComponent,
-    DatePipe
-],
+        DadyinButtonComponent,
+        MatTooltip,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabGroup,
+        MatTab,
+        CreateOrderComponent,
+        PaymentComponent,
+        DatePipe
+    ]
 })
 export class PurchaseorderStepsComponent implements OnInit {
   // ************* Variable Declarations *************

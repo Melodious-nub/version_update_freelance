@@ -18,15 +18,14 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-purchaseorder-list',
     templateUrl: './purchaseorder-list.component.html',
     styleUrls: ['./purchaseorder-list.component.scss'],
-    standalone: true,
     imports: [
-    SearchFilterComponent,
-    DadyinButtonComponent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    DataTableComponent
-],
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent
+    ]
 })
 export class PurchaseorderListComponent implements OnInit {
   @Input('single') single = false;

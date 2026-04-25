@@ -34,23 +34,22 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'app-create-quotation',
     templateUrl: './create-quotation.component.html',
     styleUrls: ['./create-quotation.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    DadyinSearchableSelectComponent,
-    DadyinButtonComponent,
-    DadyinSelectComponent,
-    DadyinInputComponent,
-    MatAutocompleteTrigger,
-    MatAutocomplete,
-    MatOption,
-    OrderTransactionPackagesComponent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+        DadyinSelectComponent,
+        DadyinInputComponent,
+        MatAutocompleteTrigger,
+        MatAutocomplete,
+        MatOption,
+        OrderTransactionPackagesComponent
+    ]
 })
 export class CreateQuotationComponent implements OnInit, AfterViewInit {
   tierPriceView = false;

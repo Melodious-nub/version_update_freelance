@@ -12,14 +12,13 @@ import { MatIcon } from '@angular/material/icon';
     selector: 'app-inventory-assigning-modal',
     templateUrl: './inventory-assigning-modal.component.html',
     styleUrls: ['./inventory-assigning-modal.component.scss'],
-    standalone: true,
     imports: [
-    MatDialogClose,
-    MatIcon,
-    DadyinButtonComponent,
-    FormsModule,
-    DataTableComponent
-],
+        MatDialogClose,
+        MatIcon,
+        DadyinButtonComponent,
+        FormsModule,
+        DataTableComponent
+    ]
 })
 export class InventoryAssigningModalComponent implements OnInit {
   inventoryDetailsData: any;

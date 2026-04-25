@@ -15,7 +15,6 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     selector: 'app-create-note',
     templateUrl: './create-note.component.html',
     styleUrls: ['./create-note.component.scss'],
-    standalone: true,
     imports: [
         DadyinButtonComponent,
         FormsModule,
@@ -25,7 +24,7 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
         MatExpansionPanelDescription,
         DadyinInputComponent,
         NgSelectModule,
-    ],
+    ]
 })
 export class CreateNoteComponent implements OnInit {
 

@@ -9,12 +9,11 @@ import { DadyinSearchableSelectComponent } from '../../../../../../shared/widget
     selector: 'app-customer-dialog',
     templateUrl: './customer-dialog.component.html',
     styleUrls: ['./customer-dialog.component.scss'],
-    standalone: true,
     imports: [
         MatDialogClose,
         DadyinSearchableSelectComponent,
         DadyinButtonComponent,
-    ],
+    ]
 })
 export class CustomerDialogComponent implements OnInit {
  

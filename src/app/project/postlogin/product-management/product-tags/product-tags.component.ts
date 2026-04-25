@@ -5,8 +5,7 @@ import { RouterOutlet } from '@angular/router';
     selector: 'app-product-tags',
     templateUrl: './product-tags.component.html',
     styleUrls: ['./product-tags.component.scss'],
-    standalone: true,
-    imports: [RouterOutlet],
+    imports: [RouterOutlet]
 })
 export class ProductTagsComponent implements OnInit {
   constructor() { }

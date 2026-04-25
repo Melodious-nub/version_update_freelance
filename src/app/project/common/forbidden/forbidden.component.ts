@@ -8,7 +8,6 @@ import { MatButton } from '@angular/material/button';
     selector: 'app-forbidden',
     templateUrl: './forbidden.component.html',
     styleUrls: ['./forbidden.component.scss'],
-    standalone: true,
     imports: [MatButton, MatIcon]
 })
 export class ForbiddenComponent implements OnInit {

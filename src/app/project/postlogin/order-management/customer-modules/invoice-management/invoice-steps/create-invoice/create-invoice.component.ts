@@ -35,20 +35,19 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'app-create-invoice',
     templateUrl: './create-invoice.component.html',
     styleUrls: ['./create-invoice.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    DadyinSearchableSelectComponent,
-    DadyinButtonComponent,
-    DadyinSelectComponent,
-    DadyinInputComponent,
-    OrderTransactionPackagesComponent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinSearchableSelectComponent,
+        DadyinButtonComponent,
+        DadyinSelectComponent,
+        DadyinInputComponent,
+        OrderTransactionPackagesComponent
+    ]
 })
 export class CreateInvoiceComponent implements OnInit {
   currentBusinessAccount: any;

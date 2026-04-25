@@ -33,23 +33,22 @@ import { NgClass, SlicePipe } from '@angular/common';
     selector: 'app-vendor-customer-management',
     templateUrl: './vendor-customer-management.component.html',
     styleUrls: ['./vendor-customer-management.component.scss'],
-    standalone: true,
     imports: [
-    MatTabGroup,
-    MatTab,
-    MatTabLabel,
-    MatTabContent,
-    SearchFilterComponent,
-    DadyinButtonComponent,
-    DataTableComponent_1,
-    LeadFilterBoxComponent,
-    NgSelectModule,
-    FormsModule,
-    MatTooltip,
-    NgClass,
-    ExtendedModule,
-    SlicePipe
-],
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatTabContent,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent_1,
+        LeadFilterBoxComponent,
+        NgSelectModule,
+        FormsModule,
+        MatTooltip,
+        NgClass,
+        ExtendedModule,
+        SlicePipe
+    ]
 })
 export class VendorCustomerManagementComponent implements OnInit {
   @ViewChild(DataTableComponent) dataTable!: DataTableComponent;

@@ -28,19 +28,18 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'app-view-rfq',
     templateUrl: './view-rfq.component.html',
     styleUrls: ['./view-rfq.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    DadyinInputComponent,
-    DadyinButtonComponent,
-    DadyinSelectComponent,
-    OrderTransactionPackagesComponent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinInputComponent,
+        DadyinButtonComponent,
+        DadyinSelectComponent,
+        OrderTransactionPackagesComponent
+    ]
 })
 export class ViewRfqComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

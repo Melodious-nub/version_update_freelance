@@ -16,15 +16,14 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-quotation-list',
     templateUrl: './quotation-list.component.html',
     styleUrls: ['./quotation-list.component.scss'],
-    standalone: true,
     imports: [
-    SearchFilterComponent,
-    DadyinButtonComponent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    DataTableComponent
-],
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent
+    ]
 })
 export class QuotationListComponent implements OnInit {
   @Input() single = false;

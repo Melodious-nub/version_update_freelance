@@ -14,7 +14,6 @@ import { MatIcon } from '@angular/material/icon';
     selector: 'app-filter-box',
     templateUrl: './filter-box.component.html',
     styleUrls: ['./filter-box.component.scss'],
-    standalone: true,
     imports: [MatIcon, DadyinButtonComponent, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatExpansionPanelDescription, MatCheckbox],
     providers: [DatePipe]
 })

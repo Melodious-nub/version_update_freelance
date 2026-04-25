@@ -14,17 +14,16 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     selector: 'app-user-details',
     templateUrl: './user-details.component.html',
     styleUrls: ['./user-details.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatExpansionPanelContent,
-    DadyinInputComponent
-],
+        DadyinButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatExpansionPanelContent,
+        DadyinInputComponent
+    ]
 })
 export class UserDetailsComponent implements OnInit {
   public currentMainIndex: number = 0;

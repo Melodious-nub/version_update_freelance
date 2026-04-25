@@ -19,13 +19,12 @@ import { DadyinButtonComponent } from '../../../shared/widgets/dadyin-button/dad
     selector: 'app-landing',
     templateUrl: './landing.component.html',
     styleUrls: ['./landing.component.scss'],
-    standalone: true,
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-    RouterLink,
-    DadyinButtonComponent,
-    MatIcon
-],
+        RouterLink,
+        DadyinButtonComponent,
+        MatIcon
+    ]
 })
 export class LandingComponent implements OnInit, AfterViewInit {
   @ViewChild('swiperLanding') swiperLanding?: ElementRef;

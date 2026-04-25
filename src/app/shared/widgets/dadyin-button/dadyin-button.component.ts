@@ -11,7 +11,6 @@ import { MatTooltip } from '@angular/material/tooltip';
     providers: [
         { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DadyinButtonComponent), multi: true },
     ],
-    standalone: true,
     imports: [MatTooltip, MatIcon]
 })
 export class DadyinButtonComponent implements OnInit {

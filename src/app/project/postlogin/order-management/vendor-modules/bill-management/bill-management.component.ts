@@ -5,8 +5,7 @@ import { Router, RouterOutlet } from '@angular/router';
     selector: 'app-bill-management',
     templateUrl: './bill-management.component.html',
     styleUrls: ['./bill-management.component.scss'],
-    standalone: true,
-    imports: [RouterOutlet],
+    imports: [RouterOutlet]
 })
 export class BillManagementComponent implements OnInit {
   constructor(public router: Router) {}

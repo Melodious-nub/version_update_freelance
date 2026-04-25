@@ -9,11 +9,10 @@ import { DateScrollComponent } from '../../../../../../../shared/component/date-
     selector: 'app-inventoryout-order-wise',
     templateUrl: './order-wise.component.html',
     styleUrls: ['./order-wise.component.scss'],
-    standalone: true,
     imports: [
-    DateScrollComponent,
-    DataTableComponent
-],
+        DateScrollComponent,
+        DataTableComponent
+    ]
 })
 export class InventoryoutOrderWiseComponent implements OnInit {
   list = [];

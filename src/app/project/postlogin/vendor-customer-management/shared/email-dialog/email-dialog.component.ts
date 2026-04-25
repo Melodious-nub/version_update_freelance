@@ -12,12 +12,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     selector: 'app-email-dialog',
     templateUrl: './email-dialog.component.html',
     styleUrls: ['./email-dialog.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    DadyinButtonComponent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinButtonComponent
+    ]
 })
 export class EmailDialogComponent implements OnInit {
   emailForm = this.vendorFormService.emailForm();

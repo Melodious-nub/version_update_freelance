@@ -11,13 +11,12 @@ import { DadyinInputComponent } from '../../../shared/widgets/dadyin-input/dadyi
     selector: 'app-signup-otp',
     templateUrl: './forgotpassword.component.html',
     styleUrls: ['./forgotpassword.component.scss'],
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,
         DadyinInputComponent,
         DadyinButtonComponent,
-    ],
+    ]
 })
 export class ForgotPasswordComponent implements OnInit {
   private genericResponse: GenricResponse;

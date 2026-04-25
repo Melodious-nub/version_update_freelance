@@ -8,12 +8,11 @@ import { NgClass, TitleCasePipe } from '@angular/common';
     selector: 'app-social-callback',
     templateUrl: './social-callback.component.html',
     styleUrls: ['./social-callback.component.scss'],
-    standalone: true,
     imports: [
-    NgClass,
-    ExtendedModule,
-    TitleCasePipe
-],
+        NgClass,
+        ExtendedModule,
+        TitleCasePipe
+    ]
 })
 export class SocialCallbackComponent implements OnInit, OnDestroy {
   provider = 'N/A';

@@ -14,7 +14,6 @@ import { NgClass, NgStyle } from '@angular/common';
     selector: 'data-table-editable',
     templateUrl: './data-table-editable.component.html',
     styleUrls: ['./data-table-editable.component.scss'],
-    standalone: true,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, NgClass, ExtendedModule, NgStyle, MatCellDef, MatCell, FormsModule, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator]
 })
 export class DataTableEditableComponent implements OnInit {

@@ -25,16 +25,15 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     selector: 'app-pricecompare-dialog',
     templateUrl: './pricecompare-dialog.component.html',
     styleUrls: ['./pricecompare-dialog.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    NgClass,
-    ExtendedModule,
-    NgbTooltip,
-    MatAutocompleteTrigger,
-    MatAutocomplete,
-    MatOption
-],
+        DadyinButtonComponent,
+        NgClass,
+        ExtendedModule,
+        NgbTooltip,
+        MatAutocompleteTrigger,
+        MatAutocomplete,
+        MatOption
+    ]
 })
 export class PricecompareDialogComponent implements OnInit {
   public imgUrl = environment.imgUrl;

@@ -18,17 +18,16 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     selector: 'app-inventoryout-list',
     templateUrl: './inventoryout-list.component.html',
     styleUrls: ['./inventoryout-list.component.scss'],
-    standalone: true,
     imports: [
-    MatTabGroup,
-    MatTab,
-    MatTabLabel,
-    MatBadge,
-    MatTabContent,
-    InventoryoutOrderArrivalComponent,
-    InventoryoutAddedToInventoryComponent,
-    InventoryoutContainerInComponent
-],
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        InventoryoutOrderArrivalComponent,
+        InventoryoutAddedToInventoryComponent,
+        InventoryoutContainerInComponent
+    ]
 })
 export class InventoryoutListComponent implements OnInit {
 

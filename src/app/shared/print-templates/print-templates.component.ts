@@ -7,7 +7,6 @@ import { UnloadingSheetComponent } from './unloading-sheet/unloading-sheet.compo
     selector: 'app-print-templates',
     templateUrl: './print-templates.component.html',
     styleUrls: ['./print-templates.component.scss'],
-    standalone: true,
     imports: [UnloadingSheetComponent]
 })
 export class PrintTemplatesComponent implements OnInit {

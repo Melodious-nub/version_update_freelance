@@ -28,12 +28,11 @@ export interface BusinessBulkExtractResponse {
     selector: 'app-bulk-add-dialog',
     templateUrl: './bulk-add-dialog.component.html',
     styleUrls: ['./bulk-add-dialog.component.scss'],
-    standalone: true,
     imports: [
-    MatIconModule,
-    DadyinButtonComponent,
-    MatExpansionModule
-],
+        MatIconModule,
+        DadyinButtonComponent,
+        MatExpansionModule
+    ]
 })
 export class BulkAddDialogComponent implements OnInit {
   businessListExpanded = true;

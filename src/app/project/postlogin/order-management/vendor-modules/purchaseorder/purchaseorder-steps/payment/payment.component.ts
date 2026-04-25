@@ -30,15 +30,14 @@ import { NgClass, DatePipe } from '@angular/common';
     selector: 'app-payment',
     templateUrl: './payment.component.html',
     styleUrls: ['./payment.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    DadyinButtonComponent,
-    NgClass,
-    ExtendedModule,
-    DatePipe
-],
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinButtonComponent,
+        NgClass,
+        ExtendedModule,
+        DatePipe
+    ]
 })
 export class PaymentComponent implements OnInit {
   showPayNowButton = false;

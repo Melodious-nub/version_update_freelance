@@ -39,13 +39,12 @@ interface CampaignApiItem {
     selector: 'app-campaigns-management',
     templateUrl: './campaigns-management.component.html',
     styleUrls: ['./campaigns-management.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    SearchFilterComponent,
-    CampaignFilterBoxComponent,
-    DataTableComponent
-],
+        DadyinButtonComponent,
+        SearchFilterComponent,
+        CampaignFilterBoxComponent,
+        DataTableComponent
+    ]
 })
 export class CampaignsManagementComponent implements OnInit {
   searchControl = new UntypedFormControl('');

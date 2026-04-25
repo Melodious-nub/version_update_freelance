@@ -13,12 +13,11 @@ import { DadyinButtonComponent } from '../../../../../shared/widgets/dadyin-butt
     selector: 'app-raw-material-price-modal',
     templateUrl: './raw-material-price-modal.component.html',
     styleUrls: ['./raw-material-price-modal.component.scss'],
-    standalone: true,
     imports: [
-    MatDialogClose,
-    FormsModule,
-    DadyinButtonComponent
-],
+        MatDialogClose,
+        FormsModule,
+        DadyinButtonComponent
+    ]
 })
 export class RawMaterialPriceModalComponent implements OnInit {
   prompt = null;

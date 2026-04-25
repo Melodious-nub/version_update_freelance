@@ -11,13 +11,12 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-notes-list',
     templateUrl: './notes-list.component.html',
     styleUrls: ['./notes-list.component.scss'],
-    standalone: true,
     imports: [
         RouterLink,
         SearchFilterComponent,
         DadyinButtonComponent,
         DataTableComponent,
-    ],
+    ]
 })
 export class NotesListComponent implements OnInit {
   notesList: any[] = [];

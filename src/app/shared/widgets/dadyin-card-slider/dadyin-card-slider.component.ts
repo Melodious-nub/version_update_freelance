@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
     selector: 'app-dadyin-card-slider',
     templateUrl: './dadyin-card-slider.component.html',
     styleUrls: ['./dadyin-card-slider.component.scss'],
-    standalone: true,
     imports: []
 })
 export class DadyinCardSliderComponent implements OnInit {

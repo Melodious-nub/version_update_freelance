@@ -11,7 +11,6 @@ import { DadyinButtonComponent } from '../../widgets/dadyin-button/dadyin-button
     selector: 'app-rate-dialog',
     templateUrl: './rate-dialog.component.html',
     styleUrls: ['./rate-dialog.component.scss'],
-    standalone: true,
     imports: [DadyinButtonComponent, MatIcon]
 })
 export class RateDialogComponent implements OnInit {

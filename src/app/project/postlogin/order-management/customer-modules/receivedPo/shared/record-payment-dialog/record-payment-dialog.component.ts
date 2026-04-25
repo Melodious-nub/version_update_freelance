@@ -14,12 +14,11 @@ import { DadyinButtonComponent } from '../../../../../../../shared/widgets/dadyi
     selector: 'app-record-payment-dialog',
     templateUrl: './record-payment-dialog.component.html',
     styleUrls: ['./record-payment-dialog.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    DadyinButtonComponent
-],
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinButtonComponent
+    ]
 })
 export class RecordPaymentDialog implements OnInit {
   paymentRecordForm: UntypedFormGroup;

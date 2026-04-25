@@ -41,19 +41,18 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
     selector: 'app-edit-calculator',
     templateUrl: './edit-calculator.component.html',
     styleUrls: ['./edit-calculator.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    MatInput,
-    MatSelect,
-    MatOption,
-    DadyinButtonComponent,
-    MatButton,
-    GridModule
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        MatSelect,
+        MatOption,
+        DadyinButtonComponent,
+        MatButton,
+        GridModule
+    ]
 })
 export class EditCalculatorComponent implements OnInit {
   private _processCalculatorForm: UntypedFormGroup;

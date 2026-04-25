@@ -8,8 +8,7 @@ import { ToastrService } from 'ngx-toastr';
     selector: 'app-user-management',
     templateUrl: './user-management.component.html',
     styleUrls: ['./user-management.component.scss'],
-    standalone: true,
-    imports: [RouterOutlet],
+    imports: [RouterOutlet]
 })
 export class UsermanagementComponent implements OnInit {
   public currentMainIndex: number = 0;

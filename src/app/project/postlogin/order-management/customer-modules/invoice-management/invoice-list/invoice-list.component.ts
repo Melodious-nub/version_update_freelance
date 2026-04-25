@@ -16,15 +16,14 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-invoice-list',
     templateUrl: './invoice-list.component.html',
     styleUrls: ['./invoice-list.component.scss'],
-    standalone: true,
     imports: [
-    SearchFilterComponent,
-    DadyinButtonComponent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    DataTableComponent
-],
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent
+    ]
 })
 export class InvoiceListComponent implements OnInit {
   @Input('single') single = false;

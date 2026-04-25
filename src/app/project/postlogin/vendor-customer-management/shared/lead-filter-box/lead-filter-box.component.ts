@@ -19,16 +19,15 @@ import { MatIcon } from '@angular/material/icon';
     selector: 'app-lead-filter-box',
     templateUrl: './lead-filter-box.component.html',
     styleUrls: ['./lead-filter-box.component.scss'],
-    standalone: true,
     imports: [
-    MatIcon,
-    FormsModule,
-    ReactiveFormsModule,
-    NgSelectModule,
-    MatTooltip,
-    DadyinButtonComponent,
-    SlicePipe
-],
+        MatIcon,
+        FormsModule,
+        ReactiveFormsModule,
+        NgSelectModule,
+        MatTooltip,
+        DadyinButtonComponent,
+        SlicePipe
+    ]
 })
 export class LeadFilterBoxComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

@@ -16,18 +16,17 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelContent } 
     selector: 'app-raw-material-process',
     templateUrl: './raw-material-process.component.html',
     styleUrls: ['./raw-material-process.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    DadyinButtonComponent,
-    DadyinSearchableSelectComponent,
-    MatExpansionPanelContent,
-    NgClass,
-    ExtendedModule
-],
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        DadyinButtonComponent,
+        DadyinSearchableSelectComponent,
+        MatExpansionPanelContent,
+        NgClass,
+        ExtendedModule
+    ]
 })
 export class RawMaterialProcessComponent implements OnInit {
   @Input() templateForm: any;

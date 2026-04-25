@@ -17,15 +17,14 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-rfq-list',
     templateUrl: './rfq-list.component.html',
     styleUrls: ['./rfq-list.component.scss'],
-    standalone: true,
     imports: [
-    SearchFilterComponent,
-    DadyinButtonComponent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    DataTableComponent
-],
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent
+    ]
 })
 export class RfqListComponent implements OnInit {
   @Input('single') single = false;

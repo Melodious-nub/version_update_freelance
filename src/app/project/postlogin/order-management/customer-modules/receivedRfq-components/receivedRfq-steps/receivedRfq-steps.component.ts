@@ -22,18 +22,17 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     selector: 'app-rfq-steps',
     templateUrl: './receivedRfq-steps.component.html',
     styleUrls: ['./receivedRfq-steps.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    MatTooltip,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTabGroup,
-    MatTab,
-    ViewRfqComponent,
-    DatePipe
-],
+        DadyinButtonComponent,
+        MatTooltip,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabGroup,
+        MatTab,
+        ViewRfqComponent,
+        DatePipe
+    ]
 })
 export class ReceivedRfqStepsComponent implements OnInit {
   // ************* Variable Declarations *************

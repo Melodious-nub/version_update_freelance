@@ -8,13 +8,12 @@ import { MatIconButton } from '@angular/material/button';
     selector: 'app-payment-dialog',
     templateUrl: './payment-dialog.component.html',
     styleUrls: ['./payment-dialog.component.scss'],
-    standalone: true,
     imports: [
         MatDialogTitle,
         MatIconButton,
         DadyinButtonComponent,
         DecimalPipe,
-    ],
+    ]
 })
 export class PaymentDialogComponent {
   paymentAmount: number;

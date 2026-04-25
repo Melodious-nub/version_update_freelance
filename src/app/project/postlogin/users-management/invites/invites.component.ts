@@ -12,16 +12,15 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     selector: 'app-invites',
     templateUrl: './invites.component.html',
     styleUrls: ['./invites.component.scss'],
-    standalone: true,
     imports: [
-    MatTabGroup,
-    MatTab,
-    MatTabLabel,
-    MatTabContent,
-    SearchFilterComponent,
-    DadyinButtonComponent,
-    DataTableComponent
-],
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatTabContent,
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        DataTableComponent
+    ]
 })
 export class InvitesComponent implements OnInit {
   currentTabIndex = 0;

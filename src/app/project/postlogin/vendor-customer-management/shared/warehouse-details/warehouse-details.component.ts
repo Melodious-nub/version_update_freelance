@@ -20,19 +20,18 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'app-warehouse-details',
     templateUrl: './warehouse-details.component.html',
     styleUrls: ['./warehouse-details.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    MatTooltip,
-    DadyinButtonComponent,
-    ReactiveFormsModule,
-    NgClass,
-    ExtendedModule,
-    NgSelectModule
-],
+        FormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        MatTooltip,
+        DadyinButtonComponent,
+        ReactiveFormsModule,
+        NgClass,
+        ExtendedModule,
+        NgSelectModule
+    ]
 })
 export class WarehouseDetailsComponent implements OnInit {
   @Input('vendorForm') vendorForm: any;

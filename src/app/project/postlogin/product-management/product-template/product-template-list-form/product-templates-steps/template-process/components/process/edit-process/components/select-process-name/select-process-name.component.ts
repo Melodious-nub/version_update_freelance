@@ -7,10 +7,9 @@ import { FormsModule } from '@angular/forms';
     selector: 'select-process-name',
     templateUrl: './select-process-name.component.html',
     styleUrls: ['./select-process-name.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule
-],
+        FormsModule
+    ]
 })
 export class SelectProcessNameComponent implements OnInit {
   @Input() isShowTextBox: boolean = true;

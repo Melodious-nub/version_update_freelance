@@ -20,24 +20,23 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelDescriptio
     selector: 'app-container-info',
     templateUrl: './container-info.component.html',
     styleUrls: ['./container-info.component.scss'],
-    standalone: true,
     imports: [
-    FormsModule,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelDescription,
-    NgStyle,
-    ExtendedModule,
-    MatExpansionPanelContent,
-    ReactiveFormsModule,
-    DadyinInputComponent,
-    DadyinSelectComponent,
-    DadyinButtonComponent,
-    MatAutocompleteTrigger,
-    MatAutocomplete,
-    MatOption,
-    SlicePipe
-],
+        FormsModule,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelDescription,
+        NgStyle,
+        ExtendedModule,
+        MatExpansionPanelContent,
+        ReactiveFormsModule,
+        DadyinInputComponent,
+        DadyinSelectComponent,
+        DadyinButtonComponent,
+        MatAutocompleteTrigger,
+        MatAutocomplete,
+        MatOption,
+        SlicePipe
+    ]
 })
 export class ContainerInfoComponent implements OnInit {
   @Input() isExport: any;

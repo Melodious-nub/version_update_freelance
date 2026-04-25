@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-unloading-sheet',
     templateUrl: './unloading-sheet.component.html',
     styleUrls: ['./unloading-sheet.component.scss'],
-    standalone: true,
     imports: [FormsModule]
 })
 export class UnloadingSheetComponent implements OnInit {

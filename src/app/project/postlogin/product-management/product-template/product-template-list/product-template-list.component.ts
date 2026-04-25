@@ -19,20 +19,19 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     selector: 'app-product-template-list',
     templateUrl: './product-template-list.component.html',
     styleUrls: ['./product-template-list.component.scss'],
-    standalone: true,
     imports: [
-    MatTabGroup,
-    MatTab,
-    MatTabLabel,
-    MatBadge,
-    MatTabContent,
-    SearchFilterComponent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    DadyinButtonComponent,
-    DataTableComponent
-],
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        SearchFilterComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DadyinButtonComponent,
+        DataTableComponent
+    ]
 })
 export class ProductTemplateListComponent implements OnInit {
   @HostListener('document:click', ['$event']) onDocumentClick(event) {

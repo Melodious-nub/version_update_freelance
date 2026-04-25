@@ -29,25 +29,24 @@ import { MatTabGroup, MatTab, MatTabLabel, MatTabContent } from '@angular/materi
     selector: 'app-product-list-all',
     templateUrl: './product-list-all.component.html',
     styleUrls: ['./product-list-all.component.scss'],
-    standalone: true,
     imports: [
-    MatTabGroup,
-    MatTab,
-    MatTabLabel,
-    MatBadge,
-    MatTabContent,
-    SearchFilterComponent,
-    FilterBoxComponent,
-    DadyinButtonComponent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    DataTableComponent,
-    NgClass,
-    ExtendedModule,
-    DecimalPipe,
-    DatePipe
-],
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatBadge,
+        MatTabContent,
+        SearchFilterComponent,
+        FilterBoxComponent,
+        DadyinButtonComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent,
+        NgClass,
+        ExtendedModule,
+        DecimalPipe,
+        DatePipe
+    ]
 })
 export class ProductListAllComponent implements OnInit, OnDestroy {
   searchControl = new UntypedFormControl('');

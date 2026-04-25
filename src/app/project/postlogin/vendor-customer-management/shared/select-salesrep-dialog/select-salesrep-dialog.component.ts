@@ -10,12 +10,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
     selector: 'app-select-salesrep-dialog',
     templateUrl: './select-salesrep-dialog.component.html',
     styleUrls: ['./select-salesrep-dialog.component.scss'],
-    standalone: true,
     imports: [
         NgSelectModule,
         FormsModule,
         DadyinButtonComponent,
-    ],
+    ]
 })
 export class selectSalesRepDialogComponent implements OnInit {
   salesRepId = null;

@@ -25,14 +25,13 @@ import { NgClass, NgStyle } from '@angular/common';
             multi: true,
         },
     ],
-    standalone: true,
     imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    NgClass,
-    ExtendedModule,
-    NgStyle
-],
+        FormsModule,
+        ReactiveFormsModule,
+        NgClass,
+        ExtendedModule,
+        NgStyle
+    ]
 })
 export class DadyinInputComponent
   implements OnInit, ControlValueAccessor, AfterContentChecked

@@ -5,7 +5,6 @@ import { RouterLink } from '@angular/router';
     selector: 'app-privacy-policy',
     templateUrl: './privacy-policy.component.html',
     styleUrls: ['./privacy-policy.component.scss'],
-    standalone: true,
     imports: [RouterLink]
 })
 export class PrivacyPolicyComponent implements OnInit {

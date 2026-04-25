@@ -24,18 +24,17 @@ import { DadyinButtonComponent } from '../../../../../../shared/widgets/dadyin-b
     selector: 'app-bill-steps',
     templateUrl: './bill-steps.component.html',
     styleUrls: ['./bill-steps.component.scss'],
-    standalone: true,
     imports: [
-    DadyinButtonComponent,
-    MatTooltip,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTabGroup,
-    MatTab,
-    CreateBillComponent,
-    DatePipe
-],
+        DadyinButtonComponent,
+        MatTooltip,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabGroup,
+        MatTab,
+        CreateBillComponent,
+        DatePipe
+    ]
 })
 export class BillStepsComponent implements OnInit {
   // ************* Variable Declarations *************

@@ -8,7 +8,6 @@ import { MatIcon } from '@angular/material/icon';
     selector: 'app-campaign-filter-box',
     templateUrl: './campaign-filter-box.component.html',
     styleUrls: ['./campaign-filter-box.component.scss'],
-    standalone: true,
     imports: [MatIcon, DadyinButtonComponent, FormsModule, ReactiveFormsModule]
 })
 export class CampaignFilterBoxComponent implements OnInit {

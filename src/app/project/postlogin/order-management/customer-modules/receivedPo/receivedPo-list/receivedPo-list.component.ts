@@ -16,15 +16,14 @@ import { SearchFilterComponent } from '../../../../../../shared/component/search
     selector: 'app-receivedPo-list',
     templateUrl: './receivedPo-list.component.html',
     styleUrls: ['./receivedPo-list.component.scss'],
-    standalone: true,
     imports: [
-    SearchFilterComponent,
-    DadyinButtonComponent,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    DataTableComponent
-],
+        SearchFilterComponent,
+        DadyinButtonComponent,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        DataTableComponent
+    ]
 })
 export class ReceivedPoListComponent implements OnInit {
   uomSetting = false;
