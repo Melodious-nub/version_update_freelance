@@ -33,7 +33,7 @@ export class CategoryManagementComponent implements OnInit {
   public headers = [];
 
   ngOnInit(): void {
-    this.currentMainIndex=this.route.snapshot.queryParams.currentStepIndex ?? 0
+    this.currentMainIndex = Number(this.route.snapshot.queryParams.currentStepIndex) ?? 0
   }
 
 

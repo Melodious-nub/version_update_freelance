@@ -62,7 +62,7 @@ export class CustomerManagementComponent implements OnInit {
   readonly customerId = input<any>(null);
 
   ngOnInit(): void {
-    this.currentStepIndex = this.route.snapshot.queryParams.currentStepIndex;
+    this.currentStepIndex = Number(this.route.snapshot.queryParams.currentStepIndex);
     // if (
     //   window.location.href.includes('lead') ||
     //   window.location.href.includes('prospect')

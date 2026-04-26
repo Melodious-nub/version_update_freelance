@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, SimpleChanges, input, output } from '@angular/core';
+import { Component, OnInit, input, output, signal, computed } from '@angular/core';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { NgClass } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
-
 
 @Component({
     selector: 'app-date-scroll',
@@ -10,21 +9,18 @@ import { MatIcon } from '@angular/material/icon';
     styleUrls: ['./date-scroll.component.scss'],
     imports: [MatIcon, NgClass, ExtendedModule]
 })
-export class DateScrollComponent implements OnInit{
+export class DateScrollComponent implements OnInit {
   readonly initialDate = input(new Date());
-  @Input() startDate=this.getDateWithoutTime(new Date())
-  @Input() selectedDate=this.startDate
   readonly dateSelected = output<any>();
-  constructor() { }
 
-  ngOnInit(): void {
-    this.startDate=this.getDateWithoutTime(this.initialDate())
-    this.selectedDate=this.startDate
-  }
+  // Use signals for internal state to ensure stability
+  startDateSignal = signal<Date>(new Date());
+  selectedDateSignal = signal<Date>(new Date());
 
-  getNext10Dates(): any {
-    const dateList:any = [];
-    const today = new Date(this.startDate.getTime());
+  // Computed signal for the date list - stable and memoized
+  readonly dateList = computed(() => {
+    const list: any[] = [];
+    const today = new Date(this.startDateSignal().getTime());
     for (let i = 0; i < 11; i++) {
       const nextDate = new Date(today.getTime() + i * 24 * 60 * 60 * 1000);
       const dayName = nextDate.toLocaleString('en-us', { weekday: 'long' });
@@ -32,43 +28,47 @@ export class DateScrollComponent implements OnInit{
       const month = ('0' + (nextDate.getMonth() + 1)).slice(-2);
       const day = ('0' + nextDate.getDate()).slice(-2);
       const dateString = `${year}-${month}-${day}`;
-      dateList.push({ dateStr: dateString, day: dayName,date: nextDate});
+      list.push({ dateStr: dateString, day: dayName, date: nextDate });
     }
-    return dateList;
+    return list;
+  });
+
+  constructor() { }
+
+  ngOnInit(): void {
+    const baseDate = this.getDateWithoutTime(this.initialDate());
+    this.startDateSignal.set(baseDate);
+    this.selectedDateSignal.set(baseDate);
   }
 
-  onDateSelect(date){
-    this.selectedDate=new Date(date)
-    this.dateSelected.emit(date)
+  onDateSelect(date: Date) {
+    this.selectedDateSignal.set(new Date(date));
+    this.dateSelected.emit(date);
   }
 
-  isDateSelected(date){
-    return new Date(this.selectedDate),new Date(date),new Date(this.selectedDate).getTime()==new Date(date).getTime()
+  isDateSelected(date: Date): boolean {
+    return this.selectedDateSignal().getTime() === new Date(date).getTime();
   }
 
   getPrevDate(date: any): Date {
-    date=new Date(date)
-    const olderDate = new Date(date.getTime() - 11 * 24 * 60 * 60 * 1000);
-    return olderDate;
+    const d = new Date(date);
+    return new Date(d.getTime() - 11 * 24 * 60 * 60 * 1000);
   }
 
   getNextDate(date: any): Date {
-    date=new Date(date)
-    const olderDate = new Date(date.getTime() + 11 * 24 * 60 * 60 * 1000);
-    return olderDate;
+    const d = new Date(date);
+    return new Date(d.getTime() + 11 * 24 * 60 * 60 * 1000);
   }
 
-  prev(){
-    this.startDate=this.getPrevDate(this.startDate)
+  prev() {
+    this.startDateSignal.set(this.getPrevDate(this.startDateSignal()));
   }
 
-  next(){
-    this.startDate=this.getNextDate(this.startDate)
+  next() {
+    this.startDateSignal.set(this.getNextDate(this.startDateSignal()));
   }
 
   getDateWithoutTime(date: Date): Date {
-    const dateWithoutTime = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    return dateWithoutTime;
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
   }
-
 }

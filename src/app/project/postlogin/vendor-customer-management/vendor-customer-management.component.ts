@@ -160,7 +160,7 @@ export class VendorCustomerManagementComponent implements OnInit {
     this.route.queryParams.subscribe((queryParams) => {
       if (queryParams.currentStepIndex) {
         this.currentMainIndex =
-          this.route.snapshot.queryParams.currentStepIndex;
+          Number(this.route.snapshot.queryParams.currentStepIndex);
       }
       if (this.router.url.includes('users-management') && this.isCustomer) {
         this.currentMainIndex = 2;

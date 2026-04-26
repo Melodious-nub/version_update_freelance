@@ -59,7 +59,7 @@ export class InventoryoutProductWiseComponent implements OnInit {
     const day = ('0' + prevseventhDate.getDate()).slice(-2);
     const dateString = `${year}-${month}-${day}`;
 
-    this.inventoryoutmanagement.Get_Purchase_Order_For_Container_Product_Wise({ filter: 'audit.createdDate>' + "'" + dateString + 'T00:00:00' + "'" }).subscribe((res: any) => {
+    this.inventoryoutmanagement.Get_Purchase_Order_For_Container_Product_Wise({ filter: 'audit.createdDate >: ' + "'" + dateString + 'T00:00:00' + "'" }).subscribe((res: any) => {
       this.recentlyAddedList = res.content
     })
   }

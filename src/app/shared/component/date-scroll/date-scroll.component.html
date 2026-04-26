@@ -6,7 +6,7 @@
       </mat-icon>
     </span>
   </button>
-  @for (item of this.getNext10Dates(); track item) {
+  @for (item of dateList(); track item) {
     <div role="button" class="card date-card text-center mx-2 py-1" (click)="onDateSelect(item.date)"
       [ngClass]="{'active': isDateSelected(item.date)}">
       {{item.day}} <br>{{item.dateStr}}

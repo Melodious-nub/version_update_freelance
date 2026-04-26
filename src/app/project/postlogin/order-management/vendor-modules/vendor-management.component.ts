@@ -62,7 +62,7 @@ export class VendorManagementComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.currentStepIndex = this.route.snapshot.queryParams.currentStepIndex;
+    this.currentStepIndex = Number(this.route.snapshot.queryParams.currentStepIndex);
   }
 
   onTabChange(event: any) {

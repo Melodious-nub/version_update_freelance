@@ -74,7 +74,7 @@ export class InventoryoutOrderWiseComponent implements OnInit {
 
     this.inventoryoutmanagement
       .Get_Purchase_Order_For_Container({
-        filter: 'audit.createdDate>' + "'" + dateString + 'T00:00:00' + "'",
+        filter: 'audit.createdDate >: ' + "'" + dateString + 'T00:00:00' + "'",
       })
       .subscribe((res: any) => {
         this.recentlyAddedList = res.content;
